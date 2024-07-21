@@ -115,6 +115,8 @@ public class Bulletino extends AbstractMultiUpgradeCard {
     public void upgrade1() {
         forceUpgradeBaseCost(2);
         upgradeMagicNumber(-1);
+        isMultiDamage = true;
+        target = CardTarget.ALL_ENEMY;
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         gifOverlay = artillerex;
