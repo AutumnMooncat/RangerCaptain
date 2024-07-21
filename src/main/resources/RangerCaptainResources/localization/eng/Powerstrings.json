@@ -1,0 +1,91 @@
+{
+  "${ModID}:LosePowerPower": {
+    "NAME": "Lose ",
+    "DESCRIPTIONS": ["At the end of your turn, lose #b"," ","."]
+  },
+  "${ModID}:LosePowerLaterPower": {
+    "NAME": "Lose ",
+    "DESCRIPTIONS": ["At the end of your turn, lose #b"," ","."]
+  },
+  "${ModID}:NextTurnPowerPower": {
+    "NAME": "Next Turn ",
+    "DESCRIPTIONS": ["Next turn, gain #b"," ","."]
+  },
+  "${ModID}:BracedPower": {
+    "NAME": "Braced",
+    "DESCRIPTIONS": ["Your next #yBlock gaining card gains #b"," additional #yBlock."]
+  },
+  "${ModID}:ExposedPower": {
+    "NAME": "Exposed",
+    "DESCRIPTIONS": ["Takes #b"," more damage from Attacks this turn."]
+  },
+  "${ModID}:StaggerPower": {
+    "NAME": "Staggered",
+    "DESCRIPTIONS": ["Deals #b"," less damage with Attacks this turn."]
+  },
+  "${ModID}:CardToHandPower": {
+    "NAME": " Next Turn",
+    "DESCRIPTIONS": ["Next turn, add "," into your hand."," copies of "]
+  },
+  "${ModID}:StrikeBuffPower": {
+    "NAME": "Strike Up",
+    "DESCRIPTIONS": ["Cards containing #yStrike deal #b"," additional damage."]
+  },
+  "${ModID}:FervorPower": {
+    "NAME": "Fervor",
+    "DESCRIPTIONS": ["When you obtain #b10 #yFervor, your next #yAttack deals double damage."]
+  },
+  "${ModID}:NextTurnDamagePower": {
+    "NAME": "Next Turn Damage",
+    "DESCRIPTIONS": ["Deal #b"," damage to "," next turn."]
+  },
+  "${ModID}:BleedingPower": {
+    "NAME": "Bleeding",
+    "DESCRIPTIONS": ["Whenever this creature attacks, it loses #b"," HP."]
+  },
+  "${ModID}:LeechedPower": {
+    "NAME": "Leeched",
+    "DESCRIPTIONS": ["At the start of its next turn, loses #b"," HP and gives you #yTemporary #yHP equal to damage taken from this effect."]
+  },
+  "${ModID}:MultitargetPower": {
+    "NAME": "Multitarget",
+    "DESCRIPTIONS": ["The next single target Attack you play hits ALL enemies.","The next #b"," single target Attacks you play hit ALL enemies."]
+  },
+  "${ModID}:ConductivePower": {
+    "NAME": "Conductive",
+    "DESCRIPTIONS": ["Whenever you play a card, this creature takes #b"," damage and reduces #yConductive by #b1."]
+  },
+  "${ModID}:ResonancePower": {
+    "NAME": "Resonance",
+    "DESCRIPTIONS": [
+      "When this enemy receives #yResonance #b",
+      "2 more times, it receives #b",
+      "1 more time, it receives #b",
+      " damage."
+    ]
+  },
+  "${ModID}:TapeJamPower": {
+    "NAME": "Tape Jam",
+    "DESCRIPTIONS": ["This creature's intent is locked for #b1 turn.","This creature's intent is locked for #b"," turns."]
+  },
+  "${ModID}:SpringLoadedPower": {
+    "NAME": "Spring-Loaded",
+    "DESCRIPTIONS": ["Whenever you play an #yAttack, deal #b"," damage to a random enemy."]
+  },
+  "${ModID}:MindMeldPower": {
+    "NAME": "Mind-Meld",
+    "DESCRIPTIONS": ["Whenever you play a card this turn, play a copy of ","."]
+  },
+  "${ModID}:CloseEncounterPower": {
+    "NAME": "Close Encounter",
+    "DESCRIPTIONS": ["Next turn, move "," from your discard pile into your hand."]
+  },
+  "${ModID}:FlammablePower": {
+    "NAME": "Flammable",
+    "DESCRIPTIONS": ["Whenever a card is #yExhausted, apply #b"," #yBurned to a random enemy."]
+  },
+  "${ModID}:BurnedPower": {
+    "NAME": "Burned",
+    "DESCRIPTIONS": ["Whenever a card is #yExhausted, loses #b"," HP."]
+  }
+}

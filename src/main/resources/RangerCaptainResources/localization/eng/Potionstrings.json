@@ -1,0 +1,10 @@
+{
+  "${ModID}:TabooPotion": {
+    "NAME": "Taboo Potion",
+    "DESCRIPTIONS": ["Enemy deals #b"," less damage with Attacks this turn"]
+  },
+  "${ModID}:LimitBreaker": {
+    "NAME": "Limit Breaker",
+    "DESCRIPTIONS": ["#yMasterwork and #yUpgrade all cards in your hand.","#yMasterwork and #yUpgrade all cards in your hand #b"," times."]
+  }
+}

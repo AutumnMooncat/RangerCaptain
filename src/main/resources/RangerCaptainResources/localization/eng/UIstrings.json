@@ -1,0 +1,53 @@
+{
+  "${ModID}:ModConfigs": {
+    "TEXT": [
+      "This does nothing yet.",
+      "Enable random card phrases. Defaults: true, 10%.",
+      "Enable random phrases when attacked. Defaults: true, 20%.",
+      "Enable random pre/post combat phrases. Defaults: true, 50%."
+    ],
+    "EXTRA_TEXT": [
+      "The Celestial Hostess",
+      "Text."
+    ]
+  },
+  "${ModID}:CrossOver": {
+    "TEXT": [
+      "Enable Celestial Hostess Crossover Content"
+    ]
+  },
+  "${ModID}:AuraButton": {
+    "TEXT": [
+      "Holy Aura",
+      "Aura Active"
+    ],
+    "EXTRA_TEXT": [
+      "Holy Aura",
+      "Pressing this button will spend [E] to activate your #yAura this turn, triggering all #yCharges. NL NL While your #yAura is active, #yHoly cards are enhanced.",
+      " NL NL #yCharge #yEffects:",
+      " NL Deal #b"," damage to ALL enemies.",
+      " NL Gain #b"," #yBlock.",
+      " NL Draw #b"," card."," cards.",
+      " NL Gain #b"," [E] ."
+    ]
+  },
+  "${ModID}:ModifyAction": {
+    "TEXT": [
+      "Modify"
+    ]
+  },
+  "${ModID}:CleanseAction": {
+    "TEXT": [
+      "Cleanse",
+      "Choose a power to Cleanse.",
+      "Choose "," powers to Cleanse."
+    ]
+  },
+  "${ModID}:GuideAction": {
+    "TEXT": [
+      "Guide",
+      "Choose a card to Guide.",
+      "Choose "," cards to Guide."
+    ]
+  }
+}

@@ -1,0 +1,146 @@
+[
+  {
+    "ID": "braced",
+    "PROPER_NAME": "Braced",
+    "NAMES": [
+      "braced"
+    ],
+    "DESCRIPTION": "Your next #yBlock gaining card gains additional #yBlock."
+  },
+  {
+    "ID": "exposed",
+    "PROPER_NAME": "Exposed",
+    "NAMES": [
+      "expose",
+      "exposed"
+    ],
+    "DESCRIPTION": "Exposed creatures take more damage from Attacks this turn."
+  },
+  {
+    "ID": "stagger",
+    "PROPER_NAME": "Staggered",
+    "NAMES": [
+      "stagger",
+      "staggered"
+    ],
+    "DESCRIPTION": "Staggered creatures deal less damage with Attacks this turn."
+  },
+  {
+    "ID": "guide",
+    "PROPER_NAME": "Guide",
+    "NAMES": [
+      "guide",
+      "guided"
+    ],
+    "DESCRIPTION": "Place a card on top of your draw pile."
+  },
+  {
+    "ID": "clutch",
+    "PROPER_NAME": "Clutch",
+    "NAMES": [
+      "clutch",
+      "clutched"
+    ],
+    "DESCRIPTION": "Right Click to #rExhaust this card and trigger an effect."
+  },
+  {
+    "ID": "fervor",
+    "PROPER_NAME": "Fervor",
+    "NAMES": [
+      "fervor"
+    ],
+    "DESCRIPTION": "When you obtain #b10 #yFervor, your next #yAttack deals double damage."
+  },
+  {
+    "ID": "carrot",
+    "PROPER_NAME": "Carrot [${ModID}:CarrotIcon]",
+    "NAMES": [
+      "carrot",
+      "carrots"
+    ],
+    "DESCRIPTION": "Whenever you play a card with #yCarrots, gain equal #yFervor."
+  },
+  {
+    "ID": "bleed",
+    "PROPER_NAME": "Bleeding",
+    "NAMES": [
+      "bleed",
+      "bleeding"
+    ],
+    "DESCRIPTION": "#yBleeding creatures lose HP whenever they attack."
+  },
+  {
+    "ID": "leeched",
+    "PROPER_NAME": "Leeched",
+    "NAMES": [
+      "leeched"
+    ],
+    "DESCRIPTION": "#yLeeched creatures lose HP at the start of their next turn and grant #yTemporary #yHP to the player."
+  },
+  {
+    "ID": "perfect",
+    "PROPER_NAME": "Perfect",
+    "NAMES": [
+      "perfect"
+    ],
+    "DESCRIPTION": "A #yPerfect card cannot be #yUpgraded."
+  },
+  {
+    "ID": "multitarget",
+    "PROPER_NAME": "Multitarget",
+    "NAMES": [
+      "multitarget"
+    ],
+    "DESCRIPTION": "The next single target Attack you play hits ALL enemies."
+  },
+  {
+    "ID": "conductive",
+    "PROPER_NAME": "Conductive",
+    "NAMES": [
+      "conductive"
+    ],
+    "DESCRIPTION": "#yConductive creatures take damage whenever you play a card. Whenever this triggers, #yConductive is reduced by #b1."
+  },
+  {
+    "ID": "resonance",
+    "PROPER_NAME": "Resonance",
+    "NAMES": [
+      "resonance"
+    ],
+    "DESCRIPTION": "When a creature receives #b3 #yResonance, it takes #b30 damage."
+  },
+  {
+    "ID": "tapejam",
+    "PROPER_NAME": "Tape Jam",
+    "NAMES": [
+      "tape jam",
+      "tape_jam"
+    ],
+    "DESCRIPTION": "Locks a creature's intent."
+  },
+  {
+    "ID": "mindmeld",
+    "PROPER_NAME": "Mind-Meld",
+    "NAMES": [
+      "mind-meld"
+    ],
+    "DESCRIPTION": "Whenever you play another card this turn, play a copy of this card without #yMind-Meld."
+  },
+  {
+    "ID": "closeencounter",
+    "PROPER_NAME": "Close Encounter",
+    "NAMES": [
+      "close encounter",
+      "close_encounter"
+    ],
+    "DESCRIPTION": "Next turn, move this card from your discard pile into your hand."
+  },
+  {
+    "ID": "burned",
+    "PROPER_NAME": "Burned",
+    "NAMES": [
+      "burned"
+    ],
+    "DESCRIPTION": "#yBurned creatures lose HP whenever a card is exhausted."
+  }
+]

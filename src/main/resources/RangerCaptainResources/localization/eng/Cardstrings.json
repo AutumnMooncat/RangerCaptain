@@ -1,0 +1,133 @@
+{
+  "${ModID}:ExampleCard": {
+    "NAME": "Name",
+    "DESCRIPTION": "Main description",
+    "UPGRADE_DESCRIPTION": "Upgrade description",
+    "EXTENDED_DESCRIPTION": ["Extra Stuff"]
+  },
+  "${ModID}:Allseer": {
+    "NAME": "Allseer",
+    "DESCRIPTION": "Gain !B! Block. NL Apply !M! Vulnerable.{@@}{!${ModID}:I!|1= NL ${ModID}:Mind-Meld.|2= NL ${ModID}:Close_Encounter.}",
+    "EXTENDED_DESCRIPTION": ["Khufo","Triphinx"]
+  },
+  "${ModID}:Bansheep": {
+    "NAME": "Bansheep",
+    "DESCRIPTION": "Deal !D! damage{@@}{!M!|>0= !M! times. NL Ignores Block}.{!${ModID}:I!|>0= NL If this would deal !${ModID}:M2! or less unblocked damage, raise it to !${ModID}:I!.}",
+    "EXTENDED_DESCRIPTION": ["Wooltergeist","Ramtasm","Zombleat","Capricorpse"]
+  },
+  "${ModID}:Braxsuit": {
+    "NAME": "Braxsuit",
+    "DESCRIPTION": "Gain !M! Dexterity. NL At the end of this turn, lose !M! Dexterity.",
+    "EXTENDED_DESCRIPTION": ["Flapwoods"]
+  },
+  "${ModID}:Bulletino": {
+    "NAME": "Bulletino",
+    "DESCRIPTION": "{@@}{!${ModID}:I!|0,1=Deal !D! damage. NL Draw !M! cards.|2=Deal !D! damage to ALL enemies !M! times. NL Draw !M! cards for each enemy hit.|3=Draw !M! cards. NL Deal !D! damage for each card drawn during this turn.}{!${ModID}:I!|0= NL Exhaust.}{!${ModID}:Gearyu!|1= NL (Hits !${ModID}:M2! time.)|2= NL (Hits !${ModID}:M2! times.)}",
+    "EXTENDED_DESCRIPTION": ["Velocirifle","Artillerex","Gearyu"]
+  },
+  "${ModID}:Camping": {
+    "NAME": "Camping",
+    "DESCRIPTION": "Gain !B! Block. NL Upgrade a card in your hand for the rest of combat.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Upgrade all cards in your hand for the rest of combat."
+  },
+  "${ModID}:Candevil": {
+    "NAME": "Candevil",
+    "DESCRIPTION": "Gain !B! Block.{@@}{!${ModID}:I!|1= NL Apply !M! Poison.|2= NL Startup: Gain !M! Block.}",
+    "EXTENDED_DESCRIPTION": ["Malchemy","Miasmodeus","Vendemon","Gumbaal"]
+  },
+  "${ModID}:Carniviper": {
+    "NAME": "Carniviper",
+    "DESCRIPTION": "{@@}{!${ModID}:I!|0=Deal !D! damage. NL Apply !M! Poison.|1=Deal !D! damage. NL Apply !M! Poison. NL Draw 2 cards.|2=Deal !D! damage twice. NL Apply !M! Poison twice.|3=Deal !D! damage. NL Apply !M! Poison. NL When you draw this card, ALL enemies lose HP equal to their Poison.}",
+    "EXTENDED_DESCRIPTION": ["Masquerattle","Aeroboros","Mardiusa","Jormungold"]
+  },
+  "${ModID}:Clocksley": {
+    "NAME": "Clocksley",
+    "DESCRIPTION": "Whenever you play an Attack, deal !M! damage to a random enemy.",
+    "EXTENDED_DESCRIPTION": ["Robindam"]
+  },
+  "${ModID}:Dandylion": {
+    "NAME": "Dandylion",
+    "DESCRIPTION": "Gain !B! Block. NL Apply !M! ${ModID}:Leeched.",
+    "EXTENDED_DESCRIPTION": ["Blossomaw"]
+  },
+  "${ModID}:Defend": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! Block."
+  },
+  "${ModID}:Diveal": {
+    "NAME": "Diveal",
+    "DESCRIPTION": "Deal !D! damage{@@}{!M!|>0= and apply !M! ${ModID}:Tape_Jam} to the last enemy that attacked you.",
+    "EXTENDED_DESCRIPTION": ["Diveberg","Scubalrus"]
+  },
+  "${ModID}:Dominoth": {
+    "NAME": "Dominoth",
+    "DESCRIPTION": "{@@}{!${ModID}:I!|1=Apply !M! ${ModID}:Conductive. NL }Draw !M! cards. NL {!${ModID}:I!|2=Deal damage equal to the number of cards in your hand. NL }Discard 1 card.{!${ModID}:Tokusect!|1= NL (Deals !D! damage.)}",
+    "EXTENDED_DESCRIPTION": ["Wingloom","Mothmanic","Tokusect"]
+  },
+  "${ModID}:Kittelly": {
+    "NAME": "Kittelly",
+    "DESCRIPTION": "Replace this card with a copy of the last card played this combat. NL It costs 0 this turn.",
+    "EXTENDED_DESCRIPTION": ["Cat-5"," NL (",")"]
+  },
+  "${ModID}:Levitate": {
+    "NAME": "Levitate",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable."
+  },
+  "${ModID}:Macabra": {
+    "NAME": "Macabra",
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! Thorns. NL At the end of this turn, lose !M! Thorns.",
+    "EXTENDED_DESCRIPTION": ["Folklord"]
+  },
+  "${ModID}:Magikrab": {
+    "NAME": "Magikrab",
+    "DESCRIPTION": "${ModID}:Perfect. NL Gain 1 Intangible. NL Gain 2 Vulnerable. NL Exhaust."
+  },
+  "${ModID}:Nevermort": {
+    "NAME": "Nevermort",
+    "DESCRIPTION": "Apply !M! Poison to ALL enemies.",
+    "EXTENDED_DESCRIPTION": ["Apocrowlypse"]
+  },
+  "${ModID}:Puppercut": {
+    "NAME": "Puppercut",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Resonance.",
+    "EXTENDED_DESCRIPTION": ["Southpaw"]
+  },
+  "${ModID}:Salamagus": {
+    "NAME": "Salamagus",
+    "DESCRIPTION": "Whenever a card is Exhausted, apply !M! ${ModID}:Burned to a random enemy.{@@}{!${ModID}:I!|1= NL ${ModID}:Mind-Meld.}",
+    "EXTENDED_DESCRIPTION": ["Adeptile","Pyromeleon"]
+  },
+  "${ModID}:Sanzatime": {
+    "NAME": "Sanzatime",
+    "DESCRIPTION": "Deal !D! damage. NL Increase all of the enemy's debuffs by !M!.",
+    "EXTENDED_DESCRIPTION": ["Fortiwinx"]
+  },
+  "${ModID}:Sirenade": {
+    "NAME": "Sirenade",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Gain !M! ${ModID}:Multitarget.",
+    "EXTENDED_DESCRIPTION": ["Decibelle"]
+  },
+  "${ModID}:Springheel": {
+    "NAME": "Springheel",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak.{@@}{!${ModID}:I!|0=|1= NL Next turn, gain [E] .|2= NL Next turn, gain [E] [E] .}",
+    "EXTENDED_DESCRIPTION": ["Hopskin","Ripterra","Snoopin","Scampire"]
+  },
+  "${ModID}:Squirey": {
+    "NAME": "Squirey",
+    "DESCRIPTION": "{@@}{!${ModID}:I!|1=Gain !B! Block. NL }Deal !D! damage. NL Gain !M! Strength. NL At the end of this turn, lose !M! Strength.",
+    "EXTENDED_DESCRIPTION": ["Manispear","Palangolin"]
+  },
+  "${ModID}:Strike": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "${ModID}:Thwackalope": {
+    "NAME": "Thwackalope",
+    "DESCRIPTION": "${ModID}:Perfect. NL Deal !D! damage twice."
+  },
+  "${ModID}:Traffikrab": {
+    "NAME": "Traffikrab",
+    "DESCRIPTION": "Gain !B! Block. NL Next turn draw !M! additional card{@@}{!M!|>1=s}.",
+    "EXTENDED_DESCRIPTION": ["Weevilite","Lobstacle"]
+  }
+}

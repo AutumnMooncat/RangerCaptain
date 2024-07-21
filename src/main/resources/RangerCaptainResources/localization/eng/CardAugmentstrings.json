@@ -1,0 +1,14 @@
+{
+  "${ModID}:InfuseAddonMod": {
+    "TEXT": ["", " Addon", "Reduces damage by #b33%. #yInfuses damage into another card. #yExhausts."],
+    "EXTRA_TEXT": ["Innate. NL ","professor:Infuse \"Deal !M! damage\" into a card. NL Exhaust.","professor:Infuse \"Deal !M! damage to ALL enemies\" into a card. NL Exhaust."]
+  },
+  "${ModID}:SpectrumizeMod": {
+    "TEXT": ["Melting ", "", "#ySpectrumizes a random card in your hand. Allowing choosing which card when #yUpgraded."],
+    "EXTRA_TEXT": [" NL professor:Spectrumize 1 card at random."," NL professor:Spectrumize 1 card."]
+  },
+  "${ModID}:UnstableMod": {
+    "TEXT": ["Volatile ", "", "Reduces damage by #b2. NL Applies #b2(+1) #yUnstable."],
+    "EXTRA_TEXT": [" NL Apply %s professor:Unstable."]
+  }
+}

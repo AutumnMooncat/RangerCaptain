@@ -1,0 +1,18 @@
+{
+  "${ModID}:DoubleEspresso": {
+    "NAME": "Double Espresso",
+    "FLAVOR": "Two shots of espresso in one tin.",
+    "DESCRIPTIONS": [
+      "Replaces [#924ee4]Espresso [#924ee4]Express. At the start of your first #b3 turns, gain an additional [E] .",
+      "Energy gained: "," NL Per turn: "," NL Per combat: "
+    ]
+  },
+  "${ModID}:EspressoExpress": {
+    "NAME": "Espresso Express",
+    "FLAVOR": "A small can packed with a shot of instant energy.",
+    "DESCRIPTIONS": [
+      "Start each combat with an additional [E] .",
+      "Energy gained: "," NL Per turn: "," NL Per combat: "
+    ]
+  }
+}
