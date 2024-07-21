@@ -22,7 +22,6 @@ public class Undyin extends AbstractEasyCard {
         baseMagicNumber = magicNumber = 7;
         gifOverlay = undyin;
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
-        exhaust = true;
     }
 
     @Override
