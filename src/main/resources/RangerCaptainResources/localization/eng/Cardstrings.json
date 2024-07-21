@@ -82,6 +82,11 @@
     "NAME": "Magikrab",
     "DESCRIPTION": "${ModID}:Perfect. NL Gain 1 Intangible. NL Gain 2 Vulnerable. NL Exhaust."
   },
+  "${ModID}:Muskrateer": {
+    "NAME": "Muskrateer",
+    "DESCRIPTION": "Deal !D! damage. NL If you have played less than !M! cards this turn, draw 1 card.",
+    "EXTENDED_DESCRIPTION": ["Ratcousel"," NL ("," card played.)"," cards played.)"]
+  },
   "${ModID}:Nevermort": {
     "NAME": "Nevermort",
     "DESCRIPTION": "Apply !M! Poison to ALL enemies.",
