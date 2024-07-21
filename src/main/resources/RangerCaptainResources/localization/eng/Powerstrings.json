@@ -95,5 +95,10 @@
   "${ModID}:AcidReflexPower": {
     "NAME": "Acid Reflex",
     "DESCRIPTIONS": ["When attacked, apply #b"," #yPoison back."]
+  },
+  "${ModID}:GambitPower": {
+    "NAME": "Gambit",
+    "DESCRIPTIONS": ["Deal double damage with #yAttacks and gain double #yBlock from cards this turn. When this effect expires, die.",
+      "Deal double damage with #yAttacks and gain double #yBlock from cards for #b"," turns. When this effect expires, die."]
   }
 }

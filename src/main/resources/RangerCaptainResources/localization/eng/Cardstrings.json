@@ -86,6 +86,10 @@
     "NAME": "Magikrab",
     "DESCRIPTION": "${ModID}:Perfect. NL Gain 1 Intangible. NL Gain 2 Vulnerable. NL Exhaust."
   },
+  "${ModID}:MissMimic": {
+    "NAME": "Miss Mimic",
+    "DESCRIPTION": "${ModID}:Perfect. NL Deal double damage and gain double Block for !M! turns. NL When this effect expires, die."
+  },
   "${ModID}:Muskrateer": {
     "NAME": "Muskrateer",
     "DESCRIPTION": "Deal !D! damage. NL If you have played less than !M! cards this turn, draw 1 card.",
