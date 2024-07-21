@@ -26,7 +26,7 @@ public class Undyin extends AbstractEasyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.applyToSelf(new AutoLifePower(p, 1));
+        Wiz.applyToSelf(new AutoLifePower(p, magicNumber));
     }
 
     @Override
