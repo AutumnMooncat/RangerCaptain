@@ -10,6 +10,11 @@
     "DESCRIPTION": "Gain !B! Block. NL Apply !M! Vulnerable.{@@}{!${ModID}:I!|1= NL ${ModID}:Mind-Meld.|2= NL ${ModID}:Close_Encounter.}",
     "EXTENDED_DESCRIPTION": ["Khufo","Triphinx"]
   },
+  "${ModID}:Amphare": {
+    "NAME": "Amphare",
+    "DESCRIPTION": "At the start of your turn, gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} .",
+    "EXTENDED_DESCRIPTION": ["Lapacitor"]
+  },
   "${ModID}:Bansheep": {
     "NAME": "Bansheep",
     "DESCRIPTION": "Deal !D! damage{@@}{!M!|>0= !M! times. NL Ignores Block}.{!${ModID}:I!|>0= NL If this would deal !${ModID}:M2! or less unblocked damage, raise it to !${ModID}:I!.}",
