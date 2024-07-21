@@ -1,6 +1,9 @@
 package RangerCaptain;
 
-import RangerCaptain.cards.*;
+import RangerCaptain.cards.Camping;
+import RangerCaptain.cards.Defend;
+import RangerCaptain.cards.Levitate;
+import RangerCaptain.cards.Strike;
 import RangerCaptain.cards.interfaces.SkillAnimationAttack;
 import RangerCaptain.relics.EspressoExpress;
 import RangerCaptain.util.CustomSounds;

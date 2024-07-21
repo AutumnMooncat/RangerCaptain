@@ -1,7 +1,6 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
-import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.LeechedPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.Wiz;

@@ -1,20 +1,14 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
-import RangerCaptain.actions.DoAction;
 import RangerCaptain.util.FormatHelper;
-import RangerCaptain.util.Wiz;
 import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.DiscardToHandAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
 public class CloseEncounterPower extends AbstractEasyPower implements NonStackablePower {

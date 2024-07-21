@@ -4,7 +4,6 @@ import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.damageMods.BootDamage;
 import RangerCaptain.damageMods.PiercingDamage;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.Wiz;
 import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -13,8 +12,6 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.EnergizedBluePower;
-import com.megacrit.cardcrawl.powers.WeakPower;
 
 import static RangerCaptain.MainModfile.makeID;
 
