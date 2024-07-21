@@ -91,5 +91,9 @@
   "${ModID}:AutoLifePower": {
     "NAME": "Auto-Life",
     "DESCRIPTIONS": ["At the end of combat or when you would die, heal #b"," HP."]
+  },
+  "${ModID}:AcidReflexPower": {
+    "NAME": "Acid Reflex",
+    "DESCRIPTIONS": ["When attacked, apply #b"," #yPoison back."]
   }
 }
