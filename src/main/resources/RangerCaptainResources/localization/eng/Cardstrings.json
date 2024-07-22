@@ -122,6 +122,11 @@
     "DESCRIPTION": "Apply !M! Poison to ALL enemies.",
     "EXTENDED_DESCRIPTION": ["Apocrowlypse"]
   },
+  "${ModID}:Padpole": {
+    "NAME": "Padpole",
+    "DESCRIPTION": "Apply !M! ${ModID}:Leeched.",
+    "EXTENDED_DESCRIPTION": ["Frillypad","Liligator"]
+  },
   "${ModID}:Puppercut": {
     "NAME": "Puppercut",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Resonance.",
