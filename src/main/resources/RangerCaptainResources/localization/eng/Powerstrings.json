@@ -121,5 +121,9 @@
     "NAME": "Tower Defence",
     "DESCRIPTIONS": ["Whenever you gain #yBlock from a card, gain equal #yBlock next turn.",
       "Whenever you gain #yBlock from a card, gain #b"," times that much #yBlock next turn."]
+  },
+  "${ModID}:MeditatingPower": {
+    "NAME": "Meditating",
+    "DESCRIPTIONS": ["If you do not play any #yAttacks during your turn, gain #b"," #yStrength at the end of your turn."]
   }
 }
