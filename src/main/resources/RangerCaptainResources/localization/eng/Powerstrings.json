@@ -104,5 +104,9 @@
   "${ModID}:APBoostPower": {
     "NAME": "AP Boost",
     "DESCRIPTIONS": ["At the start of your turn, gain #b"," [E] ."]
+  },
+  "${ModID}:ParryPower": {
+    "NAME": "Parry",
+    "DESCRIPTIONS": ["Whenever you take no damage from an #yAttack, gain #b"," #yVigor."]
   }
 }

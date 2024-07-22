@@ -148,6 +148,11 @@
     "DESCRIPTION": "Gain !B! Block. NL Next turn draw !M! additional card{@@}{!M!|>1=s}.",
     "EXTENDED_DESCRIPTION": ["Weevilite","Lobstacle"]
   },
+  "${ModID}:Twirligig": {
+    "NAME": "Twiligig",
+    "DESCRIPTION": "Whenever you take no damage from an Attack, gain !M! Vigor.",
+    "EXTENDED_DESCRIPTION": ["Kirikuri"]
+  },
   "${ModID}:Undyin": {
     "NAME": "Undyin",
     "DESCRIPTION": "${ModID}:Perfect. NL At the end of combat, or when you would die, heal !M! HP."
