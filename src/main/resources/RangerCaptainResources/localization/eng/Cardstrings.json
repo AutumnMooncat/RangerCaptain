@@ -15,6 +15,10 @@
     "DESCRIPTION": "At the start of your turn, gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} .",
     "EXTENDED_DESCRIPTION": ["Lapacitor"]
   },
+  "${ModID}:Averevoir": {
+    "NAME": "Averevoir",
+    "DESCRIPTION": "${ModID}:Perfect. NL Whenever you gain Block from a card, gain equal Block next turn."
+  },
   "${ModID}:Bansheep": {
     "NAME": "Bansheep",
     "DESCRIPTION": "Deal !D! damage{@@}{!M!|>0= !M! times. NL Ignores Block}.{!${ModID}:I!|>0= NL If this would deal !${ModID}:M2! or less unblocked damage, raise it to !${ModID}:I!.}",

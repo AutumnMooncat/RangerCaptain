@@ -116,5 +116,10 @@
   "${ModID}:BerserkerPower": {
     "NAME": "Berserker",
     "DESCRIPTIONS": ["At the start of your turn, gain #b"," #yStrength for each enemy that intends to attack."]
+  },
+  "${ModID}:TowerDefencePower": {
+    "NAME": "Tower Defence",
+    "DESCRIPTIONS": ["Whenever you gain #yBlock from a card, gain equal #yBlock next turn.",
+      "Whenever you gain #yBlock from a card, gain #b"," times that much #yBlock next turn."]
   }
 }
