@@ -172,7 +172,7 @@
   },
   "${ModID}:Twirligig": {
     "NAME": "Twiligig",
-    "DESCRIPTION": "Whenever you take no damage from an Attack, gain !M! Vigor.",
+    "DESCRIPTION": "Whenever you take no damage from an attack, gain !M! Vigor.",
     "EXTENDED_DESCRIPTION": ["Kirikuri"]
   },
   "${ModID}:Undyin": {
