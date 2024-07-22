@@ -112,5 +112,9 @@
   "${ModID}:GlassBondsPower": {
     "NAME": "Glass Bonds",
     "DESCRIPTIONS": ["Whenever you play a #yPerfect card, gain #b"," #yBlock."]
+  },
+  "${ModID}:BerserkerPower": {
+    "NAME": "Berserker",
+    "DESCRIPTIONS": ["At the start of your turn, gain #b"," #yStrength for each enemy that intends to attack."]
   }
 }
