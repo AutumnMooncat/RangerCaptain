@@ -49,7 +49,7 @@
   },
   "${ModID}:MultitargetPower": {
     "NAME": "Multitarget",
-    "DESCRIPTIONS": ["The next single target Attack you play hits ALL enemies.","The next #b"," single target Attacks you play hit ALL enemies."]
+    "DESCRIPTIONS": ["The next single target #yAttack you play hits ALL enemies.","The next #b"," single target #yAttacks you play hit ALL enemies."]
   },
   "${ModID}:ConductivePower": {
     "NAME": "Conductive",
@@ -107,7 +107,7 @@
   },
   "${ModID}:ParryPower": {
     "NAME": "Parry",
-    "DESCRIPTIONS": ["Whenever you take no damage from an #yAttack, gain #b"," #yVigor."]
+    "DESCRIPTIONS": ["Whenever you take no damage from an attack, gain #b"," #yVigor."]
   },
   "${ModID}:GlassBondsPower": {
     "NAME": "Glass Bonds",
