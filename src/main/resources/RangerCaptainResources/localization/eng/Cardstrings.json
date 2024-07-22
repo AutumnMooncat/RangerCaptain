@@ -148,6 +148,11 @@
     "DESCRIPTION": "{@@}{!${ModID}:I!|1=Gain !B! Block. NL }Deal !D! damage. NL Gain !M! Strength. NL At the end of this turn, lose !M! Strength.",
     "EXTENDED_DESCRIPTION": ["Manispear","Palangolin"]
   },
+  "${ModID}:Stardigrade": {
+    "NAME": "Starigrade",
+    "DESCRIPTION": "If you do not play any Attacks during your turn, gain !M! Strength at the end of your turn.",
+    "EXTENDED_DESCRIPTION": ["Galagor"]
+  },
   "${ModID}:Strike": {
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage."
