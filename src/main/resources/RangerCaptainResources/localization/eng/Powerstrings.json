@@ -125,5 +125,9 @@
   "${ModID}:MeditatingPower": {
     "NAME": "Meditating",
     "DESCRIPTIONS": ["If you do not play any #yAttacks during your turn, gain #b"," #yStrength at the end of your turn."]
+  },
+  "${ModID}:GhostlyPower": {
+    "NAME": "Ghostly",
+    "DESCRIPTIONS": ["Whenever a card is #yExhausted, gain #b"," #yBlock and #yVigor."]
   }
 }
