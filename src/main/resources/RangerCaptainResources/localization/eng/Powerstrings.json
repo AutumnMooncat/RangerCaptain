@@ -108,5 +108,9 @@
   "${ModID}:ParryPower": {
     "NAME": "Parry",
     "DESCRIPTIONS": ["Whenever you take no damage from an #yAttack, gain #b"," #yVigor."]
+  },
+  "${ModID}:GlassBondsPower": {
+    "NAME": "Glass Bonds",
+    "DESCRIPTIONS": ["Whenever you play a #yPerfect card, gain #b"," #yBlock."]
   }
 }

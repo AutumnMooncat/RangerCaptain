@@ -69,6 +69,10 @@
     "DESCRIPTION": "{@@}{!${ModID}:I!|1=Apply !M! ${ModID}:Conductive. NL }Draw !M! cards. NL {!${ModID}:I!|2=Deal damage equal to the number of cards in your hand. NL }Discard 1 card.{!${ModID}:Tokusect!|1= NL (Deals !D! damage.)}",
     "EXTENDED_DESCRIPTION": ["Wingloom","Mothmanic","Tokusect"]
   },
+  "${ModID}:Glaistain": {
+    "NAME": "Glaistain",
+    "DESCRIPTION": "${ModID}:Perfect. NL Whenever you play a ${ModID}:Perfect card, gain !M! Block."
+  },
   "${ModID}:Jellyton": {
     "NAME": "Jellyton",
     "DESCRIPTION": "${ModID}:Perfect. NL Whenever you are attacked, apply !M! Poison back."
