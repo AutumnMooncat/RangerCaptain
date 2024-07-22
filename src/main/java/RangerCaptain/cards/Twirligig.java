@@ -2,7 +2,6 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.ParryPower;
-import RangerCaptain.powers.SpringLoadedPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.Color;
