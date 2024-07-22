@@ -409,7 +409,7 @@ public class CardArtRoller {
                 if (c.type == AbstractCard.CardType.POWER) {
                     //Skill, Status, Curse to Power
                     og.zoom = 0.976f;
-                    og.translate(-6, 0);
+                    og.translate(-3, 0);
                 }
                 //Skill, Status, Curse to Attack is free
             }
