@@ -172,7 +172,7 @@
   },
   "${ModID}:Traffikrab": {
     "NAME": "Traffikrab",
-    "DESCRIPTION": "Gain !B! Block. NL Next turn draw !M! additional card{@@}{!M!|>1=s}.",
+    "DESCRIPTION": "Gain !B! Block. NL Next turn, draw !M! additional card{@@}{!M!|>1=s}.",
     "EXTENDED_DESCRIPTION": ["Weevilite","Lobstacle"]
   },
   "${ModID}:Twirligig": {
