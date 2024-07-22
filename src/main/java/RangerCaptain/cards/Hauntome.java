@@ -2,7 +2,6 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
-import RangerCaptain.powers.AutoLifePower;
 import RangerCaptain.powers.GhostlyPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.Wiz;
