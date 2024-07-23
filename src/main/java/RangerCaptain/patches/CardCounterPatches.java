@@ -63,6 +63,10 @@ public class CardCounterPatches {
             initialHand.clear();
             isInitialDraw = true;
             jumpsThisTurn = 0;
+
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+                AttackCountField.attackedThisTurn.set(m, 0);
+            }
         }
 
         public static class Locator extends SpireInsertLocator {
@@ -120,6 +124,23 @@ public class CardCounterPatches {
             @Override
             public int[] Locate(CtBehavior ctBehavior) throws Exception {
                 return LineFinder.findInOrder(ctBehavior, new Matcher.MethodCallMatcher(GameActionManager.class, "useNextCombatActions"));
+            }
+        }
+    }
+
+    @SpirePatch2(clz = AbstractMonster.class, method = SpirePatch.CLASS)
+    public static class AttackCountField {
+        public static SpireField<Integer> attackedThisTurn = new SpireField<>(() -> 0);
+        public static SpireField<Integer> attackedThisCombat = new SpireField<>(() -> 0);
+    }
+
+    @SpirePatch2(clz = AbstractMonster.class, method = "damage")
+    public static class OnDamaged {
+        @SpirePrefixPatch
+        public static void plz (AbstractMonster __instance, DamageInfo info) {
+            if (info.type == DamageInfo.DamageType.NORMAL) {
+                AttackCountField.attackedThisTurn.set(__instance, AttackCountField.attackedThisTurn.get(__instance)+1);
+                AttackCountField.attackedThisCombat.set(__instance, AttackCountField.attackedThisCombat.get(__instance)+1);
             }
         }
     }
