@@ -1,25 +1,17 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.actions.BetterSelectCardsInHandAction;
-import RangerCaptain.actions.DamageFollowupAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
-import RangerCaptain.powers.ConductivePower;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 
 import static RangerCaptain.MainModfile.makeID;
 
