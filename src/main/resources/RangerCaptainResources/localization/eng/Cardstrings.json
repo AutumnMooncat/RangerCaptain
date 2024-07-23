@@ -176,6 +176,11 @@
     "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Gain !M! ${ModID}:Multitarget.",
     "EXTENDED_DESCRIPTION": ["Decibelle"]
   },
+  "${ModID}:Sparktan": {
+    "NAME": "Sparktan",
+    "DESCRIPTION": "Deal !D! damage. NL Apply ${ModID}:Conductive equal to unblocked damage dealt. NL Exhaust.",
+    "EXTENDED_DESCRIPTION": ["Zeustrike"]
+  },
   "${ModID}:Springheel": {
     "NAME": "Springheel",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak.{@@}{!${ModID}:I!|0=|1= NL Next turn, gain [E] .|2= NL Next turn, gain [E] [E] .}",
