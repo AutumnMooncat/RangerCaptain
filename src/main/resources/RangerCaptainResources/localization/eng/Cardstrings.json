@@ -15,6 +15,10 @@
     "DESCRIPTION": "At the start of your turn, gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} .",
     "EXTENDED_DESCRIPTION": ["Lapacitor"]
   },
+  "${ModID}:Arkidd": {
+    "NAME": "Arkidd",
+    "DESCRIPTION": "${ModID}:Perfect. NL Apply !M! ${ModID}:Conductive and 1 ${ModID}:Resonance to ALL enemies."
+  },
   "${ModID}:Averevoir": {
     "NAME": "Averevoir",
     "DESCRIPTION": "${ModID}:Perfect. NL Whenever you gain Block from a card, gain equal Block next turn."
