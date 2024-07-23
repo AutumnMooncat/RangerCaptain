@@ -97,6 +97,10 @@
     "DESCRIPTION": "Deal !D! damage{@@}{!M!|>0= and apply !M! ${ModID}:Tape_Jam} to the last enemy that attacked you.",
     "EXTENDED_DESCRIPTION": ["Diveberg","Scubalrus"]
   },
+  "${ModID}:DjinnEntonic": {
+    "NAME": "Djinn Entonic",
+    "DESCRIPTION": "${ModID}:Perfect. NL Gain !M! Strength. NL Shuffle !M! *Dazed into your draw pile."
+  },
   "${ModID}:Dominoth": {
     "NAME": "Dominoth",
     "DESCRIPTION": "{@@}{!${ModID}:I!|1=Apply !M! ${ModID}:Conductive. NL }Draw !M! cards. NL {!${ModID}:I!|2=Deal damage equal to the number of cards in your hand. NL }Discard 1 card.{!${ModID}:Tokusect!|1= NL (Deals !D! damage.)}",
