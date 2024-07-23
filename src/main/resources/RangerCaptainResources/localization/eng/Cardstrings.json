@@ -244,7 +244,7 @@
   },
   "${ModID}:Umbrahella": {
     "NAME": "Umbrahella",
-    "DESCRIPTION": "${ModID}:Perfect. NL Deal !M!X damage to ALL enemies."
+    "DESCRIPTION": "${ModID}:Perfect. NL Deal !D!X damage to ALL enemies."
   },
   "${ModID}:Undyin": {
     "NAME": "Undyin",
