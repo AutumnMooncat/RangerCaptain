@@ -53,6 +53,11 @@
     "DESCRIPTION": "{@@}{!${ModID}:I!|0,1=Deal !D! damage. NL Draw !M! cards.|2=Deal !D! damage to ALL enemies !M! times. NL Draw !M! cards for each enemy hit.|3=Draw !M! cards. NL Deal !D! damage for each card drawn during this turn.}{!${ModID}:I!|0= NL Exhaust.}{!${ModID}:Gearyu!|1= NL (Hits !${ModID}:M2! time.)|2= NL (Hits !${ModID}:M2! times.)}",
     "EXTENDED_DESCRIPTION": ["Velocirifle","Artillerex","Gearyu"]
   },
+  "${ModID}:Burnace": {
+    "NAME": "Burnace",
+    "DESCRIPTION": "Exhaust up to !M! cards in your hand. NL Gain !B! Block for each card Exhausted.",
+    "EXTENDED_DESCRIPTION": ["Smogmagog"]
+  },
   "${ModID}:Busheye": {
     "NAME": "Busheye",
     "DESCRIPTION": "Apply !M! ${ModID}:Burned and !${ModID}:M2! Weak to ALL enemies. NL Exhaust.",
