@@ -73,6 +73,11 @@
     "DESCRIPTION": "{@@}{!${ModID}:I!|1=Apply !M! ${ModID}:Conductive. NL }Draw !M! cards. NL {!${ModID}:I!|2=Deal damage equal to the number of cards in your hand. NL }Discard 1 card.{!${ModID}:Tokusect!|1= NL (Deals !D! damage.)}",
     "EXTENDED_DESCRIPTION": ["Wingloom","Mothmanic","Tokusect"]
   },
+  "${ModID}:Elfless": {
+    "NAME": "Elfless",
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy has a debuff, gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} {!${ModID}:I!|2=and deal double damage}.",
+    "EXTENDED_DESCRIPTION": ["Faerious","Grampus"]
+  },
   "${ModID}:Glaistain": {
     "NAME": "Glaistain",
     "DESCRIPTION": "${ModID}:Perfect. NL Whenever you play a ${ModID}:Perfect card, gain !M! Block."
