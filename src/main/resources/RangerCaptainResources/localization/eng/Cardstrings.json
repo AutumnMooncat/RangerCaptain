@@ -34,6 +34,11 @@
     "DESCRIPTION": "Gain !M! Dexterity. NL At the end of this turn, lose !M! Dexterity.",
     "EXTENDED_DESCRIPTION": ["Flapwoods"]
   },
+  "${ModID}:Brushroom": {
+    "NAME": "Brushroom",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable. NL Can only be played on enemies that have already been attacked this turn.",
+    "EXTENDED_DESCRIPTION": ["Fungogh","This enemy has not been attacked this turn."]
+  },
   "${ModID}:Bulletino": {
     "NAME": "Bulletino",
     "DESCRIPTION": "{@@}{!${ModID}:I!|0,1=Deal !D! damage. NL Draw !M! cards.|2=Deal !D! damage to ALL enemies !M! times. NL Draw !M! cards for each enemy hit.|3=Draw !M! cards. NL Deal !D! damage for each card drawn during this turn.}{!${ModID}:I!|0= NL Exhaust.}{!${ModID}:Gearyu!|1= NL (Hits !${ModID}:M2! time.)|2= NL (Hits !${ModID}:M2! times.)}",
