@@ -20,7 +20,7 @@ public class Umbrahella extends AbstractEasyCard {
     protected static Animation<TextureRegion> umbrahella = loadGifOverlay("Umbrahella_idle.gif");
 
     public Umbrahella() {
-        super(ID, -1, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
+        super(ID, -1, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY);
         gifOverlay = umbrahella;
         baseDamage = damage = 7;
         isMultiDamage = true;
