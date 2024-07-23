@@ -29,6 +29,11 @@
     "DESCRIPTION": "Deal !D! damage a number of times equal to the amount of ALL your Binvader and Binterloper cards.",
     "EXTENDED_DESCRIPTION": ["Binterloper"]
   },
+  "${ModID}:Boltam": {
+    "NAME": "Boltam",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Conductive. NL Add !${ModID}:M2! {@@}{!${ModID}:M2!|1=copy|@=copies} of this card into your discard pile.",
+    "EXTENDED_DESCRIPTION": ["Pinbolt","Plasmantler"]
+  },
   "${ModID}:Braxsuit": {
     "NAME": "Braxsuit",
     "DESCRIPTION": "Gain !M! Dexterity. NL At the end of this turn, lose !M! Dexterity.",
