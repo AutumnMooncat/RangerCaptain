@@ -132,6 +132,11 @@
     "DESCRIPTION": "Apply !M! ${ModID}:Leeched.",
     "EXTENDED_DESCRIPTION": ["Frillypad","Liligator"]
   },
+  "${ModID}:Pombomb": {
+    "NAME": "Pombomb",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times.",
+    "EXTENDED_DESCRIPTION": ["Spitzfyre"]
+  },
   "${ModID}:Puppercut": {
     "NAME": "Puppercut",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Resonance.",
