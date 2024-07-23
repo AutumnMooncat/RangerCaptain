@@ -2,7 +2,6 @@ package RangerCaptain.cards;
 
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
-import RangerCaptain.patches.MonsterAttackedPatches;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -12,7 +11,6 @@ import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
