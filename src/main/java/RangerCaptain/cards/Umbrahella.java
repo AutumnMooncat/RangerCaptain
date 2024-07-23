@@ -22,7 +22,7 @@ public class Umbrahella extends AbstractEasyCard {
     public Umbrahella() {
         super(ID, -1, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
         gifOverlay = umbrahella;
-        baseMagicNumber = magicNumber = 7;
+        baseDamage = damage = 7;
         isMultiDamage = true;
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
