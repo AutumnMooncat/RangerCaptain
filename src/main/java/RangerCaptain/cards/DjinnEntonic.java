@@ -20,7 +20,7 @@ public class DjinnEntonic extends AbstractEasyCard {
     protected static Animation<TextureRegion> djinn = loadGifOverlay("Djinn_Entonic_idle.gif");
 
     public DjinnEntonic() {
-        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+        super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = 2;
         gifOverlay = djinn;
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
