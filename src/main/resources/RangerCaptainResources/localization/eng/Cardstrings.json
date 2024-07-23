@@ -171,6 +171,11 @@
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage."
   },
+  "${ModID}:Terracooka": {
+    "NAME": "Terracooka",
+    "DESCRIPTION": "Apply !M! ${ModID}:Burned. NL Exhaust 1 card.",
+    "EXTENDED_DESCRIPTION": ["Coaldron"]
+  },
   "${ModID}:Thwackalope": {
     "NAME": "Thwackalope",
     "DESCRIPTION": "${ModID}:Perfect. NL Deal !D! damage twice."
