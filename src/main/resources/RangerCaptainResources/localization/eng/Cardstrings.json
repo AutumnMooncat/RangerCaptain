@@ -195,6 +195,10 @@
     "DESCRIPTION": "Whenever you take no damage from an attack, gain !M! Vigor.",
     "EXTENDED_DESCRIPTION": ["Kirikuri"]
   },
+  "${ModID}:Umbrahella": {
+    "NAME": "Umbrahella",
+    "DESCRIPTION": "${ModID}:Perfect. NL Deal !M!X damage to ALL enemies."
+  },
   "${ModID}:Undyin": {
     "NAME": "Undyin",
     "DESCRIPTION": "${ModID}:Perfect. NL At the end of combat, or when you would die, heal !M! HP."
