@@ -114,6 +114,11 @@
     "NAME": "Jellyton",
     "DESCRIPTION": "${ModID}:Perfect. NL Whenever you are attacked, apply !M! Poison back."
   },
+  "${ModID}:Jumpkin": {
+    "NAME": "Jumpkin",
+    "DESCRIPTION": "{@@}{!${ModID}:I!|0=Gain !B! Block.|1=Apply !M! ${ModID}:Leeched.} NL Remove 1 of your debuffs.",
+    "EXTENDED_DESCRIPTION": ["Draculeaf","Beanstalker"]
+  },
   "${ModID}:Kittelly": {
     "NAME": "Kittelly",
     "DESCRIPTION": "Replace this card with a copy of the last card played this combat. NL It costs 0 this turn.",
