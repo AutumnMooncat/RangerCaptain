@@ -124,6 +124,10 @@
     "DESCRIPTION": "{@@}{!${ModID}:I!|0=Gain !B! Block.|1=Apply !M! ${ModID}:Leeched.} NL Remove 1 of your debuffs.",
     "EXTENDED_DESCRIPTION": ["Draculeaf","Beanstalker"]
   },
+  "${ModID}:Khepri": {
+    "NAME": "Khepri",
+    "DESCRIPTION": "${ModID}:Perfect. NL Exhaust 1 card. NL If you do, deal !D! damage. NL ${ModID}:Close_Encounter."
+  },
   "${ModID}:Kittelly": {
     "NAME": "Kittelly",
     "DESCRIPTION": "Replace this card with a copy of the last card played this combat. NL It costs 0 this turn.",
