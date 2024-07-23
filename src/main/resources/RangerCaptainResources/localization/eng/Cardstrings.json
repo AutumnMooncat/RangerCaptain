@@ -24,6 +24,11 @@
     "DESCRIPTION": "Deal !D! damage{@@}{!M!|>0= !M! times. NL Ignores Block}.{!${ModID}:I!|>0= NL If this would deal !${ModID}:M2! or less unblocked damage, raise it to !${ModID}:I!.}",
     "EXTENDED_DESCRIPTION": ["Wooltergeist","Ramtasm","Zombleat","Capricorpse"]
   },
+  "${ModID}:Binvader": {
+    "NAME": "Binvader",
+    "DESCRIPTION": "Deal !D! damage a number of times equal to the amount of ALL your Binvader and Binterloper cards.",
+    "EXTENDED_DESCRIPTION": ["Binterloper"]
+  },
   "${ModID}:Braxsuit": {
     "NAME": "Braxsuit",
     "DESCRIPTION": "Gain !M! Dexterity. NL At the end of this turn, lose !M! Dexterity.",
