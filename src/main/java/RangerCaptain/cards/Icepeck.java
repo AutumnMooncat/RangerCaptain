@@ -20,7 +20,7 @@ public class Icepeck extends AbstractEasyCard {
     public Icepeck() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 8;
-        baseMagicNumber = magicNumber = 4;
+        baseMagicNumber = magicNumber = 2;
         gifOverlay = icepeck;
     }
 
@@ -32,7 +32,7 @@ public class Icepeck extends AbstractEasyCard {
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
         int base = baseDamage;
-        baseDamage += magicNumber * CardCounterPatches.AttackCountField.attackedThisTurn.get(mo);
+        baseDamage += magicNumber * CardCounterPatches.AttackCountField.attackedThisCombat.get(mo);
         super.calculateCardDamage(mo);
         baseDamage = base;
         isDamageModified = baseDamage != damage;
