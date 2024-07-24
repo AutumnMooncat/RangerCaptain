@@ -34,7 +34,7 @@
   },
   "${ModID}:Binvader": {
     "NAME": "Binvader",
-    "DESCRIPTION": "Deal !D! damage a number of times equal to the amount of ALL your Binvader and Binterloper cards.",
+    "DESCRIPTION": "Deal !D! damage for each Binvader and Binterloper card you have.",
     "EXTENDED_DESCRIPTION": ["Binterloper"]
   },
   "${ModID}:Boltam": {
