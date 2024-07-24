@@ -2,11 +2,14 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.Wiz;
+import basemod.devcommands.draw.Draw;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -26,6 +29,7 @@ public class Traffikrab extends AbstractMultiUpgradeCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         blck();
+        Wiz.applyToSelf(new DrawCardNextTurnPower(p, magicNumber));
     }
 
     @Override
