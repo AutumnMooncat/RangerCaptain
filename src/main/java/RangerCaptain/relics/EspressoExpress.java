@@ -1,15 +1,11 @@
 package RangerCaptain.relics;
 
 import RangerCaptain.TheRangerCaptain;
-import RangerCaptain.powers.FervorPower;
-import RangerCaptain.util.Wiz;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
@@ -43,15 +39,6 @@ public class EspressoExpress extends AbstractEasyRelic {
             addToTop(new GainEnergyAction(1));
             addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
             firstTurn = false;
-        }
-    }
-
-    @Override
-    public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) {
-        if (targetCard.type == AbstractCard.CardType.ATTACK) {
-            flash();
-            incrementStat(1);
-            Wiz.applyToSelf(new FervorPower(Wiz.adp(), 1));
         }
     }
 
