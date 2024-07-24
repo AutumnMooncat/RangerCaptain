@@ -15,6 +15,10 @@
     "DESCRIPTION": "At the start of your turn, gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} .",
     "EXTENDED_DESCRIPTION": ["Lapacitor"]
   },
+  "${ModID}:Anathema": {
+    "NAME": "Anathema",
+    "DESCRIPTION": "${ModID}:Perfect. NL This turn, your next Attack is played twice. NL Exhaust. NL Startup: Trigger the effect of this card."
+  },
   "${ModID}:Arkidd": {
     "NAME": "Arkidd",
     "DESCRIPTION": "${ModID}:Perfect. NL Apply !M! ${ModID}:Conductive and 1 ${ModID}:Resonance to ALL enemies."
