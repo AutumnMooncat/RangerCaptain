@@ -252,6 +252,11 @@
     "DESCRIPTION": "Gain !B! Block. NL Next turn, draw !M! additional card{@@}{!M!|>1=s}.",
     "EXTENDED_DESCRIPTION": ["Weevilite","Lobstacle"]
   },
+  "${ModID}:Trapwurm": {
+    "NAME": "Trapwurm",
+    "DESCRIPTION": "Deal !D! damage. NL Exhaust 1 Attack. NL Increase this card's damage by its damage.",
+    "EXTENDED_DESCRIPTION": ["Wyrmaw"]
+  },
   "${ModID}:Twirligig": {
     "NAME": "Twiligig",
     "DESCRIPTION": "Whenever you take no damage from an attack, gain !M! Vigor.",
