@@ -161,6 +161,11 @@
     "DESCRIPTION": "Replace this card with a copy of the last card played this combat. NL It costs 0 this turn.",
     "EXTENDED_DESCRIPTION": ["Cat-5"," NL (",")"]
   },
+  "${ModID}:Kuneko": {
+    "NAME": "Kuneko",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL For each enemy this kills, gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} .",
+    "EXTENDED_DESCRIPTION": ["Shining Kuneko"]
+  },
   "${ModID}:Levitate": {
     "NAME": "Levitate",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable."
