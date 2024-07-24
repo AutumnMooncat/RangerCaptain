@@ -85,7 +85,7 @@
   },
   "${ModID}:Cluckabilly": {
     "NAME": "Cluckabilly",
-    "DESCRIPTION": "Apply !M! Vulnerable to ALL enemies. NL Gain !M! ${ModID}:Multitarget.",
+    "DESCRIPTION": "Gain !M! ${ModID}:Multitarget. Apply !${ModID}:M2! Vulnerable to ALL enemies.",
     "EXTENDED_DESCRIPTION": ["Rockertrice"]
   },
   "${ModID}:Dandylion": {

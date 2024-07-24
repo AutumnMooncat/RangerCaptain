@@ -20,14 +20,15 @@ public class Cluckabilly extends AbstractEasyCard {
 
     public Cluckabilly() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL);
-        baseMagicNumber = magicNumber = 1;
+        baseMagicNumber = magicNumber = 2;
+        baseSecondMagic = secondMagic = 1;
         gifOverlay = clickabilly;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new VulnerablePower(mon, magicNumber, false)));
         Wiz.applyToSelf(new MultitargetPower(p, magicNumber));
+        Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new VulnerablePower(mon, secondMagic, false)));
     }
 
     @Override
