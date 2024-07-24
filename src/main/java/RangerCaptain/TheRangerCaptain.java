@@ -8,14 +8,18 @@ import RangerCaptain.cards.interfaces.SkillAnimationAttack;
 import RangerCaptain.relics.EspressoExpress;
 import RangerCaptain.util.CustomSounds;
 import RangerCaptain.util.GifDecoder;
+import RangerCaptain.util.ImageHelper;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.FrameBuffer;
+import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.MathUtils;
 import com.brashmonkey.spriter.Player;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
@@ -35,7 +39,10 @@ import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +65,11 @@ public class TheRangerCaptain extends CustomPlayer {
     static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     static final String[] NAMES = characterStrings.NAMES;
     static final String[] TEXT = characterStrings.TEXT;
+    private static final Logger log = LoggerFactory.getLogger(TheRangerCaptain.class);
     static Animation<TextureRegion> gifAnim;
+    static ShaderProgram staticShader;
+    static FrameBuffer fbo = ImageHelper.createBuffer();
+
 
 
     public TheRangerCaptain(String name, PlayerClass setClass) {
@@ -78,6 +89,12 @@ public class TheRangerCaptain extends CustomPlayer {
 
         if (gifAnim == null) {
             gifAnim = GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(MainModfile.makePath("images/char/mainChar/CassetteBeasts_Player2.gif")).read());
+        }
+        if (staticShader == null) {
+             staticShader = new ShaderProgram(SpriteBatch.createDefaultShader().getVertexShaderSource(), Gdx.files.internal(MainModfile.makePath("shaders/static.frag")).readString(String.valueOf(StandardCharsets.UTF_8)));
+             if (!staticShader.isCompiled()) {
+                 logger.error(staticShader.getLog());
+             }
         }
     }
 
@@ -219,8 +236,22 @@ public class TheRangerCaptain extends CustomPlayer {
     @Override
     public void renderPlayerImage(SpriteBatch sb) {
         sb.setColor(Color.WHITE);
-        TextureRegion region = gifAnim.getKeyFrame(time);
+        sb.end();
+        ImageHelper.beginBuffer(fbo);
+        sb.begin();
+        TextureRegion region = gifAnim.getKeyFrame(isDead ? 0 : time);
         sb.draw(region, this.drawX + this.animX - region.getRegionWidth()*Settings.scale/4f, this.drawY + this.animY - region.getRegionWidth()*Settings.scale/16f + AbstractDungeon.sceneOffsetY, region.getRegionWidth()/2f, region.getRegionHeight()/2f);
+        sb.end();
+        fbo.end();
+        sb.begin();
+        TextureRegion r = ImageHelper.getBufferTexture(fbo);
+        ShaderProgram origShader = sb.getShader();
+        if (isDead) {
+            sb.setShader(staticShader);
+            staticShader.setUniformf("x_time", MainModfile.time);
+        }
+        sb.draw(r, 0, 0);
+        sb.setShader(origShader);
     }
 
     @Override
