@@ -18,6 +18,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.stream.Collectors;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -35,9 +37,9 @@ public class Kittelly extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         Wiz.atb(new SFXAction("ORB_DARK_EVOKE", 0.05F));
-        ArrayList<AbstractCard> cards = AbstractDungeon.actionManager.cardsPlayedThisCombat;
-        if (!cards.isEmpty()) {
-            AbstractCard card = cards.get(cards.size()-1).makeStatEquivalentCopy();
+        ArrayList<AbstractCard> validCards = AbstractDungeon.actionManager.cardsPlayedThisCombat.stream().filter(card -> !(card instanceof Kittelly)).collect(Collectors.toCollection(ArrayList::new));
+        if (!validCards.isEmpty()) {
+            AbstractCard card = validCards.get(validCards.size()-1).makeStatEquivalentCopy();
             card.setCostForTurn(0);
             Wiz.atb(new MakeTempCardInHandAction(card, false, true));
             Wiz.atb(new AbstractGameAction() {
@@ -54,7 +56,7 @@ public class Kittelly extends AbstractEasyCard {
     }
 
     public void triggerOnGlowCheck() {
-        if (AbstractDungeon.actionManager.cardsPlayedThisCombat.isEmpty()) {
+        if (AbstractDungeon.actionManager.cardsPlayedThisCombat.stream().allMatch(card -> card instanceof Kittelly)) {
             this.glowColor = Settings.RED_TEXT_COLOR.cpy();
         } else {
             this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
@@ -63,9 +65,9 @@ public class Kittelly extends AbstractEasyCard {
 
     public void applyPowers() {
         super.applyPowers();
-        if (!AbstractDungeon.actionManager.cardsPlayedThisCombat.isEmpty()) {
-            ArrayList<AbstractCard> cards = AbstractDungeon.actionManager.cardsPlayedThisCombat;
-            AbstractCard preview = cards.get(cards.size()-1);
+        if (AbstractDungeon.actionManager.cardsPlayedThisCombat.stream().anyMatch(card -> !(card instanceof Kittelly))) {
+            ArrayList<AbstractCard> validCards = AbstractDungeon.actionManager.cardsPlayedThisCombat.stream().filter(card -> !(card instanceof Kittelly)).collect(Collectors.toCollection(ArrayList::new));
+            AbstractCard preview = validCards.get(validCards.size()-1);
             if (preview != lastCard) {
                 lastCard = preview;
                 cardsToPreview = lastCard.makeStatEquivalentCopy();
