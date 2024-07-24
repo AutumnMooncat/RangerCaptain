@@ -25,7 +25,6 @@ public class Burnace extends AbstractEasyCard {
         baseBlock = block = 4;
         baseMagicNumber = magicNumber = 3;
         gifOverlay = burnace;
-        exhaust = true;
     }
 
     @Override
