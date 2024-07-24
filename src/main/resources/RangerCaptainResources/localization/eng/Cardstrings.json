@@ -83,6 +83,11 @@
     "DESCRIPTION": "Whenever you play an Attack, deal !M! damage to a random enemy.",
     "EXTENDED_DESCRIPTION": ["Robindam"]
   },
+  "${ModID}:Cluckabilly": {
+    "NAME": "Cluckabilly",
+    "DESCRIPTION": "Apply !M! Vulnerable to ALL enemies. NL Gain !M! ${ModID}:Multitarget.",
+    "EXTENDED_DESCRIPTION": ["Rockertrice"]
+  },
   "${ModID}:Dandylion": {
     "NAME": "Dandylion",
     "DESCRIPTION": "Gain !B! Block. NL Apply !M! ${ModID}:Leeched.",
