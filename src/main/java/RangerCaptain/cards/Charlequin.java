@@ -24,6 +24,7 @@ public class Charlequin extends AbstractMultiUpgradeCard {
         super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
         gifOverlay = charlequin;
         baseInfo = info = 0;
+        exhaust = true;
     }
 
     @Override
