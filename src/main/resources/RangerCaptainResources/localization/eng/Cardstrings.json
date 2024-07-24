@@ -203,6 +203,11 @@
     "DESCRIPTION": "Apply !M! ${ModID}:Leeched. NL Next turn, gain [E] .",
     "EXTENDED_DESCRIPTION": ["Frillypad","Liligator"]
   },
+  "${ModID}:Pawndead": {
+    "NAME": "Pawndead",
+    "DESCRIPTION": "Choose a card. NL Next turn, add !M! copies of it into your hand.",
+    "EXTENDED_DESCRIPTION": ["Skelevangelist","Kingrave","Queenyx"]
+  },
   "${ModID}:Picksie": {
     "NAME": "Picksie",
     "DESCRIPTION": "${ModID}:Perfect. NL Gain !B! Block. NL Next turn, gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} ."
