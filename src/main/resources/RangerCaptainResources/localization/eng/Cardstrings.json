@@ -199,6 +199,11 @@
     "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times.",
     "EXTENDED_DESCRIPTION": ["Spitzfyre"]
   },
+  "${ModID}:Pondwalker": {
+    "NAME": "Pondwalker",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Burned.",
+    "EXTENDED_DESCRIPTION": ["Sharktanker"]
+  },
   "${ModID}:Puppercut": {
     "NAME": "Puppercut",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Resonance.",
