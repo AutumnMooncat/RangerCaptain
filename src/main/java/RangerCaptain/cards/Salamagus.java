@@ -20,7 +20,7 @@ public class Salamagus extends AbstractMultiUpgradeCard {
     protected static Animation<TextureRegion> pyromeleon = loadGifOverlay("Pyromeleon_idle.gif");
 
     public Salamagus() {
-        super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = 3;
         gifOverlay = salamagus;
         baseInfo = info = 0;
