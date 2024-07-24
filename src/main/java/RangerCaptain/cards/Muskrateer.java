@@ -33,6 +33,7 @@ public class Muskrateer extends AbstractEasyCard {
         initializeDescription();
     }
 
+    @Override
     public void applyPowers() {
         super.applyPowers();
         int count = AbstractDungeon.actionManager.cardsPlayedThisTurn.size();
@@ -46,11 +47,13 @@ public class Muskrateer extends AbstractEasyCard {
         initializeDescription();
     }
 
+    @Override
     public void onMoveToDiscard() {
         rawDescription = cardStrings.DESCRIPTION;
         initializeDescription();
     }
 
+    @Override
     public void triggerOnGlowCheck() {
         glowColor = AbstractDungeon.actionManager.cardsPlayedThisTurn.size() < magicNumber ? AbstractCard.GOLD_BORDER_GLOW_COLOR : AbstractCard.BLUE_BORDER_GLOW_COLOR;
     }
