@@ -1,7 +1,9 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.powers.MultitargetPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -27,6 +29,7 @@ public class Sirenade extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         allDmg(AbstractGameAction.AttackEffect.BLUNT_HEAVY);
+        Wiz.applyToSelf(new MultitargetPower(p, magicNumber));
     }
 
     @Override
