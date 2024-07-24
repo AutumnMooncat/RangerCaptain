@@ -38,6 +38,7 @@ public class Sanzatime extends AbstractEasyCard {
                         } else if (pow.canGoNegative) {
                             pow.stackPower(-magicNumber);
                         }
+                        pow.updateDescription();
                     }
                 }
             }));
