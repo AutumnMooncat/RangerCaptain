@@ -1,6 +1,7 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
+import RangerCaptain.powers.interfaces.MonsterOnExhaustPower;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.HealthBarRenderPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -10,7 +11,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
-public class BurnedPower extends AbstractEasyPower implements HealthBarRenderPower {
+public class BurnedPower extends AbstractEasyPower implements HealthBarRenderPower, MonsterOnExhaustPower {
     public static final String POWER_ID = MainModfile.makeID(BurnedPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -29,12 +30,6 @@ public class BurnedPower extends AbstractEasyPower implements HealthBarRenderPow
     }
 
     @Override
-    public void onExhaust(AbstractCard card) {
-        flash();
-        addToBot(new LoseHPAction(owner, source, amount, AbstractGameAction.AttackEffect.FIRE));
-    }
-
-    @Override
     public int getHealthBarAmount() {
         return amount;
     }
@@ -42,5 +37,11 @@ public class BurnedPower extends AbstractEasyPower implements HealthBarRenderPow
     @Override
     public Color getColor() {
         return hpBarColor;
+    }
+
+    @Override
+    public void monsterOnExhaust(AbstractCard card) {
+        flash();
+        addToBot(new LoseHPAction(owner, source, amount, AbstractGameAction.AttackEffect.FIRE));
     }
 }
