@@ -52,7 +52,7 @@
   },
   "${ModID}:IntentPatches": {
     "TEXT": [
-      "Booby Trapped",
+      "Exploding",
       "This enemy intends to #yAttack EVERYONE for #b"," damage."
     ]
   }
