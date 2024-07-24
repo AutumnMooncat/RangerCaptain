@@ -33,7 +33,11 @@ public class Sanzatime extends AbstractEasyCard {
             addToBot(new DoAction(() -> {
                 for (AbstractPower pow : m.powers) {
                     if (pow.type == AbstractPower.PowerType.DEBUFF && !(pow instanceof NonStackablePower)) {
-                        pow.stackPower(magicNumber);
+                        if (pow.amount > 0) {
+                            pow.stackPower(magicNumber);
+                        } else if (pow.canGoNegative) {
+                            pow.stackPower(-magicNumber);
+                        }
                     }
                 }
             }));
