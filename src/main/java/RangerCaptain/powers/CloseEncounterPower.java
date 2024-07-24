@@ -20,14 +20,17 @@ public class CloseEncounterPower extends AbstractEasyPower implements NonStackab
 
     public CloseEncounterPower(AbstractCreature owner, AbstractCard card) {
         super(POWER_ID, NAME, PowerType.BUFF, false, owner, -1);
-        this.name = NAME + " " + CardModifierManager.onRenderTitle(card, card.name);
         this.card = card;
         updateDescription();
     }
 
     @Override
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + FormatHelper.prefixWords(CardModifierManager.onRenderTitle(card, card.name), "#y") + DESCRIPTIONS[1];
+        if (card == null) {
+            description = "???";
+        } else {
+            this.description = DESCRIPTIONS[0] + FormatHelper.prefixWords(CardModifierManager.onRenderTitle(card, card.name), "#y") + DESCRIPTIONS[1];
+        }
     }
 
     @Override
