@@ -149,7 +149,7 @@
   },
   "${ModID}:Khepri": {
     "NAME": "Khepri",
-    "DESCRIPTION": "${ModID}:Perfect. NL Exhaust 1 card. NL If you do, deal !D! damage. NL ${ModID}:Close_Encounter."
+    "DESCRIPTION": "${ModID}:Perfect. NL Deal !D! damage. NL Exhaust 1 card. NL ${ModID}:Close_Encounter."
   },
   "${ModID}:Kittelly": {
     "NAME": "Kittelly",

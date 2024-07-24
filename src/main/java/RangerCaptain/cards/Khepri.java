@@ -24,19 +24,15 @@ public class Khepri extends AbstractEasyCard {
 
     public Khepri() {
         super(ID, 0, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
-        baseDamage = damage = 7;
+        baseDamage = damage = 6;
         gifOverlay = khepri;
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new BetterSelectCardsInHandAction(1, ExhaustAction.TEXT[0], false, false, c -> true, cards -> {
-            for (AbstractCard card : cards) {
-                dmgTop(m, AbstractGameAction.AttackEffect.FIRE);
-                addToTop(new ExhaustSpecificCardAction(card, p.hand, true));
-            }
-        }));
+        dmg(m, AbstractGameAction.AttackEffect.FIRE);
+        addToBot(new ExhaustAction(1, false, false, false));
         Wiz.applyToSelf(new CloseEncounterPower(p, this));
     }
 
