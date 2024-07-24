@@ -27,6 +27,7 @@ public class Spookionna extends AbstractEasyCard {
         baseMagicNumber = magicNumber = 8;
         gifOverlay = spookionna;
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
+        exhaust = true;
     }
 
     @Override
