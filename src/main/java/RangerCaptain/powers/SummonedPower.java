@@ -21,14 +21,19 @@ public class SummonedPower extends AbstractEasyPower {
     public SummonedPower(AbstractCreature owner, int amount, AbstractCard card) {
         super(POWER_ID, NAME, PowerType.BUFF, false, owner, amount);
         this.card = card.makeSameInstanceOf();
+        updateDescription();
     }
 
     @Override
     public void updateDescription() {
-        if (amount == 1) {
-            this.description = DESCRIPTIONS[0] + FormatHelper.prefixWords(CardModifierManager.onRenderTitle(card, card.name), "#y") + DESCRIPTIONS[1];
+        if (card == null) {
+            description = "???";
         } else {
-            this.description = DESCRIPTIONS[0] + FormatHelper.prefixWords(Integer.toString(amount), "#b") + DESCRIPTIONS[2] + FormatHelper.prefixWords(CardModifierManager.onRenderTitle(card, card.name), "#y") + DESCRIPTIONS[1];
+            if (amount == 1) {
+                this.description = DESCRIPTIONS[0] + FormatHelper.prefixWords(CardModifierManager.onRenderTitle(card, card.name), "#y") + DESCRIPTIONS[1];
+            } else {
+                this.description = DESCRIPTIONS[0] + FormatHelper.prefixWords(Integer.toString(amount), "#b") + DESCRIPTIONS[2] + FormatHelper.prefixWords(CardModifierManager.onRenderTitle(card, card.name), "#y") + DESCRIPTIONS[1];
+            }
         }
     }
 

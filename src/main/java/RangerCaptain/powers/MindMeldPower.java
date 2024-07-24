@@ -30,7 +30,11 @@ public class MindMeldPower extends AbstractEasyPower implements NonStackablePowe
 
     @Override
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + FormatHelper.prefixWords(CardModifierManager.onRenderTitle(card, card.name), "#y") + DESCRIPTIONS[1];
+        if (card == null) {
+            this.description = "???";
+        } else {
+            this.description = DESCRIPTIONS[0] + FormatHelper.prefixWords(CardModifierManager.onRenderTitle(card, card.name), "#y") + DESCRIPTIONS[1];
+        }
     }
 
     @Override
@@ -38,7 +42,7 @@ public class MindMeldPower extends AbstractEasyPower implements NonStackablePowe
         if (!card.purgeOnUse) {
             flash();
 
-            AbstractCard tmp = card.makeSameInstanceOf();
+            AbstractCard tmp = this.card.makeSameInstanceOf();
             AbstractDungeon.player.limbo.addToBottom(tmp);
             tmp.current_x = card.current_x;
             tmp.current_y = card.current_y;
@@ -46,7 +50,7 @@ public class MindMeldPower extends AbstractEasyPower implements NonStackablePowe
             tmp.target_y = (float)Settings.HEIGHT / 2.0F;
 
             tmp.purgeOnUse = true;
-            AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, true, card.energyOnUse, true, true), true);
+            AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, true, this.card.energyOnUse, true, true), true);
         }
     }
 
