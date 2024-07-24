@@ -23,7 +23,6 @@ public class MindMeldPower extends AbstractEasyPower implements NonStackablePowe
 
     public MindMeldPower(AbstractCreature owner, AbstractCard card) {
         super(POWER_ID, NAME, PowerType.BUFF, false, owner, -1);
-        this.name = NAME + " " + CardModifierManager.onRenderTitle(card, card.name);
         this.card = card;
         updateDescription();
     }

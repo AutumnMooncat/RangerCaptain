@@ -265,6 +265,14 @@ public abstract class AbstractEasyCard extends CustomCard {
         isInfoModified = false;
     }
 
+    @Override
+    public AbstractCard makeStatEquivalentCopy() {
+        AbstractEasyCard copy = (AbstractEasyCard) super.makeStatEquivalentCopy();
+        copy.baseInfo = this.baseInfo;
+        copy.info = this.info;
+        return copy;
+    }
+
     public void displayUpgrades() {
         super.displayUpgrades();
         if (upgradedSecondMagic) {
