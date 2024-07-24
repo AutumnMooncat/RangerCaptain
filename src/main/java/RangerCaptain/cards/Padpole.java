@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.EnergizedBluePower;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -20,13 +21,14 @@ public class Padpole extends AbstractMultiUpgradeCard {
 
     public Padpole() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        baseMagicNumber = magicNumber = 6;
+        baseMagicNumber = magicNumber = 4;
         gifOverlay = padpole;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         Wiz.applyToEnemy(m, new LeechedPower(m, p, magicNumber));
+        Wiz.applyToSelf(new EnergizedBluePower(p, 1));
     }
 
     @Override

@@ -181,7 +181,7 @@
   },
   "${ModID}:Padpole": {
     "NAME": "Padpole",
-    "DESCRIPTION": "Apply !M! ${ModID}:Leeched.",
+    "DESCRIPTION": "Apply !M! ${ModID}:Leeched. NL Next turn, gain [E] .",
     "EXTENDED_DESCRIPTION": ["Frillypad","Liligator"]
   },
   "${ModID}:Pombomb": {
