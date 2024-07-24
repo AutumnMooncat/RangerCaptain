@@ -30,6 +30,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.mod.stslib.icons.CustomIconHelper;
+import com.evacipated.cardcrawl.mod.stslib.patches.cardInterfaces.MultiUpgradePatches;
 import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
@@ -332,6 +333,25 @@ public class MainModfile implements
             @Override
             public String glowID() {
                 return makeID("AdjacentGlow");
+            }
+        });
+
+        CardBorderGlowManager.addGlowInfo(new CardBorderGlowManager.GlowInfo() {
+            private final Color c = Color.RED.cpy();
+
+            @Override
+            public boolean test(AbstractCard abstractCard) {
+                return MultiUpgradePatches.MultiUpgradeFields.glowRed.get(abstractCard);
+            }
+
+            @Override
+            public Color getColor(AbstractCard abstractCard) {
+                return c;
+            }
+
+            @Override
+            public String glowID() {
+                return makeID("ExclusionGlow");
             }
         });
 
