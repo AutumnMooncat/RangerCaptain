@@ -18,11 +18,11 @@ public class Camping extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         blck();
-        addToBot(new ArmamentsAction(upgraded));
+        addToBot(new ArmamentsAction(true));
     }
 
     @Override
     public void upp() {
-        uDesc();
+        upgradeBlock(4);
     }
 }
