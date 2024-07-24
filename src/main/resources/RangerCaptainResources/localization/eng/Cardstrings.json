@@ -242,6 +242,11 @@
     "DESCRIPTION": "Deal !D! damage. NL Apply ${ModID}:Conductive equal to unblocked damage dealt. NL Exhaust.",
     "EXTENDED_DESCRIPTION": ["Zeustrike"]
   },
+  "${ModID}:Spookionna": {
+    "NAME": "Spooki-onna",
+    "DESCRIPTION": "${ModID}:Perfect. Opener. NL EVERYONE loses !M! Strength this turn.",
+    "EXTENDED_DESCRIPTION": ["I have already played cards this turn."]
+  },
   "${ModID}:Springheel": {
     "NAME": "Springheel",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak.{@@}{!${ModID}:I!|0=|1= NL Next turn, gain [E] .|2= NL Next turn, gain [E] [E] .}",
