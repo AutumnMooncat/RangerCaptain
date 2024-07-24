@@ -38,7 +38,7 @@ public class Brushroom extends AbstractEasyCard {
         if (!canUse) {
             return false;
         } else {
-            if (CardCounterPatches.AttackCountField.attackedThisTurn.get(m) == 0) {
+            if (m != null && CardCounterPatches.AttackCountField.attackedThisTurn.get(m) == 0) {
                 canUse = false;
                 cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[1];
             }
