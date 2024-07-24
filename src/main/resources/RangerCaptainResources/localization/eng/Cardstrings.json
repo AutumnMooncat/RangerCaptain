@@ -198,6 +198,10 @@
     "DESCRIPTION": "Apply !M! ${ModID}:Leeched. NL Next turn, gain [E] .",
     "EXTENDED_DESCRIPTION": ["Frillypad","Liligator"]
   },
+  "${ModID}:Picksie": {
+    "NAME": "Picksie",
+    "DESCRIPTION": "${ModID}:Perfect. NL Gain !B! Block. NL Next turn, gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} ."
+  },
   "${ModID}:Pombomb": {
     "NAME": "Pombomb",
     "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times.",
