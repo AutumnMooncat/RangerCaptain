@@ -160,6 +160,11 @@
     "DESCRIPTION": "Deal !D! damage. NL Draw !M! card{@@}{!M!|>1=s}. NL ${ModID}:Mind-Meld.",
     "EXTENDED_DESCRIPTION": ["Mascotorn"]
   },
+  "${ModID}:Minortom": {
+    "NAME": "Minortom",
+    "DESCRIPTION": "Next turn, draw !M! additional card{@@}{!M!|>1=s}. NL ${ModID}:Close_Encounter.",
+    "EXTENDED_DESCRIPTION": ["Majortom"]
+  },
   "${ModID}:MissMimic": {
     "NAME": "Miss Mimic",
     "DESCRIPTION": "${ModID}:Perfect. NL Deal double damage and gain double Block for !M! turns. NL When this effect expires, die."
