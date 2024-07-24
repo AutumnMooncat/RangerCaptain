@@ -23,10 +23,9 @@ public class Pawndead extends AbstractMultiUpgradeCard {
     protected static Animation<TextureRegion> queenyx = loadGifOverlay("Queenyx_idle.gif");
 
     public Pawndead() {
-        super(ID, 2, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
+        super(ID, 2, CardType.SKILL, CardRarity.RARE, CardTarget.NONE);
         baseMagicNumber = magicNumber = 2;
         gifOverlay = pawndead;
-        baseInfo = info = 0;
     }
 
     @Override
@@ -68,7 +67,6 @@ public class Pawndead extends AbstractMultiUpgradeCard {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         gifOverlay = kingrave;
-        baseInfo = info = 1;
     }
 
     public void upgrade2() {
@@ -76,6 +74,5 @@ public class Pawndead extends AbstractMultiUpgradeCard {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
         gifOverlay = queenyx;
-        baseInfo = info = 2;
     }
 }
