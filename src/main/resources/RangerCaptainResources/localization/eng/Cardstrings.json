@@ -120,6 +120,11 @@
     "DESCRIPTION": "Deal !D! damage. NL If the enemy has a debuff, gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} {!${ModID}:I!|2=and deal double damage}.",
     "EXTENDED_DESCRIPTION": ["Faerious","Grampus"]
   },
+  "${ModID}:Faucetear": {
+    "NAME": "Faucetear",
+    "DESCRIPTION": "Discard up to !M! cards. NL Put that many cards from your discard pile into your hand.",
+    "EXTENDED_DESCRIPTION": ["Fountess"]
+  },
   "${ModID}:Ferriclaw": {
     "NAME": "Ferriclaw",
     "DESCRIPTION": "Apply !M! Weak. NL Apply !M! ${ModID}:Tape_Jam.",
