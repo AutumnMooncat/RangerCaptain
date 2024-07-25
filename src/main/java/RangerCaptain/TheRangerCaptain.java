@@ -36,6 +36,7 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
+import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
@@ -240,7 +241,15 @@ public class TheRangerCaptain extends CustomPlayer {
         ImageHelper.beginBuffer(fbo);
         sb.begin();
         TextureRegion region = gifAnim.getKeyFrame(isDead ? 0 : time);
-        sb.draw(region, this.drawX + this.animX - region.getRegionWidth()*Settings.scale/4f, this.drawY + this.animY - region.getRegionWidth()*Settings.scale/16f + AbstractDungeon.sceneOffsetY, region.getRegionWidth()/2f, region.getRegionHeight()/2f);
+        //flipHorizontal = InputHelper.mX < drawX + animX;
+        //flipVertical = InputHelper.mY < drawY + animY + AbstractDungeon.sceneOffsetY;
+        sb.draw(region,
+                this.drawX + this.animX,
+                this.drawY + this.animY + AbstractDungeon.sceneOffsetY,
+                (flipHorizontal ? 1/4f : -1 ) * region.getRegionWidth()/2f,
+                (flipVertical ? 5/2f : -1) * region.getRegionHeight()/8f,
+                region.getRegionWidth(), region.getRegionHeight(),
+                (flipHorizontal ? -1 : 1) * Settings.scale/2, (flipVertical ? -1 : 1) * Settings.scale/2, 0);
         sb.end();
         fbo.end();
         sb.begin();
