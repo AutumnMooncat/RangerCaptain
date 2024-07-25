@@ -288,6 +288,16 @@ public class MainModfile implements
             return 0;
         });
 
+        DynamicTextBlocks.registerCustomCheck(makeID("Binvader"), c -> {
+            if (c instanceof AbstractEasyCard && Wiz.isInCombat() && Wiz.adp().hand.contains(c)) {
+                if (((AbstractEasyCard) c).info == 1) {
+                    return 1;
+                }
+                return 2;
+            }
+            return 0;
+        });
+
         DynamicTextBlocks.registerCustomCheck(makeID("Gearyu"), c -> {
             if (c instanceof AbstractEasyCard && ((AbstractEasyCard) c).info == 3 && Wiz.isInCombat() && Wiz.adp().hand.contains(c)) {
                 int currentDrawn = CardCounterPatches.cardsDrawnThisTurn.size() - CardCounterPatches.initialHand.size();

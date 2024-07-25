@@ -34,7 +34,7 @@
   },
   "${ModID}:Binvader": {
     "NAME": "Binvader",
-    "DESCRIPTION": "Deal !D! damage for each Binvader and Binterloper card you have.",
+    "DESCRIPTION": "Deal !D! damage for each Binvader and Binterloper card you have.{@@}{!${ModID}:Binvader!|1= NL (Hits !${ModID}:I! time.)|2= NL (Hits !${ModID}:I! times.)}",
     "EXTENDED_DESCRIPTION": ["Binterloper"]
   },
   "${ModID}:Boltam": {

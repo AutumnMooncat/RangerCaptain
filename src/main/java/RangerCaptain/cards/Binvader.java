@@ -26,6 +26,7 @@ public class Binvader extends AbstractEasyCard {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 6;
         gifOverlay = binvader;
+        baseInfo = info = 0;
     }
 
     @Override
@@ -42,6 +43,12 @@ public class Binvader extends AbstractEasyCard {
 
     public int binvasionCount() {
         return (int) Wiz.getAllCardsInCardGroups(true, true).stream().filter(card -> card instanceof Binvader).count();
+    }
+
+    @Override
+    protected void applyPowersToBlock() {
+        super.applyPowersToBlock();
+        info = baseInfo = binvasionCount();
     }
 
     @Override
