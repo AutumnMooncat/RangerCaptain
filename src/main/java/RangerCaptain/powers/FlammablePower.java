@@ -25,6 +25,6 @@ public class FlammablePower extends AbstractEasyPower {
     @Override
     public void onExhaust(AbstractCard card) {
         flash();
-        addToBot(new ApplyPowerToRandomEnemyAction(owner, new BurnedPower(null, owner, amount)));
+        addToBot(new ApplyPowerToRandomEnemyAction(owner, new BurnedPower(null, owner, amount), amount));
     }
 }
