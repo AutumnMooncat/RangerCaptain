@@ -18,7 +18,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.stream.Collectors;
 
 import static RangerCaptain.MainModfile.makeID;

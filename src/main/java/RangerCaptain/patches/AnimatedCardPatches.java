@@ -17,7 +17,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
 
-import static com.badlogic.gdx.graphics.GL20.*;
+import static com.badlogic.gdx.graphics.GL20.GL_DST_COLOR;
+import static com.badlogic.gdx.graphics.GL20.GL_ZERO;
 
 public class AnimatedCardPatches {
     private static final Texture attackTex = TexLoader.getTexture(MainModfile.makeImagePath("masks/AttackMask.png"));

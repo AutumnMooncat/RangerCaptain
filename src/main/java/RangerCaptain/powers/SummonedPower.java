@@ -3,7 +3,6 @@ package RangerCaptain.powers;
 import RangerCaptain.MainModfile;
 import RangerCaptain.util.FormatHelper;
 import basemod.helpers.CardModifierManager;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;

@@ -4,7 +4,6 @@ import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.CloseEncounterPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;

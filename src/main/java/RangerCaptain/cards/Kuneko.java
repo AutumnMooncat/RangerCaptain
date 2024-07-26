@@ -2,7 +2,6 @@ package RangerCaptain.cards;
 
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
-import RangerCaptain.powers.TapeJamPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.Color;
@@ -16,7 +15,6 @@ import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.BorderLongFlashEffect;
 import com.megacrit.cardcrawl.vfx.combat.DieDieDieEffect;
 
