@@ -19,6 +19,7 @@ public class KeywordManager {
     public static String CONDUCTIVE;
     public static String TAPEJAM;
     public static String MINDMELD;
+    public static String CLOSEENCOUNTER;
     public static String BURNED;
 
     public static String getKeyword(String ID) {
