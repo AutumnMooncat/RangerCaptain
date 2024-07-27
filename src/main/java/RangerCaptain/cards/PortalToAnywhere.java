@@ -2,7 +2,6 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.cards.curses.AscendersBane;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;

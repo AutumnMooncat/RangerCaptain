@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.map.MapRoomNode;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.WingBoots;
 import com.megacrit.cardcrawl.screens.DungeonMapScreen;
 import javassist.CannotCompileException;
@@ -52,14 +53,19 @@ public class PortalPatches {
 
     @SpirePatch2(clz = MapRoomNode.class, method = "update")
     public static class DoPortalEffects {
-        @SpireInsertPatch(locator = Locator.class)
-        public static void plz() {
-            if (AbstractDungeon.player.getRelic(WingBoots.ID).counter == -2) {
-                for (AbstractCard card : AbstractDungeon.player.masterDeck.group) {
-                    if (card instanceof PortalToAnywhere) {
-                        ((PortalToAnywhere) card).onTrigger();
-                        break;
-                    }
+        @SpireInsertPatch(locator = Locator.class, localvars = {"normalConnection", "wingedConnection"})
+        public static void plz(boolean normalConnection, boolean wingedConnection) {
+            if (normalConnection || !wingedConnection) {
+                return;
+            }
+            AbstractRelic boots = AbstractDungeon.player.getRelic(WingBoots.ID);
+            if (boots != null && boots.counter > 0) {
+                return;
+            }
+            for (AbstractCard card : AbstractDungeon.player.masterDeck.group) {
+                if (card instanceof PortalToAnywhere) {
+                    ((PortalToAnywhere) card).onTrigger();
+                    break;
                 }
             }
         }
@@ -67,7 +73,7 @@ public class PortalPatches {
         public static class Locator extends SpireInsertLocator {
             @Override
             public int[] Locate(CtBehavior ctBehavior) throws Exception {
-                Matcher m = new Matcher.MethodCallMatcher(AbstractPlayer.class, "getRelic");
+                Matcher m = new Matcher.MethodCallMatcher(AbstractPlayer.class, "hasRelic");
                 return LineFinder.findInOrder(ctBehavior, m);
             }
         }
