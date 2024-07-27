@@ -308,7 +308,7 @@
   },
   "${ModID}:SupplyCache": {
     "NAME": "Supply Cache",
-    "DESCRIPTION": "Gain !B! Block. NL Put a card from your discard pile into your hand."
+    "DESCRIPTION": "Gain !B! Block. NL Choose 1 of 3 random {@@}{!Upgrades!|>0=Upgraded }cards to add into your hand. NL Exhaust."
   },
   "${ModID}:Terracooka": {
     "NAME": "Terracooka",
