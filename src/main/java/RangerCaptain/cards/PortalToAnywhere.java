@@ -17,7 +17,7 @@ public class PortalToAnywhere extends AbstractEasyCard {
     public PortalToAnywhere() {
         super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.NONE);
         baseMagicNumber = magicNumber = 3;
-        cardsToPreview = new AscendersBane();
+        cardsToPreview = new WarpSickness();
     }
 
     @Override
@@ -31,6 +31,6 @@ public class PortalToAnywhere extends AbstractEasyCard {
     }
 
     public void onTrigger() {
-        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new AscendersBane(), (float) Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
+        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new WarpSickness(), (float) Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
     }
 }

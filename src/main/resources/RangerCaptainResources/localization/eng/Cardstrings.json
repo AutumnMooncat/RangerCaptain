@@ -250,7 +250,7 @@
   },
   "${ModID}:PortalToAnywhere": {
     "NAME": "Portal to Anywhere",
-    "DESCRIPTION": "Draw !M! cards. NL While owned, you may ignore paths while choosing the next room to travel to. Doing so gives you an *Ascender's *Bane."
+    "DESCRIPTION": "Draw !M! cards. NL While owned, you may ignore paths while choosing the next room to travel to. Doing so gives you a *Warp *Sickness."
   },
   "${ModID}:Puppercut": {
     "NAME": "Puppercut",
@@ -349,6 +349,10 @@
   "${ModID}:Undyin": {
     "NAME": "Undyin",
     "DESCRIPTION": "${ModID}:Perfect. NL At the end of combat, or when you would die, heal !M! HP."
+  },
+  "${ModID}:WarpSickness": {
+    "NAME": "Warp Sickness",
+    "DESCRIPTION": "Fleeting. NL Draw 1 less card next turn."
   },
   "${ModID}:WaterAltar": {
     "NAME": "Water Altar",
