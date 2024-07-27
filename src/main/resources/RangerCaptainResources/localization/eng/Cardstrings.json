@@ -248,6 +248,10 @@
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Burned.",
     "EXTENDED_DESCRIPTION": ["Sharktanker"]
   },
+  "${ModID}:PortalToAnywhere": {
+    "NAME": "Portal to Anywhere",
+    "DESCRIPTION": "Draw !M! cards. NL While owned, you may ignore paths while choosing the next room to travel to. Doing so gives you an *Ascender's *Bane."
+  },
   "${ModID}:Puppercut": {
     "NAME": "Puppercut",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Resonance.",
@@ -318,6 +322,10 @@
   "${ModID}:Thwackalope": {
     "NAME": "Thwackalope",
     "DESCRIPTION": "${ModID}:Perfect. NL Deal !D! damage twice."
+  },
+  "${ModID}:TopOfTheWorld": {
+    "NAME": "Top of the World",
+    "DESCRIPTION": "Innate. NL Put !M! cards from your draw pile into your hand. NL Exhaust."
   },
   "${ModID}:Traffikrab": {
     "NAME": "Traffikrab",
