@@ -7,7 +7,7 @@
   },
   "${ModID}:AirAltar": {
     "NAME": "Air Altar",
-    "DESCRIPTION": "Exhaust 1 card. Gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} . NL Increase this card's Energy gain by 1 this combat."
+    "DESCRIPTION": "Exhaust 1 card. NL Gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} . NL Increase this card's Energy gain by 1 this combat."
   },
   "${ModID}:Allseer": {
     "NAME": "Allseer",
@@ -125,7 +125,7 @@
   },
   "${ModID}:EarthAltar": {
     "NAME": "Earth Altar",
-    "DESCRIPTION": "Exhaust 1 card. Gain !B! Block. NL Increase this card's Block by !M! this combat."
+    "DESCRIPTION": "Exhaust 1 card. NL Gain !B! Block. NL Increase this card's Block by !M! this combat."
   },
   "${ModID}:Elfless": {
     "NAME": "Elfless",
@@ -144,7 +144,7 @@
   },
   "${ModID}:FireAltar": {
     "NAME": "Fire Altar",
-    "DESCRIPTION": "Exhaust 1 card. Gain !M! Vigor. NL Increase this card's Block by !${ModID}:M2! this combat."
+    "DESCRIPTION": "Exhaust 1 card. NL Gain !M! Vigor. NL Increase this card's Block by !${ModID}:M2! this combat."
   },
   "${ModID}:Glaistain": {
     "NAME": "Glaistain",
@@ -340,6 +340,6 @@
   },
   "${ModID}:WaterAltar": {
     "NAME": "Water Altar",
-    "DESCRIPTION": "Exhaust 1 card. Draw !M! card{@@}{!M!|>1=s}. NL Increase this card's draw by 1 this combat."
+    "DESCRIPTION": "Exhaust 1 card. NL Draw !M! card{@@}{!M!|>1=s}. NL Increase this card's draw by 1 this combat."
   }
 }
