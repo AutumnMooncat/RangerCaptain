@@ -1,12 +1,19 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.MainModfile;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.Omamori;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
+
+import java.util.Iterator;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -30,6 +37,32 @@ public class PortalToAnywhere extends AbstractEasyCard {
     }
 
     public void onTrigger() {
-        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new WarpSickness(), (float) Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
+        AbstractCard sickness = new WarpSickness();
+
+        //Since Omamori and other modded Curse blockers are in the Constructor, we can check if the action gets set to done to know if the curse was negated
+        ShowCardAndObtainEffect testEffect = new ShowCardAndObtainEffect(sickness, Settings.WIDTH/2f, Settings.HEIGHT/2f);
+        if (testEffect.isDone) {
+            return;
+        }
+
+        //Position the card in the center of the screen for the ShowCardBrieflyEffect
+        sickness.current_x = sickness.target_x = Settings.WIDTH/2f;
+        sickness.current_y = sickness.target_y = Settings.HEIGHT/2f;
+        sickness.shrink();
+
+        //We have to manually account for hooks as we are bypassing the effect that normally does this
+        for (AbstractRelic r : AbstractDungeon.player.relics) {
+            r.onObtainCard(sickness);
+        }
+
+        //Manually obtain the card, because the game effect is too slow and won't be finished by the time the next combat starts, starting us without the card
+        AbstractDungeon.getCurrRoom().souls.obtain(sickness, true);
+        //Display the card on screen
+        MainModfile.safeEffectQueue.add(new ShowCardBrieflyEffect(sickness.makeStatEquivalentCopy(), (float) Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
+
+        //Another manual hook call
+        for (AbstractRelic r : AbstractDungeon.player.relics) {
+            r.onMasterDeckChange();
+        }
     }
 }

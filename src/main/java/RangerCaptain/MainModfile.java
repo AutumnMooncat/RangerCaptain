@@ -26,6 +26,7 @@ import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.DynamicTextBloc
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
@@ -34,6 +35,7 @@ import com.evacipated.cardcrawl.mod.stslib.patches.cardInterfaces.MultiUpgradePa
 import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -44,10 +46,12 @@ import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.NoDrawPower;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 @SpireInitializer
@@ -56,7 +60,11 @@ public class MainModfile implements
         EditRelicsSubscriber,
         EditStringsSubscriber,
         EditKeywordsSubscriber,
-        EditCharactersSubscriber, PostInitializeSubscriber, PostUpdateSubscriber, AddAudioSubscriber, PostPowerApplySubscriber {
+        EditCharactersSubscriber,
+        PostInitializeSubscriber,
+        PostUpdateSubscriber,
+        AddAudioSubscriber,
+        PostPowerApplySubscriber, PostRenderSubscriber{
 
     public static final String modID = "RangerCaptain";
     public static final Logger logger = LogManager.getLogger(MainModfile.class.getName());
@@ -112,6 +120,8 @@ public class MainModfile implements
 
     public static final String ELEMENT_ICON_SIZE = "elementIconSize";
     public static float elementIconSize = 1f;
+
+    public static final ArrayList<AbstractGameEffect> safeEffectQueue = new ArrayList<>();
 
     public MainModfile() {
         BaseMod.subscribe(this);
@@ -384,6 +394,17 @@ public class MainModfile implements
     @Override
     public void receivePostUpdate() {
         time += Gdx.graphics.getRawDeltaTime();
+        for (AbstractGameEffect effect : safeEffectQueue) {
+            effect.update();
+        }
+        safeEffectQueue.removeIf(effect -> effect.isDone);
+    }
+
+    @Override
+    public void receivePostRender(SpriteBatch sb) {
+        for (AbstractGameEffect effect : safeEffectQueue) {
+            effect.render(sb);
+        }
     }
 
     @Override
