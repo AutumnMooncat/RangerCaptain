@@ -30,7 +30,7 @@ public class Salamagus extends AbstractMultiUpgradeCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         Wiz.applyToSelf(new FlammablePower(p, magicNumber));
         if (info == 1) {
-            Salamagus copy = (Salamagus) makeSameInstanceOf();
+            Salamagus copy = (Salamagus) makeStatEquivalentCopy();
             copy.baseInfo = copy.info = -1;
             Wiz.applyToSelf(new MindMeldPower(p, copy));
         }

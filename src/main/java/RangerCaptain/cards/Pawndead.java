@@ -32,7 +32,7 @@ public class Pawndead extends AbstractMultiUpgradeCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new BetterSelectCardsInHandAction(1, NightmareAction.TEXT[0], false, false, c -> true, cards -> {
             for (AbstractCard card : cards) {
-                Wiz.applyToSelfTop(new SummonedPower(p, magicNumber, card));
+                Wiz.applyToSelfTop(new SummonedPower(p, magicNumber, card.makeStatEquivalentCopy()));
             }
         }));
     }

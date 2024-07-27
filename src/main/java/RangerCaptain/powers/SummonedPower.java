@@ -19,7 +19,7 @@ public class SummonedPower extends AbstractEasyPower {
 
     public SummonedPower(AbstractCreature owner, int amount, AbstractCard card) {
         super(POWER_ID, NAME, PowerType.BUFF, false, owner, amount);
-        this.card = card.makeSameInstanceOf();
+        this.card = card;
         updateDescription();
     }
 
@@ -39,7 +39,7 @@ public class SummonedPower extends AbstractEasyPower {
     @Override
     public void onEnergyRecharge() {
         flash();
-        addToBot(new MakeTempCardInHandAction(card, amount));
+        addToBot(new MakeTempCardInHandAction(card.makeSameInstanceOf(), amount));
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 }

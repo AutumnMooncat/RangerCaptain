@@ -33,7 +33,7 @@ public class Mascotoy extends AbstractEasyCard {
         dmg(m, AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
         addToBot(new DrawCardAction(magicNumber));
         if (info == 1) {
-            Mascotoy copy = (Mascotoy) makeSameInstanceOf();
+            Mascotoy copy = (Mascotoy) makeStatEquivalentCopy();
             copy.baseInfo = copy.info = 0;
             Wiz.applyToSelf(new MindMeldPower(p, copy));
         }

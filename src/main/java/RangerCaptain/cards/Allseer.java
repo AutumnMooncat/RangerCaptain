@@ -45,7 +45,7 @@ public class Allseer extends AbstractMultiUpgradeCard {
         }
         addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), magicNumber, info == 0 ? AbstractGameAction.AttackEffect.NONE : AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         if (info == 1) {
-            Allseer copy = (Allseer) this.makeSameInstanceOf();
+            Allseer copy = (Allseer) makeStatEquivalentCopy();
             copy.info = copy.baseInfo = -1;
             Wiz.applyToSelf(new MindMeldPower(p, copy));
         } else if (info == 2) {
