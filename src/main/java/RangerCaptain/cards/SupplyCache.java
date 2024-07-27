@@ -2,13 +2,8 @@ package RangerCaptain.cards;
 
 import RangerCaptain.actions.GatherAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
-import RangerCaptain.util.Wiz;
-import com.megacrit.cardcrawl.actions.common.BetterDiscardPileToHandAction;
-import com.megacrit.cardcrawl.actions.unique.DiscoveryAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.ReboundPower;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 import static RangerCaptain.MainModfile.makeID;
 
