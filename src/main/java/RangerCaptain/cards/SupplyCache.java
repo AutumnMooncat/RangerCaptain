@@ -19,7 +19,7 @@ public class SupplyCache extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         blck();
-        addToBot(new GatherAction(1, c -> true, false, upgraded));
+        addToBot(new GatherAction(3, c -> true, false, upgraded));
     }
 
     @Override
