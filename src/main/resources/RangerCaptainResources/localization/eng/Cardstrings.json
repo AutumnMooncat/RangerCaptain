@@ -202,7 +202,7 @@
   },
   "${ModID}:Mascotoy": {
     "NAME": "Mascotoy",
-    "DESCRIPTION": "Deal !D! damage.{!${ModID}:I!|1= NL ${ModID}:Mind-Meld.}",
+    "DESCRIPTION": "Deal !D! damage.{@@}{!${ModID}:I!|1= NL ${ModID}:Mind-Meld.}",
     "EXTENDED_DESCRIPTION": ["Mascotorn"]
   },
   "${ModID}:Minortom": {
