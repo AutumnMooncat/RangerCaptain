@@ -2,8 +2,10 @@ package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
 public class APBoostPower extends AbstractEasyPower {
@@ -22,8 +24,9 @@ public class APBoostPower extends AbstractEasyPower {
     }
 
     @Override
-    public void atStartOfTurn() {
+    public void onEnergyRecharge() {
         flash();
-        addToBot(new GainEnergyAction(amount));
+        AbstractDungeon.player.gainEnergy(amount);
+        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 }

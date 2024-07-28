@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
+import RangerCaptain.powers.APBoostPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -9,7 +10,6 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.EnergizedBluePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
 import static RangerCaptain.MainModfile.makeID;
@@ -35,7 +35,7 @@ public class Springheel extends AbstractMultiUpgradeCard {
         dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
         Wiz.applyToEnemy(m, new WeakPower(m, magicNumber, false));
         if (info > 0) {
-            Wiz.applyToSelf(new EnergizedBluePower(p, info));
+            Wiz.applyToSelf(new APBoostPower(p, info));
         }
     }
 

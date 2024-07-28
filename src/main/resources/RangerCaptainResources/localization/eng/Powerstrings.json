@@ -103,7 +103,7 @@
   },
   "${ModID}:APBoostPower": {
     "NAME": "AP Boost",
-    "DESCRIPTIONS": ["At the start of your turn, gain #b"," [E] ."]
+    "DESCRIPTIONS": ["Gain #b"," additional [E] next turn."]
   },
   "${ModID}:ParryPower": {
     "NAME": "Parry",
