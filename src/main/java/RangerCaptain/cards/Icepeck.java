@@ -18,7 +18,7 @@ public class Icepeck extends AbstractEasyCard {
     protected static Animation<TextureRegion> cryoshear = loadGifOverlay("Cryoshear_idle.gif");
 
     public Icepeck() {
-        super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 8;
         baseMagicNumber = magicNumber = 2;
         gifOverlay = icepeck;
