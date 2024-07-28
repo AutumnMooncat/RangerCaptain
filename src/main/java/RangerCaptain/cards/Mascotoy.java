@@ -23,7 +23,6 @@ public class Mascotoy extends AbstractEasyCard {
     public Mascotoy() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 4;
-        baseMagicNumber = magicNumber = 1;
         baseInfo = info = 1;
         gifOverlay = mascotoy;
     }
@@ -31,7 +30,6 @@ public class Mascotoy extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
-        addToBot(new DrawCardAction(magicNumber));
         if (info == 1) {
             Mascotoy copy = (Mascotoy) makeStatEquivalentCopy();
             copy.baseInfo = copy.info = 0;
