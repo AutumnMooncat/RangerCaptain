@@ -137,5 +137,9 @@
   "${ModID}:BoobyTrappedPower": {
     "NAME": "Booby Trapped",
     "DESCRIPTIONS": ["#yAttacks EVERYONE for #b"," turn."," turns."]
+  },
+  "${ModID}:EnergyReservesPower": {
+    "NAME": "Energy Reserves",
+    "DESCRIPTIONS": ["Whenever you gain #yEnergy, apply #b"," #yConductive to ALL enemies."]
   }
 }
