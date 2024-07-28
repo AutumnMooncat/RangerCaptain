@@ -16,7 +16,7 @@
   },
   "${ModID}:Amphare": {
     "NAME": "Amphare",
-    "DESCRIPTION": "At the start of your turn, gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} .",
+    "DESCRIPTION": "Whenever you gain Energy, apply !M! ${ModID}:Conductive to ALL enemies.",
     "EXTENDED_DESCRIPTION": ["Lapacitor"]
   },
   "${ModID}:Anathema": {

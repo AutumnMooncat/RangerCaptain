@@ -2,6 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.APBoostPower;
+import RangerCaptain.powers.EnergyReservesPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -19,18 +20,18 @@ public class Amphare extends AbstractEasyCard {
 
     public Amphare() {
         super(ID, 1, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
-        baseMagicNumber = magicNumber = 1;
+        baseMagicNumber = magicNumber = 2;
         gifOverlay = amphare;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.applyToSelf(new APBoostPower(p, magicNumber));
+        Wiz.applyToSelf(new EnergyReservesPower(p, magicNumber));
     }
 
     @Override
     public void upp() {
-        upgradeBaseCost(0);
+        upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         gifOverlay = lapacitor;
