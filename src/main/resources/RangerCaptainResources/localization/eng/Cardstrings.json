@@ -29,7 +29,7 @@
   },
   "${ModID}:Averevoir": {
     "NAME": "Averevoir",
-    "DESCRIPTION": "${ModID}:Perfect. NL Whenever you gain Block from a card, gain equal Block next turn."
+    "DESCRIPTION": "${ModID}:Perfect. NL Whenever you gain Block from a card, gain half that much Block next turn."
   },
   "${ModID}:Bansheep": {
     "NAME": "Bansheep",

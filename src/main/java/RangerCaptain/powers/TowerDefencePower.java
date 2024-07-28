@@ -17,6 +17,7 @@ public class TowerDefencePower extends AbstractEasyPower implements OnCreateBloc
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    public static final float MULTI = 0.5f;
 
     public TowerDefencePower(AbstractCreature owner, int amount) {
         super(POWER_ID, NAME, PowerType.BUFF, false, owner, amount);
@@ -26,8 +27,10 @@ public class TowerDefencePower extends AbstractEasyPower implements OnCreateBloc
     public void updateDescription() {
         if (amount == 1) {
             this.description = DESCRIPTIONS[0];
+        } else if (amount == 2) {
+            this.description = DESCRIPTIONS[1];
         } else {
-            this.description = DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
+            this.description = DESCRIPTIONS[2] + (amount*MULTI) + DESCRIPTIONS[3];
         }
     }
 

@@ -119,7 +119,8 @@
   },
   "${ModID}:TowerDefencePower": {
     "NAME": "Tower Defence",
-    "DESCRIPTIONS": ["Whenever you gain #yBlock from a card, gain equal #yBlock next turn.",
+    "DESCRIPTIONS": ["Whenever you gain #yBlock from a card, gain half that much #yBlock next turn.",
+      "Whenever you gain #yBlock from a card, gain equal #yBlock next turn.",
       "Whenever you gain #yBlock from a card, gain #b"," times that much #yBlock next turn."]
   },
   "${ModID}:MeditatingPower": {
