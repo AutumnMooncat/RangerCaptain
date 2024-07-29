@@ -344,7 +344,7 @@
   },
   "${ModID}:Umbrahella": {
     "NAME": "Umbrahella",
-    "DESCRIPTION": "${ModID}:Perfect. NL Deal !D!X damage to ALL enemies."
+    "DESCRIPTION": "${ModID}:Perfect. NL Deal !D!X damage and apply !M!X Poison to ALL enemies."
   },
   "${ModID}:Undyin": {
     "NAME": "Undyin",

@@ -4,12 +4,14 @@ import RangerCaptain.actions.EasyXCostAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.PoisonPower;
 
 import java.util.Arrays;
 
@@ -22,7 +24,8 @@ public class Umbrahella extends AbstractEasyCard {
     public Umbrahella() {
         super(ID, -1, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY);
         gifOverlay = umbrahella;
-        baseDamage = damage = 7;
+        baseDamage = damage = 5;
+        baseMagicNumber = magicNumber = 2;
         isMultiDamage = true;
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
@@ -36,6 +39,7 @@ public class Umbrahella extends AbstractEasyCard {
                     multiDamage[i] *= effect;
                 }
                 allDmg(AbstractGameAction.AttackEffect.POISON);
+                Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new PoisonPower(mon, p, magicNumber * effect)));
             }
             return true;
         }));
