@@ -216,8 +216,8 @@
   },
   "${ModID}:Muskrateer": {
     "NAME": "Muskrateer",
-    "DESCRIPTION": "Deal !D! damage. NL If you have played less than !M! cards this turn, draw 1 card.",
-    "EXTENDED_DESCRIPTION": ["Ratcousel"," NL ("," card played.)"," cards played.)"]
+    "DESCRIPTION": "Deal !D! damage. NL Play the top card of your draw pile and Exhaust it.",
+    "EXTENDED_DESCRIPTION": ["Ratcousel"]
   },
   "${ModID}:Nevermort": {
     "NAME": "Nevermort",
