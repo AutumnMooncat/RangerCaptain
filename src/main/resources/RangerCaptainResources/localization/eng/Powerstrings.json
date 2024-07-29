@@ -146,5 +146,9 @@
   "${ModID}:SnowedInPower": {
     "NAME": "Snowed In",
     "DESCRIPTIONS": ["This turn, you cannot #yAttack or be #yAttacked.","For #b"," turns, you cannot #yAttack or be #yAttacked."]
+  },
+  "${ModID}:SuitUpPower": {
+    "NAME": "Suit Up",
+    "DESCRIPTIONS": ["Your next #yBlock gaining card gives #b50% more #yBlock.","Your next #b"," #yBlock gaining cards give #b50% more #yBlock."]
   }
 }

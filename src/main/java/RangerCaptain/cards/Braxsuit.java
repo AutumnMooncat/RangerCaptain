@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.powers.SuitUpPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -19,20 +20,19 @@ public class Braxsuit extends AbstractEasyCard {
     protected static Animation<TextureRegion> flapwoods = loadGifOverlay("Flapwoods_idle.gif");
 
     public Braxsuit() {
-        super(ID, 0, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
-        baseMagicNumber = magicNumber = 2;
+        super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
+        baseMagicNumber = magicNumber = 3;
         gifOverlay = braxsuit;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.applyToSelf(new DexterityPower(p, magicNumber));
-        Wiz.applyToSelf(new LoseDexterityPower(p, magicNumber));
+        Wiz.applyToSelf(new SuitUpPower(p, magicNumber));
     }
 
     @Override
     public void upp() {
-        upgradeMagicNumber(2);
+        upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         gifOverlay = flapwoods;

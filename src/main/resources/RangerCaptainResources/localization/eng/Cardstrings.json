@@ -48,7 +48,7 @@
   },
   "${ModID}:Braxsuit": {
     "NAME": "Braxsuit",
-    "DESCRIPTION": "Gain !M! Dexterity. NL At the end of this turn, lose !M! Dexterity.",
+    "DESCRIPTION": "Your next !M! Block gaining cards give 50% more Block.",
     "EXTENDED_DESCRIPTION": ["Flapwoods"]
   },
   "${ModID}:Brushroom": {
