@@ -20,7 +20,7 @@ public class Spookionna extends AbstractEasyCard {
     protected static Animation<TextureRegion> spookionna = loadGifOverlay("Spooki-onna_idle.gif");
 
     public Spookionna() {
-        super(ID, 0, CardType.SKILL, CardRarity.RARE, CardTarget.ALL);
+        super(ID, 3, CardType.SKILL, CardRarity.RARE, CardTarget.ALL);
         gifOverlay = spookionna;
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
         exhaust = true;
