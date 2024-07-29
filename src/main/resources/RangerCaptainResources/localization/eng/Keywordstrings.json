@@ -107,7 +107,7 @@
     "NAMES": [
       "resonance"
     ],
-    "DESCRIPTION": "When a creature receives #b3 #yResonance, it takes #b25 damage."
+    "DESCRIPTION": "When a creature receives #b3 #yResonance, it takes #b30 damage."
   },
   {
     "ID": "tapejam",

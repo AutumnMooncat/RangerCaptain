@@ -19,7 +19,7 @@ public class ResonancePower extends AbstractEasyPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public static final int TRIGGER_DAMAGE = 25;
+    public static final int TRIGGER_DAMAGE = 30;
 
     public ResonancePower(AbstractCreature owner, int amount) {
         super(POWER_ID, NAME, PowerType.DEBUFF, false, owner, amount);
