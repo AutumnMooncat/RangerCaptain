@@ -53,7 +53,9 @@
   "${ModID}:IntentPatches": {
     "TEXT": [
       "Exploding",
-      "This enemy intends to #yAttack EVERYONE for #b"," damage."
+      "This enemy intends to #yAttack EVERYONE for #b"," damage.",
+      "Snowed In",
+      "This enemy cannot intend to #yAttack this turn."
     ]
   }
 }

@@ -142,5 +142,9 @@
   "${ModID}:EnergyReservesPower": {
     "NAME": "Energy Reserves",
     "DESCRIPTIONS": ["Whenever you gain #yEnergy, apply #b"," #yConductive to ALL enemies."]
+  },
+  "${ModID}:SnowedInPower": {
+    "NAME": "Snowed In",
+    "DESCRIPTIONS": ["This turn, you cannot #yAttack or be #yAttacked.","For #b"," turns, you cannot #yAttack or be #yAttacked."]
   }
 }

@@ -1,6 +1,7 @@
 package RangerCaptain.patches;
 
 import RangerCaptain.powers.BoobyTrappedPower;
+import RangerCaptain.powers.SnowedInPower;
 import RangerCaptain.powers.TapeJamPower;
 import RangerCaptain.util.Wiz;
 import RangerCaptain.vfx.BigExplosionVFX;
@@ -29,7 +30,13 @@ import javassist.expr.MethodCall;
 
 import java.util.Iterator;
 
-public class BoobyTrappedPatches {
+public class MoveManipulationPatches {
+
+    public static void doSnowedIn(AbstractMonster monster) {
+        if (!monster.hasPower(TapeJamPower.POWER_ID)) {
+            Wiz.atb(new RollMoveAction(monster));
+        }
+    }
 
     public static void doBoobyTrap(AbstractMonster monster) {
         Wiz.atb(new AnimateShakeAction(monster, 1.0f, 0.3f));
@@ -90,7 +97,7 @@ public class BoobyTrappedPatches {
             return new ExprEditor() {
                 public void edit(MethodCall m) throws CannotCompileException {
                     if (m.getClassName().equals(AbstractMonster.class.getName()) && m.getMethodName().equals("takeTurn")) {
-                        m.replace("if (m.hasPower("+BoobyTrappedPower.class.getName()+".POWER_ID)) {"+BoobyTrappedPatches.class.getName()+".doBoobyTrap(m);} else {$_ = $proceed($$);}");
+                        m.replace("if (m.intent == "+CustomIntentPatches.class.getName()+".RANGER_SNOWED_IN) {"+MoveManipulationPatches.class.getName()+".doSnowedIn(m);} else if (m.hasPower("+BoobyTrappedPower.class.getName()+".POWER_ID)) {"+ MoveManipulationPatches.class.getName()+".doBoobyTrap(m);} else {$_ = $proceed($$);}");
                     }
                 }
             };

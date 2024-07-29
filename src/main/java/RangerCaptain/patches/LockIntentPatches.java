@@ -1,12 +1,15 @@
 package RangerCaptain.patches;
 
+import RangerCaptain.powers.SnowedInPower;
 import RangerCaptain.powers.TapeJamPower;
 import basemod.ReflectionHacks;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.SpawnMonsterAction;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.EnemyMoveInfo;
 import com.megacrit.cardcrawl.monsters.city.BronzeAutomaton;
 import com.megacrit.cardcrawl.monsters.city.BronzeOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -15,13 +18,27 @@ import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
 import javassist.expr.NewExpr;
 
+import java.lang.reflect.Field;
 import java.util.Arrays;
 
 public class LockIntentPatches {
     @SpirePatch2(clz = AbstractMonster.class, method = "setMove", paramtypez = {String.class, byte.class, AbstractMonster.Intent.class, int.class, int.class, boolean.class})
     public static class ThisIsVeryJank {
         @SpirePrefixPatch
-        public static SpireReturn<Void> plz(AbstractMonster __instance) {
+        public static SpireReturn<Void> plz(AbstractMonster __instance, String moveName, byte nextMove, AbstractMonster.Intent intent, int baseDamage, int multiplier, boolean isMultiDamage) {
+            AbstractPower snowedIn = AbstractDungeon.player.getPower(SnowedInPower.POWER_ID);
+            if (snowedIn != null && baseDamage > -1) {
+                snowedIn.flash();
+                try {
+                    Field f = AbstractMonster.class.getDeclaredField("move");
+                    f.setAccessible(true);
+                    EnemyMoveInfo stunMove = new EnemyMoveInfo(nextMove, CustomIntentPatches.RANGER_SNOWED_IN, -1, 0, false);
+                    f.set(__instance, stunMove);
+                } catch (NoSuchFieldException | IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+                return SpireReturn.Return();
+            }
             AbstractPower tapejam = __instance.getPower(TapeJamPower.POWER_ID);
             if (tapejam != null) {
                 tapejam.flash();

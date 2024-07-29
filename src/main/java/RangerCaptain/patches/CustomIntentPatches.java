@@ -13,13 +13,18 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.BobEffect;
 
-public class IntentPatches {
+public class CustomIntentPatches {
     @SpireEnum
     public static AbstractMonster.Intent RANGER_BOMB;
 
-    private static String[] TEXT;
+    @SpireEnum
+    public static AbstractMonster.Intent RANGER_SNOWED_IN;
+
+    private static String[] INTENT_TEXT;
     private static Texture bombIntentTexture;
     private static Texture bombTipTexture;
+    private static Texture snowIntentTexture;
+    private static Texture snowTipTexture;
 
     @SpirePatch2(clz = AbstractMonster.class, method = "renderDamageRange")
     public static class RenderDamage {
@@ -40,6 +45,11 @@ public class IntentPatches {
                     bombIntentTexture = TexLoader.getTexture(MainModfile.makeImagePath("ui/IntentBombL.png"));
                 }
                 return SpireReturn.Return(bombIntentTexture);
+            } else if (__instance.intent == RANGER_SNOWED_IN) {
+                if (snowIntentTexture == null) {
+                    snowIntentTexture = TexLoader.getTexture(MainModfile.makeImagePath("ui/IntentSnowedInL.png"));
+                }
+                return SpireReturn.Return(snowIntentTexture);
             }
             return SpireReturn.Continue();
         }
@@ -52,11 +62,24 @@ public class IntentPatches {
             if (__instance.intent == RANGER_BOMB) {
                 if (bombTipTexture == null) {
                     bombTipTexture = TexLoader.getTexture(MainModfile.makeImagePath("ui/IntentBomb.png"));
-                    TEXT = CardCrawlGame.languagePack.getUIString(MainModfile.makeID("IntentPatches")).TEXT;
                 }
-                ___intentTip.header = TEXT[0];
-                ___intentTip.body = TEXT[1] + ___intentDmg + TEXT[2];
+                if (INTENT_TEXT == null) {
+                    INTENT_TEXT = CardCrawlGame.languagePack.getUIString(MainModfile.makeID("IntentPatches")).TEXT;
+                }
+                ___intentTip.header = INTENT_TEXT[0];
+                ___intentTip.body = INTENT_TEXT[1] + ___intentDmg + INTENT_TEXT[2];
                 ___intentTip.img = bombTipTexture;
+                return SpireReturn.Return();
+            } else if (__instance.intent == RANGER_SNOWED_IN) {
+                if (snowTipTexture == null) {
+                    snowTipTexture = TexLoader.getTexture(MainModfile.makeImagePath("ui/IntentSnowedIn.png"));
+                }
+                if (INTENT_TEXT == null) {
+                    INTENT_TEXT = CardCrawlGame.languagePack.getUIString(MainModfile.makeID("IntentPatches")).TEXT;
+                }
+                ___intentTip.header = INTENT_TEXT[3];
+                ___intentTip.body = INTENT_TEXT[4];
+                ___intentTip.img = snowTipTexture;
                 return SpireReturn.Return();
             }
             return SpireReturn.Continue();

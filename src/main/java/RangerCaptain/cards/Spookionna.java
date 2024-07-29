@@ -1,20 +1,17 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.actions.ApplyPowerActionWithFollowup;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
+import RangerCaptain.powers.SnowedInPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.GainStrengthPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -24,7 +21,6 @@ public class Spookionna extends AbstractEasyCard {
 
     public Spookionna() {
         super(ID, 0, CardType.SKILL, CardRarity.RARE, CardTarget.ALL);
-        baseMagicNumber = magicNumber = 8;
         gifOverlay = spookionna;
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
         exhaust = true;
@@ -32,8 +28,7 @@ public class Spookionna extends AbstractEasyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerActionWithFollowup(new ApplyPowerAction(p, p, new StrengthPower(p, -magicNumber)), new ApplyPowerAction(p, p, new GainStrengthPower(p, magicNumber))));
-        Wiz.forAllMonstersLiving(mon -> addToBot(new ApplyPowerActionWithFollowup(new ApplyPowerAction(mon, p, new StrengthPower(mon, -magicNumber)), new ApplyPowerAction(mon, p, new GainStrengthPower(mon, magicNumber)))));
+        Wiz.applyToSelf(new SnowedInPower(p, 1));
     }
 
     @Override

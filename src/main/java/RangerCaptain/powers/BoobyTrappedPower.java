@@ -1,7 +1,7 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
-import RangerCaptain.patches.IntentPatches;
+import RangerCaptain.patches.CustomIntentPatches;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -15,7 +15,7 @@ public class BoobyTrappedPower extends AbstractEasyPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    private static final EnemyMoveInfo boobyTrapMove = new EnemyMoveInfo((byte) -1, IntentPatches.RANGER_BOMB, 15, 0, false);
+    private static final EnemyMoveInfo boobyTrapMove = new EnemyMoveInfo((byte) -1, CustomIntentPatches.RANGER_BOMB, 15, 0, false);
     private static final Field moveField;
 
     static {
