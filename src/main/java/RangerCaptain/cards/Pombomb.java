@@ -18,8 +18,8 @@ public class Pombomb extends AbstractEasyCard {
 
     public Pombomb() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY);
-        baseDamage = damage = 2;
-        baseMagicNumber = magicNumber = 3;
+        baseDamage = damage = 3;
+        baseMagicNumber = magicNumber = 2;
         gifOverlay = pombomb;
         isMultiDamage = true;
     }
@@ -33,7 +33,7 @@ public class Pombomb extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeDamage(1);
+        upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         gifOverlay = spitzfyre;
