@@ -24,7 +24,7 @@ public class Elfless extends AbstractMultiUpgradeCard {
 
     public Elfless() {
         super(ID, 2, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
-        baseDamage = damage = 12;
+        baseDamage = damage = 10;
         baseMagicNumber = magicNumber = 2;
         gifOverlay = elfless;
         baseInfo = info = 0;
