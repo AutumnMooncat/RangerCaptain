@@ -226,7 +226,7 @@
   },
   "${ModID}:Padpole": {
     "NAME": "Padpole",
-    "DESCRIPTION": "Apply !M! ${ModID}:Leeched. NL Next turn, gain [E] .",
+    "DESCRIPTION": "Gain !B! Block. NL Remove 1 of your debuffs.",
     "EXTENDED_DESCRIPTION": ["Frillypad","Liligator"]
   },
   "${ModID}:Pawndead": {

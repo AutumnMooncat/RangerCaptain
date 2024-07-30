@@ -1,5 +1,6 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.actions.CleansePowerAction;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.APBoostPower;
 import RangerCaptain.powers.LeechedPower;
@@ -10,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -20,15 +22,15 @@ public class Padpole extends AbstractMultiUpgradeCard {
     protected static Animation<TextureRegion> liligator = loadGifOverlay("Liligator_idle.gif");
 
     public Padpole() {
-        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        baseMagicNumber = magicNumber = 4;
+        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+        baseBlock = block = 5;
         gifOverlay = padpole;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.applyToEnemy(m, new LeechedPower(m, p, magicNumber));
-        Wiz.applyToSelf(new APBoostPower(p, 1));
+        blck();
+        addToBot(new CleansePowerAction(p, 1, power -> power.type == AbstractPower.PowerType.DEBUFF));
     }
 
     @Override
@@ -48,14 +50,14 @@ public class Padpole extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade0() {
-        upgradeMagicNumber(2);
+        upgradeBlock(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         gifOverlay = frillypad;
     }
 
     public void upgrade1() {
-        upgradeMagicNumber(3);
+        upgradeBlock(5);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         gifOverlay = liligator;
