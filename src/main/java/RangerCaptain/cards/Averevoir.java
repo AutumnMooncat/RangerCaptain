@@ -16,11 +16,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Averevoir extends AbstractEasyCard {
     public final static String ID = makeID(Averevoir.class.getSimpleName());
-    protected static Animation<TextureRegion> undyin = loadGifOverlay("Averevoir_stance_idle.gif");
+    protected static Animation<TextureRegion> averevoir = loadGifOverlay("Averevoir_stance_idle.gif");
 
     public Averevoir() {
         super(ID, 3, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
-        gifOverlay = undyin;
+        gifOverlay = averevoir;
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
         tags.add(BaseModCardTags.FORM);
     }
