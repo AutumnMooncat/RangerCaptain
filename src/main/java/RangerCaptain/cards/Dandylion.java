@@ -1,11 +1,10 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
-import RangerCaptain.powers.LeechedPower;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.megacrit.cardcrawl.actions.unique.DiscardPileToTopOfDeckAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -19,21 +18,19 @@ public class Dandylion extends AbstractEasyCard {
 
     public Dandylion() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF_AND_ENEMY);
-        baseBlock = block = 5;
-        baseMagicNumber = magicNumber = 3;
+        baseBlock = block = 8;
         gifOverlay = dandylion;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         blck();
-        Wiz.applyToEnemy(m, new LeechedPower(m, p, magicNumber));
+        addToBot(new DiscardPileToTopOfDeckAction(p));
     }
 
     @Override
     public void upp() {
-        upgradeBlock(2);
-        upgradeMagicNumber(1);
+        upgradeBlock(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         gifOverlay = blossomaw;

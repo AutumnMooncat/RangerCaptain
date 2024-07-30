@@ -102,7 +102,7 @@
   },
   "${ModID}:Dandylion": {
     "NAME": "Dandylion",
-    "DESCRIPTION": "Gain !B! Block. NL Apply !M! ${ModID}:Leeched.",
+    "DESCRIPTION": "Gain !B! Block. NL Put a card from your discard pile on top of your draw pile.",
     "EXTENDED_DESCRIPTION": ["Blossomaw"]
   },
   "${ModID}:Defend": {
