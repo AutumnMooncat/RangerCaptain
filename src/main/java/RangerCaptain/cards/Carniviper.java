@@ -40,11 +40,6 @@ public class Carniviper extends AbstractMultiUpgradeCard {
                 Wiz.applyToEnemy(m, new PoisonPower(m, p, magicNumber));
                 break;
             case 1:
-                dmg(m, AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
-                Wiz.applyToEnemy(m, new PoisonPower(m, p, magicNumber));
-                addToBot(new DrawCardAction(2));
-                break;
-            case 2:
                 dmg(m, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
                 dmg(m, AbstractGameAction.AttackEffect.SLASH_VERTICAL);
                 Wiz.applyToEnemy(m, new PoisonPower(m, p, magicNumber));
@@ -55,7 +50,7 @@ public class Carniviper extends AbstractMultiUpgradeCard {
 
     @Override
     public void triggerWhenDrawn() {
-        if (info == 3) {
+        if (info == 2) {
             Wiz.forAllMonstersLiving(mon -> {
                 AbstractPower poison = mon.getPower(PoisonPower.POWER_ID);
                 if (poison != null) {
@@ -93,10 +88,10 @@ public class Carniviper extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade1() {
+        upgradeBaseCost(0);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         gifOverlay = aeroboros;
-        baseInfo = info = 1;
     }
 
     public void upgrade2() {
@@ -104,13 +99,13 @@ public class Carniviper extends AbstractMultiUpgradeCard {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
         gifOverlay = maridusa;
-        baseInfo = info = 2;
+        baseInfo = info = 1;
     }
 
     public void upgrade3() {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[3];
         initializeTitle();
         gifOverlay = jormungold;
-        baseInfo = info = 3;
+        baseInfo = info = 2;
     }
 }
