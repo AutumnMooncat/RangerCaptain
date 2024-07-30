@@ -165,7 +165,7 @@
   },
   "${ModID}:Jumpkin": {
     "NAME": "Jumpkin",
-    "DESCRIPTION": "{@@}{!${ModID}:I!|0=Gain !B! Block.|1=Apply !M! ${ModID}:Leeched.} NL Remove 1 of your debuffs.",
+    "DESCRIPTION": "{@@}{!${ModID}:I!|0=Apply !M! Poison. NL Apply !${ModID}:M2! Weak.|1=Apply !M! Poison and !${ModID}:M2! Weak to ALL enemies.}",
     "EXTENDED_DESCRIPTION": ["Draculeaf","Beanstalker"]
   },
   "${ModID}:Khepri": {
