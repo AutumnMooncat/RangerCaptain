@@ -17,7 +17,7 @@ public class Dandylion extends AbstractEasyCard {
     protected static Animation<TextureRegion> blossomaw = loadGifOverlay("Blossomaw_idle.gif");
 
     public Dandylion() {
-        super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF_AND_ENEMY);
+        super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
         baseBlock = block = 8;
         gifOverlay = dandylion;
     }
