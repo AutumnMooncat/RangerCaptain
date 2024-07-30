@@ -43,6 +43,13 @@
       "Choose "," powers to Cleanse."
     ]
   },
+  "${ModID}:DoublePowerAction": {
+    "TEXT": [
+      "Double",
+      "Choose a power to Double.",
+      "Choose "," powers to Double."
+    ]
+  },
   "${ModID}:GuideAction": {
     "TEXT": [
       "Guide",

@@ -198,7 +198,7 @@
   },
   "${ModID}:Magikrab": {
     "NAME": "Magikrab",
-    "DESCRIPTION": "${ModID}:Perfect. NL Gain 1 Intangible. NL Gain 2 Vulnerable. NL Exhaust."
+    "DESCRIPTION": "${ModID}:Perfect. NL Choose an enemy's debuff. Double it."
   },
   "${ModID}:Mascotoy": {
     "NAME": "Mascotoy",
