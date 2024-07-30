@@ -36,7 +36,7 @@ public class TowerDefencePower extends AbstractEasyPower implements OnCreateBloc
 
     @Override
     public void onCreateBlockInstance(HashSet<AbstractBlockModifier> hashSet, Object o) {
-        if (o instanceof AbstractCard && ((AbstractCard) o).block > 0) {
+        if (o instanceof AbstractCard && ((AbstractCard) o).block > 1) {
             flash();
             addToBot(new ApplyPowerAction(owner, owner, new NextTurnBlockPower(owner, (int) (((AbstractCard) o).block * amount * MULTI)), (int) (((AbstractCard) o).block * amount * MULTI), true));
         }
