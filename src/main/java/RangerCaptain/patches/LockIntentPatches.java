@@ -13,7 +13,9 @@ import com.megacrit.cardcrawl.monsters.EnemyMoveInfo;
 import com.megacrit.cardcrawl.monsters.city.BronzeAutomaton;
 import com.megacrit.cardcrawl.monsters.city.BronzeOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import javassist.CannotCompileException;
+import com.megacrit.cardcrawl.powers.HexPower;
+import javassist.*;
+import javassist.bytecode.DuplicateMemberException;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
 import javassist.expr.NewExpr;
@@ -172,6 +174,24 @@ public class LockIntentPatches {
                     }
                 }
             };
+        }
+    }
+
+    @SpirePatch2(clz = HexPower.class, method = SpirePatch.CONSTRUCTOR)
+    public static class HexDescription {
+        @SpireRawPatch
+        public static void plz(CtBehavior ctBehavior) throws NotFoundException, CannotCompileException {
+            CtClass ctHexClass = ctBehavior.getDeclaringClass();
+
+            CtMethod ctSuperMethod = ctHexClass.getSuperclass().getDeclaredMethod("updateDescription");
+            CtMethod ctUpdateDescriptionMethod = CtNewMethod.delegator(ctSuperMethod, ctHexClass);
+            ctUpdateDescriptionMethod.setBody("description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];");
+
+            try {
+                ctHexClass.addMethod(ctUpdateDescriptionMethod);
+            } catch (DuplicateMemberException ignored) {
+                //Surely if someone already patched a description onto it, I don't need to bother updating it
+            }
         }
     }
 }
