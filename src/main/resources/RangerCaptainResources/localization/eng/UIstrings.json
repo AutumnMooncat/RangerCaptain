@@ -64,5 +64,17 @@
       "Snowed In",
       "This enemy cannot intend to #yAttack this turn."
     ]
+  },
+  "${ModID}:SameFusionPrefix": {
+    "TEXT": [
+      "Meta",
+      "Super",
+      "Ultra",
+      "Double",
+      "Jumbo",
+      "Mutant",
+      "Hyper",
+      "Giga"
+    ]
   }
 }
