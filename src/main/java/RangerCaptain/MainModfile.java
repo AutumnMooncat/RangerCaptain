@@ -35,7 +35,6 @@ import com.evacipated.cardcrawl.mod.stslib.patches.cardInterfaces.MultiUpgradePa
 import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -381,6 +380,9 @@ public class MainModfile implements
 
         if (TSCNProcessor.SHOULD_PROCESS) {
             TSCNProcessor.process();
+        }
+        if (FusionGifCreator.SHOULD_PROCESS) {
+            FusionGifCreator.process();
         }
     }
 
