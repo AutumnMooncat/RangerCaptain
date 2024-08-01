@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
-public class TSCNProcessor {
+public class TSCNFrameDataProcessor {
     public static final boolean SHOULD_PROCESS = false;
     private static final BufferedWriter writer;
 

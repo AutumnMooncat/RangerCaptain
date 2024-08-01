@@ -378,8 +378,8 @@ public class MainModfile implements
             ScreenPostProcessorManager.addPostProcessor(new ShaderTest());
         }
 
-        if (TSCNProcessor.SHOULD_PROCESS) {
-            TSCNProcessor.process();
+        if (TSCNFrameDataProcessor.SHOULD_PROCESS) {
+            TSCNFrameDataProcessor.process();
         }
         if (FusionGifCreator.SHOULD_PROCESS) {
             FusionGifCreator.process();
