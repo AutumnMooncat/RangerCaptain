@@ -378,6 +378,10 @@ public class MainModfile implements
         if (shaderTest) {
             ScreenPostProcessorManager.addPostProcessor(new ShaderTest());
         }
+
+        if (TSCNProcessor.SHOULD_PROCESS) {
+            TSCNProcessor.process();
+        }
     }
 
     public static boolean shaderTest = false;
