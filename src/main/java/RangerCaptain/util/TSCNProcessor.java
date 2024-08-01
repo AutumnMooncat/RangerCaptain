@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.stream.Stream;
 
 public class TSCNProcessor {
-    public static final boolean SHOULD_PROCESS = true;
+    public static final boolean SHOULD_PROCESS = false;
     private static final BufferedWriter writer;
 
     static {
@@ -69,7 +69,7 @@ public class TSCNProcessor {
     }
 
     private static String parseValues(String line) {
-        return line.replace("\"values\": [ ","").replace(" ]","").replaceAll("Rect2","new Rect2");
+        return line.replace("\"values\": [ ","").replace(" ]","");
     }
 
     private static int parseIndex(String line) {
