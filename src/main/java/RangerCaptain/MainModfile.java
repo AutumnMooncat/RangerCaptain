@@ -384,6 +384,9 @@ public class MainModfile implements
         if (FusionGifCreator.SHOULD_PROCESS) {
             FusionGifCreator.process();
         }
+        if (TSCNFusionDataProcessor.SHOULD_PROCESS) {
+            TSCNFusionDataProcessor.process();
+        }
     }
 
     public static boolean shaderTest = false;
