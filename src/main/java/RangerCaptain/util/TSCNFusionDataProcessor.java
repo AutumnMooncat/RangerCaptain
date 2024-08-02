@@ -13,7 +13,7 @@ import java.util.Scanner;
 import java.util.stream.Stream;
 
 public class TSCNFusionDataProcessor {
-    public static final boolean SHOULD_PROCESS = true;
+    public static final boolean SHOULD_PROCESS = false;
     private static final String[] NODE_KEYS = new String[] {
             "[node name=\"Arm_Back\"",
             "[node name=\"Tail\"",
