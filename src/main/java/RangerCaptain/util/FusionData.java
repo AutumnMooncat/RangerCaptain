@@ -53,7 +53,7 @@ public class FusionData {
 
         public Node(boolean visible, Vector2 position, boolean forceUsage, String path) {
             this.visible = visible;
-            this.position = position;
+            this.position = new Vector2(position.x, -position.y); //Godot uses top left (0,0) instead, so we must invert the y coordinate
             this.forceUsage = forceUsage;
             this.path = path;
         }
