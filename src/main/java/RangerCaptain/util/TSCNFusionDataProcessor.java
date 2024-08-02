@@ -78,7 +78,6 @@ public class TSCNFusionDataProcessor {
                         int index = Integer.parseInt(pathAndIndex.substring(pathAndIndex.length()-1));
                         assetMap.put(index, path);
                     }
-
                 } else if (Arrays.stream(NODE_KEYS).anyMatch(line::startsWith)) {
                     writer.append("new Node(");
                 } else if (line.startsWith("visible = false")) {
