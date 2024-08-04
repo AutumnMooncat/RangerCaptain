@@ -5,10 +5,8 @@ import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.powers.ConductivePower;
 import RangerCaptain.powers.ResonancePower;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -21,7 +19,7 @@ public class Arkidd extends AbstractEasyCard {
     public Arkidd() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
         baseMagicNumber = magicNumber = 3;
-        setMonsterData(MonsterData.ARKIDD);
+        setMonsterData(MonsterEnum.ARKIDD);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
 

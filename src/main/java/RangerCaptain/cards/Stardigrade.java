@@ -3,10 +3,8 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.MeditatingPower;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -19,7 +17,7 @@ public class Stardigrade extends AbstractEasyCard {
     public Stardigrade() {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = 1;
-        setMonsterData(MonsterData.STARDIGRADE);
+        setMonsterData(MonsterEnum.STARDIGRADE);
     }
 
     @Override
@@ -32,7 +30,7 @@ public class Stardigrade extends AbstractEasyCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.GALAGOR);
+        setMonsterData(MonsterEnum.GALAGOR);
     }
 
     @Override

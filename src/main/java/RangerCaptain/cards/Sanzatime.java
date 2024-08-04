@@ -3,9 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import RangerCaptain.util.MonsterEnum;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
@@ -22,7 +20,7 @@ public class Sanzatime extends AbstractEasyCard {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = damage = 5;
         baseMagicNumber = magicNumber = 1;
-        setMonsterData(MonsterData.SANZATIME);
+        setMonsterData(MonsterEnum.SANZATIME);
     }
 
     @Override
@@ -51,7 +49,7 @@ public class Sanzatime extends AbstractEasyCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.FORTIWINX);
+        setMonsterData(MonsterEnum.FORTIWINX);
     }
 
     @Override

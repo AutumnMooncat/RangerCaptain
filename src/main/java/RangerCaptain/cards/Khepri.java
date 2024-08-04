@@ -4,10 +4,8 @@ import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.powers.CloseEncounterPower;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
@@ -22,7 +20,7 @@ public class Khepri extends AbstractEasyCard {
     public Khepri() {
         super(ID, 0, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
         baseDamage = damage = 6;
-        setMonsterData(MonsterData.KHEPRI);
+        setMonsterData(MonsterEnum.KHEPRI);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
 

@@ -7,13 +7,13 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import java.util.HashMap;
 
-import static RangerCaptain.util.MonsterData.*;
+import static RangerCaptain.util.MonsterEnum.*;
 
 public class GifOverlayData {
-    public static final HashMap<MonsterData, Animation<TextureRegion>> OVERLAY_DATA = new HashMap<>();
+    public static final HashMap<MonsterEnum, Animation<TextureRegion>> OVERLAY_DATA = new HashMap<>();
 
-    private static void add(MonsterData data, String fileName) {
-        OVERLAY_DATA.put(data, loadGifOverlay(fileName));
+    private static void add(MonsterEnum monster, String fileName) {
+        OVERLAY_DATA.put(monster, loadGifOverlay(fileName));
     }
 
     private static Animation<TextureRegion> loadGifOverlay(String fileName) {

@@ -1,12 +1,6 @@
 package RangerCaptain.util;
 
-import RangerCaptain.MainModfile;
-import RangerCaptain.fusionData.*;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-
-public enum MonsterData {
+public enum MonsterEnum {
     ADEPTILE,
     AEROBOROS,
     ALLSEER,

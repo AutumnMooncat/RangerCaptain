@@ -3,9 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.actions.BetterSelectCardsInHandAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import RangerCaptain.util.MonsterEnum;
 import com.megacrit.cardcrawl.actions.common.BetterDiscardPileToHandAction;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
@@ -22,7 +20,7 @@ public class Faucetear extends AbstractEasyCard {
     public Faucetear() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
         baseMagicNumber = magicNumber = 2;
-        setMonsterData(MonsterData.FAUCETEAR);
+        setMonsterData(MonsterEnum.FAUCETEAR);
     }
 
     @Override
@@ -42,7 +40,7 @@ public class Faucetear extends AbstractEasyCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.FOUNTESS);
+        setMonsterData(MonsterEnum.FOUNTESS);
     }
 
     @Override

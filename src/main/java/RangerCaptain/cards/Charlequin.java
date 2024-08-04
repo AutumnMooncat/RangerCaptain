@@ -3,11 +3,9 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.BoobyTrappedPower;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -20,7 +18,7 @@ public class Charlequin extends AbstractMultiUpgradeCard {
 
     public Charlequin() {
         super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
-        setMonsterData(MonsterData.CHARLEQUIN);
+        setMonsterData(MonsterEnum.CHARLEQUIN);
         baseInfo = info = 0;
         exhaust = true;
     }
@@ -54,7 +52,7 @@ public class Charlequin extends AbstractMultiUpgradeCard {
         upgradeBaseCost(0);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.BLUNDERBUSK);
+        setMonsterData(MonsterEnum.BLUNDERBUSK);
     }
 
     public void upgrade1() {
@@ -62,7 +60,7 @@ public class Charlequin extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        setMonsterData(MonsterData.FRAGLIACCI);
+        setMonsterData(MonsterEnum.FRAGLIACCI);
         baseInfo = info = 1;
     }
 }

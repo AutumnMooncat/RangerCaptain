@@ -4,10 +4,8 @@ import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.YeetCardPatches;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.FormatHelper;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
@@ -29,7 +27,7 @@ public class Kittelly extends AbstractEasyCard {
 
     public Kittelly() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
-        setMonsterData(MonsterData.KITTELLY);
+        setMonsterData(MonsterEnum.KITTELLY);
     }
 
     @Override
@@ -80,7 +78,7 @@ public class Kittelly extends AbstractEasyCard {
         upgradeBaseCost(0);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.CATFIVE);
+        setMonsterData(MonsterEnum.CATFIVE);
     }
 
     @Override

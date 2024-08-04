@@ -3,11 +3,9 @@ package RangerCaptain.cards;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
@@ -29,7 +27,7 @@ public class Kuneko extends AbstractEasyCard {
         baseDamage = damage = 20;
         baseMagicNumber = magicNumber = 2;
         isMultiDamage = true;
-        setMonsterData(MonsterData.KUNEKO);
+        setMonsterData(MonsterEnum.KUNEKO);
     }
 
     @Override
@@ -52,7 +50,7 @@ public class Kuneko extends AbstractEasyCard {
         upgradeDamage(8);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.SHINING_KUNEKO);
+        setMonsterData(MonsterEnum.SHINING_KUNEKO);
     }
 
     @Override

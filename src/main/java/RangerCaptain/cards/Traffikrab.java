@@ -2,10 +2,8 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -20,7 +18,7 @@ public class Traffikrab extends AbstractMultiUpgradeCard {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
         baseBlock = block = 7;
         baseMagicNumber = magicNumber = 1;
-        setMonsterData(MonsterData.TRAFFIKRAB);
+        setMonsterData(MonsterEnum.TRAFFIKRAB);
     }
 
     @Override
@@ -51,13 +49,13 @@ public class Traffikrab extends AbstractMultiUpgradeCard {
         upgradeBlock(-2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.WEEVILITE);
+        setMonsterData(MonsterEnum.WEEVILITE);
     }
 
     public void upgrade1() {
         upgradeBlock(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        setMonsterData(MonsterData.LOBSTACLE);
+        setMonsterData(MonsterEnum.LOBSTACLE);
     }
 }

@@ -4,10 +4,8 @@ import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.damageMods.BootDamage;
 import RangerCaptain.damageMods.PiercingDamage;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import basemod.helpers.CardModifierManager;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
@@ -23,7 +21,7 @@ public class Bansheep extends AbstractMultiUpgradeCard {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 10;
         baseMagicNumber = magicNumber = 0;
-        setMonsterData(MonsterData.BANSHEEP);
+        setMonsterData(MonsterEnum.BANSHEEP);
         baseInfo = info = 0;
     }
 
@@ -62,7 +60,7 @@ public class Bansheep extends AbstractMultiUpgradeCard {
         DamageModifierManager.addModifier(this, new BootDamage(CardModifierManager.modifiedBaseValue(this, baseDamage, "D")));
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.WOOLTERGEIST);
+        setMonsterData(MonsterEnum.WOOLTERGEIST);
         baseInfo = info = CardModifierManager.modifiedBaseValue(this, baseDamage, "D");
         baseSecondMagic = secondMagic = info - 1;
     }
@@ -76,7 +74,7 @@ public class Bansheep extends AbstractMultiUpgradeCard {
         });
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        setMonsterData(MonsterData.RAMTASM);
+        setMonsterData(MonsterEnum.RAMTASM);
         baseInfo = info = CardModifierManager.modifiedBaseValue(this, baseDamage, "D");
         upgradedInfo = true;
         baseSecondMagic = secondMagic = info - 1;
@@ -89,7 +87,7 @@ public class Bansheep extends AbstractMultiUpgradeCard {
         DamageModifierManager.addModifier(this, new PiercingDamage());
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
-        setMonsterData(MonsterData.ZOMBLEAT);
+        setMonsterData(MonsterEnum.ZOMBLEAT);
     }
 
     public void upgrade3() {
@@ -97,6 +95,6 @@ public class Bansheep extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[3];
         initializeTitle();
-        setMonsterData(MonsterData.CAPRICORPSE);
+        setMonsterData(MonsterEnum.CAPRICORPSE);
     }
 }

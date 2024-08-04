@@ -2,9 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import RangerCaptain.util.MonsterEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -19,7 +17,7 @@ public class Pombomb extends AbstractEasyCard {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY);
         baseDamage = damage = 3;
         baseMagicNumber = magicNumber = 2;
-        setMonsterData(MonsterData.POMBOMB);
+        setMonsterData(MonsterEnum.POMBOMB);
         isMultiDamage = true;
     }
 
@@ -35,7 +33,7 @@ public class Pombomb extends AbstractEasyCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.SPITZFYRE);
+        setMonsterData(MonsterEnum.SPITZFYRE);
     }
 
     @Override

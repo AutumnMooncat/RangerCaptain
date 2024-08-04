@@ -4,10 +4,8 @@ import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CardCounterPatches;
 import RangerCaptain.powers.TapeJamPower;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
@@ -23,7 +21,7 @@ public class Diveal extends AbstractMultiUpgradeCard {
     public Diveal() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
         baseDamage = damage = 12;
-        setMonsterData(MonsterData.DIVEAL);
+        setMonsterData(MonsterEnum.DIVEAL);
     }
 
     @Override
@@ -66,13 +64,13 @@ public class Diveal extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.DIVEBERG);
+        setMonsterData(MonsterEnum.DIVEBERG);
     }
 
     public void upgrade1() {
         upgradeDamage(4);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        setMonsterData(MonsterData.SCUBALRUS);
+        setMonsterData(MonsterEnum.SCUBALRUS);
     }
 }

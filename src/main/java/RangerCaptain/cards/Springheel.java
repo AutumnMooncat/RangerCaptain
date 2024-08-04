@@ -3,10 +3,8 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.APBoostPower;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -22,7 +20,7 @@ public class Springheel extends AbstractMultiUpgradeCard {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = damage = 7;
         baseMagicNumber = magicNumber = 1;
-        setMonsterData(MonsterData.SPRINGHEEL);
+        setMonsterData(MonsterEnum.SPRINGHEEL);
         baseInfo = info = 0;
     }
 
@@ -59,27 +57,27 @@ public class Springheel extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.HOPSKIN);
+        setMonsterData(MonsterEnum.HOPSKIN);
     }
 
     public void upgrade1() {
         upgradeDamage(5);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        setMonsterData(MonsterData.RIPTERRA);
+        setMonsterData(MonsterEnum.RIPTERRA);
     }
 
     public void upgrade2() {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
-        setMonsterData(MonsterData.SNOOPIN);
+        setMonsterData(MonsterEnum.SNOOPIN);
         baseInfo = info = 1;
     }
 
     public void upgrade3() {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[3];
         initializeTitle();
-        setMonsterData(MonsterData.SCAMPIRE);
+        setMonsterData(MonsterEnum.SCAMPIRE);
         baseInfo = info = 2;
     }
 }

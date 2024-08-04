@@ -4,11 +4,9 @@ import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.CloseEncounterPower;
 import RangerCaptain.powers.MindMeldPower;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -29,7 +27,7 @@ public class Allseer extends AbstractMultiUpgradeCard {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF_AND_ENEMY);
         baseBlock = block = 6;
         baseMagicNumber = magicNumber = 1;
-        setMonsterData(MonsterData.ALLSEER);
+        setMonsterData(MonsterEnum.ALLSEER);
         baseInfo = info = 0;
     }
 
@@ -72,7 +70,7 @@ public class Allseer extends AbstractMultiUpgradeCard {
         upgradeBlock(-3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.KHUFO);
+        setMonsterData(MonsterEnum.KHUFO);
         baseInfo = info = 1;
     }
 
@@ -81,7 +79,7 @@ public class Allseer extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        setMonsterData(MonsterData.TRIPHINX);
+        setMonsterData(MonsterEnum.TRIPHINX);
         info = baseInfo = 2;
     }
 }

@@ -3,9 +3,8 @@ package RangerCaptain.cards.abstracts;
 import RangerCaptain.MainModfile;
 import RangerCaptain.TheRangerCaptain;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.GifDecoder;
 import RangerCaptain.util.GifOverlayData;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import basemod.helpers.TooltipInfo;
@@ -136,7 +135,7 @@ public abstract class AbstractEasyCard extends CustomCard {
     protected boolean manualD2 = false;
 
     protected AbstractGameAction clickAction;
-    protected MonsterData monsterData;
+    protected MonsterEnum monsterEnum;
 
     public AbstractEasyCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target) {
         this(cardID, cost, type, rarity, target, TheRangerCaptain.Enums.HEADBAND_PURPLE_COLOR);
@@ -449,16 +448,16 @@ public abstract class AbstractEasyCard extends CustomCard {
         return new CardArtRoller.ReskinInfo(ID, 0.5f, 0.5f, 0.5f, 0.5f, false);
     }
 
-    protected void setMonsterData(MonsterData data) {
-        monsterData = data;
+    protected void setMonsterData(MonsterEnum data) {
+        monsterEnum = data;
     }
 
-    public MonsterData getMonsterData() {
-        return monsterData;
+    public MonsterEnum getMonsterData() {
+        return monsterEnum;
     }
 
     public Animation<TextureRegion> getGifOverlay() {
-        return GifOverlayData.OVERLAY_DATA.get(monsterData);
+        return GifOverlayData.OVERLAY_DATA.get(monsterEnum);
     }
 
     public String itemArt() {

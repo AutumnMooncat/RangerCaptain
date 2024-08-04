@@ -1,17 +1,12 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.actions.CleansePowerAction;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
-import RangerCaptain.powers.LeechedPower;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
@@ -24,7 +19,7 @@ public class Jumpkin extends AbstractMultiUpgradeCard {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseMagicNumber = magicNumber = 5;
         baseSecondMagic = secondMagic = 1;
-        setMonsterData(MonsterData.JUMPKIN);
+        setMonsterData(MonsterEnum.JUMPKIN);
         baseInfo = info = 0;
     }
 
@@ -63,7 +58,7 @@ public class Jumpkin extends AbstractMultiUpgradeCard {
         target = CardTarget.ALL_ENEMY;
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.DRACULEAF);
+        setMonsterData(MonsterEnum.DRACULEAF);
     }
 
     public void upgrade1() {
@@ -71,6 +66,6 @@ public class Jumpkin extends AbstractMultiUpgradeCard {
         upgradeSecondMagic(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        setMonsterData(MonsterData.BEANSTALKER);
+        setMonsterData(MonsterEnum.BEANSTALKER);
     }
 }

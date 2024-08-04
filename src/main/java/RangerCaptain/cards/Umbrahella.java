@@ -4,10 +4,8 @@ import RangerCaptain.actions.EasyXCostAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -23,7 +21,7 @@ public class Umbrahella extends AbstractEasyCard {
 
     public Umbrahella() {
         super(ID, -1, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY);
-        setMonsterData(MonsterData.UMBRAHELLA);
+        setMonsterData(MonsterEnum.UMBRAHELLA);
         baseDamage = damage = 5;
         baseMagicNumber = magicNumber = 2;
         isMultiDamage = true;

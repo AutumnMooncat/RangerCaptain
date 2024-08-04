@@ -3,10 +3,8 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.BurnedPower;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -21,7 +19,7 @@ public class Busheye extends AbstractMultiUpgradeCard {
         super(ID, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL);
         baseMagicNumber = magicNumber = 7;
         baseSecondMagic = secondMagic = 2;
-        setMonsterData(MonsterData.BUSHEYE);
+        setMonsterData(MonsterEnum.BUSHEYE);
         exhaust = true;
     }
 
@@ -53,13 +51,13 @@ public class Busheye extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.HUNTORCH);
+        setMonsterData(MonsterEnum.HUNTORCH);
     }
 
     public void upgrade1() {
         upgradeMagicNumber(4);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        setMonsterData(MonsterData.HEDGEHERNE);
+        setMonsterData(MonsterEnum.HEDGEHERNE);
     }
 }

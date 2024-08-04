@@ -2,9 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import RangerCaptain.util.MonsterEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.PlayTopCardAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
@@ -21,7 +19,7 @@ public class Muskrateer extends AbstractEasyCard {
         super(ID, 2, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = damage = 11;
         baseMagicNumber = magicNumber = 2;
-        setMonsterData(MonsterData.MUSKRATEER);
+        setMonsterData(MonsterEnum.MUSKRATEER);
     }
 
     @Override
@@ -35,7 +33,7 @@ public class Muskrateer extends AbstractEasyCard {
         upgradeDamage(4);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.RATCOUSEL);
+        setMonsterData(MonsterEnum.RATCOUSEL);
     }
 
     @Override

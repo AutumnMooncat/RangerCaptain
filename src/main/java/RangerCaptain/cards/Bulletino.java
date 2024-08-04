@@ -4,12 +4,10 @@ import RangerCaptain.actions.DoAction;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CardCounterPatches;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
 import RangerCaptain.vfx.BurnToAshEffect;
 import basemod.BaseMod;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.utility.ShakeScreenAction;
@@ -30,7 +28,7 @@ public class Bulletino extends AbstractMultiUpgradeCard {
         super(ID, 0, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
         baseDamage = damage = 4;
         baseMagicNumber = magicNumber = 2;
-        setMonsterData(MonsterData.BULLETINO);
+        setMonsterData(MonsterEnum.BULLETINO);
         baseInfo = info = 0;
         exhaust = true;
     }
@@ -100,7 +98,7 @@ public class Bulletino extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.VELOCIRIFLE);
+        setMonsterData(MonsterEnum.VELOCIRIFLE);
         baseInfo = info = 1;
         exhaust = false;
     }
@@ -112,7 +110,7 @@ public class Bulletino extends AbstractMultiUpgradeCard {
         target = CardTarget.ALL_ENEMY;
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        setMonsterData(MonsterData.ARTILLEREX);
+        setMonsterData(MonsterEnum.ARTILLEREX);
         baseInfo = info = 2;
     }
 
@@ -122,7 +120,7 @@ public class Bulletino extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
-        setMonsterData(MonsterData.GEARYU);
+        setMonsterData(MonsterEnum.GEARYU);
         baseInfo = info = 3;
     }
 }

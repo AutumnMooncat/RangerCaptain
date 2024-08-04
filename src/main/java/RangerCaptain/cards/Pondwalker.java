@@ -3,10 +3,8 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.BurnedPower;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -21,7 +19,7 @@ public class Pondwalker extends AbstractEasyCard {
         super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 13;
         baseMagicNumber = magicNumber = 6;
-        setMonsterData(MonsterData.PONDWALKER);
+        setMonsterData(MonsterEnum.PONDWALKER);
     }
 
     @Override
@@ -36,7 +34,7 @@ public class Pondwalker extends AbstractEasyCard {
         upgradeMagicNumber(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.SHARKTANKER);
+        setMonsterData(MonsterEnum.SHARKTANKER);
     }
 
     @Override

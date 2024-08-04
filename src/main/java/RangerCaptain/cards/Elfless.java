@@ -3,10 +3,8 @@ package RangerCaptain.cards;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -24,7 +22,7 @@ public class Elfless extends AbstractMultiUpgradeCard {
         super(ID, 2, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = damage = 10;
         baseMagicNumber = magicNumber = 2;
-        setMonsterData(MonsterData.ELFLESS);
+        setMonsterData(MonsterEnum.ELFLESS);
         baseInfo = info = 0;
     }
 
@@ -78,7 +76,7 @@ public class Elfless extends AbstractMultiUpgradeCard {
         upgradeDamage(4);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.FAERIOUS);
+        setMonsterData(MonsterEnum.FAERIOUS);
         baseInfo = info = 1;
     }
 
@@ -87,7 +85,7 @@ public class Elfless extends AbstractMultiUpgradeCard {
         upgradeDamage(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        setMonsterData(MonsterData.GRAMPUS);
+        setMonsterData(MonsterEnum.GRAMPUS);
         baseInfo = info = 2;
     }
 }

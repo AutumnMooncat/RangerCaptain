@@ -4,9 +4,7 @@ import RangerCaptain.actions.DoublePowerAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import RangerCaptain.util.MonsterEnum;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -19,7 +17,7 @@ public class Magikrab extends AbstractEasyCard {
 
     public Magikrab() {
         super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
-        setMonsterData(MonsterData.MAGIKRAB);
+        setMonsterData(MonsterEnum.MAGIKRAB);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
 

@@ -2,12 +2,9 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -24,7 +21,7 @@ public class Carniviper extends AbstractMultiUpgradeCard {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = damage = 6;
         baseMagicNumber = magicNumber = 3;
-        setMonsterData(MonsterData.CARNIVIPER);
+        setMonsterData(MonsterEnum.CARNIVIPER);
         baseInfo = info = 0;
     }
 
@@ -80,28 +77,28 @@ public class Carniviper extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.MASQUERATTLE);
+        setMonsterData(MonsterEnum.MASQUERATTLE);
     }
 
     public void upgrade1() {
         upgradeBaseCost(0);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        setMonsterData(MonsterData.AEROBOROS);
+        setMonsterData(MonsterEnum.AEROBOROS);
     }
 
     public void upgrade2() {
         upgradeBaseCost(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
-        setMonsterData(MonsterData.MARDIUSA);
+        setMonsterData(MonsterEnum.MARDIUSA);
         baseInfo = info = 1;
     }
 
     public void upgrade3() {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[3];
         initializeTitle();
-        setMonsterData(MonsterData.JORMUNGOLD);
+        setMonsterData(MonsterEnum.JORMUNGOLD);
         baseInfo = info = 2;
     }
 }

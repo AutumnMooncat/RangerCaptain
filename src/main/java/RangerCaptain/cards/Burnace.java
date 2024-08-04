@@ -3,9 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.actions.BetterSelectCardsInHandAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import RangerCaptain.util.MonsterEnum;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -23,7 +21,7 @@ public class Burnace extends AbstractEasyCard {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         baseBlock = block = 4;
         baseMagicNumber = magicNumber = 3;
-        setMonsterData(MonsterData.BURNACE);
+        setMonsterData(MonsterEnum.BURNACE);
     }
 
     @Override
@@ -41,7 +39,7 @@ public class Burnace extends AbstractEasyCard {
         upgradeBlock(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.SMOGMAGOG);
+        setMonsterData(MonsterEnum.SMOGMAGOG);
     }
 
     @Override

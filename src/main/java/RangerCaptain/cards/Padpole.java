@@ -2,13 +2,8 @@ package RangerCaptain.cards;
 
 import RangerCaptain.actions.CleansePowerAction;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
-import RangerCaptain.powers.APBoostPower;
-import RangerCaptain.powers.LeechedPower;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
-import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import RangerCaptain.util.MonsterEnum;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -22,7 +17,7 @@ public class Padpole extends AbstractMultiUpgradeCard {
     public Padpole() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         baseBlock = block = 5;
-        setMonsterData(MonsterData.PADPOLE);
+        setMonsterData(MonsterEnum.PADPOLE);
     }
 
     @Override
@@ -51,13 +46,13 @@ public class Padpole extends AbstractMultiUpgradeCard {
         upgradeBlock(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.FRILLYPAD);
+        setMonsterData(MonsterEnum.FRILLYPAD);
     }
 
     public void upgrade1() {
         upgradeBlock(5);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        setMonsterData(MonsterData.LILIGATOR);
+        setMonsterData(MonsterEnum.LILIGATOR);
     }
 }

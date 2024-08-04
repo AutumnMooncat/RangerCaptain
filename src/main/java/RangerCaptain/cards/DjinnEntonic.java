@@ -3,10 +3,8 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.status.Dazed;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
@@ -22,7 +20,7 @@ public class DjinnEntonic extends AbstractEasyCard {
     public DjinnEntonic() {
         super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = 2;
-        setMonsterData(MonsterData.DJINN_ENTONIC);
+        setMonsterData(MonsterEnum.DJINN_ENTONIC);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
         cardsToPreview = new Dazed();
     }

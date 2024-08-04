@@ -1,13 +1,10 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
-import RangerCaptain.powers.APBoostPower;
 import RangerCaptain.powers.EnergyReservesPower;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -20,7 +17,7 @@ public class Amphare extends AbstractEasyCard {
     public Amphare() {
         super(ID, 1, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = 2;
-        setMonsterData(MonsterData.AMPHARE);
+        setMonsterData(MonsterEnum.AMPHARE);
     }
 
     @Override
@@ -33,7 +30,7 @@ public class Amphare extends AbstractEasyCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.LAPACITOR);
+        setMonsterData(MonsterEnum.LAPACITOR);
     }
 
     @Override

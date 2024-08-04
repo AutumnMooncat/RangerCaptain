@@ -2,10 +2,8 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -22,7 +20,7 @@ public class Squirey extends AbstractMultiUpgradeCard {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = damage = 8;
         baseMagicNumber = magicNumber = 2;
-        setMonsterData(MonsterData.SQUIREY);
+        setMonsterData(MonsterEnum.SQUIREY);
         baseInfo = info = 0;
     }
 
@@ -60,7 +58,7 @@ public class Squirey extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.MANISPEAR);
+        setMonsterData(MonsterEnum.MANISPEAR);
         baseInfo = info = 1;
     }
 
@@ -69,6 +67,6 @@ public class Squirey extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        setMonsterData(MonsterData.PALANGOLIN);
+        setMonsterData(MonsterEnum.PALANGOLIN);
     }
 }

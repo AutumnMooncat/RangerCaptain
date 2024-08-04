@@ -4,10 +4,8 @@ import RangerCaptain.actions.DamageFollowupAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.ConductivePower;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
@@ -25,7 +23,7 @@ public class Sparktan extends AbstractEasyCard {
     public Sparktan() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 5;
-        setMonsterData(MonsterData.SPARKTAN);
+        setMonsterData(MonsterEnum.SPARKTAN);
         exhaust = true;
     }
 
@@ -48,7 +46,7 @@ public class Sparktan extends AbstractEasyCard {
         tags.add(CardTags.STRIKE);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.ZEUSTRIKE);
+        setMonsterData(MonsterEnum.ZEUSTRIKE);
     }
 
     @Override

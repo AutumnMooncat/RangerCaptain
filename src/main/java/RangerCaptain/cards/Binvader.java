@@ -2,11 +2,9 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
@@ -24,7 +22,7 @@ public class Binvader extends AbstractEasyCard {
     public Binvader() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 6;
-        setMonsterData(MonsterData.BINVADER);
+        setMonsterData(MonsterEnum.BINVADER);
         baseInfo = info = 0;
     }
 
@@ -55,7 +53,7 @@ public class Binvader extends AbstractEasyCard {
         upgradeDamage(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.BINTERLOPER);
+        setMonsterData(MonsterEnum.BINTERLOPER);
     }
 
     @Override

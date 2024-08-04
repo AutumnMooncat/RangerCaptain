@@ -3,9 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.actions.BetterSelectCardsInHandAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import RangerCaptain.util.MonsterEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
@@ -25,7 +23,7 @@ public class Trapwurm extends AbstractEasyCard {
     public Trapwurm() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 11;
-        setMonsterData(MonsterData.TRAPWURM);
+        setMonsterData(MonsterEnum.TRAPWURM);
     }
 
     @Override
@@ -47,7 +45,7 @@ public class Trapwurm extends AbstractEasyCard {
         upgradeDamage(4);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.WYRMAW);
+        setMonsterData(MonsterEnum.WYRMAW);
     }
 
     @Override

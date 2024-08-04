@@ -3,10 +3,8 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.MultitargetPower;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -22,7 +20,7 @@ public class Sirenade extends AbstractEasyCard {
         baseDamage = damage = 7;
         baseMagicNumber = magicNumber = 1;
         isMultiDamage = true;
-        setMonsterData(MonsterData.SIRENADE);
+        setMonsterData(MonsterEnum.SIRENADE);
     }
 
     @Override
@@ -36,7 +34,7 @@ public class Sirenade extends AbstractEasyCard {
         upgradeDamage(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.DECIBELLE);
+        setMonsterData(MonsterEnum.DECIBELLE);
     }
 
     @Override

@@ -3,10 +3,8 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.BerserkerPower;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -19,7 +17,7 @@ public class Littlered extends AbstractMultiUpgradeCard {
     public Littlered() {
         super(ID, 2, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = 1;
-        setMonsterData(MonsterData.LITTLERED);
+        setMonsterData(MonsterEnum.LITTLERED);
         baseInfo = info = 0;
     }
 
@@ -49,7 +47,7 @@ public class Littlered extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.SCARLETEETH);
+        setMonsterData(MonsterEnum.SCARLETEETH);
         baseInfo = info = 1;
     }
 
@@ -57,7 +55,7 @@ public class Littlered extends AbstractMultiUpgradeCard {
         upgradeBaseCost(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        setMonsterData(MonsterData.ROSEHOOD);
+        setMonsterData(MonsterEnum.ROSEHOOD);
         info = baseInfo = 2;
         isInnate = true;
     }

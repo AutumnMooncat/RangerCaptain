@@ -4,14 +4,14 @@ import com.badlogic.gdx.graphics.Color;
 
 import java.util.HashMap;
 
-import static RangerCaptain.util.MonsterData.*;
+import static RangerCaptain.util.MonsterEnum.*;
 
 
 public class PaletteData {
-    public static final HashMap<MonsterData, Color[]> PALETTE_DATA = new HashMap<>();
+    public static final HashMap<MonsterEnum, Color[]> PALETTE_DATA = new HashMap<>();
 
-    public static void add(MonsterData data, Color... colors) {
-        PALETTE_DATA.put(data, colors);
+    public static void add(MonsterEnum monster, Color... colors) {
+        PALETTE_DATA.put(monster, colors);
     }
 
     static {

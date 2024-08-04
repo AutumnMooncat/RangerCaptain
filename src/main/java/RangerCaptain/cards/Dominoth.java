@@ -3,11 +3,9 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.ConductivePower;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
 import basemod.BaseMod;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
@@ -25,7 +23,7 @@ public class Dominoth extends AbstractMultiUpgradeCard {
     public Dominoth() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
         baseMagicNumber = magicNumber = 3;
-        setMonsterData(MonsterData.DOMINOTH);
+        setMonsterData(MonsterEnum.DOMINOTH);
         baseInfo = info = 0;
     }
 
@@ -98,7 +96,7 @@ public class Dominoth extends AbstractMultiUpgradeCard {
         target = CardTarget.ENEMY;
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.WINGLOOM);
+        setMonsterData(MonsterEnum.WINGLOOM);
         baseInfo = info = 1;
     }
 
@@ -106,7 +104,7 @@ public class Dominoth extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        setMonsterData(MonsterData.MOTHMANIC);
+        setMonsterData(MonsterEnum.MOTHMANIC);
     }
 
     public void upgrade2() {
@@ -115,7 +113,7 @@ public class Dominoth extends AbstractMultiUpgradeCard {
         type = CardType.ATTACK;
         target = CardTarget.ENEMY;
         initializeTitle();
-        setMonsterData(MonsterData.TOKUSECT);
+        setMonsterData(MonsterEnum.TOKUSECT);
         baseInfo = info = 2;
         rollerKey += "Attack";
         needsArtRefresh = true;

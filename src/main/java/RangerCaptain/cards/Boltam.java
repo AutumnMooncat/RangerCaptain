@@ -3,10 +3,8 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.ConductivePower;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
@@ -26,7 +24,7 @@ public class Boltam extends AbstractMultiUpgradeCard {
         baseDamage = damage = 3;
         baseMagicNumber = magicNumber = 3;
         baseSecondMagic = secondMagic = 1;
-        setMonsterData(MonsterData.BOLTAM);
+        setMonsterData(MonsterEnum.BOLTAM);
         baseInfo = info = 1;
     }
 
@@ -62,7 +60,7 @@ public class Boltam extends AbstractMultiUpgradeCard {
         upgradeSecondMagic(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.PINBOLT);
+        setMonsterData(MonsterEnum.PINBOLT);
     }
 
     public void upgrade1() {
@@ -70,6 +68,6 @@ public class Boltam extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        setMonsterData(MonsterData.PLASMANTLER);
+        setMonsterData(MonsterEnum.PLASMANTLER);
     }
 }

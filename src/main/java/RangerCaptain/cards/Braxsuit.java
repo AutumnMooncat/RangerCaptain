@@ -3,15 +3,11 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.SuitUpPower;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
+import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.LoseDexterityPower;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -21,7 +17,7 @@ public class Braxsuit extends AbstractEasyCard {
     public Braxsuit() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = 3;
-        setMonsterData(MonsterData.BRAXSUIT);
+        setMonsterData(MonsterEnum.BRAXSUIT);
     }
 
     @Override
@@ -34,7 +30,7 @@ public class Braxsuit extends AbstractEasyCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.FLAPWOODS);
+        setMonsterData(MonsterEnum.FLAPWOODS);
     }
 
     @Override

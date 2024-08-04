@@ -2,9 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.MonsterData;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import RangerCaptain.util.MonsterEnum;
 import com.megacrit.cardcrawl.actions.unique.DiscardPileToTopOfDeckAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -18,7 +16,7 @@ public class Dandylion extends AbstractEasyCard {
     public Dandylion() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
         baseBlock = block = 8;
-        setMonsterData(MonsterData.DANDYLION);
+        setMonsterData(MonsterEnum.DANDYLION);
     }
 
     @Override
@@ -32,7 +30,7 @@ public class Dandylion extends AbstractEasyCard {
         upgradeBlock(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        setMonsterData(MonsterData.BLOSSOMAW);
+        setMonsterData(MonsterEnum.BLOSSOMAW);
     }
 
     @Override
