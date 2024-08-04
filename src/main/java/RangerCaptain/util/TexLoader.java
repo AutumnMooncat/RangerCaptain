@@ -20,9 +20,13 @@ public class TexLoader {
      * @return <b>com.badlogic.gdx.graphics.Texture</b> - The texture from the path provided
      */
     public static Texture getTexture(final String textureString) {
+        return getTexture(textureString, true);
+    }
+
+    public static Texture getTexture(final String textureString, boolean linear) {
         if (textures.get(textureString) == null) {
             try {
-                loadTexture(textureString, true);
+                loadTexture(textureString, linear);
             } catch (GdxRuntimeException e) {
                 return getTexture(makeImagePath("ui/missing.png"));
             }
