@@ -387,6 +387,9 @@ public class MainModfile implements
         if (TSCNFusionDataProcessor.SHOULD_PROCESS) {
             TSCNFusionDataProcessor.process();
         }
+        if (TRESPaletteDataProcessor.SHOULD_PROCESS) {
+            TRESPaletteDataProcessor.process();
+        }
     }
 
     public static boolean shaderTest = false;
@@ -413,6 +416,9 @@ public class MainModfile implements
     public void receivePostRender(SpriteBatch sb) {
         for (AbstractGameEffect effect : safeEffectQueue) {
             effect.render(sb);
+        }
+        if (FusionController.RENDER_TEST) {
+            FusionController.renderTest(sb);
         }
     }
 
