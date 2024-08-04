@@ -14,6 +14,16 @@ import java.util.stream.Stream;
 
 public class TSCNFusionDataProcessor {
     public static final boolean SHOULD_PROCESS = false;
+    private static final BufferedWriter writer;
+
+    static {
+        try {
+            writer = new BufferedWriter(new FileWriter("FusionDataOutput.log", false));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private static final String[] NODE_KEYS = new String[] {
             "[node name=\"Arm_Back\"",
             "[node name=\"Tail\"",
@@ -36,6 +46,7 @@ public class TSCNFusionDataProcessor {
                     parseFile(path.toFile());
                 }
             });
+            writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -44,27 +55,12 @@ public class TSCNFusionDataProcessor {
     public static void parseFile(File file) {
         try {
             String name = FormatHelper.capitalize(file.getName().replace(".tscn",""));
-            BufferedWriter writer = new BufferedWriter(new FileWriter("fusiondata\\"+name+".java", false));
-
-            //Write initial code block
-            writer.append("package RangerCaptain.fusionData;");
-            writer.newLine();
-            writer.newLine();
-            writer.append("import RangerCaptain.util.FusionData;");
-            writer.newLine();
-            writer.append("import com.badlogic.gdx.math.Vector2;");
-            writer.newLine();
-            writer.newLine();
-            writer.append("public class ").append(name).append(" extends FusionData {");
-            writer.newLine();
-            writer.append("\tpublic ").append(name).append("() {");
-            writer.newLine();
-            writer.append("\t\tsuper(");
+            writer.append("add(").append(name.toUpperCase());
 
             //Grab node stuff
             Scanner scanner = new Scanner(file);
             HashMap<Integer, String> assetMap = new HashMap<>();
-            int foundNodes = 0;
+            int nodeLayer = 0;
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 if (line.startsWith("[ext_resource path=\"res://sprites/")) {
@@ -79,31 +75,42 @@ public class TSCNFusionDataProcessor {
                         assetMap.put(index, path);
                     }
                 } else if (Arrays.stream(NODE_KEYS).anyMatch(line::startsWith)) {
-                    writer.append("new Node(");
+                    if (nodeLayer > 1) {
+                        writer.append(".build()).build()");
+                        nodeLayer = 0;
+                    }
+                    writer.append(", new NodeBuilder(").append(line.replace("[node name=","").replace(" type=\"Node2D\" parent=\".\"]",")"));
+                    nodeLayer++;
                 } else if (line.startsWith("visible = false")) {
-                    writer.append("false, ");
-                } else if (line.startsWith("position =") && foundNodes < 11) {
-                    writer.append(line.replace("position =","new")).append(", ");
-                } else if (line.startsWith("force_usage =")) {
-                    writer.append("true, ");
+                    writer.append(".setVisible(false)");
+                } else if (line.startsWith("position =") && nodeLayer > 0) {
+                    writer.append(".setPosition(").append(line.replace("position =","new")).append(")");
+                    if (nodeLayer > 1) {
+                        writer.append(".build())");
+                        nodeLayer--;
+                    }
+                } else if (line.startsWith("force_usage = true")) {
+                    writer.append(".setForceUsage(true)");
+                } else if (line.startsWith("match_part =")) {
+                    writer.append(line.replace("match_part = NodePath(\"../",".setMatchPart(\""));
+                } else if (line.startsWith("inverse_match = true")) {
+                    writer.append(".setInverseMatch(true)");
                 } else if (line.endsWith(" )]")) {
+                    if (nodeLayer > 1) {
+                        writer.append(".build())");
+                        nodeLayer--;
+                    }
                     String[] chunks = line.split(" ");
                     int index = Integer.parseInt(chunks[chunks.length-2]);
-                    writer.append("\"").append(assetMap.get(index)).append("\")");
-                    if (foundNodes < 10) {
-                        writer.append(", ");
-                    }
-                    foundNodes++;
+                    writer.append(".addChild(new NodeBuilder(\"").append(line.replace("[node name=\"","").replaceAll("\".*","\")"));
+                    nodeLayer++;
+                    writer.append(".setTexturePath(\"").append(assetMap.get(index)).append("\")");
+                } else if (line.startsWith("[node name=\"attack\"")) {
+                    writer.append(".build()).build());");
+                    nodeLayer = 0;
                 }
             }
-
-            //Finalize file
-            writer.append(");");
             writer.newLine();
-            writer.append("\t}");
-            writer.newLine();
-            writer.append("}");
-            writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
