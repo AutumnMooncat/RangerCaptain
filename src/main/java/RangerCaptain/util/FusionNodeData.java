@@ -6,35 +6,15 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
-public class FusionData {
-    public Node armBack;
-    public Node tail;
-    public Node frontLegBack;
-    public Node backLegBack;
-    public Node frontLegFront;
-    public Node backLegFront;
-    public Node body;
-    public Node helmetBack;
-    public Node head;
-    public Node helmetFront;
-    public Node armFront;
+public class FusionNodeData {
+    public Node[] nodes;
 
-    public FusionData(Node armBack, Node tail, Node frontLegBack, Node backLegBack, Node frontLegFront, Node backLegFront, Node body, Node helmetBack, Node head, Node helmetFront, Node armFront) {
-        this.armBack = armBack;
-        this.tail = tail;
-        this.frontLegBack = frontLegBack;
-        this.backLegBack = backLegBack;
-        this.frontLegFront = frontLegFront;
-        this.backLegFront = backLegFront;
-        this.body = body;
-        this.helmetBack = helmetBack;
-        this.head = head;
-        this.helmetFront = helmetFront;
-        this.armFront = armFront;
+    public FusionNodeData(Node... nodes) {
+        this.nodes = nodes;
     }
 
     public Node[] getNodes() {
-        return new Node[] {armBack, tail, frontLegBack, backLegBack, frontLegFront, backLegFront, body, helmetBack, head, helmetFront, armFront};
+        return nodes;
     }
 
     public static class Node {
