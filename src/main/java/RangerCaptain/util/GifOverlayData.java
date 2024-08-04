@@ -94,6 +94,7 @@ public class GifOverlayData {
         add(LITTLERED, "Littlered_idle.gif");
         add(LOBSTACLE, "Lobstacle_idle.gif");
         add(MACABRA, "Macabra_idle.gif");
+        add(MAGIKRAB, "Magikrab_idle.gif");
         add(MAJORTOM, "Majortom_idle.gif");
         add(MALCHEMY, "Malchemy_idle.gif");
         add(MANISPEAR, "Manispear_idle.gif");
