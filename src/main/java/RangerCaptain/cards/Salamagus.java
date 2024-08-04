@@ -4,6 +4,7 @@ import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.FlammablePower;
 import RangerCaptain.powers.MindMeldPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -15,14 +16,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Salamagus extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Salamagus.class.getSimpleName());
-    protected static Animation<TextureRegion> salamagus = loadGifOverlay("Salamagus_idle.gif");
-    protected static Animation<TextureRegion> adeptile = loadGifOverlay("Adeptile_idle.gif");
-    protected static Animation<TextureRegion> pyromeleon = loadGifOverlay("Pyromeleon_idle.gif");
 
     public Salamagus() {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = 3;
-        gifOverlay = salamagus;
+        setMonsterData(MonsterData.SALAMAGUS);
         baseInfo = info = 0;
     }
 
@@ -57,7 +55,7 @@ public class Salamagus extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(-1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = adeptile;
+        setMonsterData(MonsterData.ADEPTILE);
         baseInfo = info = 1;
     }
 
@@ -65,6 +63,6 @@ public class Salamagus extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        gifOverlay = pyromeleon;
+        setMonsterData(MonsterData.PYROMELEON);
     }
 }

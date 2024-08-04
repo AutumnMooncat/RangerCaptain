@@ -4,6 +4,7 @@ import RangerCaptain.actions.DamageFollowupAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.ConductivePower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -20,13 +21,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Sparktan extends AbstractEasyCard {
     public final static String ID = makeID(Sparktan.class.getSimpleName());
-    protected static Animation<TextureRegion> sparktan = loadGifOverlay("Sparktan_idle.gif");
-    protected static Animation<TextureRegion> zeustrike = loadGifOverlay("Zeustrike_idle.gif");
 
     public Sparktan() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 5;
-        gifOverlay = sparktan;
+        setMonsterData(MonsterData.SPARKTAN);
         exhaust = true;
     }
 
@@ -49,7 +48,7 @@ public class Sparktan extends AbstractEasyCard {
         tags.add(CardTags.STRIKE);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = zeustrike;
+        setMonsterData(MonsterData.ZEUSTRIKE);
     }
 
     @Override

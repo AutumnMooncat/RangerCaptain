@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.BurnedPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -15,14 +16,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Pondwalker extends AbstractEasyCard {
     public final static String ID = makeID(Pondwalker.class.getSimpleName());
-    protected static Animation<TextureRegion> pondwalker = loadGifOverlay("Pondwalker_idle.gif");
-    protected static Animation<TextureRegion> sharktanker = loadGifOverlay("Sharktanker_idle.gif");
 
     public Pondwalker() {
         super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 13;
         baseMagicNumber = magicNumber = 6;
-        gifOverlay = pondwalker;
+        setMonsterData(MonsterData.PONDWALKER);
     }
 
     @Override
@@ -37,7 +36,7 @@ public class Pondwalker extends AbstractEasyCard {
         upgradeMagicNumber(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = sharktanker;
+        setMonsterData(MonsterData.SHARKTANKER);
     }
 
     @Override

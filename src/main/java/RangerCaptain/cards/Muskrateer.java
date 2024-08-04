@@ -2,6 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -15,14 +16,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Muskrateer extends AbstractEasyCard {
     public final static String ID = makeID(Muskrateer.class.getSimpleName());
-    protected static Animation<TextureRegion> muskrateer = loadGifOverlay("Muskrateer_idle.gif");
-    protected static Animation<TextureRegion> ratcousel = loadGifOverlay("Ratcousel_idle.gif");
 
     public Muskrateer() {
         super(ID, 2, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = damage = 11;
         baseMagicNumber = magicNumber = 2;
-        gifOverlay = muskrateer;
+        setMonsterData(MonsterData.MUSKRATEER);
     }
 
     @Override
@@ -36,7 +35,7 @@ public class Muskrateer extends AbstractEasyCard {
         upgradeDamage(4);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = ratcousel;
+        setMonsterData(MonsterData.RATCOUSEL);
     }
 
     @Override

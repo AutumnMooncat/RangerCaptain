@@ -4,6 +4,7 @@ import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.powers.APBoostPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -15,13 +16,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Picksie extends AbstractEasyCard {
     public final static String ID = makeID(Picksie.class.getSimpleName());
-    protected static Animation<TextureRegion> picksie = loadGifOverlay("Picksie_idle.gif");
 
     public Picksie() {
         super(ID, 2, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
         baseBlock = block = 12;
         baseMagicNumber = magicNumber = 2;
-        gifOverlay = picksie;
+        setMonsterData(MonsterData.PICKSIE);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
 

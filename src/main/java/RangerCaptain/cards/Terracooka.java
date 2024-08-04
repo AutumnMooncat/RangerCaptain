@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.BurnedPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -15,13 +16,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Terracooka extends AbstractEasyCard {
     public final static String ID = makeID(Terracooka.class.getSimpleName());
-    protected static Animation<TextureRegion> terracooka = loadGifOverlay("Terracooka_idle.gif");
-    protected static Animation<TextureRegion> coaldron = loadGifOverlay("Coaldron_idle.gif");
 
     public Terracooka() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
         baseMagicNumber = magicNumber = 5;
-        gifOverlay = terracooka;
+        setMonsterData(MonsterData.TERRACOOKA);
     }
 
     @Override
@@ -35,7 +34,7 @@ public class Terracooka extends AbstractEasyCard {
         upgradeMagicNumber(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = coaldron;
+        setMonsterData(MonsterData.COALDRON);
     }
 
     @Override

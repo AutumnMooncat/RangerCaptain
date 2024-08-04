@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.MultitargetPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -15,14 +16,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Cluckabilly extends AbstractEasyCard {
     public final static String ID = makeID(Cluckabilly.class.getSimpleName());
-    protected static Animation<TextureRegion> clickabilly = loadGifOverlay("Cluckabilly_idle.gif");
-    protected static Animation<TextureRegion> rockertrice = loadGifOverlay("Rockertrice_idle.gif");
 
     public Cluckabilly() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL);
         baseMagicNumber = magicNumber = 2;
         baseSecondMagic = secondMagic = 1;
-        gifOverlay = clickabilly;
+        setMonsterData(MonsterData.CLUCKABILLY);
     }
 
     @Override
@@ -36,7 +35,7 @@ public class Cluckabilly extends AbstractEasyCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = rockertrice;
+        setMonsterData(MonsterData.ROCKERTRICE);
     }
 
     @Override

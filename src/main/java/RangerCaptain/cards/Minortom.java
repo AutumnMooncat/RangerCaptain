@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.CloseEncounterPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -15,13 +16,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Minortom extends AbstractEasyCard {
     public final static String ID = makeID(Minortom.class.getSimpleName());
-    protected static Animation<TextureRegion> minortom = loadGifOverlay("Minortom_idle.gif");
-    protected static Animation<TextureRegion> majortom = loadGifOverlay("Majortom_idle.gif");
 
     public Minortom() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
         baseMagicNumber = magicNumber = 3;
-        gifOverlay = minortom;
+        setMonsterData(MonsterData.MINORTOM);
     }
 
     @Override
@@ -35,7 +34,7 @@ public class Minortom extends AbstractEasyCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = majortom;
+        setMonsterData(MonsterData.MAJORTOM);
     }
 
     @Override

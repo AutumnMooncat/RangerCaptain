@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -16,11 +17,10 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Anathema extends AbstractEasyCard implements StartupCard {
     public final static String ID = makeID(Anathema.class.getSimpleName());
-    protected static Animation<TextureRegion> anathema = loadGifOverlay("Anathema_idle.gif");
 
     public Anathema() {
         super(ID, 0, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
-        gifOverlay = anathema;
+        setMonsterData(MonsterData.ANATHEMA);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
         exhaust = true;
     }

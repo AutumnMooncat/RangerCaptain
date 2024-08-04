@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.actions.BetterSelectCardsInHandAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.common.BetterDiscardPileToHandAction;
@@ -17,13 +18,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Faucetear extends AbstractEasyCard {
     public final static String ID = makeID(Faucetear.class.getSimpleName());
-    protected static Animation<TextureRegion> faucetear = loadGifOverlay("Faucetear_idle.gif");
-    protected static Animation<TextureRegion> fountess = loadGifOverlay("Fountess_idle.gif");
 
     public Faucetear() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
         baseMagicNumber = magicNumber = 2;
-        gifOverlay = faucetear;
+        setMonsterData(MonsterData.FAUCETEAR);
     }
 
     @Override
@@ -43,7 +42,7 @@ public class Faucetear extends AbstractEasyCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = fountess;
+        setMonsterData(MonsterData.FOUNTESS);
     }
 
     @Override

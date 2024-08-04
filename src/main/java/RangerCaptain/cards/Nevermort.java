@@ -2,6 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -14,13 +15,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Nevermort extends AbstractEasyCard {
     public final static String ID = makeID(Nevermort.class.getSimpleName());
-    protected static Animation<TextureRegion> nevermort = loadGifOverlay("Nevermort_idle.gif");
-    protected static Animation<TextureRegion> apocrowlypse = loadGifOverlay("Apocrowlypse_idle.gif");
 
     public Nevermort() {
         super(ID, 0, CardType.SKILL, CardRarity.COMMON, CardTarget.ALL_ENEMY);
         baseMagicNumber = magicNumber = 3;
-        gifOverlay = nevermort;
+        setMonsterData(MonsterData.NEVERMORT);
     }
 
     @Override
@@ -33,7 +32,7 @@ public class Nevermort extends AbstractEasyCard {
         upgradeMagicNumber(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = apocrowlypse;
+        setMonsterData(MonsterData.APOCROWLYPSE);
     }
 
     @Override

@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.actions.BetterSelectCardsInHandAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -20,13 +21,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Trapwurm extends AbstractEasyCard {
     public final static String ID = makeID(Trapwurm.class.getSimpleName());
-    protected static Animation<TextureRegion> trapwurm = loadGifOverlay("Trapwurm_idle.gif");
-    protected static Animation<TextureRegion> wyrmaw = loadGifOverlay("Wyrmaw_idle.gif");
 
     public Trapwurm() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 11;
-        gifOverlay = trapwurm;
+        setMonsterData(MonsterData.TRAPWURM);
     }
 
     @Override
@@ -48,7 +47,7 @@ public class Trapwurm extends AbstractEasyCard {
         upgradeDamage(4);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = wyrmaw;
+        setMonsterData(MonsterData.WYRMAW);
     }
 
     @Override

@@ -50,7 +50,7 @@ public class GifOverlayData {
         add(CHARLEQUIN, "Charlequin_idle.gif");
         add(CLOCKSLEY, "Clocksley_idle.gif");
         add(CLUCKABILLY, "Cluckabilly_idle.gif");
-        add(COALDRON, "Coaldrop_idle.gif");
+        add(COALDRON, "Coaldron_idle.gif");
         add(CRYOSHEAR, "Cryoshear_idle.gif");
         add(DANDYLION, "Dandylion_idle.gif");
         add(DECIBELLE, "Decibelle_idle.gif");
@@ -105,7 +105,7 @@ public class GifOverlayData {
         add(MIASMODEUS, "Miasmodeus_idle.gif");
         add(MINORTOM, "Minortom_idle.gif");
         add(MISS_MIMIC, "Miss_Mimic_idle.gif");
-        add(MOTHMANIC, "Mothmantic_idle.gif");
+        add(MOTHMANIC, "Mothmanic_idle.gif");
         add(MUSKRATEER, "Muskrateer_idle.gif");
         add(NEVERMORT, "Nevermort_idle.gif");
         add(PADPOLE, "Padpole_idle.gif");
@@ -118,7 +118,7 @@ public class GifOverlayData {
         add(PONDWALKER, "Pondwalker_idle.gif");
         add(PUPPERCUT, "Puppercut_idle.gif");
         add(PYROMELEON, "Pyromeleon_idle.gif");
-        add(QUEENYX, "Queenix_idle.gif");
+        add(QUEENYX, "Queenyx_idle.gif");
         add(RAMTASM, "Ramtasm_idle.gif");
         add(RATCOUSEL, "Ratcousel_idle.gif");
         add(REGENSEA, "Regensea_idle.gif");

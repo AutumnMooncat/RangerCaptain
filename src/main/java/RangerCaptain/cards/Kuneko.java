@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -22,15 +23,13 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Kuneko extends AbstractEasyCard {
     public final static String ID = makeID(Kuneko.class.getSimpleName());
-    protected static Animation<TextureRegion> kuneko = loadGifOverlay("Kuneko_idle.gif");
-    protected static Animation<TextureRegion> shiningKuneko = loadGifOverlay("Shining_Kuneko_idle.gif");
 
     public Kuneko() {
         super(ID, 3, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY);
         baseDamage = damage = 20;
         baseMagicNumber = magicNumber = 2;
         isMultiDamage = true;
-        gifOverlay = kuneko;
+        setMonsterData(MonsterData.KUNEKO);
     }
 
     @Override
@@ -53,7 +52,7 @@ public class Kuneko extends AbstractEasyCard {
         upgradeDamage(8);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = shiningKuneko;
+        setMonsterData(MonsterData.SHINING_KUNEKO);
     }
 
     @Override

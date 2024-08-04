@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.TapeJamPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -15,13 +16,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Ferriclaw extends AbstractEasyCard {
     public final static String ID = makeID(Ferriclaw.class.getSimpleName());
-    protected static Animation<TextureRegion> ferriclaw = loadGifOverlay("Ferriclaw_idle.gif");
-    protected static Animation<TextureRegion> auriclaw = loadGifOverlay("Auriclaw_idle.gif");
 
     public Ferriclaw() {
         super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
         baseMagicNumber = magicNumber = 2;
-        gifOverlay = ferriclaw;
+        setMonsterData(MonsterData.FERRICLAW);
     }
 
     @Override
@@ -35,7 +34,7 @@ public class Ferriclaw extends AbstractEasyCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = auriclaw;
+        setMonsterData(MonsterData.AURICLAW);
     }
 
     @Override

@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
@@ -16,14 +17,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Sanzatime extends AbstractEasyCard {
     public final static String ID = makeID(Sanzatime.class.getSimpleName());
-    protected static Animation<TextureRegion> sanzatime = loadGifOverlay("Sanzatime_idle.gif");
-    protected static Animation<TextureRegion> fortiwinx = loadGifOverlay("Fortiwinx_idle.gif");
 
     public Sanzatime() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = damage = 5;
         baseMagicNumber = magicNumber = 1;
-        gifOverlay = sanzatime;
+        setMonsterData(MonsterData.SANZATIME);
     }
 
     @Override
@@ -52,7 +51,7 @@ public class Sanzatime extends AbstractEasyCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = fortiwinx;
+        setMonsterData(MonsterData.FORTIWINX);
     }
 
     @Override

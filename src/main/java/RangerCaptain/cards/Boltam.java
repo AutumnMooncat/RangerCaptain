@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.ConductivePower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -19,16 +20,13 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Boltam extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Boltam.class.getSimpleName());
-    protected static Animation<TextureRegion> boltam = loadGifOverlay("Boltam_idle.gif");
-    protected static Animation<TextureRegion> pinbolt = loadGifOverlay("Pinbolt_idle.gif");
-    protected static Animation<TextureRegion> plasmantler = loadGifOverlay("Plasmantler_idle.gif");
 
     public Boltam() {
         super(ID, 0, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 3;
         baseMagicNumber = magicNumber = 3;
         baseSecondMagic = secondMagic = 1;
-        gifOverlay = boltam;
+        setMonsterData(MonsterData.BOLTAM);
         baseInfo = info = 1;
     }
 
@@ -64,7 +62,7 @@ public class Boltam extends AbstractMultiUpgradeCard {
         upgradeSecondMagic(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = pinbolt;
+        setMonsterData(MonsterData.PINBOLT);
     }
 
     public void upgrade1() {
@@ -72,6 +70,6 @@ public class Boltam extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        gifOverlay = plasmantler;
+        setMonsterData(MonsterData.PLASMANTLER);
     }
 }

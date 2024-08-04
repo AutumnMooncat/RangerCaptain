@@ -2,6 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -13,14 +14,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Pombomb extends AbstractEasyCard {
     public final static String ID = makeID(Pombomb.class.getSimpleName());
-    protected static Animation<TextureRegion> pombomb = loadGifOverlay("Pombomb_idle.gif");
-    protected static Animation<TextureRegion> spitzfyre = loadGifOverlay("Spitzfyre_idle.gif");
 
     public Pombomb() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY);
         baseDamage = damage = 3;
         baseMagicNumber = magicNumber = 2;
-        gifOverlay = pombomb;
+        setMonsterData(MonsterData.POMBOMB);
         isMultiDamage = true;
     }
 
@@ -36,7 +35,7 @@ public class Pombomb extends AbstractEasyCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = spitzfyre;
+        setMonsterData(MonsterData.SPITZFYRE);
     }
 
     @Override

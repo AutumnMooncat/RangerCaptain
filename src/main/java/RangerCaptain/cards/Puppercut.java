@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.ResonancePower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -15,14 +16,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Puppercut extends AbstractEasyCard {
     public final static String ID = makeID(Puppercut.class.getSimpleName());
-    protected static Animation<TextureRegion> puppercut = loadGifOverlay("Puppercut_idle.gif");
-    protected static Animation<TextureRegion> southpaw = loadGifOverlay("Southpaw_idle.gif");
 
     public Puppercut() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = damage = 4;
         baseMagicNumber = magicNumber = 1;
-        gifOverlay = puppercut;
+        setMonsterData(MonsterData.PUPPERCUT);
     }
 
     @Override
@@ -36,7 +35,7 @@ public class Puppercut extends AbstractEasyCard {
         upgradeBaseCost(0);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = southpaw;
+        setMonsterData(MonsterData.SOUTHPAW);
     }
 
     @Override

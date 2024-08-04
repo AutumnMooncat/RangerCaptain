@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.BoobyTrappedPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -16,13 +17,10 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Charlequin extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Charlequin.class.getSimpleName());
-    protected static Animation<TextureRegion> charlequin = loadGifOverlay("Charlequin_idle.gif");
-    protected static Animation<TextureRegion> blunderbusk = loadGifOverlay("Blunderbusk_idle.gif");
-    protected static Animation<TextureRegion> fragliacci = loadGifOverlay("Fragliacci_idle.gif");
 
     public Charlequin() {
         super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
-        gifOverlay = charlequin;
+        setMonsterData(MonsterData.CHARLEQUIN);
         baseInfo = info = 0;
         exhaust = true;
     }
@@ -56,7 +54,7 @@ public class Charlequin extends AbstractMultiUpgradeCard {
         upgradeBaseCost(0);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = blunderbusk;
+        setMonsterData(MonsterData.BLUNDERBUSK);
     }
 
     public void upgrade1() {
@@ -64,7 +62,7 @@ public class Charlequin extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        gifOverlay = fragliacci;
+        setMonsterData(MonsterData.FRAGLIACCI);
         baseInfo = info = 1;
     }
 }

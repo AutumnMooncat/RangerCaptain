@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -17,12 +18,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class DjinnEntonic extends AbstractEasyCard {
     public final static String ID = makeID(DjinnEntonic.class.getSimpleName());
-    protected static Animation<TextureRegion> djinn = loadGifOverlay("Djinn_Entonic_idle.gif");
 
     public DjinnEntonic() {
         super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = 2;
-        gifOverlay = djinn;
+        setMonsterData(MonsterData.DJINN_ENTONIC);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
         cardsToPreview = new Dazed();
     }

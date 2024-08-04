@@ -4,6 +4,7 @@ import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.powers.CloseEncounterPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -17,12 +18,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Khepri extends AbstractEasyCard {
     public final static String ID = makeID(Khepri.class.getSimpleName());
-    protected static Animation<TextureRegion> khepri = loadGifOverlay("Khepri_idle.gif");
 
     public Khepri() {
         super(ID, 0, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
         baseDamage = damage = 6;
-        gifOverlay = khepri;
+        setMonsterData(MonsterData.KHEPRI);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
 

@@ -4,6 +4,7 @@ import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.YeetCardPatches;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.FormatHelper;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -24,13 +25,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Kittelly extends AbstractEasyCard {
     public final static String ID = makeID(Kittelly.class.getSimpleName());
-    protected static Animation<TextureRegion> kittelly = loadGifOverlay("Kittelly_idle.gif");
-    protected static Animation<TextureRegion> cat5 = loadGifOverlay("Cat-5_idle.gif");
     private AbstractCard lastCard;
 
     public Kittelly() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
-        gifOverlay = kittelly;
+        setMonsterData(MonsterData.KITTELLY);
     }
 
     @Override
@@ -81,7 +80,7 @@ public class Kittelly extends AbstractEasyCard {
         upgradeBaseCost(0);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = cat5;
+        setMonsterData(MonsterData.CATFIVE);
     }
 
     @Override

@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.LosePowerLaterPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -15,14 +16,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Macabra extends AbstractEasyCard {
     public final static String ID = makeID(Macabra.class.getSimpleName());
-    protected static Animation<TextureRegion> macabra = loadGifOverlay("Macabra_idle.gif");
-    protected static Animation<TextureRegion> folklord = loadGifOverlay("Folklord_idle.gif");
 
     public Macabra() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
         baseBlock = block = 6;
         baseMagicNumber = magicNumber = 3;
-        gifOverlay = macabra;
+        setMonsterData(MonsterData.MACABRA);
     }
 
     @Override
@@ -38,7 +37,7 @@ public class Macabra extends AbstractEasyCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = folklord;
+        setMonsterData(MonsterData.FOLKLORD);
     }
 
     @Override

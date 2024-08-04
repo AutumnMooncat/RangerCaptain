@@ -4,6 +4,7 @@ import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.CloseEncounterPower;
 import RangerCaptain.powers.MindMeldPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -23,15 +24,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Allseer extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Allseer.class.getSimpleName());
-    protected static Animation<TextureRegion> allseer = loadGifOverlay("Allseer_idle.gif");
-    protected static Animation<TextureRegion> khufo = loadGifOverlay("Khufo_idle.gif");
-    protected static Animation<TextureRegion> triphinx = loadGifOverlay("Triphinx_idle.gif");
 
     public Allseer() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF_AND_ENEMY);
         baseBlock = block = 6;
         baseMagicNumber = magicNumber = 1;
-        gifOverlay = allseer;
+        setMonsterData(MonsterData.ALLSEER);
         baseInfo = info = 0;
     }
 
@@ -74,7 +72,7 @@ public class Allseer extends AbstractMultiUpgradeCard {
         upgradeBlock(-3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = khufo;
+        setMonsterData(MonsterData.KHUFO);
         baseInfo = info = 1;
     }
 
@@ -83,7 +81,7 @@ public class Allseer extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        gifOverlay = triphinx;
+        setMonsterData(MonsterData.TRIPHINX);
         info = baseInfo = 2;
     }
 }

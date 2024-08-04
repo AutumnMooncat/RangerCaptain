@@ -4,6 +4,7 @@ import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.damageMods.BootDamage;
 import RangerCaptain.damageMods.PiercingDamage;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -17,17 +18,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Bansheep extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Bansheep.class.getSimpleName());
-    protected static Animation<TextureRegion> bansheep = loadGifOverlay("Bansheep_idle.gif");
-    protected static Animation<TextureRegion> wooltergeist = loadGifOverlay("Wooltergeist_idle.gif");
-    protected static Animation<TextureRegion> ramtasm = loadGifOverlay("Ramtasm_idle.gif");
-    protected static Animation<TextureRegion> zombleat = loadGifOverlay("Zombleat_idle.gif");
-    protected static Animation<TextureRegion> capricorpse = loadGifOverlay("Capricorpse_idle.gif");
 
     public Bansheep() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 10;
         baseMagicNumber = magicNumber = 0;
-        gifOverlay = bansheep;
+        setMonsterData(MonsterData.BANSHEEP);
         baseInfo = info = 0;
     }
 
@@ -66,7 +62,7 @@ public class Bansheep extends AbstractMultiUpgradeCard {
         DamageModifierManager.addModifier(this, new BootDamage(CardModifierManager.modifiedBaseValue(this, baseDamage, "D")));
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = wooltergeist;
+        setMonsterData(MonsterData.WOOLTERGEIST);
         baseInfo = info = CardModifierManager.modifiedBaseValue(this, baseDamage, "D");
         baseSecondMagic = secondMagic = info - 1;
     }
@@ -80,7 +76,7 @@ public class Bansheep extends AbstractMultiUpgradeCard {
         });
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        gifOverlay = ramtasm;
+        setMonsterData(MonsterData.RAMTASM);
         baseInfo = info = CardModifierManager.modifiedBaseValue(this, baseDamage, "D");
         upgradedInfo = true;
         baseSecondMagic = secondMagic = info - 1;
@@ -93,7 +89,7 @@ public class Bansheep extends AbstractMultiUpgradeCard {
         DamageModifierManager.addModifier(this, new PiercingDamage());
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
-        gifOverlay = zombleat;
+        setMonsterData(MonsterData.ZOMBLEAT);
     }
 
     public void upgrade3() {
@@ -101,6 +97,6 @@ public class Bansheep extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[3];
         initializeTitle();
-        gifOverlay = capricorpse;
+        setMonsterData(MonsterData.CAPRICORPSE);
     }
 }

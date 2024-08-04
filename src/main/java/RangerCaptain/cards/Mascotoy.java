@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.MindMeldPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -17,14 +18,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Mascotoy extends AbstractEasyCard {
     public final static String ID = makeID(Mascotoy.class.getSimpleName());
-    protected static Animation<TextureRegion> mascotoy = loadGifOverlay("Mascotoy_idle.gif");
-    protected static Animation<TextureRegion> mascotorn = loadGifOverlay("Mascotorn_idle.gif");
 
     public Mascotoy() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 4;
         baseInfo = info = 1;
-        gifOverlay = mascotoy;
+        setMonsterData(MonsterData.MASCOTOY);
     }
 
     @Override
@@ -42,7 +41,7 @@ public class Mascotoy extends AbstractEasyCard {
         upgradeDamage(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = mascotorn;
+        setMonsterData(MonsterData.MASCOTORN);
     }
 
     @Override

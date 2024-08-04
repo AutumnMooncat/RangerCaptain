@@ -2,6 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -14,15 +15,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Traffikrab extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Traffikrab.class.getSimpleName());
-    protected static Animation<TextureRegion> traffikrab = loadGifOverlay("Traffikrab_idle.gif");
-    protected static Animation<TextureRegion> weevilite = loadGifOverlay("Weevilite_idle.gif");
-    protected static Animation<TextureRegion> lobstacle = loadGifOverlay("Lobstacle_idle.gif");
 
     public Traffikrab() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
         baseBlock = block = 7;
         baseMagicNumber = magicNumber = 1;
-        gifOverlay = traffikrab;
+        setMonsterData(MonsterData.TRAFFIKRAB);
     }
 
     @Override
@@ -53,13 +51,13 @@ public class Traffikrab extends AbstractMultiUpgradeCard {
         upgradeBlock(-2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = weevilite;
+        setMonsterData(MonsterData.WEEVILITE);
     }
 
     public void upgrade1() {
         upgradeBlock(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        gifOverlay = lobstacle;
+        setMonsterData(MonsterData.LOBSTACLE);
     }
 }

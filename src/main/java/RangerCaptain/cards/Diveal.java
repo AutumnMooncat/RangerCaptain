@@ -4,6 +4,7 @@ import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CardCounterPatches;
 import RangerCaptain.powers.TapeJamPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -18,14 +19,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Diveal extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Diveal.class.getSimpleName());
-    protected static Animation<TextureRegion> diveal = loadGifOverlay("Diveal_idle.gif");
-    protected static Animation<TextureRegion> diveberg = loadGifOverlay("Diveberg_idle.gif");
-    protected static Animation<TextureRegion> scubalrus = loadGifOverlay("Scubalrus_idle.gif");
 
     public Diveal() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
         baseDamage = damage = 12;
-        gifOverlay = diveal;
+        setMonsterData(MonsterData.DIVEAL);
     }
 
     @Override
@@ -68,13 +66,13 @@ public class Diveal extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = diveberg;
+        setMonsterData(MonsterData.DIVEBERG);
     }
 
     public void upgrade1() {
         upgradeDamage(4);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        gifOverlay = scubalrus;
+        setMonsterData(MonsterData.SCUBALRUS);
     }
 }

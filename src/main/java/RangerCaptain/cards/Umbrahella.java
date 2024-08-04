@@ -4,6 +4,7 @@ import RangerCaptain.actions.EasyXCostAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -19,11 +20,10 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Umbrahella extends AbstractEasyCard {
     public final static String ID = makeID(Umbrahella.class.getSimpleName());
-    protected static Animation<TextureRegion> umbrahella = loadGifOverlay("Umbrahella_idle.gif");
 
     public Umbrahella() {
         super(ID, -1, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY);
-        gifOverlay = umbrahella;
+        setMonsterData(MonsterData.UMBRAHELLA);
         baseDamage = damage = 5;
         baseMagicNumber = magicNumber = 2;
         isMultiDamage = true;

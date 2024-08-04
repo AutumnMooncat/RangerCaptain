@@ -4,6 +4,7 @@ import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.powers.GhostlyPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -15,12 +16,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Hauntome extends AbstractEasyCard {
     public final static String ID = makeID(Hauntome.class.getSimpleName());
-    protected static Animation<TextureRegion> hauntome = loadGifOverlay("Hauntome_idle.gif");
 
     public Hauntome() {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = 2;
-        gifOverlay = hauntome;
+        setMonsterData(MonsterData.HAUNTOME);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
 

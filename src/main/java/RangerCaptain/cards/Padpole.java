@@ -5,6 +5,7 @@ import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.APBoostPower;
 import RangerCaptain.powers.LeechedPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -17,14 +18,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Padpole extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Padpole.class.getSimpleName());
-    protected static Animation<TextureRegion> padpole = loadGifOverlay("Padpole_idle.gif");
-    protected static Animation<TextureRegion> frillypad = loadGifOverlay("Frillypad_idle.gif");
-    protected static Animation<TextureRegion> liligator = loadGifOverlay("Liligator_idle.gif");
 
     public Padpole() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         baseBlock = block = 5;
-        gifOverlay = padpole;
+        setMonsterData(MonsterData.PADPOLE);
     }
 
     @Override
@@ -53,13 +51,13 @@ public class Padpole extends AbstractMultiUpgradeCard {
         upgradeBlock(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = frillypad;
+        setMonsterData(MonsterData.FRILLYPAD);
     }
 
     public void upgrade1() {
         upgradeBlock(5);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        gifOverlay = liligator;
+        setMonsterData(MonsterData.LILIGATOR);
     }
 }

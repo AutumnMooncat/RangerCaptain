@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.actions.BetterSelectCardsInHandAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
@@ -17,14 +18,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Burnace extends AbstractEasyCard {
     public final static String ID = makeID(Burnace.class.getSimpleName());
-    protected static Animation<TextureRegion> burnace = loadGifOverlay("Burnace_idle.gif");
-    protected static Animation<TextureRegion> smogmagog = loadGifOverlay("Smogmagog_idle.gif");
 
     public Burnace() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         baseBlock = block = 4;
         baseMagicNumber = magicNumber = 3;
-        gifOverlay = burnace;
+        setMonsterData(MonsterData.BURNACE);
     }
 
     @Override
@@ -42,7 +41,7 @@ public class Burnace extends AbstractEasyCard {
         upgradeBlock(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = smogmagog;
+        setMonsterData(MonsterData.SMOGMAGOG);
     }
 
     @Override

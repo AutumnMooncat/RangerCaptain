@@ -4,6 +4,7 @@ import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.powers.GlassBondsPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -15,12 +16,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Glaistain extends AbstractEasyCard {
     public final static String ID = makeID(Glaistain.class.getSimpleName());
-    protected static Animation<TextureRegion> glaistain = loadGifOverlay("Glaistain_idle.gif");
 
     public Glaistain() {
         super(ID, 1, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = 5;
-        gifOverlay = glaistain;
+        setMonsterData(MonsterData.GLAISTAIN);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
 

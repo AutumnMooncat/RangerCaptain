@@ -2,6 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -16,17 +17,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Candevil extends AbstractMultiUpgradeCard implements StartupCard {
     public final static String ID = makeID(Candevil.class.getSimpleName());
-    protected static Animation<TextureRegion> candevil = loadGifOverlay("Candevil_idle.gif");
-    protected static Animation<TextureRegion> malchemy = loadGifOverlay("Malchemy_idle.gif");
-    protected static Animation<TextureRegion> miasmodeus = loadGifOverlay("Miasmodeus_idle.gif");
-    protected static Animation<TextureRegion> vendemon = loadGifOverlay("Vendemon_idle.gif");
-    protected static Animation<TextureRegion> gumbaal = loadGifOverlay("Gumbaal_idle.gif");
-
     public Candevil() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         baseBlock = block = 9;
         baseMagicNumber = magicNumber = 0;
-        gifOverlay = candevil;
+        setMonsterData(MonsterData.CANDEVIL);
         baseInfo = info = 0;
     }
 
@@ -63,7 +58,7 @@ public class Candevil extends AbstractMultiUpgradeCard implements StartupCard {
         target = CardTarget.SELF_AND_ENEMY;
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = malchemy;
+        setMonsterData(MonsterData.MALCHEMY);
         baseInfo = info = 1;
     }
 
@@ -72,7 +67,7 @@ public class Candevil extends AbstractMultiUpgradeCard implements StartupCard {
         upgradeMagicNumber(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        gifOverlay = miasmodeus;
+        setMonsterData(MonsterData.MIASMODEUS);
     }
 
     public void upgrade2() {
@@ -80,7 +75,7 @@ public class Candevil extends AbstractMultiUpgradeCard implements StartupCard {
         upgradeMagicNumber(5);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
-        gifOverlay = vendemon;
+        setMonsterData(MonsterData.VENDEMON);
         baseInfo = info = 2;
     }
 
@@ -89,7 +84,7 @@ public class Candevil extends AbstractMultiUpgradeCard implements StartupCard {
         upgradeMagicNumber(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[3];
         initializeTitle();
-        gifOverlay = gumbaal;
+        setMonsterData(MonsterData.GUMBAAL);
     }
 
     @Override

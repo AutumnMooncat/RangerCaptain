@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.actions.FormalComplaintAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -15,14 +16,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Spirouette extends AbstractEasyCard {
     public final static String ID = makeID(Spirouette.class.getSimpleName());
-    protected static Animation<TextureRegion> spirouette = loadGifOverlay("Spirouette_idle.gif");
-    protected static Animation<TextureRegion> regensea = loadGifOverlay("Regensea_idle.gif");
 
     public Spirouette() {
         super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 14;
         baseMagicNumber = magicNumber = 6;
-        gifOverlay = spirouette;
+        setMonsterData(MonsterData.SPIROUETTE);
     }
 
     @Override
@@ -36,7 +35,7 @@ public class Spirouette extends AbstractEasyCard {
         upgradeDamage(5);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = regensea;
+        setMonsterData(MonsterData.REGENSEA);
     }
 
     @Override

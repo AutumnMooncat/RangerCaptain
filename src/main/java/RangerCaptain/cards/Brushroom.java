@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CardCounterPatches;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -16,14 +17,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Brushroom extends AbstractEasyCard {
     public final static String ID = makeID(Brushroom.class.getSimpleName());
-    protected static Animation<TextureRegion> brushroom = loadGifOverlay("Brushroom_idle.gif");
-    protected static Animation<TextureRegion> fungogh = loadGifOverlay("Fungogh_idle.gif");
 
     public Brushroom() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 9;
         baseMagicNumber = magicNumber = 2;
-        gifOverlay = brushroom;
+        setMonsterData(MonsterData.BRUSHROOM);
     }
 
     @Override
@@ -52,7 +51,7 @@ public class Brushroom extends AbstractEasyCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = fungogh;
+        setMonsterData(MonsterData.FUNGOGH);
     }
 
     @Override

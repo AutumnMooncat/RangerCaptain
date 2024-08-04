@@ -2,6 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -18,17 +19,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Carniviper extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Carniviper.class.getSimpleName());
-    protected static Animation<TextureRegion> carniviper = loadGifOverlay("Carniviper_idle.gif");
-    protected static Animation<TextureRegion> masquerattle = loadGifOverlay("Masquerattle_idle.gif");
-    protected static Animation<TextureRegion> aeroboros = loadGifOverlay("Aeroboros_idle.gif");
-    protected static Animation<TextureRegion> maridusa = loadGifOverlay("Mardiusa_idle.gif");
-    protected static Animation<TextureRegion> jormungold = loadGifOverlay("Jormungold_idle.gif");
 
     public Carniviper() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = damage = 6;
         baseMagicNumber = magicNumber = 3;
-        gifOverlay = carniviper;
+        setMonsterData(MonsterData.CARNIVIPER);
         baseInfo = info = 0;
     }
 
@@ -84,28 +80,28 @@ public class Carniviper extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = masquerattle;
+        setMonsterData(MonsterData.MASQUERATTLE);
     }
 
     public void upgrade1() {
         upgradeBaseCost(0);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        gifOverlay = aeroboros;
+        setMonsterData(MonsterData.AEROBOROS);
     }
 
     public void upgrade2() {
         upgradeBaseCost(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
-        gifOverlay = maridusa;
+        setMonsterData(MonsterData.MARDIUSA);
         baseInfo = info = 1;
     }
 
     public void upgrade3() {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[3];
         initializeTitle();
-        gifOverlay = jormungold;
+        setMonsterData(MonsterData.JORMUNGOLD);
         baseInfo = info = 2;
     }
 }

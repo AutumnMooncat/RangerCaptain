@@ -4,6 +4,7 @@ import RangerCaptain.actions.DoAction;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CardCounterPatches;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import RangerCaptain.vfx.BurnToAshEffect;
 import basemod.BaseMod;
@@ -24,16 +25,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Bulletino extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Bulletino.class.getSimpleName());
-    protected static Animation<TextureRegion> bulletino = loadGifOverlay("Bulletino_idle.gif");
-    protected static Animation<TextureRegion> velocirifle = loadGifOverlay("Velocirifle_idle.gif");
-    protected static Animation<TextureRegion> artillerex = loadGifOverlay("Artillerex_idle.gif");
-    protected static Animation<TextureRegion> gearyu = loadGifOverlay("Gearyu_idle.gif");
 
     public Bulletino() {
         super(ID, 0, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
         baseDamage = damage = 4;
         baseMagicNumber = magicNumber = 2;
-        gifOverlay = bulletino;
+        setMonsterData(MonsterData.BULLETINO);
         baseInfo = info = 0;
         exhaust = true;
     }
@@ -103,7 +100,7 @@ public class Bulletino extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = velocirifle;
+        setMonsterData(MonsterData.VELOCIRIFLE);
         baseInfo = info = 1;
         exhaust = false;
     }
@@ -115,7 +112,7 @@ public class Bulletino extends AbstractMultiUpgradeCard {
         target = CardTarget.ALL_ENEMY;
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        gifOverlay = artillerex;
+        setMonsterData(MonsterData.ARTILLEREX);
         baseInfo = info = 2;
     }
 
@@ -125,7 +122,7 @@ public class Bulletino extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
-        gifOverlay = gearyu;
+        setMonsterData(MonsterData.GEARYU);
         baseInfo = info = 3;
     }
 }

@@ -4,6 +4,7 @@ import RangerCaptain.actions.CleansePowerAction;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.LeechedPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -18,15 +19,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Jumpkin extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Jumpkin.class.getSimpleName());
-    protected static Animation<TextureRegion> jumpkin = loadGifOverlay("Jumpkin_idle.gif");
-    protected static Animation<TextureRegion> draculeaf = loadGifOverlay("Draculeaf_idle.gif");
-    protected static Animation<TextureRegion> beanstalker = loadGifOverlay("Beanstalker_idle.gif");
 
     public Jumpkin() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseMagicNumber = magicNumber = 5;
         baseSecondMagic = secondMagic = 1;
-        gifOverlay = jumpkin;
+        setMonsterData(MonsterData.JUMPKIN);
         baseInfo = info = 0;
     }
 
@@ -65,7 +63,7 @@ public class Jumpkin extends AbstractMultiUpgradeCard {
         target = CardTarget.ALL_ENEMY;
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = draculeaf;
+        setMonsterData(MonsterData.DRACULEAF);
     }
 
     public void upgrade1() {
@@ -73,6 +71,6 @@ public class Jumpkin extends AbstractMultiUpgradeCard {
         upgradeSecondMagic(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        gifOverlay = beanstalker;
+        setMonsterData(MonsterData.BEANSTALKER);
     }
 }

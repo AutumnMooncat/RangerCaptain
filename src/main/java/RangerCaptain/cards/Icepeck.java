@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CardCounterPatches;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -14,14 +15,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Icepeck extends AbstractEasyCard {
     public final static String ID = makeID(Icepeck.class.getSimpleName());
-    protected static Animation<TextureRegion> icepeck = loadGifOverlay("Icepeck_idle.gif");
-    protected static Animation<TextureRegion> cryoshear = loadGifOverlay("Cryoshear_idle.gif");
 
     public Icepeck() {
         super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 8;
         baseMagicNumber = magicNumber = 2;
-        gifOverlay = icepeck;
+        setMonsterData(MonsterData.ICEPECK);
     }
 
     @Override
@@ -44,7 +43,7 @@ public class Icepeck extends AbstractEasyCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = cryoshear;
+        setMonsterData(MonsterData.CRYOSHEAR);
     }
 
     @Override

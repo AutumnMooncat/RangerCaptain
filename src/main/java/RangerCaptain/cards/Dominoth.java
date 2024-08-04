@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.ConductivePower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import basemod.BaseMod;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -19,16 +20,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Dominoth extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Dominoth.class.getSimpleName());
-    protected static Animation<TextureRegion> dominoth = loadGifOverlay("Dominoth_idle.gif");
-    protected static Animation<TextureRegion> wingloom = loadGifOverlay("Wingloom_idle.gif");
-    protected static Animation<TextureRegion> mothmanic = loadGifOverlay("Mothmanic_idle.gif");
-    protected static Animation<TextureRegion> tokusect = loadGifOverlay("Tokusect_idle.gif");
     private String rollerKey = ID;
 
     public Dominoth() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
         baseMagicNumber = magicNumber = 3;
-        gifOverlay = dominoth;
+        setMonsterData(MonsterData.DOMINOTH);
         baseInfo = info = 0;
     }
 
@@ -101,7 +98,7 @@ public class Dominoth extends AbstractMultiUpgradeCard {
         target = CardTarget.ENEMY;
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = wingloom;
+        setMonsterData(MonsterData.WINGLOOM);
         baseInfo = info = 1;
     }
 
@@ -109,7 +106,7 @@ public class Dominoth extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        gifOverlay = mothmanic;
+        setMonsterData(MonsterData.MOTHMANIC);
     }
 
     public void upgrade2() {
@@ -118,7 +115,7 @@ public class Dominoth extends AbstractMultiUpgradeCard {
         type = CardType.ATTACK;
         target = CardTarget.ENEMY;
         initializeTitle();
-        gifOverlay = tokusect;
+        setMonsterData(MonsterData.TOKUSECT);
         baseInfo = info = 2;
         rollerKey += "Attack";
         needsArtRefresh = true;

@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -18,15 +19,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Elfless extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Elfless.class.getSimpleName());
-    protected static Animation<TextureRegion> elfless = loadGifOverlay("Elfless_idle.gif");
-    protected static Animation<TextureRegion> faerious = loadGifOverlay("Faerious_idle.gif");
-    protected static Animation<TextureRegion> grampus = loadGifOverlay("Grampus_idle.gif");
 
     public Elfless() {
         super(ID, 2, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = damage = 10;
         baseMagicNumber = magicNumber = 2;
-        gifOverlay = elfless;
+        setMonsterData(MonsterData.ELFLESS);
         baseInfo = info = 0;
     }
 
@@ -80,7 +78,7 @@ public class Elfless extends AbstractMultiUpgradeCard {
         upgradeDamage(4);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = faerious;
+        setMonsterData(MonsterData.FAERIOUS);
         baseInfo = info = 1;
     }
 
@@ -89,7 +87,7 @@ public class Elfless extends AbstractMultiUpgradeCard {
         upgradeDamage(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        gifOverlay = grampus;
+        setMonsterData(MonsterData.GRAMPUS);
         baseInfo = info = 2;
     }
 }

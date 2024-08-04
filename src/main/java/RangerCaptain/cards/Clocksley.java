@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.SpringLoadedPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -14,13 +15,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Clocksley extends AbstractEasyCard {
     public final static String ID = makeID(Clocksley.class.getSimpleName());
-    protected static Animation<TextureRegion> clocksley = loadGifOverlay("Clocksley_idle.gif");
-    protected static Animation<TextureRegion> robindam = loadGifOverlay("Robindam_idle.gif");
 
     public Clocksley() {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = 2;
-        gifOverlay = clocksley;
+        setMonsterData(MonsterData.CLOCKSLEY);
     }
 
     @Override
@@ -33,7 +32,7 @@ public class Clocksley extends AbstractEasyCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = robindam;
+        setMonsterData(MonsterData.ROBINDAM);
     }
 
     @Override

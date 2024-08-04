@@ -4,6 +4,7 @@ import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.powers.SnowedInPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -17,11 +18,10 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Spookionna extends AbstractEasyCard {
     public final static String ID = makeID(Spookionna.class.getSimpleName());
-    protected static Animation<TextureRegion> spookionna = loadGifOverlay("Spooki-onna_idle.gif");
 
     public Spookionna() {
         super(ID, 3, CardType.SKILL, CardRarity.RARE, CardTarget.ALL);
-        gifOverlay = spookionna;
+        setMonsterData(MonsterData.SPOOKIONNA);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
         exhaust = true;
     }

@@ -2,6 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.unique.DiscardPileToTopOfDeckAction;
@@ -13,13 +14,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Dandylion extends AbstractEasyCard {
     public final static String ID = makeID(Dandylion.class.getSimpleName());
-    protected static Animation<TextureRegion> dandylion = loadGifOverlay("Dandylion_idle.gif");
-    protected static Animation<TextureRegion> blossomaw = loadGifOverlay("Blossomaw_idle.gif");
 
     public Dandylion() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
         baseBlock = block = 8;
-        gifOverlay = dandylion;
+        setMonsterData(MonsterData.DANDYLION);
     }
 
     @Override
@@ -33,7 +32,7 @@ public class Dandylion extends AbstractEasyCard {
         upgradeBlock(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = blossomaw;
+        setMonsterData(MonsterData.BLOSSOMAW);
     }
 
     @Override

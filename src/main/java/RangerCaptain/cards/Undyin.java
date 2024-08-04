@@ -4,6 +4,7 @@ import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.powers.AutoLifePower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -15,12 +16,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Undyin extends AbstractEasyCard {
     public final static String ID = makeID(Undyin.class.getSimpleName());
-    protected static Animation<TextureRegion> undyin = loadGifOverlay("Undyin_idle.gif");
 
     public Undyin() {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = 7;
-        gifOverlay = undyin;
+        setMonsterData(MonsterData.UNDYIN);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
         tags.add(CardTags.HEALING);
     }

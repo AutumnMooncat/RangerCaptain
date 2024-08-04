@@ -4,6 +4,7 @@ import RangerCaptain.actions.DoublePowerAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
@@ -15,11 +16,10 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Magikrab extends AbstractEasyCard {
     public final static String ID = makeID(Magikrab.class.getSimpleName());
-    protected static Animation<TextureRegion> magikrab = loadGifOverlay("Magikrab_idle.gif");
 
     public Magikrab() {
         super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
-        gifOverlay = magikrab;
+        setMonsterData(MonsterData.MAGIKRAB);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
 

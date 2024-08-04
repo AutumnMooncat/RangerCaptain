@@ -4,6 +4,7 @@ import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.APBoostPower;
 import RangerCaptain.powers.EnergyReservesPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -15,13 +16,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Amphare extends AbstractEasyCard {
     public final static String ID = makeID(Amphare.class.getSimpleName());
-    protected static Animation<TextureRegion> amphare = loadGifOverlay("Amphare_idle.gif");
-    protected static Animation<TextureRegion> lapacitor = loadGifOverlay("Lapacitor_idle.gif");
 
     public Amphare() {
         super(ID, 1, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = 2;
-        gifOverlay = amphare;
+        setMonsterData(MonsterData.AMPHARE);
     }
 
     @Override
@@ -34,7 +33,7 @@ public class Amphare extends AbstractEasyCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = lapacitor;
+        setMonsterData(MonsterData.LAPACITOR);
     }
 
     @Override

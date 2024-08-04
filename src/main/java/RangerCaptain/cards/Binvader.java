@@ -2,6 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -19,13 +20,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Binvader extends AbstractEasyCard {
     public final static String ID = makeID(Binvader.class.getSimpleName());
-    protected static Animation<TextureRegion> binvader = loadGifOverlay("Binvader_idle.gif");
-    protected static Animation<TextureRegion> binterloper = loadGifOverlay("Binterloper_idle.gif");
 
     public Binvader() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 6;
-        gifOverlay = binvader;
+        setMonsterData(MonsterData.BINVADER);
         baseInfo = info = 0;
     }
 
@@ -56,7 +55,7 @@ public class Binvader extends AbstractEasyCard {
         upgradeDamage(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = binterloper;
+        setMonsterData(MonsterData.BINTERLOPER);
     }
 
     @Override

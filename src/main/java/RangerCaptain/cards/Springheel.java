@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.APBoostPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -16,17 +17,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Springheel extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Springheel.class.getSimpleName());
-    protected static Animation<TextureRegion> springheel = loadGifOverlay("Springheel_idle.gif");
-    protected static Animation<TextureRegion> hopskin = loadGifOverlay("Hopskin_idle.gif");
-    protected static Animation<TextureRegion> riptrrra = loadGifOverlay("Ripterra_idle.gif");
-    protected static Animation<TextureRegion> snoopin = loadGifOverlay("Snoopin_idle.gif");
-    protected static Animation<TextureRegion> scampire = loadGifOverlay("Scampire_idle.gif");
 
     public Springheel() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = damage = 7;
         baseMagicNumber = magicNumber = 1;
-        gifOverlay = springheel;
+        setMonsterData(MonsterData.SPRINGHEEL);
         baseInfo = info = 0;
     }
 
@@ -63,27 +59,27 @@ public class Springheel extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = hopskin;
+        setMonsterData(MonsterData.HOPSKIN);
     }
 
     public void upgrade1() {
         upgradeDamage(5);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        gifOverlay = riptrrra;
+        setMonsterData(MonsterData.RIPTERRA);
     }
 
     public void upgrade2() {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
-        gifOverlay = snoopin;
+        setMonsterData(MonsterData.SNOOPIN);
         baseInfo = info = 1;
     }
 
     public void upgrade3() {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[3];
         initializeTitle();
-        gifOverlay = scampire;
+        setMonsterData(MonsterData.SCAMPIRE);
         baseInfo = info = 2;
     }
 }

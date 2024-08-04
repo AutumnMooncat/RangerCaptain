@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.BerserkerPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -14,14 +15,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Littlered extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Littlered.class.getSimpleName());
-    protected static Animation<TextureRegion> littlered = loadGifOverlay("Littlered_idle.gif");
-    protected static Animation<TextureRegion> scarleteeth = loadGifOverlay("Scarleteeth_idle.gif");
-    protected static Animation<TextureRegion> rosehood = loadGifOverlay("Rosehood_idle.gif");
 
     public Littlered() {
         super(ID, 2, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = 1;
-        gifOverlay = littlered;
+        setMonsterData(MonsterData.LITTLERED);
         baseInfo = info = 0;
     }
 
@@ -51,7 +49,7 @@ public class Littlered extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = scarleteeth;
+        setMonsterData(MonsterData.SCARLETEETH);
         baseInfo = info = 1;
     }
 
@@ -59,7 +57,7 @@ public class Littlered extends AbstractMultiUpgradeCard {
         upgradeBaseCost(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        gifOverlay = rosehood;
+        setMonsterData(MonsterData.ROSEHOOD);
         info = baseInfo = 2;
         isInnate = true;
     }

@@ -4,6 +4,7 @@ import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.powers.GambitPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -15,12 +16,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class MissMimic extends AbstractEasyCard {
     public final static String ID = makeID(MissMimic.class.getSimpleName());
-    protected static Animation<TextureRegion> missmimic = loadGifOverlay("Miss_Mimic_idle.gif");
 
     public MissMimic() {
         super(ID, 1, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = 3;
-        gifOverlay = missmimic;
+        setMonsterData(MonsterData.MISS_MIMIC);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
 

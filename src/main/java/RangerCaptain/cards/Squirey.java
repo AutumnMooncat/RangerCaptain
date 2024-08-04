@@ -2,6 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -16,15 +17,12 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Squirey extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Squirey.class.getSimpleName());
-    protected static Animation<TextureRegion> squirey = loadGifOverlay("Squirey_idle.gif");
-    protected static Animation<TextureRegion> manispear = loadGifOverlay("Manispear_idle.gif");
-    protected static Animation<TextureRegion> palangolin = loadGifOverlay("Palangolin_idle.gif");
 
     public Squirey() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = damage = 8;
         baseMagicNumber = magicNumber = 2;
-        gifOverlay = squirey;
+        setMonsterData(MonsterData.SQUIREY);
         baseInfo = info = 0;
     }
 
@@ -62,7 +60,7 @@ public class Squirey extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = manispear;
+        setMonsterData(MonsterData.MANISPEAR);
         baseInfo = info = 1;
     }
 
@@ -71,6 +69,6 @@ public class Squirey extends AbstractMultiUpgradeCard {
         upgradeMagicNumber(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
-        gifOverlay = palangolin;
+        setMonsterData(MonsterData.PALANGOLIN);
     }
 }

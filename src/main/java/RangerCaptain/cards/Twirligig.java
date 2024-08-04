@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.ParryPower;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -15,13 +16,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Twirligig extends AbstractEasyCard {
     public final static String ID = makeID(Twirligig.class.getSimpleName());
-    protected static Animation<TextureRegion> twirligig = loadGifOverlay("Twirligig_idle.gif");
-    protected static Animation<TextureRegion> kirikuri = loadGifOverlay("Kirikuri_idle.gif");
 
     public Twirligig() {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = 4;
-        gifOverlay = twirligig;
+        setMonsterData(MonsterData.TWIRLIGIG);
     }
 
     @Override
@@ -34,7 +33,7 @@ public class Twirligig extends AbstractEasyCard {
         upgradeMagicNumber(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
-        gifOverlay = kirikuri;
+        setMonsterData(MonsterData.KIRIKURI);
     }
 
     @Override

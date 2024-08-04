@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterData;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -14,12 +15,11 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Thwackalope extends AbstractEasyCard {
     public final static String ID = makeID(Thwackalope.class.getSimpleName());
-    protected static Animation<TextureRegion> thwackalope = loadGifOverlay("Thwackalope_idle.gif");
 
     public Thwackalope() {
         super(ID, 2, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = damage = 9;
-        gifOverlay = thwackalope;
+        setMonsterData(MonsterData.THWACKALOPE);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
 
