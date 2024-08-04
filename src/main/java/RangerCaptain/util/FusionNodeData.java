@@ -1,10 +1,12 @@
 package RangerCaptain.util;
 
 import RangerCaptain.MainModfile;
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,8 +41,34 @@ public class FusionNodeData {
             this.animation = makeAnimation(texturePath);
         }
 
+        public Node(String name, boolean visible, Vector2 position, boolean forceUsage, String matchPart, boolean inverseMatch, Node[] children, Animation<TextureRegion> animation) {
+            this.nodeName = name;
+            this.visible = visible;
+            this.position = new Vector2(position.x, -position.y); //Godot uses top left (0,0) instead, so we must invert the y coordinate
+            this.forceUsage = forceUsage;
+            this.matchPart = matchPart;
+            this.inverseMatch = inverseMatch;
+            this.children = children;
+            this.animation = animation;
+        }
+
+        public Node makeCopy() {
+            return new Node(nodeName, visible, position, forceUsage, matchPart, inverseMatch, children, animation);
+        }
+
         private static Animation<TextureRegion> makeAnimation(String path) {
-            return GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(MainModfile.makeImagePath(path)).read());
+            if (path.isEmpty()) {
+                return null;
+            }
+            Rectangle[] rects = FusionFrameData.FRAME_DATA.get(path);
+            Texture texture = TexLoader.getTexture(MainModfile.makeImagePath(path), false);
+            TextureRegion[] cutTextures = new TextureRegion[rects.length];
+            int i = 0;
+            for (Rectangle rect : rects) {
+                cutTextures[i] = new TextureRegion(texture, (int)rect.x, (int)rect.y, (int)rect.width, (int)rect.height);
+                i++;
+            }
+            return new Animation<>(0.1f, new Array<>(cutTextures), Animation.PlayMode.LOOP);
         }
     }
 
