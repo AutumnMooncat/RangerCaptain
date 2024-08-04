@@ -1,14 +1,23 @@
 package RangerCaptain.util;
 
+import RangerCaptain.MainModfile;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
 import java.util.HashMap;
 
 import static RangerCaptain.util.MonsterData.*;
 
 public class GifOverlayData {
-    public static final HashMap<MonsterData, String> OVERLAY_DATA = new HashMap<>();
+    public static final HashMap<MonsterData, Animation<TextureRegion>> OVERLAY_DATA = new HashMap<>();
 
-    public static void add(MonsterData data, String path) {
-        OVERLAY_DATA.put(data, path);
+    private static void add(MonsterData data, String fileName) {
+        OVERLAY_DATA.put(data, loadGifOverlay(fileName));
+    }
+
+    private static Animation<TextureRegion> loadGifOverlay(String fileName) {
+        return GifDecoder.loadGIFAnimation(Animation.PlayMode.LOOP, Gdx.files.internal(MainModfile.makeImagePath("anims/"+fileName)).read());
     }
 
     static {
