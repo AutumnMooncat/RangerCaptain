@@ -6,15 +6,16 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import static RangerCaptain.util.MonsterEnum.*;
+
 public class FusionNodeData {
-    public Node[] nodes;
+    public static final HashMap<MonsterEnum, Node[]> NODE_DATA = new HashMap<>();
 
-    public FusionNodeData(Node... nodes) {
-        this.nodes = nodes;
-    }
-
-    public Node[] getNodes() {
-        return nodes;
+    public static void add(MonsterEnum data, Node... nodes) {
+        NODE_DATA.put(data, nodes);
     }
 
     public static class Node {
