@@ -9,6 +9,23 @@ import static RangerCaptain.util.MonsterEnum.*;
 
 public class PaletteData {
     public static final HashMap<MonsterEnum, Color[]> PALETTE_DATA = new HashMap<>();
+    public static final Color[] FUSION_BASE = new Color[] {
+            new Color( 0.282353f, 0.054902f, 0.12549f, 1f ),
+            new Color( 0.435294f, 0.0862745f, 0.145098f, 1f ),
+            new Color( 0.694118f, 0.12549f, 0.192157f, 1f ),
+            new Color( 0.913725f, 0.258824f, 0.247059f, 1f ),
+            new Color( 0.976471f, 0.521569f, 0.443137f, 1f ),
+            new Color( 0.223529f, 0.235294f, 0.298039f, 1f ),
+            new Color( 0.384314f, 0.423529f, 0.517647f, 1f ),
+            new Color( 0.615686f, 0.67451f, 0.764706f, 1f ),
+            new Color( 0.807843f, 0.882353f, 0.933333f, 1f ),
+            new Color( 0.92549f, 0.960784f, 0.972549f, 1f ),
+            new Color( 0.101961f, 0.117647f, 0.317647f, 1f ),
+            new Color( 0.156863f, 0.243137f, 0.466667f, 1f ),
+            new Color( 0.203922f, 0.443137f, 0.698039f, 1f ),
+            new Color( 0.254902f, 0.694118f, 0.882353f, 1f ),
+            new Color( 0.568627f, 0.835294f, 0.952941f, 1f )
+    };
 
     public static void add(MonsterEnum monster, Color... colors) {
         PALETTE_DATA.put(monster, colors);
