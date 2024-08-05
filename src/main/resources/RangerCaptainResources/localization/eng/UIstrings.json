@@ -76,5 +76,710 @@
       "Hyper",
       "Giga"
     ]
+  },
+  "${ModID}:AdeptileFusion": {
+    "TEXT": [
+      "Adept","tile"
+    ]
+  },
+  "${ModID}:AeroborosFusion": {
+    "TEXT": [
+      "Aero","boros"
+    ]
+  },
+  "${ModID}:AllseerFusion": {
+    "TEXT": [
+      "All","seer"
+    ]
+  },
+  "${ModID}:AmphareFusion": {
+    "TEXT": [
+      "Amp","hare"
+    ]
+  },
+  "${ModID}:AnathemaFusion": {
+    "TEXT": [
+      "Anathe","thema"
+    ]
+  },
+  "${ModID}:ApocrowlypseFusion": {
+    "TEXT": [
+      "Apocrow","crowlypse"
+    ]
+  },
+  "${ModID}:ArkiddFusion": {
+    "TEXT": [
+      "Ark","kidd"
+    ]
+  },
+  "${ModID}:ArtillerexFusion": {
+    "TEXT": [
+      "Artille","rex"
+    ]
+  },
+  "${ModID}:AuriclawFusion": {
+    "TEXT": [
+      "Auri","claw"
+    ]
+  },
+  "${ModID}:AverevoirFusion": {
+    "TEXT": [
+      "Ave","revoir"
+    ]
+  },
+  "${ModID}:BansheepFusion": {
+    "TEXT": [
+      "Ban","sheep"
+    ]
+  },
+  "${ModID}:BeanstalkerFusion": {
+    "TEXT": [
+      "Bean","stalker"
+    ]
+  },
+  "${ModID}:BinterloperFusion": {
+    "TEXT": [
+      "Binter","loper"
+    ]
+  },
+  "${ModID}:BinvaderFusion": {
+    "TEXT": [
+      "Bin","vader"
+    ]
+  },
+  "${ModID}:BlossomawFusion": {
+    "TEXT": [
+      "Blossam","maw"
+    ]
+  },
+  "${ModID}:BlunderbuskFusion": {
+    "TEXT": [
+      "Blunder","busk"
+    ]
+  },
+  "${ModID}:BoltamFusion": {
+    "TEXT": [
+      "Bolt","tam"
+    ]
+  },
+  "${ModID}:BraxsuitFusion": {
+    "TEXT": [
+      "Brax","suit"
+    ]
+  },
+  "${ModID}:BrushroomFusion": {
+    "TEXT": [
+      "Brush","room"
+    ]
+  },
+  "${ModID}:BulletinoFusion": {
+    "TEXT": [
+      "Bullet","tino"
+    ]
+  },
+  "${ModID}:BurnaceFusion": {
+    "TEXT": [
+      "Burn","ace"
+    ]
+  },
+  "${ModID}:BusheyeFusion": {
+    "TEXT": [
+      "Bush","sheye"
+    ]
+  },
+  "${ModID}:CandevilFusion": {
+    "TEXT": [
+      "Cand","devil"
+    ]
+  },
+  "${ModID}:CapricorpseFusion": {
+    "TEXT": [
+      "Capri","corpse"
+    ]
+  },
+  "${ModID}:CarniviperFusion": {
+    "TEXT": [
+      "Carni","viper"
+    ]
+  },
+  "${ModID}:CatfiveFusion": {
+    "TEXT": [
+      "Cat","-5"
+    ]
+  },
+  "${ModID}:CharlequinFusion": {
+    "TEXT": [
+      "Charle","quin"
+    ]
+  },
+  "${ModID}:ClocksleyFusion": {
+    "TEXT": [
+      "Clock","sley"
+    ]
+  },
+  "${ModID}:CluckabillyFusion": {
+    "TEXT": [
+      "Clucka","billy"
+    ]
+  },
+  "${ModID}:CoaldronFusion": {
+    "TEXT": [
+      "Coal","dron"
+    ]
+  },
+  "${ModID}:CryoshearFusion": {
+    "TEXT": [
+      "Cryo","shear"
+    ]
+  },
+  "${ModID}:DandylionFusion": {
+    "TEXT": [
+      "Dandy","lion"
+    ]
+  },
+  "${ModID}:DecibelleFusion": {
+    "TEXT": [
+      "Deci","belle"
+    ]
+  },
+  "${ModID}:DivealFusion": {
+    "TEXT": [
+      "Dive","veal"
+    ]
+  },
+  "${ModID}:DivebergFusion": {
+    "TEXT": [
+      "Dive","berg"
+    ]
+  },
+  "${ModID}:Djinn_EntonicFusion": {
+    "TEXT": [
+      "Djinn","entonic"
+    ]
+  },
+  "${ModID}:DominothFusion": {
+    "TEXT": [
+      "Domi","noth"
+    ]
+  },
+  "${ModID}:DraculeafFusion": {
+    "TEXT": [
+      "Dracu","leaf"
+    ]
+  },
+  "${ModID}:ElflessFusion": {
+    "TEXT": [
+      "Elf","less"
+    ]
+  },
+  "${ModID}:FaeriousFusion": {
+    "TEXT": [
+      "Faeri","rious"
+    ]
+  },
+  "${ModID}:FaucetearFusion": {
+    "TEXT": [
+      "Faucet","tear"
+    ]
+  },
+  "${ModID}:FerriclawFusion": {
+    "TEXT": [
+      "Ferri","claw"
+    ]
+  },
+  "${ModID}:FlapwoodsFusion": {
+    "TEXT": [
+      "Flap","woods"
+    ]
+  },
+  "${ModID}:FolklordFusion": {
+    "TEXT": [
+      "Folk","lord"
+    ]
+  },
+  "${ModID}:FortiwinxFusion": {
+    "TEXT": [
+      "Forti","winx"
+    ]
+  },
+  "${ModID}:FountessFusion": {
+    "TEXT": [
+      "Fount","tess"
+    ]
+  },
+  "${ModID}:FragliacciFusion": {
+    "TEXT": [
+      "Frag","liacci"
+    ]
+  },
+  "${ModID}:FrillypadFusion": {
+    "TEXT": [
+      "Frilly","pad"
+    ]
+  },
+  "${ModID}:FungoghFusion": {
+    "TEXT": [
+      "Fun","gogh"
+    ]
+  },
+  "${ModID}:GalagorFusion": {
+    "TEXT": [
+      "Gala","gor"
+    ]
+  },
+  "${ModID}:GearyuFusion": {
+    "TEXT": [
+      "Gear","ryu"
+    ]
+  },
+  "${ModID}:GlaistainFusion": {
+    "TEXT": [
+      "Glais","stain"
+    ]
+  },
+  "${ModID}:GrampusFusion": {
+    "TEXT": [
+      "Gramp","pus"
+    ]
+  },
+  "${ModID}:GumbaalFusion": {
+    "TEXT": [
+      "Gum","baal"
+    ]
+  },
+  "${ModID}:HauntomeFusion": {
+    "TEXT": [
+      "Haunt","tome"
+    ]
+  },
+  "${ModID}:HedgeherneFusion": {
+    "TEXT": [
+      "Hedge","herne"
+    ]
+  },
+  "${ModID}:HopskinFusion": {
+    "TEXT": [
+      "Hop","skin"
+    ]
+  },
+  "${ModID}:HuntorchFusion": {
+    "TEXT": [
+      "Hunt","torch"
+    ]
+  },
+  "${ModID}:IcepeckFusion": {
+    "TEXT": [
+      "Ice","peck"
+    ]
+  },
+  "${ModID}:JellytonFusion": {
+    "TEXT": [
+      "Jelly","ton"
+    ]
+  },
+  "${ModID}:JormungoldFusion": {
+    "TEXT": [
+      "Jormun","gold"
+    ]
+  },
+  "${ModID}:JumpkinFusion": {
+    "TEXT": [
+      "Jump","kin"
+    ]
+  },
+  "${ModID}:KhepriFusion": {
+    "TEXT": [
+      "Khe","pri"
+    ]
+  },
+  "${ModID}:KhufoFusion": {
+    "TEXT": [
+      "Khufo","fo"
+    ]
+  },
+  "${ModID}:KingraveFusion": {
+    "TEXT": [
+      "King","grave"
+    ]
+  },
+  "${ModID}:KirikuriFusion": {
+    "TEXT": [
+      "Kiri","kuri"
+    ]
+  },
+  "${ModID}:KittellyFusion": {
+    "TEXT": [
+      "Kit","telly"
+    ]
+  },
+  "${ModID}:KunekoFusion": {
+    "TEXT": [
+      "Kuneko","neko"
+    ]
+  },
+  "${ModID}:LapacitorFusion": {
+    "TEXT": [
+      "Lapac","pacitor"
+    ]
+  },
+  "${ModID}:LiligatorFusion": {
+    "TEXT": [
+      "Lili","gator"
+    ]
+  },
+  "${ModID}:LittleredFusion": {
+    "TEXT": [
+      "Little","red"
+    ]
+  },
+  "${ModID}:LobstacleFusion": {
+    "TEXT": [
+      "Lobs","stacle"
+    ]
+  },
+  "${ModID}:MacabraFusion": {
+    "TEXT": [
+      "Macab","cabra"
+    ]
+  },
+  "${ModID}:MagikrabFusion": {
+    "TEXT": [
+      "Magi","krab"
+    ]
+  },
+  "${ModID}:MajortomFusion": {
+    "TEXT": [
+      "Major","tom"
+    ]
+  },
+  "${ModID}:MalchemyFusion": {
+    "TEXT": [
+      "Mal","chemy"
+    ]
+  },
+  "${ModID}:ManispearFusion": {
+    "TEXT": [
+      "Manis","spear"
+    ]
+  },
+  "${ModID}:MardiusaFusion": {
+    "TEXT": [
+      "Mardi","diusa"
+    ]
+  },
+  "${ModID}:MascotornFusion": {
+    "TEXT": [
+      "Masco","torn"
+    ]
+  },
+  "${ModID}:MascotoyFusion": {
+    "TEXT": [
+      "Mascot","toy"
+    ]
+  },
+  "${ModID}:MasquerattleFusion": {
+    "TEXT": [
+      "Masque","rattle"
+    ]
+  },
+  "${ModID}:MiasmodeusFusion": {
+    "TEXT": [
+      "Mias","modeus"
+    ]
+  },
+  "${ModID}:MinortomFusion": {
+    "TEXT": [
+      "Minor","tom"
+    ]
+  },
+  "${ModID}:Miss_MimicFusion": {
+    "TEXT": [
+      "Miss Mimi","mimic"
+    ]
+  },
+  "${ModID}:MothmanicFusion": {
+    "TEXT": [
+      "Moth","manic"
+    ]
+  },
+  "${ModID}:MuskrateerFusion": {
+    "TEXT": [
+      "Muskrat","rateer"
+    ]
+  },
+  "${ModID}:NevermortFusion": {
+    "TEXT": [
+      "Never","mort"
+    ]
+  },
+  "${ModID}:PadpoleFusion": {
+    "TEXT": [
+      "Pad","pole"
+    ]
+  },
+  "${ModID}:PalangolinFusion": {
+    "TEXT": [
+      "Palan","golin"
+    ]
+  },
+  "${ModID}:PawndeadFusion": {
+    "TEXT": [
+      "Pawn","dead"
+    ]
+  },
+  "${ModID}:PicksieFusion": {
+    "TEXT": [
+      "Pick","sie"
+    ]
+  },
+  "${ModID}:PinboltFusion": {
+    "TEXT": [
+      "Pin","bolt"
+    ]
+  },
+  "${ModID}:PlasmantlerFusion": {
+    "TEXT": [
+      "Plasma","mantler"
+    ]
+  },
+  "${ModID}:PombombFusion": {
+    "TEXT": [
+      "Pom","bomb"
+    ]
+  },
+  "${ModID}:PondwalkerFusion": {
+    "TEXT": [
+      "Pond","walker"
+    ]
+  },
+  "${ModID}:PuppercutFusion": {
+    "TEXT": [
+      "Pupper","cut"
+    ]
+  },
+  "${ModID}:PyromeleonFusion": {
+    "TEXT": [
+      "Pyro","meleon"
+    ]
+  },
+  "${ModID}:QueenyxFusion": {
+    "TEXT": [
+      "Queen","nix"
+    ]
+  },
+  "${ModID}:RamtasmFusion": {
+    "TEXT": [
+      "Ram","tasm"
+    ]
+  },
+  "${ModID}:RatcouselFusion": {
+    "TEXT": [
+      "Rat","cousel"
+    ]
+  },
+  "${ModID}:RegenseaFusion": {
+    "TEXT": [
+      "Regen","sea"
+    ]
+  },
+  "${ModID}:RipterraFusion": {
+    "TEXT": [
+      "Rip","terra"
+    ]
+  },
+  "${ModID}:RobindamFusion": {
+    "TEXT": [
+      "Robin","dam"
+    ]
+  },
+  "${ModID}:RockertriceFusion": {
+    "TEXT": [
+      "Rocker","trice"
+    ]
+  },
+  "${ModID}:RosehoodFusion": {
+    "TEXT": [
+      "Rose","hood"
+    ]
+  },
+  "${ModID}:SalamagusFusion": {
+    "TEXT": [
+      "Sala","magus"
+    ]
+  },
+  "${ModID}:SanzatimeFusion": {
+    "TEXT": [
+      "Sanza","time"
+    ]
+  },
+  "${ModID}:ScampireFusion": {
+    "TEXT": [
+      "Scam","pire"
+    ]
+  },
+  "${ModID}:ScarleteethFusion": {
+    "TEXT": [
+      "Scarlet","teeth"
+    ]
+  },
+  "${ModID}:ScubalrusFusion": {
+    "TEXT": [
+      "Scubal","balrus"
+    ]
+  },
+  "${ModID}:SharktankerFusion": {
+    "TEXT": [
+      "Shark","tanker"
+    ]
+  },
+  "${ModID}:Shining_KunekoFusion": {
+    "TEXT": [
+      "Shining-","-kuneko"
+    ]
+  },
+  "${ModID}:SirenadeFusion": {
+    "TEXT": [
+      "Siren","nade"
+    ]
+  },
+  "${ModID}:SkelevangelistFusion": {
+    "TEXT": [
+      "Skele","vangelist"
+    ]
+  },
+  "${ModID}:SmogmagogFusion": {
+    "TEXT": [
+      "Smog","magog"
+    ]
+  },
+  "${ModID}:SnoopinFusion": {
+    "TEXT": [
+      "Snoop","pin"
+    ]
+  },
+  "${ModID}:SouthpawFusion": {
+    "TEXT": [
+      "South","paw"
+    ]
+  },
+  "${ModID}:SparktanFusion": {
+    "TEXT": [
+      "Spark","tan"
+    ]
+  },
+  "${ModID}:SpirouetteFusion": {
+    "TEXT": [
+      "Spirou","ette"
+    ]
+  },
+  "${ModID}:SpitzfyreFusion": {
+    "TEXT": [
+      "Spitz","fyre"
+    ]
+  },
+  "${ModID}:SpookionnaFusion": {
+    "TEXT": [
+      "Spooki","-onna"
+    ]
+  },
+  "${ModID}:SpringheelFusion": {
+    "TEXT": [
+      "Spring","heel"
+    ]
+  },
+  "${ModID}:SquireyFusion": {
+    "TEXT": [
+      "Squire","rey"
+    ]
+  },
+  "${ModID}:StardigradeFusion": {
+    "TEXT": [
+      "Stardi","grade"
+    ]
+  },
+  "${ModID}:TerracookaFusion": {
+    "TEXT": [
+      "Terra","cooka"
+    ]
+  },
+  "${ModID}:ThwackalopeFusion": {
+    "TEXT": [
+      "Thwacka","lope"
+    ]
+  },
+  "${ModID}:TokusectFusion": {
+    "TEXT": [
+      "Toku","sect"
+    ]
+  },
+  "${ModID}:TraffikrabFusion": {
+    "TEXT": [
+      "Traffi","krab"
+    ]
+  },
+  "${ModID}:TrapwurmFusion": {
+    "TEXT": [
+      "Trap","wurm"
+    ]
+  },
+  "${ModID}:TriphinxFusion": {
+    "TEXT": [
+      "Tri","phinx"
+    ]
+  },
+  "${ModID}:TwirligigFusion": {
+    "TEXT": [
+      "Twirli","gig"
+    ]
+  },
+  "${ModID}:UmbrahellaFusion": {
+    "TEXT": [
+      "Umbra","hella"
+    ]
+  },
+  "${ModID}:UndyinFusion": {
+    "TEXT": [
+      "Un","dyin"
+    ]
+  },
+  "${ModID}:VelocirifleFusion": {
+    "TEXT": [
+      "Veloci","rifle"
+    ]
+  },
+  "${ModID}:VendemonFusion": {
+    "TEXT": [
+      "Vend","demon"
+    ]
+  },
+  "${ModID}:WeeviliteFusion": {
+    "TEXT": [
+      "Weevil","lite"
+    ]
+  },
+  "${ModID}:WingloomFusion": {
+    "TEXT": [
+      "Wing","gloom"
+    ]
+  },
+  "${ModID}:WooltergeistFusion": {
+    "TEXT": [
+      "Wool","tergeist"
+    ]
+  },
+  "${ModID}:WyrmawFusion": {
+    "TEXT": [
+      "Wyrm","maw"
+    ]
+  },
+  "${ModID}:ZeustrikeFusion": {
+    "TEXT": [
+      "Zeus","strike"
+    ]
+  },
+  "${ModID}:ZombleatFusion": {
+    "TEXT": [
+      "Zom","bleat"
+    ]
   }
 }
