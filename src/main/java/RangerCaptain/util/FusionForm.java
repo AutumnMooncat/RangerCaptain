@@ -1,7 +1,10 @@
 package RangerCaptain.util;
 
+import RangerCaptain.MainModfile;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,12 +14,20 @@ public class FusionForm {
     public MonsterEnum monster2;
     public FusionNodeData.Node[] nodes;
     public Color[] palette;
+    public String fusionName;
+    public Vector2 positionalOffset;
 
     public FusionForm(MonsterEnum monster1, MonsterEnum monster2) {
         this.monster1 = monster1;
         this.monster2 = monster2;
         this.nodes = blendNodes(monster1, monster2);
         this.palette = getPalette(monster1, monster2);
+        if (monster1 == monster2) {
+            fusionName = CardCrawlGame.languagePack.getUIString(MainModfile.makeID("SameFusionPrefix")).TEXT[MathUtils.random(7)] + " " + monster1;
+        } else {
+            fusionName = CardCrawlGame.languagePack.getUIString(MainModfile.makeID(monster1.toString()+"Fusion")).TEXT[0] + CardCrawlGame.languagePack.getUIString(MainModfile.makeID(monster2.toString()+"Fusion")).TEXT[1];
+        }
+        this.positionalOffset = getPositionalOffset(nodes);
     }
 
     public FusionNodeData.Node[] blendNodes(MonsterEnum monster1, MonsterEnum monster2) {
@@ -96,5 +107,17 @@ public class FusionForm {
             }
         }
         return chosenColors.toArray(new Color[0]);
+    }
+
+    public Vector2 getPositionalOffset(FusionNodeData.Node[] nodeArray) {
+        Vector2 topLeft = new Vector2(999, 999);
+        Vector2 bottomRight = new Vector2(-999, -999);
+        for (FusionNodeData.Node node : nodeArray) {
+            if (node != null) {
+                topLeft = new Vector2(Math.min(topLeft.x, node.position.x), Math.min(topLeft.y, node.position.y - node.children[0].animation.getKeyFrame(0).getRegionHeight()));
+                bottomRight = new Vector2(Math.max(bottomRight.x, node.position.x + node.children[0].animation.getKeyFrame(0).getRegionWidth()), Math.max(bottomRight.y, node.position.y));
+            }
+        }
+        return new Vector2((bottomRight.x + topLeft.x)/2f, (bottomRight.y + topLeft.y)/2f);
     }
 }
