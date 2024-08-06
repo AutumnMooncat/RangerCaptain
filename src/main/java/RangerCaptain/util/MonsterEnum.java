@@ -143,4 +143,8 @@ public enum MonsterEnum {
     ZEUSTRIKE,
     ZOMBLEAT;
 
+    @Override
+    public String toString() {
+        return FormatHelper.capitalize(name().toLowerCase());
+    }
 }
