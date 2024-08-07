@@ -2,7 +2,6 @@ package RangerCaptain.util;
 
 import RangerCaptain.MainModfile;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -28,7 +27,7 @@ public class FusionForm {
         this.nodes = blendNodes(monster1, monster2);
         this.palette = getPalette(monster1, monster2);
         if (monster1 == monster2) {
-            fusionName = CardCrawlGame.languagePack.getUIString(MainModfile.makeID("SameFusionPrefix")).TEXT[MathUtils.random(7)] + " " + monster1;
+            fusionName = CardCrawlGame.languagePack.getUIString(MainModfile.makeID("SameFusionPrefix")).TEXT[random.nextInt(8)] + " " + monster1;
         } else {
             fusionName = CardCrawlGame.languagePack.getUIString(MainModfile.makeID(monster1+"Fusion")).TEXT[0] + CardCrawlGame.languagePack.getUIString(MainModfile.makeID(monster2+"Fusion")).TEXT[1];
         }
