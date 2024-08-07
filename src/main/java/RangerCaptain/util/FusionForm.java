@@ -69,7 +69,7 @@ public class FusionForm {
         }
 
         for (FusionNodeData.Node node : positionNodes1) {
-            FusionNodeData.Node copy = getNamedNode(positionNodes1, positionNodes2, choices.get(node.nodeName), node.nodeName);
+            FusionNodeData.Node copy = getNamedNode(positionNodes1, positionNodes2, choices.get(node.nodeName), node.nodeName).makeCopy();
             copy.position = node.position;
             copy.visible = node.visible;
             chosenNodes.add(copy);
