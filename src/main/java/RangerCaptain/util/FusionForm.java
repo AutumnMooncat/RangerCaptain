@@ -9,8 +9,10 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class FusionForm {
+    private final Random random;
     public MonsterEnum monster1;
     public MonsterEnum monster2;
     public FusionNodeData.Node[] nodes;
@@ -20,6 +22,7 @@ public class FusionForm {
     public float width, height;
 
     public FusionForm(MonsterEnum monster1, MonsterEnum monster2) {
+        this.random = new Random((monster1.toString()+monster2.toString()).hashCode());
         this.monster1 = monster1;
         this.monster2 = monster2;
         this.nodes = blendNodes(monster1, monster2);
@@ -27,7 +30,7 @@ public class FusionForm {
         if (monster1 == monster2) {
             fusionName = CardCrawlGame.languagePack.getUIString(MainModfile.makeID("SameFusionPrefix")).TEXT[MathUtils.random(7)] + " " + monster1;
         } else {
-            fusionName = CardCrawlGame.languagePack.getUIString(MainModfile.makeID(monster1.toString()+"Fusion")).TEXT[0] + CardCrawlGame.languagePack.getUIString(MainModfile.makeID(monster2.toString()+"Fusion")).TEXT[1];
+            fusionName = CardCrawlGame.languagePack.getUIString(MainModfile.makeID(monster1+"Fusion")).TEXT[0] + CardCrawlGame.languagePack.getUIString(MainModfile.makeID(monster2+"Fusion")).TEXT[1];
         }
         Rectangle boundingBox = getBoundingBox(nodes);
         this.positionalOffset = getPositionalOffset(nodes);
@@ -42,7 +45,7 @@ public class FusionForm {
         ArrayList<FusionNodeData.Node> chosenNodes = new ArrayList<>();
 
         for (FusionNodeData.Node node : positionNodes1) {
-            boolean useFirst = node.forceUsage || MathUtils.randomBoolean();
+            boolean useFirst = node.forceUsage || random.nextBoolean();
             FusionNodeData.Node[] children = getRenderNodes(positionNodes1, positionNodes2, useFirst, node.nodeName);
             if (children.length == 0) {
                 useFirst = !useFirst;
@@ -104,7 +107,7 @@ public class FusionForm {
 
     private Color[] getPalette(MonsterEnum monster1, MonsterEnum monster2) {
         ArrayList<Color> chosenColors = new ArrayList<>();
-        boolean useFirst = MathUtils.randomBoolean();
+        boolean useFirst = random.nextBoolean();
         for (int i = 0 ; i < 15 ; i++) {
             chosenColors.add(useFirst ? PaletteData.PALETTE_DATA.get(monster1)[i] : PaletteData.PALETTE_DATA.get(monster2)[i]);
             if (i == 4 || i == 9) {
