@@ -1,8 +1,12 @@
 package RangerCaptain.patches;
 
 import RangerCaptain.MainModfile;
+import RangerCaptain.cardmods.FusionMod;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.util.FusionController;
+import RangerCaptain.util.FusionForm;
 import RangerCaptain.util.TexLoader;
+import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -51,7 +55,11 @@ public class AnimatedCardPatches {
             if (__instance instanceof AbstractEasyCard) {
                 if (((AbstractEasyCard) __instance).getGifOverlay() != null) {
                     prepFrameBuffer(sb);
-                    drawCardAnimation(sb, (AbstractEasyCard) __instance);
+                    if (CardModifierManager.hasModifier(__instance, FusionMod.ID)) {
+                        drawFusionAnimation(sb, (AbstractEasyCard) __instance);
+                    } else {
+                        drawCardAnimation(sb, (AbstractEasyCard) __instance);
+                    }
                     maskAnimation(sb, (AbstractEasyCard) __instance);
                     finalizeAndDraw(sb);
                 }
@@ -66,6 +74,12 @@ public class AnimatedCardPatches {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
         Gdx.gl.glColorMask(true, true, true, true);
         sb.begin();
+    }
+
+    private static void drawFusionAnimation(SpriteBatch sb, AbstractEasyCard card) {
+        FusionForm form = ((FusionMod) CardModifierManager.getModifiers(card, FusionMod.ID).get(0)).form;
+        float scale = Math.min(190f / form.height, 250f / form.width);
+        FusionController.renderNodes(sb, form, card.current_x, card.current_y, 0, 72f/scale, 0 ,0, card.drawScale * Settings.scale * scale, card.angle);
     }
 
     private static void drawCardAnimation(SpriteBatch sb, AbstractEasyCard card) {
@@ -106,12 +120,22 @@ public class AnimatedCardPatches {
             if (___card instanceof AbstractEasyCard) {
                 if (((AbstractEasyCard) ___card).getGifOverlay() != null) {
                     prepFrameBuffer(sb);
-                    drawCardAnimationSCV(sb, (AbstractEasyCard) ___card);
+                    if (CardModifierManager.hasModifier(___card, FusionMod.ID)) {
+                        drawFusionAnimationSCV(sb, (AbstractEasyCard) ___card);
+                    } else {
+                        drawCardAnimationSCV(sb, (AbstractEasyCard) ___card);
+                    }
                     maskAnimationSCV(sb, (AbstractEasyCard) ___card);
                     finalizeAndDraw(sb);
                 }
             }
         }
+    }
+
+    private static void drawFusionAnimationSCV(SpriteBatch sb, AbstractEasyCard card) {
+        FusionForm form = ((FusionMod) CardModifierManager.getModifiers(card, FusionMod.ID).get(0)).form;
+        float scale = Math.min(380f / form.height, 500f / form.width);
+        FusionController.renderNodes(sb, form, Settings.WIDTH/2f, Settings.HEIGHT/2f, 0, 0, 0, 136.0F * Settings.scale, Settings.scale * scale, 0f);
     }
 
     private static void drawCardAnimationSCV(SpriteBatch sb, AbstractEasyCard card) {
