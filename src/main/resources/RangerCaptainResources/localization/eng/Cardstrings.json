@@ -261,6 +261,10 @@
     "NAME": "Respite",
     "DESCRIPTION": "Gain !M! Vigor. NL Put the next card you play this turn on top of your draw pile."
   },
+  "${ModID}:RogueFusion": {
+    "NAME": "Rogue Fusion",
+    "DESCRIPTION": ""
+  },
   "${ModID}:Salamagus": {
     "NAME": "Salamagus",
     "DESCRIPTION": "Whenever a card is Exhausted, apply !M! ${ModID}:Burned to a random enemy.{@@}{!${ModID}:I!|1= NL ${ModID}:Mind-Meld.}",
