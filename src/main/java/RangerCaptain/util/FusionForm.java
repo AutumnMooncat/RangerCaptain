@@ -3,6 +3,7 @@ package RangerCaptain.util;
 import RangerCaptain.MainModfile;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 
@@ -16,6 +17,7 @@ public class FusionForm {
     public Color[] palette;
     public String fusionName;
     public Vector2 positionalOffset;
+    public float width, height;
 
     public FusionForm(MonsterEnum monster1, MonsterEnum monster2) {
         this.monster1 = monster1;
@@ -27,10 +29,13 @@ public class FusionForm {
         } else {
             fusionName = CardCrawlGame.languagePack.getUIString(MainModfile.makeID(monster1.toString()+"Fusion")).TEXT[0] + CardCrawlGame.languagePack.getUIString(MainModfile.makeID(monster2.toString()+"Fusion")).TEXT[1];
         }
+        Rectangle boundingBox = getBoundingBox(nodes);
         this.positionalOffset = getPositionalOffset(nodes);
+        this.width = boundingBox.getWidth();
+        this.height = boundingBox.getHeight();
     }
 
-    public FusionNodeData.Node[] blendNodes(MonsterEnum monster1, MonsterEnum monster2) {
+    private FusionNodeData.Node[] blendNodes(MonsterEnum monster1, MonsterEnum monster2) {
         FusionNodeData.Node[] positionNodes1 = FusionNodeData.NODE_DATA.get(monster1);
         FusionNodeData.Node[] positionNodes2 = FusionNodeData.NODE_DATA.get(monster2);
         HashMap<String, Boolean> choices = new HashMap<>();
@@ -71,7 +76,7 @@ public class FusionForm {
         return chosenNodes.toArray(new FusionNodeData.Node[0]);
     }
 
-    public FusionNodeData.Node getNamedNode(FusionNodeData.Node[] nodes, String name) {
+    private FusionNodeData.Node getNamedNode(FusionNodeData.Node[] nodes, String name) {
         for (FusionNodeData.Node node : nodes) {
             if (node.nodeName.equals(name)) {
                 return node;
@@ -80,11 +85,11 @@ public class FusionForm {
         return null;
     }
 
-    public FusionNodeData.Node getNamedNode(FusionNodeData.Node[] nodes1, FusionNodeData.Node[] nodes2, boolean useFirst, String name) {
+    private FusionNodeData.Node getNamedNode(FusionNodeData.Node[] nodes1, FusionNodeData.Node[] nodes2, boolean useFirst, String name) {
         return getNamedNode(useFirst ? nodes1 : nodes2, name);
     }
 
-    public FusionNodeData.Node[] getRenderNodes(FusionNodeData.Node[] nodes, String name) {
+    private FusionNodeData.Node[] getRenderNodes(FusionNodeData.Node[] nodes, String name) {
         for (FusionNodeData.Node node : nodes) {
             if (node.nodeName.equals(name)) {
                 return node.children;
@@ -93,11 +98,11 @@ public class FusionForm {
         return new FusionNodeData.Node[0];
     }
 
-    public FusionNodeData.Node[] getRenderNodes(FusionNodeData.Node[] nodes1, FusionNodeData.Node[] nodes2, boolean useFirst, String name) {
+    private FusionNodeData.Node[] getRenderNodes(FusionNodeData.Node[] nodes1, FusionNodeData.Node[] nodes2, boolean useFirst, String name) {
         return getRenderNodes(useFirst ? nodes1 : nodes2, name);
     }
 
-    public Color[] getPalette(MonsterEnum monster1, MonsterEnum monster2) {
+    private Color[] getPalette(MonsterEnum monster1, MonsterEnum monster2) {
         ArrayList<Color> chosenColors = new ArrayList<>();
         boolean useFirst = MathUtils.randomBoolean();
         for (int i = 0 ; i < 15 ; i++) {
@@ -119,5 +124,17 @@ public class FusionForm {
             }
         }
         return new Vector2((bottomRight.x + topLeft.x)/2f, (bottomRight.y + topLeft.y)/2f);
+    }
+
+    private Rectangle getBoundingBox(FusionNodeData.Node[] nodeArray) {
+        Vector2 topLeft = new Vector2(999, 999);
+        Vector2 bottomRight = new Vector2(-999, -999);
+        for (FusionNodeData.Node node : nodeArray) {
+            if (node != null) {
+                topLeft = new Vector2(Math.min(topLeft.x, node.position.x), Math.min(topLeft.y, node.position.y - node.children[0].animation.getKeyFrame(0).getRegionHeight()));
+                bottomRight = new Vector2(Math.max(bottomRight.x, node.position.x + node.children[0].animation.getKeyFrame(0).getRegionWidth()), Math.max(bottomRight.y, node.position.y));
+            }
+        }
+        return new Rectangle(topLeft.x, topLeft.y, bottomRight.x - topLeft.x, bottomRight.y - topLeft.y);
     }
 }
