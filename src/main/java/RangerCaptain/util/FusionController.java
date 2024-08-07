@@ -17,10 +17,10 @@ public class FusionController {
     public static FusionForm fusedForm = new FusionForm(monster1, monster2);
 
     public static void renderTest(SpriteBatch sb) {
-        renderNodes(sb, fusedForm, Settings.WIDTH/2f, Settings.HEIGHT/2f, 0, 0, 5, 0);
+        renderNodes(sb, fusedForm, Settings.WIDTH/2f, Settings.HEIGHT/2f, 0, 0, 0, 0, 5, 0);
     }
 
-    public static void renderNodes(SpriteBatch sb, FusionForm form, float drawX, float drawY, float displacementX, float displacementY, float scale, float rotation) {
+    public static void renderNodes(SpriteBatch sb, FusionForm form, float drawX, float drawY, float offsetX, float offsetY, float displacementX, float displacementY, float scale, float rotation) {
         ShaderProgram backup = sb.getShader();
         sb.setShader(fusionProgram);
         for (int i = 0 ; i < 15 ; i++) {
@@ -33,10 +33,10 @@ public class FusionController {
                     TextureRegion region = child.animation.getKeyFrame(MainModfile.time);
                     sb.draw(
                             region,
-                            drawX + node.position.x - form.positionalOffset.x + displacementX,
-                            drawY - region.getRegionHeight() + node.position.y - form.positionalOffset.y + displacementY,
-                            0 - node.position.x + form.positionalOffset.x - displacementX,
-                            region.getRegionHeight() - node.position.y + form.positionalOffset.y - displacementY,
+                            drawX + node.position.x - form.positionalOffset.x + offsetX + displacementX,
+                            drawY - region.getRegionHeight() + node.position.y - form.positionalOffset.y + offsetY + displacementY,
+                            0 - node.position.x + form.positionalOffset.x - offsetX,
+                            region.getRegionHeight() - node.position.y + form.positionalOffset.y - offsetY,
                             region.getRegionWidth(),
                             region.getRegionHeight(),
                             Settings.scale * scale, Settings.scale * scale, rotation
