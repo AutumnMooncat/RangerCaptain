@@ -18,7 +18,6 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Dominoth extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Dominoth.class.getSimpleName());
-    private String rollerKey = ID;
 
     public Dominoth() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
@@ -77,11 +76,6 @@ public class Dominoth extends AbstractMultiUpgradeCard {
     @Override
     public CardArtRoller.ReskinInfo reskinInfo(String ID) {
         return new CardArtRoller.ReskinInfo(ID, darken(darken(BLUE)), WHITE, darken(darken(BLUE)), WHITE, false);
-    }
-
-    @Override
-    public String rollerKey() {
-        return rollerKey;
     }
 
     @Override

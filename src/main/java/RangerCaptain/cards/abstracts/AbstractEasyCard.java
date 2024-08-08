@@ -131,11 +131,12 @@ public abstract class AbstractEasyCard extends CustomCard {
     private int previewIndex;
     protected ArrayList<AbstractCard> cyclePreviewCards = new ArrayList<>();
 
-    protected boolean needsArtRefresh = false;
+    public boolean needsArtRefresh = false;
     protected boolean manualD2 = false;
 
     protected AbstractGameAction clickAction;
     protected MonsterEnum monsterEnum;
+    public String rollerKey;
 
     public AbstractEasyCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target) {
         this(cardID, cost, type, rarity, target, TheRangerCaptain.Enums.HEADBAND_PURPLE_COLOR);
@@ -147,6 +148,7 @@ public abstract class AbstractEasyCard extends CustomCard {
         cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
         rawDescription = cardStrings.DESCRIPTION;
         name = originalName = cardStrings.NAME;
+        rollerKey = cardID;
         initializeTitle();
         initializeDescription();
 
@@ -465,7 +467,7 @@ public abstract class AbstractEasyCard extends CustomCard {
     }
 
     public String rollerKey() {
-        return cardID;
+        return rollerKey;
     }
 
     public Texture artTexture() {
