@@ -390,6 +390,7 @@ public class MainModfile implements
         if (TRESPaletteDataProcessor.SHOULD_PROCESS) {
             TRESPaletteDataProcessor.process();
         }
+        FusionNodeData loadPlz = new FusionNodeData();
     }
 
     public static boolean shaderTest = false;
