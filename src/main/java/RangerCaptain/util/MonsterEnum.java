@@ -1,5 +1,8 @@
 package RangerCaptain.util;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public enum MonsterEnum {
     ADEPTILE,
     AEROBOROS,
@@ -145,6 +148,6 @@ public enum MonsterEnum {
 
     @Override
     public String toString() {
-        return FormatHelper.capitalize(name().toLowerCase());
+        return Arrays.stream(name().split("_")).map(str -> FormatHelper.capitalize(str.toLowerCase())).collect(Collectors.joining("_"));
     }
 }
