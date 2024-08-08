@@ -3,6 +3,8 @@ package RangerCaptain.util;
 import RangerCaptain.TheRangerCaptain;
 import RangerCaptain.actions.TimedVFXAction;
 import RangerCaptain.cardmods.CarrotMod;
+import RangerCaptain.cardmods.FusionMod;
+import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CardCounterPatches;
 import RangerCaptain.powers.LosePowerPower;
 import RangerCaptain.powers.NextTurnPowerPower;
@@ -323,5 +325,9 @@ public class Wiz {
             amount = ((CarrotMod) CardModifierManager.getModifiers(card, CarrotMod.ID).get(0)).amount;
         }
         return amount;
+    }
+
+    public static boolean canBeFused(AbstractCard card) {
+        return card instanceof AbstractEasyCard && ((AbstractEasyCard) card).getMonsterData() != null && !CardModifierManager.hasModifier(card, FusionMod.ID);
     }
 }
