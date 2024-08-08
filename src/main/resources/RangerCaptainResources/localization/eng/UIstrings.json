@@ -16,19 +16,20 @@
       "Enable Celestial Hostess Crossover Content"
     ]
   },
-  "${ModID}:AuraButton": {
+  "${ModID}:FusionButton": {
     "TEXT": [
-      "Holy Aura",
-      "Aura Active"
+      "Fuse!",
+      "Recharging"
     ],
     "EXTRA_TEXT": [
-      "Holy Aura",
-      "Pressing this button will spend [E] to activate your #yAura this turn, triggering all #yCharges. NL NL While your #yAura is active, #yHoly cards are enhanced.",
-      " NL NL #yCharge #yEffects:",
-      " NL Deal #b"," damage to ALL enemies.",
-      " NL Gain #b"," #yBlock.",
-      " NL Draw #b"," card."," cards.",
-      " NL Gain #b"," [E] ."
+      "Fusion",
+      "Pressing this button will spend [E] to #yFuse two monster cards. NL #yFusions play the effect of both cards at the more expensive card's cost.",
+      "Pressing this button will spend [E] to activate your #yAura this turn, triggering all #yCharges. NL NL While your #yAura is active, #yHoly cards are enhanced."
+    ]
+  },
+  "${ModID}:FusionAction": {
+    "TEXT": [
+      "Fuse."
     ]
   },
   "${ModID}:ModifyAction": {
