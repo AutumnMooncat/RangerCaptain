@@ -27,7 +27,13 @@ public class FusionForm {
         this.nodes = blendNodes(monster1, monster2);
         this.palette = getPalette(monster1, monster2);
         if (monster1 == monster2) {
-            fusionName = CardCrawlGame.languagePack.getUIString(MainModfile.makeID("SameFusionPrefix")).TEXT[random.nextInt(8)] + " " + monster1.toString().replace("_"," ");
+            String affix = CardCrawlGame.languagePack.getUIString(MainModfile.makeID("SameFusionAffix")).TEXT[random.nextInt(10)];
+            //Check if it's a suffix instead
+            if (affix.startsWith(" ")) {
+                fusionName = monster1.toString().replace("_", "") + affix;
+            } else {
+                fusionName = affix + monster1.toString().replace("_"," ");
+            }
         } else {
             fusionName = CardCrawlGame.languagePack.getUIString(MainModfile.makeID(monster1+"Fusion")).TEXT[0] + CardCrawlGame.languagePack.getUIString(MainModfile.makeID(monster2+"Fusion")).TEXT[1];
         }

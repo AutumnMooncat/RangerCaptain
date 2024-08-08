@@ -65,16 +65,18 @@
       "This enemy cannot intend to #yAttack this turn."
     ]
   },
-  "${ModID}:SameFusionPrefix": {
+  "${ModID}:SameFusionAffix": {
     "TEXT": [
-      "Meta",
-      "Super",
-      "Ultra",
-      "Double",
-      "Jumbo",
-      "Mutant",
-      "Hyper",
-      "Giga"
+      "Meta ",
+      "Super ",
+      "Ultra ",
+      "Double ",
+      "Jumbo ",
+      "Mutant ",
+      "Hyper ",
+      "Giga ",
+      "Mega ",
+      " 2.0"
     ]
   },
   "${ModID}:AdeptileFusion": {
