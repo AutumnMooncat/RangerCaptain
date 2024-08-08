@@ -31,14 +31,7 @@ public class FusionNodeData {
         public Animation<TextureRegion> animation;
 
         public Node(String name, boolean visible, Vector2 position, boolean forceUsage, String matchPart, boolean inverseMatch, Node[] children, String texturePath) {
-            this.nodeName = name;
-            this.visible = visible;
-            this.position = new Vector2(position.x, -position.y); //Godot uses top left (0,0) instead, so we must invert the y coordinate
-            this.forceUsage = forceUsage;
-            this.matchPart = matchPart;
-            this.inverseMatch = inverseMatch;
-            this.children = children;
-            this.animation = makeAnimation(texturePath);
+            this(name, visible, position, forceUsage, matchPart, inverseMatch, children, makeAnimation(texturePath));
         }
 
         public Node(String name, boolean visible, Vector2 position, boolean forceUsage, String matchPart, boolean inverseMatch, Node[] children, Animation<TextureRegion> animation) {
