@@ -2,6 +2,7 @@ package RangerCaptain.cardmods;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.FusionForm;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
@@ -83,11 +84,11 @@ public class FusionMod extends AbstractCardModifier {
             if (otherCard.type == AbstractCard.CardType.POWER && card.type != AbstractCard.CardType.POWER) {
                 card.type = AbstractCard.CardType.POWER;
                 ((AbstractEasyCard) card).rollerKey += "Power";
-                ((AbstractEasyCard) card).needsArtRefresh = true;
+                CardArtRoller.computeCard((AbstractEasyCard) card);
             } else if (otherCard.type == AbstractCard.CardType.ATTACK && card.type != AbstractCard.CardType.ATTACK && card.type != AbstractCard.CardType.POWER) {
                 card.type = AbstractCard.CardType.ATTACK;
                 ((AbstractEasyCard) card).rollerKey += "Attack";
-                ((AbstractEasyCard) card).needsArtRefresh = true;
+                CardArtRoller.computeCard((AbstractEasyCard) card);
             }
         }
     }
