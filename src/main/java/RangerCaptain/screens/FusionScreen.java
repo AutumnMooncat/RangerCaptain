@@ -426,8 +426,6 @@ public class FusionScreen extends CustomScreen {
             fusionPreviewCard = baseCard.makeStatEquivalentCopy();
             CardModifierManager.addModifier(fusionPreviewCard, new FusionMod(donorCard));
             fusionPreviewCard.drawScale = FUSION_CARD_SCALE;
-            fusionPreviewCard.beginGlowing();
-            fusionPreviewCard.glowColor = Color.GOLD.cpy();
         }
 
         InputHelper.moveCursorToNeutralPosition();
@@ -505,8 +503,6 @@ public class FusionScreen extends CustomScreen {
             if (fusionPreviewCard == null) {
                 fusionPreviewCard = baseCard.makeStatEquivalentCopy();
                 CardModifierManager.addModifier(fusionPreviewCard, new FusionMod(donorCard));
-                fusionPreviewCard.beginGlowing();
-                fusionPreviewCard.glowColor = Color.GOLD.cpy();
             }
             fusionPreviewCard.drawScale = FUSION_CARD_SCALE;
             fusionPreviewCard.targetDrawScale = FUSION_CARD_SCALE;
