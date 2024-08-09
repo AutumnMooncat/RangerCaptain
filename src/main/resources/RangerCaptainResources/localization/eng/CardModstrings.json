@@ -26,26 +26,568 @@
   "${ModID}:DealAOEDamageMod": {
     "EXTENDED_DESCRIPTION": [" NL Deal %s damage to ALL enemies."]
   },
-  "${ModID}:UnlockedMod": {
-    "EXTENDED_DESCRIPTION": ["professor:Masterpiece. NL "]
-  },
-  "${ModID}:ApplyDestabilizedMod": {
-    "EXTENDED_DESCRIPTION": [" NL Apply %s professor:Unstable."]
-  },
-  "${ModID}:XPMod": {
-    "EXTENDED_DESCRIPTION": [" NL XP: "]
-  },
-  "${ModID}:TributeMod": {
-    "EXTENDED_DESCRIPTION": ["${ModID}:Tribute. NL "]
-  },
-  "${ModID}:CorruptMod": {
-    "EXTENDED_DESCRIPTION": [" NL ${ModID}:Corrupt."," NL ${ModID}:Corrupt %s times."]
-  },
-  "${ModID}:HolyMod": {
-    "NAME": "Holy",
+  "${ModID}:AdeptileMod": {
+    "DESCRIPTION": "",
     "EXTENDED_DESCRIPTION": [""]
   },
-  "${ModID}:EchoMod": {
-    "EXTENDED_DESCRIPTION": ["${ModID}:Echo. NL "]
+  "${ModID}:AeroborosMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:AllseerMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:AmphareMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:AnathemaMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:ApocrowlypseMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:ArkiddMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:ArtillerexMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:AuriclawMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:AverevoirMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:BansheepMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:BeanstalkerMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:BinterloperMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:BinvaderMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:BlossomawMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:BlunderbuskMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:BoltamMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:BraxsuitMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:BrushroomMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:BulletinoMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:BurnaceMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:BusheyeMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:CandevilMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:CapricorpseMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:CarniviperMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:CatfiveMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:CharlequinMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:ClocksleyMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:CluckabillyMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:CoaldronMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:CryoshearMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:DandylionMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:DecibelleMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:DivealMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:DivebergMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:Djinn_EntonicMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:DominothMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:DraculeafMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:ElflessMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:FaeriousMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:FaucetearMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:FerriclawMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:FlapwoodsMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:FolklordMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:FortiwinxMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:FountessMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:FragliacciMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:FrillypadMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:FungoghMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:GalagorMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:GearyuMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:GlaistainMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:GrampusMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:GumbaalMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:HauntomeMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:HedgeherneMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:HopskinMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:HuntorchMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:IcepeckMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:JellytonMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:JormungoldMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:JumpkinMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:KhepriMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:KhufoMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:KingraveMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:KirikuriMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:KittellyMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:KunekoMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:LapacitorMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:LiligatorMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:LittleredMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:LobstacleMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:MacabraMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:MagikrabMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:MajortomMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:MalchemyMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:ManispearMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:MardiusaMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:MascotornMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:MascotoyMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:MasquerattleMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:MiasmodeusMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:MinortomMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:Miss_MimicMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:MothmanicMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:MuskrateerMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:NevermortMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:PadpoleMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:PalangolinMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:PawndeadMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:PicksieMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:PinboltMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:PlasmantlerMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:PombombMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:PondwalkerMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:PuppercutMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:PyromeleonMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:QueenyxMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:RamtasmMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:RatcouselMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:RegenseaMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:RipterraMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:RobindamMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:RockertriceMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:RosehoodMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:SalamagusMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:SanzatimeMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:ScampireMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:ScarleteethMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:ScubalrusMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:SharktankerMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:Shining_KunekoMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:SirenadeMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:SkelevangelistMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:SmogmagogMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:SnoopinMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:SouthpawMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:SparktanMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:SpirouetteMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:SpitzfyreMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:SpookionnaMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:SpringheelMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:SquireyMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:StardigradeMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:TerracookaMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:ThwackalopeMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:TokusectMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:TraffikrabMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:TrapwurmMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:TriphinxMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:TwirligigMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:UmbrahellaMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:UndyinMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:VelocirifleMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:VendemonMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:WeeviliteMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:WingloomMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:WooltergeistMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:WyrmawMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:ZeustrikeMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "${ModID}:ZombleatMod": {
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
   }
 }
