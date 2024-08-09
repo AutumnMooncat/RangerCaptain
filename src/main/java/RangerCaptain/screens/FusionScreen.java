@@ -40,6 +40,10 @@ public class FusionScreen extends CustomScreen {
     private float waitToCloseTimer;
     private CardGroup hand;
     public static final float HOVER_CARD_Y_POSITION = 210.0F * Settings.scale;
+    private static final float BANNER_HEIGHT = Settings.HEIGHT - 100.0F * Settings.scale;
+    private static final float BUMP_X = 64f * Settings.scale;
+    private static final float CARD_HEIGHT = Settings.HEIGHT / 2.0F + 200.0F * Settings.scale;
+    private static final float FUSION_CARD_SCALE = 1f;
     private static final int ARROW_W = 64;
     private float arrowScale1;
     private float arrowScale2;
@@ -124,7 +128,7 @@ public class FusionScreen extends CustomScreen {
         AbstractDungeon.player.hand.render(sb);
         AbstractDungeon.overlayMenu.energyPanel.render(sb);
         if (!PeekButton.isPeeking) {
-            FontHelper.renderFontCentered(sb, FontHelper.buttonLabelFont, this.message, (float)(Settings.WIDTH / 2), (float)Settings.HEIGHT - 180.0F * Settings.scale, Settings.CREAM_COLOR);
+            FontHelper.renderFontCentered(sb, FontHelper.buttonLabelFont, this.message, (float)(Settings.WIDTH / 2), BANNER_HEIGHT, Settings.CREAM_COLOR);
             this.button.render(sb);
             if (baseCard != null) {
                 baseCard.render(sb);
@@ -132,15 +136,15 @@ public class FusionScreen extends CustomScreen {
             if (donorCard != null) {
                 donorCard.render(sb);
             }
-            if (this.fusionPreviewCard != null) {
-                this.renderArrows(sb);
-                this.fusionPreviewCard.current_x = Settings.WIDTH * 0.63F;
-                this.fusionPreviewCard.current_y = Settings.HEIGHT / 2.0F + 160.0F * Settings.scale;
-                this.fusionPreviewCard.target_x = Settings.WIDTH * 0.63F;
-                this.fusionPreviewCard.target_y = Settings.HEIGHT / 2.0F + 160.0F * Settings.scale;
-                this.fusionPreviewCard.render(sb);
-                this.fusionPreviewCard.updateHoverLogic();
-                this.fusionPreviewCard.renderCardTip(sb);
+            if (fusionPreviewCard != null) {
+                renderArrows(sb);
+                fusionPreviewCard.current_x = Settings.WIDTH * 0.5F;
+                fusionPreviewCard.current_y = CARD_HEIGHT;
+                fusionPreviewCard.target_x = Settings.WIDTH * 0.5F;
+                fusionPreviewCard.target_y = CARD_HEIGHT;
+                fusionPreviewCard.render(sb);
+                fusionPreviewCard.updateHoverLogic();
+                fusionPreviewCard.renderCardTip(sb);
             }
         }
 
@@ -151,14 +155,23 @@ public class FusionScreen extends CustomScreen {
     }
 
     private void renderArrows(SpriteBatch sb) {
-        float x = (float)Settings.WIDTH / 2.0F - 96.0F * Settings.scale - 10.0F * Settings.scale;
         sb.setColor(Color.WHITE);
-        sb.draw(ImageMaster.UPGRADE_ARROW, x, (float)Settings.HEIGHT / 2.0F + 120.0F * Settings.scale, 32.0F, 32.0F, 64.0F, 64.0F, this.arrowScale1 * Settings.scale, this.arrowScale1 * Settings.scale, 0.0F, 0, 0, 64, 64, false, false);
+
+        float x = Settings.WIDTH / 2.0F - 320.0F * Settings.scale - BUMP_X;
+        float y = Settings.HEIGHT / 2.0F + 160.0F * Settings.scale;
+        sb.draw(ImageMaster.UPGRADE_ARROW, x, y, 32.0F, 32.0F, 64.0F, 64.0F, this.arrowScale1 * Settings.scale, this.arrowScale1 * Settings.scale, 0.0F, 0, 0, 64, 64, false, false);
         x += 64.0F * Settings.scale;
-        sb.setColor(Color.WHITE);
-        sb.draw(ImageMaster.UPGRADE_ARROW, x, (float)Settings.HEIGHT / 2.0F + 120.0F * Settings.scale, 32.0F, 32.0F, 64.0F, 64.0F, this.arrowScale2 * Settings.scale, this.arrowScale2 * Settings.scale, 0.0F, 0, 0, 64, 64, false, false);
+        sb.draw(ImageMaster.UPGRADE_ARROW, x, y, 32.0F, 32.0F, 64.0F, 64.0F, this.arrowScale2 * Settings.scale, this.arrowScale2 * Settings.scale, 0.0F, 0, 0, 64, 64, false, false);
         x += 64.0F * Settings.scale;
-        sb.draw(ImageMaster.UPGRADE_ARROW, x, (float)Settings.HEIGHT / 2.0F + 120.0F * Settings.scale, 32.0F, 32.0F, 64.0F, 64.0F, this.arrowScale3 * Settings.scale, this.arrowScale3 * Settings.scale, 0.0F, 0, 0, 64, 64, false, false);
+        sb.draw(ImageMaster.UPGRADE_ARROW, x, y, 32.0F, 32.0F, 64.0F, 64.0F, this.arrowScale3 * Settings.scale, this.arrowScale3 * Settings.scale, 0.0F, 0, 0, 64, 64, false, false);
+
+        x = (float)Settings.WIDTH / 2.0F + 128.0F * Settings.scale + BUMP_X;
+        sb.draw(ImageMaster.UPGRADE_ARROW, x, y, 32.0F, 32.0F, 64.0F, 64.0F, this.arrowScale3 * Settings.scale, this.arrowScale3 * Settings.scale, 0.0F, 0, 0, 64, 64, true, false);
+        x += 64.0F * Settings.scale;
+        sb.draw(ImageMaster.UPGRADE_ARROW, x, y, 32.0F, 32.0F, 64.0F, 64.0F, this.arrowScale2 * Settings.scale, this.arrowScale2 * Settings.scale, 0.0F, 0, 0, 64, 64, true, false);
+        x += 64.0F * Settings.scale;
+        sb.draw(ImageMaster.UPGRADE_ARROW, x, y, 32.0F, 32.0F, 64.0F, 64.0F, this.arrowScale1 * Settings.scale, this.arrowScale1 * Settings.scale, 0.0F, 0, 0, 64, 64, true, false);
+
         this.arrowTimer += Gdx.graphics.getDeltaTime() * 2.0F;
         this.arrowScale1 = 0.8F + (MathUtils.cos(this.arrowTimer) + 1.0F) / 8.0F;
         this.arrowScale2 = 0.8F + (MathUtils.cos(this.arrowTimer - 0.8F) + 1.0F) / 8.0F;
@@ -328,13 +341,13 @@ public class FusionScreen extends CustomScreen {
 
     private void refreshSelectedCards() {
         if (baseCard != null) {
-            baseCard.target_y = Settings.HEIGHT / 2.0F + 160.0F * Settings.scale;
-            baseCard.target_x = Settings.WIDTH * 0.37F - 240.0F * Settings.scale;
+            baseCard.target_y = CARD_HEIGHT;
+            baseCard.target_x = Settings.WIDTH * 0.25F - BUMP_X;
         }
 
         if (donorCard != null) {
-            donorCard.target_y = Settings.HEIGHT / 2.0F + 160.0F * Settings.scale;
-            donorCard.target_x = Settings.WIDTH * 0.37F + 0.0F * Settings.scale;
+            donorCard.target_y = CARD_HEIGHT;
+            donorCard.target_x = Settings.WIDTH * 0.75F + BUMP_X;
         }
 
         if (baseCard != null && donorCard != null) {
@@ -412,7 +425,9 @@ public class FusionScreen extends CustomScreen {
         if (baseCard != null && donorCard != null) {
             fusionPreviewCard = baseCard.makeStatEquivalentCopy();
             CardModifierManager.addModifier(fusionPreviewCard, new FusionMod(donorCard));
-            fusionPreviewCard.drawScale = 0.75F;
+            fusionPreviewCard.drawScale = FUSION_CARD_SCALE;
+            fusionPreviewCard.beginGlowing();
+            fusionPreviewCard.glowColor = Color.GOLD.cpy();
         }
 
         InputHelper.moveCursorToNeutralPosition();
@@ -489,11 +504,12 @@ public class FusionScreen extends CustomScreen {
             message = TEXT[2];
             if (fusionPreviewCard == null) {
                 fusionPreviewCard = baseCard.makeStatEquivalentCopy();
+                CardModifierManager.addModifier(fusionPreviewCard, new FusionMod(donorCard));
+                fusionPreviewCard.beginGlowing();
+                fusionPreviewCard.glowColor = Color.GOLD.cpy();
             }
-
-            CardModifierManager.addModifier(fusionPreviewCard, new FusionMod(donorCard));
-            fusionPreviewCard.drawScale = 0.75F;
-            fusionPreviewCard.targetDrawScale = 0.75F;
+            fusionPreviewCard.drawScale = FUSION_CARD_SCALE;
+            fusionPreviewCard.targetDrawScale = FUSION_CARD_SCALE;
         }
     }
 
