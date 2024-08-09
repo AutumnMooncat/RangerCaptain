@@ -13,6 +13,7 @@ import RangerCaptain.powers.BracedPower;
 import RangerCaptain.powers.StaggerPower;
 import RangerCaptain.powers.interfaces.InfusionTriggerPower;
 import RangerCaptain.relics.AbstractEasyRelic;
+import RangerCaptain.screens.FusionScreen;
 import RangerCaptain.util.*;
 import RangerCaptain.vfx.ShaderTest;
 import basemod.AutoAdd;
@@ -290,6 +291,8 @@ public class MainModfile implements
         //Add Config stuff
 
         //Other Setup stuff
+        BaseMod.addCustomScreen(new FusionScreen());
+
         DynamicTextBlocks.registerCustomCheck(makeID("Tokusect"), c -> {
             if (c instanceof AbstractEasyCard && ((AbstractEasyCard) c).info == 2 && Wiz.isInCombat() && Wiz.adp().hand.contains(c)) {
                 return 1;

@@ -23,13 +23,14 @@
     ],
     "EXTRA_TEXT": [
       "Fusion",
-      "Pressing this button will spend [E] to #yFuse two monster cards. NL #yFusions play the effect of both cards at the more expensive card's cost.",
-      "Pressing this button will spend [E] to activate your #yAura this turn, triggering all #yCharges. NL NL While your #yAura is active, #yHoly cards are enhanced."
+      "Pressing this button will spend [E] to #yFuse two monster cards. NL #yFusions play the effect of both cards at the more expensive card's cost."
     ]
   },
-  "${ModID}:FusionAction": {
+  "${ModID}:FusionScreen": {
     "TEXT": [
-      "Fuse."
+      "Choose a base card.",
+      "Choose a donor card.",
+      "Fuse!"
     ]
   },
   "${ModID}:ModifyAction": {
