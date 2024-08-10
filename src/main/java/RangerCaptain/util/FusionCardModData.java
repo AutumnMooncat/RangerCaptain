@@ -1,5 +1,6 @@
 package RangerCaptain.util;
 
+import RangerCaptain.cardmods.fusion.abstracts.AbstractFusionMod;
 import basemod.abstracts.AbstractCardModifier;
 
 import java.util.HashMap;
@@ -7,9 +8,9 @@ import java.util.HashMap;
 import static RangerCaptain.util.MonsterEnum.*;
 
 public class FusionCardModData {
-    public static final HashMap<MonsterEnum, AbstractCardModifier> MOD_MAP = new HashMap<>();
+    public static final HashMap<MonsterEnum, AbstractFusionMod> MOD_MAP = new HashMap<>();
 
-    public static void add(MonsterEnum monster, AbstractCardModifier mod) {
+    public static void add(MonsterEnum monster, AbstractFusionMod mod) {
         MOD_MAP.put(monster, mod);
     }
 
