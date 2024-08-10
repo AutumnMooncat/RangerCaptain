@@ -1,6 +1,7 @@
 package RangerCaptain.util;
 
 import RangerCaptain.cardmods.fusion.AdeptileMod;
+import RangerCaptain.cardmods.fusion.AllseerMod;
 import RangerCaptain.cardmods.fusion.MardiusaMod;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractFusionMod;
 
@@ -18,7 +19,7 @@ public class FusionCardModData {
     static {
         add(ADEPTILE, new AdeptileMod());
         add(AEROBOROS, null);
-        add(ALLSEER, null);
+        add(ALLSEER, new AllseerMod());
         add(AMPHARE, null);
         add(ANATHEMA, null);
         add(APOCROWLYPSE, null);

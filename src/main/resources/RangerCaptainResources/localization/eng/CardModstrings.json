@@ -35,8 +35,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:AllseerMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 3 Block. Add 1 Vulnerable."],
+    "EXTRA_TEXT": ["Gain %s Block. NL "," NL Apply 1 Vulnerable."]
   },
   "${ModID}:AmphareMod": {
     "TEXT": [""],
