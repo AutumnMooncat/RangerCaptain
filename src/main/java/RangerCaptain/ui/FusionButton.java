@@ -69,7 +69,7 @@ public class FusionButton {
     }
 
     public void update() {
-        this.enabled = canTrigger && Wiz.adp().hand.group.stream().filter(Wiz::canBeFused).count() >= 2;
+        this.enabled = canTrigger && EnergyPanel.totalCount >= 1 && Wiz.adp().hand.group.stream().filter(Wiz::canBeFused).count() >= 2;
         this.glow();// 68
         this.updateHoldProgress();// 69
         if (this.current_x != this.target_x) {// 71
