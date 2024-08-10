@@ -2,6 +2,7 @@ package RangerCaptain.cardmods.fusion;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractFusionMod;
+import RangerCaptain.util.FormatHelper;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.GameActionManager;
@@ -13,11 +14,11 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class MardiusaMod extends AbstractFusionMod {
     public static final String ID = MainModfile.makeID(MardiusaMod.class.getSimpleName());
-    public static final String DESCRIPTION = CardCrawlGame.languagePack.getCardStrings(ID).DESCRIPTION;
-    public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getCardStrings(ID).EXTENDED_DESCRIPTION;
+    public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
+    public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
     public MardiusaMod() {
-        super(ID, DESCRIPTION, CARD_TEXT[0]);
+        super(ID);
     }
 
     @Override
@@ -33,6 +34,16 @@ public class MardiusaMod extends AbstractFusionMod {
         AbstractCard copy = card.makeStatEquivalentCopy();
         CardModifierManager.removeModifiersById(copy, ID, false);
         GameActionManager.queueExtraCard(copy, (AbstractMonster) target);
+    }
+
+    @Override
+    public String getModDescription(AbstractCard card) {
+        return DESCRIPTION_TEXT[0];
+    }
+
+    @Override
+    public String modifyDescription(String rawDescription, AbstractCard card) {
+        return FormatHelper.insertAfterText(rawDescription, CARD_TEXT[0]);
     }
 
     @Override

@@ -511,7 +511,7 @@ public class FusionScreen extends CustomScreen {
             AbstractFusionMod mod = FusionCardModData.MOD_MAP.get(((AbstractEasyCard) donorCard).getMonsterData());
             if (mod != null) {
                 CardModifierManager.addModifier(fusionPreviewCard, mod);
-                message += " ("+mod.modDescription+")";
+                message += " ("+mod.getModDescription(fusionPreviewCard)+")";
             } else {
                 message += " (Not yet implemented.)";
             }
