@@ -139,7 +139,7 @@
   },
   "${ModID}:Ferriclaw": {
     "NAME": "Ferriclaw",
-    "DESCRIPTION": "Apply !M! Weak. NL Apply !M! ${ModID}:Tape_Jam.",
+    "DESCRIPTION": "Apply !M! Weak. NL Apply !${ModID}:M2! ${ModID}:Tape_Jam.",
     "EXTENDED_DESCRIPTION": ["Auriclaw"]
   },
   "${ModID}:FireAltar": {
