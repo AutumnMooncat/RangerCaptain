@@ -53,13 +53,8 @@ public class AdeptileMod extends AbstractFusionMod {
     }
 
     @Override
-    public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        AbstractCard copy = card.makeStatEquivalentCopy();
-        AdeptileMod mod = (AdeptileMod) CardModifierManager.getModifiers(copy, ID).get(0);
-        mod.applyPower = false;
-        if (applyPower) {
-            Wiz.applyToSelf(new MindMeldPower(Wiz.adp(), copy));
-        }
+    public void onInitialApplication(AbstractCard card) {
+        MindMeldPatches.MindMeldField.mindMeldCount.set(card, MindMeldPatches.MindMeldField.mindMeldCount.get(card) + 1);
     }
 
     @Override

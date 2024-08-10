@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
+import RangerCaptain.patches.MindMeldPatches;
 import RangerCaptain.powers.FlammablePower;
 import RangerCaptain.powers.MindMeldPower;
 import RangerCaptain.util.CardArtRoller;
@@ -25,11 +26,6 @@ public class Salamagus extends AbstractMultiUpgradeCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         Wiz.applyToSelf(new FlammablePower(p, magicNumber));
-        if (info == 1) {
-            Salamagus copy = (Salamagus) makeStatEquivalentCopy();
-            copy.baseInfo = copy.info = -1;
-            Wiz.applyToSelf(new MindMeldPower(p, copy));
-        }
     }
 
     @Override
@@ -55,6 +51,7 @@ public class Salamagus extends AbstractMultiUpgradeCard {
         initializeTitle();
         setMonsterData(MonsterEnum.ADEPTILE);
         baseInfo = info = 1;
+        MindMeldPatches.MindMeldField.mindMeldCount.set(this, MindMeldPatches.MindMeldField.mindMeldCount.get(this) + 1);
     }
 
     public void upgrade1() {

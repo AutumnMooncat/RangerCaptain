@@ -2,6 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
+import RangerCaptain.patches.MindMeldPatches;
 import RangerCaptain.powers.CloseEncounterPower;
 import RangerCaptain.powers.MindMeldPower;
 import RangerCaptain.util.CardArtRoller;
@@ -42,11 +43,7 @@ public class Allseer extends AbstractMultiUpgradeCard {
             addToBot(new VFXAction(new SmallLaserEffect(p.hb.cX, p.hb.cY, m.hb.cX, m.hb.cY), 0.1F));
         }
         addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), magicNumber, info == 0 ? AbstractGameAction.AttackEffect.NONE : AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        if (info == 1) {
-            Allseer copy = (Allseer) makeStatEquivalentCopy();
-            copy.info = copy.baseInfo = -1;
-            Wiz.applyToSelf(new MindMeldPower(p, copy));
-        } else if (info == 2) {
+        if (info == 2) {
             Wiz.applyToSelf(new CloseEncounterPower(p, this));
         }
     }
@@ -74,6 +71,7 @@ public class Allseer extends AbstractMultiUpgradeCard {
         initializeTitle();
         setMonsterData(MonsterEnum.KHUFO);
         baseInfo = info = 1;
+        MindMeldPatches.MindMeldField.mindMeldCount.set(this, MindMeldPatches.MindMeldField.mindMeldCount.get(this) + 1);
     }
 
     public void upgrade1() {

@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.patches.MindMeldPatches;
 import RangerCaptain.powers.MindMeldPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -19,18 +20,13 @@ public class Mascotoy extends AbstractEasyCard {
     public Mascotoy() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 4;
-        baseInfo = info = 1;
         setMonsterData(MonsterEnum.MASCOTOY);
+        MindMeldPatches.MindMeldField.mindMeldCount.set(this, MindMeldPatches.MindMeldField.mindMeldCount.get(this) + 1);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
-        if (info == 1) {
-            Mascotoy copy = (Mascotoy) makeStatEquivalentCopy();
-            copy.baseInfo = copy.info = 0;
-            Wiz.applyToSelf(new MindMeldPower(p, copy));
-        }
     }
 
     @Override
