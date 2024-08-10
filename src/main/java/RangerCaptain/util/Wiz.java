@@ -4,6 +4,7 @@ import RangerCaptain.TheRangerCaptain;
 import RangerCaptain.actions.TimedVFXAction;
 import RangerCaptain.cardmods.CarrotMod;
 import RangerCaptain.cardmods.FusionMod;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractFusionMod;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CardCounterPatches;
 import RangerCaptain.powers.LosePowerPower;
@@ -332,6 +333,13 @@ public class Wiz {
     }
 
     public static void fuse(AbstractCard base, AbstractCard donor) {
-        CardModifierManager.addModifier(base, new FusionMod(donor));
+        if (base instanceof AbstractEasyCard && donor instanceof AbstractEasyCard && ((AbstractEasyCard) base).getMonsterData() != null && ((AbstractEasyCard) donor).getMonsterData() != null) {
+            CardModifierManager.addModifier(base, new FusionMod(donor));
+            AbstractFusionMod mod = FusionCardModData.MOD_MAP.get(((AbstractEasyCard) donor).getMonsterData());
+            if (mod != null) {
+                CardModifierManager.addModifier(base, mod);
+            }
+        }
+
     }
 }

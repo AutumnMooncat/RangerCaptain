@@ -1,7 +1,9 @@
 package RangerCaptain.screens;
 
 import RangerCaptain.MainModfile;
-import RangerCaptain.cardmods.FusionMod;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractFusionMod;
+import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.util.FusionCardModData;
 import RangerCaptain.util.Wiz;
 import basemod.abstracts.CustomScreen;
 import basemod.helpers.CardModifierManager;
@@ -422,6 +424,7 @@ public class FusionScreen extends CustomScreen {
             hoveredCard = null;
             refreshSelectedCards();
             hand.refreshHandLayout();
+            updateMessage();
         }
         if (baseCard != null && donorCard != null) {
             fusionPreviewCard = baseCard.makeStatEquivalentCopy();
@@ -504,6 +507,13 @@ public class FusionScreen extends CustomScreen {
             if (fusionPreviewCard == null) {
                 fusionPreviewCard = baseCard.makeStatEquivalentCopy();
                 Wiz.fuse(fusionPreviewCard, donorCard);
+            }
+            AbstractFusionMod mod = FusionCardModData.MOD_MAP.get(((AbstractEasyCard) donorCard).getMonsterData());
+            if (mod != null) {
+                CardModifierManager.addModifier(fusionPreviewCard, mod);
+                message += " ("+mod.modDescription+")";
+            } else {
+                message += " (Not yet implemented.)";
             }
             fusionPreviewCard.drawScale = FUSION_CARD_SCALE;
             fusionPreviewCard.targetDrawScale = FUSION_CARD_SCALE;
