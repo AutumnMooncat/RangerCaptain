@@ -9,7 +9,7 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class PurgeMod extends AbstractCardModifier {
     public static String ID = makeID(PurgeMod.class.getSimpleName());
-    public static String[] TEXT = CardCrawlGame.languagePack.getCardStrings(ID).EXTENDED_DESCRIPTION;
+    public static String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
     public String modifyDescription(String rawDescription, AbstractCard card) {
         return rawDescription + TEXT[0];
