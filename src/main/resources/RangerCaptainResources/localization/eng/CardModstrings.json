@@ -27,8 +27,8 @@
     "EXTENDED_DESCRIPTION": [" NL Deal %s damage to ALL enemies."]
   },
   "${ModID}:AdeptileMod": {
-    "DESCRIPTION": "",
-    "EXTENDED_DESCRIPTION": [""]
+    "DESCRIPTION": "Halve stats. Add Mind-Meld.",
+    "EXTENDED_DESCRIPTION": [" NL ${ModID}:Mind-Meld."]
   },
   "${ModID}:AeroborosMod": {
     "DESCRIPTION": "",
@@ -335,8 +335,8 @@
     "EXTENDED_DESCRIPTION": [""]
   },
   "${ModID}:MardiusaMod": {
-    "DESCRIPTION": "",
-    "EXTENDED_DESCRIPTION": [""]
+    "DESCRIPTION": "+1 Cost. Add Double Play.",
+    "EXTENDED_DESCRIPTION": [" NL ${ModID}:Double_Play."]
   },
   "${ModID}:MascotornMod": {
     "DESCRIPTION": "",

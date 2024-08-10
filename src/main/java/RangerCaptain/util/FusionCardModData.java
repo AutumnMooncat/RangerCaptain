@@ -1,7 +1,8 @@
 package RangerCaptain.util;
 
+import RangerCaptain.cardmods.fusion.AdeptileMod;
+import RangerCaptain.cardmods.fusion.MardiusaMod;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractFusionMod;
-import basemod.abstracts.AbstractCardModifier;
 
 import java.util.HashMap;
 
@@ -15,7 +16,7 @@ public class FusionCardModData {
     }
 
     static {
-        add(ADEPTILE, null);
+        add(ADEPTILE, new AdeptileMod());
         add(AEROBOROS, null);
         add(ALLSEER, null);
         add(AMPHARE, null);
@@ -92,7 +93,7 @@ public class FusionCardModData {
         add(MAJORTOM, null);
         add(MALCHEMY, null);
         add(MANISPEAR, null);
-        add(MARDIUSA, null);
+        add(MARDIUSA, new MardiusaMod());
         add(MASCOTORN, null);
         add(MASCOTOY, null);
         add(MASQUERATTLE, null);
