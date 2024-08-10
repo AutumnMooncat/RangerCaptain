@@ -2,6 +2,7 @@ package RangerCaptain.util;
 
 import RangerCaptain.cardmods.fusion.AdeptileMod;
 import RangerCaptain.cardmods.fusion.AllseerMod;
+import RangerCaptain.cardmods.fusion.KhufoMod;
 import RangerCaptain.cardmods.fusion.MardiusaMod;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractFusionMod;
 
@@ -80,7 +81,7 @@ public class FusionCardModData {
         add(JORMUNGOLD, null);
         add(JUMPKIN, null);
         add(KHEPRI, null);
-        add(KHUFO, null);
+        add(KHUFO, new KhufoMod());
         add(KINGRAVE, null);
         add(KIRIKURI, null);
         add(KITTELLY, null);

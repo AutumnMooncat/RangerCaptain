@@ -279,8 +279,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:KhufoMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Halve stats. Add Mind-Meld."],
+    "EXTRA_TEXT": [" NL ${ModID}:Mind-Meld."]
   },
   "${ModID}:KingraveMod": {
     "TEXT": [""],
