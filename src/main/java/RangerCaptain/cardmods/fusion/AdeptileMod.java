@@ -63,6 +63,14 @@ public class AdeptileMod extends AbstractFusionMod {
     }
 
     @Override
+    public String modifyDescription(String rawDescription, AbstractCard card) {
+        if (applyPower) {
+            return super.modifyDescription(rawDescription, card);
+        }
+        return rawDescription;
+    }
+
+    @Override
     public AbstractCardModifier makeCopy() {
         return new AdeptileMod(applyPower);
     }
