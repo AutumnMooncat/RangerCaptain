@@ -46,7 +46,7 @@ public class Salamagus extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade0() {
-        upgradeMagicNumber(-1);
+        upgradeBaseCost(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.ADEPTILE);

@@ -27,7 +27,7 @@
     "EXTRA_TEXT": [" NL Deal %s damage to ALL enemies."]
   },
   "${ModID}:AdeptileMod": {
-    "TEXT": ["Halve stats. Add Mind-Meld."],
+    "TEXT": ["+1 Cost. Add Mind-Meld."],
     "EXTRA_TEXT": [" NL ${ModID}:Mind-Meld."]
   },
   "${ModID}:AeroborosMod": {

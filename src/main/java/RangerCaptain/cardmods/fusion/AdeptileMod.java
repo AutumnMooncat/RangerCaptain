@@ -6,9 +6,7 @@ import RangerCaptain.patches.MindMeldPatches;
 import RangerCaptain.util.FormatHelper;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class AdeptileMod extends AbstractFusionMod {
     public static final String ID = MainModfile.makeID(AdeptileMod.class.getSimpleName());
@@ -20,32 +18,12 @@ public class AdeptileMod extends AbstractFusionMod {
     }
 
     @Override
-    public float modifyBaseBlock(float block, AbstractCard card) {
-        if (block > 1) {
-            block /= 2;
-        }
-        return block;
-    }
-
-    @Override
-    public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
-        if (damage > 1) {
-            damage /= 2;
-        }
-        return damage;
-    }
-
-    @Override
-    public float modifyBaseMagic(float magic, AbstractCard card) {
-        if (magic > 1) {
-            magic /= 2;
-        }
-        return magic;
-    }
-
-    @Override
     public void onInitialApplication(AbstractCard card) {
         MindMeldPatches.MindMeldField.mindMeldCount.set(card, MindMeldPatches.MindMeldField.mindMeldCount.get(card) + 1);
+        if (card.cost >= 0) {
+            card.cost++;
+            card.costForTurn++;
+        }
     }
 
     @Override
