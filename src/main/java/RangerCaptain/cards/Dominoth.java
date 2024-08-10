@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.ConductivePower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -92,6 +93,7 @@ public class Dominoth extends AbstractMultiUpgradeCard {
         initializeTitle();
         setMonsterData(MonsterEnum.WINGLOOM);
         baseInfo = info = 1;
+        tags.add(CustomTags.MAGIC_CONDUCTIVE);
     }
 
     public void upgrade1() {

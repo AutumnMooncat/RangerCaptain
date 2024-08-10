@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.ConductivePower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -26,6 +27,7 @@ public class Boltam extends AbstractMultiUpgradeCard {
         baseSecondMagic = secondMagic = 1;
         setMonsterData(MonsterEnum.BOLTAM);
         baseInfo = info = 1;
+        tags.add(CustomTags.MAGIC_CONDUCTIVE);
     }
 
     @Override

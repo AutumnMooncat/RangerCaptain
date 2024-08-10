@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.BoobyTrappedPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -62,5 +63,6 @@ public class Charlequin extends AbstractMultiUpgradeCard {
         initializeTitle();
         setMonsterData(MonsterEnum.FRAGLIACCI);
         baseInfo = info = 1;
+        tags.add(CustomTags.MAGIC_VULN);
     }
 }

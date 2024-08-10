@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.CloseEncounterPower;
 import RangerCaptain.powers.MindMeldPower;
 import RangerCaptain.util.CardArtRoller;
@@ -29,6 +30,7 @@ public class Allseer extends AbstractMultiUpgradeCard {
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.ALLSEER);
         baseInfo = info = 0;
+        tags.add(CustomTags.MAGIC_VULN);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
@@ -21,6 +22,8 @@ public class Jumpkin extends AbstractMultiUpgradeCard {
         baseSecondMagic = secondMagic = 1;
         setMonsterData(MonsterEnum.JUMPKIN);
         baseInfo = info = 0;
+        tags.add(CustomTags.MAGIC_POISON);
+        tags.add(CustomTags.SECOND_MAGIC_WEAK);
     }
 
     @Override
@@ -59,6 +62,8 @@ public class Jumpkin extends AbstractMultiUpgradeCard {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.DRACULEAF);
+        tags.add(CustomTags.MAGIC_POISON_AOE);
+        tags.remove(CustomTags.MAGIC_POISON);
     }
 
     public void upgrade1() {

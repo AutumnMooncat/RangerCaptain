@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.BurnedPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -21,6 +22,8 @@ public class Busheye extends AbstractMultiUpgradeCard {
         baseSecondMagic = secondMagic = 2;
         setMonsterData(MonsterEnum.BUSHEYE);
         exhaust = true;
+        tags.add(CustomTags.SECOND_MAGIC_WEAK);
+        tags.add(CustomTags.MAGIC_BURN);
     }
 
     @Override

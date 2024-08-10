@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
@@ -58,6 +59,7 @@ public class Candevil extends AbstractMultiUpgradeCard implements StartupCard {
         initializeTitle();
         setMonsterData(MonsterEnum.MALCHEMY);
         baseInfo = info = 1;
+        tags.add(CustomTags.MAGIC_POISON);
     }
 
     public void upgrade1() {

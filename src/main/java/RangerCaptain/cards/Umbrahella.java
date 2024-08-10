@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.actions.EasyXCostAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
@@ -26,6 +27,7 @@ public class Umbrahella extends AbstractEasyCard {
         baseMagicNumber = magicNumber = 2;
         isMultiDamage = true;
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
+        tags.add(CustomTags.MAGIC_POISON);
     }
 
     @Override

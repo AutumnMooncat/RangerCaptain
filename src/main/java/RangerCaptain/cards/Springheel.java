@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.APBoostPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -22,6 +23,7 @@ public class Springheel extends AbstractMultiUpgradeCard {
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.SPRINGHEEL);
         baseInfo = info = 0;
+        tags.add(CustomTags.MAGIC_WEAK);
     }
 
     @Override

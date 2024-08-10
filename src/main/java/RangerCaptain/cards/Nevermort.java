@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
@@ -18,6 +19,7 @@ public class Nevermort extends AbstractEasyCard {
         super(ID, 0, CardType.SKILL, CardRarity.COMMON, CardTarget.ALL_ENEMY);
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.NEVERMORT);
+        tags.add(CustomTags.MAGIC_POISON_AOE);
     }
 
     @Override

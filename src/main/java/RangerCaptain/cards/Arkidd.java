@@ -2,6 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.ConductivePower;
 import RangerCaptain.powers.ResonancePower;
 import RangerCaptain.util.CardArtRoller;
@@ -21,6 +22,7 @@ public class Arkidd extends AbstractEasyCard {
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.ARKIDD);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
+        tags.add(CustomTags.MAGIC_CONDUCTIVE);
     }
 
     @Override

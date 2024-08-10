@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.BurnedPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -19,6 +20,7 @@ public class Terracooka extends AbstractEasyCard {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
         baseMagicNumber = magicNumber = 5;
         setMonsterData(MonsterEnum.TERRACOOKA);
+        tags.add(CustomTags.MAGIC_BURN);
     }
 
     @Override

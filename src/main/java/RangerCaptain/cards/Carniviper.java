@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
@@ -23,6 +24,7 @@ public class Carniviper extends AbstractMultiUpgradeCard {
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.CARNIVIPER);
         baseInfo = info = 0;
+        tags.add(CustomTags.MAGIC_POISON);
     }
 
     @Override

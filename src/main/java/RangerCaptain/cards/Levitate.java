@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -19,6 +20,7 @@ public class Levitate extends AbstractEasyCard {
         super(ID, 0, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
         baseDamage = damage = 3;
         baseMagicNumber = magicNumber = 1;
+        tags.add(CustomTags.MAGIC_VULN);
     }
 
     @Override

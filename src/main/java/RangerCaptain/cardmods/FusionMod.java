@@ -1,6 +1,7 @@
 package RangerCaptain.cardmods;
 
 import RangerCaptain.MainModfile;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractFusionMod;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.FusionForm;
@@ -51,6 +52,14 @@ public class FusionMod extends AbstractCardModifier {
             CardModifierManager.addModifier(copy, cardmod);
         }
         return copy;
+    }
+
+    public static void updateFusionForm(AbstractCard card) {
+        if (CardModifierManager.hasModifier(card, FusionMod.ID) && card instanceof AbstractEasyCard && ((AbstractEasyCard) card).getMonsterData() != null) {
+            FusionMod mod = (FusionMod) CardModifierManager.getModifiers(card, FusionMod.ID).get(0);
+            mod.monster1 = ((AbstractEasyCard) card).getMonsterData();
+            mod.form = new FusionForm(mod.monster1, mod.monster2);
+        }
     }
 
     @Override

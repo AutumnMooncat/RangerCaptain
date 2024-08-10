@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.BurnedPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -20,6 +21,7 @@ public class Pondwalker extends AbstractEasyCard {
         baseDamage = damage = 13;
         baseMagicNumber = magicNumber = 6;
         setMonsterData(MonsterEnum.PONDWALKER);
+        tags.add(CustomTags.MAGIC_BURN);
     }
 
     @Override

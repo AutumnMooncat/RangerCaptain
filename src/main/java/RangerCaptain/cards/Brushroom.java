@@ -2,6 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CardCounterPatches;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
@@ -21,6 +22,7 @@ public class Brushroom extends AbstractEasyCard {
         baseDamage = damage = 9;
         baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.BRUSHROOM);
+        tags.add(CustomTags.MAGIC_VULN);
     }
 
     @Override

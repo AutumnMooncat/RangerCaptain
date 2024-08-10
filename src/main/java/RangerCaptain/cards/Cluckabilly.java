@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.MultitargetPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -20,6 +21,7 @@ public class Cluckabilly extends AbstractEasyCard {
         baseMagicNumber = magicNumber = 2;
         baseSecondMagic = secondMagic = 1;
         setMonsterData(MonsterEnum.CLUCKABILLY);
+        tags.add(CustomTags.SECOND_MAGIC_VULN);
     }
 
     @Override
