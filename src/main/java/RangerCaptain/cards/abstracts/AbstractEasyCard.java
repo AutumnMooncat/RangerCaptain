@@ -2,6 +2,7 @@ package RangerCaptain.cards.abstracts;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.TheRangerCaptain;
+import RangerCaptain.cardmods.FusionMod;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.GifOverlayData;
 import RangerCaptain.util.MonsterEnum;
@@ -452,6 +453,7 @@ public abstract class AbstractEasyCard extends CustomCard {
 
     protected void setMonsterData(MonsterEnum data) {
         monsterEnum = data;
+        FusionMod.updateFusionForm(this);
     }
 
     public MonsterEnum getMonsterData() {
