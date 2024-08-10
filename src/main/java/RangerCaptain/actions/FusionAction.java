@@ -1,10 +1,8 @@
 package RangerCaptain.actions;
 
-import RangerCaptain.cardmods.FusionMod;
 import RangerCaptain.screens.FusionScreen;
 import RangerCaptain.util.Wiz;
 import basemod.BaseMod;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;

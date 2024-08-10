@@ -1,7 +1,7 @@
 package RangerCaptain.patches;
 
 import RangerCaptain.MainModfile;
-import RangerCaptain.cardmods.FusionMod;
+import RangerCaptain.cardmods.FusionFormMod;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.FusionController;
 import RangerCaptain.util.FusionForm;
@@ -55,7 +55,7 @@ public class AnimatedCardPatches {
             if (__instance instanceof AbstractEasyCard) {
                 if (((AbstractEasyCard) __instance).getGifOverlay() != null) {
                     prepFrameBuffer(sb);
-                    if (CardModifierManager.hasModifier(__instance, FusionMod.ID)) {
+                    if (CardModifierManager.hasModifier(__instance, FusionFormMod.ID)) {
                         drawFusionAnimation(sb, (AbstractEasyCard) __instance);
                     } else {
                         drawCardAnimation(sb, (AbstractEasyCard) __instance);
@@ -77,7 +77,7 @@ public class AnimatedCardPatches {
     }
 
     private static void drawFusionAnimation(SpriteBatch sb, AbstractEasyCard card) {
-        FusionForm form = ((FusionMod) CardModifierManager.getModifiers(card, FusionMod.ID).get(0)).form;
+        FusionForm form = ((FusionFormMod) CardModifierManager.getModifiers(card, FusionFormMod.ID).get(0)).form;
         float scale = Math.min(190f / form.height, 250f / form.width);
         FusionController.renderNodes(sb, form, card.current_x, card.current_y, 0, 72f/scale, 0 ,0, card.drawScale * Settings.scale * scale, card.angle);
     }
@@ -120,7 +120,7 @@ public class AnimatedCardPatches {
             if (___card instanceof AbstractEasyCard) {
                 if (((AbstractEasyCard) ___card).getGifOverlay() != null) {
                     prepFrameBuffer(sb);
-                    if (CardModifierManager.hasModifier(___card, FusionMod.ID)) {
+                    if (CardModifierManager.hasModifier(___card, FusionFormMod.ID)) {
                         drawFusionAnimationSCV(sb, (AbstractEasyCard) ___card);
                     } else {
                         drawCardAnimationSCV(sb, (AbstractEasyCard) ___card);
@@ -133,7 +133,7 @@ public class AnimatedCardPatches {
     }
 
     private static void drawFusionAnimationSCV(SpriteBatch sb, AbstractEasyCard card) {
-        FusionForm form = ((FusionMod) CardModifierManager.getModifiers(card, FusionMod.ID).get(0)).form;
+        FusionForm form = ((FusionFormMod) CardModifierManager.getModifiers(card, FusionFormMod.ID).get(0)).form;
         float scale = Math.min(380f / form.height, 500f / form.width);
         FusionController.renderNodes(sb, form, Settings.WIDTH/2f, Settings.HEIGHT/2f, 0, 0, 0, 136.0F * Settings.scale, Settings.scale * scale, 0f);
     }

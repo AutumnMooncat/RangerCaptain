@@ -10,28 +10,28 @@ import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 
-public class FusionMod extends AbstractCardModifier {
+public class FusionFormMod extends AbstractCardModifier {
     public static final String ID = MainModfile.makeID(DealDamageMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getCardStrings(ID).EXTENDED_DESCRIPTION;
     public MonsterEnum monster1;
     public MonsterEnum monster2;
     public transient FusionForm form;
 
-    public FusionMod(AbstractCard otherCard) {
+    public FusionFormMod(AbstractCard otherCard) {
         this.priority = -10;
         if (otherCard instanceof AbstractEasyCard) {
             this.monster2 = ((AbstractEasyCard) otherCard).getMonsterData();
         }
     }
 
-    public FusionMod(MonsterEnum monsterEnum) {
+    public FusionFormMod(MonsterEnum monsterEnum) {
         this.priority = -10;
         this.monster2 = monsterEnum;
     }
 
     public static void updateFusionForm(AbstractCard card) {
-        if (CardModifierManager.hasModifier(card, FusionMod.ID) && card instanceof AbstractEasyCard && ((AbstractEasyCard) card).getMonsterData() != null) {
-            FusionMod mod = (FusionMod) CardModifierManager.getModifiers(card, FusionMod.ID).get(0);
+        if (CardModifierManager.hasModifier(card, FusionFormMod.ID) && card instanceof AbstractEasyCard && ((AbstractEasyCard) card).getMonsterData() != null) {
+            FusionFormMod mod = (FusionFormMod) CardModifierManager.getModifiers(card, FusionFormMod.ID).get(0);
             mod.monster1 = ((AbstractEasyCard) card).getMonsterData();
             mod.form = new FusionForm(mod.monster1, mod.monster2);
         }
@@ -63,6 +63,6 @@ public class FusionMod extends AbstractCardModifier {
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new FusionMod(monster2);
+        return new FusionFormMod(monster2);
     }
 }
