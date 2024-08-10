@@ -2,6 +2,7 @@ package RangerCaptain.screens;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.cardmods.FusionMod;
+import RangerCaptain.util.Wiz;
 import basemod.abstracts.CustomScreen;
 import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.Gdx;
@@ -424,7 +425,7 @@ public class FusionScreen extends CustomScreen {
         }
         if (baseCard != null && donorCard != null) {
             fusionPreviewCard = baseCard.makeStatEquivalentCopy();
-            CardModifierManager.addModifier(fusionPreviewCard, new FusionMod(donorCard));
+            Wiz.fuse(fusionPreviewCard, donorCard);
             fusionPreviewCard.drawScale = FUSION_CARD_SCALE;
         }
 
@@ -502,7 +503,7 @@ public class FusionScreen extends CustomScreen {
             message = TEXT[2];
             if (fusionPreviewCard == null) {
                 fusionPreviewCard = baseCard.makeStatEquivalentCopy();
-                CardModifierManager.addModifier(fusionPreviewCard, new FusionMod(donorCard));
+                Wiz.fuse(fusionPreviewCard, donorCard);
             }
             fusionPreviewCard.drawScale = FUSION_CARD_SCALE;
             fusionPreviewCard.targetDrawScale = FUSION_CARD_SCALE;

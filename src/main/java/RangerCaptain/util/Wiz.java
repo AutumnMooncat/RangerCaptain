@@ -330,4 +330,8 @@ public class Wiz {
     public static boolean canBeFused(AbstractCard card) {
         return card instanceof AbstractEasyCard && ((AbstractEasyCard) card).getMonsterData() != null && !CardModifierManager.hasModifier(card, FusionMod.ID);
     }
+
+    public static void fuse(AbstractCard base, AbstractCard donor) {
+        CardModifierManager.addModifier(base, new FusionMod(donor));
+    }
 }

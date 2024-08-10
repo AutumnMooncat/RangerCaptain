@@ -46,7 +46,7 @@ public class FusionAction extends AbstractGameAction {
         } else if (!((FusionScreen) BaseMod.getCustomScreen(FusionScreen.Enum.FUSION_SCREEN)).wereCardsRetrieved) {
             AbstractCard baseCard = ((FusionScreen) BaseMod.getCustomScreen(FusionScreen.Enum.FUSION_SCREEN)).baseCard;
             AbstractCard donorCard = ((FusionScreen) BaseMod.getCustomScreen(FusionScreen.Enum.FUSION_SCREEN)).donorCard;
-            CardModifierManager.addModifier(baseCard, new FusionMod(donorCard));
+            Wiz.fuse(baseCard, donorCard);
             baseCard.superFlash();
             CardCrawlGame.sound.play("GHOST_ORB_IGNITE_1");
             //Only add baseCard back, donorCard has been fused
