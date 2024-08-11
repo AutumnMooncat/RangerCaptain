@@ -29,7 +29,7 @@ public class FusionCardModData {
         add(BEANSTALKER, null);
         add(BINTERLOPER, null);
         add(BINVADER, null);
-        add(BLOSSOMAW, null);
+        add(BLOSSOMAW, new BlossomawMod());
         add(BLUNDERBUSK, null);
         add(BOLTAM, null);
         add(BRAXSUIT, new BraxsuitMod());
@@ -46,7 +46,7 @@ public class FusionCardModData {
         add(CLUCKABILLY, null);
         add(COALDRON, null);
         add(CRYOSHEAR, null);
-        add(DANDYLION, null);
+        add(DANDYLION, new DandylionMod());
         add(DECIBELLE, null);
         add(DIVEAL, null);
         add(DIVEBERG, null);
