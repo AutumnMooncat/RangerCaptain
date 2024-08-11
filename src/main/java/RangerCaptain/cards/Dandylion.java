@@ -1,9 +1,11 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.actions.BetterSelectCardsCenteredAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import com.megacrit.cardcrawl.actions.unique.DiscardPileToTopOfDeckAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -16,13 +18,19 @@ public class Dandylion extends AbstractEasyCard {
     public Dandylion() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
         baseBlock = block = 8;
+        baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.DANDYLION);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         blck();
-        addToBot(new DiscardPileToTopOfDeckAction(p));
+        addToBot(new BetterSelectCardsCenteredAction(p.discardPile.group, magicNumber, DiscardPileToTopOfDeckAction.TEXT[0], false, c -> true, cards -> {
+            for (AbstractCard card : cards) {
+                p.discardPile.removeCard(card);
+                p.hand.moveToDeck(card, false);
+            }
+        }));
     }
 
     @Override
