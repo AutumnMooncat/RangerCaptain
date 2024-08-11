@@ -23,6 +23,7 @@ public class Dominoth extends AbstractMultiUpgradeCard {
     public Dominoth() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
         baseMagicNumber = magicNumber = 3;
+        baseThirdMagic = thirdMagic = 1;
         setMonsterData(MonsterEnum.DOMINOTH);
         baseInfo = info = 0;
         tags.add(CustomTags.MAGIC_DRAW);
@@ -37,7 +38,7 @@ public class Dominoth extends AbstractMultiUpgradeCard {
         if (info == 2) {
             dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
         }
-        addToBot(new DiscardAction(p, p, 1, false));
+        addToBot(new DiscardAction(p, p, thirdMagic, false));
     }
 
     @Override
