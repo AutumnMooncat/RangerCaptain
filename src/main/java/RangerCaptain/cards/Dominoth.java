@@ -25,12 +25,13 @@ public class Dominoth extends AbstractMultiUpgradeCard {
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.DOMINOTH);
         baseInfo = info = 0;
+        tags.add(CustomTags.MAGIC_DRAW);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (info == 1) {
-            Wiz.applyToEnemy(m, new ConductivePower(m, p, magicNumber));
+            Wiz.applyToEnemy(m, new ConductivePower(m, p, secondMagic));
         }
         addToBot(new DrawCardAction(magicNumber));
         if (info == 2) {
@@ -88,16 +89,19 @@ public class Dominoth extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade0() {
+        baseSecondMagic = 0;
+        upgradeSecondMagic(3);
         target = CardTarget.ENEMY;
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.WINGLOOM);
         baseInfo = info = 1;
-        tags.add(CustomTags.MAGIC_CONDUCTIVE);
+        tags.add(CustomTags.SECOND_MAGIC_CONDUCTIVE);
     }
 
     public void upgrade1() {
         upgradeMagicNumber(1);
+        upgradeSecondMagic(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.MOTHMANIC);

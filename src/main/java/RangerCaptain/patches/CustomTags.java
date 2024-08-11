@@ -21,5 +21,11 @@ public class CustomTags {
     @SpireEnum
     public static AbstractCard.CardTags SECOND_MAGIC_VULN;
     @SpireEnum
+    public static AbstractCard.CardTags SECOND_MAGIC_CONDUCTIVE;
+    @SpireEnum
     public static AbstractCard.CardTags CLOSE_ENCOUNTER;
+    @SpireEnum
+    public static AbstractCard.CardTags MAGIC_DRAW;
+    @SpireEnum
+    public static AbstractCard.CardTags MAGIC_DRAW_NEXT_TURN;
 }

@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
@@ -19,6 +20,7 @@ public class Traffikrab extends AbstractMultiUpgradeCard {
         baseBlock = block = 7;
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.TRAFFIKRAB);
+        tags.add(CustomTags.MAGIC_DRAW_NEXT_TURN);
     }
 
     @Override

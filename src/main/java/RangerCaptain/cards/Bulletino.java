@@ -3,6 +3,7 @@ package RangerCaptain.cards;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CardCounterPatches;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
@@ -31,6 +32,7 @@ public class Bulletino extends AbstractMultiUpgradeCard {
         setMonsterData(MonsterEnum.BULLETINO);
         baseInfo = info = 0;
         exhaust = true;
+        tags.add(CustomTags.MAGIC_DRAW);
     }
 
     @Override

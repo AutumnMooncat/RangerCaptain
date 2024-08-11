@@ -21,6 +21,7 @@ public class Minortom extends AbstractEasyCard {
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.MINORTOM);
         tags.add(CustomTags.CLOSE_ENCOUNTER);
+        tags.add(CustomTags.MAGIC_DRAW_NEXT_TURN);
         ExtraEffectPatches.EffectFields.closeEncounter.set(this, true);
     }
 
