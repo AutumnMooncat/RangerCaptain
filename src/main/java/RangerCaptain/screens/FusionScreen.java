@@ -427,11 +427,6 @@ public class FusionScreen extends CustomScreen {
             hand.refreshHandLayout();
             updateMessage();
         }
-        if (baseCard != null && donorCard != null) {
-            fusionPreviewCard = baseCard.makeStatEquivalentCopy();
-            Wiz.fuse(fusionPreviewCard, donorCard);
-            fusionPreviewCard.drawScale = FUSION_CARD_SCALE;
-        }
 
         InputHelper.moveCursorToNeutralPosition();
     }
@@ -505,10 +500,8 @@ public class FusionScreen extends CustomScreen {
             fusionPreviewCard = null;
         } else {
             message = TEXT[2];
-            if (fusionPreviewCard == null) {
-                fusionPreviewCard = baseCard.makeStatEquivalentCopy();
-                Wiz.fuse(fusionPreviewCard, donorCard);
-            }
+            fusionPreviewCard = baseCard.makeStatEquivalentCopy();
+            Wiz.fuse(fusionPreviewCard, donorCard);
             if (FusionCardModData.MOD_MAP.get(((AbstractEasyCard) donorCard).getMonsterData()) != null) {
                 AbstractFusionMod mod = (AbstractFusionMod) CardModifierManager.getModifiers(fusionPreviewCard, FusionCardModData.MOD_MAP.get(((AbstractEasyCard) donorCard).getMonsterData()).identifier).get(0);
                 message += " ("+mod.getModDescription(fusionPreviewCard)+")";
