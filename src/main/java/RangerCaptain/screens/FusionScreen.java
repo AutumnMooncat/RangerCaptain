@@ -97,6 +97,7 @@ public class FusionScreen extends CustomScreen {
     public void close() {
         genericScreenOverlayReset();
         AbstractDungeon.overlayMenu.showCombatPanels();
+        Settings.hideRelics = false;
     }
 
     @Override
@@ -537,6 +538,7 @@ public class FusionScreen extends CustomScreen {
         this.donorCard = null;
         this.hoveredCard = null;
         this.wereCardsRetrieved = false;
+        Settings.hideRelics = true;
         AbstractDungeon.isScreenUp = true;
         AbstractDungeon.screen = Enum.FUSION_SCREEN;
         AbstractDungeon.player.hand.stopGlowing();
