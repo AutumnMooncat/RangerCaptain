@@ -31,8 +31,8 @@
     "EXTRA_TEXT": [" NL ${ModID}:Mind-Meld."]
   },
   "${ModID}:AeroborosMod": {
-    "TEXT": ["-1 Cost."],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Gain 1 Energy."],
+    "EXTRA_TEXT": [" NL Gain [E] ."]
   },
   "${ModID}:AllseerMod": {
     "TEXT": ["Add 3 Block. Add 1 Vulnerable."],
