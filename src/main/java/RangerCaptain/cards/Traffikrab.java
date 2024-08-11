@@ -17,7 +17,7 @@ public class Traffikrab extends AbstractMultiUpgradeCard {
 
     public Traffikrab() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
-        baseBlock = block = 7;
+        baseBlock = block = 8;
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.TRAFFIKRAB);
         tags.add(CustomTags.MAGIC_DRAW_NEXT_TURN);
