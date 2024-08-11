@@ -38,8 +38,8 @@ public class Umbrahella extends AbstractEasyCard {
                 for (int i = 0 ; i < multiDamage.length ; i++) {
                     multiDamage[i] *= effect;
                 }
-                allDmg(AbstractGameAction.AttackEffect.POISON);
-                Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new PoisonPower(mon, p, magicNumber * effect)));
+                Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemyTop(mon, new PoisonPower(mon, p, magicNumber * effect)));
+                allDmgTop(AbstractGameAction.AttackEffect.POISON);
             }
             return true;
         }));

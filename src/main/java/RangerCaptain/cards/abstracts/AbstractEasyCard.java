@@ -439,6 +439,14 @@ public abstract class AbstractEasyCard extends CustomCard {
         atb(new DamageAllEnemiesAction(AbstractDungeon.player, multiDamage, damageTypeForTurn, fx, fast));
     }
 
+    protected void allDmgTop(AbstractGameAction.AttackEffect fx) {
+        allDmgTop(fx, false);
+    }
+
+    protected void allDmgTop(AbstractGameAction.AttackEffect fx, boolean fast) {
+        att(new DamageAllEnemiesAction(AbstractDungeon.player, multiDamage, damageTypeForTurn, fx, fast));
+    }
+
     protected void blck() {
         atb(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, block));
     }
