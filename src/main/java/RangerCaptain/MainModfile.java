@@ -184,6 +184,7 @@ public class MainModfile implements
     public void receiveEditCards() {
         BaseMod.addDynamicVariable(new Info());
         BaseMod.addDynamicVariable(new SecondMagicNumber());
+        BaseMod.addDynamicVariable(new ThirdMagicNumber());
         BaseMod.addDynamicVariable(new SecondDamage());
         BaseMod.addDynamicVariable(new SecondBlock());
         BaseMod.addDynamicVariable(new DynvarInterfaceManager());
