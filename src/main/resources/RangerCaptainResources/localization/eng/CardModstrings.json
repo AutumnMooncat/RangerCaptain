@@ -543,8 +543,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:TriphinxMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 2 Vulnerable. Add Close Encounter."],
+    "EXTRA_TEXT": [" NL Apply 2 Vulnerable."," NL ${ModID}:Close_Encounter."]
   },
   "${ModID}:TwirligigMod": {
     "TEXT": [""],

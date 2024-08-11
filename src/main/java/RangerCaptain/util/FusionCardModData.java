@@ -1,9 +1,6 @@
 package RangerCaptain.util;
 
-import RangerCaptain.cardmods.fusion.AdeptileMod;
-import RangerCaptain.cardmods.fusion.AllseerMod;
-import RangerCaptain.cardmods.fusion.KhufoMod;
-import RangerCaptain.cardmods.fusion.MardiusaMod;
+import RangerCaptain.cardmods.fusion.*;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractFusionMod;
 
 import java.util.HashMap;
@@ -147,7 +144,7 @@ public class FusionCardModData {
         add(TOKUSECT, null);
         add(TRAFFIKRAB, null);
         add(TRAPWURM, null);
-        add(TRIPHINX, null);
+        add(TRIPHINX, new TriphinxMod());
         add(TWIRLIGIG, null);
         add(UMBRAHELLA, null);
         add(UNDYIN, null);
