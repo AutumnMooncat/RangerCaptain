@@ -87,7 +87,7 @@ public class MasquerattleMod extends AbstractExtraEffectFusionMod {
         if (card.baseDamage == -1) {
             Wiz.atb(new DamageAction(target, new DamageInfo(Wiz.adp(), val, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         }
-        if (!card.hasTag(CustomTags.MAGIC_VULN) && !card.hasTag(CustomTags.SECOND_MAGIC_VULN)) {
+        if (!card.hasTag(CustomTags.MAGIC_POISON) && !card.hasTag(CustomTags.MAGIC_POISON_AOE)) {
             Wiz.applyToEnemy((AbstractMonster) target, new PoisonPower(target, Wiz.adp(), AMOUNT2));
         }
     }
