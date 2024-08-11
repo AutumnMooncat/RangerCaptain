@@ -32,7 +32,7 @@ public class FusionCardModData {
         add(BLOSSOMAW, null);
         add(BLUNDERBUSK, null);
         add(BOLTAM, null);
-        add(BRAXSUIT, null);
+        add(BRAXSUIT, new BraxsuitMod());
         add(BRUSHROOM, null);
         add(BULLETINO, null);
         add(BURNACE, null);
@@ -57,7 +57,7 @@ public class FusionCardModData {
         add(FAERIOUS, null);
         add(FAUCETEAR, null);
         add(FERRICLAW, null);
-        add(FLAPWOODS, null);
+        add(FLAPWOODS, new FlapwoodsMod());
         add(FOLKLORD, null);
         add(FORTIWINX, null);
         add(FOUNTESS, null);

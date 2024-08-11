@@ -95,8 +95,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:BraxsuitMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Your next Block gaining card gives more Block"],
+    "EXTRA_TEXT": [" NL Your next Block gaining card gives 50% more Block."]
   },
   "${ModID}:BrushroomMod": {
     "TEXT": [""],
@@ -195,8 +195,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:FlapwoodsMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Your next 2 Block gaining cards give 50% more Block."],
+    "EXTRA_TEXT": [" NL Your next 2 Block gaining cards give 50% more Block."]
   },
   "${ModID}:FolklordMod": {
     "TEXT": [""],
