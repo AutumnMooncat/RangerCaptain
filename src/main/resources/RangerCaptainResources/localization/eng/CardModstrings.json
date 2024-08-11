@@ -31,7 +31,7 @@
     "EXTRA_TEXT": [" NL ${ModID}:Mind-Meld."]
   },
   "${ModID}:AeroborosMod": {
-    "TEXT": [""],
+    "TEXT": ["-1 Cost."],
     "EXTRA_TEXT": [""]
   },
   "${ModID}:AllseerMod": {
@@ -123,8 +123,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:CarniviperMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 3 damage. Add 2 Poison."],
+    "EXTRA_TEXT": [" NL Deal %s damage."," NL Apply 2 Poison."]
   },
   "${ModID}:CatfiveMod": {
     "TEXT": [""],
@@ -267,8 +267,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:JormungoldMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["When you draw this card, ALL enemies lose HP equal to their Poison."],
+    "EXTRA_TEXT": [" NL When you draw this card, ALL enemies lose HP equal to their Poison."," NL When you draw this card, ALL enemies lose HP equal to their Poison twice."]
   },
   "${ModID}:JumpkinMod": {
     "TEXT": [""],
@@ -347,8 +347,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:MasquerattleMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 4 damage. Add 3 Poison."],
+    "EXTRA_TEXT": [" NL Deal %s damage."," NL Apply 3 Poison."]
   },
   "${ModID}:MiasmodeusMod": {
     "TEXT": [""],

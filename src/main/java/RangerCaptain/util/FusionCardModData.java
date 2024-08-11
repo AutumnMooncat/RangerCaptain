@@ -16,7 +16,7 @@ public class FusionCardModData {
 
     static {
         add(ADEPTILE, new AdeptileMod());
-        add(AEROBOROS, null);
+        add(AEROBOROS, new AeroborosMod());
         add(ALLSEER, new AllseerMod());
         add(AMPHARE, null);
         add(ANATHEMA, null);
@@ -39,7 +39,7 @@ public class FusionCardModData {
         add(BUSHEYE, null);
         add(CANDEVIL, null);
         add(CAPRICORPSE, null);
-        add(CARNIVIPER, null);
+        add(CARNIVIPER, new CarniviperMod());
         add(CATFIVE, null);
         add(CHARLEQUIN, null);
         add(CLOCKSLEY, null);
@@ -75,7 +75,7 @@ public class FusionCardModData {
         add(HUNTORCH, null);
         add(ICEPECK, null);
         add(JELLYTON, null);
-        add(JORMUNGOLD, null);
+        add(JORMUNGOLD, new JormungoldMod());
         add(JUMPKIN, null);
         add(KHEPRI, null);
         add(KHUFO, new KhufoMod());
@@ -95,7 +95,7 @@ public class FusionCardModData {
         add(MARDIUSA, new MardiusaMod());
         add(MASCOTORN, null);
         add(MASCOTOY, null);
-        add(MASQUERATTLE, null);
+        add(MASQUERATTLE, new MasquerattleMod());
         add(MIASMODEUS, null);
         add(MINORTOM, null);
         add(MISS_MIMIC, null);
