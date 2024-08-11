@@ -58,7 +58,7 @@
   },
   "${ModID}:Bulletino": {
     "NAME": "Bulletino",
-    "DESCRIPTION": "{@@}{!${ModID}:I!|0,1=Deal !D! damage. NL Draw !M! cards.|2=Deal !D! damage to ALL enemies !M! times. NL Draw !M! cards for each enemy hit.|3=Draw !M! cards. NL Deal !D! damage for each card drawn during this turn.}{!${ModID}:I!|0= NL Exhaust.}{!${ModID}:Gearyu!|1= NL (Hits !${ModID}:M2! time.)|2= NL (Hits !${ModID}:M2! times.)}",
+    "DESCRIPTION": "{@@}{!${ModID}:I!|0,1=Deal !D! damage. NL Draw !M! cards.|2=Deal !D! damage to ALL enemies !${ModID}:M3! times. NL Draw !M! cards for each enemy hit.|3=Draw !M! cards. NL Deal !D! damage for each card drawn during this turn.}{!${ModID}:Gearyu!|1= NL (Hits !${ModID}:M2! time.)|2= NL (Hits !${ModID}:M2! times.)}",
     "EXTENDED_DESCRIPTION": ["Velocirifle","Artillerex","Gearyu"]
   },
   "${ModID}:Burnace": {
