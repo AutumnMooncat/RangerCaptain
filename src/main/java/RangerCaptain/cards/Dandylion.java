@@ -17,7 +17,7 @@ public class Dandylion extends AbstractEasyCard {
 
     public Dandylion() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
-        baseBlock = block = 8;
+        baseBlock = block = 7;
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.DANDYLION);
     }
