@@ -20,4 +20,6 @@ public class CustomTags {
     public static AbstractCard.CardTags SECOND_MAGIC_WEAK;
     @SpireEnum
     public static AbstractCard.CardTags SECOND_MAGIC_VULN;
+    @SpireEnum
+    public static AbstractCard.CardTags CLOSE_ENCOUNTER;
 }

@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.CloseEncounterPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -19,6 +20,7 @@ public class Minortom extends AbstractEasyCard {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.MINORTOM);
+        tags.add(CustomTags.CLOSE_ENCOUNTER);
     }
 
     @Override

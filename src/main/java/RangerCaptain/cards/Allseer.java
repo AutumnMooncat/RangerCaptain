@@ -81,5 +81,6 @@ public class Allseer extends AbstractMultiUpgradeCard {
         initializeTitle();
         setMonsterData(MonsterEnum.TRIPHINX);
         info = baseInfo = 2;
+        tags.add(CustomTags.CLOSE_ENCOUNTER);
     }
 }

@@ -2,6 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.CloseEncounterPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -22,6 +23,7 @@ public class Khepri extends AbstractEasyCard {
         baseDamage = damage = 6;
         setMonsterData(MonsterEnum.KHEPRI);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
+        tags.add(CustomTags.CLOSE_ENCOUNTER);
     }
 
     @Override
