@@ -337,7 +337,7 @@ public class Wiz {
             CardModifierManager.addModifier(base, new FusionFormMod(donor));
             AbstractFusionMod mod = FusionCardModData.MOD_MAP.get(((AbstractEasyCard) donor).getMonsterData());
             if (mod != null) {
-                CardModifierManager.addModifier(base, mod);
+                CardModifierManager.addModifier(base, mod.makeCopy());
             }
         }
 

@@ -509,9 +509,8 @@ public class FusionScreen extends CustomScreen {
                 fusionPreviewCard = baseCard.makeStatEquivalentCopy();
                 Wiz.fuse(fusionPreviewCard, donorCard);
             }
-            AbstractFusionMod mod = FusionCardModData.MOD_MAP.get(((AbstractEasyCard) donorCard).getMonsterData());
-            if (mod != null) {
-                CardModifierManager.addModifier(fusionPreviewCard, mod);
+            if (FusionCardModData.MOD_MAP.get(((AbstractEasyCard) donorCard).getMonsterData()) != null) {
+                AbstractFusionMod mod = (AbstractFusionMod) CardModifierManager.getModifiers(fusionPreviewCard, FusionCardModData.MOD_MAP.get(((AbstractEasyCard) donorCard).getMonsterData()).identifier).get(0);
                 message += " ("+mod.getModDescription(fusionPreviewCard)+")";
             } else {
                 message += " (Not yet implemented.)";
