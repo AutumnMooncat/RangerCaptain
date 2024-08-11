@@ -2,7 +2,7 @@ package RangerCaptain.cardmods.fusion;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractFusionMod;
-import RangerCaptain.patches.MindMeldPatches;
+import RangerCaptain.patches.ExtraEffectPatches;
 import RangerCaptain.util.FormatHelper;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -19,7 +19,7 @@ public class AdeptileMod extends AbstractFusionMod {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        MindMeldPatches.MindMeldField.mindMeldCount.set(card, MindMeldPatches.MindMeldField.mindMeldCount.get(card) + 1);
+        ExtraEffectPatches.EffectFields.mindMeldCount.set(card, ExtraEffectPatches.EffectFields.mindMeldCount.get(card) + 1);
         if (card.cost >= 0) {
             card.cost++;
             card.costForTurn++;

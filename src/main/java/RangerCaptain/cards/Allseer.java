@@ -2,12 +2,9 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
-import RangerCaptain.patches.MindMeldPatches;
-import RangerCaptain.powers.CloseEncounterPower;
-import RangerCaptain.powers.MindMeldPower;
+import RangerCaptain.patches.ExtraEffectPatches;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
-import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -43,9 +40,6 @@ public class Allseer extends AbstractMultiUpgradeCard {
             addToBot(new VFXAction(new SmallLaserEffect(p.hb.cX, p.hb.cY, m.hb.cX, m.hb.cY), 0.1F));
         }
         addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), magicNumber, info == 0 ? AbstractGameAction.AttackEffect.NONE : AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        if (info == 2) {
-            Wiz.applyToSelf(new CloseEncounterPower(p, this));
-        }
     }
 
     @Override
@@ -71,7 +65,7 @@ public class Allseer extends AbstractMultiUpgradeCard {
         initializeTitle();
         setMonsterData(MonsterEnum.KHUFO);
         baseInfo = info = 1;
-        MindMeldPatches.MindMeldField.mindMeldCount.set(this, MindMeldPatches.MindMeldField.mindMeldCount.get(this) + 1);
+        ExtraEffectPatches.EffectFields.mindMeldCount.set(this, ExtraEffectPatches.EffectFields.mindMeldCount.get(this) + 1);
     }
 
     public void upgrade1() {
@@ -82,5 +76,6 @@ public class Allseer extends AbstractMultiUpgradeCard {
         setMonsterData(MonsterEnum.TRIPHINX);
         info = baseInfo = 2;
         tags.add(CustomTags.CLOSE_ENCOUNTER);
+        ExtraEffectPatches.EffectFields.closeEncounter.set(this, true);
     }
 }

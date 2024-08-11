@@ -3,10 +3,9 @@ package RangerCaptain.cards;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.patches.CustomTags;
-import RangerCaptain.powers.CloseEncounterPower;
+import RangerCaptain.patches.ExtraEffectPatches;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
-import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
@@ -24,13 +23,13 @@ public class Khepri extends AbstractEasyCard {
         setMonsterData(MonsterEnum.KHEPRI);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
         tags.add(CustomTags.CLOSE_ENCOUNTER);
+        ExtraEffectPatches.EffectFields.closeEncounter.set(this, true);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.FIRE);
         addToBot(new ExhaustAction(1, false, false, false));
-        Wiz.applyToSelf(new CloseEncounterPower(p, this));
     }
 
     @Override

@@ -2,7 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
-import RangerCaptain.powers.CloseEncounterPower;
+import RangerCaptain.patches.ExtraEffectPatches;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
@@ -21,12 +21,12 @@ public class Minortom extends AbstractEasyCard {
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.MINORTOM);
         tags.add(CustomTags.CLOSE_ENCOUNTER);
+        ExtraEffectPatches.EffectFields.closeEncounter.set(this, true);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         Wiz.applyToSelf(new DrawCardNextTurnPower(p, magicNumber));
-        Wiz.applyToSelf(new CloseEncounterPower(p, this));
     }
 
     @Override

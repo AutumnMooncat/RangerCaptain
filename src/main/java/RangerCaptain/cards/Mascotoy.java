@@ -1,11 +1,9 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
-import RangerCaptain.patches.MindMeldPatches;
-import RangerCaptain.powers.MindMeldPower;
+import RangerCaptain.patches.ExtraEffectPatches;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
-import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
@@ -21,7 +19,7 @@ public class Mascotoy extends AbstractEasyCard {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 4;
         setMonsterData(MonsterEnum.MASCOTOY);
-        MindMeldPatches.MindMeldField.mindMeldCount.set(this, MindMeldPatches.MindMeldField.mindMeldCount.get(this) + 1);
+        ExtraEffectPatches.EffectFields.mindMeldCount.set(this, ExtraEffectPatches.EffectFields.mindMeldCount.get(this) + 1);
     }
 
     @Override
