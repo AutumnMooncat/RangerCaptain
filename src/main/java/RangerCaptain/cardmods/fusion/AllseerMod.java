@@ -67,7 +67,7 @@ public class AllseerMod extends AbstractExtraEffectFusionMod {
             rawDescription = FormatHelper.insertBeforeText(rawDescription, String.format(CARD_TEXT[0], descriptionKey()));
         }
         if (!card.hasTag(CustomTags.MAGIC_VULN) && !card.hasTag(CustomTags.SECOND_MAGIC_VULN)) {
-            rawDescription += FormatHelper.insertAfterText(rawDescription, CARD_TEXT[1]);
+            rawDescription = FormatHelper.insertAfterText(rawDescription, CARD_TEXT[1]);
         }
         return rawDescription;
     }
