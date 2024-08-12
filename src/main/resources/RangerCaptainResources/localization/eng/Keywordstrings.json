@@ -124,7 +124,7 @@
     "NAMES": [
       "mind-meld"
     ],
-    "DESCRIPTION": "Whenever you play another card this turn, play a copy of this card without #yMind-Meld."
+    "DESCRIPTION": "Whenever you play another card this turn, play a copy of this card. Cards played this way do not trigger #yMind-Meld."
   },
   {
     "ID": "closeencounter",
