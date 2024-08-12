@@ -120,7 +120,7 @@
   },
   "${ModID}:Dominoth": {
     "NAME": "Dominoth",
-    "DESCRIPTION": "{@@}{!${ModID}:I!|1=Apply !${ModID}:M2! ${ModID}:Conductive. NL }Draw !M! cards. NL {!${ModID}:I!|2=Deal damage equal to the number of cards in your hand. NL }Discard !${ModID}:M3! card{!${ModID}:M3!|>1=s}.{!${ModID}:Tokusect!|1= NL (Deals !D! damage.)}",
+    "DESCRIPTION": "{@@}Draw !M! cards. NL {!${ModID}:I!|0=Deal damage equal to the number of cards in your hand.|1=Apply !${ModID}:M2! ${ModID}:Conductive.}{!${ModID}:Dominoth!|1= NL (Deals !D! damage.)}",
     "EXTENDED_DESCRIPTION": ["Wingloom","Mothmanic","Tokusect"]
   },
   "${ModID}:EarthAltar": {

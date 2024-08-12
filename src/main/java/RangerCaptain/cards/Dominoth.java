@@ -8,7 +8,6 @@ import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
 import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -21,9 +20,9 @@ public class Dominoth extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Dominoth.class.getSimpleName());
 
     public Dominoth() {
-        super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
-        baseMagicNumber = magicNumber = 3;
-        baseThirdMagic = thirdMagic = 1;
+        super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
+        baseDamage = damage = 0;
+        baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.DOMINOTH);
         baseInfo = info = 0;
         tags.add(CustomTags.MAGIC_DRAW);
@@ -35,16 +34,15 @@ public class Dominoth extends AbstractMultiUpgradeCard {
             Wiz.applyToEnemy(m, new ConductivePower(m, p, secondMagic));
         }
         addToBot(new DrawCardAction(magicNumber));
-        if (info == 2) {
+        if (info == 0) {
             dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
         }
-        addToBot(new DiscardAction(p, p, thirdMagic, false));
     }
 
     @Override
     public void applyPowers() {
         baseDamage = -1;
-        if (info == 2) {
+        if (info == 0) {
             baseDamage = (int) Wiz.adp().hand.group.stream().filter(c -> c != this).count();
             int cardsAvailable = Wiz.adp().drawPile.size() + Wiz.adp().discardPile.size();
             if (Wiz.adp().hasPower(NoDrawPower.POWER_ID)) {
@@ -59,7 +57,7 @@ public class Dominoth extends AbstractMultiUpgradeCard {
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
         baseDamage = -1;
-        if (info == 2) {
+        if (info == 0) {
             baseDamage = (int) Wiz.adp().hand.group.stream().filter(c -> c != this).count();
             int cardsAvailable = Wiz.adp().drawPile.size() + Wiz.adp().discardPile.size();
             if (Wiz.adp().hasPower(NoDrawPower.POWER_ID)) {
@@ -90,13 +88,17 @@ public class Dominoth extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade0() {
+        baseDamage = damage = -1;
         baseSecondMagic = 0;
+        upgradeMagicNumber(1);
         upgradeSecondMagic(3);
-        target = CardTarget.ENEMY;
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.WINGLOOM);
         baseInfo = info = 1;
+        type = CardType.SKILL;
+        rollerKey += "Skill";
+        CardArtRoller.computeCard(this);
         tags.add(CustomTags.SECOND_MAGIC_CONDUCTIVE);
     }
 
@@ -109,14 +111,9 @@ public class Dominoth extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade2() {
-        baseDamage = 0;
+        upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
-        type = CardType.ATTACK;
-        target = CardTarget.ENEMY;
         initializeTitle();
         setMonsterData(MonsterEnum.TOKUSECT);
-        baseInfo = info = 2;
-        rollerKey += "Attack";
-        needsArtRefresh = true;
     }
 }

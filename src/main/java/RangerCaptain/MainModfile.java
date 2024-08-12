@@ -294,8 +294,8 @@ public class MainModfile implements
         //Other Setup stuff
         BaseMod.addCustomScreen(new FusionScreen());
 
-        DynamicTextBlocks.registerCustomCheck(makeID("Tokusect"), c -> {
-            if (c instanceof AbstractEasyCard && ((AbstractEasyCard) c).info == 2 && Wiz.isInCombat() && Wiz.adp().hand.contains(c)) {
+        DynamicTextBlocks.registerCustomCheck(makeID("Dominoth"), c -> {
+            if (c instanceof AbstractEasyCard && ((AbstractEasyCard) c).info == 0 && Wiz.isInCombat() && Wiz.adp().hand.contains(c)) {
                 return 1;
             }
             return 0;

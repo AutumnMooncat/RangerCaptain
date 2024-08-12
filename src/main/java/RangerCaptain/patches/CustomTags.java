@@ -28,4 +28,6 @@ public class CustomTags {
     public static AbstractCard.CardTags MAGIC_DRAW;
     @SpireEnum
     public static AbstractCard.CardTags MAGIC_DRAW_NEXT_TURN;
+    @SpireEnum
+    public static AbstractCard.CardTags SECOND_MAGIC_DRAW_NEXT_TURN;
 }
