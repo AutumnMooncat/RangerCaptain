@@ -3,7 +3,9 @@ package RangerCaptain.cards.abstracts;
 import RangerCaptain.MainModfile;
 import RangerCaptain.TheRangerCaptain;
 import RangerCaptain.cardmods.FusionFormMod;
+import RangerCaptain.patches.FusionModifierHooks;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.FusionCardModData;
 import RangerCaptain.util.GifOverlayData;
 import RangerCaptain.util.MonsterEnum;
 import basemod.BaseMod;
@@ -365,6 +367,7 @@ public abstract class AbstractEasyCard extends CustomCard {
         if (!upgraded) {
             upgradeName();
             upp();
+            FusionModifierHooks.onUpgrade(this);
         }
     }
 

@@ -1,5 +1,6 @@
 package RangerCaptain.cards.abstracts;
 
+import RangerCaptain.patches.FusionModifierHooks;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.MultiUpgradeCard;
 
 public abstract class AbstractMultiUpgradeCard extends AbstractEasyCard implements MultiUpgradeCard {
@@ -14,6 +15,7 @@ public abstract class AbstractMultiUpgradeCard extends AbstractEasyCard implemen
     @Override
     public void upgrade() {
         processUpgrade();
+        FusionModifierHooks.onUpgrade(this);
     }
 
     @Override

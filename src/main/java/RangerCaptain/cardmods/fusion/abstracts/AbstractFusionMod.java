@@ -16,4 +16,14 @@ public abstract class AbstractFusionMod extends AbstractCardModifier {
     public String identifier(AbstractCard card) {
         return identifier;
     }
+
+    public float modifyBaseSecondMagic(float magic, AbstractCard card) {
+        return magic;
+    }
+
+    public float modifyBaseThirdMagic(float magic, AbstractCard card) {
+        return magic;
+    }
+
+    public void onUpgrade(AbstractCard card) {}
 }
