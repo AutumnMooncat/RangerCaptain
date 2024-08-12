@@ -2,7 +2,6 @@ package RangerCaptain.cardmods.fusion;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractFusionMod;
-import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.patches.ExtraEffectPatches;
 import RangerCaptain.util.FormatHelper;
@@ -27,6 +26,22 @@ public class TriphinxMod extends AbstractFusionMod {
     }
 
     @Override
+    public float modifyBaseMagic(float magic, AbstractCard card) {
+        if (card.hasTag(CustomTags.MAGIC_VULN)) {
+            magic += AMOUNT;
+        }
+        return magic;
+    }
+
+    @Override
+    public float modifyBaseSecondMagic(float magic, AbstractCard card) {
+        if (card.hasTag(CustomTags.SECOND_MAGIC_VULN)) {
+            magic += AMOUNT;
+        }
+        return magic;
+    }
+
+    @Override
     public void onInitialApplication(AbstractCard card) {
         if (card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.NONE) {
             card.target = AbstractCard.CardTarget.ENEMY;
@@ -34,15 +49,17 @@ public class TriphinxMod extends AbstractFusionMod {
         if (card.target == AbstractCard.CardTarget.SELF || card.target == AbstractCard.CardTarget.ALL) {
             card.target = AbstractCard.CardTarget.SELF_AND_ENEMY;
         }
-        if (card.hasTag(CustomTags.MAGIC_VULN)) {
-            card.baseMagicNumber += AMOUNT;
-            card.magicNumber += AMOUNT;
-        }
-        if (card.hasTag(CustomTags.SECOND_MAGIC_VULN) && card instanceof AbstractEasyCard) {
-            ((AbstractEasyCard) card).baseSecondMagic += AMOUNT;
-            ((AbstractEasyCard) card).secondMagic += AMOUNT;
-        }
         ExtraEffectPatches.EffectFields.closeEncounter.set(card, true);
+    }
+
+    @Override
+    public void onUpgrade(AbstractCard card) {
+        if (card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.NONE) {
+            card.target = AbstractCard.CardTarget.ENEMY;
+        }
+        if (card.target == AbstractCard.CardTarget.SELF || card.target == AbstractCard.CardTarget.ALL) {
+            card.target = AbstractCard.CardTarget.SELF_AND_ENEMY;
+        }
     }
 
     @Override

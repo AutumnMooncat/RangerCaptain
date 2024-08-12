@@ -13,7 +13,6 @@ import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -46,16 +45,20 @@ public class MasquerattleMod extends AbstractExtraEffectFusionMod {
     }
 
     @Override
+    public float modifyBaseMagic(float magic, AbstractCard card) {
+        if (card.hasTag(CustomTags.MAGIC_POISON) || card.hasTag(CustomTags.MAGIC_POISON_AOE)) {
+            magic += AMOUNT2;
+        }
+        return magic;
+    }
+
+    @Override
     public void onInitialApplication(AbstractCard card) {
         if (card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.NONE) {
             card.target = AbstractCard.CardTarget.ENEMY;
         }
         if (card.target == AbstractCard.CardTarget.SELF || card.target == AbstractCard.CardTarget.ALL) {
             card.target = AbstractCard.CardTarget.SELF_AND_ENEMY;
-        }
-        if (card.hasTag(CustomTags.MAGIC_POISON) || card.hasTag(CustomTags.MAGIC_POISON_AOE)) {
-            card.baseMagicNumber += AMOUNT2;
-            card.magicNumber += AMOUNT2;
         }
         if (card.type != AbstractCard.CardType.ATTACK && card instanceof AbstractEasyCard) {
             if (card.type == AbstractCard.CardType.POWER) {
@@ -64,6 +67,16 @@ public class MasquerattleMod extends AbstractExtraEffectFusionMod {
             card.type = AbstractCard.CardType.ATTACK;
             ((AbstractEasyCard) card).rollerKey += "Attack";
             CardArtRoller.computeCard((AbstractEasyCard) card);
+        }
+    }
+
+    @Override
+    public void onUpgrade(AbstractCard card) {
+        if (card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.NONE) {
+            card.target = AbstractCard.CardTarget.ENEMY;
+        }
+        if (card.target == AbstractCard.CardTarget.SELF || card.target == AbstractCard.CardTarget.ALL) {
+            card.target = AbstractCard.CardTarget.SELF_AND_ENEMY;
         }
     }
 
