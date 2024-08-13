@@ -100,7 +100,7 @@ public class FusionCardModData {
         add(MINORTOM, null);
         add(MISS_MIMIC, null);
         add(MOTHMANIC, new MothmanicMod());
-        add(MUSKRATEER, null);
+        add(MUSKRATEER, new MuskrateerMod());
         add(NEVERMORT, null);
         add(PADPOLE, null);
         add(PALANGOLIN, null);
@@ -114,7 +114,7 @@ public class FusionCardModData {
         add(PYROMELEON, null);
         add(QUEENYX, null);
         add(RAMTASM, null);
-        add(RATCOUSEL, null);
+        add(RATCOUSEL, new RatcouselMod());
         add(REGENSEA, null);
         add(RIPTERRA, null);
         add(ROBINDAM, null);

@@ -355,8 +355,8 @@
     "EXTRA_TEXT": [" NL Apply 6 ${ModID}:Conductive."]
   },
   "${ModID}:MuskrateerMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["+1 Cost. Add 5 damage. Play the top card of your draw pile and Exhaust it."],
+    "EXTRA_TEXT": [" NL Deal %s damage."," NL Play the top card of your draw pile and Exhaust it."]
   },
   "${ModID}:NevermortMod": {
     "TEXT": [""],
@@ -411,8 +411,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:RatcouselMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["+1 Cost. Add 7 damage. Play the top card of your draw pile and Exhaust it."],
+    "EXTRA_TEXT": [" NL Deal %s damage."," NL Play the top card of your draw pile and Exhaust it."]
   },
   "${ModID}:RegenseaMod": {
     "TEXT": [""],
