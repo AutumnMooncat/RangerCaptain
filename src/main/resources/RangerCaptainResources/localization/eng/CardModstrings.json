@@ -11,6 +11,9 @@
   "${ModID}:RetainMod": {
     "EXTRA_TEXT": ["Retain. NL "]
   },
+  "${ModID}:EchoMod": {
+    "EXTRA_TEXT": ["Test. NL "]
+  },
   "${ModID}:GainBlockMod": {
     "EXTRA_TEXT": ["Gain %s Block. NL "]
   },
