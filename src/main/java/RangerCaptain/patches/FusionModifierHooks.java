@@ -54,7 +54,7 @@ public class FusionModifierHooks {
                 }
 
                 int m3 = (int) onModifyBaseThirdMagic(card.baseThirdMagic, card);
-                if (m3 != card.baseSecondMagic) {
+                if (m3 != card.baseThirdMagic) {
                     card.thirdMagic = m3;
                     card.isThirdMagicModified = true;
                 }
