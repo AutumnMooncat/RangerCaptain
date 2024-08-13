@@ -502,6 +502,7 @@ public class FusionScreen extends CustomScreen {
             message = TEXT[2];
             fusionPreviewCard = baseCard.makeStatEquivalentCopy();
             Wiz.fuse(fusionPreviewCard, donorCard);
+            fusionPreviewCard.applyPowers();
             if (FusionCardModData.MOD_MAP.get(((AbstractEasyCard) donorCard).getMonsterData()) != null) {
                 AbstractFusionMod mod = (AbstractFusionMod) CardModifierManager.getModifiers(fusionPreviewCard, FusionCardModData.MOD_MAP.get(((AbstractEasyCard) donorCard).getMonsterData()).identifier).get(0);
                 message += " ("+mod.getModDescription(fusionPreviewCard)+")";
