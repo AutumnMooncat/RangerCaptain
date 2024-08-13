@@ -35,8 +35,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:ApocrowlypseMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Apply 5 Poison to ALL enemies."],
+    "EXTRA_TEXT": [" NL Apply 5 Poison to ALL enemies."]
   },
   "${ModID}:ArkiddMod": {
     "TEXT": [""],
@@ -359,8 +359,8 @@
     "EXTRA_TEXT": [" NL Deal %s damage."," NL Play the top card of your draw pile and Exhaust it."]
   },
   "${ModID}:NevermortMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Apply 3 Poison to ALL enemies."],
+    "EXTRA_TEXT": [" NL Apply 3 Poison to ALL enemies."]
   },
   "${ModID}:PadpoleMod": {
     "TEXT": [""],

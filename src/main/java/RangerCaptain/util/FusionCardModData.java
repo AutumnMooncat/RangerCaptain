@@ -20,7 +20,7 @@ public class FusionCardModData {
         add(ALLSEER, new AllseerMod());
         add(AMPHARE, null);
         add(ANATHEMA, null);
-        add(APOCROWLYPSE, null);
+        add(APOCROWLYPSE, new ApocrowlypseMod());
         add(ARKIDD, null);
         add(ARTILLEREX, null);
         add(AURICLAW, null);
@@ -101,7 +101,7 @@ public class FusionCardModData {
         add(MISS_MIMIC, null);
         add(MOTHMANIC, new MothmanicMod());
         add(MUSKRATEER, new MuskrateerMod());
-        add(NEVERMORT, null);
+        add(NEVERMORT, new NevermortMod());
         add(PADPOLE, null);
         add(PALANGOLIN, null);
         add(PAWNDEAD, null);
