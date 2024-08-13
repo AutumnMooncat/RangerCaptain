@@ -18,14 +18,16 @@ public class Muskrateer extends AbstractEasyCard {
     public Muskrateer() {
         super(ID, 2, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = damage = 11;
-        baseMagicNumber = magicNumber = 2;
+        baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.MUSKRATEER);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, upgraded ? AbstractGameAction.AttackEffect.BLUNT_HEAVY : AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
-        addToBot(new PlayTopCardAction(AbstractDungeon.getCurrRoom().monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng), true));
+        for (int i = 0 ; i  < magicNumber ; i++) {
+            addToBot(new PlayTopCardAction(AbstractDungeon.getCurrRoom().monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng), true));
+        }
     }
 
     @Override
