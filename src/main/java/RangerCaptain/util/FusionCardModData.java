@@ -53,8 +53,8 @@ public class FusionCardModData {
         add(DJINN_ENTONIC, null);
         add(DOMINOTH, new DominothMod());
         add(DRACULEAF, null);
-        add(ELFLESS, null);
-        add(FAERIOUS, null);
+        add(ELFLESS, new ElflessMod());
+        add(FAERIOUS, new FaeriousMod());
         add(FAUCETEAR, null);
         add(FERRICLAW, null);
         add(FLAPWOODS, new FlapwoodsMod());
@@ -67,7 +67,7 @@ public class FusionCardModData {
         add(GALAGOR, null);
         add(GEARYU, null);
         add(GLAISTAIN, null);
-        add(GRAMPUS, null);
+        add(GRAMPUS, new GrampusMod());
         add(GUMBAAL, null);
         add(HAUNTOME, null);
         add(HEDGEHERNE, null);

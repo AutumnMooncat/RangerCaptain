@@ -167,12 +167,12 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:ElflessMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 5 damage. If the enemy has a debuff, gain 1 Energy."],
+    "EXTRA_TEXT": [" NL Deal %s damage."," NL If the enemy has a debuff, gain [E] ."]
   },
   "${ModID}:FaeriousMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 7 damage. If the enemy has a debuff, gain 1 Energy."],
+    "EXTRA_TEXT": [" NL Deal %s damage."," NL If the enemy has a debuff, gain [E] ."]
   },
   "${ModID}:FaucetearMod": {
     "TEXT": [""],
@@ -223,8 +223,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:GrampusMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 6 damage. If the enemy has a debuff, gain 2 Energy."],
+    "EXTRA_TEXT": [" NL Deal %s damage."," NL If the enemy has a debuff, gain [E] [E] ."]
   },
   "${ModID}:GumbaalMod": {
     "TEXT": [""],
