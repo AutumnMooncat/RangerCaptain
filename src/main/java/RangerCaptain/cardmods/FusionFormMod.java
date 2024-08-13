@@ -11,8 +11,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 
 public class FusionFormMod extends AbstractCardModifier {
-    public static final String ID = MainModfile.makeID(DealDamageMod.class.getSimpleName());
-    public static final String[] TEXT = CardCrawlGame.languagePack.getCardStrings(ID).EXTENDED_DESCRIPTION;
+    public static final String ID = MainModfile.makeID(FusionFormMod.class.getSimpleName());
     public MonsterEnum monster1;
     public MonsterEnum monster2;
     public transient FusionForm form;
