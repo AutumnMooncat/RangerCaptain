@@ -51,7 +51,7 @@ public class FusionCardModData {
         add(DIVEAL, null);
         add(DIVEBERG, null);
         add(DJINN_ENTONIC, null);
-        add(DOMINOTH, null);
+        add(DOMINOTH, new DominothMod());
         add(DRACULEAF, null);
         add(ELFLESS, null);
         add(FAERIOUS, null);
@@ -99,7 +99,7 @@ public class FusionCardModData {
         add(MIASMODEUS, null);
         add(MINORTOM, null);
         add(MISS_MIMIC, null);
-        add(MOTHMANIC, null);
+        add(MOTHMANIC, new MothmanicMod());
         add(MUSKRATEER, null);
         add(NEVERMORT, null);
         add(PADPOLE, null);
@@ -141,7 +141,7 @@ public class FusionCardModData {
         add(STARDIGRADE, null);
         add(TERRACOOKA, null);
         add(THWACKALOPE, null);
-        add(TOKUSECT, null);
+        add(TOKUSECT, new TokusectMod());
         add(TRAFFIKRAB, null);
         add(TRAPWURM, null);
         add(TRIPHINX, new TriphinxMod());
@@ -151,7 +151,7 @@ public class FusionCardModData {
         add(VELOCIRIFLE, null);
         add(VENDEMON, null);
         add(WEEVILITE, null);
-        add(WINGLOOM, null);
+        add(WINGLOOM, new WingloomMod());
         add(WOOLTERGEIST, null);
         add(WYRMAW, null);
         add(ZEUSTRIKE, null);

@@ -171,8 +171,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:DominothMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 4 Vigor"],
+    "EXTRA_TEXT": [" NL Gain 4 Vigor."]
   },
   "${ModID}:DraculeafMod": {
     "TEXT": [""],
@@ -363,8 +363,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:MothmanicMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 6 Conductive."],
+    "EXTRA_TEXT": [" NL Apply 6 ${ModID}:Conductive."]
   },
   "${ModID}:MuskrateerMod": {
     "TEXT": [""],
@@ -531,8 +531,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:TokusectMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 7 Vigor"],
+    "EXTRA_TEXT": [" NL Gain 7 Vigor."]
   },
   "${ModID}:TraffikrabMod": {
     "TEXT": [""],
@@ -571,8 +571,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:WingloomMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 4 Conductive."],
+    "EXTRA_TEXT": [" NL Apply 4 ${ModID}:Conductive."]
   },
   "${ModID}:WooltergeistMod": {
     "TEXT": [""],
