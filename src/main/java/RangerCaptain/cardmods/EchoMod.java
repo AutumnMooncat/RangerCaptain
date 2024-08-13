@@ -8,7 +8,7 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class EchoMod extends AbstractCardModifier {
     public static String ID = makeID(EchoMod.class.getSimpleName());
-    public static String[] TEXT = CardCrawlGame.languagePack.getCardStrings(ID).EXTENDED_DESCRIPTION;
+    public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
     public String modifyDescription(String rawDescription, AbstractCard card) {
         return TEXT[0] + rawDescription;

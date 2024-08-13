@@ -20,7 +20,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class DealDamageMod extends AbstractInfusion {
     public static final String ID = MainModfile.makeID(DealDamageMod.class.getSimpleName());
-    public static final String[] TEXT = CardCrawlGame.languagePack.getCardStrings(ID).EXTENDED_DESCRIPTION;
+    public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     public static final Texture ICON = TextureScaler.rescale(AbstractPower.atlas.findRegion("128/pressure_points"), 64, 64);
 
     static {

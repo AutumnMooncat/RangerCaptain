@@ -17,7 +17,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class GainBlockMod extends AbstractInfusion {
     public static final String ID = MainModfile.makeID(GainBlockMod.class.getSimpleName());
-    public static final String[] TEXT = CardCrawlGame.languagePack.getCardStrings(ID).EXTENDED_DESCRIPTION;
+    public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     public static final Texture ICON = TextureScaler.rescale(AbstractPower.atlas.findRegion("128/channel"), 64, 64);
 
     static {

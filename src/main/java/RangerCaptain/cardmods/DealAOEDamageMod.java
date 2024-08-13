@@ -21,7 +21,7 @@ import java.util.Arrays;
 
 public class DealAOEDamageMod extends AbstractInfusion {
     public static final String ID = MainModfile.makeID(DealAOEDamageMod.class.getSimpleName());
-    public static final String[] TEXT = CardCrawlGame.languagePack.getCardStrings(ID).EXTENDED_DESCRIPTION;
+    public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     public static final Texture ICON = TextureScaler.rescale(AbstractPower.atlas.findRegion("128/swivel"), 64, 64);
 
     static {

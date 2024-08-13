@@ -23,7 +23,7 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class TributeMod extends AbstractCardModifier {
     public static final String ID = makeID(TributeMod.class.getSimpleName());
-    public static final String[] TEXT = CardCrawlGame.languagePack.getCardStrings(ID).EXTENDED_DESCRIPTION;
+    public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     public static final Texture modIcon = TextureScaler.rescale(AbstractPower.atlas.findRegion("128/attackBurn"), 64, 64);
     private static final Color renderColor = new Color(1, 1, 1, 1);
     public int amount;
