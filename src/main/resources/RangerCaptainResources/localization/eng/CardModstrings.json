@@ -14,21 +14,6 @@
   "${ModID}:EchoMod": {
     "EXTRA_TEXT": ["Test. NL "]
   },
-  "${ModID}:GainBlockMod": {
-    "EXTRA_TEXT": ["Gain %s Block. NL "]
-  },
-  "${ModID}:ApplyPoisonMod": {
-    "EXTRA_TEXT": [" NL Apply %s Poison."]
-  },
-  "${ModID}:DealDamageMod": {
-    "EXTRA_TEXT": [" NL Deal %s damage."]
-  },
-  "${ModID}:DealRandomDamageMod": {
-    "EXTRA_TEXT": [" NL Deal %s damage to a random enemy."]
-  },
-  "${ModID}:DealAOEDamageMod": {
-    "EXTRA_TEXT": [" NL Deal %s damage to ALL enemies."]
-  },
   "${ModID}:AdeptileMod": {
     "TEXT": ["+1 Cost. Add Mind-Meld."],
     "EXTRA_TEXT": [" NL ${ModID}:Mind-Meld."]

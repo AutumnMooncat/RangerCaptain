@@ -1,6 +1,5 @@
 package RangerCaptain;
 
-import RangerCaptain.cardmods.AbstractInfusion;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.cards.cardvars.*;
 import RangerCaptain.cards.interfaces.GlowAdjacentCard;
@@ -11,7 +10,6 @@ import RangerCaptain.patches.CardCounterPatches;
 import RangerCaptain.patches.GlowChangePatch;
 import RangerCaptain.powers.BracedPower;
 import RangerCaptain.powers.StaggerPower;
-import RangerCaptain.powers.interfaces.InfusionTriggerPower;
 import RangerCaptain.relics.AbstractEasyRelic;
 import RangerCaptain.screens.FusionScreen;
 import RangerCaptain.util.*;
@@ -430,14 +428,6 @@ public class MainModfile implements
     @Override
     public void receiveAddAudio() {
         BaseMod.addAudio(CustomSounds.ITEM_GET_KEY, CustomSounds.ITEM_GET_PATH);
-    }
-
-    public static void infusionTrigger(AbstractInfusion infusion, int directAmount, int relicAmount) {
-        for (AbstractPower p : Wiz.adp().powers) {
-            if (p instanceof InfusionTriggerPower) {
-                ((InfusionTriggerPower) p).infusionTrigger(infusion, directAmount);
-            }
-        }
     }
 
     public static void onUpgradeTrigger(AbstractCard card, boolean permanent) {
