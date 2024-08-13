@@ -58,7 +58,7 @@ public class FusionCardModData {
         add(FAUCETEAR, null);
         add(FERRICLAW, null);
         add(FLAPWOODS, new FlapwoodsMod());
-        add(FOLKLORD, null);
+        add(FOLKLORD, new FolklordMod());
         add(FORTIWINX, null);
         add(FOUNTESS, null);
         add(FRAGLIACCI, null);
@@ -87,7 +87,7 @@ public class FusionCardModData {
         add(LILIGATOR, null);
         add(LITTLERED, null);
         add(LOBSTACLE, null);
-        add(MACABRA, null);
+        add(MACABRA, new MacabraMod());
         add(MAGIKRAB, null);
         add(MAJORTOM, null);
         add(MALCHEMY, null);

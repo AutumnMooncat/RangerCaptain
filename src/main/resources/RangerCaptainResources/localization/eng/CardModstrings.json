@@ -187,8 +187,8 @@
     "EXTRA_TEXT": [" NL Your next 2 Block gaining cards give 50% more Block."]
   },
   "${ModID}:FolklordMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 4 Block. Add 3 temporary Thorns."],
+    "EXTRA_TEXT": ["Gain %s Block. NL "," NL Gain 3 Thorns. NL At the end of this turn, lose 3 Thorns."]
   },
   "${ModID}:FortiwinxMod": {
     "TEXT": [""],
@@ -303,8 +303,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:MacabraMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 3 Block. Add 2 temporary Thorns."],
+    "EXTRA_TEXT": ["Gain %s Block. NL "," NL Gain 2 Thorns. NL At the end of this turn, lose 2 Thorns."]
   },
   "${ModID}:MagikrabMod": {
     "TEXT": [""],
