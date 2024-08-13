@@ -223,7 +223,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:GrampusMod": {
-    "TEXT": ["Add 6 damage. If the enemy has a debuff, gain 2 Energy."],
+    "TEXT": ["+1 cost. Add 6 damage. If the enemy has a debuff, gain 2 Energy."],
     "EXTRA_TEXT": [" NL Deal %s damage."," NL If the enemy has a debuff, gain [E] [E] ."]
   },
   "${ModID}:GumbaalMod": {
