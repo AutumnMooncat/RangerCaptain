@@ -23,6 +23,8 @@ public class CustomTags {
     @SpireEnum
     public static AbstractCard.CardTags SECOND_MAGIC_WEAK;
     @SpireEnum
+    public static AbstractCard.CardTags SECOND_MAGIC_WEAK_AOE;
+    @SpireEnum
     public static AbstractCard.CardTags SECOND_MAGIC_VULN_AOE;
     @SpireEnum
     public static AbstractCard.CardTags SECOND_MAGIC_CONDUCTIVE;

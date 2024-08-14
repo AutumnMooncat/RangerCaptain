@@ -47,7 +47,7 @@ public class SnoopinMod extends AbstractFusionMod {
 
     @Override
     public float modifyBaseSecondMagic(float magic, AbstractCard card) {
-        if (card.hasTag(CustomTags.SECOND_MAGIC_WEAK)) {
+        if (card.hasTag(CustomTags.SECOND_MAGIC_WEAK) || card.hasTag(CustomTags.SECOND_MAGIC_WEAK_AOE)) {
             magic += AMOUNT;
         }
         if (card.hasTag(CustomTags.SECOND_MAGIC_ENERGY_NEXT_TURN)) {
@@ -58,21 +58,25 @@ public class SnoopinMod extends AbstractFusionMod {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        if (card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.NONE) {
-            card.target = AbstractCard.CardTarget.ENEMY;
-        }
-        if (card.target == AbstractCard.CardTarget.SELF || card.target == AbstractCard.CardTarget.ALL) {
-            card.target = AbstractCard.CardTarget.SELF_AND_ENEMY;
+        if (!card.hasTag(CustomTags.SECOND_MAGIC_WEAK_AOE)) {
+            if (card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.NONE) {
+                card.target = AbstractCard.CardTarget.ENEMY;
+            }
+            if (card.target == AbstractCard.CardTarget.SELF || card.target == AbstractCard.CardTarget.ALL) {
+                card.target = AbstractCard.CardTarget.SELF_AND_ENEMY;
+            }
         }
     }
 
     @Override
     public void onUpgrade(AbstractCard card) {
-        if (card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.NONE) {
-            card.target = AbstractCard.CardTarget.ENEMY;
-        }
-        if (card.target == AbstractCard.CardTarget.SELF || card.target == AbstractCard.CardTarget.ALL) {
-            card.target = AbstractCard.CardTarget.SELF_AND_ENEMY;
+        if (!card.hasTag(CustomTags.SECOND_MAGIC_WEAK_AOE)) {
+            if (card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.NONE) {
+                card.target = AbstractCard.CardTarget.ENEMY;
+            }
+            if (card.target == AbstractCard.CardTarget.SELF || card.target == AbstractCard.CardTarget.ALL) {
+                card.target = AbstractCard.CardTarget.SELF_AND_ENEMY;
+            }
         }
     }
 
@@ -82,7 +86,7 @@ public class SnoopinMod extends AbstractFusionMod {
     }
 
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        if (!card.hasTag(CustomTags.MAGIC_WEAK) && !card.hasTag(CustomTags.SECOND_MAGIC_WEAK)) {
+        if (!card.hasTag(CustomTags.MAGIC_WEAK) && !card.hasTag(CustomTags.SECOND_MAGIC_WEAK_AOE) && !card.hasTag(CustomTags.SECOND_MAGIC_WEAK)) {
             rawDescription = FormatHelper.insertAfterText(rawDescription, CARD_TEXT[0]);
         }
         if (!card.hasTag(CustomTags.MAGIC_ENERGY_NEXT_TURN) && !card.hasTag(CustomTags.SECOND_MAGIC_ENERGY_NEXT_TURN)) {
@@ -93,7 +97,7 @@ public class SnoopinMod extends AbstractFusionMod {
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        if (!card.hasTag(CustomTags.MAGIC_WEAK) && !card.hasTag(CustomTags.SECOND_MAGIC_WEAK)) {
+        if (!card.hasTag(CustomTags.MAGIC_WEAK) && !card.hasTag(CustomTags.SECOND_MAGIC_WEAK_AOE) && !card.hasTag(CustomTags.SECOND_MAGIC_WEAK)) {
             Wiz.applyToEnemy((AbstractMonster) target, new WeakPower(target, AMOUNT, false));
         }
         if (!card.hasTag(CustomTags.MAGIC_ENERGY_NEXT_TURN) && !card.hasTag(CustomTags.SECOND_MAGIC_ENERGY_NEXT_TURN)) {

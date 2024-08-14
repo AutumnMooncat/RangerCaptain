@@ -55,7 +55,7 @@ public class SpringheelMod extends AbstractExtraEffectFusionMod {
 
     @Override
     public float modifyBaseSecondMagic(float magic, AbstractCard card) {
-        if (card.hasTag(CustomTags.SECOND_MAGIC_WEAK)) {
+        if (card.hasTag(CustomTags.SECOND_MAGIC_WEAK) || card.hasTag(CustomTags.SECOND_MAGIC_WEAK_AOE)) {
             magic += AMOUNT2;
         }
         return magic;
@@ -98,7 +98,7 @@ public class SpringheelMod extends AbstractExtraEffectFusionMod {
         if (card.baseDamage == -1) {
             rawDescription = FormatHelper.insertAfterText(rawDescription, String.format(CARD_TEXT[0], descriptionKey()));
         }
-        if (!card.hasTag(CustomTags.MAGIC_WEAK) && !card.hasTag(CustomTags.SECOND_MAGIC_WEAK)) {
+        if (!card.hasTag(CustomTags.MAGIC_WEAK) && !card.hasTag(CustomTags.SECOND_MAGIC_WEAK_AOE) && !card.hasTag(CustomTags.SECOND_MAGIC_WEAK)) {
             rawDescription = FormatHelper.insertAfterText(rawDescription, CARD_TEXT[1]);
         }
         return rawDescription;
@@ -109,7 +109,7 @@ public class SpringheelMod extends AbstractExtraEffectFusionMod {
         if (card.baseDamage == -1) {
             Wiz.atb(new DamageAction(target, new DamageInfo(Wiz.adp(), val, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         }
-        if (!card.hasTag(CustomTags.MAGIC_WEAK) && !card.hasTag(CustomTags.SECOND_MAGIC_WEAK)) {
+        if (!card.hasTag(CustomTags.MAGIC_WEAK) && !card.hasTag(CustomTags.SECOND_MAGIC_WEAK_AOE) && !card.hasTag(CustomTags.SECOND_MAGIC_WEAK)) {
             Wiz.applyToEnemy((AbstractMonster) target, new WeakPower(target, AMOUNT2, false));
         }
     }
