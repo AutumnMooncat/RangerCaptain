@@ -140,7 +140,7 @@ public class FusionCardModData {
         add(SQUIREY, new SquireyMod());
         add(STARDIGRADE, null);
         add(TERRACOOKA, new TerracookaMod());
-        add(THWACKALOPE, null);
+        add(THWACKALOPE, new ThwackalopeMod());
         add(TOKUSECT, new TokusectMod());
         add(TRAFFIKRAB, null);
         add(TRAPWURM, null);

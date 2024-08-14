@@ -515,8 +515,8 @@
     "EXTRA_TEXT": ["Apply 3 ${ModID}:Burned. NL "," NL Exhaust 1 card."]
   },
   "${ModID}:ThwackalopeMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["+1 Cost. Add 9 damage."],
+    "EXTRA_TEXT": [" NL Deal %s damage."]
   },
   "${ModID}:TokusectMod": {
     "TEXT": ["Add 7 Vigor"],
