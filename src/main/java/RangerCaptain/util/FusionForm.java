@@ -126,7 +126,7 @@ public class FusionForm {
         Vector2 topLeft = new Vector2(999, 999);
         Vector2 bottomRight = new Vector2(-999, -999);
         for (FusionNodeData.Node node : nodeArray) {
-            if (node != null) {
+            if (node != null && node.visible) {
                 topLeft = new Vector2(Math.min(topLeft.x, node.position.x), Math.min(topLeft.y, node.position.y - node.children[0].animation.getKeyFrame(0).getRegionHeight()));
                 bottomRight = new Vector2(Math.max(bottomRight.x, node.position.x + node.children[0].animation.getKeyFrame(0).getRegionWidth()), Math.max(bottomRight.y, node.position.y));
             }
@@ -138,7 +138,7 @@ public class FusionForm {
         Vector2 topLeft = new Vector2(999, 999);
         Vector2 bottomRight = new Vector2(-999, -999);
         for (FusionNodeData.Node node : nodeArray) {
-            if (node != null) {
+            if (node != null && node.visible) {
                 topLeft = new Vector2(Math.min(topLeft.x, node.position.x), Math.min(topLeft.y, node.position.y - node.children[0].animation.getKeyFrame(0).getRegionHeight()));
                 bottomRight = new Vector2(Math.max(bottomRight.x, node.position.x + node.children[0].animation.getKeyFrame(0).getRegionWidth()), Math.max(bottomRight.y, node.position.y));
             }
