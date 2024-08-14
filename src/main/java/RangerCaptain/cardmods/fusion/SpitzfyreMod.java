@@ -25,7 +25,7 @@ public class SpitzfyreMod extends AbstractExtraEffectFusionMod {
     public static final String ID = MainModfile.makeID(SpitzfyreMod.class.getSimpleName());
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    public static final int AMOUNT = 5;
+    public static final int AMOUNT = 6;
     public static final int AMOUNT2 = 1;
 
     static {

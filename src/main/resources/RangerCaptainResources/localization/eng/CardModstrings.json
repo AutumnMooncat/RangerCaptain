@@ -387,7 +387,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:PombombMod": {
-    "TEXT": ["Add 3 damage to ALL enemies.","+1 hit."],
+    "TEXT": ["Add 4 damage to ALL enemies.","+1 hit."],
     "EXTRA_TEXT": [" NL Deal %s damage to ALL enemies."]
   },
   "${ModID}:PondwalkerMod": {
@@ -491,7 +491,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:SpitzfyreMod": {
-    "TEXT": ["Add 5 damage to ALL enemies.","+1 hit."],
+    "TEXT": ["Add 6 damage to ALL enemies.","+1 hit."],
     "EXTRA_TEXT": [" NL Deal %s damage to ALL enemies."]
   },
   "${ModID}:SpookionnaMod": {
