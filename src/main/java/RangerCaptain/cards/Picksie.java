@@ -2,6 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.APBoostPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -21,6 +22,7 @@ public class Picksie extends AbstractEasyCard {
         baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.PICKSIE);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
+        tags.add(CustomTags.MAGIC_ENERGY_NEXT_TURN);
     }
 
     @Override

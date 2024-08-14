@@ -1,5 +1,6 @@
 package RangerCaptain;
 
+import RangerCaptain.cards.Springheel;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.cards.cardvars.*;
 import RangerCaptain.cards.interfaces.GlowAdjacentCard;
@@ -291,6 +292,13 @@ public class MainModfile implements
 
         //Other Setup stuff
         BaseMod.addCustomScreen(new FusionScreen());
+
+        DynamicTextBlocks.registerCustomCheck(makeID("Springheel"), c -> {
+            if (c instanceof Springheel && ((Springheel) c).info == 1) {
+                return ((Springheel) c).secondMagic;
+            }
+            return 0;
+        });
 
         DynamicTextBlocks.registerCustomCheck(makeID("Dominoth"), c -> {
             if (c instanceof AbstractEasyCard && ((AbstractEasyCard) c).info == 0 && Wiz.isInCombat() && Wiz.adp().hand.contains(c)) {

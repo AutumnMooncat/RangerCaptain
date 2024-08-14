@@ -30,8 +30,8 @@ public class Springheel extends AbstractMultiUpgradeCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
         Wiz.applyToEnemy(m, new WeakPower(m, magicNumber, false));
-        if (info > 0) {
-            Wiz.applyToSelf(new APBoostPower(p, info));
+        if (info == 1) {
+            Wiz.applyToSelf(new APBoostPower(p, secondMagic));
         }
     }
 
@@ -74,12 +74,15 @@ public class Springheel extends AbstractMultiUpgradeCard {
         initializeTitle();
         setMonsterData(MonsterEnum.SNOOPIN);
         baseInfo = info = 1;
+        baseSecondMagic = secondMagic = 0;
+        upgradeSecondMagic(1);
+        tags.add(CustomTags.SECOND_MAGIC_ENERGY_NEXT_TURN);
     }
 
     public void upgrade3() {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[3];
         initializeTitle();
         setMonsterData(MonsterEnum.SCAMPIRE);
-        baseInfo = info = 2;
+        upgradeSecondMagic(1);
     }
 }

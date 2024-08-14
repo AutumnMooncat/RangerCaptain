@@ -297,7 +297,7 @@
   },
   "${ModID}:Springheel": {
     "NAME": "Springheel",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak.{@@}{!${ModID}:I!|0=|1= NL Next turn, gain [E] .|2= NL Next turn, gain [E] [E] .}",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak.{@@}{!${ModID}:Springheel!|0=|1= NL Next turn, gain [E] .|2= NL Next turn, gain [E] [E] .|3= NL Next turn, gain [E] [E] [E] .|@= NL Next turn, gain !${ModID}:M2! [E] .}",
     "EXTENDED_DESCRIPTION": ["Hopskin","Ripterra","Snoopin","Scampire"]
   },
   "${ModID}:Squirey": {
