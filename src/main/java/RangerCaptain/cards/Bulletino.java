@@ -116,6 +116,7 @@ public class Bulletino extends AbstractMultiUpgradeCard {
         upgradeThirdMagic(2);
         isMultiDamage = true;
         target = CardTarget.ALL_ENEMY;
+        tags.add(CustomTags.AOE_DAMAGE);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.ARTILLEREX);

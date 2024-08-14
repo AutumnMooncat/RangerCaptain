@@ -2,6 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
@@ -28,6 +29,7 @@ public class Kuneko extends AbstractEasyCard {
         baseMagicNumber = magicNumber = 2;
         isMultiDamage = true;
         setMonsterData(MonsterEnum.KUNEKO);
+        tags.add(CustomTags.AOE_DAMAGE);
     }
 
     @Override

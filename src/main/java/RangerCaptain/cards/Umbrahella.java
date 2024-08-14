@@ -28,6 +28,7 @@ public class Umbrahella extends AbstractEasyCard {
         isMultiDamage = true;
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
         tags.add(CustomTags.MAGIC_POISON);
+        tags.add(CustomTags.AOE_DAMAGE);
     }
 
     @Override

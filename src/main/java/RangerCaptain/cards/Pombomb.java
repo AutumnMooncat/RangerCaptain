@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -19,6 +20,7 @@ public class Pombomb extends AbstractEasyCard {
         baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.POMBOMB);
         isMultiDamage = true;
+        tags.add(CustomTags.AOE_DAMAGE);
     }
 
     @Override

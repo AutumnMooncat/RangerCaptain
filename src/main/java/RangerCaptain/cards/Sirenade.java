@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.MultitargetPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -21,6 +22,7 @@ public class Sirenade extends AbstractEasyCard {
         baseMagicNumber = magicNumber = 1;
         isMultiDamage = true;
         setMonsterData(MonsterEnum.SIRENADE);
+        tags.add(CustomTags.AOE_DAMAGE);
     }
 
     @Override
