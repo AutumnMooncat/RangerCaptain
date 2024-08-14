@@ -86,7 +86,7 @@ public class FusionCardModData {
         add(LAPACITOR, null);
         add(LILIGATOR, null);
         add(LITTLERED, null);
-        add(LOBSTACLE, null);
+        add(LOBSTACLE, new LobstacleMod());
         add(MACABRA, new MacabraMod());
         add(MAGIKRAB, null);
         add(MAJORTOM, null);
@@ -142,7 +142,7 @@ public class FusionCardModData {
         add(TERRACOOKA, new TerracookaMod());
         add(THWACKALOPE, new ThwackalopeMod());
         add(TOKUSECT, new TokusectMod());
-        add(TRAFFIKRAB, null);
+        add(TRAFFIKRAB, new TraffikrabMod());
         add(TRAPWURM, null);
         add(TRIPHINX, new TriphinxMod());
         add(TWIRLIGIG, null);
@@ -150,7 +150,7 @@ public class FusionCardModData {
         add(UNDYIN, null);
         add(VELOCIRIFLE, null);
         add(VENDEMON, null);
-        add(WEEVILITE, null);
+        add(WEEVILITE, new WeeviliteMod());
         add(WINGLOOM, new WingloomMod());
         add(WOOLTERGEIST, null);
         add(WYRMAW, null);

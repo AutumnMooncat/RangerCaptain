@@ -299,8 +299,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:LobstacleMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 5 Block. Draw 1 card card next turn."],
+    "EXTRA_TEXT": ["Gain %s Block. NL "," NL Next turn, draw 1 additional card."]
   },
   "${ModID}:MacabraMod": {
     "TEXT": ["Add 3 Block. Add 2 temporary Thorns."],
@@ -523,8 +523,8 @@
     "EXTRA_TEXT": [" NL Gain 7 Vigor."]
   },
   "${ModID}:TraffikrabMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 4 Block. Draw 1 card card next turn."],
+    "EXTRA_TEXT": ["Gain %s Block. NL "," NL Next turn, draw 1 additional card."]
   },
   "${ModID}:TrapwurmMod": {
     "TEXT": [""],
@@ -555,8 +555,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:WeeviliteMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 6 Block. Draw 1 card card next turn."],
+    "EXTRA_TEXT": ["Gain %s Block. NL "," NL Next turn, draw 1 additional card."]
   },
   "${ModID}:WingloomMod": {
     "TEXT": ["Add 4 Conductive."],
