@@ -239,8 +239,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:HopskinMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 4 damage. Add 2 Weak."],
+    "EXTRA_TEXT": [" NL Deal %s damage."," NL Apply 2 Weak."]
   },
   "${ModID}:HuntorchMod": {
     "TEXT": [""],
@@ -419,8 +419,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:RipterraMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 7 damage. Add 2 Weak."],
+    "EXTRA_TEXT": [" NL Deal %s damage."," NL Apply 2 Weak."]
   },
   "${ModID}:RobindamMod": {
     "TEXT": [""],
@@ -443,8 +443,8 @@
     "EXTRA_TEXT": [" NL Increase all of the enemy's debuffs by 1."]
   },
   "${ModID}:ScampireMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 1 Weak. Add 2 Energy next turn."],
+    "EXTRA_TEXT": [" NL Apply 1 Weak."," NL Next turn, gain [E] [E] ."]
   },
   "${ModID}:ScarleteethMod": {
     "TEXT": [""],
@@ -475,8 +475,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:SnoopinMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 1 Weak. Add 1 Energy next turn."],
+    "EXTRA_TEXT": [" NL Apply 1 Weak."," NL Next turn, gain [E] ."]
   },
   "${ModID}:SouthpawMod": {
     "TEXT": ["Add 4 damage. Add 1 Resonance."],
@@ -499,8 +499,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:SpringheelMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 3 damage. Add 1 Weak."],
+    "EXTRA_TEXT": [" NL Deal %s damage."," NL Apply 1 Weak."]
   },
   "${ModID}:SquireyMod": {
     "TEXT": [""],
