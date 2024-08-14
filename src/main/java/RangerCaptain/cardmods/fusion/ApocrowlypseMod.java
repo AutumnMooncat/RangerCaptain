@@ -42,7 +42,7 @@ public class ApocrowlypseMod extends AbstractFusionMod {
 
     public String modifyDescription(String rawDescription, AbstractCard card) {
         if (!card.hasTag(CustomTags.MAGIC_POISON_AOE)) {
-            rawDescription = FormatHelper.insertAfterText(rawDescription, CARD_TEXT[1]);
+            rawDescription = FormatHelper.insertAfterText(rawDescription, CARD_TEXT[0]);
         }
         return rawDescription;
     }
