@@ -54,11 +54,13 @@ public class MasquerattleMod extends AbstractExtraEffectFusionMod {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        if (card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.NONE) {
-            card.target = AbstractCard.CardTarget.ENEMY;
-        }
-        if (card.target == AbstractCard.CardTarget.SELF || card.target == AbstractCard.CardTarget.ALL) {
-            card.target = AbstractCard.CardTarget.SELF_AND_ENEMY;
+        if (!card.hasTag(CustomTags.MAGIC_POISON_AOE) && !card.hasTag(CustomTags.AOE_DAMAGE)) {
+            if (card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.NONE) {
+                card.target = AbstractCard.CardTarget.ENEMY;
+            }
+            if (card.target == AbstractCard.CardTarget.SELF || card.target == AbstractCard.CardTarget.ALL) {
+                card.target = AbstractCard.CardTarget.SELF_AND_ENEMY;
+            }
         }
         if (card.type != AbstractCard.CardType.ATTACK && card instanceof AbstractEasyCard) {
             if (card.type == AbstractCard.CardType.POWER) {
@@ -72,11 +74,13 @@ public class MasquerattleMod extends AbstractExtraEffectFusionMod {
 
     @Override
     public void onUpgrade(AbstractCard card) {
-        if (card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.NONE) {
-            card.target = AbstractCard.CardTarget.ENEMY;
-        }
-        if (card.target == AbstractCard.CardTarget.SELF || card.target == AbstractCard.CardTarget.ALL) {
-            card.target = AbstractCard.CardTarget.SELF_AND_ENEMY;
+        if (!card.hasTag(CustomTags.MAGIC_POISON_AOE) && !card.hasTag(CustomTags.AOE_DAMAGE)) {
+            if (card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.NONE) {
+                card.target = AbstractCard.CardTarget.ENEMY;
+            }
+            if (card.target == AbstractCard.CardTarget.SELF || card.target == AbstractCard.CardTarget.ALL) {
+                card.target = AbstractCard.CardTarget.SELF_AND_ENEMY;
+            }
         }
     }
 
