@@ -85,7 +85,7 @@ public class ScampireMod extends AbstractFusionMod {
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         if (!card.hasTag(CustomTags.MAGIC_WEAK) && !card.hasTag(CustomTags.SECOND_MAGIC_WEAK)) {
-            Wiz.applyToEnemy((AbstractMonster) target, new WeakPower(target, AMOUNT2, false));
+            Wiz.applyToEnemy((AbstractMonster) target, new WeakPower(target, AMOUNT, false));
         }
         if (!card.hasTag(CustomTags.MAGIC_ENERGY_NEXT_TURN) && !card.hasTag(CustomTags.SECOND_MAGIC_ENERGY_NEXT_TURN)) {
             Wiz.applyToSelf(new APBoostPower(Wiz.adp(), AMOUNT2));
