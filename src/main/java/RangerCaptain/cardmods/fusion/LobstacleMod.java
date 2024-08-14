@@ -74,7 +74,7 @@ public class LobstacleMod extends AbstractExtraEffectFusionMod {
             Wiz.att(new GainBlockAction(Wiz.adp(), Wiz.adp(), val));
         }
         if (!card.hasTag(CustomTags.MAGIC_DRAW_NEXT_TURN) && !card.hasTag(CustomTags.SECOND_MAGIC_DRAW_NEXT_TURN)) {
-            Wiz.applyToSelf(new DrawCardNextTurnPower(target, AMOUNT2));
+            Wiz.applyToSelf(new DrawCardNextTurnPower(Wiz.adp(), AMOUNT2));
         }
     }
 
