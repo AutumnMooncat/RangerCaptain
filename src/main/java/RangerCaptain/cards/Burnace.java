@@ -2,6 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.actions.BetterSelectCardsInHandAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
@@ -22,6 +23,7 @@ public class Burnace extends AbstractEasyCard {
         baseBlock = block = 4;
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.BURNACE);
+        tags.add(CustomTags.MAGIC_EXHAUST);
     }
 
     @Override

@@ -44,4 +44,8 @@ public class CustomTags {
     public static AbstractCard.CardTags MAGIC_ENERGY_NEXT_TURN;
     @SpireEnum
     public static AbstractCard.CardTags SECOND_MAGIC_ENERGY_NEXT_TURN;
+    @SpireEnum
+    public static AbstractCard.CardTags MAGIC_EXHAUST;
+    @SpireEnum
+    public static AbstractCard.CardTags SECOND_MAGIC_EXHAUST;
 }

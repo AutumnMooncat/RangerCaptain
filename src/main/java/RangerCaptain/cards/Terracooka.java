@@ -19,14 +19,16 @@ public class Terracooka extends AbstractEasyCard {
     public Terracooka() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
         baseMagicNumber = magicNumber = 5;
+        baseSecondMagic = secondMagic = 1;
         setMonsterData(MonsterEnum.TERRACOOKA);
         tags.add(CustomTags.MAGIC_BURN);
+        tags.add(CustomTags.SECOND_MAGIC_EXHAUST);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         Wiz.applyToEnemy(m, new BurnedPower(m, p, magicNumber));
-        addToBot(new ExhaustAction(1, false, false, false));
+        addToBot(new ExhaustAction(secondMagic, false, false, false));
     }
 
     @Override

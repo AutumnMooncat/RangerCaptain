@@ -170,7 +170,7 @@
   },
   "${ModID}:Khepri": {
     "NAME": "Khepri",
-    "DESCRIPTION": "${ModID}:Perfect. NL Deal !D! damage. NL Exhaust 1 card. NL ${ModID}:Close_Encounter."
+    "DESCRIPTION": "${ModID}:Perfect. NL Deal !D! damage. NL Exhaust !M! card{@@}{!M!|>1=s}. NL ${ModID}:Close_Encounter."
   },
   "${ModID}:Kittelly": {
     "NAME": "Kittelly",
@@ -320,7 +320,7 @@
   },
   "${ModID}:Terracooka": {
     "NAME": "Terracooka",
-    "DESCRIPTION": "Apply !M! ${ModID}:Burned. NL Exhaust 1 card.",
+    "DESCRIPTION": "Apply !M! ${ModID}:Burned. NL Exhaust !${ModID}:M2! card{@@}{!${ModID}:M2!|>1=s}.",
     "EXTENDED_DESCRIPTION": ["Coaldron"]
   },
   "${ModID}:Thwackalope": {

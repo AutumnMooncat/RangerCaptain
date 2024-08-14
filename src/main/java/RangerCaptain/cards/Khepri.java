@@ -20,16 +20,18 @@ public class Khepri extends AbstractEasyCard {
     public Khepri() {
         super(ID, 0, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
         baseDamage = damage = 6;
+        baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.KHEPRI);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
         tags.add(CustomTags.CLOSE_ENCOUNTER);
+        tags.add(CustomTags.MAGIC_EXHAUST);
         ExtraEffectPatches.EffectFields.closeEncounter.set(this, true);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.FIRE);
-        addToBot(new ExhaustAction(1, false, false, false));
+        addToBot(new ExhaustAction(magicNumber, false, false, false));
     }
 
     @Override
