@@ -16,8 +16,8 @@ public class Puppercut extends AbstractEasyCard {
     public final static String ID = makeID(Puppercut.class.getSimpleName());
 
     public Puppercut() {
-        super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
-        baseDamage = damage = 4;
+        super(ID, 0, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
+        baseDamage = damage = 3;
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.PUPPERCUT);
     }
@@ -30,7 +30,7 @@ public class Puppercut extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeBaseCost(0);
+        upgradeDamage(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.SOUTHPAW);
