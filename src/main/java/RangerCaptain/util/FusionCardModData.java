@@ -91,7 +91,7 @@ public class FusionCardModData {
         add(MAGIKRAB, null);
         add(MAJORTOM, null);
         add(MALCHEMY, null);
-        add(MANISPEAR, null);
+        add(MANISPEAR, new ManispearMod());
         add(MARDIUSA, new MardiusaMod());
         add(MASCOTORN, null);
         add(MASCOTOY, null);
@@ -103,7 +103,7 @@ public class FusionCardModData {
         add(MUSKRATEER, new MuskrateerMod());
         add(NEVERMORT, new NevermortMod());
         add(PADPOLE, null);
-        add(PALANGOLIN, null);
+        add(PALANGOLIN, new PalangolinMod());
         add(PAWNDEAD, null);
         add(PICKSIE, null);
         add(PINBOLT, null);
@@ -137,7 +137,7 @@ public class FusionCardModData {
         add(SPITZFYRE, new SpitzfyreMod());
         add(SPOOKIONNA, null);
         add(SPRINGHEEL, new SpringheelMod());
-        add(SQUIREY, null);
+        add(SQUIREY, new SquireyMod());
         add(STARDIGRADE, null);
         add(TERRACOOKA, null);
         add(THWACKALOPE, null);

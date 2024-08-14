@@ -319,8 +319,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:ManispearMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 5 Block. Add 3 temporary Strength."],
+    "EXTRA_TEXT": ["Gain %s Block. NL "," NL Gain 3 Strength. NL At the end of this turn, lose 3 Strength."]
   },
   "${ModID}:MardiusaMod": {
     "TEXT": ["+1 Cost. Add Double Play."],
@@ -367,8 +367,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:PalangolinMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 5 damage. Add 4 temporary Strength."],
+    "EXTRA_TEXT": [" NL Deal %s damage."," NL Gain 4 Strength. NL At the end of this turn, lose 4 Strength."]
   },
   "${ModID}:PawndeadMod": {
     "TEXT": [""],
@@ -503,8 +503,8 @@
     "EXTRA_TEXT": [" NL Deal %s damage."," NL Apply 1 Weak."]
   },
   "${ModID}:SquireyMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 4 damage. Add 2 temporary Strength."],
+    "EXTRA_TEXT": [" NL Deal %s damage."," NL Gain 2 Strength. NL At the end of this turn, lose 2 Strength."]
   },
   "${ModID}:StardigradeMod": {
     "TEXT": [""],
