@@ -11,6 +11,8 @@ public class CustomTags {
     @SpireEnum
     public static AbstractCard.CardTags MAGIC_VULN;
     @SpireEnum
+    public static AbstractCard.CardTags MAGIC_VULN_AOE;
+    @SpireEnum
     public static AbstractCard.CardTags MAGIC_WEAK;
     @SpireEnum
     public static AbstractCard.CardTags MAGIC_BURN;
@@ -21,7 +23,7 @@ public class CustomTags {
     @SpireEnum
     public static AbstractCard.CardTags SECOND_MAGIC_WEAK;
     @SpireEnum
-    public static AbstractCard.CardTags SECOND_MAGIC_VULN;
+    public static AbstractCard.CardTags SECOND_MAGIC_VULN_AOE;
     @SpireEnum
     public static AbstractCard.CardTags SECOND_MAGIC_CONDUCTIVE;
     @SpireEnum

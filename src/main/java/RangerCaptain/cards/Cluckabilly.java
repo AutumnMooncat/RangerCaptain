@@ -21,7 +21,7 @@ public class Cluckabilly extends AbstractEasyCard {
         baseMagicNumber = magicNumber = 2;
         baseSecondMagic = secondMagic = 1;
         setMonsterData(MonsterEnum.CLUCKABILLY);
-        tags.add(CustomTags.SECOND_MAGIC_VULN);
+        tags.add(CustomTags.SECOND_MAGIC_VULN_AOE);
     }
 
     @Override

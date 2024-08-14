@@ -40,7 +40,7 @@ public class AllseerMod extends AbstractExtraEffectFusionMod {
 
     @Override
     public float modifyBaseMagic(float magic, AbstractCard card) {
-        if (card.hasTag(CustomTags.MAGIC_VULN)) {
+        if (card.hasTag(CustomTags.MAGIC_VULN) || card.hasTag(CustomTags.MAGIC_VULN_AOE)) {
             magic += AMOUNT2;
         }
         return magic;
@@ -48,7 +48,7 @@ public class AllseerMod extends AbstractExtraEffectFusionMod {
 
     @Override
     public float modifyBaseSecondMagic(float magic, AbstractCard card) {
-        if (card.hasTag(CustomTags.SECOND_MAGIC_VULN)) {
+        if (card.hasTag(CustomTags.SECOND_MAGIC_VULN_AOE)) {
             magic += AMOUNT2;
         }
         return magic;
@@ -56,21 +56,25 @@ public class AllseerMod extends AbstractExtraEffectFusionMod {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        if (card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.NONE) {
-            card.target = AbstractCard.CardTarget.ENEMY;
-        }
-        if (card.target == AbstractCard.CardTarget.SELF || card.target == AbstractCard.CardTarget.ALL) {
-            card.target = AbstractCard.CardTarget.SELF_AND_ENEMY;
+        if (!card.hasTag(CustomTags.MAGIC_VULN_AOE) && !card.hasTag(CustomTags.SECOND_MAGIC_VULN_AOE)) {
+            if (card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.NONE) {
+                card.target = AbstractCard.CardTarget.ENEMY;
+            }
+            if (card.target == AbstractCard.CardTarget.SELF || card.target == AbstractCard.CardTarget.ALL) {
+                card.target = AbstractCard.CardTarget.SELF_AND_ENEMY;
+            }
         }
     }
 
     @Override
     public void onUpgrade(AbstractCard card) {
-        if (card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.NONE) {
-            card.target = AbstractCard.CardTarget.ENEMY;
-        }
-        if (card.target == AbstractCard.CardTarget.SELF || card.target == AbstractCard.CardTarget.ALL) {
-            card.target = AbstractCard.CardTarget.SELF_AND_ENEMY;
+        if (!card.hasTag(CustomTags.MAGIC_VULN_AOE) && !card.hasTag(CustomTags.SECOND_MAGIC_VULN_AOE)) {
+            if (card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.NONE) {
+                card.target = AbstractCard.CardTarget.ENEMY;
+            }
+            if (card.target == AbstractCard.CardTarget.SELF || card.target == AbstractCard.CardTarget.ALL) {
+                card.target = AbstractCard.CardTarget.SELF_AND_ENEMY;
+            }
         }
     }
 
@@ -83,7 +87,7 @@ public class AllseerMod extends AbstractExtraEffectFusionMod {
         if (card.baseBlock == -1) {
             rawDescription = FormatHelper.insertBeforeText(rawDescription, String.format(CARD_TEXT[0], descriptionKey()));
         }
-        if (!card.hasTag(CustomTags.MAGIC_VULN) && !card.hasTag(CustomTags.SECOND_MAGIC_VULN)) {
+        if (!card.hasTag(CustomTags.MAGIC_VULN) && !card.hasTag(CustomTags.MAGIC_VULN_AOE) && !card.hasTag(CustomTags.SECOND_MAGIC_VULN_AOE)) {
             rawDescription = FormatHelper.insertAfterText(rawDescription, CARD_TEXT[1]);
         }
         return rawDescription;
@@ -94,7 +98,7 @@ public class AllseerMod extends AbstractExtraEffectFusionMod {
         if (card.baseBlock == -1) {
             Wiz.att(new GainBlockAction(Wiz.adp(), Wiz.adp(), val));
         }
-        if (!card.hasTag(CustomTags.MAGIC_VULN) && !card.hasTag(CustomTags.SECOND_MAGIC_VULN)) {
+        if (!card.hasTag(CustomTags.MAGIC_VULN) && !card.hasTag(CustomTags.MAGIC_VULN_AOE) && !card.hasTag(CustomTags.SECOND_MAGIC_VULN_AOE)) {
             Wiz.applyToEnemy((AbstractMonster) target, new VulnerablePower(target, AMOUNT2, false));
         }
     }

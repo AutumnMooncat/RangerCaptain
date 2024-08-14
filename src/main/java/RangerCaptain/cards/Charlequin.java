@@ -63,6 +63,6 @@ public class Charlequin extends AbstractMultiUpgradeCard {
         initializeTitle();
         setMonsterData(MonsterEnum.FRAGLIACCI);
         baseInfo = info = 1;
-        tags.add(CustomTags.MAGIC_VULN);
+        tags.add(CustomTags.MAGIC_VULN_AOE);
     }
 }

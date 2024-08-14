@@ -44,6 +44,22 @@ public class KhufoMod extends AbstractFusionMod {
     }
 
     @Override
+    public float modifyBaseSecondMagic(float magic, AbstractCard card) {
+        if (magic > 1) {
+            magic /= 2;
+        }
+        return magic;
+    }
+
+    @Override
+    public float modifyBaseThirdMagic(float magic, AbstractCard card) {
+        if (magic > 1) {
+            magic /= 2;
+        }
+        return magic;
+    }
+
+    @Override
     public void onInitialApplication(AbstractCard card) {
         ExtraEffectPatches.EffectFields.mindMeldCount.set(card, ExtraEffectPatches.EffectFields.mindMeldCount.get(card) + 1);
     }
