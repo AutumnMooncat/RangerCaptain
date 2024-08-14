@@ -44,7 +44,7 @@ public class FusionCardModData {
         add(CHARLEQUIN, null);
         add(CLOCKSLEY, null);
         add(CLUCKABILLY, null);
-        add(COALDRON, null);
+        add(COALDRON, new CoaldronMod());
         add(CRYOSHEAR, null);
         add(DANDYLION, new DandylionMod());
         add(DECIBELLE, null);
@@ -139,7 +139,7 @@ public class FusionCardModData {
         add(SPRINGHEEL, new SpringheelMod());
         add(SQUIREY, new SquireyMod());
         add(STARDIGRADE, null);
-        add(TERRACOOKA, null);
+        add(TERRACOOKA, new TerracookaMod());
         add(THWACKALOPE, null);
         add(TOKUSECT, new TokusectMod());
         add(TRAFFIKRAB, null);

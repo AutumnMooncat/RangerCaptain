@@ -131,8 +131,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:CoaldronMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 5 Burned. Exhaust 1 card."],
+    "EXTRA_TEXT": ["Apply 5 ${ModID}:Burned. NL "," NL Exhaust 1 card."]
   },
   "${ModID}:CryoshearMod": {
     "TEXT": [""],
@@ -511,8 +511,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:TerracookaMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 3 Burned. Exhaust 1 card."],
+    "EXTRA_TEXT": ["Apply 3 ${ModID}:Burned. NL "," NL Exhaust 1 card."]
   },
   "${ModID}:ThwackalopeMod": {
     "TEXT": [""],
