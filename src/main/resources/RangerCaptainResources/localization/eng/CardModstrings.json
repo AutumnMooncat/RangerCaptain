@@ -191,8 +191,8 @@
     "EXTRA_TEXT": ["Gain %s Block. NL "," NL Gain 3 Thorns. NL At the end of this turn, lose 3 Thorns."]
   },
   "${ModID}:FortiwinxMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Increase all of the enemy's debuffs by 2."],
+    "EXTRA_TEXT": [" NL Increase all of the enemy's debuffs by 2."]
   },
   "${ModID}:FountessMod": {
     "TEXT": [""],
@@ -439,8 +439,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:SanzatimeMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Increase all of the enemy's debuffs by 1."],
+    "EXTRA_TEXT": [" NL Increase all of the enemy's debuffs by 1."]
   },
   "${ModID}:ScampireMod": {
     "TEXT": [""],

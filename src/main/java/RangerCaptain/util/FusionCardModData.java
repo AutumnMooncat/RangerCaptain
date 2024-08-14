@@ -59,7 +59,7 @@ public class FusionCardModData {
         add(FERRICLAW, null);
         add(FLAPWOODS, new FlapwoodsMod());
         add(FOLKLORD, new FolklordMod());
-        add(FORTIWINX, null);
+        add(FORTIWINX, new FortiwinxMod());
         add(FOUNTESS, null);
         add(FRAGLIACCI, null);
         add(FRILLYPAD, null);
@@ -121,7 +121,7 @@ public class FusionCardModData {
         add(ROCKERTRICE, null);
         add(ROSEHOOD, null);
         add(SALAMAGUS, null);
-        add(SANZATIME, null);
+        add(SANZATIME, new SanzatimeMod());
         add(SCAMPIRE, null);
         add(SCARLETEETH, null);
         add(SCUBALRUS, null);
