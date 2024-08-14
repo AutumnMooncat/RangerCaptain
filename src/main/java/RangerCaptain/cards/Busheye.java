@@ -17,7 +17,7 @@ public class Busheye extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Busheye.class.getSimpleName());
 
     public Busheye() {
-        super(ID, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL);
+        super(ID, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
         baseMagicNumber = magicNumber = 7;
         baseSecondMagic = secondMagic = 2;
         setMonsterData(MonsterEnum.BUSHEYE);
