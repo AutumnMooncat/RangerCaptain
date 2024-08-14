@@ -110,7 +110,7 @@ public class FusionCardModData {
         add(PLASMANTLER, null);
         add(POMBOMB, new PombombMod());
         add(PONDWALKER, null);
-        add(PUPPERCUT, null);
+        add(PUPPERCUT, new PuppercutMod());
         add(PYROMELEON, null);
         add(QUEENYX, null);
         add(RAMTASM, null);
@@ -131,7 +131,7 @@ public class FusionCardModData {
         add(SKELEVANGELIST, null);
         add(SMOGMAGOG, null);
         add(SNOOPIN, null);
-        add(SOUTHPAW, null);
+        add(SOUTHPAW, new SouthpawMod());
         add(SPARKTAN, null);
         add(SPIROUETTE, null);
         add(SPITZFYRE, new SpitzfyreMod());

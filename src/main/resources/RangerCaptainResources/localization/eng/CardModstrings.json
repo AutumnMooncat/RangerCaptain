@@ -395,8 +395,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:PuppercutMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 2 damage. Add 1 Resonance."],
+    "EXTRA_TEXT": [" NL Deal %s damage."," NL Apply 1 ${ModID}:Resonance."]
   },
   "${ModID}:PyromeleonMod": {
     "TEXT": [""],
@@ -479,8 +479,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:SouthpawMod": {
-    "TEXT": [""],
-    "EXTRA_TEXT": [""]
+    "TEXT": ["Add 4 damage. Add 1 Resonance."],
+    "EXTRA_TEXT": [" NL Deal %s damage."," NL Apply 1 ${ModID}:Resonance."]
   },
   "${ModID}:SparktanMod": {
     "TEXT": [""],
