@@ -20,6 +20,7 @@ public class Arkidd extends AbstractEasyCard {
     public Arkidd() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
         baseMagicNumber = magicNumber = 3;
+        baseSecondMagic = secondMagic = 1;
         setMonsterData(MonsterEnum.ARKIDD);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
         tags.add(CustomTags.MAGIC_CONDUCTIVE);
@@ -29,7 +30,7 @@ public class Arkidd extends AbstractEasyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         Wiz.forAllMonstersLiving(mon -> {
             Wiz.applyToEnemy(mon, new ConductivePower(mon, p, magicNumber));
-            Wiz.applyToEnemy(mon, new ResonancePower(mon, 1));
+            Wiz.applyToEnemy(mon, new ResonancePower(mon, secondMagic));
         });
     }
 
