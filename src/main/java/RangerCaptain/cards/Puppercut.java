@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.ResonancePower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -20,6 +21,7 @@ public class Puppercut extends AbstractEasyCard {
         baseDamage = damage = 3;
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.PUPPERCUT);
+        tags.add(CustomTags.MAGIC_RESONANCE);
     }
 
     @Override
