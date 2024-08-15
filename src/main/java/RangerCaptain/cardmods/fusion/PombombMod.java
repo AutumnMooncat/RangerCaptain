@@ -7,6 +7,7 @@ import RangerCaptain.cards.Pombomb;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.cards.cardvars.DynvarInterfaceManager;
 import RangerCaptain.patches.CustomTags;
+import RangerCaptain.powers.BurnedPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.Wiz;
@@ -28,7 +29,7 @@ public class PombombMod extends AbstractExtraEffectFusionMod {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     public static final int AMOUNT = 4;
-    public static final int AMOUNT2 = 1;
+    public static final int AMOUNT2 = 2;
 
     static {
         DynvarInterfaceManager.registerDynvarCarrier(ID);
@@ -40,7 +41,7 @@ public class PombombMod extends AbstractExtraEffectFusionMod {
 
     @Override
     public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
-        if (card.hasTag(CustomTags.AOE_DAMAGE) && !(card instanceof Pombomb)) {
+        if (card.hasTag(CustomTags.AOE_DAMAGE)) {
             damage += AMOUNT;
         }
         return damage;
@@ -48,7 +49,7 @@ public class PombombMod extends AbstractExtraEffectFusionMod {
 
     @Override
     public float modifyBaseMagic(float magic, AbstractCard card) {
-        if (card instanceof Pombomb) {
+        if (card.hasTag(CustomTags.MAGIC_BURN_AOE)) {
             magic += AMOUNT2;
         }
         return magic;
@@ -68,15 +69,16 @@ public class PombombMod extends AbstractExtraEffectFusionMod {
 
     @Override
     public String getModDescription(AbstractCard card) {
-        if (card instanceof Pombomb) {
-            return DESCRIPTION_TEXT[1];
-        }
         return DESCRIPTION_TEXT[0];
     }
 
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        if (!card.hasTag(CustomTags.AOE_DAMAGE)) {
+        if (!card.hasTag(CustomTags.AOE_DAMAGE) && !card.hasTag(CustomTags.MAGIC_BURN_AOE)) {
             rawDescription = FormatHelper.insertAfterText(rawDescription, String.format(CARD_TEXT[0], descriptionKey()));
+        } else if (!card.hasTag(CustomTags.AOE_DAMAGE)) {
+            rawDescription = FormatHelper.insertAfterText(rawDescription, String.format(CARD_TEXT[1], descriptionKey()));
+        } else if (!card.hasTag(CustomTags.MAGIC_BURN_AOE)) {
+            rawDescription = FormatHelper.insertAfterText(rawDescription, CARD_TEXT[2]);
         }
         return rawDescription;
     }
@@ -85,6 +87,9 @@ public class PombombMod extends AbstractExtraEffectFusionMod {
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         if (!card.hasTag(CustomTags.AOE_DAMAGE)) {
             Wiz.atb(new DamageAllEnemiesAction(Wiz.adp(), multiVal, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.FIRE));
+        }
+        if (!card.hasTag(CustomTags.MAGIC_BURN_AOE)) {
+            Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new BurnedPower(mon, Wiz.adp(), AMOUNT2)));
         }
     }
 

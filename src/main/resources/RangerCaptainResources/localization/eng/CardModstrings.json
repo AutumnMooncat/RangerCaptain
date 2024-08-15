@@ -387,8 +387,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:PombombMod": {
-    "TEXT": ["Add #b4 damage to ALL enemies.","#b+1 hit."],
-    "EXTRA_TEXT": [" NL Deal %s damage to ALL enemies."]
+    "TEXT": ["Add #b4 damage and #b2 #yBurned to ALL enemies."],
+    "EXTRA_TEXT": [" NL Deal %s damage and apply 2 ${ModID}:Burned to ALL enemies."," NL Deal %s damage to ALL enemies."," NL Apply 2 ${ModID}:Burned to ALL enemies."]
   },
   "${ModID}:PondwalkerMod": {
     "TEXT": [""],
@@ -491,8 +491,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:SpitzfyreMod": {
-    "TEXT": ["Add #b6 damage to ALL enemies.","#b+1 hit."],
-    "EXTRA_TEXT": [" NL Deal %s damage to ALL enemies."]
+    "TEXT": ["Add #b6 damage and #b3 #yBurned to ALL enemies."],
+    "EXTRA_TEXT": [" NL Deal %s damage and apply 3 ${ModID}:Burned to ALL enemies."," NL Deal %s damage to ALL enemies."," NL Apply 3 ${ModID}:Burned to ALL enemies."]
   },
   "${ModID}:SpookionnaMod": {
     "TEXT": [""],

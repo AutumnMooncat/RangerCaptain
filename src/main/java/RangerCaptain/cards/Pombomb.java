@@ -2,8 +2,10 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
+import RangerCaptain.powers.BurnedPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
+import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -16,23 +18,24 @@ public class Pombomb extends AbstractEasyCard {
 
     public Pombomb() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY);
-        baseDamage = damage = 4;
+        baseDamage = damage = 6;
         baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.POMBOMB);
         isMultiDamage = true;
         tags.add(CustomTags.AOE_DAMAGE);
+        tags.add(CustomTags.MAGIC_BURN_AOE);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (int i = 0 ; i < magicNumber ; i++) {
-            allDmg(AbstractGameAction.AttackEffect.FIRE);
-        }
+        allDmg(AbstractGameAction.AttackEffect.FIRE);
+        Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new BurnedPower(mon, p, magicNumber)));
     }
 
     @Override
     public void upp() {
         upgradeDamage(2);
+        upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.SPITZFYRE);
