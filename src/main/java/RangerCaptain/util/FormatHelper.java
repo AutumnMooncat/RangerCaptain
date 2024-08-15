@@ -25,6 +25,10 @@ public class FormatHelper {
         return str.replace(match, capitalize(match));
     }
 
+    public static String removeFormatting(String input) {
+        return input.replaceAll("#.","");
+    }
+
     public static String prefixWords(String input, String prefix) {
         newMsg.setLength(0);
         for (String word : input.split(" ")) {

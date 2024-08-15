@@ -15,15 +15,15 @@
     "EXTRA_TEXT": ["Test. NL "]
   },
   "${ModID}:AdeptileMod": {
-    "TEXT": ["+1 Cost. Add Mind-Meld."],
+    "TEXT": ["#b+1 Cost. Add #yMind-Meld."],
     "EXTRA_TEXT": [" NL ${ModID}:Mind-Meld."]
   },
   "${ModID}:AeroborosMod": {
-    "TEXT": ["Gain 1 Energy."],
+    "TEXT": ["Gain #b1 #yEnergy."],
     "EXTRA_TEXT": [" NL Gain [E] ."]
   },
   "${ModID}:AllseerMod": {
-    "TEXT": ["Add 3 Block. Add 1 Vulnerable."],
+    "TEXT": ["Add #b3 #yBlock. Add #b1 #yVulnerable."],
     "EXTRA_TEXT": ["Gain %s Block. NL "," NL Apply 1 Vulnerable."]
   },
   "${ModID}:AmphareMod": {
@@ -35,7 +35,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:ApocrowlypseMod": {
-    "TEXT": ["Apply 5 Poison to ALL enemies."],
+    "TEXT": ["Apply #b5 #yPoison to ALL enemies."],
     "EXTRA_TEXT": [" NL Apply 5 Poison to ALL enemies."]
   },
   "${ModID}:ArkiddMod": {
@@ -71,7 +71,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:BlossomawMod": {
-    "TEXT": ["Add 6 Block. Put a card from your discard pile on top of your draw pile."],
+    "TEXT": ["Add #b6 #yBlock. Put a card from your discard pile on top of your draw pile."],
     "EXTRA_TEXT": ["Gain %s Block. NL "," NL Put a card from your discard pile on top of your draw pile."]
   },
   "${ModID}:BlunderbuskMod": {
@@ -83,7 +83,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:BraxsuitMod": {
-    "TEXT": ["Your next Block gaining card gives more Block"],
+    "TEXT": ["Your next #yBlock gaining card gives more #yBlock"],
     "EXTRA_TEXT": [" NL Your next Block gaining card gives 50% more Block."]
   },
   "${ModID}:BrushroomMod": {
@@ -111,7 +111,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:CarniviperMod": {
-    "TEXT": ["Add 3 damage. Add 2 Poison."],
+    "TEXT": ["Add #b3 damage. Add #b2 #yPoison."],
     "EXTRA_TEXT": [" NL Deal %s damage."," NL Apply 2 Poison."]
   },
   "${ModID}:CatfiveMod": {
@@ -131,7 +131,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:CoaldronMod": {
-    "TEXT": ["Add 5 Burned. Exhaust 1 card."],
+    "TEXT": ["Add #b5 #yBurned. #yExhaust #b1 card."],
     "EXTRA_TEXT": ["Apply 5 ${ModID}:Burned. NL "," NL Exhaust 1 card."]
   },
   "${ModID}:CryoshearMod": {
@@ -139,7 +139,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:DandylionMod": {
-    "TEXT": ["Add 4 Block. Put a card from your discard pile on top of your draw pile."],
+    "TEXT": ["Add #b4 #yBlock. Put a card from your discard pile on top of your draw pile."],
     "EXTRA_TEXT": ["Gain %s Block. NL "," NL Put a card from your discard pile on top of your draw pile."]
   },
   "${ModID}:DecibelleMod": {
@@ -159,7 +159,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:DominothMod": {
-    "TEXT": ["Add 4 Vigor"],
+    "TEXT": ["Add #b4 #yVigor"],
     "EXTRA_TEXT": [" NL Gain 4 Vigor."]
   },
   "${ModID}:DraculeafMod": {
@@ -167,11 +167,11 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:ElflessMod": {
-    "TEXT": ["Add 5 damage. If the enemy has a debuff, gain 1 Energy."],
+    "TEXT": ["Add #b5 damage. If the enemy has a debuff, gain #b1 #yEnergy."],
     "EXTRA_TEXT": [" NL Deal %s damage."," NL If the enemy has a debuff, gain [E] ."]
   },
   "${ModID}:FaeriousMod": {
-    "TEXT": ["Add 7 damage. If the enemy has a debuff, gain 1 Energy."],
+    "TEXT": ["Add #b7 damage. If the enemy has a debuff, gain #b1 #yEnergy."],
     "EXTRA_TEXT": [" NL Deal %s damage."," NL If the enemy has a debuff, gain [E] ."]
   },
   "${ModID}:FaucetearMod": {
@@ -183,15 +183,15 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:FlapwoodsMod": {
-    "TEXT": ["Your next 2 Block gaining cards give 50% more Block."],
+    "TEXT": ["Your next #b2 #yBlock gaining cards give #b50% more #yBlock."],
     "EXTRA_TEXT": [" NL Your next 2 Block gaining cards give 50% more Block."]
   },
   "${ModID}:FolklordMod": {
-    "TEXT": ["Add 4 Block. Add 3 temporary Thorns."],
+    "TEXT": ["Add #b4 #yBlock. Add #b3 temporary #yThorns."],
     "EXTRA_TEXT": ["Gain %s Block. NL "," NL Gain 3 Thorns. NL At the end of this turn, lose 3 Thorns."]
   },
   "${ModID}:FortiwinxMod": {
-    "TEXT": ["Increase all of the enemy's debuffs by 2."],
+    "TEXT": ["Increase all of the enemy's debuffs by #b2."],
     "EXTRA_TEXT": [" NL Increase all of the enemy's debuffs by 2."]
   },
   "${ModID}:FountessMod": {
@@ -223,7 +223,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:GrampusMod": {
-    "TEXT": ["+1 cost. Add 6 damage. If the enemy has a debuff, gain 2 Energy."],
+    "TEXT": ["#b+1 Cost. Add #b6 damage. If the enemy has a debuff, gain #b2 #yEnergy."],
     "EXTRA_TEXT": [" NL Deal %s damage."," NL If the enemy has a debuff, gain [E] [E] ."]
   },
   "${ModID}:GumbaalMod": {
@@ -239,7 +239,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:HopskinMod": {
-    "TEXT": ["Add 4 damage. Add 2 Weak."],
+    "TEXT": ["Add #b4 damage. Add #b2 #yWeak."],
     "EXTRA_TEXT": [" NL Deal %s damage."," NL Apply 2 Weak."]
   },
   "${ModID}:HuntorchMod": {
@@ -255,7 +255,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:JormungoldMod": {
-    "TEXT": ["When you draw this card, ALL enemies lose HP equal to their Poison."],
+    "TEXT": ["When you draw this card, ALL enemies lose HP equal to their #yPoison."],
     "EXTRA_TEXT": [" NL When you draw this card, ALL enemies lose HP equal to their Poison."," NL When you draw this card, ALL enemies lose HP equal to their Poison twice."]
   },
   "${ModID}:JumpkinMod": {
@@ -267,7 +267,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:KhufoMod": {
-    "TEXT": ["Halve stats. Add Mind-Meld."],
+    "TEXT": ["Halve effect. Add #yMind-Meld."],
     "EXTRA_TEXT": [" NL ${ModID}:Mind-Meld."]
   },
   "${ModID}:KingraveMod": {
@@ -299,11 +299,11 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:LobstacleMod": {
-    "TEXT": ["Add 5 Block. Draw 1 card card next turn."],
+    "TEXT": ["Add #b5 #yBlock. Draw #b1 card next turn."],
     "EXTRA_TEXT": ["Gain %s Block. NL "," NL Next turn, draw 1 additional card."]
   },
   "${ModID}:MacabraMod": {
-    "TEXT": ["Add 3 Block. Add 2 temporary Thorns."],
+    "TEXT": ["Add #b3 #yBlock. Add #b2 temporary #yThorns."],
     "EXTRA_TEXT": ["Gain %s Block. NL "," NL Gain 2 Thorns. NL At the end of this turn, lose 2 Thorns."]
   },
   "${ModID}:MagikrabMod": {
@@ -319,11 +319,11 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:ManispearMod": {
-    "TEXT": ["Add 5 Block. Add 3 temporary Strength."],
+    "TEXT": ["Add #b5 #yBlock. Add #b3 temporary #yStrength."],
     "EXTRA_TEXT": ["Gain %s Block. NL "," NL Gain 3 Strength. NL At the end of this turn, lose 3 Strength."]
   },
   "${ModID}:MardiusaMod": {
-    "TEXT": ["+1 Cost. Add Double Play."],
+    "TEXT": ["#b+1 Cost. Play this card twice."],
     "EXTRA_TEXT": [" NL ${ModID}:Double_Play."]
   },
   "${ModID}:MascotornMod": {
@@ -335,7 +335,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:MasquerattleMod": {
-    "TEXT": ["Add 4 damage. Add 3 Poison."],
+    "TEXT": ["Add #b4 damage. Add #b3 #yPoison."],
     "EXTRA_TEXT": [" NL Deal %s damage."," NL Apply 3 Poison."]
   },
   "${ModID}:MiasmodeusMod": {
@@ -351,15 +351,15 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:MothmanicMod": {
-    "TEXT": ["Add 6 Conductive."],
+    "TEXT": ["Add #b6 #yConductive."],
     "EXTRA_TEXT": [" NL Apply 6 ${ModID}:Conductive."]
   },
   "${ModID}:MuskrateerMod": {
-    "TEXT": ["+1 Cost. Add 5 damage. Play the top card of your draw pile and Exhaust it."],
+    "TEXT": ["#b+1 Cost. Add #b5 damage. Play the top card of your draw pile and Exhaust it."],
     "EXTRA_TEXT": [" NL Deal %s damage."," NL Play the top card of your draw pile and Exhaust it."]
   },
   "${ModID}:NevermortMod": {
-    "TEXT": ["Apply 3 Poison to ALL enemies."],
+    "TEXT": ["Add #b3 #yPoison to ALL enemies."],
     "EXTRA_TEXT": [" NL Apply 3 Poison to ALL enemies."]
   },
   "${ModID}:PadpoleMod": {
@@ -367,7 +367,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:PalangolinMod": {
-    "TEXT": ["Add 5 damage. Add 4 temporary Strength."],
+    "TEXT": ["Add #b5 damage. Add #b4 temporary #yStrength."],
     "EXTRA_TEXT": [" NL Deal %s damage."," NL Gain 4 Strength. NL At the end of this turn, lose 4 Strength."]
   },
   "${ModID}:PawndeadMod": {
@@ -387,7 +387,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:PombombMod": {
-    "TEXT": ["Add 4 damage to ALL enemies.","+1 hit."],
+    "TEXT": ["Add #b4 damage to ALL enemies.","#b+1 hit."],
     "EXTRA_TEXT": [" NL Deal %s damage to ALL enemies."]
   },
   "${ModID}:PondwalkerMod": {
@@ -395,7 +395,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:PuppercutMod": {
-    "TEXT": ["Add 2 damage. Add 1 Resonance."],
+    "TEXT": ["Add #b2 damage. Add #b1 #yResonance."],
     "EXTRA_TEXT": [" NL Deal %s damage."," NL Apply 1 ${ModID}:Resonance."]
   },
   "${ModID}:PyromeleonMod": {
@@ -411,7 +411,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:RatcouselMod": {
-    "TEXT": ["+1 Cost. Add 7 damage. Play the top card of your draw pile and Exhaust it."],
+    "TEXT": ["#b+1 Cost. Add #b7 damage. Play the top card of your draw pile and #yExhaust it."],
     "EXTRA_TEXT": [" NL Deal %s damage."," NL Play the top card of your draw pile and Exhaust it."]
   },
   "${ModID}:RegenseaMod": {
@@ -419,7 +419,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:RipterraMod": {
-    "TEXT": ["Add 7 damage. Add 2 Weak."],
+    "TEXT": ["Add #b7 damage. Add #b2 #yWeak."],
     "EXTRA_TEXT": [" NL Deal %s damage."," NL Apply 2 Weak."]
   },
   "${ModID}:RobindamMod": {
@@ -439,11 +439,11 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:SanzatimeMod": {
-    "TEXT": ["Increase all of the enemy's debuffs by 1."],
+    "TEXT": ["Increase all of the enemy's debuffs by #b1."],
     "EXTRA_TEXT": [" NL Increase all of the enemy's debuffs by 1."]
   },
   "${ModID}:ScampireMod": {
-    "TEXT": ["Add 1 Weak. Add 2 Energy next turn."],
+    "TEXT": ["Add #b1 #yWeak. Add #b2 #yEnergy next turn."],
     "EXTRA_TEXT": [" NL Apply 1 Weak."," NL Next turn, gain [E] [E] ."]
   },
   "${ModID}:ScarleteethMod": {
@@ -475,11 +475,11 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:SnoopinMod": {
-    "TEXT": ["Add 1 Weak. Add 1 Energy next turn."],
+    "TEXT": ["Add #b1 #yWeak. Add #b1 #yEnergy next turn."],
     "EXTRA_TEXT": [" NL Apply 1 Weak."," NL Next turn, gain [E] ."]
   },
   "${ModID}:SouthpawMod": {
-    "TEXT": ["Add 4 damage. Add 1 Resonance."],
+    "TEXT": ["Add #b4 damage. Add #b1 #yResonance."],
     "EXTRA_TEXT": [" NL Deal %s damage."," NL Apply 1 ${ModID}:Resonance."]
   },
   "${ModID}:SparktanMod": {
@@ -491,7 +491,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:SpitzfyreMod": {
-    "TEXT": ["Add 6 damage to ALL enemies.","+1 hit."],
+    "TEXT": ["Add #b6 damage to ALL enemies.","#b+1 hit."],
     "EXTRA_TEXT": [" NL Deal %s damage to ALL enemies."]
   },
   "${ModID}:SpookionnaMod": {
@@ -499,11 +499,11 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:SpringheelMod": {
-    "TEXT": ["Add 3 damage. Add 1 Weak."],
+    "TEXT": ["Add #b3 damage. Add #b1 #yWeak."],
     "EXTRA_TEXT": [" NL Deal %s damage."," NL Apply 1 Weak."]
   },
   "${ModID}:SquireyMod": {
-    "TEXT": ["Add 4 damage. Add 2 temporary Strength."],
+    "TEXT": ["Add #b4 damage. Add #b2 temporary #yStrength."],
     "EXTRA_TEXT": [" NL Deal %s damage."," NL Gain 2 Strength. NL At the end of this turn, lose 2 Strength."]
   },
   "${ModID}:StardigradeMod": {
@@ -511,19 +511,19 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:TerracookaMod": {
-    "TEXT": ["Add 3 Burned. Exhaust 1 card."],
+    "TEXT": ["Add #b3 #yBurned. #yExhaust #b1 card."],
     "EXTRA_TEXT": ["Apply 3 ${ModID}:Burned. NL "," NL Exhaust 1 card."]
   },
   "${ModID}:ThwackalopeMod": {
-    "TEXT": ["+1 Cost. Add 9 damage."],
+    "TEXT": ["#b+1 Cost. Add #b9 damage."],
     "EXTRA_TEXT": [" NL Deal %s damage."]
   },
   "${ModID}:TokusectMod": {
-    "TEXT": ["Add 7 Vigor"],
+    "TEXT": ["Add #b7 #yVigor"],
     "EXTRA_TEXT": [" NL Gain 7 Vigor."]
   },
   "${ModID}:TraffikrabMod": {
-    "TEXT": ["Add 4 Block. Draw 1 card card next turn."],
+    "TEXT": ["Add #b4 #yBlock. Draw #b1 card next turn."],
     "EXTRA_TEXT": ["Gain %s Block. NL "," NL Next turn, draw 1 additional card."]
   },
   "${ModID}:TrapwurmMod": {
@@ -531,7 +531,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:TriphinxMod": {
-    "TEXT": ["Add 2 Vulnerable. Add Close Encounter."],
+    "TEXT": ["Add #b2 #yVulnerable. Add #yClose #yEncounter."],
     "EXTRA_TEXT": [" NL Apply 2 Vulnerable."," NL ${ModID}:Close_Encounter."]
   },
   "${ModID}:TwirligigMod": {
@@ -555,11 +555,11 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:WeeviliteMod": {
-    "TEXT": ["Add 6 Block. Draw 1 card card next turn."],
+    "TEXT": ["Add #b6 #yBlock. Draw #b1 card next turn."],
     "EXTRA_TEXT": ["Gain %s Block. NL "," NL Next turn, draw 1 additional card."]
   },
   "${ModID}:WingloomMod": {
-    "TEXT": ["Add 4 Conductive."],
+    "TEXT": ["Add #b4 #yConductive."],
     "EXTRA_TEXT": [" NL Apply 4 ${ModID}:Conductive."]
   },
   "${ModID}:WooltergeistMod": {

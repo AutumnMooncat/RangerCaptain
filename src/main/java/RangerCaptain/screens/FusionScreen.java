@@ -3,6 +3,7 @@ package RangerCaptain.screens;
 import RangerCaptain.MainModfile;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractFusionMod;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.FusionCardModData;
 import RangerCaptain.util.Wiz;
 import basemod.abstracts.CustomScreen;
@@ -505,7 +506,7 @@ public class FusionScreen extends CustomScreen {
             fusionPreviewCard.applyPowers();
             if (FusionCardModData.MOD_MAP.get(((AbstractEasyCard) donorCard).getMonsterData()) != null) {
                 AbstractFusionMod mod = (AbstractFusionMod) CardModifierManager.getModifiers(fusionPreviewCard, FusionCardModData.MOD_MAP.get(((AbstractEasyCard) donorCard).getMonsterData()).identifier).get(0);
-                message += " ("+mod.getModDescription(fusionPreviewCard)+")";
+                message += " ("+ FormatHelper.removeFormatting(mod.getModDescription(fusionPreviewCard))+")";
             } else {
                 message += " (Not yet implemented.)";
             }
