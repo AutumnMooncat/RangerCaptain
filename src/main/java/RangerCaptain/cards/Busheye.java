@@ -23,7 +23,7 @@ public class Busheye extends AbstractMultiUpgradeCard {
         setMonsterData(MonsterEnum.BUSHEYE);
         exhaust = true;
         tags.add(CustomTags.SECOND_MAGIC_WEAK_AOE);
-        tags.add(CustomTags.MAGIC_BURN);
+        tags.add(CustomTags.MAGIC_BURN_AOE);
     }
 
     @Override

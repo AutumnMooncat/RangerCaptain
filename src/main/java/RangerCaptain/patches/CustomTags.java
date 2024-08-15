@@ -17,6 +17,8 @@ public class CustomTags {
     @SpireEnum
     public static AbstractCard.CardTags MAGIC_BURN;
     @SpireEnum
+    public static AbstractCard.CardTags MAGIC_BURN_AOE;
+    @SpireEnum
     public static AbstractCard.CardTags MAGIC_VIGOR;
     @SpireEnum
     public static AbstractCard.CardTags MAGIC_CONDUCTIVE;

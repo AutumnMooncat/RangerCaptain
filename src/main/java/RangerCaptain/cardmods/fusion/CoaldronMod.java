@@ -27,7 +27,7 @@ public class CoaldronMod extends AbstractFusionMod {
 
     @Override
     public float modifyBaseMagic(float magic, AbstractCard card) {
-        if (card.hasTag(CustomTags.MAGIC_BURN)) {
+        if (card.hasTag(CustomTags.MAGIC_BURN) || card.hasTag(CustomTags.MAGIC_BURN_AOE)) {
             magic += AMOUNT;
         }
         if (card.hasTag(CustomTags.MAGIC_EXHAUST)) {
@@ -46,21 +46,25 @@ public class CoaldronMod extends AbstractFusionMod {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        if (card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.NONE) {
-            card.target = AbstractCard.CardTarget.ENEMY;
-        }
-        if (card.target == AbstractCard.CardTarget.SELF || card.target == AbstractCard.CardTarget.ALL) {
-            card.target = AbstractCard.CardTarget.SELF_AND_ENEMY;
+        if (!card.hasTag(CustomTags.MAGIC_BURN_AOE)) {
+            if (card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.NONE) {
+                card.target = AbstractCard.CardTarget.ENEMY;
+            }
+            if (card.target == AbstractCard.CardTarget.SELF || card.target == AbstractCard.CardTarget.ALL) {
+                card.target = AbstractCard.CardTarget.SELF_AND_ENEMY;
+            }
         }
     }
 
     @Override
     public void onUpgrade(AbstractCard card) {
-        if (card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.NONE) {
-            card.target = AbstractCard.CardTarget.ENEMY;
-        }
-        if (card.target == AbstractCard.CardTarget.SELF || card.target == AbstractCard.CardTarget.ALL) {
-            card.target = AbstractCard.CardTarget.SELF_AND_ENEMY;
+        if (!card.hasTag(CustomTags.MAGIC_BURN_AOE)) {
+            if (card.target == AbstractCard.CardTarget.ALL_ENEMY || card.target == AbstractCard.CardTarget.NONE) {
+                card.target = AbstractCard.CardTarget.ENEMY;
+            }
+            if (card.target == AbstractCard.CardTarget.SELF || card.target == AbstractCard.CardTarget.ALL) {
+                card.target = AbstractCard.CardTarget.SELF_AND_ENEMY;
+            }
         }
     }
 
@@ -70,7 +74,7 @@ public class CoaldronMod extends AbstractFusionMod {
     }
 
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        if (!card.hasTag(CustomTags.MAGIC_BURN)) {
+        if (!card.hasTag(CustomTags.MAGIC_BURN) && !card.hasTag(CustomTags.MAGIC_BURN_AOE)) {
             rawDescription = FormatHelper.insertBeforeText(rawDescription, CARD_TEXT[0]);
         }
         if (!card.hasTag(CustomTags.MAGIC_EXHAUST) && !card.hasTag(CustomTags.SECOND_MAGIC_EXHAUST)) {
@@ -81,7 +85,7 @@ public class CoaldronMod extends AbstractFusionMod {
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        if (!card.hasTag(CustomTags.MAGIC_BURN)) {
+        if (!card.hasTag(CustomTags.MAGIC_BURN) && !card.hasTag(CustomTags.MAGIC_BURN_AOE)) {
             Wiz.applyToEnemyTop((AbstractMonster) target, new BurnedPower(target, Wiz.adp(), AMOUNT));
         }
         if (!card.hasTag(CustomTags.MAGIC_EXHAUST) && !card.hasTag(CustomTags.SECOND_MAGIC_EXHAUST)) {
