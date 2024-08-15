@@ -22,6 +22,7 @@ public class KeywordManager {
     public static String CLOSEENCOUNTER;
     public static String BURNED;
     public static String DOUBLEPLAY;
+    public static String FUSIONEFFECTS;
 
     public static String getKeyword(String ID) {
         return keywordMap.getOrDefault(ID, "");

@@ -151,5 +151,14 @@
       "double_play"
     ],
     "DESCRIPTION": "Play a copy of this card."
+  },
+  {
+    "ID": "fusioneffects",
+    "PROPER_NAME": "Fusion Effects",
+    "NAMES": [
+      "fusion effects",
+      "fusion_effects"
+    ],
+    "DESCRIPTION": "This card can be fused to add the following effects: "
   }
 ]

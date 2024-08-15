@@ -3,11 +3,9 @@ package RangerCaptain.cards.abstracts;
 import RangerCaptain.MainModfile;
 import RangerCaptain.TheRangerCaptain;
 import RangerCaptain.cardmods.FusionFormMod;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractFusionMod;
 import RangerCaptain.patches.FusionModifierHooks;
-import RangerCaptain.util.CardArtRoller;
-import RangerCaptain.util.FusionCardModData;
-import RangerCaptain.util.GifOverlayData;
-import RangerCaptain.util.MonsterEnum;
+import RangerCaptain.util.*;
 import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import basemod.helpers.TooltipInfo;
@@ -107,6 +105,7 @@ public abstract class AbstractEasyCard extends CustomCard {
 
     protected static final Color TRANSPARENT = new Color(0, 0, 0, 0);
 
+    private TooltipInfo fusionTip;
     private List<TooltipInfo> addedTips;
     protected final CardStrings cardStrings;
 
@@ -479,8 +478,28 @@ public abstract class AbstractEasyCard extends CustomCard {
         return new CardArtRoller.ReskinInfo(ID, 0.5f, 0.5f, 0.5f, 0.5f, false);
     }
 
+    public void removeFusionTip() {
+        if (fusionTip != null && addedTips != null) {
+            addedTips.remove(fusionTip);
+        }
+    }
+
     protected void setMonsterData(MonsterEnum data) {
         monsterEnum = data;
+        if (Wiz.canBeFused(this)) {
+            removeFusionTip();
+            fusionTip = new TooltipInfo(BaseMod.getKeywordTitle(KeywordManager.FUSIONEFFECTS), BaseMod.getKeywordDescription(KeywordManager.FUSIONEFFECTS));
+            AbstractFusionMod mod = FusionCardModData.MOD_MAP.get(monsterEnum);
+            if (mod != null) {
+                fusionTip.description += mod.getModDescription(this);
+            } else {
+                fusionTip.description += "Not yet Implemented.";
+            }
+            if (addedTips == null) {
+                addedTips = new ArrayList<>();
+            }
+            addedTips.add(fusionTip);
+        }
         FusionFormMod.updateFusionForm(this);
     }
 

@@ -41,6 +41,7 @@ public class FusionFormMod extends AbstractCardModifier {
         if (card instanceof AbstractEasyCard) {
             this.monster1 = ((AbstractEasyCard) card).getMonsterData();
             this.form = new FusionForm(monster1, monster2);
+            ((AbstractEasyCard) card).removeFusionTip();
         }
     }
 
