@@ -25,8 +25,8 @@ public class CarniviperMod extends AbstractExtraEffectFusionMod {
     public static final String ID = MainModfile.makeID(CarniviperMod.class.getSimpleName());
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    public static final int AMOUNT = 3;
-    public static final int AMOUNT2 = 2;
+    public static final int AMOUNT = 2;
+    public static final int AMOUNT2 = 3;
 
     static {
         DynvarInterfaceManager.registerDynvarCarrier(ID);

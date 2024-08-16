@@ -111,8 +111,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:CarniviperMod": {
-    "TEXT": ["Add #b3 damage. Add #b2 #yPoison."],
-    "EXTRA_TEXT": ["Deal %s damage. NL "," NL Apply 2 Poison."]
+    "TEXT": ["Add #b2 damage. Add #b3 #yPoison."],
+    "EXTRA_TEXT": ["Deal %s damage. NL "," NL Apply 3 Poison."]
   },
   "${ModID}:CatfiveMod": {
     "TEXT": [""],
@@ -335,8 +335,8 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:MasquerattleMod": {
-    "TEXT": ["Add #b4 damage. Add #b3 #yPoison."],
-    "EXTRA_TEXT": ["Deal %s damage. NL "," NL Apply 3 Poison."]
+    "TEXT": ["Add #b3 damage. Add #b4 #yPoison."],
+    "EXTRA_TEXT": ["Deal %s damage. NL "," NL Apply 4 Poison."]
   },
   "${ModID}:MiasmodeusMod": {
     "TEXT": [""],
@@ -395,7 +395,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:PuppercutMod": {
-    "TEXT": ["Add #b2 damage. Add #b1 #yResonance."],
+    "TEXT": ["Add #b3 damage. Add #b1 #yResonance."],
     "EXTRA_TEXT": ["Deal %s damage. NL "," NL Apply 1 ${ModID}:Resonance."]
   },
   "${ModID}:PyromeleonMod": {
@@ -479,7 +479,7 @@
     "EXTRA_TEXT": [" NL Apply 1 Weak."," NL Next turn, gain [E] ."]
   },
   "${ModID}:SouthpawMod": {
-    "TEXT": ["Add #b4 damage. Add #b1 #yResonance."],
+    "TEXT": ["Add #b5 damage. Add #b1 #yResonance."],
     "EXTRA_TEXT": ["Deal %s damage. NL "," NL Apply 1 ${ModID}:Resonance."]
   },
   "${ModID}:SparktanMod": {

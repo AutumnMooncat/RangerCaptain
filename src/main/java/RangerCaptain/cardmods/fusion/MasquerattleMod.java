@@ -25,8 +25,8 @@ public class MasquerattleMod extends AbstractExtraEffectFusionMod {
     public static final String ID = MainModfile.makeID(MasquerattleMod.class.getSimpleName());
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    public static final int AMOUNT = 4;
-    public static final int AMOUNT2 = 3;
+    public static final int AMOUNT = 3;
+    public static final int AMOUNT2 = 4;
 
     static {
         DynvarInterfaceManager.registerDynvarCarrier(ID);
