@@ -14,6 +14,7 @@ import RangerCaptain.util.Wiz;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -72,22 +73,22 @@ public class SpitzfyreMod extends AbstractExtraEffectFusionMod {
 
     public String modifyDescription(String rawDescription, AbstractCard card) {
         if (!card.hasTag(CustomTags.AOE_DAMAGE) && !card.hasTag(CustomTags.MAGIC_BURN_AOE)) {
-            rawDescription = FormatHelper.insertAfterText(rawDescription, String.format(CARD_TEXT[0], descriptionKey()));
+            rawDescription = FormatHelper.insertAfterBlock(rawDescription, String.format(CARD_TEXT[0], descriptionKey()));
         } else if (!card.hasTag(CustomTags.AOE_DAMAGE)) {
-            rawDescription = FormatHelper.insertAfterText(rawDescription, String.format(CARD_TEXT[1], descriptionKey()));
+            rawDescription = FormatHelper.insertAfterBlock(rawDescription, String.format(CARD_TEXT[1], descriptionKey()));
         } else if (!card.hasTag(CustomTags.MAGIC_BURN_AOE)) {
-            rawDescription = FormatHelper.insertAfterText(rawDescription, CARD_TEXT[2]);
+            rawDescription = FormatHelper.insertAfterBlock(rawDescription, CARD_TEXT[2]);
         }
         return rawDescription;
     }
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        if (!card.hasTag(CustomTags.AOE_DAMAGE)) {
-            Wiz.atb(new DamageAllEnemiesAction(Wiz.adp(), multiVal, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.FIRE));
-        }
         if (!card.hasTag(CustomTags.MAGIC_BURN_AOE)) {
-            Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new BurnedPower(mon, Wiz.adp(), AMOUNT2)));
+            Wiz.forAllMonstersLiving(mon -> Wiz.attAfterBlock(new ApplyPowerAction(mon, Wiz.adp(), new BurnedPower(mon, Wiz.adp(), AMOUNT2))));
+        }
+        if (!card.hasTag(CustomTags.AOE_DAMAGE)) {
+            Wiz.attAfterBlock(new DamageAllEnemiesAction(Wiz.adp(), multiVal, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.FIRE));
         }
     }
 

@@ -92,7 +92,7 @@ public class RatcouselMod extends AbstractExtraEffectFusionMod {
 
     public String modifyDescription(String rawDescription, AbstractCard card) {
         if (card.baseDamage == -1) {
-            rawDescription = FormatHelper.insertAfterText(rawDescription, String.format(CARD_TEXT[0], descriptionKey()));
+            rawDescription = FormatHelper.insertAfterBlock(rawDescription, String.format(CARD_TEXT[0], descriptionKey()));
         }
         if (!(card instanceof Muskrateer)) {
             rawDescription = FormatHelper.insertAfterText(rawDescription, CARD_TEXT[1]);
@@ -103,7 +103,7 @@ public class RatcouselMod extends AbstractExtraEffectFusionMod {
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         if (card.baseDamage == -1) {
-            Wiz.atb(new DamageAction(target, new DamageInfo(Wiz.adp(), val, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+            Wiz.attAfterBlock(new DamageAction(target, new DamageInfo(Wiz.adp(), val, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         }
         if (!(card instanceof Muskrateer)) {
             addToBot(new PlayTopCardAction(AbstractDungeon.getCurrRoom().monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng), true));
