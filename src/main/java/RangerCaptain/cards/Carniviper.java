@@ -20,8 +20,8 @@ public class Carniviper extends AbstractMultiUpgradeCard {
 
     public Carniviper() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
-        baseDamage = damage = 6;
-        baseMagicNumber = magicNumber = 3;
+        baseDamage = damage = 3;
+        baseMagicNumber = magicNumber = 4;
         setMonsterData(MonsterEnum.CARNIVIPER);
         baseInfo = info = 0;
         tags.add(CustomTags.MAGIC_POISON);
@@ -75,8 +75,8 @@ public class Carniviper extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade0() {
-        upgradeDamage(2);
-        upgradeMagicNumber(1);
+        upgradeDamage(1);
+        upgradeMagicNumber(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.MASQUERATTLE);
