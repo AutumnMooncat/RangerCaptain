@@ -83,7 +83,7 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:BraxsuitMod": {
-    "TEXT": ["Your next #yBlock gaining card gives more #yBlock"],
+    "TEXT": ["Your next #yBlock gaining card gives #b50% more #yBlock"],
     "EXTRA_TEXT": [" NL Your next Block gaining card gives 50% more Block."]
   },
   "${ModID}:BrushroomMod": {
