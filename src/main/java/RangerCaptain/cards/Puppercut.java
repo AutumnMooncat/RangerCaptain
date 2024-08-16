@@ -18,7 +18,7 @@ public class Puppercut extends AbstractEasyCard {
 
     public Puppercut() {
         super(ID, 0, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
-        baseDamage = damage = 3;
+        baseDamage = damage = 4;
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.PUPPERCUT);
         tags.add(CustomTags.MAGIC_RESONANCE);
