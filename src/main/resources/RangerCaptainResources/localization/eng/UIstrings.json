@@ -59,6 +59,11 @@
       "Choose "," cards to Guide."
     ]
   },
+  "${ModID}:FormatHelper": {
+    "TEXT": [
+      "Gain !B! Block. NL "
+    ]
+  },
   "${ModID}:IntentPatches": {
     "TEXT": [
       "Exploding",

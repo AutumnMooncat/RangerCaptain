@@ -13,6 +13,7 @@ import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -135,6 +136,20 @@ public class Wiz {
 
     public static void att(AbstractGameAction action) {
         AbstractDungeon.actionManager.addToTop(action);
+    }
+
+    public static void attAfterBlock(AbstractGameAction action) {
+        if (!AbstractDungeon.actionManager.actions.isEmpty()) {
+            AbstractGameAction topAction = AbstractDungeon.actionManager.actions.get(0);
+            if (topAction instanceof GainBlockAction) {
+                AbstractDungeon.actionManager.actions.remove(topAction);
+                AbstractDungeon.actionManager.addToTop(action);
+                AbstractDungeon.actionManager.addToTop(topAction);
+            }
+        } else {
+            AbstractDungeon.actionManager.addToTop(action);
+        }
+
     }
 
     public static void vfx(AbstractGameEffect gameEffect) {
