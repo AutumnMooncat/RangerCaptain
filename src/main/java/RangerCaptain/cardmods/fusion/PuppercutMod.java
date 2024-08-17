@@ -90,7 +90,7 @@ public class PuppercutMod extends AbstractExtraEffectFusionMod {
 
     @Override
     public String getModDescription(AbstractCard card) {
-        return DESCRIPTION_TEXT[0];
+        return String.format(DESCRIPTION_TEXT[0], AMOUNT, AMOUNT2);
     }
 
     public String modifyDescription(String rawDescription, AbstractCard card) {
@@ -98,7 +98,7 @@ public class PuppercutMod extends AbstractExtraEffectFusionMod {
             rawDescription = FormatHelper.insertAfterBlock(rawDescription, String.format(CARD_TEXT[0], descriptionKey()));
         }
         if (!card.hasTag(CustomTags.MAGIC_RESONANCE) && !card.hasTag(CustomTags.SECOND_MAGIC_RESONANCE)) {
-            rawDescription = FormatHelper.insertAfterText(rawDescription, CARD_TEXT[1]);
+            rawDescription = FormatHelper.insertAfterText(rawDescription, String.format(CARD_TEXT[1], AMOUNT2));
         }
         return rawDescription;
     }

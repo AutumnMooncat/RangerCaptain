@@ -40,12 +40,12 @@ public class TokusectMod extends AbstractFusionMod {
 
     @Override
     public String getModDescription(AbstractCard card) {
-        return DESCRIPTION_TEXT[0];
+        return String.format(DESCRIPTION_TEXT[0], AMOUNT);
     }
 
     public String modifyDescription(String rawDescription, AbstractCard card) {
         if (!card.hasTag(CustomTags.MAGIC_VIGOR) && !card.hasTag(CustomTags.SECOND_MAGIC_VIGOR)) {
-            rawDescription = FormatHelper.insertAfterText(rawDescription, CARD_TEXT[0]);
+            rawDescription = FormatHelper.insertAfterText(rawDescription, String.format(CARD_TEXT[0], AMOUNT));
         }
         return rawDescription;
     }

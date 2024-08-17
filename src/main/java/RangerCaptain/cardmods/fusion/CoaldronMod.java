@@ -70,15 +70,15 @@ public class CoaldronMod extends AbstractFusionMod {
 
     @Override
     public String getModDescription(AbstractCard card) {
-        return DESCRIPTION_TEXT[0];
+        return String.format(DESCRIPTION_TEXT[0], AMOUNT, AMOUNT2);
     }
 
     public String modifyDescription(String rawDescription, AbstractCard card) {
         if (!card.hasTag(CustomTags.MAGIC_BURN) && !card.hasTag(CustomTags.MAGIC_BURN_AOE)) {
-            rawDescription = FormatHelper.insertBeforeText(rawDescription, CARD_TEXT[0]);
+            rawDescription = FormatHelper.insertBeforeText(rawDescription, String.format(CARD_TEXT[0], AMOUNT));
         }
         if (!card.hasTag(CustomTags.MAGIC_EXHAUST) && !card.hasTag(CustomTags.SECOND_MAGIC_EXHAUST)) {
-            rawDescription = FormatHelper.insertAfterText(rawDescription, CARD_TEXT[1]);
+            rawDescription = FormatHelper.insertAfterText(rawDescription, String.format(CARD_TEXT[1], AMOUNT2));
         }
         return rawDescription;
     }

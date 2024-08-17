@@ -91,7 +91,7 @@ public class GrampusMod extends AbstractExtraEffectFusionMod {
 
     @Override
     public String getModDescription(AbstractCard card) {
-        return DESCRIPTION_TEXT[0];
+        return String.format(DESCRIPTION_TEXT[0], AMOUNT, AMOUNT2);
     }
 
     public String modifyDescription(String rawDescription, AbstractCard card) {
@@ -99,7 +99,11 @@ public class GrampusMod extends AbstractExtraEffectFusionMod {
             rawDescription = FormatHelper.insertAfterBlock(rawDescription, String.format(CARD_TEXT[0], descriptionKey()));
         }
         if (!(card instanceof Elfless)) {
-            rawDescription = FormatHelper.insertAfterText(rawDescription, CARD_TEXT[1]);
+            StringBuilder energyText = new StringBuilder();
+            for (int i = 0 ; i < AMOUNT2 ; i++) {
+                energyText.append("[E] ");
+            }
+            rawDescription = FormatHelper.insertAfterText(rawDescription, String.format(CARD_TEXT[1], energyText));
         }
         return rawDescription;
     }

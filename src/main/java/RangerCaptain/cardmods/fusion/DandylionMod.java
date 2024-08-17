@@ -52,7 +52,7 @@ public class DandylionMod extends AbstractExtraEffectFusionMod {
 
     @Override
     public String getModDescription(AbstractCard card) {
-        return DESCRIPTION_TEXT[0];
+        return String.format(DESCRIPTION_TEXT[0], AMOUNT);
     }
 
     public String modifyDescription(String rawDescription, AbstractCard card) {

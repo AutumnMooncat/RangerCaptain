@@ -73,15 +73,19 @@ public class ScampireMod extends AbstractFusionMod {
 
     @Override
     public String getModDescription(AbstractCard card) {
-        return DESCRIPTION_TEXT[0];
+        return String.format(DESCRIPTION_TEXT[0], AMOUNT, AMOUNT2);
     }
 
     public String modifyDescription(String rawDescription, AbstractCard card) {
         if (!card.hasTag(CustomTags.MAGIC_WEAK) && !card.hasTag(CustomTags.SECOND_MAGIC_WEAK_AOE) && !card.hasTag(CustomTags.SECOND_MAGIC_WEAK)) {
-            rawDescription = FormatHelper.insertAfterText(rawDescription, CARD_TEXT[0]);
+            rawDescription = FormatHelper.insertAfterText(rawDescription, String.format(CARD_TEXT[0], AMOUNT));
         }
         if (!card.hasTag(CustomTags.MAGIC_ENERGY_NEXT_TURN) && !card.hasTag(CustomTags.SECOND_MAGIC_ENERGY_NEXT_TURN)) {
-            rawDescription = FormatHelper.insertAfterText(rawDescription, CARD_TEXT[1]);
+            StringBuilder energyText = new StringBuilder();
+            for (int i = 0 ; i < AMOUNT2 ; i++) {
+                energyText.append("[E] ");
+            }
+            rawDescription = FormatHelper.insertAfterText(rawDescription, String.format(CARD_TEXT[1], energyText));
         }
         return rawDescription;
     }

@@ -68,16 +68,16 @@ public class SpitzfyreMod extends AbstractExtraEffectFusionMod {
 
     @Override
     public String getModDescription(AbstractCard card) {
-        return DESCRIPTION_TEXT[0];
+        return String.format(DESCRIPTION_TEXT[0], AMOUNT, AMOUNT2);
     }
 
     public String modifyDescription(String rawDescription, AbstractCard card) {
         if (!card.hasTag(CustomTags.AOE_DAMAGE) && !card.hasTag(CustomTags.MAGIC_BURN_AOE)) {
-            rawDescription = FormatHelper.insertAfterBlock(rawDescription, String.format(CARD_TEXT[0], descriptionKey()));
+            rawDescription = FormatHelper.insertAfterBlock(rawDescription, String.format(CARD_TEXT[0], descriptionKey(), AMOUNT2));
         } else if (!card.hasTag(CustomTags.AOE_DAMAGE)) {
             rawDescription = FormatHelper.insertAfterBlock(rawDescription, String.format(CARD_TEXT[1], descriptionKey()));
         } else if (!card.hasTag(CustomTags.MAGIC_BURN_AOE)) {
-            rawDescription = FormatHelper.insertAfterBlock(rawDescription, CARD_TEXT[2]);
+            rawDescription = FormatHelper.insertAfterBlock(rawDescription, String.format(CARD_TEXT[2], AMOUNT2));
         }
         return rawDescription;
     }
