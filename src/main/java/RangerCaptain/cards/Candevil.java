@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 
 import static RangerCaptain.MainModfile.makeID;
@@ -18,8 +19,7 @@ public class Candevil extends AbstractMultiUpgradeCard implements StartupCard {
     public final static String ID = makeID(Candevil.class.getSimpleName());
     public Candevil() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
-        baseBlock = block = 9;
-        baseMagicNumber = magicNumber = 0;
+        baseBlock = block = 5;
         setMonsterData(MonsterEnum.CANDEVIL);
         baseInfo = info = 0;
     }
@@ -27,6 +27,7 @@ public class Candevil extends AbstractMultiUpgradeCard implements StartupCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         blck();
+        Wiz.applyToSelf(new NextTurnBlockPower(p, block));
         if (info == 1) {
             Wiz.applyToEnemy(m, new PoisonPower(m, p, magicNumber));
         }
@@ -53,6 +54,7 @@ public class Candevil extends AbstractMultiUpgradeCard implements StartupCard {
 
     public void upgrade0() {
         upgradeBlock(1);
+        baseMagicNumber = magicNumber = 0;
         upgradeMagicNumber(3);
         target = CardTarget.SELF_AND_ENEMY;
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
@@ -64,7 +66,7 @@ public class Candevil extends AbstractMultiUpgradeCard implements StartupCard {
 
     public void upgrade1() {
         upgradeBlock(2);
-        upgradeMagicNumber(2);
+        upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.MIASMODEUS);
@@ -72,7 +74,8 @@ public class Candevil extends AbstractMultiUpgradeCard implements StartupCard {
 
     public void upgrade2() {
         upgradeBlock(1);
-        upgradeMagicNumber(5);
+        baseMagicNumber = magicNumber = 0;
+        upgradeMagicNumber(6);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
         setMonsterData(MonsterEnum.VENDEMON);
