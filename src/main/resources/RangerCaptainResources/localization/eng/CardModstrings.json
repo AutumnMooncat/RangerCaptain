@@ -19,8 +19,8 @@
     "EXTRA_TEXT": [" NL ${ModID}:Mind-Meld."]
   },
   "${ModID}:AeroborosMod": {
-    "TEXT": ["Gain #b1 #yEnergy."],
-    "EXTRA_TEXT": [" NL Gain [E] ."]
+    "TEXT": ["Add #b4 damage. Add #b6 #yPoison."],
+    "EXTRA_TEXT": ["Deal %s damage. NL "," NL Apply 6 Poison."]
   },
   "${ModID}:AllseerMod": {
     "TEXT": ["Add #b3 #yBlock. Add #b1 #yVulnerable."],
