@@ -1,6 +1,5 @@
 package RangerCaptain.patches;
 
-
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
@@ -21,8 +20,8 @@ public class CardCounterPatches {
     public static int cardsDiscoveredThisCombat;
     public static int cardsGuidedThisTurn;
     public static int cardsGuidedThisCombat;
-    public static int cardsBlessedThisTurn;
-    public static int cardsBlessedThisCombat;
+    public static int cardsExploredThisTurn;
+    public static int cardsExploredThisCombat;
     public static int jumpsThisTurn;
     public static AbstractCreature lastAttacker;
     public static final ArrayList<AbstractCard> cardsDrawnThisTurn = new ArrayList<>();
@@ -36,14 +35,12 @@ public class CardCounterPatches {
     public static class ResetCounters {
         @SpirePrefixPatch
         public static void reset() {
-            cardsSurveyedThisCombat = 0;
-            cardsSurveyedThisTurn = 0;
             cardsDiscoveredThisCombat = 0;
             cardsDiscoveredThisTurn = 0;
             cardsGuidedThisCombat = 0;
             cardsGuidedThisTurn = 0;
-            cardsBlessedThisCombat = 0;
-            cardsBlessedThisTurn = 0;
+            cardsExploredThisCombat = 0;
+            cardsExploredThisTurn = 0;
             lastAttacker = null;
             cardsDrawnThisCombat.clear();
             cardsDrawnThisTurn.clear();
@@ -60,7 +57,7 @@ public class CardCounterPatches {
         public static void reset() {
             cardsDiscoveredThisTurn = 0;
             cardsGuidedThisTurn = 0;
-            cardsBlessedThisTurn = 0;
+            cardsExploredThisTurn = 0;
             cardsDrawnThisTurn.clear();
             initialHand.clear();
             isInitialDraw = true;

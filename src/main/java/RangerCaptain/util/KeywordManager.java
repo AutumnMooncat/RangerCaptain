@@ -24,6 +24,7 @@ public class KeywordManager {
     public static String DOUBLEPLAY;
     public static String FUSIONEFFECTS;
     public static String TOXIN;
+    public static String EXPLORE;
 
     public static String getKeyword(String ID) {
         return keywordMap.getOrDefault(ID, "");

@@ -59,6 +59,12 @@
       "Choose "," cards to Guide."
     ]
   },
+  "${ModID}:ExploreAction": {
+    "TEXT": [
+      "Choose a card to Discover.",
+      "Choose up to "," cards to Discover."
+    ]
+  },
   "${ModID}:FormatHelper": {
     "TEXT": [
       "Gain !B! Block. NL "
