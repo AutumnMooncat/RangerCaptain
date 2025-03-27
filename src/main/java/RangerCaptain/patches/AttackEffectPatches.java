@@ -14,9 +14,12 @@ import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 
 public class AttackEffectPatches {
     private static TextureAtlas.AtlasRegion bleedRegion;
+    private static TextureAtlas.AtlasRegion toxinRegion;
 
     @SpireEnum
     public static AbstractGameAction.AttackEffect RANGER_CAPTAIN_BLEED;
+    @SpireEnum
+    public static AbstractGameAction.AttackEffect RANGER_CAPTAIN_TOXIN;
 
     @SpirePatch(clz = FlashAtkImgEffect.class, method = "loadImage")
     public static class ImagePatch {
@@ -29,6 +32,13 @@ public class AttackEffectPatches {
                 }
                 return SpireReturn.Return(bleedRegion);
             }
+            if (___effect == RANGER_CAPTAIN_TOXIN) {
+                if (toxinRegion == null) {
+                    Texture toxinTex = TexLoader.getTexture(MainModfile.makeImagePath("vfx/toxin.png"));
+                    toxinRegion = new TextureAtlas.AtlasRegion(toxinTex, 0, 0, toxinTex.getWidth(), toxinTex.getHeight());
+                }
+                return SpireReturn.Return(toxinRegion);
+            }
             return SpireReturn.Continue();
         }
     }
@@ -37,7 +47,7 @@ public class AttackEffectPatches {
     public static class SoundPatch {
         @SpirePrefixPatch
         public static SpireReturn<Void> plz(FlashAtkImgEffect __instance, AbstractGameAction.AttackEffect effect) {
-            if (effect == RANGER_CAPTAIN_BLEED) {
+            if (effect == RANGER_CAPTAIN_BLEED || effect == RANGER_CAPTAIN_TOXIN) {
                 CardCrawlGame.sound.play("ATTACK_POISON");
                 return SpireReturn.Return();
             }
