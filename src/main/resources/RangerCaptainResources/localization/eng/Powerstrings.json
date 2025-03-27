@@ -53,7 +53,7 @@
   },
   "${ModID}:ConductivePower": {
     "NAME": "Conductive",
-    "DESCRIPTIONS": ["Whenever you play a card, this creature takes #b"," damage and reduces #yConductive by #b1."]
+    "DESCRIPTIONS": ["When attacked, this creature takes #b"," damage and #yConductive is reduced by #b1."]
   },
   "${ModID}:ResonancePower": {
     "NAME": "Resonance",

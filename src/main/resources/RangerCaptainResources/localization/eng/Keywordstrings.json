@@ -99,7 +99,7 @@
     "NAMES": [
       "conductive"
     ],
-    "DESCRIPTION": "#yConductive creatures take damage whenever you play a card. Whenever this triggers, #yConductive is reduced by #b1."
+    "DESCRIPTION": "#yConductive creatures take damage when receiving #yAttack damage. Whenever this triggers, #yConductive is reduced by #b1."
   },
   {
     "ID": "resonance",
