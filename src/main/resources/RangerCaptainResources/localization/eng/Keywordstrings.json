@@ -102,6 +102,14 @@
     "DESCRIPTION": "#yConductive creatures take damage when receiving #yAttack damage. Whenever this triggers, #yConductive is reduced by #b1."
   },
   {
+    "ID": "toxin",
+    "PROPER_NAME": "Toxin",
+    "NAMES": [
+      "toxin"
+    ],
+    "DESCRIPTION": "Creatures take #b10% more damage from Attacks per #yToxin. Each turn, #yToxin is reduced by #b1."
+  },
+  {
     "ID": "resonance",
     "PROPER_NAME": "Resonance",
     "NAMES": [

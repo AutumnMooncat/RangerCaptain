@@ -280,6 +280,10 @@
     "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Gain !M! ${ModID}:Multitarget.",
     "EXTENDED_DESCRIPTION": ["Decibelle"]
   },
+  "${ModID}:Sludge": {
+    "NAME": "Sludge",
+    "DESCRIPTION": "Apply !M! ${ModID}:Toxin. NL Exhaust."
+  },
   "${ModID}:Sparktan": {
     "NAME": "Sparktan",
     "DESCRIPTION": "Deal !D! damage. NL Apply ${ModID}:Conductive equal to unblocked damage dealt. NL Exhaust.",

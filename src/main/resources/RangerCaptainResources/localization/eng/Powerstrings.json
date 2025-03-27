@@ -88,6 +88,11 @@
     "NAME": "Burned",
     "DESCRIPTIONS": ["At the start of its turn, loses #b"," HP, then reduce #yBurned by #b1. Whenever a card is #yExhausted, increase #yBurned by #b1."]
   },
+  "${ModID}:ToxinPower": {
+    "NAME": "Toxin",
+    "DESCRIPTIONS": ["Receive #b","% more damage from #yAttacks. Each turn, #yToxin is reduced by #b1."
+    ]
+  },
   "${ModID}:AutoLifePower": {
     "NAME": "Auto-Life",
     "DESCRIPTIONS": ["At the end of combat or when you would die, heal #b"," HP."]
