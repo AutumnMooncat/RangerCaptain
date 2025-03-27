@@ -7,13 +7,13 @@
       "Enable random pre/post combat phrases. Defaults: true, 50%."
     ],
     "EXTRA_TEXT": [
-      "The Celestial Hostess",
+      "The Ranger Captain",
       "Text."
     ]
   },
   "${ModID}:CrossOver": {
     "TEXT": [
-      "Enable Celestial Hostess Crossover Content"
+      "Enable Ranger Captain Crossover Content"
     ]
   },
   "${ModID}:FusionButton": {
