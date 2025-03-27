@@ -65,6 +65,20 @@
       "Choose up to "," cards to Discover."
     ]
   },
+  "${ModID}:DiscoverCardsAction": {
+    "TEXT": [
+      "Discover",
+      "Choose a card to Discover.",
+      "Choose "," cards to Discover."
+    ]
+  },
+  "${ModID}:DiscoverCopyOfCardsAction": {
+    "TEXT": [
+      "Discover a Copy of",
+      "Choose a card to Discover a copy of.",
+      "Choose "," cards to Discover a copy of."
+    ]
+  },
   "${ModID}:FormatHelper": {
     "TEXT": [
       "Gain !B! Block. NL "

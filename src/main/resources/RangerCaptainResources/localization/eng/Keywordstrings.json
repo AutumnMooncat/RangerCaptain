@@ -161,6 +161,16 @@
     "DESCRIPTION": "Look at random cards in your draw pile. You may add one of them to your #yDiscovery pile. Cards in your #yDiscovery pile are added to your hand next turn."
   },
   {
+    "ID": "discovery",
+    "PROPER_NAME": "discovery",
+    "NAMES": [
+      "discovery",
+      "discover",
+      "discovered"
+    ],
+    "DESCRIPTION": "Cards in your #yDiscovery pile are added to your hand next turn."
+  },
+  {
     "ID": "doubleplay",
     "PROPER_NAME": "Double Play",
     "NAMES": [
