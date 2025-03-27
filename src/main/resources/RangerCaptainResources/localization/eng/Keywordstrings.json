@@ -141,7 +141,7 @@
     "NAMES": [
       "burned"
     ],
-    "DESCRIPTION": "#yBurned creatures lose HP whenever a card is exhausted."
+    "DESCRIPTION": "#yBurned creatures lose HP at the start of their turn. Each turn, #yBurned is reduced by #b1. Whenever a card is #yExhausted, #yBurned is increased by #b1."
   },
   {
     "ID": "doubleplay",

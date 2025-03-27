@@ -86,7 +86,7 @@
   },
   "${ModID}:BurnedPower": {
     "NAME": "Burned",
-    "DESCRIPTIONS": ["Whenever a card is #yExhausted, loses #b"," HP."]
+    "DESCRIPTIONS": ["At the start of its turn, loses #b"," HP, then reduce #yBurned by #b1. Whenever a card is #yExhausted, increase #yBurned by #b1."]
   },
   "${ModID}:AutoLifePower": {
     "NAME": "Auto-Life",
