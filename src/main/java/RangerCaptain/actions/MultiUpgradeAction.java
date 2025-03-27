@@ -1,6 +1,5 @@
 package RangerCaptain.actions;
 
-import RangerCaptain.patches.CardCounterPatches;
 import RangerCaptain.patches.CardUpgradePatches;
 import RangerCaptain.powers.interfaces.OnBlessPower;
 import RangerCaptain.util.Wiz;
@@ -35,13 +34,13 @@ public class MultiUpgradeAction extends AbstractGameAction {
     public void update() {
         if (this.duration == this.startDuration) {
             cardOrder.addAll(hand);
-            if (this.hand.size() != 0 && this.hand.stream().anyMatch(this.predicate)) {
+            if (!this.hand.isEmpty() && this.hand.stream().anyMatch(this.predicate)) {
                 if (hand.stream().filter(predicate).count() == 1) {
                     performUpgrades(hand.stream().filter(predicate).collect(Collectors.toList()), amount);
                     this.isDone = true;
                 } else {
                     this.tempHand.removeIf(this.predicate);
-                    if (this.tempHand.size() > 0) {
+                    if (!this.tempHand.isEmpty()) {
                         this.hand.removeIf(this.tempHand::contains);
                     }
                     CardUpgradePatches.previewMultipleUpgrade = true;
@@ -59,7 +58,7 @@ public class MultiUpgradeAction extends AbstractGameAction {
             this.hand.addAll(AbstractDungeon.handCardSelectScreen.selectedCards.group);
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
             AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
-            if (this.tempHand.size() > 0) {
+            if (!this.tempHand.isEmpty()) {
                 this.hand.addAll(this.tempHand);
             }
 
@@ -80,8 +79,6 @@ public class MultiUpgradeAction extends AbstractGameAction {
         }
         AbstractDungeon.effectsQueue.add(new UpgradeShineEffect((float)Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
         for (AbstractCard card : cards) {
-            CardCounterPatches.cardsBlessedThisCombat++;
-            CardCounterPatches.cardsBlessedThisTurn++;
             CardUpgradePatches.applyUnlock(card);
             for (int i = 0 ; i < times ; i++) {
                 card.upgrade();
