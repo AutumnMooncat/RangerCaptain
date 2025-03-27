@@ -13,6 +13,7 @@ import RangerCaptain.powers.BracedPower;
 import RangerCaptain.powers.StaggerPower;
 import RangerCaptain.relics.AbstractEasyRelic;
 import RangerCaptain.screens.FusionScreen;
+import RangerCaptain.ui.DiscoveredCardManager;
 import RangerCaptain.util.*;
 import RangerCaptain.vfx.ShaderTest;
 import basemod.AutoAdd;
@@ -63,7 +64,7 @@ public class MainModfile implements
         PostInitializeSubscriber,
         PostUpdateSubscriber,
         AddAudioSubscriber,
-        PostPowerApplySubscriber, PostRenderSubscriber{
+        PostPowerApplySubscriber, PostRenderSubscriber, StartGameSubscriber{
 
     public static final String modID = "RangerCaptain";
     public static final Logger logger = LogManager.getLogger(MainModfile.class.getName());
@@ -463,5 +464,10 @@ public class MainModfile implements
                 }
             }
         }
+    }
+
+    @Override
+    public void receiveStartGame() {
+        DiscoveredCardManager.EmptyCards.yeet();
     }
 }
