@@ -141,7 +141,7 @@
       "close encounter",
       "close_encounter"
     ],
-    "DESCRIPTION": "Next turn, move this card from your discard pile into your hand."
+    "DESCRIPTION": "This card enters your #yDiscovery pile instead of your discard pile when played. Cards in your #yDiscovery pile are added to your hand next turn."
   },
   {
     "ID": "burned",
