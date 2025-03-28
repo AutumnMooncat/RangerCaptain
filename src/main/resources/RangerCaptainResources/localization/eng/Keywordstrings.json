@@ -145,11 +145,12 @@
   },
   {
     "ID": "burned",
-    "PROPER_NAME": "Burned",
+    "PROPER_NAME": "Burn",
     "NAMES": [
+      "burn",
       "burned"
     ],
-    "DESCRIPTION": "#yBurned creatures lose HP at the start of their turn. Each turn, #yBurned is reduced by #b1. Whenever a card is #yExhausted, #yBurned is increased by #b1."
+    "DESCRIPTION": "#yBurned creatures lose HP at the start of their turn. #yBurn is reduced by #b1 each turn and increased by #b1 whenever a card is #yExhausted."
   },
   {
     "ID": "explore",
