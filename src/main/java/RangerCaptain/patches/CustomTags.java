@@ -9,6 +9,12 @@ public class CustomTags {
     @SpireEnum
     public static AbstractCard.CardTags MAGIC_POISON_AOE;
     @SpireEnum
+    public static AbstractCard.CardTags MAGIC_TOXIN;
+    @SpireEnum
+    public static AbstractCard.CardTags MAGIC_TOXIN_AOE;
+    @SpireEnum
+    public static AbstractCard.CardTags MAGIC_SLUDGE;
+    @SpireEnum
     public static AbstractCard.CardTags MAGIC_VULN;
     @SpireEnum
     public static AbstractCard.CardTags MAGIC_VULN_AOE;
