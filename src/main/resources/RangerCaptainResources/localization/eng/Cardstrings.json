@@ -68,7 +68,7 @@
   },
   "${ModID}:Busheye": {
     "NAME": "Busheye",
-    "DESCRIPTION": "Apply !M! ${ModID}:Burned and !${ModID}:M2! Weak to ALL enemies. NL Exhaust.",
+    "DESCRIPTION": "Apply !M! ${ModID}:Burn and !${ModID}:M2! Weak to ALL enemies. NL Exhaust.",
     "EXTENDED_DESCRIPTION": ["Huntorch","Hedgeherne"]
   },
   "${ModID}:Camping": {
@@ -240,12 +240,12 @@
   },
   "${ModID}:Pombomb": {
     "NAME": "Pombomb",
-    "DESCRIPTION": "Deal !D! damage and apply !M! ${ModID}:Burned to ALL enemies.",
+    "DESCRIPTION": "Deal !D! damage and apply !M! ${ModID}:Burn to ALL enemies.",
     "EXTENDED_DESCRIPTION": ["Spitzfyre"]
   },
   "${ModID}:Pondwalker": {
     "NAME": "Pondwalker",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Burned.",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Burn.",
     "EXTENDED_DESCRIPTION": ["Sharktanker"]
   },
   "${ModID}:PortalToAnywhere": {
@@ -267,7 +267,7 @@
   },
   "${ModID}:Salamagus": {
     "NAME": "Salamagus",
-    "DESCRIPTION": "Whenever a card is Exhausted, apply !M! ${ModID}:Burned to a random enemy.{@@}{!${ModID}:I!|1= NL ${ModID}:Mind-Meld.}",
+    "DESCRIPTION": "Whenever a card is Exhausted, apply !M! ${ModID}:Burn to a random enemy.{@@}{!${ModID}:I!|1= NL ${ModID}:Mind-Meld.}",
     "EXTENDED_DESCRIPTION": ["Adeptile","Pyromeleon"]
   },
   "${ModID}:Sanzatime": {
@@ -324,7 +324,7 @@
   },
   "${ModID}:Terracooka": {
     "NAME": "Terracooka",
-    "DESCRIPTION": "Apply !M! ${ModID}:Burned. NL Exhaust !${ModID}:M2! card{@@}{!${ModID}:M2!|>1=s}.",
+    "DESCRIPTION": "Apply !M! ${ModID}:Burn. NL Exhaust !${ModID}:M2! card{@@}{!${ModID}:M2!|>1=s}.",
     "EXTENDED_DESCRIPTION": ["Coaldron"]
   },
   "${ModID}:Thwackalope": {
