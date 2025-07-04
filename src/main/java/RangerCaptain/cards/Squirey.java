@@ -52,7 +52,9 @@ public class Squirey extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade0() {
-        baseBlock = 0;
+        if (baseBlock < 0) {
+            baseBlock = 0;
+        }
         upgradeBlock(6);
         upgradeDamage(-2);
         upgradeMagicNumber(1);
