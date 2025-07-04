@@ -126,6 +126,18 @@
     "TEXT": ["Halve effect."],
     "EXTRA_TEXT": [""]
   },
+  "${ModID}:AddRetainMod": {
+    "TEXT": ["Add #yRetain."],
+    "EXTRA_TEXT": ["Retain. NL "]
+  },
+  "${ModID}:AddEtherealMod": {
+    "TEXT": ["Add #yEthereal."],
+    "EXTRA_TEXT": ["Ethereal. NL "]
+  },
+  "${ModID}:AddExhaustMod": {
+    "TEXT": ["Add #yExhaust."],
+    "EXTRA_TEXT": [" NL Exhaust."]
+  },
   "${ModID}:AddMindMeldMod": {
     "TEXT": ["Add #yMind-Meld."],
     "EXTRA_TEXT": [" NL ${ModID}:Mind-Meld."]
