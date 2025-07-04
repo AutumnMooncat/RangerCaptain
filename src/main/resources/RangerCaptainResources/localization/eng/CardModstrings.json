@@ -82,6 +82,10 @@
     "TEXT": ["#b+%s Cost.", "#b-%s Cost"],
     "EXTRA_TEXT": [""]
   },
+  "${ModID}:SetCostMod": {
+    "TEXT": ["Cost becomes #b%s."],
+    "EXTRA_TEXT": [""]
+  },
   "${ModID}:DiscardToDrawMod": {
     "TEXT": ["Put a card from your discard pile on top of your draw pile.", "Put #b%s cards from your discard pile on top of your draw pile."],
     "EXTRA_TEXT": [" NL Put %1$s card{@@}{%1$s|>1=s} from your discard pile on top of your draw pile."]
