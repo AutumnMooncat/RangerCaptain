@@ -23,8 +23,8 @@ public class Arkidd extends AbstractEasyCard {
         baseSecondMagic = secondMagic = 1;
         setMonsterData(MonsterEnum.ARKIDD);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
-        tags.add(CustomTags.MAGIC_CONDUCTIVE);
-        tags.add(CustomTags.SECOND_MAGIC_RESONANCE);
+        tags.add(CustomTags.MAGIC_CONDUCTIVE_AOE);
+        tags.add(CustomTags.SECOND_MAGIC_RESONANCE_AOE);
     }
 
     @Override

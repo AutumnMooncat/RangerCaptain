@@ -29,7 +29,17 @@ public class CustomTags {
     @SpireEnum
     public static AbstractCard.CardTags MAGIC_VULN_AOE;
     @SpireEnum
+    public static AbstractCard.CardTags SECOND_MAGIC_VULN;
+    @SpireEnum
+    public static AbstractCard.CardTags SECOND_MAGIC_VULN_AOE;
+    @SpireEnum
     public static AbstractCard.CardTags MAGIC_WEAK;
+    @SpireEnum
+    public static AbstractCard.CardTags MAGIC_WEAK_AOE;
+    @SpireEnum
+    public static AbstractCard.CardTags SECOND_MAGIC_WEAK;
+    @SpireEnum
+    public static AbstractCard.CardTags SECOND_MAGIC_WEAK_AOE;
     @SpireEnum
     public static AbstractCard.CardTags MAGIC_BURN;
     @SpireEnum
@@ -37,19 +47,23 @@ public class CustomTags {
     @SpireEnum
     public static AbstractCard.CardTags MAGIC_VIGOR;
     @SpireEnum
+    public static AbstractCard.CardTags SECOND_MAGIC_VIGOR;
+    @SpireEnum
     public static AbstractCard.CardTags MAGIC_CONDUCTIVE;
     @SpireEnum
-    public static AbstractCard.CardTags SECOND_MAGIC_WEAK;
-    @SpireEnum
-    public static AbstractCard.CardTags SECOND_MAGIC_WEAK_AOE;
-    @SpireEnum
-    public static AbstractCard.CardTags SECOND_MAGIC_VULN_AOE;
+    public static AbstractCard.CardTags MAGIC_CONDUCTIVE_AOE;
     @SpireEnum
     public static AbstractCard.CardTags SECOND_MAGIC_CONDUCTIVE;
     @SpireEnum
-    public static AbstractCard.CardTags SECOND_MAGIC_VIGOR;
+    public static AbstractCard.CardTags SECOND_MAGIC_CONDUCTIVE_AOE;
     @SpireEnum
-    public static AbstractCard.CardTags CLOSE_ENCOUNTER;
+    public static AbstractCard.CardTags MAGIC_RESONANCE;
+    @SpireEnum
+    public static AbstractCard.CardTags MAGIC_RESONANCE_AOE;
+    @SpireEnum
+    public static AbstractCard.CardTags SECOND_MAGIC_RESONANCE;
+    @SpireEnum
+    public static AbstractCard.CardTags SECOND_MAGIC_RESONANCE_AOE;
     @SpireEnum
     public static AbstractCard.CardTags MAGIC_DRAW;
     @SpireEnum
@@ -57,17 +71,7 @@ public class CustomTags {
     @SpireEnum
     public static AbstractCard.CardTags SECOND_MAGIC_DRAW_NEXT_TURN;
     @SpireEnum
-    public static AbstractCard.CardTags AOE_DAMAGE;
-    @SpireEnum
-    public static AbstractCard.CardTags MAGIC_RESONANCE;
-    @SpireEnum
-    public static AbstractCard.CardTags SECOND_MAGIC_RESONANCE;
-    @SpireEnum
     public static AbstractCard.CardTags MAGIC_ENERGY_NEXT_TURN;
     @SpireEnum
     public static AbstractCard.CardTags SECOND_MAGIC_ENERGY_NEXT_TURN;
-    @SpireEnum
-    public static AbstractCard.CardTags MAGIC_EXHAUST;
-    @SpireEnum
-    public static AbstractCard.CardTags SECOND_MAGIC_EXHAUST;
 }
