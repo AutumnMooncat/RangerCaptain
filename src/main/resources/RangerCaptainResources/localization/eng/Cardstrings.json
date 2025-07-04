@@ -82,7 +82,7 @@
   },
   "${ModID}:Carniviper": {
     "NAME": "Carniviper",
-    "DESCRIPTION": "{@@}{!${ModID}:I!|0=Deal !D! damage. NL Apply !M! Poison.|1=Deal !D! damage twice. NL Apply !M! Poison twice.|2=Deal !D! damage. NL Apply !M! Poison. NL When you draw this card, ALL enemies lose HP equal to their Poison.}",
+    "DESCRIPTION": "{@@}{!${ModID}:I!|@=Deal !D! damage. NL Apply !M! ${ModID}:Toxin.|1=Gain !B! Block. NL Deal !D! damage. NL Apply !M! ${ModID}:Toxin.|2=Deal !D! damage twice. NL Apply !M! ${ModID}:Toxin twice.}",
     "EXTENDED_DESCRIPTION": ["Masquerattle","Aeroboros","Mardiusa","Jormungold"]
   },
   "${ModID}:Charlequin": {
@@ -216,7 +216,7 @@
   },
   "${ModID}:Muskrateer": {
     "NAME": "Muskrateer",
-    "DESCRIPTION": "Deal !D! damage. NL Play the top {@@}{!M!|1=card|>1=!M! cards} of your draw pile and Exhaust {!M!|1=it|>1=them}.",
+    "DESCRIPTION": "Deal !D! damage. NL Play the top {@@}{!M!|1=card|@=!M! cards} of your draw pile and Exhaust {!M!|1=it|@=them}.",
     "EXTENDED_DESCRIPTION": ["Ratcousel"]
   },
   "${ModID}:Nevermort": {
