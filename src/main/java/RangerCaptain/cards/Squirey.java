@@ -1,5 +1,7 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionModHelper;
+import RangerCaptain.cardmods.fusion.mods.TempStrengthMod;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -15,6 +17,22 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Squirey extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Squirey.class.getSimpleName());
+
+    static {
+        new FusionModHelper(MonsterEnum.SQUIREY)
+                .withDamage(4, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new TempStrengthMod(2))
+                .register();
+        new FusionModHelper(MonsterEnum.MANISPEAR)
+                .withBlock(3)
+                .withDamage(3, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new TempStrengthMod(5))
+                .register();
+        new FusionModHelper(MonsterEnum.PALANGOLIN)
+                .withDamage(5, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new TempStrengthMod(4))
+                .register();
+    }
 
     public Squirey() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);

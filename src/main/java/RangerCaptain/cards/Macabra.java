@@ -1,5 +1,7 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionModHelper;
+import RangerCaptain.cardmods.fusion.mods.TempThornsMod;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.LosePowerLaterPower;
 import RangerCaptain.util.CardArtRoller;
@@ -14,6 +16,17 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Macabra extends AbstractEasyCard {
     public final static String ID = makeID(Macabra.class.getSimpleName());
+
+    static {
+        new FusionModHelper(MonsterEnum.MACABRA)
+                .withBlock(3)
+                .with(new TempThornsMod(2))
+                .register();
+        new FusionModHelper(MonsterEnum.MACABRA)
+                .withBlock(4)
+                .with(new TempThornsMod(3))
+                .register();
+    }
 
     public Macabra() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);

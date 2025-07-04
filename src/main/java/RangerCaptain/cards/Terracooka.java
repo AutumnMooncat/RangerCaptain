@@ -1,5 +1,8 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionModHelper;
+import RangerCaptain.cardmods.fusion.mods.BurnMod;
+import RangerCaptain.cardmods.fusion.mods.ExhaustCardsMod;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.BurnedPower;
@@ -15,6 +18,15 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Terracooka extends AbstractEasyCard {
     public final static String ID = makeID(Terracooka.class.getSimpleName());
+
+    static {
+        new FusionModHelper(MonsterEnum.TERRACOOKA)
+                .with(new BurnMod(3), new ExhaustCardsMod(1))
+                .register();
+        new FusionModHelper(MonsterEnum.COALDRON)
+                .with(new BurnMod(5), new ExhaustCardsMod(1))
+                .register();
+    }
 
     public Terracooka() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);

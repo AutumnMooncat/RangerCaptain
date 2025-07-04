@@ -1,5 +1,8 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionModHelper;
+import RangerCaptain.cardmods.fusion.mods.ConductiveMod;
+import RangerCaptain.cardmods.fusion.mods.VigorMod;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.ConductivePower;
@@ -16,6 +19,21 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Dominoth extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Dominoth.class.getSimpleName());
+
+    static {
+        new FusionModHelper(MonsterEnum.DOMINOTH)
+                .with(new VigorMod(4))
+                .register();
+        new FusionModHelper(MonsterEnum.WINGLOOM)
+                .with(new ConductiveMod(4))
+                .register();
+        new FusionModHelper(MonsterEnum.MOTHMANIC)
+                .with(new ConductiveMod(6))
+                .register();
+        new FusionModHelper(MonsterEnum.TOKUSECT)
+                .with(new VigorMod(7))
+                .register();
+    }
 
     public Dominoth() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);

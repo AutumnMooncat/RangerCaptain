@@ -1,5 +1,7 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionModHelper;
+import RangerCaptain.cardmods.fusion.mods.ToxinMod;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.ToxinPower;
@@ -15,6 +17,30 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Carniviper extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Carniviper.class.getSimpleName());
+
+    static {
+        new FusionModHelper(MonsterEnum.CARNIVIPER)
+                .withDamage(3, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new ToxinMod(2))
+                .register();
+        new FusionModHelper(MonsterEnum.MASQUERATTLE)
+                .withDamage(4, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new ToxinMod(3))
+                .register();
+        new FusionModHelper(MonsterEnum.AEROBOROS)
+                .withBlock(4)
+                .withDamage(4, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new ToxinMod(3))
+                .register();
+        new FusionModHelper(MonsterEnum.MARDIUSA)
+                .withChangeCost(1)
+                .withDoublePlay()
+                .register();
+        new FusionModHelper(MonsterEnum.JORMUNGOLD)
+                .withDamage(6, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new ToxinMod(4))
+                .register();
+    }
 
     public Carniviper() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);

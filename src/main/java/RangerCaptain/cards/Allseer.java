@@ -1,5 +1,10 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionModHelper;
+import RangerCaptain.cardmods.fusion.mods.AddCloseEncounterMod;
+import RangerCaptain.cardmods.fusion.mods.AddMindMeldMod;
+import RangerCaptain.cardmods.fusion.mods.HalveEffectsMod;
+import RangerCaptain.cardmods.fusion.mods.VulnerableMod;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.patches.ExtraEffectPatches;
@@ -21,6 +26,20 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Allseer extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Allseer.class.getSimpleName());
+
+    static {
+        new FusionModHelper(MonsterEnum.ALLSEER)
+                .withBlock(3)
+                .with(new VulnerableMod(1))
+                .register();
+        new FusionModHelper(MonsterEnum.KHUFO)
+                .with(new HalveEffectsMod(), new AddMindMeldMod())
+                .register();
+        new FusionModHelper(MonsterEnum.TRIPHINX)
+                .withBlock(3)
+                .with(new VulnerableMod(1), new AddCloseEncounterMod())
+                .register();
+    }
 
     public Allseer() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF_AND_ENEMY);

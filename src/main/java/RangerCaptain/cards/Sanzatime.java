@@ -1,6 +1,8 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.actions.DoAction;
+import RangerCaptain.cardmods.fusion.FusionModHelper;
+import RangerCaptain.cardmods.fusion.mods.IncreaseDebuffsMod;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -15,6 +17,15 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Sanzatime extends AbstractEasyCard {
     public final static String ID = makeID(Sanzatime.class.getSimpleName());
+
+    static {
+        new FusionModHelper(MonsterEnum.SANZATIME)
+                .with(new IncreaseDebuffsMod(1))
+                .register();
+        new FusionModHelper(MonsterEnum.FORTIWINX)
+                .with(new IncreaseDebuffsMod(1))
+                .register();
+    }
 
     public Sanzatime() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);

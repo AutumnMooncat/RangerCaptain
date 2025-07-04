@@ -1,5 +1,7 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionModHelper;
+import RangerCaptain.cardmods.fusion.mods.HavocMod;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -14,6 +16,19 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Muskrateer extends AbstractEasyCard {
     public final static String ID = makeID(Muskrateer.class.getSimpleName());
+
+    static {
+        new FusionModHelper(MonsterEnum.MUSKRATEER)
+                .withChangeCost(1)
+                .withDamage(5, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
+                .with(new HavocMod(1))
+                .register();
+        new FusionModHelper(MonsterEnum.MUSKRATEER)
+                .withChangeCost(1)
+                .withDamage(7, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
+                .with(new HavocMod(1))
+                .register();
+    }
 
     public Muskrateer() {
         super(ID, 2, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);

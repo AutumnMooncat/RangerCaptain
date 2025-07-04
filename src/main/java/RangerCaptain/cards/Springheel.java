@@ -1,5 +1,8 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionModHelper;
+import RangerCaptain.cardmods.fusion.mods.NextTurnEnergyMod;
+import RangerCaptain.cardmods.fusion.mods.WeakMod;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.APBoostPower;
@@ -16,6 +19,27 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Springheel extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Springheel.class.getSimpleName());
+
+    static {
+        new FusionModHelper(MonsterEnum.SPRINGHEEL)
+                .withDamage(3, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
+                .with(new WeakMod(1))
+                .register();
+        new FusionModHelper(MonsterEnum.HOPSKIN)
+                .withDamage(4, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
+                .with(new WeakMod(2))
+                .register();
+        new FusionModHelper(MonsterEnum.RIPTERRA)
+                .withDamage(7, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
+                .with(new WeakMod(2))
+                .register();
+        new FusionModHelper(MonsterEnum.SNOOPIN)
+                .with(new WeakMod(1), new NextTurnEnergyMod(1))
+                .register();
+        new FusionModHelper(MonsterEnum.SCAMPIRE)
+                .with(new WeakMod(1), new NextTurnEnergyMod(2))
+                .register();
+    }
 
     public Springheel() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);

@@ -1,5 +1,6 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionModHelper;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.util.CardArtRoller;
@@ -13,6 +14,13 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Thwackalope extends AbstractEasyCard {
     public final static String ID = makeID(Thwackalope.class.getSimpleName());
+
+    static {
+        new FusionModHelper(MonsterEnum.THWACKALOPE)
+                .withChangeCost(1)
+                .withDamage(9, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .register();
+    }
 
     public Thwackalope() {
         super(ID, 2, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);

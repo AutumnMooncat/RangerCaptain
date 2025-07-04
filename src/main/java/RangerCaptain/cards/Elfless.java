@@ -1,6 +1,8 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.actions.DoAction;
+import RangerCaptain.cardmods.fusion.FusionModHelper;
+import RangerCaptain.cardmods.fusion.mods.EnergyIfDebuffMod;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -17,6 +19,22 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Elfless extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Elfless.class.getSimpleName());
+
+    static {
+        new FusionModHelper(MonsterEnum.ELFLESS)
+                .withDamage(5, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new EnergyIfDebuffMod(1))
+                .register();
+        new FusionModHelper(MonsterEnum.FAERIOUS)
+                .withDamage(7, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .with(new EnergyIfDebuffMod(1))
+                .register();
+        new FusionModHelper(MonsterEnum.GRAMPUS)
+                .withChangeCost(1)
+                .withDamage(6, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new EnergyIfDebuffMod(2))
+                .register();
+    }
 
     public Elfless() {
         super(ID, 2, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);

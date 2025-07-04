@@ -1,5 +1,7 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionModHelper;
+import RangerCaptain.cardmods.fusion.mods.NextTurnDrawMod;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.util.CardArtRoller;
@@ -14,6 +16,21 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Traffikrab extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Traffikrab.class.getSimpleName());
+
+    static {
+        new FusionModHelper(MonsterEnum.TRAFFIKRAB)
+                .withBlock(4)
+                .with(new NextTurnDrawMod(1))
+                .register();
+        new FusionModHelper(MonsterEnum.WEEVILITE)
+                .withBlock(6)
+                .with(new NextTurnDrawMod(1))
+                .register();
+        new FusionModHelper(MonsterEnum.LOBSTACLE)
+                .withBlock(6)
+                .with(new NextTurnDrawMod(1))
+                .register();
+    }
 
     public Traffikrab() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
