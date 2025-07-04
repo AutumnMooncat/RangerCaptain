@@ -2,16 +2,14 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
+import RangerCaptain.powers.ToxinPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.PoisonPower;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -20,11 +18,11 @@ public class Carniviper extends AbstractMultiUpgradeCard {
 
     public Carniviper() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
-        baseDamage = damage = 3;
-        baseMagicNumber = magicNumber = 4;
+        baseDamage = damage = 6;
+        baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.CARNIVIPER);
         baseInfo = info = 0;
-        tags.add(CustomTags.MAGIC_POISON);
+        tags.add(CustomTags.MAGIC_TOXIN);
     }
 
     @Override
@@ -32,20 +30,25 @@ public class Carniviper extends AbstractMultiUpgradeCard {
         switch (info) {
             default:
                 dmg(m, AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
-                Wiz.applyToEnemy(m, new PoisonPower(m, p, magicNumber));
+                Wiz.applyToEnemy(m, new ToxinPower(m, magicNumber));
                 break;
             case 1:
+                blck();
+                dmg(m, AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
+                Wiz.applyToEnemy(m, new ToxinPower(m, magicNumber));
+                break;
+            case 2:
                 dmg(m, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
                 dmg(m, AbstractGameAction.AttackEffect.SLASH_VERTICAL);
-                Wiz.applyToEnemy(m, new PoisonPower(m, p, magicNumber));
-                Wiz.applyToEnemy(m, new PoisonPower(m, p, magicNumber));
+                Wiz.applyToEnemy(m, new ToxinPower(m, magicNumber));
+                Wiz.applyToEnemy(m, new ToxinPower(m, magicNumber));
                 break;
         }
     }
 
-    @Override
+   /* @Override
     public void triggerWhenDrawn() {
-        if (info == 2) {
+        if (info == 3) {
             Wiz.forAllMonstersLiving(mon -> {
                 AbstractPower poison = mon.getPower(PoisonPower.POWER_ID);
                 if (poison != null) {
@@ -53,7 +56,7 @@ public class Carniviper extends AbstractMultiUpgradeCard {
                 }
             });
         }
-    }
+    }*/
 
     @Override
     public String cardArtCopy() {
@@ -75,18 +78,23 @@ public class Carniviper extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade0() {
-        upgradeDamage(1);
-        upgradeMagicNumber(2);
+        upgradeDamage(2);
+        upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.MASQUERATTLE);
     }
 
     public void upgrade1() {
-        upgradeBaseCost(0);
+        if (baseBlock < 0) {
+            baseBlock = 0;
+        }
+        upgradeBlock(7);
+        upgradeDamage(-1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.AEROBOROS);
+        baseInfo = info = 1;
     }
 
     public void upgrade2() {
@@ -94,13 +102,14 @@ public class Carniviper extends AbstractMultiUpgradeCard {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
         setMonsterData(MonsterEnum.MARDIUSA);
-        baseInfo = info = 1;
+        baseInfo = info = 2;
     }
 
     public void upgrade3() {
+        upgradeBaseCost(0);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[3];
         initializeTitle();
         setMonsterData(MonsterEnum.JORMUNGOLD);
-        baseInfo = info = 2;
+        //baseInfo = info = 3;
     }
 }
