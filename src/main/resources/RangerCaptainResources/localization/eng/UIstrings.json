@@ -79,6 +79,13 @@
       "Choose "," cards to Discover a copy of."
     ]
   },
+  "${ModID}:BetterDiscardPileToTopOfDeckAction": {
+    "TEXT": [
+      "Put on Top of Your Draw Pile",
+      "Choose a Card to Put on Top of Your Draw Pile.",
+      "Choose "," cards to Put on Top of Your Draw Pile."
+    ]
+  },
   "${ModID}:FormatHelper": {
     "TEXT": [
       "Gain !B! Block. NL "
