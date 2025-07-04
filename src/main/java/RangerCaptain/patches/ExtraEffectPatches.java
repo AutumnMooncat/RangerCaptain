@@ -15,7 +15,7 @@ public class ExtraEffectPatches {
 
     @SpirePatch(clz = AbstractCard.class, method = "<class>")
     public static class EffectFields {
-        public static SpireField<Integer> mindMeldCount = new SpireField<>(() -> 0);
+        public static SpireField<Boolean> mindMeld = new SpireField<>(() -> false);
         public static SpireField<Boolean> closeEncounter = new SpireField<>(() -> false);
     }
 
@@ -23,7 +23,7 @@ public class ExtraEffectPatches {
     public static class MakeStatEquivalentCopy {
         @SpirePostfixPatch
         public static AbstractCard plz(AbstractCard result, AbstractCard self) {
-            EffectFields.mindMeldCount.set(result, EffectFields.mindMeldCount.get(self));
+            EffectFields.mindMeld.set(result, EffectFields.mindMeld.get(self));
             EffectFields.closeEncounter.set(result, EffectFields.closeEncounter.get(self));
             return result;
         }
@@ -33,14 +33,11 @@ public class ExtraEffectPatches {
     public static class DoExtraEffects {
         @SpirePrefixPatch
         public static void plz(UseCardAction __instance, AbstractCard card) {
-            int meldCount = EffectFields.mindMeldCount.get(card);
-            if (meldCount > 0) {
+            if (EffectFields.mindMeld.get(card)) {
                 AbstractCard copy = card.makeStatEquivalentCopy();
-                EffectFields.mindMeldCount.set(copy, 0);
+                EffectFields.mindMeld.set(copy, false);
                 EffectFields.closeEncounter.set(copy, false);
-                for (int i = 0 ; i < meldCount ; i ++) {
-                    Wiz.applyToSelf(new MindMeldPower(Wiz.adp(), copy));
-                }
+                Wiz.applyToSelf(new MindMeldPower(Wiz.adp(), copy));
             }
             /*if (EffectFields.closeEncounter.get(card)) {
                 Wiz.applyToSelf(new CloseEncounterPower(Wiz.adp(), card));

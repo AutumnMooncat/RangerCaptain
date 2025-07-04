@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.patches.ExtraEffectPatches;
 import RangerCaptain.powers.FlammablePower;
 import RangerCaptain.util.CardArtRoller;
@@ -50,7 +51,8 @@ public class Salamagus extends AbstractMultiUpgradeCard {
         initializeTitle();
         setMonsterData(MonsterEnum.ADEPTILE);
         baseInfo = info = 1;
-        ExtraEffectPatches.EffectFields.mindMeldCount.set(this, ExtraEffectPatches.EffectFields.mindMeldCount.get(this) + 1);
+        tags.add(CustomTags.MIND_MELD);
+        ExtraEffectPatches.EffectFields.mindMeld.set(this, true);
     }
 
     public void upgrade1() {

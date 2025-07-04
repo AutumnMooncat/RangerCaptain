@@ -5,6 +5,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 
 public class CustomTags {
     @SpireEnum
+    public static AbstractCard.CardTags MIND_MELD;
+    @SpireEnum
     public static AbstractCard.CardTags MAGIC_POISON;
     @SpireEnum
     public static AbstractCard.CardTags MAGIC_POISON_AOE;

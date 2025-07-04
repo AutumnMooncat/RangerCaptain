@@ -61,7 +61,7 @@ public class KhufoMod extends AbstractFusionMod {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        ExtraEffectPatches.EffectFields.mindMeldCount.set(card, ExtraEffectPatches.EffectFields.mindMeldCount.get(card) + 1);
+        ExtraEffectPatches.EffectFields.mindMeld.set(card, true);
     }
 
     @Override

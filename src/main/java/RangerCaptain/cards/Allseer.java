@@ -65,7 +65,8 @@ public class Allseer extends AbstractMultiUpgradeCard {
         initializeTitle();
         setMonsterData(MonsterEnum.KHUFO);
         baseInfo = info = 1;
-        ExtraEffectPatches.EffectFields.mindMeldCount.set(this, ExtraEffectPatches.EffectFields.mindMeldCount.get(this) + 1);
+        tags.add(CustomTags.MIND_MELD);
+        ExtraEffectPatches.EffectFields.mindMeld.set(this, true);
     }
 
     public void upgrade1() {
