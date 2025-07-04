@@ -25,6 +25,11 @@ public class AddCloseEncounterMod extends AbstractFusionMod {
     }
 
     @Override
+    public boolean shouldApply(AbstractCard card) {
+        return !ExtraEffectPatches.EffectFields.closeEncounter.get(card);
+    }
+
+    @Override
     public void onInitialApplication(AbstractCard card) {
         ExtraEffectPatches.EffectFields.closeEncounter.set(card, true);
     }
@@ -35,10 +40,7 @@ public class AddCloseEncounterMod extends AbstractFusionMod {
     }
 
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        if (!card.hasTag(CustomTags.CLOSE_ENCOUNTER)) {
-            rawDescription = FormatHelper.insertAfterText(rawDescription, CARD_TEXT[0]);
-        }
-        return rawDescription;
+        return FormatHelper.insertAfterText(rawDescription, CARD_TEXT[0]);
     }
 
     @Override

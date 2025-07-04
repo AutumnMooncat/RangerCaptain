@@ -19,6 +19,11 @@ public class AddMindMeldMod extends AbstractFusionMod {
     }
 
     @Override
+    public boolean shouldApply(AbstractCard card) {
+        return !ExtraEffectPatches.EffectFields.mindMeld.get(card);
+    }
+
+    @Override
     public void onInitialApplication(AbstractCard card) {
         ExtraEffectPatches.EffectFields.mindMeld.set(card, true);
     }
@@ -30,10 +35,7 @@ public class AddMindMeldMod extends AbstractFusionMod {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        if (!card.hasTag(CustomTags.MIND_MELD)) {
-            rawDescription = FormatHelper.insertAfterText(rawDescription, CARD_TEXT[0]);
-        }
-        return rawDescription;
+        return FormatHelper.insertAfterText(rawDescription, CARD_TEXT[0]);
     }
 
     @Override
