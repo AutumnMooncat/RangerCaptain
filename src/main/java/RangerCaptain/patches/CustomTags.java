@@ -5,7 +5,15 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 
 public class CustomTags {
     @SpireEnum
+    public static AbstractCard.CardTags AOE_DAMAGE;
+    @SpireEnum
+    public static AbstractCard.CardTags CLOSE_ENCOUNTER;
+    @SpireEnum
     public static AbstractCard.CardTags MIND_MELD;
+    @SpireEnum
+    public static AbstractCard.CardTags MAGIC_EXHAUST;
+    @SpireEnum
+    public static AbstractCard.CardTags SECOND_MAGIC_EXHAUST;
     @SpireEnum
     public static AbstractCard.CardTags MAGIC_POISON;
     @SpireEnum

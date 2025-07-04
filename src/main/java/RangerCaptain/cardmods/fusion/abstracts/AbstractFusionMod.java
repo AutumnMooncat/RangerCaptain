@@ -10,7 +10,7 @@ public abstract class AbstractFusionMod extends AbstractCardModifier {
         this.identifier = identifier;
     }
 
-    public abstract String getModDescription(AbstractCard card);
+    public abstract String getModDescription();
 
     @Override
     public String identifier(AbstractCard card) {

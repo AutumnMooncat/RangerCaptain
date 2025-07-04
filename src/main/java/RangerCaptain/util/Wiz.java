@@ -350,11 +350,9 @@ public class Wiz {
     public static void fuse(AbstractCard base, AbstractCard donor) {
         if (base instanceof AbstractEasyCard && donor instanceof AbstractEasyCard && ((AbstractEasyCard) base).getMonsterData() != null && ((AbstractEasyCard) donor).getMonsterData() != null) {
             CardModifierManager.addModifier(base, new FusionFormMod(donor));
-            AbstractFusionMod mod = FusionCardModData.MOD_MAP.get(((AbstractEasyCard) donor).getMonsterData());
-            if (mod != null) {
+            for (AbstractFusionMod mod : FusionCardModData.getMods(((AbstractEasyCard) donor).getMonsterData())) {
                 CardModifierManager.addModifier(base, mod.makeCopy());
             }
         }
-
     }
 }

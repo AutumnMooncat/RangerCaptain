@@ -489,12 +489,7 @@ public abstract class AbstractEasyCard extends CustomCard {
         if (Wiz.canBeFused(this)) {
             removeFusionTip();
             fusionTip = new TooltipInfo(BaseMod.getKeywordTitle(KeywordManager.FUSIONEFFECTS), BaseMod.getKeywordDescription(KeywordManager.FUSIONEFFECTS));
-            AbstractFusionMod mod = FusionCardModData.MOD_MAP.get(monsterEnum);
-            if (mod != null) {
-                fusionTip.description += mod.getModDescription(this);
-            } else {
-                fusionTip.description += "Not yet Implemented.";
-            }
+            fusionTip.description += FusionCardModData.getModDescription(monsterEnum);
             if (addedTips == null) {
                 addedTips = new ArrayList<>();
             }

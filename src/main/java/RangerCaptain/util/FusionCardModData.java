@@ -1,160 +1,32 @@
 package RangerCaptain.util;
 
-import RangerCaptain.cardmods.fusion.*;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractFusionMod;
+import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-
-import static RangerCaptain.util.MonsterEnum.*;
+import java.util.List;
 
 public class FusionCardModData {
-    public static final HashMap<MonsterEnum, AbstractFusionMod> MOD_MAP = new HashMap<>();
+    private static final HashMap<MonsterEnum, List<AbstractFusionMod>> MOD_MAP = new HashMap<>();
 
     public static void add(MonsterEnum monster, AbstractFusionMod mod) {
-        MOD_MAP.put(monster, mod);
+        if (!MOD_MAP.containsKey(monster)) {
+            MOD_MAP.put(monster, new ArrayList<>());
+        }
+        MOD_MAP.get(monster).add(mod);
     }
 
-    static {
-        add(ADEPTILE, new AdeptileMod());
-        add(AEROBOROS, new AeroborosMod());
-        add(ALLSEER, new AllseerMod());
-        add(AMPHARE, null);
-        add(ANATHEMA, null);
-        add(APOCROWLYPSE, new ApocrowlypseMod());
-        add(ARKIDD, null);
-        add(ARTILLEREX, null);
-        add(AURICLAW, null);
-        add(AVEREVOIR, null);
-        add(BANSHEEP, null);
-        add(BEANSTALKER, null);
-        add(BINTERLOPER, null);
-        add(BINVADER, null);
-        add(BLOSSOMAW, new BlossomawMod());
-        add(BLUNDERBUSK, null);
-        add(BOLTAM, null);
-        add(BRAXSUIT, new BraxsuitMod());
-        add(BRUSHROOM, null);
-        add(BULLETINO, null);
-        add(BURNACE, null);
-        add(BUSHEYE, null);
-        add(CANDEVIL, null);
-        add(CAPRICORPSE, null);
-        add(CARNIVIPER, new CarniviperMod());
-        add(CATFIVE, null);
-        add(CHARLEQUIN, null);
-        add(CLOCKSLEY, null);
-        add(CLUCKABILLY, null);
-        add(COALDRON, new CoaldronMod());
-        add(CRYOSHEAR, null);
-        add(DANDYLION, new DandylionMod());
-        add(DECIBELLE, null);
-        add(DIVEAL, null);
-        add(DIVEBERG, null);
-        add(DJINN_ENTONIC, null);
-        add(DOMINOTH, new DominothMod());
-        add(DRACULEAF, null);
-        add(ELFLESS, new ElflessMod());
-        add(FAERIOUS, new FaeriousMod());
-        add(FAUCETEAR, null);
-        add(FERRICLAW, null);
-        add(FLAPWOODS, new FlapwoodsMod());
-        add(FOLKLORD, new FolklordMod());
-        add(FORTIWINX, new FortiwinxMod());
-        add(FOUNTESS, null);
-        add(FRAGLIACCI, null);
-        add(FRILLYPAD, null);
-        add(FUNGOGH, null);
-        add(GALAGOR, null);
-        add(GEARYU, null);
-        add(GLAISTAIN, null);
-        add(GRAMPUS, new GrampusMod());
-        add(GUMBAAL, null);
-        add(HAUNTOME, null);
-        add(HEDGEHERNE, null);
-        add(HOPSKIN, new HopskinMod());
-        add(HUNTORCH, null);
-        add(ICEPECK, null);
-        add(JELLYTON, null);
-        add(JORMUNGOLD, new JormungoldMod());
-        add(JUMPKIN, null);
-        add(KHEPRI, null);
-        add(KHUFO, new KhufoMod());
-        add(KINGRAVE, null);
-        add(KIRIKURI, null);
-        add(KITTELLY, null);
-        add(KUNEKO, null);
-        add(LAPACITOR, null);
-        add(LILIGATOR, null);
-        add(LITTLERED, null);
-        add(LOBSTACLE, new LobstacleMod());
-        add(MACABRA, new MacabraMod());
-        add(MAGIKRAB, null);
-        add(MAJORTOM, null);
-        add(MALCHEMY, null);
-        add(MANISPEAR, new ManispearMod());
-        add(MARDIUSA, new MardiusaMod());
-        add(MASCOTORN, null);
-        add(MASCOTOY, null);
-        add(MASQUERATTLE, new MasquerattleMod());
-        add(MIASMODEUS, null);
-        add(MINORTOM, null);
-        add(MISS_MIMIC, null);
-        add(MOTHMANIC, new MothmanicMod());
-        add(MUSKRATEER, new MuskrateerMod());
-        add(NEVERMORT, new NevermortMod());
-        add(PADPOLE, null);
-        add(PALANGOLIN, new PalangolinMod());
-        add(PAWNDEAD, null);
-        add(PICKSIE, null);
-        add(PINBOLT, null);
-        add(PLASMANTLER, null);
-        add(POMBOMB, new PombombMod());
-        add(PONDWALKER, null);
-        add(PUPPERCUT, new PuppercutMod());
-        add(PYROMELEON, null);
-        add(QUEENYX, null);
-        add(RAMTASM, null);
-        add(RATCOUSEL, new RatcouselMod());
-        add(REGENSEA, null);
-        add(RIPTERRA, new RipterraMod());
-        add(ROBINDAM, null);
-        add(ROCKERTRICE, null);
-        add(ROSEHOOD, null);
-        add(SALAMAGUS, null);
-        add(SANZATIME, new SanzatimeMod());
-        add(SCAMPIRE, new ScampireMod());
-        add(SCARLETEETH, null);
-        add(SCUBALRUS, null);
-        add(SHARKTANKER, null);
-        add(SHINING_KUNEKO, null);
-        add(SIRENADE, null);
-        add(SKELEVANGELIST, null);
-        add(SMOGMAGOG, null);
-        add(SNOOPIN, new SnoopinMod());
-        add(SOUTHPAW, new SouthpawMod());
-        add(SPARKTAN, null);
-        add(SPIROUETTE, null);
-        add(SPITZFYRE, new SpitzfyreMod());
-        add(SPOOKIONNA, null);
-        add(SPRINGHEEL, new SpringheelMod());
-        add(SQUIREY, new SquireyMod());
-        add(STARDIGRADE, null);
-        add(TERRACOOKA, new TerracookaMod());
-        add(THWACKALOPE, new ThwackalopeMod());
-        add(TOKUSECT, new TokusectMod());
-        add(TRAFFIKRAB, new TraffikrabMod());
-        add(TRAPWURM, null);
-        add(TRIPHINX, new TriphinxMod());
-        add(TWIRLIGIG, null);
-        add(UMBRAHELLA, null);
-        add(UNDYIN, null);
-        add(VELOCIRIFLE, null);
-        add(VENDEMON, null);
-        add(WEEVILITE, new WeeviliteMod());
-        add(WINGLOOM, new WingloomMod());
-        add(WOOLTERGEIST, null);
-        add(WYRMAW, null);
-        add(ZEUSTRIKE, null);
-        add(ZOMBLEAT, null);
+    public static List<AbstractFusionMod> getMods(MonsterEnum monsterEnum) {
+        return MOD_MAP.getOrDefault(monsterEnum, new ArrayList<>());
+    }
+
+    public static String getModDescription(MonsterEnum monster) {
+        List<AbstractFusionMod> mods = getMods(monster);
+        if (!mods.isEmpty()) {
+            return StringUtils.join(mods.stream().map(AbstractFusionMod::getModDescription), " ");
+        } else {
+            return "Not yet Implemented.";
+        }
     }
 }
