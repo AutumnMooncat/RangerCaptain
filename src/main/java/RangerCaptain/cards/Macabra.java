@@ -23,7 +23,7 @@ public class Macabra extends AbstractEasyCard {
                 .withBlock(4)
                 .with(new TempThornsComponent(2))
                 .register();
-        new FusionComponentHelper(MonsterEnum.MACABRA)
+        new FusionComponentHelper(MonsterEnum.FOLKLORD)
                 .withCost(1)
                 .withBlock(6)
                 .with(new TempThornsComponent(3))

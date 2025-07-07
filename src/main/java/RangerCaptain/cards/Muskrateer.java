@@ -23,7 +23,7 @@ public class Muskrateer extends AbstractEasyCard {
                 .withDamage(4, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
                 .with(new HavocComponent(1))
                 .register();
-        new FusionComponentHelper(MonsterEnum.MUSKRATEER)
+        new FusionComponentHelper(MonsterEnum.RATCOUSEL)
                 .withCost(2)
                 .withDamage(6, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
                 .with(new HavocComponent(1))
