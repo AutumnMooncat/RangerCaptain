@@ -1,5 +1,7 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.OnPlayPerfectComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.powers.GlassBondsPower;
@@ -14,6 +16,14 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Glaistain extends AbstractEasyCard {
     public final static String ID = makeID(Glaistain.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.GLAISTAIN)
+                .withCost(1)
+                .withBlock(5)
+                .with(new OnPlayPerfectComponent())
+                .register();
+    }
 
     public Glaistain() {
         super(ID, 1, CardType.POWER, CardRarity.RARE, CardTarget.SELF);

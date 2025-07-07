@@ -280,6 +280,10 @@
       "Invalid Increase Debuffs: %s"
     ]
   },
+  "${ModID}:OnPlayPerfectComponent": {
+    "TEXT": ["Fusion becomes a Power"],
+    "EXTRA_TEXT": ["Whenever you play a ${ModID}:Perfect card, %s"]
+  },
   "${ModID}:HalveEffectsComponent": {
     "TEXT": ["Halve other effects"],
     "EXTRA_TEXT": [""]
