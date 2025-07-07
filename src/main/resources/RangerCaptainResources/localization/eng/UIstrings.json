@@ -61,22 +61,22 @@
   },
   "${ModID}:ExploreAction": {
     "TEXT": [
-      "Choose a card to Discover.",
-      "Choose up to "," cards to Discover."
+      "Choose a card to Stash.",
+      "Choose up to "," cards to Stash."
     ]
   },
   "${ModID}:DiscoverCardsAction": {
     "TEXT": [
-      "Discover",
-      "Choose a card to Discover.",
-      "Choose "," cards to Discover."
+      "Stash",
+      "Choose a card to Stash.",
+      "Choose "," cards to Stash."
     ]
   },
   "${ModID}:DiscoverCopyOfCardsAction": {
     "TEXT": [
-      "Discover a Copy of",
-      "Choose a card to Discover a copy of.",
-      "Choose "," cards to Discover a copy of."
+      "Stash a Copy of",
+      "Choose a card to Stash a copy of.",
+      "Choose "," cards to Stash a copy of."
     ]
   },
   "${ModID}:BetterDiscardPileToTopOfDeckAction": {

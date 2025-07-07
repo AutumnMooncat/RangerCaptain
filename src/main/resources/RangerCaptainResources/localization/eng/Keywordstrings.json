@@ -141,7 +141,7 @@
       "close encounter",
       "close_encounter"
     ],
-    "DESCRIPTION": "When played, this card enters your #yDiscovery pile instead of your discard pile. NL #yDiscovered cards are added to your hand next turn."
+    "DESCRIPTION": "When played, this card enters your #yStash instead of your discard pile. NL #yStashed cards are added to your hand next turn."
   },
   {
     "ID": "burned",
@@ -159,7 +159,7 @@
       "explore",
       "explored"
     ],
-    "DESCRIPTION": "Look at random cards in your draw pile. You may add one of them to your #yDiscovery pile. #yDiscovered cards are added to your hand next turn."
+    "DESCRIPTION": "Look at random cards in your draw pile. You may add one of them to your #yStash. #yStashed cards are added to your hand next turn."
   },
   {
     "ID": "discovery",
@@ -170,6 +170,15 @@
       "discovered"
     ],
     "DESCRIPTION": "Cards in your #yDiscovery pile are added to your hand next turn."
+  },
+  {
+    "ID": "stash",
+    "PROPER_NAME": "stash",
+    "NAMES": [
+      "stash",
+      "stashed"
+    ],
+    "DESCRIPTION": "#yStashed cards are added to your hand next turn."
   },
   {
     "ID": "doubleplay",
