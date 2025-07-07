@@ -290,6 +290,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
             }
         }
         components.removeIf(c -> (c.hasFlags(Flag.MUST_BE_CAPTURED) && !captured.contains(c)) || (c.hasFlags(Flag.MUST_CAPTURE) && captures.get(c).isEmpty()));
+        Collections.sort(components);
     }
 
     public static void resolveStacking(List<AbstractComponent> components) {
