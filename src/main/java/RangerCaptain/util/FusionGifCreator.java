@@ -2,7 +2,10 @@ package RangerCaptain.util;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.FilteredImageSource;
+import java.awt.image.ImageProducer;
+import java.awt.image.RGBImageFilter;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;

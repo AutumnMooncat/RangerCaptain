@@ -2,7 +2,6 @@ package RangerCaptain.cards.abstracts;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.TheRangerCaptain;
-import RangerCaptain.cardmods.FusionFormMod;
 import RangerCaptain.patches.FusionModifierHooks;
 import RangerCaptain.util.*;
 import basemod.BaseMod;

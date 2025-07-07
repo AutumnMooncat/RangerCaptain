@@ -3,7 +3,6 @@ package RangerCaptain.powers;
 import RangerCaptain.MainModfile;
 import RangerCaptain.patches.CustomIntentPatches;
 import RangerCaptain.util.Wiz;
-import com.evacipated.cardcrawl.mod.stslib.powers.StunMonsterPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;

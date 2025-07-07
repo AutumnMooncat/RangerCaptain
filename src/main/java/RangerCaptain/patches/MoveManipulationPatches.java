@@ -1,7 +1,6 @@
 package RangerCaptain.patches;
 
 import RangerCaptain.powers.BoobyTrappedPower;
-import RangerCaptain.powers.SnowedInPower;
 import RangerCaptain.powers.TapeJamPower;
 import RangerCaptain.util.Wiz;
 import RangerCaptain.vfx.BigExplosionVFX;

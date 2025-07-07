@@ -3,15 +3,13 @@ package RangerCaptain.cardmods.fusion.components;
 import RangerCaptain.MainModfile;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.Wiz;
-import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import java.util.Collections;
 import java.util.List;
 
 public class BlockComponent extends AbstractComponent {

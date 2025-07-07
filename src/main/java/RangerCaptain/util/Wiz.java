@@ -5,7 +5,6 @@ import RangerCaptain.actions.TimedVFXAction;
 import RangerCaptain.cardmods.CarrotMod;
 import RangerCaptain.cardmods.FusionFormMod;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractFusionMod;
 import RangerCaptain.cardmods.fusion.components.ReskinComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.cards.tokens.FusedCard;

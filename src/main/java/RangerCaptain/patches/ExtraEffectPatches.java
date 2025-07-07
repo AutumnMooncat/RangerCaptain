@@ -3,7 +3,6 @@ package RangerCaptain.patches;
 import RangerCaptain.powers.MindMeldPower;
 import RangerCaptain.ui.DiscoveredCardManager;
 import RangerCaptain.util.Wiz;
-import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;

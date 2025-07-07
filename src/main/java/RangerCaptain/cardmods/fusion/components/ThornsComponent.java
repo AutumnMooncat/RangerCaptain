@@ -6,7 +6,6 @@ import RangerCaptain.cardmods.fusion.abstracts.AbstractSimpleApplyComponent;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.ThornsPower;
 
 public class ThornsComponent extends AbstractSimpleApplyComponent {

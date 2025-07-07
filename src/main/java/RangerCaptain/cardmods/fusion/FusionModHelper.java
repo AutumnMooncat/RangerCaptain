@@ -2,7 +2,6 @@ package RangerCaptain.cardmods.fusion;
 
 import RangerCaptain.cardmods.fusion.abstracts.AbstractFusionMod;
 import RangerCaptain.cardmods.fusion.mods.*;
-import RangerCaptain.util.FusionCardEffectData;
 import RangerCaptain.util.MonsterEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 

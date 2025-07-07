@@ -4,12 +4,10 @@ import RangerCaptain.MainModfile;
 import RangerCaptain.patches.CardCounterPatches;
 import RangerCaptain.ui.DiscoveredCardManager;
 import RangerCaptain.util.Wiz;
-import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 

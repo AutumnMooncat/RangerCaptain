@@ -1,7 +1,6 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.components.AddCloseEncounterComponent;
 import RangerCaptain.cardmods.fusion.components.AddMindMeldComponent;
 import RangerCaptain.cardmods.fusion.components.HalveEffectsComponent;

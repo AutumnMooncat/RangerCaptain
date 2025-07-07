@@ -2,7 +2,6 @@ package RangerCaptain.cardmods.fusion.components;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.AttackDamageRandomEnemyAction;

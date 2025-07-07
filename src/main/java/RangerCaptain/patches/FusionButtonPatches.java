@@ -1,6 +1,5 @@
 package RangerCaptain.patches;
 
-import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.ui.FusionButton;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
