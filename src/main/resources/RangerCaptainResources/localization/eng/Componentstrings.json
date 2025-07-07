@@ -12,14 +12,16 @@
     ],
     "EXTRA_TEXT": [
       "These strings are used to build component text",
-      "Deal",
-      "Gain",
-      "Give",
-      "Apply",
+      "deal",
+      "gain",
+      "give",
+      "apply",
       "and",
       "and apply",
       "to a random enemy",
-      "to ALL enemies"
+      "to ALL enemies",
+      "back",
+      "take"
     ]
   },
   "${ModID}:ExampleComponent": {

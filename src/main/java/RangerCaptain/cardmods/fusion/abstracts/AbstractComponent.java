@@ -37,6 +37,8 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
     public static final String AND_APPLY = BUILDER_TEXT[6];
     public static final String RANDOM_ENEMY = BUILDER_TEXT[7];
     public static final String ALL_ENEMIES = BUILDER_TEXT[8];
+    public static final String BACK = BUILDER_TEXT[9];
+    public static final String TAKE = BUILDER_TEXT[10];
     public static final int COST_PRIO = -20;
     public static final int MODIFIER_PRIO = -15;
     public static final int PREFIX_PRIO = -10;
