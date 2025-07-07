@@ -28,6 +28,7 @@ public class FusedCard extends AbstractEasyCard implements AbstractComponent.Com
     public final static String ID = makeID(FusedCard.class.getSimpleName());
     private final List<AbstractComponent> originals = new ArrayList<>();
     private final transient List<AbstractComponent> components = new ArrayList<>();
+    private boolean delayedUpgrade;
     public Color anchor1;
     public Color anchor2;
     public Color target1;
@@ -92,7 +93,7 @@ public class FusedCard extends AbstractEasyCard implements AbstractComponent.Com
 
     @Override
     public boolean canUpgrade() {
-        return false;
+        return super.canUpgrade() && getUpgradeMult() != 1f || cost > 0;
     }
 
     @Override
@@ -101,7 +102,55 @@ public class FusedCard extends AbstractEasyCard implements AbstractComponent.Com
     }
 
     @Override
-    public void upp() {}
+    public void upp() {
+        if (components.isEmpty()) {
+            delayedUpgrade = true;
+        } else {
+            delayedUpgrade = false;
+            float mult = getUpgradeMult();
+
+            if (mult != 1f) {
+                if (baseDamage > 0) {
+                    upgradeDamage((int) Math.max(1, baseDamage * mult));
+                }
+                if (baseSecondDamage > 0) {
+                    upgradeSecondDamage((int) Math.max(1, baseSecondDamage * mult));
+                }
+                if (baseBlock > 0) {
+                    upgradeBlock((int) Math.max(1, baseBlock * mult));
+                }
+                if (baseSecondBlock > 0) {
+                    upgradeSecondBlock((int) Math.max(1, baseSecondBlock * mult));
+                }
+                if (baseMagicNumber > 0) {
+                    upgradeMagicNumber((int) Math.max(1, baseMagicNumber * mult));
+                }
+                if (baseSecondMagic > 0) {
+                    upgradeSecondMagic((int) Math.max(1, baseSecondMagic * mult));
+                }
+                if (baseThirdMagic > 0) {
+                    upgradeThirdMagic((int) Math.max(1, baseThirdMagic * mult));
+                }
+            } else {
+                upgradeBaseCost(cost - 1);
+            }
+        }
+    }
+
+    private float getUpgradeMult() {
+        boolean hasDamage = baseDamage > 0 || baseSecondDamage > 0;
+        boolean hasBlock = baseBlock > 0 || baseSecondBlock > 0;
+        boolean hasMagic = baseMagicNumber > 0 || baseSecondMagic > 0 || baseThirdMagic > 0;
+        float mult = 1f;
+        if (hasDamage && hasBlock && hasMagic) {
+            mult = 1.1f;
+        } else if ((hasDamage && hasBlock) || (hasDamage && hasMagic) || (hasBlock && hasMagic)) {
+            mult = 1.2f;
+        } else if (hasDamage || hasBlock || hasMagic) {
+            mult = 1.3f;
+        }
+        return mult;
+    }
 
     /*@Override
     public void addUpgrades() {
@@ -185,6 +234,9 @@ public class FusedCard extends AbstractEasyCard implements AbstractComponent.Com
                 default:
                     break;
             }
+        }
+        if (delayedUpgrade) {
+            upp();
         }
     }
 
