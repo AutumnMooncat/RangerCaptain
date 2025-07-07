@@ -32,6 +32,11 @@ public class ResonanceComponent extends AbstractSimpleApplyComponent {
     }
 
     @Override
+    public boolean scalesWithCost() {
+        return false;
+    }
+
+    @Override
     public AbstractPower getPower(AbstractCreature target, int amount) {
         return new ResonancePower(target, amount);
     }
