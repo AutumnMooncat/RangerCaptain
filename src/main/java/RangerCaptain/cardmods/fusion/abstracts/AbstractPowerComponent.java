@@ -1,9 +1,13 @@
 package RangerCaptain.cardmods.fusion.abstracts;
 
 import RangerCaptain.util.FormatHelper;
+import basemod.BaseMod;
+import com.megacrit.cardcrawl.helpers.GameDictionary;
+import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -177,5 +181,26 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
     @Override
     public String rawCapturedText() {
         return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
+    }
+
+    public String rawPowerText(List<AbstractComponent> captured) {
+        String[] parts = rawCardText(captured).split(" ");
+        for (int i = 0; i < parts.length; i++) {
+            if (StringUtils.isNumeric(parts[i])) {
+                parts[i] = "#b"+parts[i];
+            } else if (parts[i].startsWith("*") && parts.length > 1) {
+                parts[i] = "#y"+parts[i].substring(1);
+            } else {
+                String lower = parts[i].toLowerCase();
+                if (GameDictionary.keywords.containsKey(lower)) {
+                    if (BaseMod.keywordIsUnique(lower)) {
+                        parts[i] = StringUtils.join(Arrays.stream(lower.replace(BaseMod.getKeywordPrefix(lower), "").split(" ")).map(s -> "#y"+FormatHelper.capitalize(s)).toArray(), " ");
+                    } else {
+                        parts[i] = FormatHelper.prefixWords(parts[i], "#y");
+                    }
+                }
+            }
+        }
+        return StringUtils.join(parts, " ") + LocalizedStrings.PERIOD;
     }
 }

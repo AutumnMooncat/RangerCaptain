@@ -237,6 +237,25 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         return this.priority - other.priority;
     }
 
+    @Override
+    public String toString() {
+        return "AbstractComponent{" +
+                "identifier='" + identifier + '\'' +
+                ", type=" + type +
+                ", target=" + target +
+                ", dynvar=" + dynvar +
+                ", source=" + source +
+                ", baseAmount=" + baseAmount +
+                ", priority=" + priority +
+                ", isSimple=" + isSimple +
+                ", flags=" + flags +
+                '}';
+    }
+
+    public static boolean functionallyEquivalent(List<AbstractComponent> left, List<AbstractComponent> right) {
+        return StringUtils.join(left.stream().map(AbstractComponent::toString).toArray()).equals(StringUtils.join(right.stream().map(AbstractComponent::toString).toArray()));
+    }
+
     public static List<AbstractComponent> resolve(FusedCard card, List<AbstractComponent> originals) {
         List<AbstractComponent> components = originals.stream().map(AbstractComponent::makeCopy).collect(Collectors.toList());
         resolveCaptures(components);
