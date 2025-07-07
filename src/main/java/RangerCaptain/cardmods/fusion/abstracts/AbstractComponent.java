@@ -252,6 +252,10 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
                 '}';
     }
 
+    public boolean functionallyEquals(AbstractComponent other) {
+        return toString().equals(other.toString());
+    }
+
     public static boolean functionallyEquivalent(List<AbstractComponent> left, List<AbstractComponent> right) {
         return StringUtils.join(left.stream().map(AbstractComponent::toString).toArray()).equals(StringUtils.join(right.stream().map(AbstractComponent::toString).toArray()));
     }
