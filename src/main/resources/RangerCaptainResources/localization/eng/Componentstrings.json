@@ -105,7 +105,8 @@
       "Deal %s damage",
       "Deal %1$s damage %2$sto a random enemy",
       "Deal %1$s damage %2$sto ALL enemies",
-      "Invalid Damage: %1$s %2$s"
+      "Invalid Damage: %1$s %2$s",
+      "%s damage"
     ]
   },
   "${ModID}:BlockComponent": {
@@ -121,7 +122,8 @@
       "Give %s Block",
       "Give %s to a random enemy",
       "Give %s Block to ALL enemies",
-      "Invalid Block: %s"
+      "Invalid Block: %s",
+      "%s Block"
     ]
   },
   "${ModID}:VigorComponent": {

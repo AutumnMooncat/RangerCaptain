@@ -45,7 +45,7 @@ public class BlockComponent extends AbstractComponent {
 
     @Override
     public String rawCapturedText() {
-        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
+        return String.format(CARD_TEXT[ComponentTarget.values().length], dynKey());
     }
 
     @Override

@@ -39,7 +39,11 @@ public class DamageComponent extends AbstractComponent {
 
     @Override
     public void updatePrio() {
-        priority = DAMAGE_PRIO + target.ordinal();
+        if (target == ComponentTarget.SELF) {
+            priority = DO_PRIO;
+        } else {
+            priority = DAMAGE_PRIO + target.ordinal();
+        }
     }
 
     @Override
@@ -95,7 +99,7 @@ public class DamageComponent extends AbstractComponent {
 
     @Override
     public String rawCapturedText() {
-        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
+        return String.format(CARD_TEXT[ComponentTarget.values().length], dynKey());
     }
 
     @Override
