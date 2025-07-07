@@ -21,6 +21,13 @@ public class FusionFormMod extends AbstractCardModifier {
         this.form = new FusionForm(monster1, monster2);
     }
 
+    public static FusionFormMod getFusionForm(AbstractCard card) {
+        if (CardModifierManager.hasModifier(card, FusionFormMod.ID)) {
+            return (FusionFormMod) CardModifierManager.getModifiers(card, FusionFormMod.ID).get(0);
+        }
+        return null;
+    }
+
     public static void changeFusionForm(AbstractCard card, MonsterEnum monster1, MonsterEnum monster2) {
         if (CardModifierManager.hasModifier(card, FusionFormMod.ID)) {
             FusionFormMod mod = (FusionFormMod) CardModifierManager.getModifiers(card, FusionFormMod.ID).get(0);
