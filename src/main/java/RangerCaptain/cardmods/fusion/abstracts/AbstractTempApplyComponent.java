@@ -14,6 +14,7 @@ public abstract class AbstractTempApplyComponent extends AbstractApplyComponent 
     public AbstractTempApplyComponent(String ID, int base, ComponentTarget target, boolean increase) {
         super(ID, base, target);
         this.increase = increase;
+        this.isSimple = true;
     }
 
     @Override
