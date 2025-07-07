@@ -120,7 +120,7 @@
     "EXTRA_TEXT": [
       "Gain %s Block",
       "Give %s Block",
-      "Give %s to a random enemy",
+      "Give %s Block to a random enemy",
       "Give %s Block to ALL enemies",
       "Invalid Block: %s",
       "%s Block"
@@ -237,7 +237,7 @@
   "${ModID}:EnergyIfDebuffComponent": {
     "TEXT": ["Gain #yEnergy if the enemy has a debuff"],
     "EXTRA_TEXT": [
-      "If the enemy has a debuff, gain {@@}{%1$s|1=[E]|2=[E] [E]|3=[E] [E] [E}|@=%1$s [E]} ",
+      "If the enemy has a debuff, gain {@@}{%1$s|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=%1$s [E]} ",
       "If the enemy has a debuff, gain [E] ",
       "If the enemy has a debuff, gain [E] [E] ",
       "If the enemy has a debuff, gain [E] [E] [E] ",
@@ -255,7 +255,7 @@
   "${ModID}:NextTurnEnergyComponent": {
     "TEXT": ["Gain #yEnergy next turn"],
     "EXTRA_TEXT": [
-      "Next turn, gain {@@}{%1$s|1=[E]|2=[E] [E]|3=[E] [E] [E}|@=%1$s [E]} ",
+      "Next turn, gain {@@}{%1$s|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=%1$s [E]} ",
       "Next turn, gain [E] ",
       "Next turn, gain [E] [E] ",
       "Next turn, gain [E] [E] [E] ",
