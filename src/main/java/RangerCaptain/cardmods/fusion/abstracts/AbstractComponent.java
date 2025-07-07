@@ -1,0 +1,473 @@
+package RangerCaptain.cardmods.fusion.abstracts;
+
+import RangerCaptain.MainModfile;
+import RangerCaptain.cardmods.PurgeMod;
+import RangerCaptain.cards.tokens.FusedCard;
+import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.MonsterEnum;
+import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.LocalizedStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+public abstract class AbstractComponent implements Comparable<AbstractComponent> {
+    private static final String ABSTRACT_ID = MainModfile.makeID(AbstractComponent.class.getSimpleName());
+    private static final String[] DYN_KEYS = CardCrawlGame.languagePack.getUIString(ABSTRACT_ID).TEXT;
+    private static final String[] BUILDER_TEXT = CardCrawlGame.languagePack.getUIString(ABSTRACT_ID).EXTRA_TEXT;
+    private static final String D = DYN_KEYS[1];
+    private static final String D2 = DYN_KEYS[2];
+    private static final String B = DYN_KEYS[3];
+    private static final String B2 = DYN_KEYS[4];
+    private static final String M = DYN_KEYS[5];
+    private static final String M2 = DYN_KEYS[6];
+    private static final String M3 = DYN_KEYS[7];
+    public static final String DEAL = BUILDER_TEXT[1];
+    public static final String GAIN = BUILDER_TEXT[2];
+    public static final String GIVE = BUILDER_TEXT[3];
+    public static final String APPLY = BUILDER_TEXT[4];
+    public static final String AND = BUILDER_TEXT[5];
+    public static final String AND_APPLY = BUILDER_TEXT[6];
+    public static final String RANDOM_ENEMY = BUILDER_TEXT[7];
+    public static final String ALL_ENEMIES = BUILDER_TEXT[8];
+    public static final int COST_PRIO = -20;
+    public static final int MODIFIER_PRIO = -15;
+    public static final int PREFIX_PRIO = -10;
+    public static final int BLOCK_PRIO = -5;
+    public static final int DAMAGE_PRIO = 0;
+    public static final int SIMPLE_APPLY_PRIO = 5;
+    public static final int COMPLEX_APPLY_PRIO = 6;
+    public static final int DO_PRIO = 15;
+    public static final int FINALIZER_PRIO = 20;
+    public static final int SUFFIX_PRIO = 25;
+
+    public enum ComponentType {
+        BLOCK,
+        DAMAGE,
+        APPLY,
+        DO,
+        MODIFIER,
+        TRAIT
+    }
+
+    public enum ComponentTarget {
+        SELF,
+        ENEMY,
+        ENEMY_RANDOM,
+        ENEMY_AOE,
+        NONE
+    }
+
+    public enum DynVar {
+        DAMAGE,
+        DAMAGE2,
+        BLOCK,
+        BLOCK2,
+        MAGIC,
+        MAGIC2,
+        MAGIC3,
+        FLAT,
+        NONE
+    }
+
+    public enum Flag {
+        DEFERRED,
+        MUST_CAPTURE,
+        MUST_BE_CAPTURED,
+        INVERSE_PREFERRED,
+        INVERSE_FORCED,
+        DRAW_FOLLOWUP,
+        DAMAGE_FOLLOWUP,
+        EXHAUST_FOLLOWUP;
+
+        public int value() {
+            return 1 << ordinal();
+        }
+    }
+
+    private final String identifier;
+    public ComponentType type;
+    public ComponentTarget target;
+    public DynVar dynvar;
+    public MonsterEnum source;
+    public int baseAmount;
+    public int priority;
+    public boolean isSimple;
+    private int flags;
+
+    public AbstractComponent(String ID, int baseAmount, ComponentType type, ComponentTarget target, DynVar desiredDynvar) {
+        this.identifier = ID;
+        this.type = type;
+        this.target = target;
+        this.baseAmount = baseAmount;
+        setDynVar(desiredDynvar);
+        updatePrio();
+    }
+
+    public abstract void updatePrio();
+
+    public abstract String componentDescription();
+
+    public abstract String rawCardText(List<AbstractComponent> captured);
+
+    public abstract String rawCapturedText();
+
+    public abstract void onTrigger(ComponentAmountProvider provider, AbstractPlayer p, AbstractMonster m, List<AbstractComponent> captured);
+
+    public abstract AbstractComponent makeCopy();
+
+    public String identifier() {
+        return identifier;
+    }
+
+    public String onBuildText(AbstractComponent other, String text) {
+        return text;
+    }
+
+    public void setFlags(Flag... flags) {
+        for (Flag flag : flags) {
+            this.flags |= flag.value();
+        }
+        updatePrio();
+    }
+
+    public boolean hasFlags(Flag... flags) {
+        for (Flag flag : flags) {
+            if ((this.flags & flag.value()) != flag.value()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean shouldStack(AbstractComponent other) {
+        return dynvar != DynVar.NONE && identifier().equals(other.identifier()) && target == other.target && flags == other.flags && dynvar == other.dynvar;
+    }
+
+    public void receiveStacks(AbstractComponent other) {
+        baseAmount += other.baseAmount;
+    }
+
+    public boolean captures(AbstractComponent other) {
+        return false;
+    }
+
+    public void onCapture(AbstractComponent other) {}
+
+    public boolean isCaptured(List<AbstractComponent> others) {
+        return others.stream().anyMatch(o -> o.captures(this));
+    }
+
+    public boolean modifiesAmount(AbstractComponent other) {
+        return false;
+    }
+
+    public int amountBonus(AbstractComponent other) {
+        return 0;
+    }
+
+    public float amountMultiplier(AbstractComponent other) {
+        return 1f;
+    }
+
+    public boolean scalesWithCost() {
+        return type == ComponentType.BLOCK || type == ComponentType.DAMAGE || type == ComponentType.APPLY || type == ComponentType.DO;
+    }
+
+    public void applyTraits(FusedCard card, List<AbstractComponent> captured) {}
+
+    public void glowCheck(FusedCard card) {}
+
+    public String injectXOnDynvars(String text) {
+        return text.replace(D+" ",D+"X ")
+                .replace(D2+" ", D2+"X ")
+                .replace(B+" ", B+"X ")
+                .replace(B2+" ", B2+"X ")
+                .replace(M+" ", M+"X ")
+                .replace(M2+" ", M2+"X ")
+                .replace(M3+" ", M3+"X ");
+    }
+
+    public void setDynVar(DynVar dynvar) {
+        this.dynvar = dynvar;
+    }
+
+    public String dynKey() {
+        switch (dynvar) {
+            case DAMAGE:
+                return D;
+            case DAMAGE2:
+                return D2;
+            case BLOCK:
+                return B;
+            case BLOCK2:
+                return B2;
+            case MAGIC:
+                return M;
+            case MAGIC2:
+                return M2;
+            case MAGIC3:
+                return M3;
+            case FLAT:
+                return String.valueOf(baseAmount);
+            default:
+                return "";
+        }
+    }
+
+    public void addToTop(AbstractGameAction action) {
+        AbstractDungeon.actionManager.addToTop(action);
+    }
+
+    public void addToBot(AbstractGameAction action) {
+        AbstractDungeon.actionManager.addToBottom(action);
+    }
+
+    @Override
+    public int compareTo(AbstractComponent other) {
+        return this.priority - other.priority;
+    }
+
+    public static List<AbstractComponent> resolve(FusedCard card, List<AbstractComponent> originals) {
+        List<AbstractComponent> components = originals.stream().map(AbstractComponent::makeCopy).collect(Collectors.toList());
+        resolveCaptures(components);
+        resolveStacking(components);
+        resolveType(card, components);
+        resolveTarget(card, components);
+        resolveTraits(card, components);
+        resolveAmounts(card.cost, components);
+        resolveDynVars(components);
+        resolveRawDescription(card, components);
+        card.rollerKey += StringUtils.join(components);
+        CardArtRoller.computeCard(card);
+        return components;
+    }
+
+    public static void resolveCaptures(List<AbstractComponent> components) {
+        List<AbstractComponent> captured = new ArrayList<>();
+        Map<AbstractComponent, List<AbstractComponent>> captures = new HashMap<>();
+        Map<AbstractComponent, List<AbstractComponent>> deferredCaptures = new HashMap<>();
+        Map<AbstractComponent, List<AbstractComponent>> inverseCaptures = new HashMap<>();
+        for (AbstractComponent component : components) {
+            captures.put(component, new ArrayList<>());
+            deferredCaptures.put(component, new ArrayList<>());
+            inverseCaptures.put(component, new ArrayList<>());
+            for (AbstractComponent other : components) {
+                if (component != other && component.captures(other) && !(other.hasFlags(Flag.INVERSE_FORCED) && component.source == other.source)) {
+                    if (other.hasFlags(Flag.INVERSE_PREFERRED) && component.source == other.source) {
+                        inverseCaptures.get(component).add(other);
+                    } else if (other.hasFlags(Flag.DEFERRED)) {
+                        deferredCaptures.get(component).add(other);
+                    } else {
+                        captured.add(other);
+                        captures.get(component).add(other);
+                        component.onCapture(other);
+                    }
+                }
+            }
+        }
+        for (AbstractComponent component : components) {
+            if (captures.get(component).isEmpty()) {
+                for (AbstractComponent other : deferredCaptures.get(component)) {
+                    captured.add(other);
+                    captures.get(component).add(other);
+                    component.onCapture(other);
+                }
+            }
+            if (captures.get(component).isEmpty()) {
+                for (AbstractComponent other : inverseCaptures.get(component)) {
+                    captured.add(other);
+                    captures.get(component).add(other);
+                    component.onCapture(other);
+                }
+            }
+        }
+        components.removeIf(c -> (c.hasFlags(Flag.MUST_BE_CAPTURED) && !captured.contains(c)) || (c.hasFlags(Flag.MUST_CAPTURE) && captures.get(c).isEmpty()));
+    }
+
+    public static void resolveStacking(List<AbstractComponent> components) {
+        List<AbstractComponent> stacked = new ArrayList<>();
+        for (AbstractComponent component : components) {
+            for (AbstractComponent other : components) {
+                if (component != other && component.shouldStack(other) && !stacked.contains(component) && !stacked.contains(other)) {
+                    stacked.add(component);
+                    other.receiveStacks(component);
+                }
+            }
+        }
+        components.removeAll(stacked);
+    }
+
+    public static void resolveTraits(FusedCard card, List<AbstractComponent> components) {
+        for (AbstractComponent component : components) {
+            if (component.isCaptured(components)) {
+                continue;
+            }
+            List<AbstractComponent> captured = components.stream().filter(component::captures).collect(Collectors.toList());
+            component.applyTraits(card, captured);
+        }
+    }
+
+    public static void resolveRawDescription(FusedCard card, List<AbstractComponent> components) {
+        Map<AbstractComponent, String> parts = new HashMap<>();
+        for (AbstractComponent component : components) {
+            if (!component.isCaptured(components)) {
+                List<AbstractComponent> captured = components.stream().filter(component::captures).collect(Collectors.toList());
+                String found = component.rawCardText(captured);
+                if (found != null && !found.isEmpty()) {
+                    parts.put(component, found);
+                }
+            }
+        }
+        List<String> text = new ArrayList<>();
+        for (AbstractComponent component : components) {
+            if (parts.containsKey(component)) {
+                String processed = parts.get(component);
+                for (AbstractComponent other : components) {
+                    if (component != other && !other.isCaptured(components)) {
+                        processed = other.onBuildText(component, processed);
+                    }
+                }
+                text.add(processed + LocalizedStrings.PERIOD);
+            }
+        }
+        card.rawDescription = StringUtils.join(text, " NL ");
+    }
+
+    public static void resolveType(FusedCard card, List<AbstractComponent> components) {
+        AbstractCard.CardType type = AbstractCard.CardType.SKILL;
+        boolean wasPower = false;
+        for (AbstractComponent component : components) {
+            if (type == AbstractCard.CardType.SKILL && component.type == ComponentType.MODIFIER && components.stream().anyMatch(component::captures)) {
+                type = AbstractCard.CardType.POWER;
+                wasPower = true;
+            } else if (component.type == ComponentType.DAMAGE && !component.isCaptured(components)) {
+                type = AbstractCard.CardType.ATTACK;
+            }
+        }
+        if (wasPower && type != AbstractCard.CardType.POWER) {
+            CardModifierManager.addModifier(card, new PurgeMod());
+        }
+        card.type = type;
+    }
+
+    public static void resolveTarget(FusedCard card, List<AbstractComponent> components) {
+        AbstractCard.CardTarget target = AbstractCard.CardTarget.NONE;
+        for (AbstractComponent component : components) {
+            if (component.isCaptured(components)) {
+                continue;
+            }
+            switch (component.target) {
+                case SELF:
+                    if (target == AbstractCard.CardTarget.NONE) {
+                        target = AbstractCard.CardTarget.SELF;
+                    } else if (target == AbstractCard.CardTarget.ENEMY) {
+                        target = AbstractCard.CardTarget.SELF_AND_ENEMY;
+                    } else if (target == AbstractCard.CardTarget.ALL_ENEMY) {
+                        target = AbstractCard.CardTarget.ALL;
+                    }
+                    break;
+                case ENEMY:
+                    if (target == AbstractCard.CardTarget.SELF || target == AbstractCard.CardTarget.ALL) {
+                        target = AbstractCard.CardTarget.SELF_AND_ENEMY;
+                    } else {
+                        target = AbstractCard.CardTarget.ENEMY;
+                    }
+                    break;
+                case ENEMY_RANDOM:
+                case ENEMY_AOE:
+                    if (target == AbstractCard.CardTarget.NONE) {
+                        target = AbstractCard.CardTarget.ALL_ENEMY;
+                    } else if (target == AbstractCard.CardTarget.SELF) {
+                        target = AbstractCard.CardTarget.ALL;
+                    }
+                    break;
+                case NONE:
+                    break;
+            }
+        }
+        card.target = target;
+    }
+
+    public static void resolveAmounts(int cost, List<AbstractComponent> components) {
+        for (AbstractComponent component : components) {
+            if (component.dynvar == DynVar.NONE) {
+                continue;
+            }
+            float tmp = component.baseAmount;
+            for (AbstractComponent other : components) {
+                if (component != other && other.modifiesAmount(component)) {
+                    tmp += other.amountBonus(component);
+                }
+            }
+            for (AbstractComponent other : components) {
+                if (component != other && other.modifiesAmount(component)) {
+                    tmp *= other.amountMultiplier(component);
+                }
+            }
+            if (component.scalesWithCost()) {
+                if (cost == 0 || cost == -1) {
+                    tmp *= 0.75f;
+                } else  {
+                    tmp *= (0.75f * cost + 0.25f);
+                }
+            }
+            component.baseAmount = Math.max(1, (int) tmp);
+        }
+    }
+
+    public static void resolveDynVars(List<AbstractComponent> components) {
+        Map<DynVar, Integer> occupied = new HashMap<>();
+        for (AbstractComponent c : components) {
+            // Capture has run and should have switched any desired dynvars if needed
+            DynVar desired = c.dynvar;
+            switch (desired) {
+                case DAMAGE:
+                case DAMAGE2:
+                    if (occupied.getOrDefault(DynVar.DAMAGE, c.baseAmount) == c.baseAmount) {
+                        c.setDynVar(DynVar.DAMAGE);
+                    } else if (occupied.getOrDefault(DynVar.DAMAGE2, c.baseAmount) == c.baseAmount) {
+                        c.setDynVar(DynVar.DAMAGE2);
+                    } else {
+                        c.setDynVar(DynVar.FLAT);
+                    }
+                    break;
+                case BLOCK:
+                case BLOCK2:
+                    if (occupied.getOrDefault(DynVar.BLOCK, c.baseAmount) == c.baseAmount) {
+                        c.setDynVar(DynVar.BLOCK);
+                    } else if (occupied.getOrDefault(DynVar.BLOCK2, c.baseAmount) == c.baseAmount) {
+                        c.setDynVar(DynVar.BLOCK2);
+                    } else {
+                        c.setDynVar(DynVar.FLAT);
+                    }
+                    break;
+                case MAGIC:
+                case MAGIC2:
+                case MAGIC3:
+                    if (occupied.getOrDefault(DynVar.MAGIC, c.baseAmount) == c.baseAmount) {
+                        c.setDynVar(DynVar.MAGIC);
+                    } else if (occupied.getOrDefault(DynVar.MAGIC2, c.baseAmount) == c.baseAmount) {
+                        c.setDynVar(DynVar.MAGIC2);
+                    } else if (occupied.getOrDefault(DynVar.MAGIC3, c.baseAmount) == c.baseAmount) {
+                        c.setDynVar(DynVar.MAGIC3);
+                    } else {
+                        c.setDynVar(DynVar.FLAT);
+                    }
+                    break;
+            }
+            occupied.put(c.dynvar, c.baseAmount);
+        }
+    }
+
+    public interface ComponentAmountProvider {
+        int getAmount(AbstractComponent component);
+    }
+}

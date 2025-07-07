@@ -1,7 +1,8 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionModHelper;
-import RangerCaptain.cardmods.fusion.mods.PoisonAOEMod;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cardmods.fusion.components.PoisonComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.util.CardArtRoller;
@@ -18,11 +19,13 @@ public class Nevermort extends AbstractEasyCard {
     public final static String ID = makeID(Nevermort.class.getSimpleName());
 
     static {
-        new FusionModHelper(MonsterEnum.NEVERMORT)
-                .with(new PoisonAOEMod(3))
+        new FusionComponentHelper(MonsterEnum.NEVERMORT)
+                .withCost(0)
+                .with(new PoisonComponent(3, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
-        new FusionModHelper(MonsterEnum.APOCROWLYPSE)
-                .with(new PoisonAOEMod(5))
+        new FusionComponentHelper(MonsterEnum.APOCROWLYPSE)
+                .withCost(0)
+                .with(new PoisonComponent(5, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
     }
 

@@ -1,7 +1,7 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionModHelper;
-import RangerCaptain.cardmods.fusion.mods.SuitUpMod;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.SuitUpComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.SuitUpPower;
 import RangerCaptain.util.CardArtRoller;
@@ -17,11 +17,13 @@ public class Braxsuit extends AbstractEasyCard {
     public final static String ID = makeID(Braxsuit.class.getSimpleName());
 
     static {
-        new FusionModHelper(MonsterEnum.BRAXSUIT)
-                .with(new SuitUpMod(1))
+        new FusionComponentHelper(MonsterEnum.BRAXSUIT)
+                .withCost(1)
+                .with(new SuitUpComponent(2))
                 .register();
-        new FusionModHelper(MonsterEnum.FLAPWOODS)
-                .with(new SuitUpMod(2))
+        new FusionComponentHelper(MonsterEnum.FLAPWOODS)
+                .withCost(1)
+                .with(new SuitUpComponent(3))
                 .register();
     }
 

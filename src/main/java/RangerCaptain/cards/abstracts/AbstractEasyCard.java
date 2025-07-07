@@ -3,7 +3,6 @@ package RangerCaptain.cards.abstracts;
 import RangerCaptain.MainModfile;
 import RangerCaptain.TheRangerCaptain;
 import RangerCaptain.cardmods.FusionFormMod;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractFusionMod;
 import RangerCaptain.patches.FusionModifierHooks;
 import RangerCaptain.util.*;
 import basemod.BaseMod;
@@ -222,7 +221,9 @@ public abstract class AbstractEasyCard extends CustomCard {
             super.applyPowers();
 
             isSecondDamageModified = (secondDamage != baseSecondDamage);
-        } else super.applyPowers();
+        } else  {
+            super.applyPowers();
+        }
     }
 
     @Override
@@ -489,13 +490,13 @@ public abstract class AbstractEasyCard extends CustomCard {
         if (Wiz.canBeFused(this)) {
             removeFusionTip();
             fusionTip = new TooltipInfo(BaseMod.getKeywordTitle(KeywordManager.FUSIONEFFECTS), BaseMod.getKeywordDescription(KeywordManager.FUSIONEFFECTS));
-            fusionTip.description += FusionCardModData.getModDescription(monsterEnum);
+            fusionTip.description += FusionCardEffectData.getFusionTip(monsterEnum);
             if (addedTips == null) {
                 addedTips = new ArrayList<>();
             }
             addedTips.add(fusionTip);
         }
-        FusionFormMod.updateFusionForm(this);
+        //FusionFormMod.updateFusionForm(this);
     }
 
     public MonsterEnum getMonsterData() {

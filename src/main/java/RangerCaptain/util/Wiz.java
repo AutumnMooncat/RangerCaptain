@@ -4,8 +4,11 @@ import RangerCaptain.TheRangerCaptain;
 import RangerCaptain.actions.TimedVFXAction;
 import RangerCaptain.cardmods.CarrotMod;
 import RangerCaptain.cardmods.FusionFormMod;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractFusionMod;
+import RangerCaptain.cardmods.fusion.components.ReskinComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.cards.tokens.FusedCard;
 import RangerCaptain.patches.CardCounterPatches;
 import RangerCaptain.powers.LosePowerPower;
 import RangerCaptain.powers.NextTurnPowerPower;
@@ -150,6 +153,18 @@ public class Wiz {
             AbstractDungeon.actionManager.addToTop(action);
         }
 
+    }
+
+    public static void sequenceActions(boolean toTop, AbstractGameAction... actions) {
+        if (toTop) {
+            for (int i = actions.length - 1; i >= 0; i--) {
+                att(actions[i]);
+            }
+        } else {
+            for (AbstractGameAction action : actions) {
+                atb(action);
+            }
+        }
     }
 
     public static void vfx(AbstractGameEffect gameEffect) {
@@ -347,12 +362,15 @@ public class Wiz {
         return card instanceof AbstractEasyCard && ((AbstractEasyCard) card).getMonsterData() != null && !CardModifierManager.hasModifier(card, FusionFormMod.ID);
     }
 
-    public static void fuse(AbstractCard base, AbstractCard donor) {
+    public static FusedCard fuse(AbstractCard base, AbstractCard donor) {
         if (base instanceof AbstractEasyCard && donor instanceof AbstractEasyCard && ((AbstractEasyCard) base).getMonsterData() != null && ((AbstractEasyCard) donor).getMonsterData() != null) {
-            CardModifierManager.addModifier(base, new FusionFormMod(donor));
-            for (AbstractFusionMod mod : FusionCardModData.getMods(((AbstractEasyCard) donor).getMonsterData())) {
-                CardModifierManager.addModifier(base, mod.makeCopy());
-            }
+            List<AbstractComponent> components = FusionCardEffectData.getCombinedComponents(((AbstractEasyCard) base).getMonsterData(), ((AbstractEasyCard) donor).getMonsterData());
+            CardArtRoller.ReskinInfo ref = ((AbstractEasyCard) base).reskinInfo("");
+            components.add(new ReskinComponent(ref.anchor1, ref.anchor2, ref.target1, ref.target2, ref.flipX));
+            FusedCard fusion = new FusedCard(components);
+            CardModifierManager.addModifier(fusion, new FusionFormMod(((AbstractEasyCard) base).getMonsterData(), ((AbstractEasyCard) donor).getMonsterData()));
+            return fusion;
         }
+        return new FusedCard();
     }
 }

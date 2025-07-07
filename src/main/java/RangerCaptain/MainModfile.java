@@ -236,6 +236,7 @@ public class MainModfile implements
         tryLoadStringsFile(CharacterStrings.class, path + "Charstrings.json");
         tryLoadStringsFile(PowerStrings.class, path + "Powerstrings.json");
         tryLoadStringsFile(UIStrings.class, path + "CardModstrings.json");
+        tryLoadStringsFile(UIStrings.class, path + "Componentstrings.json");
         tryLoadStringsFile(CardStrings.class, path + "Chatterstrings.json");
         tryLoadStringsFile(UIStrings.class, path + "UIstrings.json");
         tryLoadStringsFile(PotionStrings.class, path +"Potionstrings.json");

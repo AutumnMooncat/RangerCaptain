@@ -1,7 +1,7 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionModHelper;
-import RangerCaptain.cardmods.fusion.mods.TempStrengthMod;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.TempStrengthComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -19,18 +19,21 @@ public class Squirey extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Squirey.class.getSimpleName());
 
     static {
-        new FusionModHelper(MonsterEnum.SQUIREY)
-                .withDamage(4, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new TempStrengthMod(2))
-                .register();
-        new FusionModHelper(MonsterEnum.MANISPEAR)
-                .withBlock(3)
-                .withDamage(3, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new TempStrengthMod(5))
-                .register();
-        new FusionModHelper(MonsterEnum.PALANGOLIN)
+        new FusionComponentHelper(MonsterEnum.SQUIREY)
+                .withCost(1)
                 .withDamage(5, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new TempStrengthMod(4))
+                .with(new TempStrengthComponent(2))
+                .register();
+        new FusionComponentHelper(MonsterEnum.MANISPEAR)
+                .withCost(1)
+                .withBlock(4)
+                .withDamage(4, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new TempStrengthComponent(3))
+                .register();
+        new FusionComponentHelper(MonsterEnum.PALANGOLIN)
+                .withCost(1)
+                .withDamage(6, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new TempStrengthComponent(4))
                 .register();
     }
 

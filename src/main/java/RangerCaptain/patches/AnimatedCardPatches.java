@@ -53,9 +53,10 @@ public class AnimatedCardPatches {
         @SpirePostfixPatch
         public static void plz(AbstractCard __instance, SpriteBatch sb) {
             if (__instance instanceof AbstractEasyCard) {
-                if (((AbstractEasyCard) __instance).getGifOverlay() != null) {
+                boolean fusion = CardModifierManager.hasModifier(__instance, FusionFormMod.ID);
+                if (((AbstractEasyCard) __instance).getGifOverlay() != null || fusion) {
                     prepFrameBuffer(sb);
-                    if (CardModifierManager.hasModifier(__instance, FusionFormMod.ID)) {
+                    if (fusion) {
                         drawFusionAnimation(sb, (AbstractEasyCard) __instance);
                     } else {
                         drawCardAnimation(sb, (AbstractEasyCard) __instance);

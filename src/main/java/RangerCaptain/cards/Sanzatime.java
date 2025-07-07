@@ -1,17 +1,15 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.actions.DoAction;
-import RangerCaptain.cardmods.fusion.FusionModHelper;
-import RangerCaptain.cardmods.fusion.mods.IncreaseDebuffsMod;
+import RangerCaptain.actions.IncreaseDebuffsAction;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.IncreaseDebuffsComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -19,11 +17,15 @@ public class Sanzatime extends AbstractEasyCard {
     public final static String ID = makeID(Sanzatime.class.getSimpleName());
 
     static {
-        new FusionModHelper(MonsterEnum.SANZATIME)
-                .with(new IncreaseDebuffsMod(1))
+        new FusionComponentHelper(MonsterEnum.SANZATIME)
+                .withCost(1)
+                .withDamage(3, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
+                .with(new IncreaseDebuffsComponent(1))
                 .register();
-        new FusionModHelper(MonsterEnum.FORTIWINX)
-                .with(new IncreaseDebuffsMod(1))
+        new FusionComponentHelper(MonsterEnum.FORTIWINX)
+                .withCost(1)
+                .withDamage(4, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
+                .with(new IncreaseDebuffsComponent(2))
                 .register();
     }
 
@@ -37,21 +39,7 @@ public class Sanzatime extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
-        if (m != null) {
-            addToBot(new DoAction(() -> {
-                for (AbstractPower pow : m.powers) {
-                    if (pow.type == AbstractPower.PowerType.DEBUFF && !(pow instanceof NonStackablePower)) {
-                        if (pow.amount > 0) {
-                            pow.stackPower(magicNumber);
-                        } else if (pow.canGoNegative) {
-                            pow.stackPower(-magicNumber);
-                        }
-                        pow.updateDescription();
-                    }
-                }
-            }));
-        }
-
+        addToBot(new IncreaseDebuffsAction(m, magicNumber));
     }
 
     @Override

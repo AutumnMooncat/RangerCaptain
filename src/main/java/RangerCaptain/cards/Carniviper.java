@@ -1,7 +1,7 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionModHelper;
-import RangerCaptain.cardmods.fusion.mods.ToxinMod;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.ToxinComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.ToxinPower;
@@ -19,26 +19,32 @@ public class Carniviper extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Carniviper.class.getSimpleName());
 
     static {
-        new FusionModHelper(MonsterEnum.CARNIVIPER)
+        new FusionComponentHelper(MonsterEnum.CARNIVIPER)
+                .withCost(1)
+                .withDamage(4, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new ToxinComponent(3))
+                .register();
+        new FusionComponentHelper(MonsterEnum.MASQUERATTLE)
+                .withCost(1)
+                .withDamage(6, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new ToxinComponent(4))
+                .register();
+        new FusionComponentHelper(MonsterEnum.AEROBOROS)
+                .withCost(1)
+                .withBlock(5)
+                .withDamage(5, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new ToxinComponent(4))
+                .register();
+        new FusionComponentHelper(MonsterEnum.MARDIUSA)
+                .withCost(2)
                 .withDamage(3, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinMod(2))
-                .register();
-        new FusionModHelper(MonsterEnum.MASQUERATTLE)
-                .withDamage(4, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinMod(3))
-                .register();
-        new FusionModHelper(MonsterEnum.AEROBOROS)
-                .withBlock(4)
-                .withDamage(4, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinMod(3))
-                .register();
-        new FusionModHelper(MonsterEnum.MARDIUSA)
-                .withChangeCost(1)
+                .with(new ToxinComponent(2))
                 .withDoublePlay()
                 .register();
-        new FusionModHelper(MonsterEnum.JORMUNGOLD)
-                .withDamage(6, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinMod(4))
+        new FusionComponentHelper(MonsterEnum.JORMUNGOLD)
+                .withCost(0)
+                .withDamage(8, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new ToxinComponent(4))
                 .register();
     }
 

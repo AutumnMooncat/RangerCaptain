@@ -1,8 +1,8 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.actions.BetterDiscardPileToTopOfDeckAction;
-import RangerCaptain.cardmods.fusion.FusionModHelper;
-import RangerCaptain.cardmods.fusion.mods.HavocMod;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.DiscardToDrawComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -16,13 +16,14 @@ public class Dandylion extends AbstractEasyCard {
     public final static String ID = makeID(Dandylion.class.getSimpleName());
 
     static {
-        new FusionModHelper(MonsterEnum.DANDYLION)
-                .withBlock(4)
-                .with(new HavocMod(1))
+        new FusionComponentHelper(MonsterEnum.DANDYLION)
+                .withCost(1)
+                .withBlock(5)
+                .with(new DiscardToDrawComponent(1))
                 .register();
-        new FusionModHelper(MonsterEnum.BLOSSOMAW)
-                .withBlock(6)
-                .with(new HavocMod(1))
+        new FusionComponentHelper(MonsterEnum.BLOSSOMAW)
+                .withBlock(7)
+                .with(new DiscardToDrawComponent(1))
                 .register();
     }
 

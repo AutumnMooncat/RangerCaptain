@@ -1,13 +1,11 @@
 package RangerCaptain.screens;
 
 import RangerCaptain.MainModfile;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractFusionMod;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.FormatHelper;
-import RangerCaptain.util.FusionCardModData;
+import RangerCaptain.util.FusionCardEffectData;
 import RangerCaptain.util.Wiz;
 import basemod.abstracts.CustomScreen;
-import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -501,10 +499,9 @@ public class FusionScreen extends CustomScreen {
             fusionPreviewCard = null;
         } else {
             message = TEXT[2];
-            fusionPreviewCard = baseCard.makeStatEquivalentCopy();
-            Wiz.fuse(fusionPreviewCard, donorCard);
+            fusionPreviewCard = Wiz.fuse(baseCard, donorCard);
             fusionPreviewCard.applyPowers();
-            message += " ("+FormatHelper.removeFormatting(FusionCardModData.getModDescription(((AbstractEasyCard) donorCard).getMonsterData()))+")";
+            message += " ("+FormatHelper.removeFormatting(FusionCardEffectData.getFusionDescription(((AbstractEasyCard) baseCard).getMonsterData(), ((AbstractEasyCard) donorCard).getMonsterData()))+")";
             fusionPreviewCard.drawScale = FUSION_CARD_SCALE;
             fusionPreviewCard.targetDrawScale = FUSION_CARD_SCALE;
         }

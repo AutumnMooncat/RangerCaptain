@@ -1,7 +1,7 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionModHelper;
-import RangerCaptain.cardmods.fusion.mods.ResonanceMod;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.ResonanceComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.ResonancePower;
@@ -19,13 +19,15 @@ public class Puppercut extends AbstractEasyCard {
     public final static String ID = makeID(Puppercut.class.getSimpleName());
 
     static {
-        new FusionModHelper(MonsterEnum.PUPPERCUT)
+        new FusionComponentHelper(MonsterEnum.PUPPERCUT)
+                .withCost(0)
                 .withDamage(3, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
-                .with(new ResonanceMod(1))
+                .with(new ResonanceComponent(1))
                 .register();
-        new FusionModHelper(MonsterEnum.SOUTHPAW)
+        new FusionComponentHelper(MonsterEnum.SOUTHPAW)
+                .withCost(0)
                 .withDamage(5, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
-                .with(new ResonanceMod(1))
+                .with(new ResonanceComponent(1))
                 .register();
     }
 

@@ -1,7 +1,8 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionModHelper;
-import RangerCaptain.cardmods.fusion.mods.BurnAOEMod;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cardmods.fusion.components.BurnComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.BurnedPower;
@@ -19,13 +20,15 @@ public class Pombomb extends AbstractEasyCard {
     public final static String ID = makeID(Pombomb.class.getSimpleName());
 
     static {
-        new FusionModHelper(MonsterEnum.POMBOMB)
+        new FusionComponentHelper(MonsterEnum.POMBOMB)
+                .withCost(1)
                 .withDamageAOE(4, AbstractGameAction.AttackEffect.FIRE)
-                .with(new BurnAOEMod(2))
+                .with(new BurnComponent(2, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
-        new FusionModHelper(MonsterEnum.SPITZFYRE)
+        new FusionComponentHelper(MonsterEnum.SPITZFYRE)
+                .withCost(1)
                 .withDamageAOE(6, AbstractGameAction.AttackEffect.FIRE)
-                .with(new BurnAOEMod(3))
+                .with(new BurnComponent(3, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
     }
 

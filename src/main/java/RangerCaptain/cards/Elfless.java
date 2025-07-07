@@ -1,8 +1,8 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.actions.DoAction;
-import RangerCaptain.cardmods.fusion.FusionModHelper;
-import RangerCaptain.cardmods.fusion.mods.EnergyIfDebuffMod;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.EnergyIfDebuffComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -21,18 +21,21 @@ public class Elfless extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Elfless.class.getSimpleName());
 
     static {
-        new FusionModHelper(MonsterEnum.ELFLESS)
-                .withDamage(5, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
-                .with(new EnergyIfDebuffMod(1))
+        new FusionComponentHelper(MonsterEnum.ELFLESS)
+                .withCost(2)
+                .withDamage(4, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new EnergyIfDebuffComponent(1))
                 .register();
-        new FusionModHelper(MonsterEnum.FAERIOUS)
-                .withDamage(7, AbstractGameAction.AttackEffect.SLASH_HEAVY)
-                .with(new EnergyIfDebuffMod(1))
+        new FusionComponentHelper(MonsterEnum.FAERIOUS)
+                .withCost(2)
+                .withDamage(6, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .with(new EnergyIfDebuffComponent(1))
                 .register();
-        new FusionModHelper(MonsterEnum.GRAMPUS)
-                .withChangeCost(1)
-                .withDamage(6, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
-                .with(new EnergyIfDebuffMod(2))
+        // TODO Crit component
+        new FusionComponentHelper(MonsterEnum.GRAMPUS)
+                .withCost(3)
+                .withDamage(4, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new EnergyIfDebuffComponent(1))
                 .register();
     }
 
@@ -73,6 +76,7 @@ public class Elfless extends AbstractMultiUpgradeCard {
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
+        // TODO Crit keyword
         super.calculateCardDamage(mo);
         if (info == 2 && mo.powers.stream().anyMatch(pow -> pow.type == AbstractPower.PowerType.DEBUFF)) {
             damage *= 2;

@@ -1,14 +1,12 @@
 package RangerCaptain.cardmods;
 
 import RangerCaptain.MainModfile;
-import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.cards.tokens.FusedCard;
 import RangerCaptain.util.FusionForm;
 import RangerCaptain.util.MonsterEnum;
-import RangerCaptain.util.Wiz;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 
 public class FusionFormMod extends AbstractCardModifier {
     public static final String ID = MainModfile.makeID(FusionFormMod.class.getSimpleName());
@@ -16,32 +14,26 @@ public class FusionFormMod extends AbstractCardModifier {
     public MonsterEnum monster2;
     public transient FusionForm form;
 
-    public FusionFormMod(AbstractCard otherCard) {
+    public FusionFormMod(MonsterEnum monster1, MonsterEnum monster2) {
         this.priority = -10;
-        if (otherCard instanceof AbstractEasyCard) {
-            this.monster2 = ((AbstractEasyCard) otherCard).getMonsterData();
-        }
+        this.monster1 = monster1;
+        this.monster2 = monster2;
+        this.form = new FusionForm(monster1, monster2);
     }
 
-    public FusionFormMod(MonsterEnum monsterEnum) {
-        this.priority = -10;
-        this.monster2 = monsterEnum;
-    }
-
-    public static void updateFusionForm(AbstractCard card) {
-        if (CardModifierManager.hasModifier(card, FusionFormMod.ID) && card instanceof AbstractEasyCard && ((AbstractEasyCard) card).getMonsterData() != null) {
+    public static void changeFusionForm(AbstractCard card, MonsterEnum monster1, MonsterEnum monster2) {
+        if (CardModifierManager.hasModifier(card, FusionFormMod.ID)) {
             FusionFormMod mod = (FusionFormMod) CardModifierManager.getModifiers(card, FusionFormMod.ID).get(0);
-            mod.monster1 = ((AbstractEasyCard) card).getMonsterData();
+            mod.monster1 = monster1;
+            mod.monster2 = monster2;
             mod.form = new FusionForm(mod.monster1, mod.monster2);
         }
     }
 
-    @Override
-    public void onInitialApplication(AbstractCard card) {
-        if (card instanceof AbstractEasyCard) {
-            this.monster1 = ((AbstractEasyCard) card).getMonsterData();
-            this.form = new FusionForm(monster1, monster2);
-            ((AbstractEasyCard) card).removeFusionTip();
+    public static void updateFusionForm(AbstractCard card) {
+        if (CardModifierManager.hasModifier(card, FusionFormMod.ID)) {
+            FusionFormMod mod = (FusionFormMod) CardModifierManager.getModifiers(card, FusionFormMod.ID).get(0);
+            mod.form = new FusionForm(mod.monster1, mod.monster2);
         }
     }
 
@@ -50,10 +42,9 @@ public class FusionFormMod extends AbstractCardModifier {
         return form.fusionName;
     }
 
-
     @Override
     public boolean shouldApply(AbstractCard card) {
-        return Wiz.canBeFused(card);
+        return card instanceof FusedCard;
     }
 
     @Override
@@ -63,6 +54,6 @@ public class FusionFormMod extends AbstractCardModifier {
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new FusionFormMod(monster2);
+        return new FusionFormMod(monster1, monster2);
     }
 }

@@ -1,0 +1,307 @@
+{
+  "${ModID}:AbstractComponent": {
+    "TEXT": [
+      "These strings are used to insert dynamic variables",
+      "!D!",
+      "!${ModID}:D2!",
+      "!B!",
+      "!${ModID}:B2!",
+      "!M!",
+      "!${ModID}:M2!",
+      "!${ModID}:M3!"
+    ],
+    "EXTRA_TEXT": [
+      "These strings are used to build component text",
+      "Deal",
+      "Gain",
+      "Give",
+      "Apply",
+      "and",
+      "and apply",
+      "to a random enemy",
+      "to ALL enemies"
+    ]
+  },
+  "${ModID}:ExampleComponent": {
+    "TEXT": [
+      "Tip for Self",
+      "Tip for Enemy",
+      "Tip for Random Enemy",
+      "Tip for All Enemies",
+      "Tip for None"
+    ],
+    "EXTRA_TEXT": [
+      "Card/Power text for Self",
+      "Card/Power text for Enemy",
+      "Card/Power text for Random Enemy",
+      "Card/Power text for All Enemies",
+      "Card/Power text for None",
+      "Potential unique capture text"
+    ]
+  },
+  "${ModID}:EmptyComponent": {
+    "TEXT": [
+      ""
+    ],
+    "EXTRA_TEXT": [
+      ""
+    ]
+  },
+  "${ModID}:AbstractApplyComponent": {
+    "TEXT": [
+      "Gain %s",
+      "Apply %s",
+      "Apply %s to a random enemy",
+      "Apply %s to ALL enemies",
+      "Invalid Apply: %s"
+    ],
+    "EXTRA_TEXT": [
+      "Gain %1$s %2$s",
+      "Apply %1$s %2$s",
+      "Apply %1$s %2$s to a random enemy",
+      "Apply %1$s %2$s to ALL enemies",
+      "Invalid Apply: %1$s %2$s",
+      "%1$s %2$s"
+    ]
+  },
+  "${ModID}:AbstractTempApplyComponent": {
+    "TEXT": [
+      "Gain %s this turn",
+      "Enemy gains %s this turn",
+      "A random enemy gains %s this turn",
+      "ALL enemies gain %s this turn",
+      "Invalid Temp Gain: %s",
+      "Lose %s this turn",
+      "Enemy loses %s this turn",
+      "A random enemy loses %s this turn",
+      "ALL enemies lose %s this turn",
+      "Invalid Temp Lose: %s"
+    ],
+    "EXTRA_TEXT": [
+      "Gain %1$s %2$s. NL At the end of this turn, lose %1$s %2$s",
+      "Enemy gains %1$s %2$s this turn",
+      "A random enemy gains %1$s %2$s this turn",
+      "ALL enemies gain %1$s %2$s this turn",
+      "Invalid Temp Gain: %1$s %2$s",
+      "%1$s temporary %2$s",
+      "Lose %1$s %2$s. NL At the end of this turn, gain %1$s %2$s",
+      "Enemy loses %1$s %2$s this turn",
+      "A random enemy loses %1$s %2$s this turn",
+      "ALL enemies lose %1$s %2$s this turn",
+      "Invalid Temp Lose: %1$s %2$s",
+      "%1$s temporary %2$s down"
+    ]
+  },
+  "${ModID}:DamageComponent": {
+    "TEXT": [
+      "Take damage",
+      "Deal damage",
+      "Deal damage to a random enemy",
+      "Deal damage to ALL enemies",
+      "Invalid Damage"
+    ],
+    "EXTRA_TEXT": [
+      "Take %s damage",
+      "Deal %s damage",
+      "Deal %1$s damage %2$sto a random enemy",
+      "Deal %1$s damage %2$sto ALL enemies",
+      "Invalid Damage: %1$s %2$s"
+    ]
+  },
+  "${ModID}:BlockComponent": {
+    "TEXT": [
+      "Gain #yBlock",
+      "Give #yBlock to an enemy",
+      "Give #yBlock to a random enemy",
+      "Give #yBlock to ALL enemies",
+      "Invalid Block"
+    ],
+    "EXTRA_TEXT": [
+      "Gain %s Block",
+      "Give %s Block",
+      "Give %s to a random enemy",
+      "Give %s Block to ALL enemies",
+      "Invalid Block: %s"
+    ]
+  },
+  "${ModID}:VigorComponent": {
+    "TEXT": ["#yVigor"],
+    "EXTRA_TEXT": ["Vigor"]
+  },
+  "${ModID}:VulnerableComponent": {
+    "TEXT": ["#yVulnerable"],
+    "EXTRA_TEXT": ["Vulnerable"]
+  },
+  "${ModID}:WeakComponent": {
+    "TEXT": ["#yWeak"],
+    "EXTRA_TEXT": ["Weak"]
+  },
+  "${ModID}:PoisonComponent": {
+    "TEXT": ["#yPoison"],
+    "EXTRA_TEXT": ["Poison"]
+  },
+  "${ModID}:ResonanceComponent": {
+    "TEXT": ["#yResonance"],
+    "EXTRA_TEXT": ["${ModID}:Resonance"]
+  },
+  "${ModID}:BurnComponent": {
+    "TEXT": ["#yBurn"],
+    "EXTRA_TEXT": ["${ModID}:Burn"]
+  },
+  "${ModID}:ToxinComponent": {
+    "TEXT": ["#yToxin"],
+    "EXTRA_TEXT": ["${ModID}:Toxin"]
+  },
+  "${ModID}:ConductiveComponent": {
+    "TEXT": ["#yConductive"],
+    "EXTRA_TEXT": ["${ModID}:Conductive"]
+  },
+  "${ModID}:ThornsComponent": {
+    "TEXT": ["#yThorns"],
+    "EXTRA_TEXT": ["Thorns"]
+  },
+  "${ModID}:StrengthComponent": {
+    "TEXT": ["#yStrength"],
+    "EXTRA_TEXT": ["Strength"]
+  },
+  "${ModID}:CostComponent": {
+    "TEXT": [""],
+    "EXTRA_TEXT": [""]
+  },
+  "${ModID}:XComponent": {
+    "TEXT": ["Fusion becomes X cost"],
+    "EXTRA_TEXT": [
+      "X times"
+    ]
+  },
+  "${ModID}:OverrideCostComponent": {
+    "TEXT": ["Cost becomes #b%s"],
+    "EXTRA_TEXT": [""]
+  },
+  "${ModID}:DrawComponent": {
+    "TEXT": ["Draw cards"],
+    "EXTRA_TEXT": [
+      "Draw %1$s card{@@}{%1$s|>1=s}",
+      "Draw a card",
+      "Draw %s cards"
+    ]
+  },
+  "${ModID}:DiscardToDrawComponent": {
+    "TEXT": ["Put cards from your discard pile on top of your draw pile"],
+    "EXTRA_TEXT": [
+      "Put %1$s card{@@}{%1$s|>1=s} from your discard pile on top of your draw pile",
+      "Put a card from your discard pile on top of your draw pile",
+      "Put %s cards from your discard pile on top of your draw pile"
+    ]
+  },
+  "${ModID}:SuitUpComponent": {
+    "TEXT": ["Your next #yBlock gaining cards give #b50% more #yBlock"],
+    "EXTRA_TEXT": [
+      "Your next {@@}{%1$s|1=Block gaining card gives|@=%1$s Block gaining cards give} 50%% more Block",
+      "Your next Block gaining card gives 50% more #yBlock",
+      "Your next %s #yBlock gaining cards give 50%% more #yBlock"
+    ]
+  },
+  "${ModID}:HavocComponent": {
+    "TEXT": ["Play the top cards of your draw pile and #yExhaust them"],
+    "EXTRA_TEXT": [
+      "Play the top {@@}{%1$s|1=card|@=%1$s cards} of your draw pile and Exhaust {%1$s|1=it|@=them}",
+      "Play the top card of your draw pile and Exhaust it",
+      "Play the top %s cards of your draw pile and Exhaust them"
+    ]
+  },
+  "${ModID}:ExhaustCardsComponent": {
+    "TEXT": [
+      "#yExhaust cards %s",
+      "Optionally #yExhaust cards %s",
+      "#yExhaust random cards %s",
+      "in your hand",
+      "in your draw pile",
+      "in your discard pile",
+      "for each card Exhausted"
+    ],
+    "EXTRA_TEXT": [
+      "Exhaust %1$s card{@@}{%1$s|>1=s}%2$s",
+      "Exhaust a card%s",
+      "Exhaust %1$s cards%2$s",
+      "Exhaust up to %1$s card{@@}{%1$s|>1=s}%2$s",
+      "Exhaust up to 1 card%s",
+      "Exhaust up to %1$s cards%2$s",
+      "Exhaust %1$s random card{@@}{%1$s|>1=s}%2$s",
+      "Exhaust a random card%s",
+      "Exhaust %1$s random cards%2$s"
+    ]
+  },
+  "${ModID}:EnergyIfDebuffComponent": {
+    "TEXT": ["Gain #yEnergy if the enemy has a debuff"],
+    "EXTRA_TEXT": [
+      "If the enemy has a debuff, gain {@@}{%1$s|1=[E]|2=[E] [E]|3=[E] [E] [E}|@=%1$s [E]} ",
+      "If the enemy has a debuff, gain [E] ",
+      "If the enemy has a debuff, gain [E] [E] ",
+      "If the enemy has a debuff, gain [E] [E] [E] ",
+      "If the enemy has a debuff, gain %s [E] "
+    ]
+  },
+  "${ModID}:NextTurnDrawComponent": {
+    "TEXT": ["Draw cards next turn"],
+    "EXTRA_TEXT": [
+      "Next turn, draw %1$s additional card{@@}{%1$s|>1=s}",
+      "Next turn, draw an additional card",
+      "Next turn, draw %s additional cards"
+    ]
+  },
+  "${ModID}:NextTurnEnergyComponent": {
+    "TEXT": ["Gain #yEnergy next turn"],
+    "EXTRA_TEXT": [
+      "Next turn, gain {@@}{%1$s|1=[E]|2=[E] [E]|3=[E] [E] [E}|@=%1$s [E]} ",
+      "Next turn, gain [E] ",
+      "Next turn, gain [E] [E] ",
+      "Next turn, gain [E] [E] [E] ",
+      "Next turn, gain %s [E] "
+    ]
+  },
+  "${ModID}:IncreaseDebuffsComponent": {
+    "TEXT": [
+      "Increase your debuffs",
+      "Increase the enemy's debuffs",
+      "Increase a random enemy's debuffs",
+      "Increase ALL enemies' debuffs",
+      "Invalid Increase Debuffs"
+    ],
+    "EXTRA_TEXT": [
+      "Increase your debuffs by %s",
+      "Increase the enemy's debuffs by %s",
+      "Increase a random enemy's debuffs by %s",
+      "Increase ALL enemies' debuffs by %s",
+      "Invalid Increase Debuffs: %s"
+    ]
+  },
+  "${ModID}:HalveEffectsComponent": {
+    "TEXT": ["Halve other effects"],
+    "EXTRA_TEXT": [""]
+  },
+  "${ModID}:AddRetainComponent": {
+    "TEXT": ["Fusion has #yRetain"],
+    "EXTRA_TEXT": ["Retain"]
+  },
+  "${ModID}:AddEtherealComponent": {
+    "TEXT": ["Fusion has #yEthereal"],
+    "EXTRA_TEXT": ["Ethereal"]
+  },
+  "${ModID}:AddExhaustComponent": {
+    "TEXT": ["Fusion has #yExhaust"],
+    "EXTRA_TEXT": ["Exhaust"]
+  },
+  "${ModID}:AddMindMeldComponent": {
+    "TEXT": ["Fusion has #yMind-Meld"],
+    "EXTRA_TEXT": ["${ModID}:Mind-Meld."]
+  },
+  "${ModID}:AddDoublePlayComponent": {
+    "TEXT": ["Fusion has #yDouble #yPlay"],
+    "EXTRA_TEXT": ["${ModID}:Double_Play"]
+  },
+  "${ModID}:AddCloseEncounterComponent": {
+    "TEXT": ["Fusion has #yClose #yEncounter"],
+    "EXTRA_TEXT": ["${ModID}:Close_Encounter"]
+  }
+}

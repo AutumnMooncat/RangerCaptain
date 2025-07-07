@@ -1,5 +1,6 @@
 package RangerCaptain.actions;
 
+import RangerCaptain.cards.tokens.FusedCard;
 import RangerCaptain.screens.FusionScreen;
 import RangerCaptain.util.Wiz;
 import basemod.BaseMod;
@@ -44,11 +45,11 @@ public class FusionAction extends AbstractGameAction {
         } else if (!((FusionScreen) BaseMod.getCustomScreen(FusionScreen.Enum.FUSION_SCREEN)).wereCardsRetrieved) {
             AbstractCard baseCard = ((FusionScreen) BaseMod.getCustomScreen(FusionScreen.Enum.FUSION_SCREEN)).baseCard;
             AbstractCard donorCard = ((FusionScreen) BaseMod.getCustomScreen(FusionScreen.Enum.FUSION_SCREEN)).donorCard;
-            Wiz.fuse(baseCard, donorCard);
-            baseCard.superFlash();
+            FusedCard fusion = Wiz.fuse(baseCard, donorCard);
+            fusion.superFlash();
             CardCrawlGame.sound.play("GHOST_ORB_IGNITE_1");
-            //Only add baseCard back, donorCard has been fused
-            hand.add(baseCard);
+            //Only add fusion back, baseCard and donorCard have been fused
+            hand.add(fusion);
             ((FusionScreen) BaseMod.getCustomScreen(FusionScreen.Enum.FUSION_SCREEN)).wereCardsRetrieved = true;
             ((FusionScreen) BaseMod.getCustomScreen(FusionScreen.Enum.FUSION_SCREEN)).baseCard = null;
             ((FusionScreen) BaseMod.getCustomScreen(FusionScreen.Enum.FUSION_SCREEN)).donorCard = null;

@@ -1,10 +1,11 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionModHelper;
-import RangerCaptain.cardmods.fusion.mods.AddCloseEncounterMod;
-import RangerCaptain.cardmods.fusion.mods.AddMindMeldMod;
-import RangerCaptain.cardmods.fusion.mods.HalveEffectsMod;
-import RangerCaptain.cardmods.fusion.mods.VulnerableMod;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cardmods.fusion.components.AddCloseEncounterComponent;
+import RangerCaptain.cardmods.fusion.components.AddMindMeldComponent;
+import RangerCaptain.cardmods.fusion.components.HalveEffectsComponent;
+import RangerCaptain.cardmods.fusion.components.VulnerableComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.patches.ExtraEffectPatches;
@@ -28,16 +29,20 @@ public class Allseer extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Allseer.class.getSimpleName());
 
     static {
-        new FusionModHelper(MonsterEnum.ALLSEER)
-                .withBlock(3)
-                .with(new VulnerableMod(1))
+        new FusionComponentHelper(MonsterEnum.ALLSEER)
+                .withCost(1)
+                .withBlock(5)
+                .with(new VulnerableComponent(1))
                 .register();
-        new FusionModHelper(MonsterEnum.KHUFO)
-                .with(new HalveEffectsMod(), new AddMindMeldMod())
+        new FusionComponentHelper(MonsterEnum.KHUFO)
+                .withCost(1)
+                .withBlock(4)
+                .with(new HalveEffectsComponent(), new AddMindMeldComponent())
                 .register();
-        new FusionModHelper(MonsterEnum.TRIPHINX)
-                .withBlock(3)
-                .with(new VulnerableMod(1), new AddCloseEncounterMod())
+        new FusionComponentHelper(MonsterEnum.TRIPHINX)
+                .withCost(1)
+                .withBlock(5)
+                .with(new VulnerableComponent(1), new AddCloseEncounterComponent())
                 .register();
     }
 

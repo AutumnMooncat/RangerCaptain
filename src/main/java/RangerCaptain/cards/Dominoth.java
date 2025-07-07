@@ -1,8 +1,9 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionModHelper;
-import RangerCaptain.cardmods.fusion.mods.ConductiveMod;
-import RangerCaptain.cardmods.fusion.mods.VigorMod;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.ConductiveComponent;
+import RangerCaptain.cardmods.fusion.components.DrawComponent;
+import RangerCaptain.cardmods.fusion.components.VigorComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.ConductivePower;
@@ -21,17 +22,22 @@ public class Dominoth extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Dominoth.class.getSimpleName());
 
     static {
-        new FusionModHelper(MonsterEnum.DOMINOTH)
-                .with(new VigorMod(4))
+        // TODO "for each" modifier
+        new FusionComponentHelper(MonsterEnum.DOMINOTH)
+                .withCost(1)
+                .with(new VigorComponent(4), new DrawComponent(1))
                 .register();
-        new FusionModHelper(MonsterEnum.WINGLOOM)
-                .with(new ConductiveMod(4))
+        new FusionComponentHelper(MonsterEnum.WINGLOOM)
+                .withCost(1)
+                .with(new ConductiveComponent(4), new DrawComponent(1))
                 .register();
-        new FusionModHelper(MonsterEnum.MOTHMANIC)
-                .with(new ConductiveMod(6))
+        new FusionComponentHelper(MonsterEnum.MOTHMANIC)
+                .withCost(1)
+                .with(new ConductiveComponent(6), new DrawComponent(1))
                 .register();
-        new FusionModHelper(MonsterEnum.TOKUSECT)
-                .with(new VigorMod(7))
+        new FusionComponentHelper(MonsterEnum.TOKUSECT)
+                .withCost(1)
+                .with(new VigorComponent(4), new DrawComponent(2))
                 .register();
     }
 
@@ -75,6 +81,7 @@ public class Dominoth extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade0() {
+        // TODO Vigor -> Conductive with no other upgrades?
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.WINGLOOM);
@@ -85,7 +92,6 @@ public class Dominoth extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade1() {
-        //upgradeMagicNumber(1);
         upgradeSecondMagic(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
@@ -93,7 +99,7 @@ public class Dominoth extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade2() {
-        upgradeSecondMagic(3);
+        upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
         setMonsterData(MonsterEnum.TOKUSECT);

@@ -5,6 +5,10 @@
     "UPGRADE_DESCRIPTION": "Upgrade description",
     "EXTENDED_DESCRIPTION": ["Extra Stuff"]
   },
+  "${ModID}:FusedCard": {
+    "NAME": "Fused Card",
+    "DESCRIPTION": ""
+  },
   "${ModID}:AirAltar": {
     "NAME": "Air Altar",
     "DESCRIPTION": "Exhaust 1 card. NL Gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} . NL Increase this card's Energy gain by 1 this combat."
@@ -352,7 +356,7 @@
   },
   "${ModID}:Umbrahella": {
     "NAME": "Umbrahella",
-    "DESCRIPTION": "${ModID}:Perfect. NL Deal !D!X damage and apply !M!X Poison to ALL enemies."
+    "DESCRIPTION": "${ModID}:Perfect. NL Deal !D!X damage and apply !M!X ${ModID}:Toxin to ALL enemies."
   },
   "${ModID}:Undyin": {
     "NAME": "Undyin",

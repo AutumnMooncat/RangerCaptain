@@ -1,8 +1,8 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionModHelper;
-import RangerCaptain.cardmods.fusion.mods.NextTurnEnergyMod;
-import RangerCaptain.cardmods.fusion.mods.WeakMod;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.NextTurnEnergyComponent;
+import RangerCaptain.cardmods.fusion.components.WeakComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.APBoostPower;
@@ -21,23 +21,30 @@ public class Springheel extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Springheel.class.getSimpleName());
 
     static {
-        new FusionModHelper(MonsterEnum.SPRINGHEEL)
-                .withDamage(3, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
-                .with(new WeakMod(1))
+        new FusionComponentHelper(MonsterEnum.SPRINGHEEL)
+                .withCost(1)
+                .withDamage(5, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
+                .with(new WeakComponent(1))
                 .register();
-        new FusionModHelper(MonsterEnum.HOPSKIN)
-                .withDamage(4, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
-                .with(new WeakMod(2))
+        new FusionComponentHelper(MonsterEnum.HOPSKIN)
+                .withCost(1)
+                .withDamage(6, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
+                .with(new WeakComponent(2))
                 .register();
-        new FusionModHelper(MonsterEnum.RIPTERRA)
-                .withDamage(7, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
-                .with(new WeakMod(2))
+        new FusionComponentHelper(MonsterEnum.RIPTERRA)
+                .withCost(1)
+                .withDamage(9, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
+                .with(new WeakComponent(2))
                 .register();
-        new FusionModHelper(MonsterEnum.SNOOPIN)
-                .with(new WeakMod(1), new NextTurnEnergyMod(1))
+        new FusionComponentHelper(MonsterEnum.SNOOPIN)
+                .withCost(1)
+                .withDamage(5, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
+                .with(new WeakComponent(1), new NextTurnEnergyComponent(1))
                 .register();
-        new FusionModHelper(MonsterEnum.SCAMPIRE)
-                .with(new WeakMod(1), new NextTurnEnergyMod(2))
+        new FusionComponentHelper(MonsterEnum.SCAMPIRE)
+                .withCost(1)
+                .withDamage(5, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
+                .with(new WeakComponent(1), new NextTurnEnergyComponent(2))
                 .register();
     }
 

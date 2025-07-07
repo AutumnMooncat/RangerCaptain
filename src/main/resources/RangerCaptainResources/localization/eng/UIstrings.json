@@ -23,13 +23,13 @@
     ],
     "EXTRA_TEXT": [
       "Fusion",
-      "Pressing this button will spend [E] to #yFuse two monster cards. NL #yFusions play the effect of both cards at the more expensive card's cost."
+      "Pressing this button will spend [E] to #yFuse two monster cards. NL #yFusions blend the effect of both cards scaled to the more expensive card's cost."
     ]
   },
   "${ModID}:FusionScreen": {
     "TEXT": [
-      "Choose a base card.",
-      "Choose a donor card.",
+      "Choose first monster.",
+      "Choose second monster.",
       "Fuse!"
     ]
   },
