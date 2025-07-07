@@ -1,5 +1,9 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cardmods.fusion.components.ConductiveComponent;
+import RangerCaptain.cardmods.fusion.components.ResonanceComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.patches.CustomTags;
@@ -16,6 +20,14 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Arkidd extends AbstractEasyCard {
     public final static String ID = makeID(Arkidd.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.ARKIDD)
+                .withCost(1)
+                .with(new ConductiveComponent(3, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new ResonanceComponent(1, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .register();
+    }
 
     public Arkidd() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
