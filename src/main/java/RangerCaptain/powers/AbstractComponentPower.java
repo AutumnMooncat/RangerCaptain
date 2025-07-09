@@ -1,12 +1,12 @@
-package RangerCaptain.powers.interfaces;
+package RangerCaptain.powers;
 
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractDamageModComponent;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractPowerComponent;
 import RangerCaptain.patches.ActionCapturePatch;
-import RangerCaptain.powers.AbstractEasyPower;
 import RangerCaptain.util.CalcHelper;
 import RangerCaptain.util.Wiz;
+import basemod.ReflectionHacks;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.patches.BindingPatches;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
@@ -38,6 +38,8 @@ public abstract class AbstractComponentPower extends AbstractEasyPower implement
     public abstract void updateNormalDescription();
 
     public void triggerComponents(AbstractMonster target, boolean toTop) {
+        boolean couldPass = ReflectionHacks.getPrivateStatic(BindingPatches.class, "canPassInstigator");
+        ReflectionHacks.setPrivateStatic(BindingPatches.class, "canPassInstigator", true);
         DamageModifierManager.clearModifiers(dummyCard);
         for (AbstractComponent c : captured) {
             if (c instanceof AbstractDamageModComponent) {
@@ -54,6 +56,7 @@ public abstract class AbstractComponentPower extends AbstractEasyPower implement
         } else {
             ActionCapturePatch.releaseToBot();
         }
+        ReflectionHacks.setPrivateStatic(BindingPatches.class, "canPassInstigator", couldPass);
     }
 
     public void captureCheck(AbstractGameAction action) {
