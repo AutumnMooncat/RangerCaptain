@@ -29,7 +29,7 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
 
     @Override
     public boolean captures(AbstractComponent other) {
-        return other.type == ComponentType.BLOCK || other.type == ComponentType.DAMAGE || other.type == ComponentType.APPLY || other.type == ComponentType.DO;
+        return other.type == ComponentType.BLOCK || other.type == ComponentType.DAMAGE || other.type == ComponentType.APPLY || other.type == ComponentType.DO || other instanceof AbstractDamageModComponent;
     }
 
     @Override
@@ -54,7 +54,8 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
         List<AbstractComponent> enemyTarget = captured.stream().filter(c -> c.target == ComponentTarget.ENEMY).collect(Collectors.toList());
         List<AbstractComponent> randomTarget = captured.stream().filter(c -> c.target == ComponentTarget.ENEMY_RANDOM).collect(Collectors.toList());
         List<AbstractComponent> aoeTarget = captured.stream().filter(c -> c.target == ComponentTarget.ENEMY_AOE).collect(Collectors.toList());
-        List<AbstractComponent> noTarget = captured.stream().filter(c -> c.target == ComponentTarget.NONE).collect(Collectors.toList());
+        List<AbstractComponent> noTarget = captured.stream().filter(c -> c.target == ComponentTarget.NONE && !(c instanceof AbstractDamageModComponent)).collect(Collectors.toList());
+        List<AbstractComponent> mods = captured.stream().filter(c -> c instanceof AbstractDamageModComponent).collect(Collectors.toList());
 
         // Self
         // Gain %s Block and (Gain) %s <effect>, Take %s damage, other
@@ -174,6 +175,15 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
 
         if (text.isEmpty()) {
             text = "Invalid Power";
+        }
+
+        for (AbstractComponent mod : mods) {
+            currentParts.add(mod.rawCapturedText());
+        }
+        if (!currentParts.isEmpty()) {
+            currentParts.add(0, text);
+            text = StringUtils.join(currentParts, ". NL ");
+            currentParts.clear();
         }
         return text;
     }
