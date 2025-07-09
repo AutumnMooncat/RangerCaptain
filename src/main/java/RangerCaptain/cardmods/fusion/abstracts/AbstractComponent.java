@@ -83,6 +83,9 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         DEFERRED,
         MUST_CAPTURE,
         MUST_BE_CAPTURED,
+        REQUIRES_BLOCK,
+        REQUIRES_DAMAGE,
+        REQUIRES_APPLY,
         INVERSE_PREFERRED,
         INVERSE_FORCED,
         DRAW_FOLLOWUP,
@@ -185,6 +188,8 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
 
     public void applyTraits(FusedCard card, List<AbstractComponent> captured) {}
 
+    public void postAssignment(FusedCard card, List<AbstractComponent> otherComponents) { }
+
     public void glowCheck(FusedCard card) {}
 
     public String injectXOnDynvars(String text) {
@@ -269,6 +274,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         resolveTraits(card, components);
         resolveAmounts(card.cost, components);
         resolveDynVars(components);
+        resolvePostAssignment(card, components);
         resolveRawDescription(card, components);
         card.rollerKey += StringUtils.join(components);
         CardArtRoller.computeCard(card);
@@ -315,6 +321,9 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
             }
         }
         components.removeIf(c -> (c.hasFlags(Flag.MUST_BE_CAPTURED) && !captured.contains(c)) || (c.hasFlags(Flag.MUST_CAPTURE) && captures.get(c).isEmpty()));
+        components.removeIf(c -> c.hasFlags(Flag.REQUIRES_BLOCK) && components.stream().noneMatch(check -> check.type == ComponentType.BLOCK));
+        components.removeIf(c -> c.hasFlags(Flag.REQUIRES_DAMAGE) && components.stream().noneMatch(check -> check.type == ComponentType.DAMAGE));
+        components.removeIf(c -> c.hasFlags(Flag.REQUIRES_APPLY) && components.stream().noneMatch(check -> check.type == ComponentType.APPLY));
         Collections.sort(components);
     }
 
@@ -490,6 +499,12 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
                     break;
             }
             occupied.put(c.dynvar, c.baseAmount);
+        }
+    }
+
+    public static void resolvePostAssignment(FusedCard card, List<AbstractComponent> components) {
+        for (AbstractComponent component : components) {
+            component.postAssignment(card, components.stream().filter(c -> c != component).collect(Collectors.toList()));
         }
     }
 
