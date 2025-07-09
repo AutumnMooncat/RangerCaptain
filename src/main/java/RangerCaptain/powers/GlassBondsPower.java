@@ -4,7 +4,6 @@ import RangerCaptain.MainModfile;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.components.OnPlayPerfectComponent;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
-import RangerCaptain.powers.interfaces.AbstractComponentPower;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
