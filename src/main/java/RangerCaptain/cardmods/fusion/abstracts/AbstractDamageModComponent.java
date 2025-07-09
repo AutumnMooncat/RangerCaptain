@@ -11,6 +11,7 @@ import java.util.List;
 public abstract class AbstractDamageModComponent extends AbstractComponent {
     public AbstractDamageModComponent(String ID) {
         this(ID, -1);
+        setFlags(Flag.REQUIRES_DAMAGE);
     }
 
     public AbstractDamageModComponent(String ID, int base) {
