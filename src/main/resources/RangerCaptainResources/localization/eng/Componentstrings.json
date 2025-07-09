@@ -111,6 +111,40 @@
       "%s damage"
     ]
   },
+  "${ModID}:MultiDamageComponent": {
+    "TEXT": [
+      "Take damage multiple times",
+      "Deal damage multiple times",
+      "Deal damage to a random enemy multiple times",
+      "Deal damage to ALL enemies multiple times",
+      "Invalid Damage"
+    ],
+    "EXTRA_TEXT": [
+      "Take %1$s damage %2$s times",
+      "Deal %1$s damage %2$s times",
+      "Deal %1$s damage to a random enemy %2$s times",
+      "Deal %1$s damage to ALL enemies %2$s times",
+      "Invalid Multi Damage: %1$s %2$s",
+      "%1$s damage %2$s times"
+    ]
+  },
+  "${ModID}:NextTurnDamageComponent": {
+    "TEXT": [
+      "Take damage next turn",
+      "Deal damage next turn",
+      "Deal damage to a random enemy next turn",
+      "Deal damage to ALL enemies next turn",
+      "Invalid Damage Next Turn"
+    ],
+    "EXTRA_TEXT": [
+      "Next turn, take %s damage",
+      "Next turn, deal %s damage",
+      "Next turn, deal %s damage to a random enemy",
+      "Next turn, deal %s damage to ALL enemies",
+      "Invalid Damage Next Turn: %s",
+      "%s damage next turn"
+    ]
+  },
   "${ModID}:BlockComponent": {
     "TEXT": [
       "Gain #yBlock",

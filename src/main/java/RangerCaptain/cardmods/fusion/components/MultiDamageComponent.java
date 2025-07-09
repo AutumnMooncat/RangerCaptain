@@ -1,6 +1,7 @@
 package RangerCaptain.cardmods.fusion.components;
 
 import RangerCaptain.MainModfile;
+import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -12,27 +13,27 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import org.apache.commons.lang3.StringUtils;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class DamageComponent extends AbstractComponent {
-    public static final String ID = MainModfile.makeID(DamageComponent.class.getSimpleName());
+public class MultiDamageComponent extends AbstractComponent {
+    public static final String ID = MainModfile.makeID(MultiDamageComponent.class.getSimpleName());
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private final AbstractGameAction.AttackEffect effect;
+    private int hits;
 
-    public DamageComponent(int base, AbstractGameAction.AttackEffect effect) {
-        this(base, effect, ComponentTarget.ENEMY);
+    public MultiDamageComponent(int base, int hits, AbstractGameAction.AttackEffect effect) {
+        this(base, hits, effect, ComponentTarget.ENEMY);
     }
 
-    public DamageComponent(int base, AbstractGameAction.AttackEffect effect, ComponentTarget target) {
+    public MultiDamageComponent(int base, int hits, AbstractGameAction.AttackEffect effect, ComponentTarget target) {
         super(ID, base, target == ComponentTarget.SELF ? ComponentType.APPLY : ComponentType.DAMAGE, target, target == ComponentTarget.SELF ? DynVar.MAGIC : DynVar.DAMAGE);
         this.effect = effect;
+        this.hits = hits;
         isSimple = true;
     }
 
@@ -47,7 +48,7 @@ public class DamageComponent extends AbstractComponent {
 
     @Override
     public boolean shouldStack(AbstractComponent other) {
-        if (other.type == ComponentType.DAMAGE && !(other instanceof NextTurnDamageComponent)) {
+        if (other instanceof MultiDamageComponent) {
             if (target == other.target) {
                 return true;
             }
@@ -60,22 +61,14 @@ public class DamageComponent extends AbstractComponent {
 
     @Override
     public void receiveStacks(AbstractComponent other) {
+        float mult = 0.5f;
         if (target == ComponentTarget.ENEMY_AOE && other.target == ComponentTarget.ENEMY) {
-            baseAmount += (int) (other.baseAmount * 0.75f);
-        } else {
-            baseAmount += other.baseAmount;
+            mult *= 0.75f;
         }
-    }
-
-    @Override
-    public boolean captures(AbstractComponent other) {
-        if (other.type == ComponentType.APPLY && other.isSimple) {
-            if (target == ComponentTarget.ENEMY_AOE && other.target == ComponentTarget.ENEMY_AOE) {
-                return true;
-            }
-            return target == ComponentTarget.ENEMY_RANDOM && other.target == ComponentTarget.ENEMY_RANDOM;
+        if (other instanceof MultiDamageComponent) {
+            hits += ((MultiDamageComponent) other).hits - 1;
         }
-        return false;
+        baseAmount += (int) (other.baseAmount * mult);
     }
 
     @Override
@@ -85,20 +78,12 @@ public class DamageComponent extends AbstractComponent {
 
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
-        if (target == ComponentTarget.SELF || target == ComponentTarget.ENEMY) {
-            return String.format(CARD_TEXT[target.ordinal()], dynKey());
-        }
-        String insert = "";
-        List<String> parts = captured.stream().map(AbstractComponent::rawCapturedText).collect(Collectors.toList());
-        if (!parts.isEmpty()) {
-            insert = AND_APPLY + " " + StringUtils.join(parts, " " + AND + " ") + " ";
-        }
-        return String.format(CARD_TEXT[target.ordinal()], dynKey(), insert);
+        return String.format(CARD_TEXT[target.ordinal()], dynKey(), hits);
     }
 
     @Override
     public String rawCapturedText() {
-        return String.format(CARD_TEXT[ComponentTarget.values().length], dynKey());
+        return String.format(CARD_TEXT[ComponentTarget.values().length], dynKey(), hits);
     }
 
     @Override
@@ -108,16 +93,31 @@ public class DamageComponent extends AbstractComponent {
         DamageInfo.DamageType dt = provider instanceof AbstractCard ? ((AbstractCard) provider).damageTypeForTurn : DamageInfo.DamageType.THORNS;
         switch (target) {
             case SELF:
-                addToBot(new DamageAction(p, new DamageInfo(p, amount, dt), effect));
+                for (int i = 0; i < hits; i++) {
+                    addToBot(new DamageAction(p, new DamageInfo(p, amount, dt), effect));
+                }
                 break;
             case ENEMY:
-                addToBot(new DamageAction(m, new DamageInfo(p, amount, dt), effect));
+                for (int i = 0; i < hits; i++) {
+                    addToBot(new DamageAction(m, new DamageInfo(p, amount, dt), effect));
+                }
                 break;
             case ENEMY_RANDOM:
+                // TODO effect may not match text if captured
                 if (provider instanceof AbstractCard) {
-                    addToBot(new AttackDamageRandomEnemyAction((AbstractCard) provider, effect));
+                    for (int i = 0; i < hits; i++) {
+                        addToBot(new AttackDamageRandomEnemyAction((AbstractCard) provider, effect));
+                    }
                 }
                 else {
+                    addToBot(new DoAction(() -> {
+                        AbstractMonster mon = AbstractDungeon.getMonsters().getRandomMonster(null, true, AbstractDungeon.cardRandomRng);
+                        if (mon != null) {
+                            for (int i = 0; i < hits; i++) {
+                                this.addToTop(new DamageAction(mon, new DamageInfo(p, amount, dt), effect));
+                            }
+                        }
+                    }));
                     addToBot(new DamageRandomEnemyAction(new DamageInfo(p, amount, dt), effect));
                 }
                 break;
@@ -138,20 +138,21 @@ public class DamageComponent extends AbstractComponent {
                             scaled[i] *= effect;
                         }
                     }
-                    addToBot(new DamageAllEnemiesAction(p, scaled, dt, effect));
+                    for (int i = 0; i < hits; i++) {
+                        addToBot(new DamageAllEnemiesAction(p, scaled, dt, effect));
+                    }
                 }
                 else {
-                    addToBot(new DamageAllEnemiesAction(p, DamageInfo.createDamageMatrix(amount, true), dt, effect));
+                    for (int i = 0; i < hits; i++) {
+                        addToBot(new DamageAllEnemiesAction(p, DamageInfo.createDamageMatrix(amount, true), dt, effect));
+                    }
                 }
                 break;
-        }
-        for (AbstractComponent cap : captured) {
-            cap.onTrigger(provider, p, m, Collections.emptyList());
         }
     }
 
     @Override
     public AbstractComponent makeCopy() {
-        return new DamageComponent(baseAmount, effect, target);
+        return new MultiDamageComponent(baseAmount, hits, effect, target);
     }
 }

@@ -35,6 +35,21 @@ public class FusionComponentHelper {
         return this;
     }
 
+    public FusionComponentHelper withMultiDamage(int damage, int hits, AbstractGameAction.AttackEffect effect) {
+        this.components.add(new MultiDamageComponent(damage, hits, effect));
+        return this;
+    }
+
+    public FusionComponentHelper withMultiDamageRandom(int damage, int hits, AbstractGameAction.AttackEffect effect) {
+        this.components.add(new MultiDamageComponent(damage, hits, effect, AbstractComponent.ComponentTarget.ENEMY_RANDOM));
+        return this;
+    }
+
+    public FusionComponentHelper withMultiDamageAOE(int damage, int hits, AbstractGameAction.AttackEffect effect) {
+        this.components.add(new MultiDamageComponent(damage, hits, effect, AbstractComponent.ComponentTarget.ENEMY_AOE));
+        return this;
+    }
+
     public FusionComponentHelper withBlock(int block) {
         this.components.add(new BlockComponent(block));
         return this;

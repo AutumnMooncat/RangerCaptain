@@ -17,16 +17,18 @@ public class NextTurnDamagePower extends AbstractPower implements NonStackablePo
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    public final AbstractGameAction.AttackEffect effect;
     public final AbstractCreature target;
     public final DamageInfo info;
 
-    public NextTurnDamagePower(AbstractCreature owner, AbstractCreature target, DamageInfo info) {
+    public NextTurnDamagePower(AbstractCreature owner, AbstractCreature target, DamageInfo info, AbstractGameAction.AttackEffect effect) {
         this.ID = POWER_ID;
         this.name = NAME;
         this.owner = owner;
         this.amount = info.base;
         this.target = target;
         this.info = info;
+        this.effect = effect;
         this.type = PowerType.BUFF;
         this.loadRegion("infiniteBlades");
         updateDescription();
@@ -40,7 +42,7 @@ public class NextTurnDamagePower extends AbstractPower implements NonStackablePo
     @Override
     public void atStartOfTurn() {
         flash();
-        addToBot(new DamageAction(target, info, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        addToBot(new DamageAction(target, info, effect));
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 }
