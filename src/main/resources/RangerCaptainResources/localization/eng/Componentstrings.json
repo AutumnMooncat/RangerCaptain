@@ -311,5 +311,13 @@
   "${ModID}:AddCloseEncounterComponent": {
     "TEXT": ["Fusion has #yClose #yEncounter"],
     "EXTRA_TEXT": ["${ModID}:Close_Encounter"]
+  },
+  "${ModID}:AddPiercingDamageComponent": {
+    "TEXT": ["Ignores #yBlock"],
+    "EXTRA_TEXT": ["Ignores Block"]
+  },
+  "${ModID}:AddBootDamageComponent": {
+    "TEXT": ["Limits minimum damage"],
+    "EXTRA_TEXT": ["If this would deal %1$s or less unblocked damage, raise it to %2$s"]
   }
 }
