@@ -122,8 +122,9 @@ public class DamageComponent extends AbstractComponent {
                 }
                 break;
             case ENEMY_AOE:
+                int[] damages = DamageInfo.createDamageMatrix(amount, true);
                 if (provider instanceof AbstractCard) {
-                    int[] scaled = ((AbstractCard) provider).multiDamage;
+                    damages = ((AbstractCard) provider).multiDamage;
                     if (((AbstractCard) provider).cost == -1) {
                         int effect = EnergyPanel.totalCount;
                         if (((AbstractCard) provider).energyOnUse != -1) {
@@ -134,15 +135,12 @@ public class DamageComponent extends AbstractComponent {
                             effect += 2;
                             Wiz.adp().getRelic("Chemical X").flash();
                         }
-                        for (int i = 0 ; i < scaled.length ; i++) {
-                            scaled[i] *= effect;
+                        for (int i = 0 ; i < damages.length ; i++) {
+                            damages[i] *= effect;
                         }
                     }
-                    addToBot(new DamageAllEnemiesAction(p, scaled, dt, effect));
                 }
-                else {
-                    addToBot(new DamageAllEnemiesAction(p, DamageInfo.createDamageMatrix(amount, true), dt, effect));
-                }
+                addToBot(new DamageAllEnemiesAction(p, damages, dt, effect));
                 break;
         }
         for (AbstractComponent cap : captured) {

@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.AttackDamageRandomEnemyAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -111,19 +110,19 @@ public class MultiDamageComponent extends AbstractComponent {
                 }
                 else {
                     addToBot(new DoAction(() -> {
-                        AbstractMonster mon = AbstractDungeon.getMonsters().getRandomMonster(null, true, AbstractDungeon.cardRandomRng);
+                        AbstractMonster mon = AbstractDungeon.getMonsters().getRandomMonster();
                         if (mon != null) {
                             for (int i = 0; i < hits; i++) {
                                 this.addToTop(new DamageAction(mon, new DamageInfo(p, amount, dt), effect));
                             }
                         }
                     }));
-                    addToBot(new DamageRandomEnemyAction(new DamageInfo(p, amount, dt), effect));
                 }
                 break;
             case ENEMY_AOE:
+                int[] damages = DamageInfo.createDamageMatrix(amount, true);
                 if (provider instanceof AbstractCard) {
-                    int[] scaled = ((AbstractCard) provider).multiDamage;
+                    damages = ((AbstractCard) provider).multiDamage;
                     if (((AbstractCard) provider).cost == -1) {
                         int effect = EnergyPanel.totalCount;
                         if (((AbstractCard) provider).energyOnUse != -1) {
@@ -134,18 +133,13 @@ public class MultiDamageComponent extends AbstractComponent {
                             effect += 2;
                             Wiz.adp().getRelic("Chemical X").flash();
                         }
-                        for (int i = 0 ; i < scaled.length ; i++) {
-                            scaled[i] *= effect;
+                        for (int i = 0 ; i < damages.length ; i++) {
+                            damages[i] *= effect;
                         }
                     }
-                    for (int i = 0; i < hits; i++) {
-                        addToBot(new DamageAllEnemiesAction(p, scaled, dt, effect));
-                    }
                 }
-                else {
-                    for (int i = 0; i < hits; i++) {
-                        addToBot(new DamageAllEnemiesAction(p, DamageInfo.createDamageMatrix(amount, true), dt, effect));
-                    }
+                for (int i = 0; i < hits; i++) {
+                    addToBot(new DamageAllEnemiesAction(p, damages, dt, effect));
                 }
                 break;
         }
