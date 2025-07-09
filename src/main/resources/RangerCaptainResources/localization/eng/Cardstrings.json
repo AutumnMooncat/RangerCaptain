@@ -37,7 +37,7 @@
   },
   "${ModID}:Bansheep": {
     "NAME": "Bansheep",
-    "DESCRIPTION": "Deal !D! damage{@@}{!M!|>0= !M! times. NL Ignores Block}.{!${ModID}:I!|>0= NL If this would deal !${ModID}:M2! or less unblocked damage, raise it to !${ModID}:I!.}",
+    "DESCRIPTION": "Deal !D! damage. NL Next turn, deal !D! damage.{@@}{!${ModID}:I!|1= NL Enemy loses !M! Strength this turn.|2= NL Startup: Gain !M! Vigor.}",
     "EXTENDED_DESCRIPTION": ["Wooltergeist","Ramtasm","Zombleat","Capricorpse"]
   },
   "${ModID}:Binvader": {

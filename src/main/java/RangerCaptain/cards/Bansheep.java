@@ -1,39 +1,89 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.actions.ApplyPowerActionWithFollowup;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cardmods.fusion.components.NextTurnDamageComponent;
+import RangerCaptain.cardmods.fusion.components.TempStrengthComponent;
+import RangerCaptain.cardmods.fusion.components.VigorComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
-import RangerCaptain.damageMods.BootDamage;
-import RangerCaptain.damageMods.PiercingDamage;
+import RangerCaptain.powers.NextTurnDamagePower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
-import basemod.helpers.CardModifierManager;
-import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
+import RangerCaptain.util.Wiz;
+import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.StartupCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.GainStrengthPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 import static RangerCaptain.MainModfile.makeID;
 
-public class Bansheep extends AbstractMultiUpgradeCard {
+public class Bansheep extends AbstractMultiUpgradeCard implements StartupCard {
     public final static String ID = makeID(Bansheep.class.getSimpleName());
+
+    static  {
+        new FusionComponentHelper(MonsterEnum.BANSHEEP)
+                .withCost(1)
+                .withDamage(5, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new NextTurnDamageComponent(5, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
+                .register();
+        new FusionComponentHelper(MonsterEnum.WOOLTERGEIST)
+                .withCost(1)
+                .withDamage(6, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new NextTurnDamageComponent(6, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
+                .with(new TempStrengthComponent(3, AbstractComponent.ComponentTarget.ENEMY, false))
+                .register();
+        new FusionComponentHelper(MonsterEnum.RAMTASM)
+                .withCost(1)
+                .withDamage(8, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new NextTurnDamageComponent(8, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
+                .with(new TempStrengthComponent(4, AbstractComponent.ComponentTarget.ENEMY, false))
+                .register();
+        new FusionComponentHelper(MonsterEnum.ZOMBLEAT)
+                .withCost(1)
+                .withDamage(6, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new NextTurnDamageComponent(6, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
+                .with(new VigorComponent(3))
+                .register();
+        new FusionComponentHelper(MonsterEnum.CAPRICORPSE)
+                .withCost(1)
+                .withDamage(8, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new NextTurnDamageComponent(8, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
+                .with(new VigorComponent(3))
+                .register();
+    }
 
     public Bansheep() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        baseDamage = damage = 10;
-        baseMagicNumber = magicNumber = 0;
+        baseDamage = damage = 7;
         setMonsterData(MonsterEnum.BANSHEEP);
         baseInfo = info = 0;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (magicNumber > 0) {
-            for (int i = 0 ; i < magicNumber ; i++) {
-                dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
-            }
-        } else {
-            dmg(m, AbstractGameAction.AttackEffect.BLUNT_HEAVY);
+        dmg(m, AbstractGameAction.AttackEffect.BLUNT_HEAVY);
+        Wiz.applyToSelf(new NextTurnDamagePower(p, m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        if (info == 1) {
+            addToBot(new ApplyPowerActionWithFollowup(
+                    new ApplyPowerAction(m, p, new StrengthPower(m, -magicNumber)),
+                    new ApplyPowerAction(m, p, new GainStrengthPower(m, magicNumber))
+            ));
         }
+    }
+
+    @Override
+    public boolean atBattleStartPreDraw() {
+        if (info == 2) {
+            Wiz.applyToSelf(new VigorPower(Wiz.adp(), magicNumber));
+        }
+        return false;
     }
 
     @Override
@@ -56,43 +106,40 @@ public class Bansheep extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade0() {
-        upgradeDamage(3);
-        DamageModifierManager.addModifier(this, new BootDamage(CardModifierManager.modifiedBaseValue(this, baseDamage, "D")));
+        upgradeDamage(1);
+        if (baseMagicNumber < 0) {
+            baseMagicNumber = magicNumber = 0;
+        }
+        upgradeMagicNumber(4);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.WOOLTERGEIST);
-        baseInfo = info = CardModifierManager.modifiedBaseValue(this, baseDamage, "D");
-        baseSecondMagic = secondMagic = info - 1;
+        baseInfo = info = 1;
     }
 
     public void upgrade1() {
-        upgradeDamage(4);
-        DamageModifierManager.modifiers(this).forEach(mod -> {
-            if (mod instanceof BootDamage) {
-                ((BootDamage) mod).amount = CardModifierManager.modifiedBaseValue(this, baseDamage, "D");
-            }
-        });
+        upgradeDamage(2);
+        upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.RAMTASM);
-        baseInfo = info = CardModifierManager.modifiedBaseValue(this, baseDamage, "D");
-        upgradedInfo = true;
-        baseSecondMagic = secondMagic = info - 1;
-        upgradedSecondMagic = true;
     }
 
     public void upgrade2() {
-        upgradeDamage(-4);
-        upgradeMagicNumber(2);
-        DamageModifierManager.addModifier(this, new PiercingDamage());
+        upgradeDamage(1);
+        if (baseMagicNumber < 0) {
+            baseMagicNumber = magicNumber = 0;
+        }
+        upgradeMagicNumber(8);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
         setMonsterData(MonsterEnum.ZOMBLEAT);
+        baseInfo = info = 2;
     }
 
     public void upgrade3() {
-        upgradeDamage(-1);
-        upgradeMagicNumber(1);
+        upgradeDamage(2);
+        upgradeMagicNumber(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[3];
         initializeTitle();
         setMonsterData(MonsterEnum.CAPRICORPSE);
