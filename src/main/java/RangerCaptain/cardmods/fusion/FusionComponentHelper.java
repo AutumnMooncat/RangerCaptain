@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Supplier;
 
 public class FusionComponentHelper {
     private final MonsterEnum monster;
@@ -102,6 +103,19 @@ public class FusionComponentHelper {
     public FusionComponentHelper withFlags(AbstractComponent component, AbstractComponent.Flag... flags) {
         component.setFlags(flags);
         this.components.add(component);
+        return this;
+    }
+
+    @SafeVarargs
+    public final FusionComponentHelper withMake(Supplier<AbstractComponent>... suppliers) {
+        for (Supplier<AbstractComponent> supplier : suppliers) {
+            this.components.add(supplier.get());
+        }
+        return this;
+    }
+
+    public FusionComponentHelper withMake(Supplier<List<AbstractComponent>> supplier) {
+        this.components.addAll(supplier.get());
         return this;
     }
 
