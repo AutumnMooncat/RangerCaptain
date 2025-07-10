@@ -90,14 +90,11 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         INVERSE_FORCED,
         DRAW_FOLLOWUP,
         DAMAGE_FOLLOWUP,
-        EXHAUST_FOLLOWUP;
-
-        public int value() {
-            return 1 << ordinal();
-        }
+        EXHAUST_FOLLOWUP
     }
 
     private final String identifier;
+    private final HashSet<Flag> flags = new HashSet<>();
     public ComponentType type;
     public ComponentTarget target;
     public DynVar dynvar;
@@ -105,7 +102,6 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
     public int baseAmount;
     public int priority;
     public boolean isSimple;
-    private int flags;
 
     public AbstractComponent(String ID, int baseAmount, ComponentType type, ComponentTarget target, DynVar desiredDynvar) {
         this.identifier = ID;
@@ -137,15 +133,13 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
     }
 
     public void setFlags(Flag... flags) {
-        for (Flag flag : flags) {
-            this.flags |= flag.value();
-        }
+        this.flags.addAll(Arrays.asList(flags));
         updatePrio();
     }
 
     public boolean hasFlags(Flag... flags) {
         for (Flag flag : flags) {
-            if ((this.flags & flag.value()) != flag.value()) {
+            if (!this.flags.contains(flag)) {
                 return false;
             }
         }
@@ -188,7 +182,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
 
     public void applyTraits(FusedCard card, List<AbstractComponent> captured) {}
 
-    public void postAssignment(FusedCard card, List<AbstractComponent> otherComponents) { }
+    public void postAssignment(FusedCard card, List<AbstractComponent> otherComponents) {}
 
     public void glowCheck(FusedCard card) {}
 
