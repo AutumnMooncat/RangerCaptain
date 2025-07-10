@@ -180,6 +180,10 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         return type == ComponentType.BLOCK || type == ComponentType.DAMAGE || type == ComponentType.APPLY || type == ComponentType.DO;
     }
 
+    public boolean canUse(FusedCard card, AbstractPlayer p, AbstractMonster m) {
+        return true;
+    }
+
     public void applyTraits(FusedCard card, List<AbstractComponent> captured) {}
 
     public void postAssignment(FusedCard card, List<AbstractComponent> otherComponents) {}

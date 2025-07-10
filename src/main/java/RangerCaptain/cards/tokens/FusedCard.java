@@ -63,6 +63,16 @@ public class FusedCard extends AbstractEasyCard implements AbstractComponent.Com
     }
 
     @Override
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        for (AbstractComponent component : components) {
+            if (!component.canUse(this, p, m)) {
+                return false;
+            }
+        }
+        return super.canUse(p, m);
+    }
+
+    @Override
     public void applyPowers() {
         if (doMultiDamage) {
             isMultiDamage = true;
