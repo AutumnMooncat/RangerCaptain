@@ -52,6 +52,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 @SpireInitializer
@@ -122,6 +123,8 @@ public class MainModfile implements
     public static float elementIconSize = 1f;
 
     public static final ArrayList<AbstractGameEffect> safeEffectQueue = new ArrayList<>();
+
+    public static final HashMap<String, Float> sfxCooldowns = new HashMap<>();
 
     public MainModfile() {
         BaseMod.subscribe(this);
@@ -423,6 +426,7 @@ public class MainModfile implements
             effect.update();
         }
         safeEffectQueue.removeIf(effect -> effect.isDone);
+        sfxCooldowns.replaceAll((s, v) -> Math.max(0, v - Gdx.graphics.getRawDeltaTime()));
     }
 
     @Override
