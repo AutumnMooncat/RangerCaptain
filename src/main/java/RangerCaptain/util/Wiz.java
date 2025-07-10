@@ -364,8 +364,14 @@ public class Wiz {
     public static FusedCard fuse(AbstractCard base, AbstractCard donor) {
         if (base instanceof AbstractEasyCard && donor instanceof AbstractEasyCard && ((AbstractEasyCard) base).getMonsterData() != null && ((AbstractEasyCard) donor).getMonsterData() != null) {
             List<AbstractComponent> components = FusionCardEffectData.getCombinedComponents(((AbstractEasyCard) base).getMonsterData(), ((AbstractEasyCard) donor).getMonsterData());
+            AbstractCard.CardRarity rarity = AbstractCard.CardRarity.COMMON;
+            if (base.rarity == AbstractCard.CardRarity.RARE || donor.rarity == AbstractCard.CardRarity.RARE) {
+                rarity = AbstractCard.CardRarity.RARE;
+            } else if (base.rarity == AbstractCard.CardRarity.UNCOMMON || donor.rarity == AbstractCard.CardRarity.UNCOMMON) {
+                rarity = AbstractCard.CardRarity.UNCOMMON;
+            }
             CardArtRoller.ReskinInfo ref = ((AbstractEasyCard) base).reskinInfo("");
-            components.add(new ReskinComponent(ref.anchor1, ref.anchor2, ref.target1, ref.target2, ref.flipX));
+            components.add(new ReskinComponent(rarity, ref.anchor1, ref.anchor2, ref.target1, ref.target2, ref.flipX));
             FusedCard fusion = new FusedCard(components);
             CardModifierManager.addModifier(fusion, new FusionFormMod(((AbstractEasyCard) base).getMonsterData(), ((AbstractEasyCard) donor).getMonsterData()));
             return fusion;

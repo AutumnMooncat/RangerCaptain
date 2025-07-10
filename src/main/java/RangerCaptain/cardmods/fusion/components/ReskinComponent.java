@@ -5,19 +5,22 @@ import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractTraitComponent;
 import RangerCaptain.cards.tokens.FusedCard;
 import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 
 import java.util.List;
 
 public class ReskinComponent extends AbstractTraitComponent {
     public static final String ID = MainModfile.makeID(ReskinComponent.class.getSimpleName());
+    public AbstractCard.CardRarity rarity;
     public Color anchor1;
     public Color anchor2;
     public Color target1;
     public Color target2;
     public boolean flipX;
 
-    public ReskinComponent(Color anchor1, Color anchor2, Color target1, Color target2, boolean flipX) {
+    public ReskinComponent(AbstractCard.CardRarity rarity, Color anchor1, Color anchor2, Color target1, Color target2, boolean flipX) {
         super(ID);
+        this.rarity = rarity;
         this.anchor1 = anchor1;
         this.anchor2 = anchor2;
         this.target1 = target1;
@@ -37,6 +40,7 @@ public class ReskinComponent extends AbstractTraitComponent {
 
     @Override
     public void applyTraits(FusedCard card, List<AbstractComponent> captured) {
+        card.rarity = rarity;
         card.anchor1 = anchor1;
         card.anchor2 = anchor2;
         card.target1 = target1;
@@ -56,6 +60,6 @@ public class ReskinComponent extends AbstractTraitComponent {
 
     @Override
     public AbstractComponent makeCopy() {
-        return new ReskinComponent(anchor1, anchor2, target1, target2, flipX);
+        return new ReskinComponent(rarity, anchor1, anchor2, target1, target2, flipX);
     }
 }
