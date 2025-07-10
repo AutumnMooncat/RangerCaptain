@@ -71,6 +71,18 @@ public class ExhaustCardsComponent extends AbstractComponent {
     }
 
     @Override
+    public void receiveStacks(AbstractComponent other) {
+        if (other instanceof ExhaustCardsComponent) {
+            optional |= ((ExhaustCardsComponent) other).optional;
+            if (other.baseAmount > baseAmount) {
+                pile = ((ExhaustCardsComponent) other).pile;
+                random |= ((ExhaustCardsComponent) other).random;
+            }
+        }
+        super.receiveStacks(other);
+    }
+
+    @Override
     public boolean captures(AbstractComponent other) {
         return other.hasFlags(Flag.EXHAUST_FOLLOWUP);
     }
