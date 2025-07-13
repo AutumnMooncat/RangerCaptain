@@ -37,9 +37,9 @@ public class GlassBondsPower extends AbstractComponentPower {
         if (CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.get(card)) {
             flash();
             if (source == null) {
-                addToTop(new GainBlockAction(owner, amount));
+                addToBot(new GainBlockAction(owner, amount));
             } else {
-                triggerComponents(null, true);
+                triggerComponents(null, false);
             }
         }
     }
