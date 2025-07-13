@@ -88,6 +88,8 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         REQUIRES_APPLY,
         INVERSE_PREFERRED,
         INVERSE_FORCED,
+        RANDOM_WHEN_CAPTURED,
+        CANT_COLLAPSE_TARGET_TEXT,
         DRAW_FOLLOWUP,
         DAMAGE_FOLLOWUP,
         EXHAUST_FOLLOWUP
@@ -102,6 +104,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
     public int baseAmount;
     public int priority;
     public boolean isSimple;
+    public boolean wasCaptured;
 
     public AbstractComponent(String ID, int baseAmount, ComponentType type, ComponentTarget target, DynVar desiredDynvar) {
         this.identifier = ID;
@@ -159,10 +162,6 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
     }
 
     public void onCapture(AbstractComponent other) {}
-
-    public boolean isCaptured(List<AbstractComponent> others) {
-        return others.stream().anyMatch(o -> o.captures(this));
-    }
 
     public boolean modifiesAmount(AbstractComponent other) {
         return false;
@@ -289,7 +288,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
             deferredCaptures.put(component, new ArrayList<>());
             inverseCaptures.put(component, new ArrayList<>());
             for (AbstractComponent other : components) {
-                if (component != other && component.captures(other) && !(other.hasFlags(Flag.INVERSE_FORCED) && component.source == other.source)) {
+                if (!component.wasCaptured && component != other && component.captures(other) && !(other.hasFlags(Flag.INVERSE_FORCED) && component.source == other.source)) {
                     if (other.hasFlags(Flag.INVERSE_PREFERRED) && component.source == other.source) {
                         inverseCaptures.get(component).add(other);
                     } else if (other.hasFlags(Flag.DEFERRED)) {
@@ -298,6 +297,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
                         captured.add(other);
                         captures.get(component).add(other);
                         component.onCapture(other);
+                        other.wasCaptured = true;
                     }
                 }
             }
@@ -305,20 +305,32 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         for (AbstractComponent component : components) {
             if (captures.get(component).isEmpty()) {
                 for (AbstractComponent other : deferredCaptures.get(component)) {
-                    captured.add(other);
-                    captures.get(component).add(other);
-                    component.onCapture(other);
+                    if (!component.wasCaptured) {
+                        captured.add(other);
+                        captures.get(component).add(other);
+                        component.onCapture(other);
+                        other.wasCaptured = true;
+                    }
                 }
             }
             if (captures.get(component).isEmpty()) {
                 for (AbstractComponent other : inverseCaptures.get(component)) {
-                    captured.add(other);
-                    captures.get(component).add(other);
-                    component.onCapture(other);
+                    if (!component.wasCaptured) {
+                        captured.add(other);
+                        captures.get(component).add(other);
+                        component.onCapture(other);
+                    }
                 }
             }
         }
-        components.removeIf(c -> (c.hasFlags(Flag.MUST_BE_CAPTURED) && !captured.contains(c)) || (c.hasFlags(Flag.MUST_CAPTURE) && captures.get(c).isEmpty()));
+        for (AbstractComponent component : captured) {
+            if (component.hasFlags(Flag.RANDOM_WHEN_CAPTURED)) {
+                component.target = ComponentTarget.ENEMY_RANDOM;
+                component.updatePrio();
+            }
+        }
+        components.removeIf(c -> c.hasFlags(Flag.MUST_BE_CAPTURED) && !captured.contains(c));
+        components.removeIf(c -> c.hasFlags(Flag.MUST_CAPTURE) && captures.get(c).isEmpty());
         components.removeIf(c -> c.hasFlags(Flag.REQUIRES_BLOCK) && components.stream().noneMatch(check -> check.type == ComponentType.BLOCK));
         components.removeIf(c -> c.hasFlags(Flag.REQUIRES_DAMAGE) && components.stream().noneMatch(check -> check.type == ComponentType.DAMAGE));
         components.removeIf(c -> c.hasFlags(Flag.REQUIRES_APPLY) && components.stream().noneMatch(check -> check.type == ComponentType.APPLY));
@@ -340,7 +352,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
 
     public static void resolveTraits(FusedCard card, List<AbstractComponent> components) {
         for (AbstractComponent component : components) {
-            if (component.isCaptured(components)) {
+            if (component.wasCaptured) {
                 continue;
             }
             List<AbstractComponent> captured = components.stream().filter(component::captures).collect(Collectors.toList());
@@ -351,7 +363,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
     public static void resolveRawDescription(FusedCard card, List<AbstractComponent> components) {
         Map<AbstractComponent, String> parts = new HashMap<>();
         for (AbstractComponent component : components) {
-            if (!component.isCaptured(components)) {
+            if (!component.wasCaptured) {
                 List<AbstractComponent> captured = components.stream().filter(component::captures).collect(Collectors.toList());
                 String found = component.rawCardText(captured);
                 if (found != null && !found.isEmpty()) {
@@ -364,7 +376,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
             if (parts.containsKey(component)) {
                 String processed = parts.get(component);
                 for (AbstractComponent other : components) {
-                    if (component != other && !other.isCaptured(components)) {
+                    if (component != other && !other.wasCaptured) {
                         processed = other.onBuildText(component, processed);
                     }
                 }
@@ -381,7 +393,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
             if (type == AbstractCard.CardType.SKILL && component.type == ComponentType.MODIFIER && components.stream().anyMatch(component::captures)) {
                 type = AbstractCard.CardType.POWER;
                 wasPower = true;
-            } else if (component.type == ComponentType.DAMAGE && !component.isCaptured(components)) {
+            } else if (component.type == ComponentType.DAMAGE && !component.wasCaptured) {
                 type = AbstractCard.CardType.ATTACK;
             }
         }
@@ -394,7 +406,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
     public static void resolveTarget(FusedCard card, List<AbstractComponent> components) {
         AbstractCard.CardTarget target = AbstractCard.CardTarget.NONE;
         for (AbstractComponent component : components) {
-            if (component.isCaptured(components)) {
+            if (component.wasCaptured) {
                 continue;
             }
             switch (component.target) {

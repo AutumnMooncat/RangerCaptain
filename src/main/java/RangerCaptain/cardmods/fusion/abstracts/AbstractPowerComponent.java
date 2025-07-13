@@ -90,6 +90,9 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
         // Give %s Block and Deal %s damage and Apply %s <effect> and other <target>
         boolean applyStarted = false;
         for (AbstractComponent component : enemyTarget) {
+            if (component.hasFlags(Flag.CANT_COLLAPSE_TARGET_TEXT)) {
+                continue;
+            }
             String part = "";
             if (component.isSimple) {
                 if (component.type == ComponentType.BLOCK) {
@@ -108,12 +111,20 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
         if (!finishedPart.isEmpty()) {
             parts.add(finishedPart + " " + targetText());
         }
+        for (AbstractComponent component : enemyTarget) {
+            if (component.hasFlags(Flag.CANT_COLLAPSE_TARGET_TEXT)) {
+                parts.add(component.rawCapturedText());
+            }
+        }
         currentParts.clear();
         applyStarted = false;
 
         // Random
         // Give %s Block and Deal %s damage and Apply %s <effect> and other to a random enemy
         for (AbstractComponent component : randomTarget) {
+            if (component.hasFlags(Flag.CANT_COLLAPSE_TARGET_TEXT)) {
+                continue;
+            }
             String part = "";
             if (component.isSimple) {
                 if (component.type == ComponentType.BLOCK) {
@@ -132,12 +143,20 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
         if (!finishedPart.isEmpty()) {
             parts.add(finishedPart + " " + RANDOM_ENEMY);
         }
+        for (AbstractComponent component : randomTarget) {
+            if (component.hasFlags(Flag.CANT_COLLAPSE_TARGET_TEXT)) {
+                parts.add(component.rawCapturedText());
+            }
+        }
         currentParts.clear();
         applyStarted = false;
 
         // AOE
         // Give %s Block and Deal %s damage and Apply %s <effect> and other to ALL enemies
         for (AbstractComponent component : aoeTarget) {
+            if (component.hasFlags(Flag.CANT_COLLAPSE_TARGET_TEXT)) {
+                continue;
+            }
             String part = "";
             if (component.isSimple) {
                 if (component.type == ComponentType.BLOCK) {
@@ -155,6 +174,11 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
         finishedPart = StringUtils.join(currentParts, " " + AND + " ");
         if (!finishedPart.isEmpty()) {
             parts.add(finishedPart + " " + ALL_ENEMIES);
+        }
+        for (AbstractComponent component : aoeTarget) {
+            if (component.hasFlags(Flag.CANT_COLLAPSE_TARGET_TEXT)) {
+                parts.add(component.rawCapturedText());
+            }
         }
         currentParts.clear();
 
