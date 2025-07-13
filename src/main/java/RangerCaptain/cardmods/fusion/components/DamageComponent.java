@@ -1,13 +1,14 @@
 package RangerCaptain.cardmods.fusion.components;
 
 import RangerCaptain.MainModfile;
+import RangerCaptain.actions.AttackDamageRandomEnemyFollowupAction;
+import RangerCaptain.actions.DamageRandomEnemyFollowupAction;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.patches.ActionCapturePatch;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.AttackDamageRandomEnemyAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -79,6 +80,13 @@ public class DamageComponent extends AbstractComponent {
     }
 
     @Override
+    public void onCapture(AbstractComponent other) {
+        if (other.target == ComponentTarget.ENEMY_RANDOM) {
+            other.target = ComponentTarget.ENEMY;
+        }
+    }
+
+    @Override
     public String componentDescription() {
         return DESCRIPTION_TEXT[target.ordinal()];
     }
@@ -109,16 +117,38 @@ public class DamageComponent extends AbstractComponent {
         switch (target) {
             case SELF:
                 addToBot(new DamageAction(p, new DamageInfo(p, amount, dt), effect));
+                for (AbstractComponent cap : captured) {
+                    cap.onTrigger(provider, p, m, Collections.emptyList());
+                }
                 break;
             case ENEMY:
                 addToBot(new DamageAction(m, new DamageInfo(p, amount, dt), effect));
+                for (AbstractComponent cap : captured) {
+                    cap.onTrigger(provider, p, m, Collections.emptyList());
+                }
                 break;
             case ENEMY_RANDOM:
                 if (provider instanceof AbstractCard) {
-                    addToBot(new AttackDamageRandomEnemyAction((AbstractCard) provider, effect));
+                    addToBot(new AttackDamageRandomEnemyFollowupAction((AbstractCard) provider, effect, targ -> {
+                        if (targ instanceof AbstractMonster) {
+                            ActionCapturePatch.doCapture = true;
+                            for (AbstractComponent cap : captured) {
+                                cap.onTrigger(provider, p, (AbstractMonster) targ, Collections.emptyList());
+                            }
+                            ActionCapturePatch.releaseToTop();
+                        }
+                    }));
                 }
                 else {
-                    addToBot(new DamageRandomEnemyAction(new DamageInfo(p, amount, dt), effect));
+                    addToBot(new DamageRandomEnemyFollowupAction(new DamageInfo(p, amount, dt), effect, targ -> {
+                        if (targ instanceof AbstractMonster) {
+                            ActionCapturePatch.doCapture = true;
+                            for (AbstractComponent cap : captured) {
+                                cap.onTrigger(provider, p, (AbstractMonster) targ, Collections.emptyList());
+                            }
+                            ActionCapturePatch.releaseToTop();
+                        }
+                    }));
                 }
                 break;
             case ENEMY_AOE:
@@ -141,10 +171,10 @@ public class DamageComponent extends AbstractComponent {
                     }
                 }
                 addToBot(new DamageAllEnemiesAction(p, damages, dt, effect));
+                for (AbstractComponent cap : captured) {
+                    cap.onTrigger(provider, p, m, Collections.emptyList());
+                }
                 break;
-        }
-        for (AbstractComponent cap : captured) {
-            cap.onTrigger(provider, p, m, Collections.emptyList());
         }
     }
 
