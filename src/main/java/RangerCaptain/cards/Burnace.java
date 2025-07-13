@@ -1,6 +1,10 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.actions.BetterSelectCardsInHandAction;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cardmods.fusion.components.BlockComponent;
+import RangerCaptain.cardmods.fusion.components.ExhaustCardsComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.util.CardArtRoller;
@@ -17,6 +21,19 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Burnace extends AbstractEasyCard {
     public final static String ID = makeID(Burnace.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.BURNACE)
+                .withCost(1)
+                .withFlags(new BlockComponent(3), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
+                .with(new ExhaustCardsComponent(2, ExhaustCardsComponent.TargetPile.HAND, true, false))
+                .register();
+        new FusionComponentHelper(MonsterEnum.SMOGMAGOG)
+                .withCost(1)
+                .withFlags(new BlockComponent(5), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
+                .with(new ExhaustCardsComponent(2, ExhaustCardsComponent.TargetPile.HAND, true, false))
+                .register();
+    }
 
     public Burnace() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
