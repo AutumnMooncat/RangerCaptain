@@ -241,6 +241,22 @@
       "Draw %s cards"
     ]
   },
+  "${ModID}:MakeCopiesComponent": {
+    "TEXT": [
+      "Add copies of this card into your %s",
+      "hand",
+      "draw",
+      "discard",
+      "pile",
+      "piles",
+      "Invalid Copies Location"
+    ],
+    "EXTRA_TEXT": [
+      "Add %1$s {@@}{%1$s|1=copy|@=copies} of this card into your %2%s",
+      "Add a copy of this card into your %s",
+      "Add %1$s copies of this can into your %2$s"
+    ]
+  },
   "${ModID}:DiscardToDrawComponent": {
     "TEXT": ["Put cards from your discard pile on top of your draw pile"],
     "EXTRA_TEXT": [

@@ -1,5 +1,9 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.ConductiveComponent;
+import RangerCaptain.cardmods.fusion.components.MakeCopiesComponent;
+import RangerCaptain.cardmods.fusion.components.vfx.LightningOrbFVXComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.ConductivePower;
@@ -20,6 +24,27 @@ import static RangerCaptain.MainModfile.makeID;
 public class Boltam extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Boltam.class.getSimpleName());
 
+    static {
+        new FusionComponentHelper(MonsterEnum.BOLTAM)
+                .withCost(0)
+                .withDamage(4, AbstractGameAction.AttackEffect.NONE)
+                .with(new LightningOrbFVXComponent())
+                .with(new ConductiveComponent(4), new MakeCopiesComponent(1, MakeCopiesComponent.Location.DISCARD))
+                .register();
+        new FusionComponentHelper(MonsterEnum.PINBOLT)
+                .withCost(0)
+                .withDamage(4, AbstractGameAction.AttackEffect.NONE)
+                .with(new LightningOrbFVXComponent())
+                .with(new ConductiveComponent(4), new MakeCopiesComponent(2, MakeCopiesComponent.Location.DISCARD))
+                .register();
+        new FusionComponentHelper(MonsterEnum.PLASMANTLER)
+                .withCost(0)
+                .withDamage(5, AbstractGameAction.AttackEffect.NONE)
+                .with(new LightningOrbFVXComponent())
+                .with(new ConductiveComponent(5), new MakeCopiesComponent(1, MakeCopiesComponent.Location.DISCARD))
+                .register();
+    }
+
     public Boltam() {
         super(ID, 0, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 3;
@@ -38,7 +63,7 @@ public class Boltam extends AbstractMultiUpgradeCard {
         }
         dmg(m, AbstractGameAction.AttackEffect.NONE);
         Wiz.applyToEnemy(m, new ConductivePower(m, p, magicNumber));
-        addToBot(new MakeTempCardInDiscardAction(makeSameInstanceOf(), secondMagic));
+        addToBot(new MakeTempCardInDiscardAction(makeStatEquivalentCopy(), secondMagic));
     }
 
     @Override
