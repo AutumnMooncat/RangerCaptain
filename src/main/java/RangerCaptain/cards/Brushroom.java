@@ -1,5 +1,8 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.DamageAlreadyAttackedComponent;
+import RangerCaptain.cardmods.fusion.components.VulnerableComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CardCounterPatches;
 import RangerCaptain.patches.CustomTags;
@@ -16,6 +19,19 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Brushroom extends AbstractEasyCard {
     public final static String ID = makeID(Brushroom.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.BRUSHROOM)
+                .withCost(1)
+                .with(new DamageAlreadyAttackedComponent(7, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
+                .with(new VulnerableComponent(2))
+                .register();
+        new FusionComponentHelper(MonsterEnum.FUNGOGH)
+                .withCost(1)
+                .with(new DamageAlreadyAttackedComponent(2, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
+                .with(new VulnerableComponent(1))
+                .register();
+    }
 
     public Brushroom() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);

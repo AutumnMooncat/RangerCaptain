@@ -128,6 +128,23 @@
       "%1$s damage %2$s times"
     ]
   },
+  "${ModID}:DamageAlreadyAttackedComponent": {
+    "TEXT": [
+      "Invalid Already Attacked Damage",
+      "Deal damage to an enemy you already attacked",
+      "Deal damage to a random enemy you already attacked",
+      "Deal damage to ALL enemies you already attacked",
+      "Invalid Already Attacked Damage",
+      "This enemy has not been attacked this turn."
+    ],
+    "EXTRA_TEXT": [
+      "Invalid AA Damage: %1$s %2$s",
+      "Deal %1$s damage %2$sto an enemy you already attacked this turn",
+      "Deal %1$s damage %2$sto a random enemy you already attacked this turn",
+      "Deal %1$s damage %2$sto ALL enemies you already attacked this turn",
+      "Invalid AA Damage: %1$s %2$s"
+    ]
+  },
   "${ModID}:BinvasionComponent": {
     "TEXT": [
       "Take damage for each Binvader and Binterloper card you have",
@@ -345,6 +362,15 @@
       "Increase a random enemy's debuffs by %s",
       "Increase ALL enemies' debuffs by %s",
       "Invalid Increase Debuffs: %s"
+    ]
+  },
+  "${ModID}:MustBeAttackedComponent": {
+    "TEXT": [
+      "Adds playability restriction but increases effects",
+      "This enemy has not been attacked this turn."
+    ],
+    "EXTRA_TEXT": [
+      "Can only be played on enemies that have already been attacked this turn"
     ]
   },
   "${ModID}:OnPlayPerfectComponent": {
