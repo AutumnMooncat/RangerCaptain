@@ -128,6 +128,23 @@
       "%1$s damage %2$s times"
     ]
   },
+  "${ModID}:BinvasionComponent": {
+    "TEXT": [
+      "Take damage for each Binvader and Binterloper card you have",
+      "Deal damage for each Binvader and Binterloper card you have",
+      "Deal damage to a random enemy for each Binvader and Binterloper card you have",
+      "Deal damage to ALL enemies for each Binvader and Binterloper card you have",
+      "Invalid Binvasion Damage"
+    ],
+    "EXTRA_TEXT": [
+      "Take %s damage for each Binvader and Binterloper card you have",
+      "Deal %s damage for each Binvader and Binterloper card you have",
+      "Deal %s damage to a random enemy for each Binvader and Binterloper card you have",
+      "Deal %s damage to ALL enemies for each Binvader and Binterloper card you have",
+      "Invalid Binvasion Damage: %s",
+      "%s damage for each Binvader and Binterloper card you have"
+    ]
+  },
   "${ModID}:NextTurnDamageComponent": {
     "TEXT": [
       "Take damage next turn",

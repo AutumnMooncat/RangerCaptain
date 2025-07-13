@@ -1,5 +1,6 @@
 package RangerCaptain;
 
+import RangerCaptain.cards.Binvader;
 import RangerCaptain.cards.Springheel;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.cards.cardvars.*;
@@ -313,8 +314,8 @@ public class MainModfile implements
         });
 
         DynamicTextBlocks.registerCustomCheck(makeID("Binvader"), c -> {
-            if (c instanceof AbstractEasyCard && Wiz.isInCombat() && Wiz.adp().hand.contains(c)) {
-                if (((AbstractEasyCard) c).info == 1) {
+            if (Wiz.isInCombat() && Wiz.adp().hand.contains(c)) {
+                if (Binvader.binvasionCount() == 1) {
                     return 1;
                 }
                 return 2;

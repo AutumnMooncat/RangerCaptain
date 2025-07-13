@@ -2,6 +2,7 @@ package RangerCaptain.cards.tokens;
 
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cardmods.fusion.components.BinvasionComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.Wiz;
@@ -48,7 +49,7 @@ public class FusedCard extends AbstractEasyCard implements AbstractComponent.Com
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (AbstractComponent component : components) {
-            if (!component.isCaptured(components)) {
+            if (!component.wasCaptured) {
                 List<AbstractComponent> captured = components.stream().filter(component::captures).collect(Collectors.toList());
                 component.onTrigger(this, p, m, captured);
             }
@@ -145,6 +146,10 @@ public class FusedCard extends AbstractEasyCard implements AbstractComponent.Com
                 upgradeBaseCost(cost - 1);
             }
         }
+    }
+
+    public int binvasionCount() {
+        return components.stream().filter(c -> c instanceof BinvasionComponent).map(c -> ((BinvasionComponent) c).binvaderCount).reduce(0, Integer::sum);
     }
 
     private float getUpgradeMult() {

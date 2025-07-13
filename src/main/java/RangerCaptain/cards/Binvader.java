@@ -1,6 +1,10 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.BinvasionComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.cards.tokens.FusedCard;
+import RangerCaptain.powers.AbstractComponentPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
@@ -18,6 +22,17 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Binvader extends AbstractEasyCard {
     public final static String ID = makeID(Binvader.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.BINVADER)
+                .withCost(1)
+                .with(new BinvasionComponent(5, AbstractGameAction.AttackEffect.BLUNT_LIGHT))
+                .register();
+        new FusionComponentHelper(MonsterEnum.BINTERLOPER)
+                .withCost(1)
+                .with(new BinvasionComponent(7, AbstractGameAction.AttackEffect.BLUNT_LIGHT))
+                .register();
+    }
 
     public Binvader() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
@@ -38,8 +53,10 @@ public class Binvader extends AbstractEasyCard {
         }
     }
 
-    public int binvasionCount() {
-        return (int) Wiz.getAllCardsInCardGroups(true, true).stream().filter(card -> card instanceof Binvader).count();
+    public static int binvasionCount() {
+        return (int) Wiz.getAllCardsInCardGroups(true, true).stream().filter(card -> card instanceof Binvader).count()
+                + Wiz.getAllCardsInCardGroups(true, true).stream().filter(card -> card instanceof FusedCard).map(c -> ((FusedCard) c).binvasionCount()).reduce(0, Integer::sum)
+                + Wiz.adp().powers.stream().filter(p -> p instanceof AbstractComponentPower).flatMap(p -> ((AbstractComponentPower) p).captured.stream()).filter(c -> c instanceof BinvasionComponent).map(bd -> ((BinvasionComponent) bd).binvaderCount).reduce(0, Integer::sum);
     }
 
     @Override
