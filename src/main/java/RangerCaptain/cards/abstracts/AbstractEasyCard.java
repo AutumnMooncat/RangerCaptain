@@ -160,7 +160,7 @@ public abstract class AbstractEasyCard extends CustomCard {
         if (textureImg.contains("ui/missing.png")) {
             if (CardLibrary.getAllCards() != null && !CardLibrary.getAllCards().isEmpty()) {
                 CardArtRoller.computeCard(this);
-                if (cardsToPreview instanceof AbstractEasyCard) {
+                if (cardsToPreview instanceof AbstractEasyCard && ((AbstractEasyCard) cardsToPreview).textureImg.contains("ui/missing.png")) {
                     CardArtRoller.computeCard((AbstractEasyCard) cardsToPreview);
                 }
             } else {
@@ -376,7 +376,7 @@ public abstract class AbstractEasyCard extends CustomCard {
         super.update();
         if (needsArtRefresh) {
             CardArtRoller.computeCard(this);
-            if (cardsToPreview instanceof AbstractEasyCard) {
+            if (cardsToPreview instanceof AbstractEasyCard && ((AbstractEasyCard) cardsToPreview).needsArtRefresh) {
                 CardArtRoller.computeCard((AbstractEasyCard) cardsToPreview);
             }
             for (AbstractCard c : cyclePreviewCards) {
