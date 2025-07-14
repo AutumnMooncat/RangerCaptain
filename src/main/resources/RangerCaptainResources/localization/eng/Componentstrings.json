@@ -307,6 +307,23 @@
       "Add %1$s copies of this can into your %2$s"
     ]
   },
+  "${ModID}:MakeCardsComponent": {
+    "TEXT": [
+      "Add %1$s into your %2$s",
+      "hand",
+      "draw",
+      "discard",
+      "pile",
+      "piles",
+      "Invalid Make Card Location",
+      "Invalid Make Card Reference"
+    ],
+    "EXTRA_TEXT": [
+      "Add %1$s %2$s{@@}{%1$s|1=|@=s} into your %3%s",
+      "Add a %1$s into your %2$s",
+      "Add %1$s %2$ss can into your %3$s"
+    ]
+  },
   "${ModID}:DiscardToDrawComponent": {
     "TEXT": ["Put cards from your discard pile on top of your draw pile"],
     "EXTRA_TEXT": [
