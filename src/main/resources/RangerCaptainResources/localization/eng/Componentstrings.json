@@ -196,6 +196,23 @@
       "%s Block"
     ]
   },
+  "${ModID}:NextTurnBlockComponent": {
+    "TEXT": [
+      "Gain #yBlock next turn",
+      "Give #yBlock to an enemy next turn",
+      "Give #yBlock to a random enemy next turn",
+      "Give #yBlock to ALL enemies next turn ",
+      "Invalid Block Next Turn"
+    ],
+    "EXTRA_TEXT": [
+      "Next turn, gain %s Block",
+      "Give %s Block next turn",
+      "Give %s Block to a random enemy next turn",
+      "Give %s Block to ALL enemies next turn",
+      "Invalid Block Next Turn: %s",
+      "%s Block next turn"
+    ]
+  },
   "${ModID}:VigorComponent": {
     "TEXT": ["#yVigor"],
     "EXTRA_TEXT": ["Vigor"]

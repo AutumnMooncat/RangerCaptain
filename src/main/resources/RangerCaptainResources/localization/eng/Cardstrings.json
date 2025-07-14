@@ -81,7 +81,7 @@
   },
   "${ModID}:Candevil": {
     "NAME": "Candevil",
-    "DESCRIPTION": "Gain !B! Block. NL Next turn, gain !B! Block.{@@}{!${ModID}:I!|1= NL Apply !M! Poison.|2= NL Startup: Gain !M! Block.}",
+    "DESCRIPTION": "Gain !B! Block. NL Next turn, gain !B! Block.{@@}{!${ModID}:I!|1= NL Apply !M! ${ModID}:Toxin.|2= NL Startup: Gain !M! Block.}",
     "EXTENDED_DESCRIPTION": ["Malchemy","Miasmodeus","Vendemon","Gumbaal"]
   },
   "${ModID}:Carniviper": {
