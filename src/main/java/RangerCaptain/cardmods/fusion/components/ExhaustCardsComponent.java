@@ -22,6 +22,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ExhaustCardsComponent extends AbstractComponent {
     public static final String ID = MainModfile.makeID(ExhaustCardsComponent.class.getSimpleName());
@@ -129,14 +130,14 @@ public class ExhaustCardsComponent extends AbstractComponent {
                 CardGroup source = pile == TargetPile.HAND ? Wiz.adp().hand : pile == TargetPile.DRAW ? Wiz.adp().drawPile : Wiz.adp().discardPile;
                 if (amount >= source.size()) {
                     for (AbstractCard card : source.group) {
-                        doCapturedActions(provider, p, m, Collections.emptyList(), card);
+                        doCapturedActions(provider, p, m, captured, card);
                         addToTop(new ExhaustSpecificCardAction(card, source, true));
                     }
                 } else {
                     List<AbstractCard> cards = new ArrayList<>(source.group);
                     for (int i = 0; i < amount; i++) {
                         AbstractCard card = cards.remove(AbstractDungeon.cardRandomRng.random(cards.size() - 1));
-                        doCapturedActions(provider, p, m, Collections.emptyList(), card);
+                        doCapturedActions(provider, p, m, captured, card);
                         addToTop(new ExhaustSpecificCardAction(card, source, true));
                     }
                 }
@@ -146,7 +147,7 @@ public class ExhaustCardsComponent extends AbstractComponent {
                 case HAND:
                     addToBot(new BetterSelectCardsInHandAction(amount, ExhaustAction.TEXT[0], optional, optional, c -> true, cards -> {
                         for (AbstractCard card : cards) {
-                            doCapturedActions(provider, p, m, Collections.emptyList(), card);
+                            doCapturedActions(provider, p, m, captured, card);
                             addToTop(new ExhaustSpecificCardAction(card, p.hand, true));
                         }
                     }));
@@ -154,7 +155,7 @@ public class ExhaustCardsComponent extends AbstractComponent {
                 case DRAW:
                     addToBot(new BetterSelectCardsCenteredAction(Wiz.adp().drawPile.group, amount, ExhaustAction.TEXT[0], optional, c -> true, cards -> {
                         for (AbstractCard card : cards) {
-                            doCapturedActions(provider, p, m, Collections.emptyList(), card);
+                            doCapturedActions(provider, p, m, captured, card);
                             addToTop(new ExhaustSpecificCardAction(card, p.drawPile, true));
                         }
                     }));
@@ -162,7 +163,7 @@ public class ExhaustCardsComponent extends AbstractComponent {
                 case DISCARD:
                     addToBot(new BetterSelectCardsCenteredAction(Wiz.adp().discardPile.group, amount, ExhaustAction.TEXT[0], optional, c -> true, cards -> {
                         for (AbstractCard card : cards) {
-                            doCapturedActions(provider, p, m, Collections.emptyList(), card);
+                            doCapturedActions(provider, p, m, captured, card);
                             addToTop(new ExhaustSpecificCardAction(card, p.discardPile, true));
                         }
                     }));
@@ -177,6 +178,7 @@ public class ExhaustCardsComponent extends AbstractComponent {
         for (int i = captured.size() - 1; i >= 0; i--) {
             captured.get(i).onTrigger(provider, p, m, Collections.emptyList());
         }
+        lastExhausted = null;
         ActionCapturePatch.releaseToTop();
     }
 
@@ -187,7 +189,7 @@ public class ExhaustCardsComponent extends AbstractComponent {
 
     public static String exhaustFollowupText(List<AbstractComponent> captured) {
         if (captured.stream().anyMatch(c -> c.hasFlags(Flag.EXHAUST_FOLLOWUP))) {
-            return LocalizedStrings.PERIOD + " NL " + FormatHelper.capitalize(StringUtils.join(captured.stream().filter(c -> c.hasFlags(Flag.EXHAUST_FOLLOWUP)).map(c -> FormatHelper.uncapitalize(c.rawCardText(Collections.emptyList()))), " " + AND + " ")) + FOR_EACH;
+            return LocalizedStrings.PERIOD + " NL " + FormatHelper.capitalize(StringUtils.join(captured.stream().filter(c -> c.hasFlags(Flag.EXHAUST_FOLLOWUP)).map(c -> FormatHelper.uncapitalize(c.rawCardText(Collections.emptyList()))).collect(Collectors.toList()), " " + AND + " ")) + " " + FOR_EACH;
         }
         return "";
     }
