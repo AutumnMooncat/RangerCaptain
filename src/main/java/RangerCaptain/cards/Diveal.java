@@ -26,7 +26,7 @@ public class Diveal extends AbstractMultiUpgradeCard {
                 .withCost(1)
                 .with(new DamageLastAttackerComponent(9, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
                 .register();
-        new FusionComponentHelper(MonsterEnum.DIVEAL)
+        new FusionComponentHelper(MonsterEnum.DIVEBERG)
                 .withCost(1)
                 .with(new DamageLastAttackerComponent(9, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
                 .with(new TapeJamComponent(1))
