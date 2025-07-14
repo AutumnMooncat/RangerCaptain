@@ -1,5 +1,9 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cardmods.fusion.components.MultitargetComponent;
+import RangerCaptain.cardmods.fusion.components.VulnerableComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.MultitargetPower;
@@ -15,6 +19,19 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Cluckabilly extends AbstractEasyCard {
     public final static String ID = makeID(Cluckabilly.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.CLUCKABILLY)
+                .withCost(1)
+                .with(new MultitargetComponent(2))
+                .with(new VulnerableComponent(1, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .register();
+        new FusionComponentHelper(MonsterEnum.ROCKERTRICE)
+                .withCost(1)
+                .with(new MultitargetComponent(3))
+                .with(new VulnerableComponent(1, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .register();
+    }
 
     public Cluckabilly() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL);

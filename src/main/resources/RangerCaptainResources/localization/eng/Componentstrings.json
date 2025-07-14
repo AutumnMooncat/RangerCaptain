@@ -245,6 +245,10 @@
     "TEXT": ["#yConductive"],
     "EXTRA_TEXT": ["${ModID}:Conductive"]
   },
+  "${ModID}:MultitargetComponent": {
+    "TEXT": ["#yMultitarget"],
+    "EXTRA_TEXT": ["${ModID}:Multitarget"]
+  },
   "${ModID}:ThornsComponent": {
     "TEXT": ["#yThorns"],
     "EXTRA_TEXT": ["Thorns"]
