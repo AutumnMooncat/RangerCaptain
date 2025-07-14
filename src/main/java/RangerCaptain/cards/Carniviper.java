@@ -22,18 +22,18 @@ public class Carniviper extends AbstractMultiUpgradeCard {
         new FusionComponentHelper(MonsterEnum.CARNIVIPER)
                 .withCost(1)
                 .withDamage(4, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinComponent(3))
+                .with(new ToxinComponent(2))
                 .register();
         new FusionComponentHelper(MonsterEnum.MASQUERATTLE)
                 .withCost(1)
                 .withDamage(6, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinComponent(4))
+                .with(new ToxinComponent(3))
                 .register();
         new FusionComponentHelper(MonsterEnum.AEROBOROS)
                 .withCost(1)
                 .withBlock(5)
                 .withDamage(5, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinComponent(4))
+                .with(new ToxinComponent(3))
                 .register();
         new FusionComponentHelper(MonsterEnum.MARDIUSA)
                 .withCost(2)
@@ -44,14 +44,14 @@ public class Carniviper extends AbstractMultiUpgradeCard {
         new FusionComponentHelper(MonsterEnum.JORMUNGOLD)
                 .withCost(0)
                 .withDamage(8, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinComponent(4))
+                .with(new ToxinComponent(3))
                 .register();
     }
 
     public Carniviper() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = damage = 6;
-        baseMagicNumber = magicNumber = 3;
+        baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.CARNIVIPER);
         baseInfo = info = 0;
         tags.add(CustomTags.MAGIC_TOXIN);
@@ -77,18 +77,6 @@ public class Carniviper extends AbstractMultiUpgradeCard {
                 break;
         }
     }
-
-   /* @Override
-    public void triggerWhenDrawn() {
-        if (info == 3) {
-            Wiz.forAllMonstersLiving(mon -> {
-                AbstractPower poison = mon.getPower(PoisonPower.POWER_ID);
-                if (poison != null) {
-                    addToBot(new LoseHPAction(mon, Wiz.adp(), poison.amount, AbstractGameAction.AttackEffect.POISON));
-                }
-            });
-        }
-    }*/
 
     @Override
     public String cardArtCopy() {
