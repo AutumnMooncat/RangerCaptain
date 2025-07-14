@@ -127,6 +127,13 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
 
     public abstract AbstractComponent makeCopy();
 
+    public AbstractComponent makeEquivalentCopy() {
+        AbstractComponent copy = makeCopy();
+        copy.setFlags(flags.toArray(new Flag[0]));
+        copy.source = source;
+        return copy;
+    }
+
     public String identifier() {
         return identifier;
     }
@@ -263,7 +270,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
     }
 
     public static List<AbstractComponent> resolve(FusedCard card, List<AbstractComponent> originals) {
-        List<AbstractComponent> components = originals.stream().map(AbstractComponent::makeCopy).collect(Collectors.toList());
+        List<AbstractComponent> components = originals.stream().map(AbstractComponent::makeEquivalentCopy).collect(Collectors.toList());
         resolveCaptures(components);
         resolveStacking(components);
         resolveType(card, components);
