@@ -1,4 +1,4 @@
-package RangerCaptain.cards;
+package RangerCaptain.cards.tokens;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.ToxinPower;
