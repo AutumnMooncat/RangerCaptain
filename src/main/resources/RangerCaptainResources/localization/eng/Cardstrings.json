@@ -225,7 +225,7 @@
   },
   "${ModID}:Nevermort": {
     "NAME": "Nevermort",
-    "DESCRIPTION": "Apply !M! Poison to ALL enemies.",
+    "DESCRIPTION": "Apply !M! ${ModID}:Toxin to ALL enemies.",
     "EXTENDED_DESCRIPTION": ["Apocrowlypse"]
   },
   "${ModID}:Padpole": {
