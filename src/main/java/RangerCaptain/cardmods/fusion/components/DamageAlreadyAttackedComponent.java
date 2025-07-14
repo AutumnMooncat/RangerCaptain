@@ -74,7 +74,7 @@ public class DamageAlreadyAttackedComponent extends AbstractComponent {
         if (target == ComponentTarget.ENEMY_AOE && other.target == ComponentTarget.ENEMY) {
             mult *= 0.75f;
         }
-        if (!(other instanceof MultiDamageComponent)) {
+        if (!(other instanceof DamageLastAttackerComponent)) {
             mult *= 1.25f;
         }
         baseAmount += (int) (other.baseAmount * mult);
@@ -188,6 +188,6 @@ public class DamageAlreadyAttackedComponent extends AbstractComponent {
 
     @Override
     public AbstractComponent makeCopy() {
-        return new DamageAlreadyAttackedComponent(baseAmount, effect);
+        return new DamageAlreadyAttackedComponent(baseAmount, effect, target);
     }
 }
