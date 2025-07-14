@@ -145,6 +145,14 @@
       "Invalid AA Damage: %1$s %2$s"
     ]
   },
+  "${ModID}:DamageLastAttackerComponent": {
+    "TEXT": [
+      "Deal damage to the last enemy that attacked you"
+    ],
+    "EXTRA_TEXT": [
+      "Deal %1$s damage %2$sto the last enemy that attacked you"
+    ]
+  },
   "${ModID}:BinvasionComponent": {
     "TEXT": [
       "Take damage for each Binvader and Binterloper card you have",
@@ -248,6 +256,10 @@
   "${ModID}:MultitargetComponent": {
     "TEXT": ["#yMultitarget"],
     "EXTRA_TEXT": ["${ModID}:Multitarget"]
+  },
+  "${ModID}:TapeJamComponent": {
+    "TEXT": ["#yTape #yJam"],
+    "EXTRA_TEXT": ["${ModID}:Tape_Jam"]
   },
   "${ModID}:ThornsComponent": {
     "TEXT": ["#yThorns"],

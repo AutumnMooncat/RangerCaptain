@@ -37,7 +37,7 @@ public class NextTurnDamageComponent extends AbstractComponent {
         if (target == ComponentTarget.SELF) {
             priority = DO_PRIO;
         } else {
-            priority = DAMAGE_PRIO + target.ordinal();
+            priority = DAMAGE_PRIO + target.ordinal() + 2;
         }
     }
 

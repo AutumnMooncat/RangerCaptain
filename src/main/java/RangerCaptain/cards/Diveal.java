@@ -1,5 +1,8 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.DamageLastAttackerComponent;
+import RangerCaptain.cardmods.fusion.components.TapeJamComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CardCounterPatches;
 import RangerCaptain.powers.TapeJamPower;
@@ -17,6 +20,22 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Diveal extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Diveal.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.DIVEAL)
+                .withCost(1)
+                .with(new DamageLastAttackerComponent(9, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
+                .register();
+        new FusionComponentHelper(MonsterEnum.DIVEAL)
+                .withCost(1)
+                .with(new DamageLastAttackerComponent(9, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
+                .with(new TapeJamComponent(1))
+                .register();
+        new FusionComponentHelper(MonsterEnum.SCUBALRUS)
+                .withCost(1)
+                .with(new DamageLastAttackerComponent(3, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
+                .register();
+    }
 
     public Diveal() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
