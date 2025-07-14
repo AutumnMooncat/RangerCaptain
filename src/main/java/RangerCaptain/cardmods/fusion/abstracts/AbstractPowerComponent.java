@@ -28,6 +28,11 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
     }
 
     @Override
+    public boolean shouldStack(AbstractComponent other) {
+        return identifier().equals(other.identifier());
+    }
+
+    @Override
     public boolean captures(AbstractComponent other) {
         return other.type == ComponentType.BLOCK || other.type == ComponentType.DAMAGE || other.type == ComponentType.APPLY || other.type == ComponentType.DO || other instanceof AbstractDamageModComponent;
     }
@@ -72,7 +77,9 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
             currentParts.add(part);
             startedGain = true;
         }
-        parts.add(StringUtils.join(currentParts," " + AND + " "));
+        if (!currentParts.isEmpty()) {
+            parts.add(StringUtils.join(currentParts," " + AND + " "));
+        }
         currentParts.clear();
         for (AbstractComponent component : selfTarget) {
             if (component.type == ComponentType.DO) {
