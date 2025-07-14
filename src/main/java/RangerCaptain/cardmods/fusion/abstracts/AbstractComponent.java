@@ -157,7 +157,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
     }
 
     public boolean shouldStack(AbstractComponent other) {
-        return dynvar != DynVar.NONE && identifier().equals(other.identifier()) && target == other.target && flags == other.flags && dynvar == other.dynvar;
+        return dynvar != DynVar.NONE && identifier().equals(other.identifier()) && target == other.target && flags.equals(other.flags) && dynvar == other.dynvar;
     }
 
     public void receiveStacks(AbstractComponent other) {
