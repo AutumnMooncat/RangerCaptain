@@ -2,7 +2,7 @@ package RangerCaptain.actions;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.patches.CardCounterPatches;
-import RangerCaptain.ui.DiscoveredCardManager;
+import RangerCaptain.ui.StashedCardManager;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -70,7 +70,7 @@ public class ExploreAction extends AbstractGameAction {
                 c.current_x = CardGroup.DRAW_PILE_X;
                 c.current_y = CardGroup.DRAW_PILE_Y;
                 Wiz.adp().drawPile.removeCard(c);
-                DiscoveredCardManager.addCard(c);
+                StashedCardManager.addCard(c);
                 CardCounterPatches.cardsExploredThisCombat++;
                 CardCounterPatches.cardsExploredThisTurn++;
             }

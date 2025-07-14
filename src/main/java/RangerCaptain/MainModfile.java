@@ -14,7 +14,7 @@ import RangerCaptain.powers.BracedPower;
 import RangerCaptain.powers.StaggerPower;
 import RangerCaptain.relics.AbstractEasyRelic;
 import RangerCaptain.screens.FusionScreen;
-import RangerCaptain.ui.DiscoveredCardManager;
+import RangerCaptain.ui.StashedCardManager;
 import RangerCaptain.util.*;
 import RangerCaptain.vfx.ShaderTest;
 import basemod.AutoAdd;
@@ -474,6 +474,6 @@ public class MainModfile implements
 
     @Override
     public void receiveStartGame() {
-        DiscoveredCardManager.EmptyCards.yeet();
+        StashedCardManager.EmptyCards.yeet();
     }
 }

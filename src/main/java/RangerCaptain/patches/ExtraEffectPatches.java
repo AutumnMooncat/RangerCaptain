@@ -1,7 +1,7 @@
 package RangerCaptain.patches;
 
 import RangerCaptain.powers.MindMeldPower;
-import RangerCaptain.ui.DiscoveredCardManager;
+import RangerCaptain.ui.StashedCardManager;
 import RangerCaptain.util.Wiz;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.GameActionManager;
@@ -80,7 +80,7 @@ public class ExtraEffectPatches {
         public static SpireReturn<?> yeet(CardGroup __instance, AbstractCard c) {
             if (yeetCard) {
                 yeetCard = false;
-                DiscoveredCardManager.addCard(c, false);
+                StashedCardManager.addCard(c, false);
                 return SpireReturn.Return();
             }
             return SpireReturn.Continue();

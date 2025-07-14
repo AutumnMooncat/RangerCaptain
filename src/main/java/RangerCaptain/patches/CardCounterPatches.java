@@ -16,8 +16,8 @@ import javassist.CtBehavior;
 import java.util.ArrayList;
 
 public class CardCounterPatches {
-    public static int cardsDiscoveredThisTurn;
-    public static int cardsDiscoveredThisCombat;
+    public static int cardsStashedThisTurn;
+    public static int cardsStashedThisCombat;
     public static int cardsGuidedThisTurn;
     public static int cardsGuidedThisCombat;
     public static int cardsExploredThisTurn;
@@ -35,8 +35,8 @@ public class CardCounterPatches {
     public static class ResetCounters {
         @SpirePrefixPatch
         public static void reset() {
-            cardsDiscoveredThisCombat = 0;
-            cardsDiscoveredThisTurn = 0;
+            cardsStashedThisCombat = 0;
+            cardsStashedThisTurn = 0;
             cardsGuidedThisCombat = 0;
             cardsGuidedThisTurn = 0;
             cardsExploredThisCombat = 0;
@@ -55,7 +55,7 @@ public class CardCounterPatches {
     public static class NewTurnCounters {
         @SpireInsertPatch(locator = Locator.class)
         public static void reset() {
-            cardsDiscoveredThisTurn = 0;
+            cardsStashedThisTurn = 0;
             cardsGuidedThisTurn = 0;
             cardsExploredThisTurn = 0;
             cardsDrawnThisTurn.clear();

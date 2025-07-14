@@ -65,14 +65,14 @@
       "Choose up to "," cards to Stash."
     ]
   },
-  "${ModID}:DiscoverCardsAction": {
+  "${ModID}:StashCardsAction": {
     "TEXT": [
       "Stash",
       "Choose a card to Stash.",
       "Choose "," cards to Stash."
     ]
   },
-  "${ModID}:DiscoverCopyOfCardsAction": {
+  "${ModID}:StashCopyOfCardsAction": {
     "TEXT": [
       "Stash a Copy of",
       "Choose a card to Stash a copy of.",

@@ -1,8 +1,8 @@
 package RangerCaptain.ui;
 
-import RangerCaptain.cards.interfaces.OnDiscoverCard;
+import RangerCaptain.cards.interfaces.OnStashedCard;
 import RangerCaptain.patches.CardCounterPatches;
-import RangerCaptain.powers.interfaces.OnDiscoverPower;
+import RangerCaptain.powers.interfaces.OnStashPower;
 import RangerCaptain.util.Wiz;
 import basemod.BaseMod;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -22,7 +22,7 @@ import com.megacrit.cardcrawl.ui.panels.ExhaustPanel;
 import com.megacrit.cardcrawl.vfx.BobEffect;
 import javassist.CtBehavior;
 
-public class DiscoveredCardManager {
+public class StashedCardManager {
     public static final float Y_OFFSET = 70f * Settings.scale;
     public static final float X_OFFSET = 100f * Settings.scale;
     public static final CardGroup cards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
@@ -80,25 +80,20 @@ public class DiscoveredCardManager {
         card.targetAngle = 0f;
         card.beginGlowing();
         cards.addToTop(card);
-        if (card instanceof OnDiscoverCard) {
-            ((OnDiscoverCard) card).onDiscover();
+        if (card instanceof OnStashedCard) {
+            ((OnStashedCard) card).onDiscover();
         }
         for (AbstractPower p : Wiz.adp().powers) {
-            if (p instanceof OnDiscoverPower) {
-                ((OnDiscoverPower) p).onDiscover(card, isEndTurn);
+            if (p instanceof OnStashPower) {
+                ((OnStashPower) p).onDiscover(card, isEndTurn);
             }
         }
         if (playSFX) {
             CardCrawlGame.sound.play("ORB_SLOT_GAIN", 0.1F);
         }
-        CardCounterPatches.cardsDiscoveredThisTurn++;
-        CardCounterPatches.cardsDiscoveredThisCombat++;
+        CardCounterPatches.cardsStashedThisTurn++;
+        CardCounterPatches.cardsStashedThisCombat++;
     }
-
-    /*@SpirePatch2(clz = AbstractCard.class, method = SpirePatch.CLASS)
-    public static class DiscoveredCardFields {
-        public static SpireField<Boolean> discoveredField = new SpireField<>(() -> false);
-    }*/
 
     @SpirePatch2(clz = GameActionManager.class, method = "getNextAction")
     public static class MoveCards {
@@ -127,7 +122,7 @@ public class DiscoveredCardManager {
     public static class RenderPanel {
         @SpireInsertPatch(locator = Locator.class)
         public static void render(OverlayMenu __instance, SpriteBatch sb) {
-            DiscoveredCardManager.render(sb);
+            StashedCardManager.render(sb);
         }
 
         public static class Locator extends SpireInsertLocator {
@@ -143,7 +138,7 @@ public class DiscoveredCardManager {
     public static class UpdatePile {
         @SpirePostfixPatch
         public static void update(AbstractPlayer __instance) {
-            DiscoveredCardManager.update();
+            StashedCardManager.update();
         }
     }
 
@@ -160,7 +155,7 @@ public class DiscoveredCardManager {
     public static class CountDiscoveredCardsPlz {
         @SpirePostfixPatch
         public static int getCount(int __result) {
-            int projectedStrikes = (int)(DiscoveredCardManager.cards.group.stream().filter(c -> c.hasTag(AbstractCard.CardTags.STRIKE)).count());
+            int projectedStrikes = (int)(StashedCardManager.cards.group.stream().filter(c -> c.hasTag(AbstractCard.CardTags.STRIKE)).count());
             return __result + projectedStrikes;
         }
     }

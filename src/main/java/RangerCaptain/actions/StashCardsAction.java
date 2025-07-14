@@ -1,7 +1,7 @@
 package RangerCaptain.actions;
 
 import RangerCaptain.MainModfile;
-import RangerCaptain.ui.DiscoveredCardManager;
+import RangerCaptain.ui.StashedCardManager;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -15,31 +15,31 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public class DiscoverCardsAction extends AbstractGameAction {
-    public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(MainModfile.makeID(DiscoverCardsAction.class.getSimpleName())).TEXT;
+public class StashCardsAction extends AbstractGameAction {
+    public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(MainModfile.makeID(StashCardsAction.class.getSimpleName())).TEXT;
     private final CardGroup group;
     private final boolean anyNumber;
     private final boolean canPickZero;
     private final Predicate<AbstractCard> filter;
     private final Consumer<List<AbstractCard>> callback;
 
-    public DiscoverCardsAction(CardGroup sourceGroup, int amount) {
+    public StashCardsAction(CardGroup sourceGroup, int amount) {
         this(sourceGroup, amount, false, false, c -> true, l -> {});
     }
 
-    public DiscoverCardsAction(CardGroup sourceGroup, int amount, boolean anyNumber, boolean canPickZero) {
+    public StashCardsAction(CardGroup sourceGroup, int amount, boolean anyNumber, boolean canPickZero) {
         this(sourceGroup, amount, anyNumber, canPickZero, c -> true, l ->{});
     }
 
-    public DiscoverCardsAction(CardGroup sourceGroup, int amount, Predicate<AbstractCard> filter) {
+    public StashCardsAction(CardGroup sourceGroup, int amount, Predicate<AbstractCard> filter) {
         this(sourceGroup, amount, false, false, filter, l -> {});
     }
 
-    public DiscoverCardsAction(CardGroup sourceGroup, int amount, Predicate<AbstractCard> filter, Consumer<List<AbstractCard>> callback) {
+    public StashCardsAction(CardGroup sourceGroup, int amount, Predicate<AbstractCard> filter, Consumer<List<AbstractCard>> callback) {
         this(sourceGroup, amount, false, false, filter, callback);
     }
 
-    public DiscoverCardsAction(CardGroup sourceGroup, int amount, boolean anyNumber, boolean canPickZero, Predicate<AbstractCard> filter, Consumer<List<AbstractCard>> callback) {
+    public StashCardsAction(CardGroup sourceGroup, int amount, boolean anyNumber, boolean canPickZero, Predicate<AbstractCard> filter, Consumer<List<AbstractCard>> callback) {
         this.actionType = ActionType.CARD_MANIPULATION;
         this.source = AbstractDungeon.player;
         this.group = sourceGroup;
@@ -69,14 +69,14 @@ public class DiscoverCardsAction extends AbstractGameAction {
                     if (group == Wiz.adp().exhaustPile) {
                         c.unfadeOut();
                     }
-                    DiscoveredCardManager.addCard(c);
+                    StashedCardManager.addCard(c);
                 }
                 callback.accept(validCards);
             } else {
                 if (group == Wiz.adp().hand) {
                     addToTop(new BetterSelectCardsInHandAction(amount, TEXT[0], anyNumber, canPickZero, filter, cards -> {
                         for (AbstractCard c : cards) {
-                            DiscoveredCardManager.addCard(c);
+                            StashedCardManager.addCard(c);
                         }
                         callback.accept(cards);
                         cards.clear();
@@ -88,7 +88,7 @@ public class DiscoverCardsAction extends AbstractGameAction {
                             if (group == Wiz.adp().exhaustPile) {
                                 c.unfadeOut();
                             }
-                            DiscoveredCardManager.addCard(c);
+                            StashedCardManager.addCard(c);
                         }
                         callback.accept(cards);
                     }));

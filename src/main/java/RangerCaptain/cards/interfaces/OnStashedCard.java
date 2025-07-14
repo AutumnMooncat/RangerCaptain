@@ -1,5 +1,5 @@
 package RangerCaptain.cards.interfaces;
 
-public interface OnDiscoverCard {
+public interface OnStashedCard {
     void onDiscover();
 }

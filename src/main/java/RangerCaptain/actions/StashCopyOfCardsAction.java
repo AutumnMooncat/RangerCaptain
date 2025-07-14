@@ -1,7 +1,7 @@
 package RangerCaptain.actions;
 
 import RangerCaptain.MainModfile;
-import RangerCaptain.ui.DiscoveredCardManager;
+import RangerCaptain.ui.StashedCardManager;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -15,8 +15,8 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public class DiscoverCopyOfCardsAction extends AbstractGameAction {
-    public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(MainModfile.makeID(DiscoverCopyOfCardsAction.class.getSimpleName())).TEXT;
+public class StashCopyOfCardsAction extends AbstractGameAction {
+    public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(MainModfile.makeID(StashCopyOfCardsAction.class.getSimpleName())).TEXT;
     private final CardGroup group;
     private final int copies;
     private final boolean anyNumber;
@@ -24,23 +24,23 @@ public class DiscoverCopyOfCardsAction extends AbstractGameAction {
     private final Predicate<AbstractCard> filter;
     private final Consumer<List<AbstractCard>> callback;
 
-    public DiscoverCopyOfCardsAction(CardGroup sourceGroup, int cardsToChoose, int copies) {
+    public StashCopyOfCardsAction(CardGroup sourceGroup, int cardsToChoose, int copies) {
         this(sourceGroup, cardsToChoose, copies, false, false, c -> true, l -> {});
     }
 
-    public DiscoverCopyOfCardsAction(CardGroup sourceGroup, int cardsToChoose, int copies, boolean anyNumber, boolean canPickZero) {
+    public StashCopyOfCardsAction(CardGroup sourceGroup, int cardsToChoose, int copies, boolean anyNumber, boolean canPickZero) {
         this(sourceGroup, cardsToChoose, copies, anyNumber, canPickZero, c -> true, l ->{});
     }
 
-    public DiscoverCopyOfCardsAction(CardGroup sourceGroup, int cardsToChoose, int copies, Predicate<AbstractCard> filter) {
+    public StashCopyOfCardsAction(CardGroup sourceGroup, int cardsToChoose, int copies, Predicate<AbstractCard> filter) {
         this(sourceGroup, cardsToChoose, copies, false, false, filter, l -> {});
     }
 
-    public DiscoverCopyOfCardsAction(CardGroup sourceGroup, int cardsToChoose, int copies, Predicate<AbstractCard> filter, Consumer<List<AbstractCard>> callback) {
+    public StashCopyOfCardsAction(CardGroup sourceGroup, int cardsToChoose, int copies, Predicate<AbstractCard> filter, Consumer<List<AbstractCard>> callback) {
         this(sourceGroup, cardsToChoose, copies, false, false, filter, callback);
     }
 
-    public DiscoverCopyOfCardsAction(CardGroup sourceGroup, int cardsToChoose, int copies, boolean anyNumber, boolean canPickZero, Predicate<AbstractCard> filter, Consumer<List<AbstractCard>> callback) {
+    public StashCopyOfCardsAction(CardGroup sourceGroup, int cardsToChoose, int copies, boolean anyNumber, boolean canPickZero, Predicate<AbstractCard> filter, Consumer<List<AbstractCard>> callback) {
         this.actionType = ActionType.CARD_MANIPULATION;
         this.source = AbstractDungeon.player;
         this.group = sourceGroup;
@@ -68,7 +68,7 @@ public class DiscoverCopyOfCardsAction extends AbstractGameAction {
             if (validCards.size() <= amount && !anyNumber && !canPickZero) {
                 for (AbstractCard c : validCards) {
                     for (int i = 0 ; i < copies ; i++) {
-                        DiscoveredCardManager.addCard(c.makeStatEquivalentCopy());
+                        StashedCardManager.addCard(c.makeStatEquivalentCopy());
                     }
                 }
                 callback.accept(validCards);
@@ -77,7 +77,7 @@ public class DiscoverCopyOfCardsAction extends AbstractGameAction {
                     addToTop(new BetterSelectCardsInHandAction(amount, TEXT[0], anyNumber, canPickZero, filter, cards -> {
                         for (AbstractCard c : cards) {
                             for (int i = 0 ; i < copies ; i++) {
-                                DiscoveredCardManager.addCard(c.makeStatEquivalentCopy());
+                                StashedCardManager.addCard(c.makeStatEquivalentCopy());
                             }
                         }
                         callback.accept(cards);
@@ -86,7 +86,7 @@ public class DiscoverCopyOfCardsAction extends AbstractGameAction {
                     addToTop(new BetterSelectCardsCenteredAction(validCards, amount, TEXT[0], anyNumber, c -> true, cards -> {
                         for (AbstractCard c : cards) {
                             for (int i = 0 ; i < copies ; i++) {
-                                DiscoveredCardManager.addCard(c.makeStatEquivalentCopy());
+                                StashedCardManager.addCard(c.makeStatEquivalentCopy());
                             }
                         }
                         callback.accept(cards);
