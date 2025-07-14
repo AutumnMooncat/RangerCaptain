@@ -394,6 +394,10 @@
     "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": ["Whenever you play a ${ModID}:Perfect card, %s"]
   },
+  "${ModID}:OnPlayAttackComponent": {
+    "TEXT": ["Fusion becomes a Power"],
+    "EXTRA_TEXT": ["Whenever you play an Attack, %s"]
+  },
   "${ModID}:HalveEffectsComponent": {
     "TEXT": ["Halve other effects"],
     "EXTRA_TEXT": [""]
