@@ -62,4 +62,16 @@ public class ReskinComponent extends AbstractTraitComponent {
     public AbstractComponent makeCopy() {
         return new ReskinComponent(rarity, anchor1, anchor2, target1, target2, flipX);
     }
+
+    @Override
+    public String toString() {
+        return "ReskinComponent{" +
+                "rarity=" + rarity +
+                ", anchor1=" + anchor1 +
+                ", anchor2=" + anchor2 +
+                ", target1=" + target1 +
+                ", target2=" + target2 +
+                ", flipX=" + flipX +
+                '}';
+    }
 }
