@@ -332,6 +332,15 @@
       "Put %s cards from your discard pile on top of your draw pile"
     ]
   },
+  "${ModID}:DiscardToHandComponent": {
+    "TEXT": ["Put cards from your discard pile into your hand"],
+    "EXTRA_TEXT": [
+      "Put %1$s card{@@}{%1$s|>1=s} from your discard pile into your hand",
+      "Put a card from your discard pile into your hand",
+      "Put %s cards from your discard pile into your hand",
+      "Put that many cards from your discard pile into your hand"
+    ]
+  },
   "${ModID}:SuitUpComponent": {
     "TEXT": ["Your next #yBlock gaining cards give #b50% more #yBlock"],
     "EXTRA_TEXT": [
@@ -368,6 +377,25 @@
       "Exhaust %1$s random card{@@}{%1$s|>1=s}%2$s",
       "Exhaust a random card%s",
       "Exhaust %1$s random cards%2$s"
+    ]
+  },
+  "${ModID}:DiscardCardsComponent": {
+    "TEXT": [
+      "Discard cards",
+      "Optionally discard cards",
+      "Discard random cards",
+      "for each card discarded"
+    ],
+    "EXTRA_TEXT": [
+      "Discard %1$s card{@@}{%1$s|>1=s}",
+      "Discard a card",
+      "Discard %s cards",
+      "Discard up to %1$s card{@@}{%1$s|>1=s}",
+      "Discard up to 1 card",
+      "Discard up to %s cards",
+      "Discard %1$s random card{@@}{%1$s|>1=s}",
+      "Discard a random card",
+      "Discard %s random cards"
     ]
   },
   "${ModID}:EnergyIfDebuffComponent": {

@@ -92,7 +92,9 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         CANT_COLLAPSE_TARGET_TEXT,
         DRAW_FOLLOWUP,
         DAMAGE_FOLLOWUP,
-        EXHAUST_FOLLOWUP
+        EXHAUST_FOLLOWUP,
+        DISCARD_FOLLOWUP,
+        THAT_MANY
     }
 
     private final String identifier;

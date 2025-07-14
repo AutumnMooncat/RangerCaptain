@@ -1,6 +1,10 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.actions.BetterSelectCardsInHandAction;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cardmods.fusion.components.DiscardCardsComponent;
+import RangerCaptain.cardmods.fusion.components.DiscardToHandComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -16,6 +20,19 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Faucetear extends AbstractEasyCard {
     public final static String ID = makeID(Faucetear.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.FAUCETEAR)
+                .withCost(1)
+                .with(new DiscardCardsComponent(2, true, false))
+                .withFlags(new DiscardToHandComponent(0), AbstractComponent.Flag.THAT_MANY)
+                .register();
+        new FusionComponentHelper(MonsterEnum.FOUNTESS)
+                .withCost(1)
+                .with(new DiscardCardsComponent(3, true, false))
+                .withFlags(new DiscardToHandComponent(0), AbstractComponent.Flag.THAT_MANY)
+                .register();
+    }
 
     public Faucetear() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
