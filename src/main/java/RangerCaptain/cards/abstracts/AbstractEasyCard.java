@@ -470,6 +470,10 @@ public abstract class AbstractEasyCard extends CustomCard {
         atb(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, block));
     }
 
+    protected void blckTop() {
+        att(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, block));
+    }
+
     public String cardArtCopy() {
         return null;
     }
