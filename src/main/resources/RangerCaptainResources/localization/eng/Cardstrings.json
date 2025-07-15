@@ -211,7 +211,7 @@
   },
   "${ModID}:Minortom": {
     "NAME": "Minortom",
-    "DESCRIPTION": "Next turn, draw !M! additional card{@@}{!M!|>1=s}. NL ${ModID}:Close_Encounter.",
+    "DESCRIPTION": "${ModID}:Stash the top {@@}{!M!|1=card|@=!M! cards} of your draw pile. NL ${ModID}:Close_Encounter.",
     "EXTENDED_DESCRIPTION": ["Majortom"]
   },
   "${ModID}:MissMimic": {

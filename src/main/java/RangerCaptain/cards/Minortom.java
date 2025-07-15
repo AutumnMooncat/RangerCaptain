@@ -1,15 +1,14 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.actions.StashTopCardsAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.patches.ExtraEffectPatches;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
-import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -21,13 +20,12 @@ public class Minortom extends AbstractEasyCard {
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.MINORTOM);
         tags.add(CustomTags.CLOSE_ENCOUNTER);
-        tags.add(CustomTags.MAGIC_DRAW_NEXT_TURN);
         ExtraEffectPatches.EffectFields.closeEncounter.set(this, true);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.applyToSelf(new DrawCardNextTurnPower(p, magicNumber));
+        addToBot(new StashTopCardsAction(magicNumber));
     }
 
     @Override
