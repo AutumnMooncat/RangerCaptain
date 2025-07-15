@@ -233,11 +233,16 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
                 parts[i] = "#y"+parts[i].substring(1);
             } else {
                 String lower = parts[i].toLowerCase();
+                String last = "";
+                if (lower.endsWith(",")) {
+                    last = ",";
+                    lower = lower.substring(0, lower.length() - 1);
+                }
                 if (GameDictionary.keywords.containsKey(lower)) {
                     if (BaseMod.keywordIsUnique(lower)) {
-                        parts[i] = StringUtils.join(Arrays.stream(lower.replace(BaseMod.getKeywordPrefix(lower), "").split(" ")).map(s -> "#y"+FormatHelper.capitalize(s)).toArray(), " ");
+                        parts[i] = StringUtils.join(Arrays.stream(lower.replace(BaseMod.getKeywordPrefix(lower), "").split(" ")).map(s -> "#y"+FormatHelper.capitalize(s)).toArray(), " ")+last;
                     } else {
-                        parts[i] = FormatHelper.prefixWords(parts[i], "#y");
+                        parts[i] = FormatHelper.prefixWords(parts[i], "#y")+last;
                     }
                 }
             }
