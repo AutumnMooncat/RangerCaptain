@@ -1,6 +1,9 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.actions.StashTopCardsAction;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.AddCloseEncounterComponent;
+import RangerCaptain.cardmods.fusion.components.StashTopCardsComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.patches.ExtraEffectPatches;
@@ -14,6 +17,19 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Minortom extends AbstractEasyCard {
     public final static String ID = makeID(Minortom.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.MINORTOM)
+                .withCost(1)
+                .with(new StashTopCardsComponent(3))
+                .with(new AddCloseEncounterComponent())
+                .register();
+        new FusionComponentHelper(MonsterEnum.MAJORTOM)
+                .withCost(1)
+                .with(new StashTopCardsComponent(4))
+                .with(new AddCloseEncounterComponent())
+                .register();
+    }
 
     public Minortom() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
