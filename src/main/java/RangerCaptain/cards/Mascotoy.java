@@ -1,5 +1,7 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.AddMindMeldComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.patches.ExtraEffectPatches;
@@ -15,6 +17,19 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Mascotoy extends AbstractEasyCard {
     public final static String ID = makeID(Mascotoy.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.MASCOTOY)
+                .withCost(1)
+                .withDamage(8, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new AddMindMeldComponent())
+                .register();
+        new FusionComponentHelper(MonsterEnum.MASCOTORN)
+                .withCost(1)
+                .withDamage(10, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new AddMindMeldComponent())
+                .register();
+    }
 
     public Mascotoy() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
