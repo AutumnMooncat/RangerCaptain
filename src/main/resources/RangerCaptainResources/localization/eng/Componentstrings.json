@@ -512,5 +512,9 @@
   "${ModID}:AddBootDamageComponent": {
     "TEXT": ["Limits minimum damage"],
     "EXTRA_TEXT": ["If this would deal %1$s or less unblocked damage, raise it to %2$s"]
+  },
+  "${ModID}:AddBoostAlreadyAttackedDamageComponent": {
+    "TEXT": ["Deals bonus damage to already attacked enemies"],
+    "EXTRA_TEXT": ["Deals %s additional damage to enemies you already attacked this turn"]
   }
 }
