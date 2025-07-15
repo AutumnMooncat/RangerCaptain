@@ -23,6 +23,11 @@ public class ToxinPower extends AbstractEasyPower {
     }
 
     @Override
+    public void playApplyPowerSfx() {
+        CardCrawlGame.sound.play("POWER_POISON", 0.05F);
+    }
+
+    @Override
     public void atEndOfRound() {
         addToBot(new ReducePowerAction(owner, owner, this, 1));
     }
