@@ -1,5 +1,8 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.AddExhaustComponent;
+import RangerCaptain.cardmods.fusion.components.MadnessComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.YeetCardPatches;
 import RangerCaptain.util.CardArtRoller;
@@ -24,6 +27,19 @@ import static RangerCaptain.MainModfile.makeID;
 public class Kittelly extends AbstractEasyCard {
     public final static String ID = makeID(Kittelly.class.getSimpleName());
     private AbstractCard lastCard;
+
+    static {
+        new FusionComponentHelper(MonsterEnum.KITTELLY)
+                .withCost(1)
+                .with(new MadnessComponent(1))
+                .with(new AddExhaustComponent())
+                .register();
+        new FusionComponentHelper(MonsterEnum.CATFIVE)
+                .withCost(0)
+                .with(new MadnessComponent(1))
+                .with(new AddExhaustComponent())
+                .register();
+    }
 
     public Kittelly() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
