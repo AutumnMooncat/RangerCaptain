@@ -1,16 +1,14 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.actions.StashTopCardsAction;
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.components.NextTurnDrawComponent;
+import RangerCaptain.cardmods.fusion.components.StashTopCardsComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
-import RangerCaptain.patches.CustomTags;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
-import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -21,17 +19,17 @@ public class Traffikrab extends AbstractMultiUpgradeCard {
         new FusionComponentHelper(MonsterEnum.TRAFFIKRAB)
                 .withCost(1)
                 .withBlock(6)
-                .with(new NextTurnDrawComponent(1))
+                .with(new StashTopCardsComponent(1))
                 .register();
         new FusionComponentHelper(MonsterEnum.WEEVILITE)
                 .withCost(0)
                 .withBlock(7)
-                .with(new NextTurnDrawComponent(1))
+                .with(new StashTopCardsComponent(1))
                 .register();
         new FusionComponentHelper(MonsterEnum.LOBSTACLE)
                 .withCost(1)
                 .withBlock(8)
-                .with(new NextTurnDrawComponent(1))
+                .with(new StashTopCardsComponent(1))
                 .register();
     }
 
@@ -40,13 +38,12 @@ public class Traffikrab extends AbstractMultiUpgradeCard {
         baseBlock = block = 8;
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.TRAFFIKRAB);
-        tags.add(CustomTags.MAGIC_DRAW_NEXT_TURN);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         blck();
-        Wiz.applyToSelf(new DrawCardNextTurnPower(p, magicNumber));
+        addToBot(new StashTopCardsAction(magicNumber));
     }
 
     @Override

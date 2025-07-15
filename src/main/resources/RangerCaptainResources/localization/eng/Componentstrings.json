@@ -426,6 +426,14 @@
       "Next turn, gain %s [E] "
     ]
   },
+  "${ModID}:StashTopCardsComponent": {
+    "TEXT": ["#yStash the top cards of your draw pile"],
+    "EXTRA_TEXT": [
+      "${ModID}:Stash the top {@@}{%1$s|1=card|@=%1$s cards} of your draw pile",
+      "${ModID}:Stash the top card of your draw pile",
+      "${ModID}:Stash the top %s cards of your draw pile"
+    ]
+  },
   "${ModID}:IncreaseDebuffsComponent": {
     "TEXT": [
       "Increase your debuffs",

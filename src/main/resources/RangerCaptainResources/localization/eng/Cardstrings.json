@@ -341,7 +341,7 @@
   },
   "${ModID}:Traffikrab": {
     "NAME": "Traffikrab",
-    "DESCRIPTION": "Gain !B! Block. NL Next turn, draw !M! additional card{@@}{!M!|>1=s}.",
+    "DESCRIPTION": "Gain !B! Block. NL ${ModID}:Stash the top {@@}{!M!|1=card|@=!M! cards} of your draw pile.",
     "EXTENDED_DESCRIPTION": ["Weevilite","Lobstacle"]
   },
   "${ModID}:Trapwurm": {
