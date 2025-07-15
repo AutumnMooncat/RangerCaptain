@@ -33,7 +33,7 @@ public class SuitUpPower extends AbstractEasyPower {
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (card.baseBlock > -1 && !(card instanceof RitualDagger)) {
             flash();
-            addToBot(new ReducePowerAction(owner, owner, this, 1));
+            addToTop(new ReducePowerAction(owner, owner, this, 1));
         }
     }
 

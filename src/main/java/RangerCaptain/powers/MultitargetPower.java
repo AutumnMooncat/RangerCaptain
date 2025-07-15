@@ -39,7 +39,7 @@ public class MultitargetPower extends AbstractEasyPower {
                         card.use(Wiz.adp(), mon);
                     }
                 });
-                addToBot(new ReducePowerAction(owner, owner, this, 1));
+                addToTop(new ReducePowerAction(owner, owner, this, 1));
             }
         }
     }
