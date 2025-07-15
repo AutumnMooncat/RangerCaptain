@@ -31,6 +31,7 @@ public class MakeCardsComponent extends AbstractComponent {
     public static final String PILES = DESCRIPTION_TEXT[5];
     public static final String INVALID_LOCATION = DESCRIPTION_TEXT[6];
     public static final String INVALID_REFERENCE = DESCRIPTION_TEXT[7];
+    public static final String S = DESCRIPTION_TEXT[8];
 
     public enum Location {
         HAND,
@@ -40,21 +41,23 @@ public class MakeCardsComponent extends AbstractComponent {
 
     public final ArrayList<Location> locations = new ArrayList<>();
     public final String cardID;
-    private final transient AbstractCard reference;
+    public final boolean pluralize;
+    private transient AbstractCard reference;
 
-    public MakeCardsComponent(int base, AbstractCard card) {
-        this(base, card, Location.HAND);
+    public MakeCardsComponent(int base, AbstractCard card, boolean pluralize) {
+        this(base, card, pluralize, Location.HAND);
     }
 
-    public MakeCardsComponent(int base, AbstractCard card, Location... locations) {
-        this(base, card.cardID, locations);
+    public MakeCardsComponent(int base, AbstractCard card, boolean pluralize, Location... locations) {
+        this(base, card.cardID, pluralize, locations);
     }
 
-    public MakeCardsComponent(int base, String cardID, Location... locations) {
+    public MakeCardsComponent(int base, String cardID, boolean pluralize, Location... locations) {
         super(ID, base, ComponentType.DO, ComponentTarget.NONE, DynVar.MAGIC);
         this.locations.addAll(Arrays.stream(locations).distinct().collect(Collectors.toList()));
         this.cardID = cardID;
         this.reference = CardLibrary.getCard(cardID);
+        this.pluralize = pluralize;
     }
 
     @Override
@@ -126,9 +129,12 @@ public class MakeCardsComponent extends AbstractComponent {
     @Override
     public String componentDescription() {
         if (reference == null) {
-            return INVALID_REFERENCE;
+            reference = CardLibrary.getCard(cardID);
+            if (reference == null) {
+                return INVALID_REFERENCE;
+            }
         }
-        return String.format(DESCRIPTION_TEXT[0], reference.name, locationText());
+        return String.format(DESCRIPTION_TEXT[0], FormatHelper.prefixWords(reference.name, "#y"), locationText());
     }
 
     @Override
@@ -137,10 +143,15 @@ public class MakeCardsComponent extends AbstractComponent {
             return INVALID_REFERENCE;
         }
 
-        if (dynvar == DynVar.FLAT) {
-            return baseAmount == 1 ? String.format(CARD_TEXT[1], reference.name, locationText()) : String.format(CARD_TEXT[2], baseAmount, reference.name, locationText());
+        int index = 0;
+        String name = FormatHelper.prefixWords(reference.name, "*");
+        if (locations.contains(Location.DRAW)) {
+            index = 3;
         }
-        return String.format(CARD_TEXT[0], dynKey(), reference.name, locationText());
+        if (dynvar == DynVar.FLAT) {
+            return baseAmount == 1 ? String.format(CARD_TEXT[index + 1], name, locationText()) : String.format(CARD_TEXT[index + 2], baseAmount, pluralize ? name + S : name, locationText());
+        }
+        return String.format(CARD_TEXT[index], dynKey(), name, pluralize ? S : "", locationText());
     }
 
     @Override
@@ -167,6 +178,6 @@ public class MakeCardsComponent extends AbstractComponent {
 
     @Override
     public AbstractComponent makeCopy() {
-        return new MakeCardsComponent(baseAmount, cardID, locations.toArray(new Location[0]));
+        return new MakeCardsComponent(baseAmount, cardID, pluralize, locations.toArray(new Location[0]));
     }
 }

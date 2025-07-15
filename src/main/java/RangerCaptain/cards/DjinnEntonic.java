@@ -24,7 +24,7 @@ public class DjinnEntonic extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.DJINN_ENTONIC)
                 .withCost(0)
                 .with(new StrengthComponent(3))
-                .with(new MakeCardsComponent(2, new Dazed(), MakeCardsComponent.Location.DRAW))
+                .with(new MakeCardsComponent(2, new Dazed(), false, MakeCardsComponent.Location.DRAW))
                 .register();
     }
 

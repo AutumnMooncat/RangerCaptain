@@ -108,10 +108,14 @@ public class MakeCopiesComponent extends AbstractComponent {
 
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
-        if (dynvar == DynVar.FLAT) {
-            return baseAmount == 1 ? String.format(CARD_TEXT[1], locationText()) : String.format(CARD_TEXT[2], baseAmount, locationText());
+        int index = 0;
+        if (locations.contains(Location.DRAW)) {
+            index = 3;
         }
-        return String.format(CARD_TEXT[0], dynKey(), locationText());
+        if (dynvar == DynVar.FLAT) {
+            return baseAmount == 1 ? String.format(CARD_TEXT[index + 1], locationText()) : String.format(CARD_TEXT[index + 2], baseAmount, locationText());
+        }
+        return String.format(CARD_TEXT[index], dynKey(), locationText());
     }
 
     @Override
