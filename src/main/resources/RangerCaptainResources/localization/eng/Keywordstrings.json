@@ -162,18 +162,8 @@
     "DESCRIPTION": "Look at random cards in your draw pile. You may add one of them to your #yStash. #yStashed cards are added to your hand next turn."
   },
   {
-    "ID": "discovery",
-    "PROPER_NAME": "discovery",
-    "NAMES": [
-      "discovery",
-      "discover",
-      "discovered"
-    ],
-    "DESCRIPTION": "Cards in your #yDiscovery pile are added to your hand next turn."
-  },
-  {
     "ID": "stash",
-    "PROPER_NAME": "stash",
+    "PROPER_NAME": "Stash",
     "NAMES": [
       "stash",
       "stashed"
