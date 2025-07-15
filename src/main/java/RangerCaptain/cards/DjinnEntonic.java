@@ -2,7 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
 import RangerCaptain.cardmods.fusion.components.MakeCardsComponent;
-import RangerCaptain.cardmods.fusion.components.TempStrengthComponent;
+import RangerCaptain.cardmods.fusion.components.StrengthComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.util.CardArtRoller;
@@ -23,7 +23,7 @@ public class DjinnEntonic extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.DJINN_ENTONIC)
                 .withCost(0)
-                .with(new TempStrengthComponent(3))
+                .with(new StrengthComponent(3))
                 .with(new MakeCardsComponent(2, new Dazed(), MakeCardsComponent.Location.DRAW))
                 .register();
     }
