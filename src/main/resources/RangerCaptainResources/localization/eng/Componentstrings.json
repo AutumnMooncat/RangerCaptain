@@ -474,6 +474,9 @@
     "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": ["Whenever you play an Attack, %s"]
   },
+  "${ModID}:OnExhaustComponent": {
+    "TEXT": ["Fusion becomes a Power"],
+    "EXTRA_TEXT": ["Whenever a card is Exhausted, %s"]
   "${ModID}:HalveEffectsComponent": {
     "TEXT": ["Halve other effects"],
     "EXTRA_TEXT": [""]
