@@ -230,7 +230,7 @@
   },
   "${ModID}:Padpole": {
     "NAME": "Padpole",
-    "DESCRIPTION": "Gain !B! Block. NL Remove 1 of your debuffs.",
+    "DESCRIPTION": "Gain !B! Block. NL You may remove a buff to gain !B! Block again.",
     "EXTENDED_DESCRIPTION": ["Frillypad","Liligator"]
   },
   "${ModID}:Pawndead": {

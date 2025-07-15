@@ -21,18 +21,23 @@ public class CleansePowerAction extends AbstractGameAction {
     private static final String[] TEXT = CardCrawlGame.languagePack.getUIString(MainModfile.makeID("CleanseAction")).TEXT;
     private final Predicate<AbstractPower> filter;
     private final Consumer<ArrayList<AbstractPower>> callBack;
+    private final boolean optional;
 
     public CleansePowerAction(AbstractCreature target, int amount, Predicate<AbstractPower> filter) {
         this(target, amount, filter, l -> {});
     }
 
     public CleansePowerAction(AbstractCreature target, int amount, Predicate<AbstractPower> filter, Consumer<ArrayList<AbstractPower>> callBack) {
+        this(target, amount, false, filter, callBack);
+    }
+
+    public CleansePowerAction(AbstractCreature target, int amount, boolean optional, Predicate<AbstractPower> filter, Consumer<ArrayList<AbstractPower>> callBack) {
         this.target = target;
         this.amount = amount;
         this.filter = filter;
         this.callBack = callBack;
+        this.optional = optional;
     }
-
 
     @Override
     public void update() {
@@ -40,7 +45,7 @@ public class CleansePowerAction extends AbstractGameAction {
             this.isDone = true;
             return;
         }
-        if (amount >= target.powers.stream().filter(filter).count()) {
+        if (amount >= target.powers.stream().filter(filter).count() && !optional) {
             ArrayList<AbstractPower> removedPowers = new ArrayList<>();
             for (AbstractPower pow : target.powers) {
                 if (filter.test(pow)) {
@@ -59,7 +64,7 @@ public class CleansePowerAction extends AbstractGameAction {
                     powerMap.put(card, pow);
                 }
             }
-            Wiz.att(new BetterSelectCardsCenteredAction(validPowerCards, amount, amount == 1 ? TEXT[1] : TEXT[2] + amount + TEXT[3], cards -> {
+            Wiz.att(new BetterSelectCardsCenteredAction(validPowerCards, amount, amount == 1 ? TEXT[1] : TEXT[2] + amount + TEXT[3], optional, optional, cards -> {
                 ArrayList<AbstractPower> removedPowers = new ArrayList<>();
                 for (AbstractCard card : cards) {
                     Wiz.att(new RemoveSpecificPowerAction(target, target, powerMap.get(card)));

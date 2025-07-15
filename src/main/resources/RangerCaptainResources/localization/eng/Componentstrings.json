@@ -221,6 +221,10 @@
       "%s Block next turn"
     ]
   },
+  "${ModID}:RemoveBuffForBlockComponent": {
+    "TEXT": ["Optionally remove a buff for more #yBlock"],
+    "EXTRA_TEXT": ["You may remove a buff to gain %s Block again"]
+  },
   "${ModID}:VigorComponent": {
     "TEXT": ["#yVigor"],
     "EXTRA_TEXT": ["Vigor"]
