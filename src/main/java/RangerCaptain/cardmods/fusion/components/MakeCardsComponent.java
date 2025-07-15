@@ -49,15 +49,15 @@ public class MakeCardsComponent extends AbstractComponent {
     }
 
     public MakeCardsComponent(int base, AbstractCard card, boolean pluralize, Location... locations) {
-        this(base, card.cardID, pluralize, locations);
+        super(ID, base, ComponentType.DO, ComponentTarget.NONE, DynVar.MAGIC);
+        this.locations.addAll(Arrays.stream(locations).distinct().collect(Collectors.toList()));
+        this.cardID = card.cardID;
+        this.reference = card;
+        this.pluralize = pluralize;
     }
 
     public MakeCardsComponent(int base, String cardID, boolean pluralize, Location... locations) {
-        super(ID, base, ComponentType.DO, ComponentTarget.NONE, DynVar.MAGIC);
-        this.locations.addAll(Arrays.stream(locations).distinct().collect(Collectors.toList()));
-        this.cardID = cardID;
-        this.reference = CardLibrary.getCard(cardID);
-        this.pluralize = pluralize;
+        this(base, CardLibrary.getCard(cardID), pluralize, locations);
     }
 
     @Override
