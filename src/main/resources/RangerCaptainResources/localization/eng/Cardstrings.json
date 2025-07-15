@@ -169,7 +169,7 @@
   },
   "${ModID}:Jumpkin": {
     "NAME": "Jumpkin",
-    "DESCRIPTION": "{@@}{!${ModID}:I!|0=Apply !M! Poison. NL Apply !${ModID}:M2! Weak.|1=Apply !M! Poison and !${ModID}:M2! Weak to ALL enemies.}",
+    "DESCRIPTION": "{@@}{!${ModID}:I!|0=Apply !M! ${ModID}:Toxin. NL Apply !${ModID}:M2! Weak.|1=Apply !M! ${ModID}:Toxin and !${ModID}:M2! Weak to ALL enemies.}",
     "EXTENDED_DESCRIPTION": ["Draculeaf","Beanstalker"]
   },
   "${ModID}:Khepri": {
