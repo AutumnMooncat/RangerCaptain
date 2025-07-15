@@ -1,14 +1,18 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cardmods.fusion.components.OnTurnStartComponent;
+import RangerCaptain.cards.tokens.Sludge;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.PoisonPower;
 
-public class AcidReflexPower extends AbstractEasyPower {
+import java.util.List;
+
+public class AcidReflexPower extends AbstractComponentPower {
     public static final String POWER_ID = MainModfile.makeID(AcidReflexPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -18,17 +22,23 @@ public class AcidReflexPower extends AbstractEasyPower {
         super(POWER_ID, NAME, PowerType.BUFF, false, owner, amount);
     }
 
-    @Override
-    public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+    public AcidReflexPower(AbstractCreature owner, String name, OnTurnStartComponent source, List<AbstractComponent> components) {
+        super(POWER_ID, name, PowerType.BUFF, false, owner, source, components);
     }
 
     @Override
-    public int onAttacked(DamageInfo info, int damageAmount) {
-        if (info.type == DamageInfo.DamageType.NORMAL && info.owner != null && info.owner != this.owner) {
+    public void updateNormalDescription() {
+        this.description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+    }
+
+    public void atStartOfTurn() {
+        if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             flash();
-            addToTop(new ApplyPowerAction(info.owner, owner, new PoisonPower(info.owner, owner, amount)));
+            if (source == null) {
+                addToBot(new MakeTempCardInHandAction(new Sludge(), amount, false));
+            } else {
+                triggerComponents(null, false);
+            }
         }
-        return damageAmount;
     }
 }

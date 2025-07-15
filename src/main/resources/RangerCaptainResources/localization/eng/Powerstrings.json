@@ -99,7 +99,7 @@
   },
   "${ModID}:AcidReflexPower": {
     "NAME": "Acid Reflex",
-    "DESCRIPTIONS": ["When attacked, apply #b"," #yPoison back."]
+    "DESCRIPTIONS": ["At the start of each turn, add #b"," #ySludge into your hand."]
   },
   "${ModID}:GambitPower": {
     "NAME": "Gambit",

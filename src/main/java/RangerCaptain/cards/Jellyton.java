@@ -1,6 +1,10 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.MakeCardsComponent;
+import RangerCaptain.cardmods.fusion.components.OnTurnStartComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.cards.tokens.Sludge;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.powers.AcidReflexPower;
 import RangerCaptain.util.CardArtRoller;
@@ -15,11 +19,20 @@ import static RangerCaptain.MainModfile.makeID;
 public class Jellyton extends AbstractEasyCard {
     public final static String ID = makeID(Jellyton.class.getSimpleName());
 
+    static {
+        new FusionComponentHelper(MonsterEnum.JELLYTON)
+                .withCost(1)
+                .with(new OnTurnStartComponent())
+                .with(new MakeCardsComponent(2, new Sludge(), false, MakeCardsComponent.Location.HAND))
+                .register();
+    }
+
     public Jellyton() {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
-        baseMagicNumber = magicNumber = 2;
+        baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.JELLYTON);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
+        cardsToPreview = new Sludge();
     }
 
     @Override

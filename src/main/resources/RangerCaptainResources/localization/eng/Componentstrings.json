@@ -477,6 +477,11 @@
   "${ModID}:OnExhaustComponent": {
     "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": ["Whenever a card is Exhausted, %s"]
+  },
+  "${ModID}:OnTurnStartComponent": {
+    "TEXT": ["Fusion becomes a Power"],
+    "EXTRA_TEXT": ["At the start of each turn, %s"]
+  },
   "${ModID}:HalveEffectsComponent": {
     "TEXT": ["Halve other effects"],
     "EXTRA_TEXT": [""]

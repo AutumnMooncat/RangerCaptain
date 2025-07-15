@@ -165,7 +165,7 @@
   },
   "${ModID}:Jellyton": {
     "NAME": "Jellyton",
-    "DESCRIPTION": "${ModID}:Perfect. NL Whenever you are attacked, apply !M! Poison back."
+    "DESCRIPTION": "${ModID}:Perfect. NL At the start of each turn, add !M! *Sludge into your hand."
   },
   "${ModID}:Jumpkin": {
     "NAME": "Jumpkin",
