@@ -197,7 +197,7 @@
   },
   "${ModID}:Macabra": {
     "NAME": "Macabra",
-    "DESCRIPTION": "Gain !B! Block. NL Gain !M! Thorns. NL At the end of this turn, lose !M! Thorns.",
+    "DESCRIPTION": "Gain !B! Block. NL Whenever you are attacked this turn, deal !M! damage back.",
     "EXTENDED_DESCRIPTION": ["Folklord"]
   },
   "${ModID}:Magikrab": {

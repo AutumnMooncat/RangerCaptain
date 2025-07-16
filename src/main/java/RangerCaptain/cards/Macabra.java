@@ -1,16 +1,15 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.components.TempThornsComponent;
+import RangerCaptain.cardmods.fusion.components.AbramacabraComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
-import RangerCaptain.powers.LosePowerLaterPower;
+import RangerCaptain.powers.AbramacabraPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.ThornsPower;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -21,12 +20,12 @@ public class Macabra extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.MACABRA)
                 .withCost(1)
                 .withBlock(4)
-                .with(new TempThornsComponent(2))
+                .with(new AbramacabraComponent(2))
                 .register();
         new FusionComponentHelper(MonsterEnum.FOLKLORD)
                 .withCost(1)
                 .withBlock(6)
-                .with(new TempThornsComponent(3))
+                .with(new AbramacabraComponent(3))
                 .register();
     }
 
@@ -40,8 +39,7 @@ public class Macabra extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         blck();
-        Wiz.applyToSelf(new ThornsPower(p, magicNumber));
-        Wiz.applyToSelf(new LosePowerLaterPower(p, new ThornsPower(p, magicNumber), magicNumber));
+        Wiz.applyToSelf(new AbramacabraPower(p, magicNumber));
     }
 
     @Override

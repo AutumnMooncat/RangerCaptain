@@ -485,6 +485,13 @@
       "Invalid Increase Debuffs: %s"
     ]
   },
+  "${ModID}:AbramacabraComponent": {
+    "TEXT": ["When attacked this turn, deal damage back"],
+    "EXTRA_TEXT": [
+      "Whenever you are attacked this turn, deal %s damage back",
+      "deal %s damage back when you are attacked this turn"
+    ]
+  },
   "${ModID}:MustBeAttackedComponent": {
     "TEXT": [
       "Adds playability restriction but increases effects",
