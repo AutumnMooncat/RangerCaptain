@@ -1,5 +1,7 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.BurnComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.BurnedPower;
@@ -15,6 +17,21 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Pondwalker extends AbstractEasyCard {
     public final static String ID = makeID(Pondwalker.class.getSimpleName());
+
+    static {
+        // 13,6 -> 21,10
+        new FusionComponentHelper(MonsterEnum.PONDWALKER)
+                .withCost(2)
+                .withDamage(6, AbstractGameAction.AttackEffect.FIRE)
+                .with(new BurnComponent(3))
+                .register();
+        // 16,8 -> 24,14
+        new FusionComponentHelper(MonsterEnum.SHARKTANKER)
+                .withCost(2)
+                .withDamage(7, AbstractGameAction.AttackEffect.FIRE)
+                .with(new BurnComponent(4))
+                .register();
+    }
 
     public Pondwalker() {
         super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
