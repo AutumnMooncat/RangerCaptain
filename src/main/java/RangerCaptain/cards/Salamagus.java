@@ -1,5 +1,8 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.BurnComponent;
+import RangerCaptain.cardmods.fusion.components.OnExhaustComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.patches.ExtraEffectPatches;
@@ -15,6 +18,14 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Salamagus extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Salamagus.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.SALAMAGUS)
+                .withCost(1)
+                .with(new OnExhaustComponent())
+                .with(new BurnComponent(7))
+                .register();
+    }
 
     public Salamagus() {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);

@@ -5,7 +5,7 @@ import RangerCaptain.cardmods.FusionFormMod;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractPowerComponent;
 import RangerCaptain.cards.tokens.FusedCard;
-import RangerCaptain.powers.GhostlyPower;
+import RangerCaptain.powers.FlammablePower;
 import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -52,7 +52,7 @@ public class OnExhaustComponent extends AbstractPowerComponent {
 
     @Override
     public void onTrigger(ComponentAmountProvider provider, AbstractPlayer p, AbstractMonster m, List<AbstractComponent> captured) {
-        String name = GhostlyPower.NAME+"?";
+        String name = FlammablePower.NAME+"?";
         if (provider instanceof FusedCard) {
             FusionFormMod mod = FusionFormMod.getFusionForm((AbstractCard) provider);
             if (mod != null) {
@@ -65,7 +65,7 @@ public class OnExhaustComponent extends AbstractPowerComponent {
                 comp.dynvar = DynVar.FLAT;
             }
         }
-        Wiz.applyToSelf(new GhostlyPower(p, name, this, captured));
+        Wiz.applyToSelf(new FlammablePower(p, name, this, captured));
     }
 
     @Override
