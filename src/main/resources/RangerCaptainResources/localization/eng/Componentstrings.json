@@ -560,5 +560,9 @@
   "${ModID}:AddBoostAlreadyAttackedDamageComponent": {
     "TEXT": ["Deals bonus damage to already attacked enemies"],
     "EXTRA_TEXT": ["Deals %s additional damage to enemies you already attacked this turn"]
+  },
+  "${ModID}:AddConductiveDamageComponent": {
+    "TEXT": ["Applies #yConductive equal to unblocked damage dealt"],
+    "EXTRA_TEXT": ["Apply ${ModID}:Conductive equal to unblocked damage dealt"]
   }
 }

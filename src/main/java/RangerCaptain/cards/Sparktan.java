@@ -1,6 +1,10 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.actions.DamageFollowupAction;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.AddConductiveDamageComponent;
+import RangerCaptain.cardmods.fusion.components.AddExhaustComponent;
+import RangerCaptain.cardmods.fusion.components.vfx.LightningFVXComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.ConductivePower;
 import RangerCaptain.util.CardArtRoller;
@@ -19,6 +23,24 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Sparktan extends AbstractEasyCard {
     public final static String ID = makeID(Sparktan.class.getSimpleName());
+
+    static {
+        // TODO VFX doesnt play before damage
+        new FusionComponentHelper(MonsterEnum.SPARKTAN)
+                .withCost(1)
+                .withDamage(4, AbstractGameAction.AttackEffect.NONE)
+                .with(new LightningFVXComponent())
+                .with(new AddConductiveDamageComponent())
+                .with(new AddExhaustComponent())
+                .register();
+        new FusionComponentHelper(MonsterEnum.ZEUSTRIKE)
+                .withCost(1)
+                .withDamage(6, AbstractGameAction.AttackEffect.NONE)
+                .with(new LightningFVXComponent())
+                .with(new AddConductiveDamageComponent())
+                .with(new AddExhaustComponent())
+                .register();
+    }
 
     public Sparktan() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
