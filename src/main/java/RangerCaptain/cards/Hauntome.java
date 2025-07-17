@@ -1,8 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.components.OnExhaustComponent;
-import RangerCaptain.cardmods.fusion.components.VigorComponent;
+import RangerCaptain.cardmods.fusion.components.OnStashComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.powers.GhostlyPower;
@@ -21,15 +20,14 @@ public class Hauntome extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.HAUNTOME)
                 .withCost(1)
-                .with(new OnExhaustComponent())
-                .withBlock(5)
-                .with(new VigorComponent(5))
+                .with(new OnStashComponent())
+                .withBlock(7)
                 .register();
     }
 
     public Hauntome() {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
-        baseMagicNumber = magicNumber = 2;
+        baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.HAUNTOME);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }

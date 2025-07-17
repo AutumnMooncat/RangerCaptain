@@ -156,7 +156,7 @@
   },
   "${ModID}:Hauntome": {
     "NAME": "Hauntome",
-    "DESCRIPTION": "${ModID}:Perfect. NL Whenever a card is Exhausted, gain !M! Block and !M! Vigor."
+    "DESCRIPTION": "${ModID}:Perfect. NL Whenever you ${ModID}:Stash a card, gain !M! Block."
   },
   "${ModID}:Icepeck": {
     "NAME": "Icepeck",

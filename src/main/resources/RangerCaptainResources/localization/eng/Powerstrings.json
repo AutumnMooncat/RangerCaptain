@@ -134,7 +134,7 @@
   },
   "${ModID}:GhostlyPower": {
     "NAME": "Ghostly",
-    "DESCRIPTIONS": ["Whenever a card is #yExhausted, gain #b"," #yBlock and #yVigor."]
+    "DESCRIPTIONS": ["Whenever you #yStash a card, gain #b"," #yBlock."]
   },
   "${ModID}:SummonedPower": {
     "NAME": "Summoned",

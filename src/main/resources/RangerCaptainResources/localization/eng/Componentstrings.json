@@ -513,6 +513,10 @@
     "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": ["Whenever a card is Exhausted, %s"]
   },
+  "${ModID}:OnStashComponent": {
+    "TEXT": ["Fusion becomes a Power"],
+    "EXTRA_TEXT": ["Whenever you ${ModID}:Stash a card, %s"]
+  },
   "${ModID}:OnTurnStartComponent": {
     "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": ["At the start of each turn, %s"]
