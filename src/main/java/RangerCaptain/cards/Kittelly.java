@@ -1,7 +1,6 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.components.AddExhaustComponent;
 import RangerCaptain.cardmods.fusion.components.MadnessComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.YeetCardPatches;
@@ -32,12 +31,12 @@ public class Kittelly extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.KITTELLY)
                 .withCost(1)
                 .with(new MadnessComponent(1))
-                .with(new AddExhaustComponent())
+                .withExhaust()
                 .register();
         new FusionComponentHelper(MonsterEnum.CATFIVE)
                 .withCost(0)
                 .with(new MadnessComponent(1))
-                .with(new AddExhaustComponent())
+                .withExhaust()
                 .register();
     }
 

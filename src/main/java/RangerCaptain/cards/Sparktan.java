@@ -3,7 +3,6 @@ package RangerCaptain.cards;
 import RangerCaptain.actions.DamageFollowupAction;
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
 import RangerCaptain.cardmods.fusion.components.AddConductiveDamageComponent;
-import RangerCaptain.cardmods.fusion.components.AddExhaustComponent;
 import RangerCaptain.cardmods.fusion.components.vfx.LightningFVXComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.ConductivePower;
@@ -31,14 +30,14 @@ public class Sparktan extends AbstractEasyCard {
                 .withDamage(4, AbstractGameAction.AttackEffect.NONE)
                 .with(new LightningFVXComponent())
                 .with(new AddConductiveDamageComponent())
-                .with(new AddExhaustComponent())
+                .withExhaust()
                 .register();
         new FusionComponentHelper(MonsterEnum.ZEUSTRIKE)
                 .withCost(1)
                 .withDamage(6, AbstractGameAction.AttackEffect.NONE)
                 .with(new LightningFVXComponent())
                 .with(new AddConductiveDamageComponent())
-                .with(new AddExhaustComponent())
+                .withExhaust()
                 .register();
     }
 

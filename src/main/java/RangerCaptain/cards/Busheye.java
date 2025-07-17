@@ -2,7 +2,6 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.AddExhaustComponent;
 import RangerCaptain.cardmods.fusion.components.BurnComponent;
 import RangerCaptain.cardmods.fusion.components.WeakComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
@@ -27,21 +26,21 @@ public class Busheye extends AbstractMultiUpgradeCard {
                 .withCost(2)
                 .with(new BurnComponent(4, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .with(new WeakComponent(1, AbstractComponent.ComponentTarget.ENEMY_AOE))
-                .with(new AddExhaustComponent())
+                .withExhaust()
                 .register();
         // 10 -> 21
         new FusionComponentHelper(MonsterEnum.HUNTORCH)
                 .withCost(2)
                 .with(new BurnComponent(6, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .with(new WeakComponent(1, AbstractComponent.ComponentTarget.ENEMY_AOE))
-                .with(new AddExhaustComponent())
+                .withExhaust()
                 .register();
         // 14 -> 28
         new FusionComponentHelper(MonsterEnum.HEDGEHERNE)
                 .withCost(2)
                 .with(new BurnComponent(8, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .with(new WeakComponent(1, AbstractComponent.ComponentTarget.ENEMY_AOE))
-                .with(new AddExhaustComponent())
+                .withExhaust()
                 .register();
     }
 
