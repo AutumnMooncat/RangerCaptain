@@ -1,5 +1,6 @@
 package RangerCaptain.powers;
 
+import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractDamageModComponent;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractPowerComponent;
@@ -23,6 +24,7 @@ public abstract class AbstractComponentPower extends AbstractEasyPower implement
     protected static final CalcHelper.DummyCard dummyCard = new CalcHelper.DummyCard();
     public AbstractPowerComponent source;
     public List<AbstractComponent> captured;
+    private boolean locked;
 
     public AbstractComponentPower(String ID, String NAME, PowerType powerType, boolean isTurnBased, AbstractCreature owner, int amount) {
         super(ID, NAME, powerType, isTurnBased, owner, amount);
@@ -38,25 +40,29 @@ public abstract class AbstractComponentPower extends AbstractEasyPower implement
     public abstract void updateNormalDescription();
 
     public void triggerComponents(AbstractMonster target, boolean toTop) {
-        boolean couldPass = ReflectionHacks.getPrivateStatic(BindingPatches.class, "canPassInstigator");
-        ReflectionHacks.setPrivateStatic(BindingPatches.class, "canPassInstigator", true);
-        DamageModifierManager.clearModifiers(dummyCard);
-        for (AbstractComponent c : captured) {
-            if (c instanceof AbstractDamageModComponent) {
-                DamageModifierManager.addModifier(dummyCard, ((AbstractDamageModComponent) c).getDamageMod(getAmount(c)));
+        if (!locked) {
+            locked = true;
+            boolean couldPass = ReflectionHacks.getPrivateStatic(BindingPatches.class, "canPassInstigator");
+            ReflectionHacks.setPrivateStatic(BindingPatches.class, "canPassInstigator", true);
+            DamageModifierManager.clearModifiers(dummyCard);
+            for (AbstractComponent c : captured) {
+                if (c instanceof AbstractDamageModComponent) {
+                    DamageModifierManager.addModifier(dummyCard, ((AbstractDamageModComponent) c).getDamageMod(getAmount(c)));
+                }
             }
+            ActionCapturePatch.doCapture = true;
+            ActionCapturePatch.onCapture = this::captureCheck;
+            for (int i = captured.size() - 1; i >= 0; i--) {
+                captured.get(i).onTrigger(this, Wiz.adp(), target, Collections.emptyList());
+            }
+            addToBot(new DoAction(() -> locked = false));
+            if (toTop) {
+                ActionCapturePatch.releaseToTop();
+            } else {
+                ActionCapturePatch.releaseToBot();
+            }
+            ReflectionHacks.setPrivateStatic(BindingPatches.class, "canPassInstigator", couldPass);
         }
-        ActionCapturePatch.doCapture = true;
-        ActionCapturePatch.onCapture = this::captureCheck;
-        for (int i = captured.size() - 1; i >= 0; i--) {
-            captured.get(i).onTrigger(this, Wiz.adp(), target, Collections.emptyList());
-        }
-        if (toTop) {
-            ActionCapturePatch.releaseToTop();
-        } else {
-            ActionCapturePatch.releaseToBot();
-        }
-        ReflectionHacks.setPrivateStatic(BindingPatches.class, "canPassInstigator", couldPass);
     }
 
     public void captureCheck(AbstractGameAction action) {
