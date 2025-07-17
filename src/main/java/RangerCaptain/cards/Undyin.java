@@ -1,5 +1,8 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.HealComponent;
+import RangerCaptain.cardmods.fusion.components.OnDieComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.powers.AutoLifePower;
@@ -14,6 +17,14 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Undyin extends AbstractEasyCard {
     public final static String ID = makeID(Undyin.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.UNDYIN)
+                .withCost(1)
+                .with(new OnDieComponent())
+                .with(new HealComponent(2))
+                .register();
+    }
 
     public Undyin() {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);

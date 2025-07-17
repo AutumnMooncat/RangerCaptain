@@ -522,6 +522,12 @@
       "deal %s damage back when you are attacked this turn"
     ]
   },
+  "${ModID}:HealComponent": {
+    "TEXT": ["Heal health"],
+    "EXTRA_TEXT": [
+      "Heal %s HP"
+    ]
+  },
   "${ModID}:MustBeAttackedComponent": {
     "TEXT": [
       "Adds playability restriction but increases effects",
@@ -570,6 +576,10 @@
   "${ModID}:OnStashComponent": {
     "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": ["Whenever you ${ModID}:Stash a card, %s"]
+  },
+  "${ModID}:OnDieComponent": {
+    "TEXT": ["Fusion becomes a Power"],
+    "EXTRA_TEXT": ["At the end of combat, or when you would die, %s"]
   },
   "${ModID}:OnTurnStartComponent": {
     "TEXT": ["Fusion becomes a Power"],

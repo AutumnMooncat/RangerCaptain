@@ -1,6 +1,9 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cardmods.fusion.components.HealComponent;
+import RangerCaptain.cardmods.fusion.components.OnDieComponent;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnPlayerDeathPower;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -9,7 +12,9 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
-public class AutoLifePower extends AbstractEasyPower implements OnPlayerDeathPower {
+import java.util.List;
+
+public class AutoLifePower extends AbstractComponentPower implements OnPlayerDeathPower {
     public static final String POWER_ID = MainModfile.makeID(AutoLifePower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -19,19 +24,41 @@ public class AutoLifePower extends AbstractEasyPower implements OnPlayerDeathPow
         super(POWER_ID, NAME, PowerType.BUFF, false, owner, amount);
     }
 
+    public AutoLifePower(AbstractCreature owner, String name, OnDieComponent source, List<AbstractComponent> captured) {
+        super(POWER_ID, name, PowerType.BUFF, false, owner, source, captured);
+    }
+
     @Override
-    public void updateDescription() {
+    public void updateNormalDescription() {
         this.description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     @Override
     public void onVictory() {
-        owner.heal(amount);
+        if (source == null) {
+            owner.heal(amount);
+        } else {
+            for (AbstractComponent component : captured) {
+                if (component instanceof HealComponent) {
+                    owner.heal(component.baseAmount * amount);
+                }
+            }
+        }
     }
 
     @Override
     public boolean onPlayerDeath(AbstractPlayer abstractPlayer, DamageInfo damageInfo) {
-        owner.heal(amount);
+        if (source == null) {
+            owner.heal(amount);
+        } else {
+            for (AbstractComponent component : captured) {
+                if (component instanceof HealComponent) {
+                    owner.heal(component.baseAmount * amount);
+                    ((HealComponent) component).alreadyPerformed = true;
+                }
+            }
+            triggerComponents(null, true);
+        }
         addToTop(new RemoveSpecificPowerAction(owner, owner, this));
         return false;
     }
