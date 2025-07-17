@@ -20,11 +20,8 @@ public class LightningOrbVFX extends AbstractDamageModifier {
 
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        addToBot(new VFXAction(new LightningOrbActivateEffect(target.hb.cX, target.hb.cY)));
-        if (MainModfile.sfxCooldowns.get(ID) <= 0f) {
-            addToBot(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.2f));
-            MainModfile.sfxCooldowns.put(ID, COOLDOWN);
-        }
+        addToTop(new VFXAction(new LightningOrbActivateEffect(target.hb.cX, target.hb.cY)));
+        addToTop(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.2f));
     }
 
     @Override
