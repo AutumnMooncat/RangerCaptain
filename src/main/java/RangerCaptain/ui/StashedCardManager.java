@@ -81,15 +81,15 @@ public class StashedCardManager {
         card.beginGlowing();
         cards.addToTop(card);
         if (card instanceof OnStashedCard) {
-            ((OnStashedCard) card).onDiscover();
+            ((OnStashedCard) card).onStash();
         }
         for (AbstractPower p : Wiz.adp().powers) {
             if (p instanceof OnStashPower) {
-                ((OnStashPower) p).onDiscover(card, isEndTurn);
+                ((OnStashPower) p).onStash(card, isEndTurn);
             }
         }
         if (playSFX) {
-            CardCrawlGame.sound.play("ORB_SLOT_GAIN", 0.1F);
+            CardCrawlGame.sound.play("CARD_OBTAIN", 0.1F); // CARD_SELECT CARD_REJECT
         }
         CardCounterPatches.cardsStashedThisTurn++;
         CardCounterPatches.cardsStashedThisCombat++;
