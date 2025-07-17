@@ -1,5 +1,9 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cardmods.fusion.components.ConductiveComponent;
+import RangerCaptain.cardmods.fusion.components.OnGainEnergyComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.EnergyReservesPower;
 import RangerCaptain.util.CardArtRoller;
@@ -13,6 +17,19 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Amphare extends AbstractEasyCard {
     public final static String ID = makeID(Amphare.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.AMPHARE)
+                .withCost(1)
+                .with(new OnGainEnergyComponent())
+                .with(new ConductiveComponent(4, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .register();
+        new FusionComponentHelper(MonsterEnum.LAPACITOR)
+                .withCost(1)
+                .with(new OnGainEnergyComponent())
+                .with(new ConductiveComponent(6, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .register();
+    }
 
     public Amphare() {
         super(ID, 1, CardType.POWER, CardRarity.RARE, CardTarget.SELF);

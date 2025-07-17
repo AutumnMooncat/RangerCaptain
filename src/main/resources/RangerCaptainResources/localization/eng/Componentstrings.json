@@ -593,6 +593,10 @@
     "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": ["At the start of each turn, %s"]
   },
+  "${ModID}:OnGainEnergyComponent": {
+    "TEXT": ["Fusion becomes a Power"],
+    "EXTRA_TEXT": ["Whenever you gain Energy, %s"]
+  },
   "${ModID}:OnPlayNoAttacksComponent": {
     "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": ["At the end of your turn, if you did not play any Attacks, %s"]
