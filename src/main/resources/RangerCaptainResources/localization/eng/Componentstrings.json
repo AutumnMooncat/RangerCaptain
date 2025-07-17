@@ -376,6 +376,14 @@
       "Play the top %s cards of your draw pile and Exhaust them"
     ]
   },
+  "${ModID}:DoubleTapComponent": {
+    "TEXT": ["Your next Attacks are played twice this turn"],
+    "EXTRA_TEXT": [
+      "This turn, your next {@@}{%1$s|1=Attack is|@=%1$s Attacks are} played twice",
+      "This turn, your next Attack is played twice",
+      "This turn, your next %s Attacks are played twice"
+    ]
+  },
   "${ModID}:MakeCardsFreeComponent": {
     "TEXT": [
       "Make cards in your %s free until played",

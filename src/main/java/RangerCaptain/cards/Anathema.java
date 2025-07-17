@@ -1,5 +1,9 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cardmods.fusion.components.AddDoublePlayComponent;
+import RangerCaptain.cardmods.fusion.components.DoubleTapComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.util.CardArtRoller;
@@ -16,16 +20,23 @@ import static RangerCaptain.MainModfile.makeID;
 public class Anathema extends AbstractEasyCard implements StartupCard {
     public final static String ID = makeID(Anathema.class.getSimpleName());
 
+    static {
+        new FusionComponentHelper(MonsterEnum.ANATHEMA)
+                .withCost(0)
+                .withFlags(new DoubleTapComponent(1), AbstractComponent.Flag.REQUIRES_SAME_SOURCES)
+                .withFlags(new AddDoublePlayComponent(), AbstractComponent.Flag.REQUIRES_DIFFERENT_SOURCES)
+                .register();
+    }
+
     public Anathema() {
-        super(ID, 0, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
+        super(ID, 0, CardType.SKILL, CardRarity.RARE, CardTarget.NONE);
         setMonsterData(MonsterEnum.ANATHEMA);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
-        exhaust = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.applyToSelf(new DoubleTapPower(Wiz.adp(), 1));
+        //Wiz.applyToSelf(new DoubleTapPower(Wiz.adp(), 1));
     }
 
     @Override

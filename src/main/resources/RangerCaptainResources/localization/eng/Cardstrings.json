@@ -25,7 +25,7 @@
   },
   "${ModID}:Anathema": {
     "NAME": "Anathema",
-    "DESCRIPTION": "${ModID}:Perfect. NL This turn, your next Attack is played twice. NL Exhaust. NL Startup: Trigger the effect of this card."
+    "DESCRIPTION": "${ModID}:Perfect. NL Startup: This turn, your next Attack is played twice."
   },
   "${ModID}:Arkidd": {
     "NAME": "Arkidd",

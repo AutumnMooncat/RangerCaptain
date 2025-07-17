@@ -95,7 +95,9 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         EXHAUST_FOLLOWUP,
         EXHAUST_COMPLEX_FOLLOWUP,
         DISCARD_FOLLOWUP,
-        THAT_MANY
+        THAT_MANY,
+        REQUIRES_SAME_SOURCES,
+        REQUIRES_DIFFERENT_SOURCES
     }
 
     private final String identifier;
@@ -344,6 +346,8 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         components.removeIf(c -> c.hasFlags(Flag.REQUIRES_BLOCK) && components.stream().noneMatch(check -> c != check && check.type == ComponentType.BLOCK));
         components.removeIf(c -> c.hasFlags(Flag.REQUIRES_DAMAGE) && components.stream().noneMatch(check -> c != check && check.type == ComponentType.DAMAGE));
         components.removeIf(c -> c.hasFlags(Flag.REQUIRES_APPLY) && components.stream().noneMatch(check -> c != check && check.type == ComponentType.APPLY));
+        components.removeIf(c -> c.hasFlags(Flag.REQUIRES_SAME_SOURCES) && components.stream().anyMatch(check -> check.source != null && check.source != c.source));
+        components.removeIf(c -> c.hasFlags(Flag.REQUIRES_DIFFERENT_SOURCES) && components.stream().noneMatch(check -> check.source != null && check.source != c.source));
         Collections.sort(components);
     }
 

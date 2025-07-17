@@ -33,6 +33,13 @@
       "Fuse!"
     ]
   },
+  "${ModID}:FusionCardEffectData": {
+    "TEXT": [
+      "Not yet Implemented.",
+      "(if monsters match)",
+      "(if monsters don't match)"
+    ]
+  },
   "${ModID}:ModifyAction": {
     "TEXT": [
       "Modify"

@@ -1,6 +1,8 @@
 package RangerCaptain.util;
 
+import RangerCaptain.MainModfile;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
@@ -9,6 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class FusionCardEffectData {
+    private static final String ID = MainModfile.makeID(FusionCardEffectData.class.getSimpleName());
+    private static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     private static final HashMap<MonsterEnum, List<AbstractComponent>> monsterComponents = new HashMap<>();
 
     public static void add(MonsterEnum monster, AbstractComponent c) {
@@ -25,9 +29,21 @@ public class FusionCardEffectData {
     public static String getFusionTip(MonsterEnum monster) {
         List<AbstractComponent> comps = getComponents(monster);
         if (!comps.isEmpty()) {
-            return StringUtils.join(comps.stream().map(AbstractComponent::componentDescription).filter(s -> s != null && !s.isEmpty()).toArray(), ", ");
+            List<String> parts = new ArrayList<>();
+            for (AbstractComponent comp : comps) {
+                String text = comp.componentDescription();
+                if (text != null && !text.isEmpty()) {
+                    if (comp.hasFlags(AbstractComponent.Flag.REQUIRES_SAME_SOURCES)) {
+                        text += " " + TEXT[1];
+                    } else if (comp.hasFlags(AbstractComponent.Flag.REQUIRES_DIFFERENT_SOURCES)) {
+                        text += " " + TEXT[2];
+                    }
+                    parts.add(text);
+                }
+            }
+            return StringUtils.join(parts, ", ");
         } else {
-            return "Not yet Implemented.";
+            return TEXT[0];
         }
     }
 
@@ -46,10 +62,15 @@ public class FusionCardEffectData {
 
     public static String getFusionDescription(MonsterEnum base, MonsterEnum donor) {
         List<AbstractComponent> comps = getCombinedComponents(base, donor);
+        if (base == donor) {
+            comps.removeIf(c -> c.hasFlags(AbstractComponent.Flag.REQUIRES_DIFFERENT_SOURCES));
+        } else {
+            comps.removeIf(c -> c.hasFlags(AbstractComponent.Flag.REQUIRES_SAME_SOURCES));
+        }
         if (!comps.isEmpty()) {
             return StringUtils.join(comps.stream().map(AbstractComponent::componentDescription).filter(s -> s != null && !s.isEmpty()).distinct().toArray(), ", ");
         } else {
-            return "Not yet Implemented.";
+            return TEXT[0];
         }
     }
 }
