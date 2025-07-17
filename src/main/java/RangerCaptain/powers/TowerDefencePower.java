@@ -1,6 +1,8 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cardmods.fusion.components.OnGainBlockComponent;
 import com.evacipated.cardcrawl.mod.stslib.blockmods.AbstractBlockModifier;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnCreateBlockInstancePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -11,8 +13,9 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
 
 import java.util.HashSet;
+import java.util.List;
 
-public class TowerDefencePower extends AbstractEasyPower implements OnCreateBlockInstancePower {
+public class TowerDefencePower extends AbstractComponentPower implements OnCreateBlockInstancePower {
     public static final String POWER_ID = MainModfile.makeID(TowerDefencePower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -23,8 +26,12 @@ public class TowerDefencePower extends AbstractEasyPower implements OnCreateBloc
         super(POWER_ID, NAME, PowerType.BUFF, false, owner, amount);
     }
 
+    public TowerDefencePower(AbstractCreature owner, String name, OnGainBlockComponent source, List<AbstractComponent> captured) {
+        super(POWER_ID, name, PowerType.BUFF, false, owner, source, captured);
+    }
+
     @Override
-    public void updateDescription() {
+    public void updateNormalDescription() {
         if (amount == 1) {
             this.description = DESCRIPTIONS[0];
         } else if (amount == 2) {
@@ -38,7 +45,11 @@ public class TowerDefencePower extends AbstractEasyPower implements OnCreateBloc
     public void onCreateBlockInstance(HashSet<AbstractBlockModifier> hashSet, Object o) {
         if (o instanceof AbstractCard && ((AbstractCard) o).block > 1) {
             flash();
-            addToBot(new ApplyPowerAction(owner, owner, new NextTurnBlockPower(owner, (int) (((AbstractCard) o).block * amount * MULTI)), (int) (((AbstractCard) o).block * amount * MULTI), true));
+            if (source == null) {
+                addToBot(new ApplyPowerAction(owner, owner, new NextTurnBlockPower(owner, (int) (((AbstractCard) o).block * amount * MULTI)), (int) (((AbstractCard) o).block * amount * MULTI), true));
+            } else {
+                triggerComponents(null, false);
+            }
         }
     }
 }

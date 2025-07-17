@@ -1,5 +1,7 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.OnGainBlockComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.powers.TowerDefencePower;
@@ -15,6 +17,14 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Averevoir extends AbstractEasyCard {
     public final static String ID = makeID(Averevoir.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.AVEREVOIR)
+                .withCost(3)
+                .with(new OnGainBlockComponent())
+                .withBlock(7)
+                .register();
+    }
 
     public Averevoir() {
         super(ID, 3, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
