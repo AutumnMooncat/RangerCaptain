@@ -350,7 +350,7 @@
     "EXTENDED_DESCRIPTION": ["Wyrmaw"]
   },
   "${ModID}:Twirligig": {
-    "NAME": "Twiligig",
+    "NAME": "Twirligig",
     "DESCRIPTION": "Whenever you take no damage from an attack, gain !M! Vigor.",
     "EXTENDED_DESCRIPTION": ["Kirikuri"]
   },

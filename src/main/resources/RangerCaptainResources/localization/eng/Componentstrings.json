@@ -560,6 +560,13 @@
     "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": ["Whenever a card is Exhausted, %s"]
   },
+  "${ModID}:OnParryComponent": {
+    "TEXT": ["Fusion becomes a Power"],
+    "EXTRA_TEXT": [
+      "Whenever you take no damage from an attack, %s",
+      "back"
+    ]
+  },
   "${ModID}:OnStashComponent": {
     "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": ["Whenever you ${ModID}:Stash a card, %s"]

@@ -1,5 +1,8 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.OnParryComponent;
+import RangerCaptain.cardmods.fusion.components.VigorComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.ParryPower;
 import RangerCaptain.util.CardArtRoller;
@@ -15,9 +18,22 @@ import static RangerCaptain.MainModfile.makeID;
 public class Twirligig extends AbstractEasyCard {
     public final static String ID = makeID(Twirligig.class.getSimpleName());
 
+    static {
+        new FusionComponentHelper(MonsterEnum.TWIRLIGIG)
+                .withCost(1)
+                .with(new OnParryComponent())
+                .with(new VigorComponent(7))
+                .register();
+        new FusionComponentHelper(MonsterEnum.KIRIKURI)
+                .withCost(1)
+                .with(new OnParryComponent())
+                .with(new VigorComponent(10))
+                .register();
+    }
+
     public Twirligig() {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
-        baseMagicNumber = magicNumber = 4;
+        baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.TWIRLIGIG);
     }
 
