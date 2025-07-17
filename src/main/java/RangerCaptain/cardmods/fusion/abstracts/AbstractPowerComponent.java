@@ -242,7 +242,7 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
                     if (BaseMod.keywordIsUnique(lower)) {
                         parts[i] = StringUtils.join(Arrays.stream(lower.replace(BaseMod.getKeywordPrefix(lower), "").split(" ")).map(s -> "#y"+FormatHelper.capitalize(s)).toArray(), " ")+last;
                     } else {
-                        parts[i] = FormatHelper.prefixWords(parts[i], "#y")+last;
+                        parts[i] = FormatHelper.prefixWords(parts[i], "#y");
                     }
                 }
             }
