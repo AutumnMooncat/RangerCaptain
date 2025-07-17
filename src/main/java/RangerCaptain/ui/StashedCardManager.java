@@ -89,7 +89,7 @@ public class StashedCardManager {
             }
         }
         if (playSFX) {
-            CardCrawlGame.sound.play("CARD_OBTAIN", 0.1F); // CARD_SELECT CARD_REJECT
+            CardCrawlGame.sound.play("CARD_REJECT", 0.1F); // CARD_SELECT CARD_REJECT CARD_OBTAIN
         }
         CardCounterPatches.cardsStashedThisTurn++;
         CardCounterPatches.cardsStashedThisCombat++;
