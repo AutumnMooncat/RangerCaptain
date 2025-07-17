@@ -352,6 +352,14 @@
       "Put that many cards from your discard pile into your hand"
     ]
   },
+  "${ModID}:ScaleDamageComponent": {
+    "TEXT": ["Increase damage"],
+    "EXTRA_TEXT": [
+      "Increase this card's damage %s",
+      "Increase this card's damage by its damage",
+      "Increase this card's damage by their damage"
+    ]
+  },
   "${ModID}:SuitUpComponent": {
     "TEXT": ["Your next #yBlock gaining cards give #b50% more #yBlock"],
     "EXTRA_TEXT": [
@@ -412,6 +420,28 @@
       "Exhaust %1$s random card{@@}{%1$s|>1=s}%2$s",
       "Exhaust a random card%s",
       "Exhaust %1$s random cards%2$s"
+    ]
+  },
+  "${ModID}:ExhaustAttacksComponent": {
+    "TEXT": [
+      "#yExhaust Attacks %s",
+      "Optionally #yExhaust Attacks %s",
+      "#yExhaust random Attacks %s",
+      "in your hand",
+      "in your draw pile",
+      "in your discard pile",
+      "for each card Exhausted"
+    ],
+    "EXTRA_TEXT": [
+      "Exhaust %1$s Attack{@@}{%1$s|>1=s}%2$s",
+      "Exhaust an Attack%s",
+      "Exhaust %1$s Attacks%2$s",
+      "Exhaust up to %1$s Attack{@@}{%1$s|>1=s}%2$s",
+      "Exhaust up to 1 Attackd%s",
+      "Exhaust up to %1$s Attacks%2$s",
+      "Exhaust %1$s random Attack{@@}{%1$s|>1=s}%2$s",
+      "Exhaust a random Attack%s",
+      "Exhaust %1$s random Attacks%2$s"
     ]
   },
   "${ModID}:DiscardCardsComponent": {

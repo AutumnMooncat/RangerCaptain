@@ -93,6 +93,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         DRAW_FOLLOWUP,
         DAMAGE_FOLLOWUP,
         EXHAUST_FOLLOWUP,
+        EXHAUST_COMPLEX_FOLLOWUP,
         DISCARD_FOLLOWUP,
         THAT_MANY
     }

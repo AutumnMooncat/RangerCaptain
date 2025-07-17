@@ -5,6 +5,7 @@ import RangerCaptain.actions.BetterSelectCardsCenteredAction;
 import RangerCaptain.actions.BetterSelectCardsInHandAction;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cards.tokens.FusedCard;
 import RangerCaptain.patches.ActionCapturePatch;
 import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.Wiz;
@@ -19,13 +20,12 @@ import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ExhaustCardsComponent extends AbstractComponent {
-    public static final String ID = MainModfile.makeID(ExhaustCardsComponent.class.getSimpleName());
+public class ExhaustAttacksComponent extends AbstractComponent {
+    public static final String ID = MainModfile.makeID(ExhaustAttacksComponent.class.getSimpleName());
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     public static final String IN_HAND = DESCRIPTION_TEXT[3];
@@ -44,11 +44,11 @@ public class ExhaustCardsComponent extends AbstractComponent {
     public boolean optional;
     public boolean random;
 
-    public ExhaustCardsComponent(int base) {
+    public ExhaustAttacksComponent(int base) {
         this(base, TargetPile.HAND, false, false);
     }
 
-    public ExhaustCardsComponent(int base, TargetPile pile, boolean optional, boolean random) {
+    public ExhaustAttacksComponent(int base, TargetPile pile, boolean optional, boolean random) {
         super(ID, base, ComponentType.DO, ComponentTarget.NONE, DynVar.MAGIC);
         this.pile = pile;
         this.optional = optional;
@@ -63,10 +63,7 @@ public class ExhaustCardsComponent extends AbstractComponent {
     @Override
     public boolean shouldStack(AbstractComponent other) {
         if (other instanceof ExhaustAttacksComponent) {
-            return true;
-        }
-        if (other instanceof ExhaustCardsComponent) {
-            if (((ExhaustCardsComponent) other).optional) {
+            if (((ExhaustAttacksComponent) other).optional) {
                 return true;
             }
             return !optional;
@@ -76,10 +73,16 @@ public class ExhaustCardsComponent extends AbstractComponent {
 
     @Override
     public void receiveStacks(AbstractComponent other) {
-        if (other instanceof ExhaustCardsComponent) {
+        if (other instanceof ExhaustAttacksComponent) {
+            optional |= ((ExhaustAttacksComponent) other).optional;
+            if (other.baseAmount > baseAmount) {
+                pile = ((ExhaustAttacksComponent) other).pile;
+                random |= ((ExhaustAttacksComponent) other).random;
+            }
+        } else if (other instanceof ExhaustCardsComponent) {
             optional |= ((ExhaustCardsComponent) other).optional;
             if (other.baseAmount > baseAmount) {
-                pile = ((ExhaustCardsComponent) other).pile;
+                pile = TargetPile.values()[((ExhaustCardsComponent) other).pile.ordinal()];
                 random |= ((ExhaustCardsComponent) other).random;
             }
         }
@@ -88,7 +91,16 @@ public class ExhaustCardsComponent extends AbstractComponent {
 
     @Override
     public boolean captures(AbstractComponent other) {
-        return other.hasFlags(Flag.EXHAUST_FOLLOWUP);
+        return other.hasFlags(Flag.EXHAUST_FOLLOWUP) || other.hasFlags(Flag.EXHAUST_COMPLEX_FOLLOWUP);
+    }
+
+    @Override
+    public void postAssignment(FusedCard card, List<AbstractComponent> otherComponents) {
+        for (AbstractComponent other : otherComponents) {
+            if (other instanceof ScaleDamageComponent && other.hasFlags(Flag.EXHAUST_COMPLEX_FOLLOWUP)) {
+                ((ScaleDamageComponent) other).pluralize = baseAmount > 1;
+            }
+        }
     }
 
     @Override
@@ -131,13 +143,13 @@ public class ExhaustCardsComponent extends AbstractComponent {
         if (random) {
             addToBot(new DoAction(() -> {
                 CardGroup source = pile == TargetPile.HAND ? Wiz.adp().hand : pile == TargetPile.DRAW ? Wiz.adp().drawPile : Wiz.adp().discardPile;
-                if (amount >= source.size()) {
-                    for (AbstractCard card : source.group) {
+                List<AbstractCard> cards = source.group.stream().filter(c -> c.type == AbstractCard.CardType.ATTACK).collect(Collectors.toList());
+                if (amount >= cards.size()) {
+                    for (AbstractCard card : cards) {
                         doCapturedActions(provider, p, m, captured, card);
                         addToTop(new ExhaustSpecificCardAction(card, source, true));
                     }
                 } else {
-                    List<AbstractCard> cards = new ArrayList<>(source.group);
                     for (int i = 0; i < amount; i++) {
                         AbstractCard card = cards.remove(AbstractDungeon.cardRandomRng.random(cards.size() - 1));
                         doCapturedActions(provider, p, m, captured, card);
@@ -148,7 +160,7 @@ public class ExhaustCardsComponent extends AbstractComponent {
         } else {
             switch (pile) {
                 case HAND:
-                    addToBot(new BetterSelectCardsInHandAction(amount, ExhaustAction.TEXT[0], optional, optional, c -> true, cards -> {
+                    addToBot(new BetterSelectCardsInHandAction(amount, ExhaustAction.TEXT[0], optional, optional, c -> c.type == AbstractCard.CardType.ATTACK, cards -> {
                         for (AbstractCard card : cards) {
                             doCapturedActions(provider, p, m, captured, card);
                             addToTop(new ExhaustSpecificCardAction(card, p.hand, true));
@@ -156,7 +168,7 @@ public class ExhaustCardsComponent extends AbstractComponent {
                     }));
                     break;
                 case DRAW:
-                    addToBot(new BetterSelectCardsCenteredAction(Wiz.adp().drawPile.group, amount, ExhaustAction.TEXT[0], optional, c -> true, cards -> {
+                    addToBot(new BetterSelectCardsCenteredAction(Wiz.adp().drawPile.group, amount, ExhaustAction.TEXT[0], optional, c -> c.type == AbstractCard.CardType.ATTACK, cards -> {
                         for (AbstractCard card : cards) {
                             doCapturedActions(provider, p, m, captured, card);
                             addToTop(new ExhaustSpecificCardAction(card, p.drawPile, true));
@@ -164,7 +176,7 @@ public class ExhaustCardsComponent extends AbstractComponent {
                     }));
                     break;
                 case DISCARD:
-                    addToBot(new BetterSelectCardsCenteredAction(Wiz.adp().discardPile.group, amount, ExhaustAction.TEXT[0], optional, c -> true, cards -> {
+                    addToBot(new BetterSelectCardsCenteredAction(Wiz.adp().discardPile.group, amount, ExhaustAction.TEXT[0], optional, c -> c.type == AbstractCard.CardType.ATTACK, cards -> {
                         for (AbstractCard card : cards) {
                             doCapturedActions(provider, p, m, captured, card);
                             addToTop(new ExhaustSpecificCardAction(card, p.discardPile, true));
@@ -187,13 +199,19 @@ public class ExhaustCardsComponent extends AbstractComponent {
 
     @Override
     public AbstractComponent makeCopy() {
-        return new ExhaustCardsComponent(baseAmount, pile, optional, random);
+        return new ExhaustAttacksComponent(baseAmount, pile, optional, random);
     }
 
     public static String exhaustFollowupText(List<AbstractComponent> captured) {
+        StringBuilder text = new StringBuilder();
         if (captured.stream().anyMatch(c -> c.hasFlags(Flag.EXHAUST_FOLLOWUP))) {
-            return LocalizedStrings.PERIOD + " NL " + FormatHelper.capitalize(StringUtils.join(captured.stream().filter(c -> c.hasFlags(Flag.EXHAUST_FOLLOWUP)).map(c -> FormatHelper.uncapitalize(c.rawCardText(Collections.emptyList()))).collect(Collectors.toList()), " " + AND + " ")) + " " + FOR_EACH;
+            text.append(LocalizedStrings.PERIOD).append(" NL ").append(FormatHelper.capitalize(StringUtils.join(captured.stream().filter(c -> c.hasFlags(Flag.EXHAUST_FOLLOWUP)).map(c -> FormatHelper.uncapitalize(c.rawCardText(Collections.emptyList()))).collect(Collectors.toList()), " " + AND + " "))).append(" ").append(FOR_EACH);
         }
-        return "";
+        for (AbstractComponent component : captured) {
+            if (component.hasFlags(Flag.EXHAUST_COMPLEX_FOLLOWUP)) {
+                text.append(LocalizedStrings.PERIOD).append(" NL ").append(component.rawCardText(Collections.emptyList()));
+            }
+        }
+        return text.toString();
     }
 }

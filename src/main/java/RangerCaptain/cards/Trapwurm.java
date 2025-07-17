@@ -1,6 +1,11 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.actions.BetterSelectCardsInHandAction;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cardmods.fusion.components.ExhaustAttacksComponent;
+import RangerCaptain.cardmods.fusion.components.ScaleDamageComponent;
+import RangerCaptain.cardmods.fusion.components.vfx.BiteVFXComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -19,6 +24,24 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Trapwurm extends AbstractEasyCard {
     public final static String ID = makeID(Trapwurm.class.getSimpleName());
+
+    static {
+        // TODO VFX sync
+        new FusionComponentHelper(MonsterEnum.TRAPWURM)
+                .withCost(1)
+                .withDamage(8, AbstractGameAction.AttackEffect.NONE)
+                .with(new BiteVFXComponent())
+                .with(new ExhaustAttacksComponent(1))
+                .withFlags(new ScaleDamageComponent(), AbstractComponent.Flag.EXHAUST_COMPLEX_FOLLOWUP)
+                .register();
+        new FusionComponentHelper(MonsterEnum.WYRMAW)
+                .withCost(1)
+                .withDamage(11, AbstractGameAction.AttackEffect.NONE)
+                .with(new BiteVFXComponent())
+                .with(new ExhaustAttacksComponent(1))
+                .withFlags(new ScaleDamageComponent(), AbstractComponent.Flag.EXHAUST_COMPLEX_FOLLOWUP)
+                .register();
+    }
 
     public Trapwurm() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
