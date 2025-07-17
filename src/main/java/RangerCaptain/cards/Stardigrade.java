@@ -1,5 +1,8 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.OnPlayNoAttacksComponent;
+import RangerCaptain.cardmods.fusion.components.StrengthComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.MeditatingPower;
 import RangerCaptain.util.CardArtRoller;
@@ -13,6 +16,19 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Stardigrade extends AbstractEasyCard {
     public final static String ID = makeID(Stardigrade.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.STARDIGRADE)
+                .withCost(1)
+                .with(new OnPlayNoAttacksComponent())
+                .with(new StrengthComponent(2))
+                .register();
+        new FusionComponentHelper(MonsterEnum.GALAGOR)
+                .withCost(1)
+                .with(new OnPlayNoAttacksComponent())
+                .with(new StrengthComponent(4))
+                .register();
+    }
 
     public Stardigrade() {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);

@@ -538,6 +538,10 @@
     "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": ["At the start of each turn, %s"]
   },
+  "${ModID}:OnPlayNoAttacksComponent": {
+    "TEXT": ["Fusion becomes a Power"],
+    "EXTRA_TEXT": ["At the end of your turn, if you did not play any Attacks, %s"]
+  },
   "${ModID}:HalveEffectsComponent": {
     "TEXT": ["Halve other effects"],
     "EXTRA_TEXT": [""]
