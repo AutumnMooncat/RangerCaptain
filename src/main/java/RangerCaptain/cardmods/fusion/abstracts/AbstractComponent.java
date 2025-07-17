@@ -97,7 +97,8 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         DISCARD_FOLLOWUP,
         THAT_MANY,
         REQUIRES_SAME_SOURCES,
-        REQUIRES_DIFFERENT_SOURCES
+        REQUIRES_DIFFERENT_SOURCES,
+        PSEUDO_DAMAGE
     }
 
     private final String identifier;
@@ -407,7 +408,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
             if (type == AbstractCard.CardType.SKILL && component.type == ComponentType.MODIFIER && components.stream().anyMatch(component::captures)) {
                 type = AbstractCard.CardType.POWER;
                 wasPower = true;
-            } else if (component.type == ComponentType.DAMAGE && !component.wasCaptured) {
+            } else if ((component.type == ComponentType.DAMAGE || component.hasFlags(Flag.PSEUDO_DAMAGE)) && !component.wasCaptured) {
                 type = AbstractCard.CardType.ATTACK;
             }
         }

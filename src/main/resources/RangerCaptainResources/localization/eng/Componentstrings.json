@@ -288,7 +288,10 @@
     "EXTRA_TEXT": [""]
   },
   "${ModID}:DrawComponent": {
-    "TEXT": ["Draw cards"],
+    "TEXT": [
+      "Draw cards",
+      "for each card drawn"
+    ],
     "EXTRA_TEXT": [
       "Draw %1$s card{@@}{%1$s|>1=s}",
       "Draw a card",
