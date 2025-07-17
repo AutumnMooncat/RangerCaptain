@@ -1,5 +1,7 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.MultitargetComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.MultitargetPower;
@@ -15,6 +17,19 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Sirenade extends AbstractEasyCard {
     public final static String ID = makeID(Sirenade.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.SIRENADE)
+                .withCost(1)
+                .withDamageAOE(5, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new MultitargetComponent(1))
+                .register();
+        new FusionComponentHelper(MonsterEnum.DECIBELLE)
+                .withCost(1)
+                .withDamageAOE(8, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new MultitargetComponent(1))
+                .register();
+    }
 
     public Sirenade() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
