@@ -1,7 +1,10 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.actions.StashCardsAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
-import com.megacrit.cardcrawl.actions.unique.ArmamentsAction;
+import RangerCaptain.util.Wiz;
+import com.megacrit.cardcrawl.actions.common.UpgradeSpecificCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -18,7 +21,11 @@ public class Camping extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         blck();
-        addToBot(new ArmamentsAction(true));
+        addToBot(new StashCardsAction(Wiz.adp().hand, 1, false, false, c -> true, cards -> {
+            for (AbstractCard card : cards) {
+                addToTop(new UpgradeSpecificCardAction(card));
+            }
+        }));
     }
 
     @Override
