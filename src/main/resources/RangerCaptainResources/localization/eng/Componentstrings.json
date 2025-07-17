@@ -501,6 +501,23 @@
       "Can only be played on enemies that have already been attacked this turn"
     ]
   },
+  "${ModID}:YeetWeakVulnComponent": {
+    "TEXT": [
+      "Invalid Transfer Weak Vuln",
+      "Transfers your #yWeak and #yVulnerable to the enemy",
+      "Transfers your #yWeak and #yVulnerable to a random enemy",
+      "Transfers your #yWeak and #yVulnerable to ALL enemies",
+      "Removes your #yWeak and #yVulnerable"
+    ],
+    "EXTRA_TEXT": [
+      "Invalid Transfer Weak Vuln",
+      "Remove your Weak and Vulnerable. Apply them to the enemy",
+      "Remove your Weak and Vulnerable. Apply them to a random enemy",
+      "Remove your Weak and Vulnerable, Apply them to ALL enemies",
+      "Remove your Weak and Vulnerable",
+      "transfer your Weak and Vulnerable"
+    ]
+  },
   "${ModID}:OnPlayPerfectComponent": {
     "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": ["Whenever you play a ${ModID}:Perfect card, %s"]

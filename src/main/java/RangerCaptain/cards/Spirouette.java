@@ -1,6 +1,8 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.actions.FormalComplaintAction;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.YeetWeakVulnComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -15,10 +17,24 @@ import static RangerCaptain.MainModfile.makeID;
 public class Spirouette extends AbstractEasyCard {
     public final static String ID = makeID(Spirouette.class.getSimpleName());
 
+    static {
+        // 15 -> 24
+        new FusionComponentHelper(MonsterEnum.SPIROUETTE)
+                .withCost(2)
+                .withDamage(7, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .with(new YeetWeakVulnComponent())
+                .register();
+        // 20 -> 31
+        new FusionComponentHelper(MonsterEnum.REGENSEA)
+                .withCost(2)
+                .withDamage(9, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .with(new YeetWeakVulnComponent())
+                .register();
+    }
+
     public Spirouette() {
         super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        baseDamage = damage = 14;
-        baseMagicNumber = magicNumber = 6;
+        baseDamage = damage = 15;
         setMonsterData(MonsterEnum.SPIROUETTE);
     }
 
