@@ -415,6 +415,14 @@
       "Reduce the cost of %s random cards in your hand to 0 this combat"
     ]
   },
+  "${ModID}:GambitComponent": {
+    "TEXT": ["Deal double damage and gain double #yBlock but die when this expires"],
+    "EXTRA_TEXT": [
+      "Deal double damage and gain double Block {@@}{%1$s|1=this turn|@=for %1$s turns}, then die",
+      "Deal double damage and gain double Block this turn, then die",
+      "Deal double damage and gain double Block for %s turns, then die"
+    ]
+  },
   "${ModID}:ExhaustCardsComponent": {
     "TEXT": [
       "#yExhaust cards %s",
@@ -541,6 +549,12 @@
     "TEXT": ["Heal health"],
     "EXTRA_TEXT": [
       "Heal %s HP"
+    ]
+  },
+  "${ModID}:DieNextTurnComponent": {
+    "TEXT": ["Increase other effects, Die next turn"],
+    "EXTRA_TEXT": [
+      "Die next turn"
     ]
   },
   "${ModID}:MustBeAttackedComponent": {

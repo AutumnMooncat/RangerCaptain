@@ -136,6 +136,14 @@
     "DESCRIPTION": "Makes a creature attack EVERYONE this turn."
   },
   {
+    "ID": "gambit",
+    "PROPER_NAME": "Gambit",
+    "NAMES": [
+      "gambit"
+    ],
+    "DESCRIPTION": "Deals double damage and gains double #yBlock, but dies when Gambit runs out."
+  },
+  {
     "ID": "mindmeld",
     "PROPER_NAME": "Mind-Meld",
     "NAMES": [

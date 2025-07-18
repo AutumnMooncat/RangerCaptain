@@ -216,7 +216,7 @@
   },
   "${ModID}:MissMimic": {
     "NAME": "Miss Mimic",
-    "DESCRIPTION": "${ModID}:Perfect. NL Deal double damage and gain double Block for !M! turns. NL When this effect expires, die."
+    "DESCRIPTION": "${ModID}:Perfect. NL Deal double damage and gain double Block for !M! turns, then die. NL Exhaust."
   },
   "${ModID}:Muskrateer": {
     "NAME": "Muskrateer",

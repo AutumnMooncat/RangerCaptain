@@ -1,5 +1,9 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cardmods.fusion.components.DieNextTurnComponent;
+import RangerCaptain.cardmods.fusion.components.GambitComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.powers.GambitPower;
@@ -15,8 +19,17 @@ import static RangerCaptain.MainModfile.makeID;
 public class MissMimic extends AbstractEasyCard {
     public final static String ID = makeID(MissMimic.class.getSimpleName());
 
+    static {
+        new FusionComponentHelper(MonsterEnum.MISS_MIMIC)
+                .withCost(1)
+                .withFlags(new GambitComponent(3), AbstractComponent.Flag.REQUIRES_SAME_SOURCES)
+                .withFlags(new DieNextTurnComponent(), AbstractComponent.Flag.REQUIRES_DIFFERENT_SOURCES)
+                .withExhaust()
+                .register();
+    }
+
     public MissMimic() {
-        super(ID, 1, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
+        super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.MISS_MIMIC);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);

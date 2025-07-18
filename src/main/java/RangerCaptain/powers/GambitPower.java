@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect;
 
 public class GambitPower extends AbstractEasyPower {
@@ -24,10 +25,18 @@ public class GambitPower extends AbstractEasyPower {
 
     @Override
     public void updateDescription() {
-        if (amount == 1) {
-            description = DESCRIPTIONS[0];
+        if (owner instanceof AbstractMonster) {
+            if (amount == 1) {
+                description = DESCRIPTIONS[3];
+            } else {
+                description = DESCRIPTIONS[4] + amount + DESCRIPTIONS[5];
+            }
         } else {
-            description = DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
+            if (amount == 1) {
+                description = DESCRIPTIONS[0];
+            } else {
+                description = DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
+            }
         }
     }
 

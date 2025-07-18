@@ -103,8 +103,12 @@
   },
   "${ModID}:GambitPower": {
     "NAME": "Gambit",
-    "DESCRIPTIONS": ["Deal double damage with #yAttacks and gain double #yBlock from cards this turn. When this effect expires, die.",
-      "Deal double damage with #yAttacks and gain double #yBlock from cards for #b"," turns. When this effect expires, die."]
+    "DESCRIPTIONS": [
+      "Deal double damage with #yAttacks and gain double #yBlock from cards this turn. When this effect expires, die.",
+      "Deal double damage with #yAttacks and gain double #yBlock from cards for #b"," turns. When this effect expires, die.",
+      "Deal double damage with #yAttacks and gain double #yBlock from all sources this turn. When this effect expires, die.",
+      "Deal double damage with #yAttacks and gain double #yBlock from all sources for #b"," turns. When this effect expires, die."
+    ]
   },
   "${ModID}:APBoostPower": {
     "NAME": "AP Boost",
