@@ -569,6 +569,25 @@
       "transfer your Weak and Vulnerable"
     ]
   },
+  "${ModID}:DoubleDebuffsComponent": {
+    "TEXT": [
+      "Double your debuffs",
+      "Double an enemy's debuffs",
+      "Double random debuffs on a random enemy",
+      "Double random debuffs for ALL enemies",
+      "Invalid Double Debuffs"
+    ],
+    "EXTRA_TEXT": [
+      "Choose one of your debuffs. Double it",
+      "Choose %s of your debuffs. Double them",
+      "Choose an enemy's debuff. Double it",
+      "Choose %s of an enemy's debuffs. Double them",
+      "Double a random debuff on an enemy",
+      "Double %s random debuffs on the enemies",
+      "Double a random debuff on each enemy",
+      "Double %s random debuffs on each enemy"
+    ]
+  },
   "${ModID}:OnPlayPerfectComponent": {
     "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": ["Whenever you play a ${ModID}:Perfect card, %s"]

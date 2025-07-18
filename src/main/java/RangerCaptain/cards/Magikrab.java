@@ -1,6 +1,8 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.actions.DoublePowerAction;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.DoubleDebuffsComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.util.CardArtRoller;
@@ -14,6 +16,13 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Magikrab extends AbstractEasyCard {
     public final static String ID = makeID(Magikrab.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.MAGIKRAB)
+                .withCost(1)
+                .with(new DoubleDebuffsComponent(1))
+                .register();
+    }
 
     public Magikrab() {
         super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);

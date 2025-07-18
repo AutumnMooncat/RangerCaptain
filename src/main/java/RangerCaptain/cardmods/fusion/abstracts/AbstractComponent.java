@@ -89,6 +89,8 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         INVERSE_PREFERRED,
         INVERSE_FORCED,
         RANDOM_WHEN_CAPTURED,
+        AOE_WHEN_CAPTURED,
+        TARGETLESS_WHEN_CAPTURED,
         CANT_COLLAPSE_TARGET_TEXT,
         DRAW_FOLLOWUP,
         DAMAGE_FOLLOWUP,
