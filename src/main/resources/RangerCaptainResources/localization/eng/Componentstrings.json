@@ -655,5 +655,14 @@
   "${ModID}:AddConductiveDamageComponent": {
     "TEXT": ["Applies #yConductive equal to unblocked damage dealt"],
     "EXTRA_TEXT": ["Apply ${ModID}:Conductive equal to unblocked damage dealt"]
+  },
+  "${ModID}:AddEnergyOnKillDamageComponent": {
+    "TEXT": ["Gains Energy on kill"],
+    "EXTRA_TEXT": [
+      "For each enemy this kills, gain %s [E] ",
+      "For each enemy this kills, gain [E] ",
+      "For each enemy this kills, gain [E] [E] ",
+      "For each enemy this kills, gain [E] [E] [E] "
+    ]
   }
 }

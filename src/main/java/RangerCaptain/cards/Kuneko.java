@@ -1,6 +1,9 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.actions.DoAction;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.AddEnergyOnKillDamageComponent;
+import RangerCaptain.cardmods.fusion.components.vfx.DieDieDieVFXComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.util.CardArtRoller;
@@ -22,6 +25,15 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Kuneko extends AbstractEasyCard {
     public final static String ID = makeID(Kuneko.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.KUNEKO)
+                .withCost(3)
+                .with(new DieDieDieVFXComponent())
+                .withDamageAOE(6, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .with(new AddEnergyOnKillDamageComponent(1))
+                .register();
+    }
 
     public Kuneko() {
         super(ID, 3, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY);
