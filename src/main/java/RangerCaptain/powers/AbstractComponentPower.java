@@ -52,8 +52,8 @@ public abstract class AbstractComponentPower extends AbstractEasyPower implement
             }
             ActionCapturePatch.doCapture = true;
             ActionCapturePatch.onCapture = this::captureCheck;
-            for (int i = captured.size() - 1; i >= 0; i--) {
-                captured.get(i).onTrigger(this, Wiz.adp(), target, Collections.emptyList());
+            for (AbstractComponent component : captured) {
+                component.onTrigger(this, Wiz.adp(), target, Collections.emptyList());
             }
             addToBot(new DoAction(() -> locked = false));
             if (toTop) {

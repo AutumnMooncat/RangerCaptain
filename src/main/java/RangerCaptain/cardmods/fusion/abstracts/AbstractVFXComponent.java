@@ -20,7 +20,7 @@ public abstract class AbstractVFXComponent extends AbstractComponent {
 
     @Override
     public void updatePrio() {
-        this.priority = DO_PRIO;
+        this.priority = DAMAGE_PRIO;
     }
 
     @Override

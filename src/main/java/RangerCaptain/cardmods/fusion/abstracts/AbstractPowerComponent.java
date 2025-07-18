@@ -55,12 +55,12 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
         String finishedPart;
         List<String> parts = new ArrayList<>();
         List<String> currentParts = new ArrayList<>();
-        List<AbstractComponent> selfTarget = captured.stream().filter(c -> c.target == ComponentTarget.SELF).collect(Collectors.toList());
-        List<AbstractComponent> enemyTarget = captured.stream().filter(c -> c.target == ComponentTarget.ENEMY).collect(Collectors.toList());
-        List<AbstractComponent> randomTarget = captured.stream().filter(c -> c.target == ComponentTarget.ENEMY_RANDOM).collect(Collectors.toList());
-        List<AbstractComponent> aoeTarget = captured.stream().filter(c -> c.target == ComponentTarget.ENEMY_AOE).collect(Collectors.toList());
-        List<AbstractComponent> noTarget = captured.stream().filter(c -> c.target == ComponentTarget.NONE && !(c instanceof AbstractDamageModComponent)).collect(Collectors.toList());
-        List<AbstractComponent> mods = captured.stream().filter(c -> c instanceof AbstractDamageModComponent).collect(Collectors.toList());
+        List<AbstractComponent> selfTarget = captured.stream().filter(c -> c.target == ComponentTarget.SELF && !StringUtils.isEmpty(c.rawCapturedText())).collect(Collectors.toList());
+        List<AbstractComponent> enemyTarget = captured.stream().filter(c -> c.target == ComponentTarget.ENEMY && !StringUtils.isEmpty(c.rawCapturedText())).collect(Collectors.toList());
+        List<AbstractComponent> randomTarget = captured.stream().filter(c -> c.target == ComponentTarget.ENEMY_RANDOM && !StringUtils.isEmpty(c.rawCapturedText())).collect(Collectors.toList());
+        List<AbstractComponent> aoeTarget = captured.stream().filter(c -> c.target == ComponentTarget.ENEMY_AOE && !StringUtils.isEmpty(c.rawCapturedText())).collect(Collectors.toList());
+        List<AbstractComponent> noTarget = captured.stream().filter(c -> c.target == ComponentTarget.NONE && !StringUtils.isEmpty(c.rawCapturedText()) && !(c instanceof AbstractDamageModComponent)).collect(Collectors.toList());
+        List<AbstractComponent> mods = captured.stream().filter(c -> c instanceof AbstractDamageModComponent && !StringUtils.isEmpty(c.rawCapturedText())).collect(Collectors.toList());
 
         // Self
         // Gain %s Block and (Gain) %s <effect>, Take %s damage, other
@@ -247,6 +247,10 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
                 }
             }
         }
-        return StringUtils.join(parts, " ") + LocalizedStrings.PERIOD;
+        String combined = StringUtils.join(parts, " ");
+        if (combined.endsWith("[E]")) {
+            combined += " ";
+        }
+        return combined + LocalizedStrings.PERIOD;
     }
 }
