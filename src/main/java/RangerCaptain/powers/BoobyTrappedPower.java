@@ -15,7 +15,7 @@ public class BoobyTrappedPower extends AbstractEasyPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    private static final EnemyMoveInfo boobyTrapMove = new EnemyMoveInfo((byte) -1, CustomIntentPatches.RANGER_BOMB, 15, 0, false);
+    private static final EnemyMoveInfo boobyTrapMove = new EnemyMoveInfo((byte) -1, CustomIntentPatches.RANGER_BOMB, 0, 0, false);
     private static final Field moveField;
 
     static {
@@ -33,15 +33,22 @@ public class BoobyTrappedPower extends AbstractEasyPower {
 
     @Override
     public void updateDescription() {
-        if (amount == 1) {
+        this.description = DESCRIPTIONS[3];
+        /*if (amount == 1) {
             this.description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
         } else {
             this.description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[2];
-        }
+        }*/
     }
 
     @Override
     public void onInitialApplication() {
+        setMove();
+    }
+
+    @Override
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
         setMove();
     }
 
@@ -61,6 +68,7 @@ public class BoobyTrappedPower extends AbstractEasyPower {
             byte moveByte = ((AbstractMonster)owner).nextMove;
             try {
                 boobyTrapMove.nextMove = moveByte;
+                boobyTrapMove.baseDamage = amount;
                 moveField.set(owner, boobyTrapMove);
                 ((AbstractMonster)owner).createIntent();
             } catch (IllegalAccessException e) {

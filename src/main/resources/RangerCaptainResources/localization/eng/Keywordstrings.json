@@ -127,6 +127,15 @@
     "DESCRIPTION": "Locks a creature's intent."
   },
   {
+    "ID": "boobytrap",
+    "PROPER_NAME": "Booby Trap",
+    "NAMES": [
+      "booby trap",
+      "booby_trap"
+    ],
+    "DESCRIPTION": "Makes a creature attack EVERYONE this turn."
+  },
+  {
     "ID": "mindmeld",
     "PROPER_NAME": "Mind-Meld",
     "NAMES": [

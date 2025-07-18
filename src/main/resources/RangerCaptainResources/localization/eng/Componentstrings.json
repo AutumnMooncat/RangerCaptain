@@ -265,6 +265,10 @@
     "TEXT": ["#yTape #yJam"],
     "EXTRA_TEXT": ["${ModID}:Tape_Jam"]
   },
+  "${ModID}:BoobyTrapComponent": {
+    "TEXT": ["#yBooby #yTrap"],
+    "EXTRA_TEXT": ["${ModID}:Booby_Trap"]
+  },
   "${ModID}:ThornsComponent": {
     "TEXT": ["#yThorns"],
     "EXTRA_TEXT": ["Thorns"]
