@@ -15,6 +15,7 @@ public class AddExhaustComponent extends AbstractTraitComponent {
 
     public AddExhaustComponent() {
         super(ID);
+        setFlags(Flag.REMOVE_IF_POWER);
     }
 
     @Override

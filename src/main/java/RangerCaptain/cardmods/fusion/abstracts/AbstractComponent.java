@@ -2,7 +2,6 @@ package RangerCaptain.cardmods.fusion.abstracts;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.cardmods.PurgeMod;
-import RangerCaptain.cardmods.fusion.components.AddExhaustComponent;
 import RangerCaptain.cards.tokens.FusedCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -99,7 +98,8 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         THAT_MANY,
         REQUIRES_SAME_SOURCES,
         REQUIRES_DIFFERENT_SOURCES,
-        PSEUDO_DAMAGE
+        PSEUDO_DAMAGE,
+        REMOVE_IF_POWER
     }
 
     private final String identifier;
@@ -417,7 +417,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
             CardModifierManager.addModifier(card, new PurgeMod());
         }
         card.type = type;
-        components.removeIf(c -> c instanceof AddExhaustComponent && card.type == AbstractCard.CardType.POWER);
+        components.removeIf(c -> c.hasFlags(Flag.REMOVE_IF_POWER) && card.type == AbstractCard.CardType.POWER);
     }
 
     public static void resolveTarget(FusedCard card, List<AbstractComponent> components) {
