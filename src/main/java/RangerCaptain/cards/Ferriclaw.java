@@ -1,5 +1,8 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.TapeJamComponent;
+import RangerCaptain.cardmods.fusion.components.WeakComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.TapeJamPower;
@@ -15,6 +18,19 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Ferriclaw extends AbstractEasyCard {
     public final static String ID = makeID(Ferriclaw.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.FERRICLAW)
+                .withCost(1)
+                .with(new WeakComponent(2))
+                .with(new TapeJamComponent(2))
+                .register();
+        new FusionComponentHelper(MonsterEnum.AURICLAW)
+                .withCost(1)
+                .with(new WeakComponent(3))
+                .with(new TapeJamComponent(3))
+                .register();
+    }
 
     public Ferriclaw() {
         super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
