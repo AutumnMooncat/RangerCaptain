@@ -122,7 +122,7 @@ public class ExhaustCardsComponent extends AbstractComponent {
 
     @Override
     public String rawCapturedText() {
-        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
+        return rawCardText(Collections.emptyList());
     }
 
     @Override
