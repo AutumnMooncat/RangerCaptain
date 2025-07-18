@@ -1,5 +1,7 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.ExhaustCardsComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.patches.CustomTags;
@@ -16,6 +18,15 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Khepri extends AbstractEasyCard {
     public final static String ID = makeID(Khepri.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.KHEPRI)
+                .withCost(0)
+                .withDamage(8, AbstractGameAction.AttackEffect.FIRE)
+                .with(new ExhaustCardsComponent(1))
+                .withCloseEncounter()
+                .register();
+    }
 
     public Khepri() {
         super(ID, 0, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
