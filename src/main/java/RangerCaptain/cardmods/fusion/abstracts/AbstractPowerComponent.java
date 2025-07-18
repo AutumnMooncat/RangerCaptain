@@ -240,7 +240,7 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
                 }
                 if (GameDictionary.keywords.containsKey(lower)) {
                     if (BaseMod.keywordIsUnique(lower)) {
-                        parts[i] = StringUtils.join(Arrays.stream(lower.replace(BaseMod.getKeywordPrefix(lower), "").split(" ")).map(s -> "#y"+FormatHelper.capitalize(s)).toArray(), " ")+last;
+                        parts[i] = StringUtils.join(Arrays.stream(lower.replace(BaseMod.getKeywordPrefix(lower), "").replace("_"," ").split(" ")).map(s -> "#y"+FormatHelper.capitalize(s)).toArray(), " ")+last;
                     } else {
                         parts[i] = FormatHelper.prefixWords(parts[i], "#y");
                     }
