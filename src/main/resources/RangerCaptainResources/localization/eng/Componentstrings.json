@@ -604,6 +604,10 @@
     "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": ["At the start of each turn, %s"]
   },
+  "${ModID}:OnTurnStartForEachAttackerComponent": {
+    "TEXT": ["Fusion becomes a Power"],
+    "EXTRA_TEXT": ["At the start of your turn, for each enemy that intends to attack, %s"]
+  },
   "${ModID}:OnGainEnergyComponent": {
     "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": ["Whenever you gain Energy, %s"]

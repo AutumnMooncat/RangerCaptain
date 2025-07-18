@@ -1,5 +1,8 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.OnTurnStartForEachAttackerComponent;
+import RangerCaptain.cardmods.fusion.components.StrengthComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.BerserkerPower;
 import RangerCaptain.util.CardArtRoller;
@@ -13,6 +16,24 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Littlered extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Littlered.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.LITTLERED)
+                .withCost(2)
+                .with(new OnTurnStartForEachAttackerComponent())
+                .with(new StrengthComponent(1))
+                .register();
+        new FusionComponentHelper(MonsterEnum.SCARLETEETH)
+                .withCost(2)
+                .with(new OnTurnStartForEachAttackerComponent())
+                .with(new StrengthComponent(2))
+                .register();
+        new FusionComponentHelper(MonsterEnum.ROSEHOOD)
+                .withCost(1)
+                .with(new OnTurnStartForEachAttackerComponent())
+                .with(new StrengthComponent(1))
+                .register();
+    }
 
     public Littlered() {
         super(ID, 2, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
