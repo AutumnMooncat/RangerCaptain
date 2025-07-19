@@ -1,5 +1,7 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.SnowedInComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.powers.SnowedInPower;
@@ -16,6 +18,14 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Spookionna extends AbstractEasyCard {
     public final static String ID = makeID(Spookionna.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.SPOOKIONNA)
+                .withCost(3)
+                .with(new SnowedInComponent(1))
+                .withExhaust()
+                .register();
+    }
 
     public Spookionna() {
         super(ID, 3, CardType.SKILL, CardRarity.RARE, CardTarget.ALL);

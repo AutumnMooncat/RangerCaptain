@@ -566,6 +566,14 @@
       "${ModID}:Stash the top %s cards of your draw pile"
     ]
   },
+  "${ModID}:SnowedInComponent": {
+    "TEXT": ["You cannot Attack or be Attacked this turn"],
+    "EXTRA_TEXT": [
+      "You cannot Attack or be Attacked {@@}{%1$s|1=this turn|@=for %1$s turns}",
+      "You cannot Attack or be Attacked this turn",
+      "You cannot Attack or be Attacked for %s turns"
+    ]
+  },
   "${ModID}:IncreaseDebuffsComponent": {
     "TEXT": [
       "Increase your debuffs",
