@@ -1,13 +1,12 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.actions.BetterSelectCardsInHandAction;
+import RangerCaptain.actions.StashCopyOfCardsAction;
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.StashCardCopiesComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
-import RangerCaptain.powers.SummonedPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.megacrit.cardcrawl.actions.unique.NightmareAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -17,6 +16,25 @@ import static RangerCaptain.MainModfile.makeID;
 public class Pawndead extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Pawndead.class.getSimpleName());
 
+    static {
+        new FusionComponentHelper(MonsterEnum.PAWNDEAD)
+                .withCost(2)
+                .with(new StashCardCopiesComponent(1))
+                .register();
+        new FusionComponentHelper(MonsterEnum.SKELEVANGELIST)
+                .withCost(1)
+                .with(new StashCardCopiesComponent(2))
+                .register();
+        new FusionComponentHelper(MonsterEnum.KINGRAVE)
+                .withCost(1)
+                .with(new StashCardCopiesComponent(3))
+                .register();
+        new FusionComponentHelper(MonsterEnum.QUEENYX)
+                .withCost(0)
+                .with(new StashCardCopiesComponent(3))
+                .register();
+    }
+
     public Pawndead() {
         super(ID, 2, CardType.SKILL, CardRarity.RARE, CardTarget.NONE);
         baseMagicNumber = magicNumber = 2;
@@ -25,11 +43,7 @@ public class Pawndead extends AbstractMultiUpgradeCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new BetterSelectCardsInHandAction(1, NightmareAction.TEXT[0], false, false, c -> true, cards -> {
-            for (AbstractCard card : cards) {
-                Wiz.applyToSelfTop(new SummonedPower(p, magicNumber, card.makeStatEquivalentCopy()));
-            }
-        }));
+        addToBot(new StashCopyOfCardsAction(Wiz.adp().hand, 1, magicNumber));
     }
 
     @Override

@@ -12,19 +12,21 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class StashRandomCardsAction extends AbstractGameAction {
+public class StashCopyOfRandomCardsAction extends AbstractGameAction {
     private final CardGroup group;
     private final Consumer<List<AbstractCard>> callback;
     private final Predicate<AbstractCard> filter;
+    private final int copies;
 
-    public StashRandomCardsAction(CardGroup sourceGroup, int amount) {
-        this(sourceGroup, amount, c -> true, l -> {});
+    public StashCopyOfRandomCardsAction(CardGroup sourceGroup, int cardsToChoose, int copies) {
+        this(sourceGroup, cardsToChoose, copies, c -> true, l -> {});
     }
 
-    public StashRandomCardsAction(CardGroup sourceGroup, int amount, Predicate<AbstractCard> filter, Consumer<List<AbstractCard>> callback) {
+    public StashCopyOfRandomCardsAction(CardGroup sourceGroup, int cardsToChoose, int copies, Predicate<AbstractCard> filter, Consumer<List<AbstractCard>> callback) {
         this.actionType = ActionType.CARD_MANIPULATION;
         this.group = sourceGroup;
-        this.amount = amount;
+        this.amount = cardsToChoose;
+        this.copies = copies;
         this.filter = filter;
         this.callback = callback;
     }
@@ -35,9 +37,11 @@ public class StashRandomCardsAction extends AbstractGameAction {
         List<AbstractCard> stashed = new ArrayList<>();
         while (amount > 0 && !valid.isEmpty()) {
             AbstractCard card = valid.remove(AbstractDungeon.cardRandomRng.random(valid.size() - 1));
-            group.removeCard(card);
-            StashedCardManager.addCard(card);
-            stashed.add(card);
+            for (int i = 0; i < copies; i++) {
+                AbstractCard copy = card.makeStatEquivalentCopy();
+                StashedCardManager.addCard(copy);
+                stashed.add(copy);
+            }
             amount--;
         }
         callback.accept(stashed);

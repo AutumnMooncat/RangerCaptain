@@ -56,6 +56,7 @@ public class StashCopyOfCardsAction extends AbstractGameAction {
     public void update() {
         if (duration == startDuration) {
             ArrayList<AbstractCard> validCards = new ArrayList<>();
+            List<AbstractCard> stashed = new ArrayList<>();
             for (AbstractCard card : group.group) {
                 if (filter.test(card)) {
                     validCards.add(card);
@@ -68,28 +69,34 @@ public class StashCopyOfCardsAction extends AbstractGameAction {
             if (validCards.size() <= amount && !anyNumber && !canPickZero) {
                 for (AbstractCard c : validCards) {
                     for (int i = 0 ; i < copies ; i++) {
-                        StashedCardManager.addCard(c.makeStatEquivalentCopy());
+                        AbstractCard copy = c.makeStatEquivalentCopy();
+                        StashedCardManager.addCard(copy);
+                        stashed.add(copy);
                     }
                 }
-                callback.accept(validCards);
+                callback.accept(stashed);
             } else {
                 if (group == Wiz.adp().hand) {
                     addToTop(new BetterSelectCardsInHandAction(amount, TEXT[0], anyNumber, canPickZero, filter, cards -> {
                         for (AbstractCard c : cards) {
                             for (int i = 0 ; i < copies ; i++) {
-                                StashedCardManager.addCard(c.makeStatEquivalentCopy());
+                                AbstractCard copy = c.makeStatEquivalentCopy();
+                                StashedCardManager.addCard(copy);
+                                stashed.add(copy);
                             }
                         }
-                        callback.accept(cards);
+                        callback.accept(stashed);
                     }));
                 } else {
                     addToTop(new BetterSelectCardsCenteredAction(validCards, amount, TEXT[0], anyNumber, c -> true, cards -> {
                         for (AbstractCard c : cards) {
                             for (int i = 0 ; i < copies ; i++) {
-                                StashedCardManager.addCard(c.makeStatEquivalentCopy());
+                                AbstractCard copy = c.makeStatEquivalentCopy();
+                                StashedCardManager.addCard(copy);
+                                stashed.add(copy);
                             }
                         }
-                        callback.accept(cards);
+                        callback.accept(stashed);
                     }));
                 }
             }

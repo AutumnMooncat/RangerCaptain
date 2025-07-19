@@ -467,6 +467,50 @@
       "Exhaust %1$s random Attacks%2$s"
     ]
   },
+  "${ModID}:StashCardsComponent": {
+    "TEXT": [
+      "#yStash cards %s",
+      "Optionally #yStash cards %s",
+      "#yStash random cards %s",
+      "in your hand",
+      "in your draw pile",
+      "in your discard pile",
+      "for each card ${ModID}:Stashed"
+    ],
+    "EXTRA_TEXT": [
+      "${ModID}:Stash %1$s card{@@}{%1$s|>1=s}%2$s",
+      "${ModID}:Stash a card%s",
+      "${ModID}:Stash %1$s cards%2$s",
+      "${ModID}:Stash up to %1$s card{@@}{%1$s|>1=s}%2$s",
+      "${ModID}:Stash up to 1 card%s",
+      "${ModID}:Stash up to %1$s cards%2$s",
+      "${ModID}:Stash %1$s random card{@@}{%1$s|>1=s}%2$s",
+      "${ModID}:Stash a random card%s",
+      "${ModID}:Stash %1$s random cards%2$s"
+    ]
+  },
+  "${ModID}:StashCardCopiesComponent": {
+    "TEXT": [
+      "#yStash copies of a card %s",
+      "Optionally #yStash copies of a card %s",
+      "#yStash random copies of a card %s",
+      "in your hand",
+      "in your draw pile",
+      "in your discard pile",
+      "for each card ${ModID}:Stashed"
+    ],
+    "EXTRA_TEXT": [
+      "Choose a card%2$s. NL ${ModID}:Stash %1$s {@@}{%1$s|1=copy|@=copies} of it",
+      "Choose a card%2$s. NL ${ModID}:Stash a copy of it",
+      "Choose a card%2$s. NL ${ModID}:Stash %1$s copies of it",
+      "Optionally ${ModID}:Stash %1$s {@@}{%1$s|1=copy|@=copies} of a card%2$s",
+      "Optionally ${ModID}:Stash a copy of a card%s",
+      "Optionally ${ModID}:Stash %1$s copies of a card%2$s",
+      "${ModID}:Stash %1$s {@@}{%1$s|1=copy|@=copies} of a random card%2$s",
+      "${ModID}:Stash a copy of a random card%s",
+      "${ModID}:Stash %1$s copies of a random card%2$s"
+    ]
+  },
   "${ModID}:DiscardCardsComponent": {
     "TEXT": [
       "Discard cards",

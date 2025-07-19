@@ -97,6 +97,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         EXHAUST_FOLLOWUP,
         EXHAUST_COMPLEX_FOLLOWUP,
         DISCARD_FOLLOWUP,
+        STASH_FOLLOWUP,
         THAT_MANY,
         REQUIRES_SAME_SOURCES,
         REQUIRES_DIFFERENT_SOURCES,

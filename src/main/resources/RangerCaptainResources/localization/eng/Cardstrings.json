@@ -235,7 +235,7 @@
   },
   "${ModID}:Pawndead": {
     "NAME": "Pawndead",
-    "DESCRIPTION": "Choose a card. NL Next turn, add !M! copies of it into your hand.",
+    "DESCRIPTION": "Choose a card. NL ${ModID}:Stash !M! copies of it.",
     "EXTENDED_DESCRIPTION": ["Skelevangelist","Kingrave","Queenyx"]
   },
   "${ModID}:Picksie": {
