@@ -50,7 +50,7 @@ public class FusedCard extends AbstractEasyCard implements AbstractComponent.Com
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (AbstractComponent component : components) {
             if (!component.wasCaptured) {
-                List<AbstractComponent> captured = components.stream().filter(component::captures).collect(Collectors.toList());
+                List<AbstractComponent> captured = components.stream().filter(component::canCapture).collect(Collectors.toList());
                 component.onTrigger(this, p, m, captured);
             }
         }

@@ -96,11 +96,6 @@ public class DamageAlreadyAttackedComponent extends AbstractComponent {
     }
 
     @Override
-    public boolean modifiesAmount(AbstractComponent other) {
-        return captures(other);
-    }
-
-    @Override
     public float amountMultiplier(AbstractComponent other) {
         return 1.25f;
     }
