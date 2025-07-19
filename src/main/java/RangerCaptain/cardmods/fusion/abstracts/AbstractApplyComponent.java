@@ -8,7 +8,10 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public abstract class AbstractApplyComponent extends AbstractComponent {
@@ -47,6 +50,31 @@ public abstract class AbstractApplyComponent extends AbstractComponent {
         }
     }
 
+    @Override
+    public boolean captures(AbstractComponent other) {
+        if (other instanceof AbstractApplyComponent && target == ComponentTarget.ENEMY_AOE && other.target == ComponentTarget.ENEMY_AOE) {
+            return true;
+        }
+        return super.captures(other);
+    }
+
+    public String getCapturedText(List<AbstractComponent> captured) {
+        String text = "";
+        List<String> parts = new ArrayList<>();
+        for (AbstractComponent component : captured) {
+            parts.add(component.rawCapturedText());
+        }
+        if (!parts.isEmpty()) {
+            if (parts.size() == 1) {
+                text += " " + AND + " " + parts.get(0);
+            } else {
+                String last = parts.remove(parts.size()-1);
+                text += ", " + StringUtils.join(parts, ", ") + ", " + AND + " " + last;
+            }
+        }
+        return text;
+    }
+
     public abstract String getName();
 
     public abstract String getKeyword();
@@ -60,6 +88,9 @@ public abstract class AbstractApplyComponent extends AbstractComponent {
 
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
+        if (target == ComponentTarget.ENEMY_AOE) {
+            return String.format(BASE_CARD_TEXT[target.ordinal()], dynKey(), getKeyword(), getCapturedText(captured));
+        }
         return String.format(BASE_CARD_TEXT[target.ordinal()], dynKey(), getKeyword());
     }
 
@@ -83,6 +114,9 @@ public abstract class AbstractApplyComponent extends AbstractComponent {
                 break;
             case ENEMY_AOE:
                 Wiz.forAllMonstersLiving(mon -> doApply(mon, amount, false));
+                for (AbstractComponent component : captured) {
+                    component.onTrigger(provider, p, m, Collections.emptyList());
+                }
                 break;
         }
     }

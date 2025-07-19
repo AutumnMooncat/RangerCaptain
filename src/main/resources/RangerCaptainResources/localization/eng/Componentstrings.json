@@ -61,7 +61,7 @@
       "Gain %1$s %2$s",
       "Apply %1$s %2$s",
       "Apply %1$s %2$s to a random enemy",
-      "Apply %1$s %2$s to ALL enemies",
+      "Apply %1$s %2$s%3$s to ALL enemies",
       "Invalid Apply: %1$s %2$s",
       "%1$s %2$s"
     ]

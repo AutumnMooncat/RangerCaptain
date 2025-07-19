@@ -371,7 +371,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         List<AbstractComponent> stacked = new ArrayList<>();
         for (AbstractComponent component : components) {
             for (AbstractComponent other : components) {
-                if (component != other && component.shouldStack(other) && !stacked.contains(component) && !stacked.contains(other)) {
+                if (component != other && component.shouldStack(other) && !stacked.contains(component) && !stacked.contains(other) && (!other.wasCaptured || component.wasCaptured)) {
                     stacked.add(component);
                     other.receiveStacks(component);
                 }
