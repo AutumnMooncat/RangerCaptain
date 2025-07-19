@@ -1,5 +1,7 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.NextTurnEnergyComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.patches.CustomTags;
@@ -15,6 +17,14 @@ import static RangerCaptain.MainModfile.makeID;
 
 public class Picksie extends AbstractEasyCard {
     public final static String ID = makeID(Picksie.class.getSimpleName());
+
+    static {
+        new FusionComponentHelper(MonsterEnum.PICKSIE)
+                .withCost(2)
+                .withBlock(5)
+                .with(new NextTurnEnergyComponent(1))
+                .register();
+    }
 
     public Picksie() {
         super(ID, 2, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
