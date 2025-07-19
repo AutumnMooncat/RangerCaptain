@@ -91,6 +91,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         RANDOM_WHEN_CAPTURED,
         AOE_WHEN_CAPTURED,
         TARGETLESS_WHEN_CAPTURED,
+        CANT_BE_CAPTURED,
         CANT_COLLAPSE_TARGET_TEXT,
         DRAW_FOLLOWUP,
         DAMAGE_FOLLOWUP,
@@ -305,7 +306,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
             deferredCaptures.put(component, new ArrayList<>());
             inverseCaptures.put(component, new ArrayList<>());
             for (AbstractComponent other : components) {
-                if (!component.wasCaptured && component != other && component.captures(other) && !(other.hasFlags(Flag.INVERSE_FORCED) && component.source == other.source)) {
+                if (!component.wasCaptured && component != other && component.captures(other) && !(other.hasFlags(Flag.INVERSE_FORCED) && component.source == other.source) && !other.hasFlags(Flag.CANT_BE_CAPTURED)) {
                     if (other.hasFlags(Flag.INVERSE_PREFERRED) && component.source == other.source) {
                         inverseCaptures.get(component).add(other);
                     } else if (other.hasFlags(Flag.DEFERRED)) {
@@ -343,6 +344,12 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         for (AbstractComponent component : captured) {
             if (component.hasFlags(Flag.RANDOM_WHEN_CAPTURED)) {
                 component.target = ComponentTarget.ENEMY_RANDOM;
+                component.updatePrio();
+            } else if (component.hasFlags(Flag.AOE_WHEN_CAPTURED)) {
+                component.target = ComponentTarget.ENEMY_AOE;
+                component.updatePrio();
+            } else if (component.hasFlags(Flag.TARGETLESS_WHEN_CAPTURED)) {
+                component.target = ComponentTarget.NONE;
                 component.updatePrio();
             }
         }
