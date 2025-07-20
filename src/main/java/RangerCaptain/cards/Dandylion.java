@@ -1,11 +1,14 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.actions.BetterDiscardPileToTopOfDeckAction;
+import RangerCaptain.actions.StashCardsAction;
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.components.DiscardToDrawComponent;
+import RangerCaptain.cardmods.fusion.components.NextTurnEnergyComponent;
+import RangerCaptain.cardmods.fusion.components.StashCardsComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.powers.APBoostPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
+import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -18,31 +21,32 @@ public class Dandylion extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.DANDYLION)
                 .withCost(1)
-                .withBlock(5)
-                .with(new DiscardToDrawComponent(1))
+                .with(new StashCardsComponent(1, StashCardsComponent.TargetPile.HAND, true, false))
+                .with(new NextTurnEnergyComponent(2))
                 .register();
         new FusionComponentHelper(MonsterEnum.BLOSSOMAW)
-                .withBlock(7)
-                .with(new DiscardToDrawComponent(1))
+                .withCost(1)
+                .with(new StashCardsComponent(2, StashCardsComponent.TargetPile.HAND, true, false))
+                .with(new NextTurnEnergyComponent(2))
                 .register();
     }
 
     public Dandylion() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
-        baseBlock = block = 7;
         baseMagicNumber = magicNumber = 1;
+        baseSecondMagic = secondMagic = 2;
         setMonsterData(MonsterEnum.DANDYLION);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        blck();
-        addToBot(new BetterDiscardPileToTopOfDeckAction(magicNumber));
+        addToBot(new StashCardsAction(Wiz.adp().hand, magicNumber, true, true));
+        Wiz.applyToSelf(new APBoostPower(p, secondMagic));
     }
 
     @Override
     public void upp() {
-        upgradeBlock(3);
+        upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.BLOSSOMAW);

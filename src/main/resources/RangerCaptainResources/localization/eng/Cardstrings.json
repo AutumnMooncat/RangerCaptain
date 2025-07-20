@@ -106,7 +106,7 @@
   },
   "${ModID}:Dandylion": {
     "NAME": "Dandylion",
-    "DESCRIPTION": "Gain !B! Block. NL Put !M! card{@@}{!M!|>1=s} from your discard pile on top of your draw pile.",
+    "DESCRIPTION": "${ModID}:Stash up to !M! {@@}card{!M!|1=|@=s} in your hand. NL Next turn, gain {@@}{!${ModID}:M2!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=${ModID}:M2 [E]} .",
     "EXTENDED_DESCRIPTION": ["Blossomaw"]
   },
   "${ModID}:Defend": {
