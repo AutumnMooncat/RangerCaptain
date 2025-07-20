@@ -722,7 +722,7 @@
   },
   "${ModID}:AddMindMeldComponent": {
     "TEXT": ["Fusion has #yMind-Meld"],
-    "EXTRA_TEXT": ["${ModID}:Mind-Meld."]
+    "EXTRA_TEXT": ["${ModID}:Mind-Meld"]
   },
   "${ModID}:AddDoublePlayComponent": {
     "TEXT": ["Fusion has #yDouble #yPlay"],
