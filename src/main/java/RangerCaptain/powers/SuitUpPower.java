@@ -2,9 +2,6 @@ package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.colorless.RitualDagger;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -26,15 +23,11 @@ public class SuitUpPower extends AbstractEasyPower {
         } else {
             this.description = DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
         }
-
     }
 
     @Override
-    public void onUseCard(AbstractCard card, UseCardAction action) {
-        if (card.baseBlock > -1 && !(card instanceof RitualDagger)) {
-            flash();
-            addToTop(new ReducePowerAction(owner, owner, this, 1));
-        }
+    public void atEndOfRound() {
+        addToBot(new ReducePowerAction(owner, owner, this, 1));
     }
 
     @Override

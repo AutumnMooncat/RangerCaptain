@@ -19,22 +19,26 @@ public class Braxsuit extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.BRAXSUIT)
                 .withCost(1)
-                .with(new SuitUpComponent(2))
+                .withBlock(4)
+                .with(new SuitUpComponent(1))
                 .register();
         new FusionComponentHelper(MonsterEnum.FLAPWOODS)
                 .withCost(1)
-                .with(new SuitUpComponent(3))
+                .withBlock(4)
+                .with(new SuitUpComponent(2))
                 .register();
     }
 
     public Braxsuit() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
-        baseMagicNumber = magicNumber = 3;
+        baseBlock = block = 5;
+        baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.BRAXSUIT);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        blck();
         Wiz.applyToSelf(new SuitUpPower(p, magicNumber));
     }
 

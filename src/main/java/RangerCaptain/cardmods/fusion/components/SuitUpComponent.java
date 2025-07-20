@@ -3,13 +3,11 @@ package RangerCaptain.cardmods.fusion.components;
 import RangerCaptain.MainModfile;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.powers.SuitUpPower;
-import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import java.util.Collections;
 import java.util.List;
 
 public class SuitUpComponent extends AbstractComponent {
@@ -41,7 +39,10 @@ public class SuitUpComponent extends AbstractComponent {
 
     @Override
     public String rawCapturedText() {
-        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
+        if (dynvar == DynVar.FLAT) {
+            return baseAmount == 1 ? CARD_TEXT[4] : String.format(CARD_TEXT[5], baseAmount);
+        }
+        return String.format(CARD_TEXT[3], dynKey());
     }
 
     @Override

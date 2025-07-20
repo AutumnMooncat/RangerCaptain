@@ -158,7 +158,7 @@
   },
   "${ModID}:SuitUpPower": {
     "NAME": "Suit Up",
-    "DESCRIPTIONS": ["Your next #yBlock gaining card gives #b50% more #yBlock.","Your next #b"," #yBlock gaining cards give #b50% more #yBlock."]
+    "DESCRIPTIONS": ["This turn, cards give #b50% more #yBlock.","For #b"," turns, cards give #b50% more #yBlock."]
   },
   "${ModID}:AbramacabraPower": {
     "NAME": "Abramacabra",

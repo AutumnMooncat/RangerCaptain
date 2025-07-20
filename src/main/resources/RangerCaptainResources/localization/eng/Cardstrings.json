@@ -52,7 +52,7 @@
   },
   "${ModID}:Braxsuit": {
     "NAME": "Braxsuit",
-    "DESCRIPTION": "Your next !M! Block gaining cards give 50% more Block.",
+    "DESCRIPTION": "Gain !B! Block. NL {@@}{!M!|1=This turn|@=For !M! turns}, cards give 50% more Block.",
     "EXTENDED_DESCRIPTION": ["Flapwoods"]
   },
   "${ModID}:Brushroom": {
