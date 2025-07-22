@@ -34,7 +34,7 @@ public class Pombomb extends AbstractEasyCard {
 
     public Pombomb() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY);
-        baseDamage = damage = 6;
+        baseDamage = damage = 5;
         baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.POMBOMB);
         isMultiDamage = true;
