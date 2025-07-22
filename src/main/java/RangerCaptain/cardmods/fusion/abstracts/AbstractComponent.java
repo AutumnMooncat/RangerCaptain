@@ -197,8 +197,12 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         return 1f;
     }
 
-    public boolean scalesWithCost() {
+    public boolean makesActions() {
         return type == ComponentType.BLOCK || type == ComponentType.DAMAGE || type == ComponentType.APPLY || type == ComponentType.DO;
+    }
+
+    public boolean scalesWithCost() {
+        return makesActions();
     }
 
     public boolean isPower() {
@@ -286,6 +290,90 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
 
     public static boolean functionallyEquivalent(List<AbstractComponent> left, List<AbstractComponent> right) {
         return StringUtils.join(left.stream().map(AbstractComponent::toString).toArray()).equals(StringUtils.join(right.stream().map(AbstractComponent::toString).toArray()));
+    }
+
+    public static List<String> assembleCapturedText(List<AbstractComponent> captured, String targetText) {
+        List<String> parts = new ArrayList<>();
+        List<String> currentParts = new ArrayList<>();
+        boolean applyStarted = false;
+        for (AbstractComponent component : captured) {
+            if (component.hasFlags(Flag.CANT_COLLAPSE_TARGET_TEXT)) {
+                continue;
+            }
+            String part = "";
+            if (component.isSimple) {
+                if (component.type == ComponentType.BLOCK) {
+                    part += GIVE + " ";
+                } else if (component.type == ComponentType.DAMAGE) {
+                    part += DEAL + " ";
+                } else if (component.type == ComponentType.APPLY && !applyStarted) {
+                    part += APPLY + " ";
+                    applyStarted = true;
+                }
+            }
+            part += component.rawCapturedText();
+            currentParts.add(part);
+        }
+        String finishedPart = StringUtils.join(currentParts, " " + AND + " ");
+        if (!finishedPart.isEmpty()) {
+            if (!StringUtils.isEmpty(targetText)) {
+                finishedPart += " " + targetText;
+            }
+            parts.add(finishedPart);
+        }
+        for (AbstractComponent component : captured) {
+            if (component.hasFlags(Flag.CANT_COLLAPSE_TARGET_TEXT)) {
+                parts.add(component.rawCapturedText());
+            }
+        }
+        return parts;
+    }
+
+    public static List<String> assembleCapturedGainText(List<AbstractComponent> captured) {
+        List<String> parts = new ArrayList<>();
+        List<String> currentParts = new ArrayList<>();
+        boolean startedGain = false;
+        for (AbstractComponent component : captured) {
+            if (component.type == ComponentType.DAMAGE || component.type == ComponentType.DO) {
+                continue;
+            }
+            String part = "";
+            if (!startedGain && component.isSimple) {
+                part += GAIN + " ";
+            }
+            part += component.rawCapturedText();
+            currentParts.add(part);
+            startedGain = true;
+        }
+        if (!currentParts.isEmpty()) {
+            parts.add(StringUtils.join(currentParts," " + AND + " "));
+        }
+        currentParts.clear();
+        for (AbstractComponent component : captured) {
+            if (component.type == ComponentType.DO) {
+                parts.add(component.rawCapturedText());
+            } else if (component.type == ComponentType.DAMAGE) {
+                if (component.isSimple) {
+                    parts.add(TAKE + " " + component.rawCapturedText());
+                } else {
+                    parts.add(component.rawCapturedText());
+                }
+            }
+        }
+        return parts;
+    }
+
+    public static String compressCapturedText(List<String> parts) {
+        String text = "";
+        if (parts.size() == 1) {
+            text += parts.get(0);
+        } else if (parts.size() == 2) {
+            text += parts.get(0) + " " + AND + " " + parts.get(1);
+        } else if (parts.size() > 2) {
+            String last = parts.remove(parts.size() - 1);
+            text += StringUtils.join(parts, ", ") + ", " + AND + " " + last;
+        }
+        return text;
     }
 
     public static List<AbstractComponent> resolve(FusedCard card, List<AbstractComponent> originals) {

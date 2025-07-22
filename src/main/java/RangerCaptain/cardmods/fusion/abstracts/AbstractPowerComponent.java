@@ -39,7 +39,7 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
 
     @Override
     public boolean captures(AbstractComponent other) {
-        return other.type == ComponentType.BLOCK || other.type == ComponentType.DAMAGE || other.type == ComponentType.APPLY || other.type == ComponentType.DO || other instanceof AbstractDamageModComponent;
+        return other.makesActions() || other instanceof AbstractDamageModComponent;
     }
 
     @Override
@@ -56,10 +56,7 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
     }
 
     public String assembleCapturedText(List<AbstractComponent> captured) {
-        String text = "";
-        String finishedPart;
         List<String> parts = new ArrayList<>();
-        List<String> currentParts = new ArrayList<>();
         List<AbstractComponent> selfTarget = captured.stream().filter(c -> c.target == ComponentTarget.SELF && !StringUtils.isEmpty(c.rawCapturedText())).collect(Collectors.toList());
         List<AbstractComponent> enemyTarget = captured.stream().filter(c -> c.target == ComponentTarget.ENEMY && !StringUtils.isEmpty(c.rawCapturedText())).collect(Collectors.toList());
         List<AbstractComponent> randomTarget = captured.stream().filter(c -> c.target == ComponentTarget.ENEMY_RANDOM && !StringUtils.isEmpty(c.rawCapturedText())).collect(Collectors.toList());
@@ -69,130 +66,19 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
 
         // Self
         // Gain %s Block and (Gain) %s <effect>, Take %s damage, other
-        boolean startedGain = false;
-        for (AbstractComponent component : selfTarget) {
-            if (component.type == ComponentType.DAMAGE || component.type == ComponentType.DO) {
-                continue;
-            }
-            String part = "";
-            if (!startedGain && component.isSimple) {
-                part += GAIN + " ";
-            }
-            part += component.rawCapturedText();
-            currentParts.add(part);
-            startedGain = true;
-        }
-        if (!currentParts.isEmpty()) {
-            parts.add(StringUtils.join(currentParts," " + AND + " "));
-        }
-        currentParts.clear();
-        for (AbstractComponent component : selfTarget) {
-            if (component.type == ComponentType.DO) {
-                parts.add(component.rawCapturedText());
-            } else if (component.type == ComponentType.DAMAGE) {
-                if (component.isSimple) {
-                    parts.add(TAKE + " " + component.rawCapturedText());
-                } else {
-                    parts.add(component.rawCapturedText());
-                }
-            }
-        }
+        parts.addAll(assembleCapturedGainText(selfTarget));
 
         // Enemy
         // Give %s Block and Deal %s damage and Apply %s <effect> and other <target>
-        boolean applyStarted = false;
-        for (AbstractComponent component : enemyTarget) {
-            if (component.hasFlags(Flag.CANT_COLLAPSE_TARGET_TEXT)) {
-                continue;
-            }
-            String part = "";
-            if (component.isSimple) {
-                if (component.type == ComponentType.BLOCK) {
-                    part += GIVE + " ";
-                } else if (component.type == ComponentType.DAMAGE) {
-                    part += DEAL + " ";
-                } else if (component.type == ComponentType.APPLY && !applyStarted) {
-                    part += APPLY + " ";
-                    applyStarted = true;
-                }
-            }
-            part += component.rawCapturedText();
-            currentParts.add(part);
-        }
-        finishedPart = StringUtils.join(currentParts, " " + AND + " ");
-        if (!finishedPart.isEmpty()) {
-            parts.add(finishedPart + " " + targetText());
-        }
-        for (AbstractComponent component : enemyTarget) {
-            if (component.hasFlags(Flag.CANT_COLLAPSE_TARGET_TEXT)) {
-                parts.add(component.rawCapturedText());
-            }
-        }
-        currentParts.clear();
-        applyStarted = false;
+        parts.addAll(assembleCapturedText(enemyTarget, targetText()));
 
         // Random
         // Give %s Block and Deal %s damage and Apply %s <effect> and other to a random enemy
-        for (AbstractComponent component : randomTarget) {
-            if (component.hasFlags(Flag.CANT_COLLAPSE_TARGET_TEXT)) {
-                continue;
-            }
-            String part = "";
-            if (component.isSimple) {
-                if (component.type == ComponentType.BLOCK) {
-                    part += GIVE + " ";
-                } else if (component.type == ComponentType.DAMAGE) {
-                    part += DEAL + " ";
-                } else if (component.type == ComponentType.APPLY && !applyStarted) {
-                    part += APPLY + " ";
-                    applyStarted = true;
-                }
-            }
-            part += component.rawCapturedText();
-            currentParts.add(part);
-        }
-        finishedPart = StringUtils.join(currentParts, " " + AND + " ");
-        if (!finishedPart.isEmpty()) {
-            parts.add(finishedPart + " " + RANDOM_ENEMY);
-        }
-        for (AbstractComponent component : randomTarget) {
-            if (component.hasFlags(Flag.CANT_COLLAPSE_TARGET_TEXT)) {
-                parts.add(component.rawCapturedText());
-            }
-        }
-        currentParts.clear();
-        applyStarted = false;
+        parts.addAll(assembleCapturedText(randomTarget, RANDOM_ENEMY));
 
         // AOE
         // Give %s Block and Deal %s damage and Apply %s <effect> and other to ALL enemies
-        for (AbstractComponent component : aoeTarget) {
-            if (component.hasFlags(Flag.CANT_COLLAPSE_TARGET_TEXT)) {
-                continue;
-            }
-            String part = "";
-            if (component.isSimple) {
-                if (component.type == ComponentType.BLOCK) {
-                    part += GIVE + " ";
-                } else if (component.type == ComponentType.DAMAGE) {
-                    part += DEAL + " ";
-                } else if (component.type == ComponentType.APPLY && !applyStarted) {
-                    part += APPLY + " ";
-                    applyStarted = true;
-                }
-            }
-            part += component.rawCapturedText();
-            currentParts.add(part);
-        }
-        finishedPart = StringUtils.join(currentParts, " " + AND + " ");
-        if (!finishedPart.isEmpty()) {
-            parts.add(finishedPart + " " + ALL_ENEMIES);
-        }
-        for (AbstractComponent component : aoeTarget) {
-            if (component.hasFlags(Flag.CANT_COLLAPSE_TARGET_TEXT)) {
-                parts.add(component.rawCapturedText());
-            }
-        }
-        currentParts.clear();
+        parts.addAll(assembleCapturedText(aoeTarget, ALL_ENEMIES));
 
         // None
         // Just list as is
@@ -200,27 +86,23 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
             parts.add(component.rawCapturedText());
         }
 
-        if (parts.size() == 1) {
-            text += parts.get(0);
-        } else if (parts.size() == 2) {
-            text += parts.get(0) + " " + AND + " " + parts.get(1);
-        } else if (parts.size() > 2) {
-            String last = parts.remove(parts.size() - 1);
-            text += StringUtils.join(parts, ", ") + ", " + AND + " " + last;
-        }
+        String text = compressCapturedText(parts);
 
         if (text.isEmpty()) {
             text = "Invalid Power";
         }
 
+        parts.clear();
+
         for (AbstractComponent mod : mods) {
-            currentParts.add(mod.rawCapturedText());
+            parts.add(mod.rawCapturedText());
         }
-        if (!currentParts.isEmpty()) {
-            currentParts.add(0, text);
-            text = StringUtils.join(currentParts, ". NL ");
-            currentParts.clear();
+
+        if (!parts.isEmpty()) {
+            parts.add(0, text);
+            text = StringUtils.join(parts, ". NL ");
         }
+
         return text;
     }
 
