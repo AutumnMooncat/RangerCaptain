@@ -1,9 +1,11 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.AddMindMeldComponent;
 import RangerCaptain.cardmods.fusion.components.ToxinComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
+import RangerCaptain.patches.ExtraEffectPatches;
 import RangerCaptain.powers.ToxinPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -31,15 +33,14 @@ public class Carniviper extends AbstractMultiUpgradeCard {
                 .register();
         new FusionComponentHelper(MonsterEnum.AEROBOROS)
                 .withCost(1)
-                .withBlock(5)
-                .withDamage(5, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinComponent(3))
+                .withDamage(4, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new ToxinComponent(2))
+                .with(new AddMindMeldComponent())
                 .register();
         new FusionComponentHelper(MonsterEnum.MARDIUSA)
                 .withCost(2)
-                .withDamage(3, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinComponent(2))
-                .withDoublePlay()
+                .withMultiDamage(4, 2, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new ToxinComponent(4))
                 .register();
         new FusionComponentHelper(MonsterEnum.JORMUNGOLD)
                 .withCost(0)
@@ -91,9 +92,9 @@ public class Carniviper extends AbstractMultiUpgradeCard {
     @Override
     public void addUpgrades() {
         addUpgradeData(this::upgrade0);
+        addUpgradeData(this::upgrade3, 0);
         addUpgradeData(this::upgrade1, 0);
         addUpgradeData(this::upgrade2, 0);
-        addUpgradeData(this::upgrade3, 0);
         setExclusions(1,2,3);
     }
 
@@ -106,19 +107,20 @@ public class Carniviper extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade1() {
-        if (baseBlock < 0) {
-            baseBlock = 0;
-        }
-        upgradeBlock(7);
-        upgradeDamage(-1);
+        upgradeDamage(-4);
+        upgradeMagicNumber(-1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.AEROBOROS);
         baseInfo = info = 1;
+        tags.add(CustomTags.MIND_MELD);
+        ExtraEffectPatches.EffectFields.mindMeld.set(this, true);
     }
 
     public void upgrade2() {
         upgradeBaseCost(2);
+        upgradeDamage(2);
+        upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
         setMonsterData(MonsterEnum.MARDIUSA);
