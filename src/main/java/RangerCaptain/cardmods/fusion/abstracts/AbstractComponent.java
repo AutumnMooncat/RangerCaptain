@@ -201,6 +201,10 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         return type == ComponentType.BLOCK || type == ComponentType.DAMAGE || type == ComponentType.APPLY || type == ComponentType.DO;
     }
 
+    public boolean isPower() {
+        return false;
+    }
+
     public boolean canUse(FusedCard card, AbstractPlayer p, AbstractMonster m) {
         return true;
     }
@@ -420,10 +424,13 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         AbstractCard.CardType type = AbstractCard.CardType.SKILL;
         boolean wasPower = false;
         for (AbstractComponent component : components) {
-            if (type == AbstractCard.CardType.SKILL && component.type == ComponentType.MODIFIER && components.stream().anyMatch(component::canCapture)) {
-                type = AbstractCard.CardType.POWER;
+            if (component.isPower()) {
                 wasPower = true;
-            } else if ((component.type == ComponentType.DAMAGE || component.hasFlags(Flag.PSEUDO_DAMAGE)) && !component.wasCaptured) {
+                if (type == AbstractCard.CardType.SKILL) {
+                    type = AbstractCard.CardType.POWER;
+                }
+            }
+            if ((component.type == ComponentType.DAMAGE || component.hasFlags(Flag.PSEUDO_DAMAGE)) && !component.wasCaptured) {
                 type = AbstractCard.CardType.ATTACK;
             }
         }

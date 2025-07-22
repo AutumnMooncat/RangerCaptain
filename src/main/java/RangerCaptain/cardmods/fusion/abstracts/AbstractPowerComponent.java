@@ -20,6 +20,11 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
         this.providesTarget = providesTarget;
     }
 
+    @Override
+    public boolean isPower() {
+        return true;
+    }
+
     public abstract String targetText();
 
     @Override
