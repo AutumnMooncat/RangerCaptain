@@ -220,7 +220,7 @@
   },
   "${ModID}:Muskrateer": {
     "NAME": "Muskrateer",
-    "DESCRIPTION": "Deal !D! damage. NL Play the top {@@}{!M!|1=card|@=!M! cards} of your draw pile and Exhaust {!M!|1=it|@=them}.",
+    "DESCRIPTION": "Deal !D! damage for each unique debuff on the enemy.",
     "EXTENDED_DESCRIPTION": ["Ratcousel"]
   },
   "${ModID}:Nevermort": {

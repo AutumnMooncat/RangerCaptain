@@ -621,6 +621,14 @@
       "Can only be played on enemies that have already been attacked this turn"
     ]
   },
+  "${ModID}:ForEachDebuffComponent": {
+    "TEXT": [
+      "Triggers for each unique debuff"
+    ],
+    "EXTRA_TEXT": [
+      "%s for each unique debuff on the enemy"
+    ]
+  },
   "${ModID}:YeetWeakVulnComponent": {
     "TEXT": [
       "Invalid Transfer Weak Vuln",
