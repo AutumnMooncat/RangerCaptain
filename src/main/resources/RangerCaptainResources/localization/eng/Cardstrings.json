@@ -77,7 +77,7 @@
   },
   "${ModID}:Camping": {
     "NAME": "Camping",
-    "DESCRIPTION": "Gain !B! Block. NL ${ModID}:Stash a card and Upgrade it for the rest of combat."
+    "DESCRIPTION": "Gain !B! Block. NL ${ModID}:Stash !M! {@@}card{!M!|1=|@=s}."
   },
   "${ModID}:Candevil": {
     "NAME": "Candevil",
