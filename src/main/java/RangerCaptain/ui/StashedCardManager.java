@@ -3,6 +3,7 @@ package RangerCaptain.ui;
 import RangerCaptain.cards.interfaces.OnStashedCard;
 import RangerCaptain.patches.CardCounterPatches;
 import RangerCaptain.powers.interfaces.OnStashPower;
+import RangerCaptain.relics.interfaces.OnStashRelic;
 import RangerCaptain.util.Wiz;
 import basemod.BaseMod;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -18,6 +19,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.ui.panels.ExhaustPanel;
 import com.megacrit.cardcrawl.vfx.BobEffect;
 import javassist.CtBehavior;
@@ -82,6 +84,11 @@ public class StashedCardManager {
         cards.addToTop(card);
         if (card instanceof OnStashedCard) {
             ((OnStashedCard) card).onStash();
+        }
+        for (AbstractRelic r : Wiz.adp().relics) {
+            if (r instanceof OnStashRelic) {
+                ((OnStashRelic) r).onStash(card, isEndTurn);
+            }
         }
         for (AbstractPower p : Wiz.adp().powers) {
             if (p instanceof OnStashPower) {

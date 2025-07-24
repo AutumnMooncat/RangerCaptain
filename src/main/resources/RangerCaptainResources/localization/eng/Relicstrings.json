@@ -3,16 +3,16 @@
     "NAME": "Double Espresso",
     "FLAVOR": "Two shots of espresso in one tin.",
     "DESCRIPTIONS": [
-      "Replaces [#924ee4]Espresso [#924ee4]Express. At the start of your first #b3 turns, gain an additional [E] .",
-      "Energy gained: "," NL Per turn: "," NL Per combat: "
+      "Replaces [#924ee4]Espresso [#924ee4]Express. The first #b3 cards you #y${ModID}:Stash each combat cost #b0 until played.",
+      "Energy saved: "," NL Per turn: "," NL Per combat: "
     ]
   },
   "${ModID}:EspressoExpress": {
     "NAME": "Espresso Express",
     "FLAVOR": "A small can packed with a shot of instant energy.",
     "DESCRIPTIONS": [
-      "Start each combat with an additional [E] .",
-      "Energy gained: "," NL Per turn: "," NL Per combat: "
+      "The first card you #y${ModID}:Stash each combat costs #b0 until played.",
+      "Energy saved: "," NL Per turn: "," NL Per combat: "
     ]
   }
 }

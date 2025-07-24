@@ -1,12 +1,18 @@
 package RangerCaptain.relics;
 
 import RangerCaptain.TheRangerCaptain;
+import RangerCaptain.relics.interfaces.OnStashRelic;
+import RangerCaptain.util.Wiz;
+import basemod.abstracts.AbstractCardModifier;
+import basemod.helpers.CardModifierManager;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
@@ -16,13 +22,12 @@ import java.util.HashMap;
 
 import static RangerCaptain.MainModfile.makeID;
 
-public class DoubleEspresso extends AbstractEasyRelic {
+public class DoubleEspresso extends AbstractEasyRelic implements OnStashRelic {
     public static final String ID = makeID(DoubleEspresso.class.getSimpleName());
     HashMap<String, Integer> stats = new HashMap<>();
     private final String STAT = DESCRIPTIONS[1];
     private final String PER_TURN = DESCRIPTIONS[2];
     private final String PER_COMBAT = DESCRIPTIONS[3];
-    private int triggers = 0;
 
     public DoubleEspresso() {
         super(ID, RelicTier.BOSS, LandingSound.MAGICAL, TheRangerCaptain.Enums.HEADBAND_PURPLE_COLOR);
@@ -30,16 +35,21 @@ public class DoubleEspresso extends AbstractEasyRelic {
     }
 
     public void atPreBattle() {
-        triggers = 0;
+        grayscale = false;
+        counter = 3;
     }
 
-    public void atTurnStart() {
-        if (triggers < 3) {
+    @Override
+    public void onStash(AbstractCard card, boolean isEndTurn) {
+        if (counter > 0) {
+            counter--;
+            if (counter == 0) {
+                counter = -1;
+                grayscale = true;
+            }
             flash();
-            incrementStat(1);
-            addToTop(new GainEnergyAction(1));
+            CardModifierManager.addModifier(card, new FreeCostTrackerMod());
             addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-            triggers++;
         }
     }
 
@@ -50,8 +60,8 @@ public class DoubleEspresso extends AbstractEasyRelic {
         //If we have the starter relic...
         if (p.hasRelic(EspressoExpress.ID)) {
             //Grab its data for relic stats if you want to carry the stats over to the boss relic
-            //Platemail mb = (Platemail) p.getRelic(Platemail.ID);
-            //stats.put(STAT, mb.getStat());
+            EspressoExpress old = (EspressoExpress) p.getRelic(EspressoExpress.ID);
+            stats.put(STAT, old.getStat());
             //Find it...
             for (int i = 0; i < p.relics.size(); ++i) {
                 if (p.relics.get(i).relicId.equals(EspressoExpress.ID)) {
@@ -122,5 +132,35 @@ public class DoubleEspresso extends AbstractEasyRelic {
         DoubleEspresso newRelic = new DoubleEspresso();
         newRelic.stats = this.stats;
         return newRelic;
+    }
+
+    private static class FreeCostTrackerMod extends AbstractCardModifier {
+
+        @Override
+        public void onInitialApplication(AbstractCard card) {
+            card.freeToPlayOnce = true;
+        }
+
+        @Override
+        public boolean removeOnCardPlayed(AbstractCard card) {
+            return true;
+        }
+
+        @Override
+        public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
+            AbstractRelic r = Wiz.adp().getRelic(DoubleEspresso.ID);
+            if (r instanceof DoubleEspresso) {
+                if (card.costForTurn >= 0) {
+                    ((DoubleEspresso) r).incrementStat(card.costForTurn);
+                } else if (card.cost == -1) {
+                    ((DoubleEspresso) r).incrementStat(card.energyOnUse);
+                }
+            }
+        }
+
+        @Override
+        public AbstractCardModifier makeCopy() {
+            return new FreeCostTrackerMod();
+        }
     }
 }
