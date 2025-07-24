@@ -42,7 +42,7 @@ public class Puppercut extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
-        Wiz.applyToEnemy(m, new ResonancePower(m, magicNumber));
+        Wiz.applyToEnemy(m, new ResonancePower(m, p, magicNumber));
     }
 
     @Override

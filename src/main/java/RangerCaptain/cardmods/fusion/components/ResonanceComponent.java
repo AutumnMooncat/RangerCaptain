@@ -4,6 +4,7 @@ import RangerCaptain.MainModfile;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractSimpleApplyComponent;
 import RangerCaptain.powers.ResonancePower;
+import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -38,7 +39,7 @@ public class ResonanceComponent extends AbstractSimpleApplyComponent {
 
     @Override
     public AbstractPower getPower(AbstractCreature target, int amount) {
-        return new ResonancePower(target, amount);
+        return new ResonancePower(target, Wiz.adp(), amount);
     }
 
     @Override

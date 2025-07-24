@@ -43,7 +43,7 @@ public class Arkidd extends AbstractEasyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         Wiz.forAllMonstersLiving(mon -> {
             Wiz.applyToEnemy(mon, new ConductivePower(mon, p, magicNumber));
-            Wiz.applyToEnemy(mon, new ResonancePower(mon, secondMagic));
+            Wiz.applyToEnemy(mon, new ResonancePower(mon, p, secondMagic));
         });
     }
 

@@ -115,7 +115,7 @@
     "NAMES": [
       "resonance"
     ],
-    "DESCRIPTION": "When a creature receives #b3 #yResonance, it takes #b30 damage."
+    "DESCRIPTION": "The next time this creature is attacked #b3 times in the same turn, it takes damage equal to #b10 times its #yResonance."
   },
   {
     "ID": "tapejam",

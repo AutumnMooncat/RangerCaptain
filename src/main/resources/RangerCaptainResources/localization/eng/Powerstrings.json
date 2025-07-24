@@ -57,12 +57,7 @@
   },
   "${ModID}:ResonancePower": {
     "NAME": "Resonance",
-    "DESCRIPTIONS": [
-      "When this enemy receives #yResonance #b",
-      "2 more times, it receives #b",
-      "1 more time, it receives #b",
-      " damage."
-    ]
+    "DESCRIPTIONS": ["The next time this enemy is attacked #b3 times in one turn, it takes #b"," damage."]
   },
   "${ModID}:TapeJamPower": {
     "NAME": "Tape Jam",
