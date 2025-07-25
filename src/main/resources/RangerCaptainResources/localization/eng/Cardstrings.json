@@ -220,7 +220,7 @@
   },
   "${ModID}:Muskrateer": {
     "NAME": "Muskrateer",
-    "DESCRIPTION": "Deal !D! damage for each unique debuff on the enemy.",
+    "DESCRIPTION": "Deal !D! damage. NL Deals !M! additional damage for each unique debuff on the enemy.",
     "EXTENDED_DESCRIPTION": ["Ratcousel"]
   },
   "${ModID}:Nevermort": {

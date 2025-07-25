@@ -6,10 +6,10 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class SadisticDamage extends AbstractDamageModifier {
+public class SadisticForEachDamage extends AbstractDamageModifier {
     private final int amount;
 
-    public SadisticDamage(int amount) {
+    public SadisticForEachDamage(int amount) {
         this.amount = amount;
     }
 
@@ -20,14 +20,18 @@ public class SadisticDamage extends AbstractDamageModifier {
 
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
-        if (target != null && target.powers.stream().anyMatch(p -> p.type == AbstractPower.PowerType.DEBUFF)) {
-            damage += amount;
+        if (target != null) {
+            for (AbstractPower power : target.powers) {
+                if (power.type == AbstractPower.PowerType.DEBUFF) {
+                    damage += amount;
+                }
+            }
         }
         return damage;
     }
 
     @Override
     public AbstractDamageModifier makeCopy() {
-        return new SadisticDamage(amount);
+        return new SadisticForEachDamage(amount);
     }
 }

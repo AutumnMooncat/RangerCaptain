@@ -1,8 +1,7 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.components.ForEachDebuffComponent;
+import RangerCaptain.cardmods.fusion.components.AddSadisticForEachDamageComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -21,37 +20,42 @@ public class Muskrateer extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.MUSKRATEER)
                 .withCost(0)
                 .withDamage(6, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
-                .with(new ForEachDebuffComponent())
+                .with(new AddSadisticForEachDamageComponent(3))
                 .register();
         new FusionComponentHelper(MonsterEnum.RATCOUSEL)
                 .withCost(0)
-                .withDamage(10, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
-                .with(new ForEachDebuffComponent())
+                .withDamage(8, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new AddSadisticForEachDamageComponent(4))
                 .register();
     }
 
     public Muskrateer() {
         super(ID, 0, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
-        baseDamage = damage = 3;
+        baseDamage = damage = 5;
+        baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.MUSKRATEER);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DoAction(() -> {
-            if (m != null) {
-                for (AbstractPower power : m.powers) {
-                    if (power.type == AbstractPower.PowerType.DEBUFF) {
-                        dmgTop(m, upgraded ? AbstractGameAction.AttackEffect.BLUNT_HEAVY : AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
-                    }
-                }
-            }
-        }));
+        dmg(m, upgraded ? AbstractGameAction.AttackEffect.BLUNT_HEAVY : AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        int base = baseDamage;
+        if (mo != null) {
+            baseDamage += (int) (mo.powers.stream().filter(p -> p.type == AbstractPower.PowerType.DEBUFF).count() * magicNumber);
+        }
+        super.calculateCardDamage(mo);
+        baseDamage = base;
+        isDamageModified = baseDamage != damage;
     }
 
     @Override
     public void upp() {
-        upgradeDamage(2);
+        upgradeDamage(1);
+        upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.RATCOUSEL);

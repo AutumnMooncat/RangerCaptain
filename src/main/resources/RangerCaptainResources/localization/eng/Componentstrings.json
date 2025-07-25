@@ -752,6 +752,14 @@
     "TEXT": ["Deals bonus damage to already attacked enemies"],
     "EXTRA_TEXT": ["Deals %s additional damage to enemies you already attacked this turn"]
   },
+  "${ModID}:AddSadisticDamageComponent": {
+    "TEXT": ["Deals bonus damage to enemies with debuffs"],
+    "EXTRA_TEXT": ["Deals %s additional damage if the enemy has a debuff"]
+  },
+  "${ModID}:AddSadisticForEachDamageComponent": {
+    "TEXT": ["Deals bonus damage for each debuff on the enemy"],
+    "EXTRA_TEXT": ["Deals %s additional damage for each unique debuff on the enemy"]
+  },
   "${ModID}:AddConductiveDamageComponent": {
     "TEXT": ["Applies #yConductive equal to unblocked damage dealt"],
     "EXTRA_TEXT": ["Apply ${ModID}:Conductive equal to unblocked damage dealt"]
