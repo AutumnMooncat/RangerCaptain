@@ -188,7 +188,7 @@
   },
   "${ModID}:Levitate": {
     "NAME": "Levitate",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable."
+    "DESCRIPTION": "Next turn, deal !D! damage and gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} ."
   },
   "${ModID}:Littlered": {
     "NAME": "Littlered",

@@ -1,15 +1,15 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
-import RangerCaptain.patches.CustomTags;
+import RangerCaptain.damageMods.effects.LightningOrbVFX;
+import RangerCaptain.powers.APBoostPower;
+import RangerCaptain.powers.NextTurnDamagePower;
 import RangerCaptain.util.Wiz;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
-import com.megacrit.cardcrawl.vfx.combat.LightningOrbActivateEffect;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -17,26 +17,23 @@ public class Levitate extends AbstractEasyCard {
     public final static String ID = makeID(Levitate.class.getSimpleName());
 
     public Levitate() {
-        super(ID, 0, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
-        baseDamage = damage = 3;
+        super(ID, 1, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
+        baseDamage = damage = 5;
         baseMagicNumber = magicNumber = 1;
-        tags.add(CustomTags.MAGIC_VULN);
+        DamageModifierManager.addModifier(this, new LightningOrbVFX());
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         p.useJumpAnimation();
         if (m != null) {
-            addToBot(new VFXAction(new LightningOrbActivateEffect(m.hb.cX, m.hb.cY)));
+            Wiz.applyToSelf(new NextTurnDamagePower(p, m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
         }
-        addToBot(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.2f));
-        dmg(m, AbstractGameAction.AttackEffect.NONE);
-        Wiz.applyToEnemy(m, new VulnerablePower(m, magicNumber, false));
+        Wiz.applyToSelf(new APBoostPower(p, magicNumber));
     }
 
     @Override
     public void upp() {
-        upgradeDamage(1);
-        upgradeMagicNumber(1);
+        upgradeBaseCost(0);
     }
 }
