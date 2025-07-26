@@ -20,19 +20,19 @@ public class Macabra extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.MACABRA)
                 .withCost(1)
                 .withBlock(4)
-                .with(new AbramacabraComponent(2))
+                .with(new AbramacabraComponent(4))
                 .register();
         new FusionComponentHelper(MonsterEnum.FOLKLORD)
                 .withCost(1)
                 .withBlock(6)
-                .with(new AbramacabraComponent(3))
+                .with(new AbramacabraComponent(6))
                 .register();
     }
 
     public Macabra() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
-        baseBlock = block = 6;
-        baseMagicNumber = magicNumber = 3;
+        baseBlock = block = 5;
+        baseMagicNumber = magicNumber = 5;
         setMonsterData(MonsterEnum.MACABRA);
     }
 
@@ -45,7 +45,7 @@ public class Macabra extends AbstractEasyCard {
     @Override
     public void upp() {
         upgradeBlock(2);
-        upgradeMagicNumber(1);
+        upgradeMagicNumber(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.FOLKLORD);
