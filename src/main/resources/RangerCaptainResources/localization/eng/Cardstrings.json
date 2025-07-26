@@ -310,7 +310,7 @@
   },
   "${ModID}:Squirey": {
     "NAME": "Squirey",
-    "DESCRIPTION": "{@@}{!${ModID}:I!|1=Gain !B! Block. NL }Deal !D! damage. NL Gain !M! Strength. NL At the end of this turn, lose !M! Strength.",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! Vigor. NL {@@}{!${ModID}:M2!|1=This turn|@=For !${ModID}:M2! turns}, Vigor will not be consumed.",
     "EXTENDED_DESCRIPTION": ["Manispear","Palangolin"]
   },
   "${ModID}:Stardigrade": {

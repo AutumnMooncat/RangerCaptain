@@ -155,6 +155,10 @@
     "NAME": "Suit Up",
     "DESCRIPTIONS": ["This turn, cards give #b50% more #yBlock.","For #b"," turns, cards give #b50% more #yBlock."]
   },
+  "${ModID}:SharpenPower": {
+    "NAME": "Sharpen",
+    "DESCRIPTIONS": ["This turn, #yVigor will not be consumed.","For #b"," turns, #yVigor will not be consumed."]
+  },
   "${ModID}:AbramacabraPower": {
     "NAME": "Abramacabra",
     "DESCRIPTIONS": ["When attacked, deals #b"," damage back."]

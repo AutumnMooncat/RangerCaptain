@@ -373,9 +373,20 @@
       "{@@}{%1$s|1=This turn|@=For %1$s turns}, cards give 50%% more Block",
       "This turn, cards give 50% more Block",
       "For %s turns, cards give 50%% more Block",
-      "cards give 50%% more Block {@@}{%1$s|1=this turn|@=for %1$s turns}",
-      "cards give 50% more Block this turn",
+      "cards give 50%% more Block for {@@}{%1$s|1=1 turn|@=%1$s turns}",
+      "cards give 50% more Block for 1 turn",
       "cards give 50%% more Block for %s turns"
+    ]
+  },
+  "${ModID}:SharpenComponent": {
+    "TEXT": ["Vigor does not consume"],
+    "EXTRA_TEXT": [
+      "{@@}{%1$s|1=This turn|@=For %1$s turns}, Vigor will not be consumed",
+      "This turn, Vigor will not be consumed",
+      "For %s turns, Vigor will not be consumed",
+      "Vigor will not consume for {@@}{%1$s|1=1 turn|@=%1$s turns}",
+      "Vigor will not consume for 1 turn",
+      "Vigor will not consume for %s turns"
     ]
   },
   "${ModID}:HavocComponent": {

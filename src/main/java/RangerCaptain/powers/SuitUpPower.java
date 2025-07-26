@@ -13,7 +13,7 @@ public class SuitUpPower extends AbstractEasyPower {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     public SuitUpPower(AbstractCreature owner, int amount) {
-        super(POWER_ID, NAME, PowerType.BUFF, false, owner, amount);
+        super(POWER_ID, NAME, PowerType.BUFF, true, owner, amount);
     }
 
     @Override
