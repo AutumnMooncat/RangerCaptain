@@ -4,7 +4,6 @@ import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.ReboundPower;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 import static RangerCaptain.MainModfile.makeID;
@@ -14,13 +13,19 @@ public class Respite extends AbstractEasyCard {
 
     public Respite() {
         super(ID, 0, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
-        baseMagicNumber = magicNumber = 3;
+        baseMagicNumber = magicNumber = 0;
+        baseInfo = info = 0;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.applyToSelf(new VigorPower(p, magicNumber));
-        Wiz.applyToSelf(new ReboundPower(p));
+        Wiz.applyToSelf(new VigorPower(p, (int) (magicNumber + Wiz.adp().hand.group.stream().filter(c -> c != this).count())));
+    }
+
+    @Override
+    public void applyPowers() {
+        super.applyPowers();
+        baseInfo = info = (int) (magicNumber + Wiz.adp().hand.group.stream().filter(c -> c != this).count());
     }
 
     @Override

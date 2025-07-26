@@ -263,7 +263,7 @@
   },
   "${ModID}:Respite": {
     "NAME": "Respite",
-    "DESCRIPTION": "Gain !M! Vigor. NL Put the next card you play this turn on top of your draw pile."
+    "DESCRIPTION": "Gain Vigor equal to the number of cards in your hand{@@}{!M!|>0= plus !M!}.{!Location!|0= NL (Gain !${ModID}:I! Vigor.)}"
   },
   "${ModID}:RogueFusion": {
     "NAME": "Rogue Fusion",
