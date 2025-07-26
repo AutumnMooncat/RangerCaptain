@@ -18,33 +18,33 @@ public class Sanzatime extends AbstractEasyCard {
 
     static {
         new FusionComponentHelper(MonsterEnum.SANZATIME)
-                .withCost(1)
-                .withDamage(3, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
+                .withCost(2)
+                .withDamage(5, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
                 .with(new IncreaseDebuffsComponent(1))
                 .register();
         new FusionComponentHelper(MonsterEnum.FORTIWINX)
-                .withCost(1)
-                .withDamage(4, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
+                .withCost(2)
+                .withDamage(7, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
                 .with(new IncreaseDebuffsComponent(2))
                 .register();
     }
 
     public Sanzatime() {
-        super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
-        baseDamage = damage = 5;
+        super(ID, 2, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
+        baseDamage = damage = 12;
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.SANZATIME);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
+        dmg(m, AbstractGameAction.AttackEffect.BLUNT_HEAVY);
         addToBot(new IncreaseDebuffsAction(m, magicNumber));
     }
 
     @Override
     public void upp() {
-        upgradeDamage(1);
+        upgradeDamage(3);
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
