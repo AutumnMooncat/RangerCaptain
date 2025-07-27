@@ -3,62 +3,67 @@ package RangerCaptain.cards;
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.components.BurnComponent;
-import RangerCaptain.cardmods.fusion.components.WeakComponent;
+import RangerCaptain.cardmods.fusion.components.EnergyComponent;
+import RangerCaptain.cardmods.fusion.components.WhenExhaustedComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
+import RangerCaptain.cards.interfaces.ManuallySizeAdjustedCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.BurnedPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.WeakPower;
 
 import static RangerCaptain.MainModfile.makeID;
 
-public class Busheye extends AbstractMultiUpgradeCard {
+public class Busheye extends AbstractMultiUpgradeCard implements ManuallySizeAdjustedCard {
     public final static String ID = makeID(Busheye.class.getSimpleName());
 
     static {
-        // 7 -> 14
+        // 5 -> 10
         new FusionComponentHelper(MonsterEnum.BUSHEYE)
                 .withCost(2)
+                .with(new BurnComponent(3, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new EnergyComponent(1))
+                .withExhaust()
+                .with(new WhenExhaustedComponent())
+                .register();
+        // 7 -> 14
+        new FusionComponentHelper(MonsterEnum.HUNTORCH)
+                .withCost(2)
                 .with(new BurnComponent(4, AbstractComponent.ComponentTarget.ENEMY_AOE))
-                .with(new WeakComponent(1, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new EnergyComponent(1))
                 .withExhaust()
                 .register();
         // 10 -> 21
-        new FusionComponentHelper(MonsterEnum.HUNTORCH)
-                .withCost(2)
-                .with(new BurnComponent(6, AbstractComponent.ComponentTarget.ENEMY_AOE))
-                .with(new WeakComponent(1, AbstractComponent.ComponentTarget.ENEMY_AOE))
-                .withExhaust()
-                .register();
-        // 14 -> 28
         new FusionComponentHelper(MonsterEnum.HEDGEHERNE)
                 .withCost(2)
-                .with(new BurnComponent(8, AbstractComponent.ComponentTarget.ENEMY_AOE))
-                .with(new WeakComponent(1, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new BurnComponent(6, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new EnergyComponent(1))
                 .withExhaust()
                 .register();
     }
 
     public Busheye() {
         super(ID, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
-        baseMagicNumber = magicNumber = 7;
+        baseMagicNumber = magicNumber = 5;
         baseSecondMagic = secondMagic = 2;
         setMonsterData(MonsterEnum.BUSHEYE);
         exhaust = true;
-        tags.add(CustomTags.SECOND_MAGIC_WEAK_AOE);
         tags.add(CustomTags.MAGIC_BURN_AOE);
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void use(AbstractPlayer p, AbstractMonster m) {}
+
+    @Override
+    public void triggerOnExhaust() {
+        addToTop(new GainEnergyAction(secondMagic));
         Wiz.forAllMonstersLiving(mon -> {
-            Wiz.applyToEnemy(mon, new BurnedPower(mon, p, magicNumber));
-            Wiz.applyToEnemy(mon, new WeakPower(mon, secondMagic, false));
+            Wiz.applyToEnemyTop(mon, new BurnedPower(mon, Wiz.adp(), magicNumber));
         });
     }
 
@@ -79,16 +84,21 @@ public class Busheye extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade0() {
-        upgradeMagicNumber(3);
+        upgradeMagicNumber(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.HUNTORCH);
     }
 
     public void upgrade1() {
-        upgradeMagicNumber(4);
+        upgradeMagicNumber(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.HEDGEHERNE);
+    }
+
+    @Override
+    public float getAdjustedScale() {
+        return 0.99f;
     }
 }

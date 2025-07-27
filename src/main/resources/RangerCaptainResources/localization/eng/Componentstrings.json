@@ -577,6 +577,16 @@
       "gain %s [E] next turn"
     ]
   },
+  "${ModID}:EnergyComponent": {
+    "TEXT": ["Gain #yEnergy"],
+    "EXTRA_TEXT": [
+      "Gain {@@}{%1$s|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=%1$s [E]} ",
+      "Gain [E] ",
+      "Gain [E] [E] ",
+      "Gain [E] [E] [E] ",
+      "Gain %s [E] "
+    ]
+  },
   "${ModID}:StashTopCardsComponent": {
     "TEXT": ["#yStash the top cards of your draw pile"],
     "EXTRA_TEXT": [
@@ -680,6 +690,10 @@
       "Double a random debuff on each enemy",
       "Double %s random debuffs on each enemy"
     ]
+  },
+  "${ModID}:WhenExhaustedComponent": {
+    "TEXT": ["Effects trigger when #yExhausted"],
+    "EXTRA_TEXT": ["When Exhausted, %s"]
   },
   "${ModID}:OnPlayPerfectComponent": {
     "TEXT": ["Fusion becomes a Power"],

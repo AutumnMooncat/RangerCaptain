@@ -219,6 +219,8 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
 
     public void glowCheck(FusedCard card) {}
 
+    public void triggerOnExhaust(FusedCard card, List<AbstractComponent> captured) {}
+
     public String injectXOnDynvars(String text) {
         return text.replace(D+" ",D+"X ")
                 .replace(D2+" ", D2+"X ")
