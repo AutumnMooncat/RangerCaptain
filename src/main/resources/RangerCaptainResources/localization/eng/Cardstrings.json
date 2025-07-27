@@ -254,7 +254,9 @@
   },
   "${ModID}:PortalToAnywhere": {
     "NAME": "Portal to Anywhere",
-    "DESCRIPTION": "Draw !M! cards. NL While owned, you may ignore paths while choosing the next room to travel to. Doing so gives you a *Warp *Sickness."
+    "DESCRIPTION": "Put a card from your draw pile, discard pile, or exhaust pile into your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Put a card from your draw pile, discard pile, or exhaust pile into your hand. NL Put this where it was.",
+    "EXTENDED_DESCRIPTION": ["Choose a card to swap positions with."]
   },
   "${ModID}:Puppercut": {
     "NAME": "Puppercut",

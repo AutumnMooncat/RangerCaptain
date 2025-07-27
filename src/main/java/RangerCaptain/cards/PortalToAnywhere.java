@@ -1,39 +1,97 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.MainModfile;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import RangerCaptain.patches.EnterCardGroupPatches;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.MultiGroupSelectAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
+import com.megacrit.cardcrawl.vfx.cardManip.ExhaustCardEffect;
 
 import static RangerCaptain.MainModfile.makeID;
 
 public class PortalToAnywhere extends AbstractEasyCard {
     public final static String ID = makeID(PortalToAnywhere.class.getSimpleName());
+    public boolean success;
+    public Runnable onSuccess;
 
     public PortalToAnywhere() {
         super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.NONE);
-        baseMagicNumber = magicNumber = 3;
-        cardsToPreview = new WarpSickness();
+        exhaust = true;
+        /*baseMagicNumber = magicNumber = 3;
+        cardsToPreview = new WarpSickness();*/
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DrawCardAction(magicNumber));
+        int handIndex = p.hand.group.indexOf(this);
+        addToBot(new MultiGroupSelectAction(cardStrings.EXTENDED_DESCRIPTION[0], (cards, groups) -> {
+            for (AbstractCard c : cards) {
+                CardGroup group = groups.get(c);
+                int index = group.group.indexOf(c);
+
+                //Prepare the runnable for the UCA Patch
+                onSuccess = () -> {
+                    //Actually add the card to the pile
+                    group.group.add(index, this);
+                    EnterCardGroupPatches.CardAddedToGroup.checkCard(group, this);
+
+                    //Animate the card cosmetically
+                    unhover();
+                    untip();
+                    stopGlowing();
+                    if (group == p.drawPile) {
+                        shrink();
+                        darken(false);
+                        AbstractDungeon.getCurrRoom().souls.onToDeck(this, true, true);
+                    } else if (group == p.discardPile) {
+                        shrink();
+                        darken(false);
+                        AbstractDungeon.getCurrRoom().souls.discard(this, true);
+                    } else if (group == p.exhaustPile) {
+                        AbstractDungeon.effectList.add(new ExhaustCardEffect(this));
+                    }
+                };
+
+                //Unfade the original card in case it came from the Exhaust pile
+                c.unfadeOut();
+
+                //Move original card to hand
+                c.unhover();
+                c.untip();
+                c.stopGlowing();
+                group.group.remove(c);
+                c.lighten(true);
+                c.setAngle(0.0F);
+                c.drawScale = 0.12F;
+                c.targetDrawScale = 0.75F;
+                if (handIndex != -1) {
+                    p.hand.group.add(handIndex, c);
+                    EnterCardGroupPatches.CardAddedToGroup.checkCard(p.hand, c);
+                } else {
+                    p.hand.addToTop(c);
+                }
+
+                //Refresh hand logic given we manually added to hand
+                AbstractDungeon.player.hand.refreshHandLayout();
+                AbstractDungeon.player.hand.applyPowers();
+
+                //Tell UCA to run the runnable if we are upgraded, else let it go through normal UCA logic
+                //This means spoon can make the non-upgraded version discard instead of moving like the upgraded version
+                success = upgraded;
+            }
+        }, 1, CardGroup.CardGroupType.DRAW_PILE, CardGroup.CardGroupType.DISCARD_PILE, CardGroup.CardGroupType.EXHAUST_PILE));
     }
 
     @Override
     public void upp() {
-        upgradeMagicNumber(1);
+        exhaust = false;
+        uDesc();
     }
 
-    public void onTrigger() {
+    /*public void onTrigger() {
         AbstractCard sickness = new WarpSickness();
 
         //Since Omamori and other modded Curse blockers are in the Constructor, we can check if the action gets set to done to know if the curse was negated
@@ -61,5 +119,5 @@ public class PortalToAnywhere extends AbstractEasyCard {
         for (AbstractRelic r : AbstractDungeon.player.relics) {
             r.onMasterDeckChange();
         }
-    }
+    }*/
 }
