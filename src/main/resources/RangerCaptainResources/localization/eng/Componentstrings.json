@@ -569,7 +569,12 @@
       "Next turn, gain [E] ",
       "Next turn, gain [E] [E] ",
       "Next turn, gain [E] [E] [E] ",
-      "Next turn, gain %s [E] "
+      "Next turn, gain %s [E] ",
+      "gain {@@}{%1$s|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=%1$s [E]} next turn",
+      "gain [E] next turn",
+      "gain [E] [E] next turn",
+      "gain [E] [E] [E] next turn",
+      "gain %s [E] next turn"
     ]
   },
   "${ModID}:StashTopCardsComponent": {

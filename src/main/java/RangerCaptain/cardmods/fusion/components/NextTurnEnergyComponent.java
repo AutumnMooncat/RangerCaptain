@@ -3,13 +3,11 @@ package RangerCaptain.cardmods.fusion.components;
 import RangerCaptain.MainModfile;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.powers.APBoostPower;
-import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import java.util.Collections;
 import java.util.List;
 
 public class NextTurnEnergyComponent extends AbstractComponent {
@@ -44,7 +42,14 @@ public class NextTurnEnergyComponent extends AbstractComponent {
 
     @Override
     public String rawCapturedText() {
-        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
+        int offset = 5;
+        if (dynvar == DynVar.FLAT) {
+            if (baseAmount >= 1 && baseAmount <= 3) {
+                return CARD_TEXT[baseAmount + offset];
+            }
+            return String.format(CARD_TEXT[4 + offset], baseAmount);
+        }
+        return String.format(CARD_TEXT[offset], dynKey());
     }
 
     @Override
