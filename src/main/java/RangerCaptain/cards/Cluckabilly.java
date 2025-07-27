@@ -22,20 +22,20 @@ public class Cluckabilly extends AbstractEasyCard {
 
     static {
         new FusionComponentHelper(MonsterEnum.CLUCKABILLY)
-                .withCost(1)
+                .withCost(0)
                 .with(new MultitargetComponent(2))
-                .with(new VulnerableComponent(1, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new VulnerableComponent(2, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
         new FusionComponentHelper(MonsterEnum.ROCKERTRICE)
                 .withCost(1)
-                .with(new MultitargetComponent(3))
-                .with(new VulnerableComponent(1, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new MultitargetComponent(2))
+                .with(new VulnerableComponent(3, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
     }
 
     public Cluckabilly() {
-        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL);
-        baseMagicNumber = magicNumber = 2;
+        super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL);
+        baseMagicNumber = magicNumber = 1;
         baseSecondMagic = secondMagic = 1;
         setMonsterData(MonsterEnum.CLUCKABILLY);
         tags.add(CustomTags.SECOND_MAGIC_VULN_AOE);
@@ -49,7 +49,7 @@ public class Cluckabilly extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeMagicNumber(1);
+        upgradeSecondMagic(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.ROCKERTRICE);
