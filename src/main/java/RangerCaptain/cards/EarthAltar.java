@@ -17,16 +17,16 @@ public class EarthAltar extends AbstractEasyCard {
 
     public EarthAltar() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF_AND_ENEMY);
-        baseBlock = block = 6;
         baseMagicNumber = magicNumber = 3;
+        baseBlock = block = 6;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        blck();
-        addToBot(new BetterSelectCardsInHandAction(1, ExhaustAction.TEXT[0], false, false, c -> true, cards -> {
+        Wiz.applyToEnemy(m, new ToxinPower(m, magicNumber));
+        addToBot(new BetterSelectCardsInHandAction(1, ExhaustAction.TEXT[0], false, true, c -> true, cards -> {
             for (AbstractCard card : cards) {
-                Wiz.applyToEnemyTop(m, new ToxinPower(m, magicNumber));
+                blckTop();
                 addToTop(new ExhaustSpecificCardAction(card, p.hand, true));
             }
         }));

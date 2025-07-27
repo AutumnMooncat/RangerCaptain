@@ -18,16 +18,16 @@ public class FireAltar extends AbstractEasyCard {
 
     public FireAltar() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF_AND_ENEMY);
-        baseSecondMagic = secondMagic = 5;
         baseMagicNumber = magicNumber = 4;
+        baseSecondMagic = secondMagic = 5;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.applyToSelf(new VigorPower(p, secondMagic));
-        addToBot(new BetterSelectCardsInHandAction(1, ExhaustAction.TEXT[0], false, false, c -> true, cards -> {
+        Wiz.applyToEnemy(m, new BurnedPower(m, p, magicNumber));
+        addToBot(new BetterSelectCardsInHandAction(1, ExhaustAction.TEXT[0], false, true, c -> true, cards -> {
             for (AbstractCard card : cards) {
-                Wiz.applyToEnemyTop(m, new BurnedPower(m, p, magicNumber));
+                Wiz.applyToSelfTop(new VigorPower(p, secondMagic));
                 addToTop(new ExhaustSpecificCardAction(card, p.hand, true));
             }
         }));

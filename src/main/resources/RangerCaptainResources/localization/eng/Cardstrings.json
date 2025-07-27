@@ -11,7 +11,7 @@
   },
   "${ModID}:AirAltar": {
     "NAME": "Air Altar",
-    "DESCRIPTION": "Gain !${ModID}:M2! ${ModID}:Multitarget. NL Exhaust 1 card. NL If you do, apply !M! ${ModID}:Resonance."
+    "DESCRIPTION": "Apply !M! ${ModID}:Resonance. You may Exhaust a card to gain !${ModID}:M2! ${ModID}:Multitarget."
   },
   "${ModID}:Allseer": {
     "NAME": "Allseer",
@@ -129,7 +129,7 @@
   },
   "${ModID}:EarthAltar": {
     "NAME": "Earth Altar",
-    "DESCRIPTION": "Gain !B! Block. NL Exhaust 1 card. NL If you do, apply !M! ${ModID}:Toxin."
+    "DESCRIPTION": "Apply !M! ${ModID}:Toxin. NL You may Exhaust a card to gain !B! Block."
   },
   "${ModID}:Elfless": {
     "NAME": "Elfless",
@@ -148,7 +148,7 @@
   },
   "${ModID}:FireAltar": {
     "NAME": "Fire Altar",
-    "DESCRIPTION": "Gain !${ModID}:M2! Vigor. NL Exhaust 1 card. NL If you do, apply !M! ${ModID}:Burn."
+    "DESCRIPTION": "Apply !M! ${ModID}:Burn. NL You may Exhaust 1 card to gain !${ModID}:M2! Vigor."
   },
   "${ModID}:Glaistain": {
     "NAME": "Glaistain",
@@ -368,6 +368,6 @@
   },
   "${ModID}:WaterAltar": {
     "NAME": "Water Altar",
-    "DESCRIPTION": "Gain {@@}{!${ModID}:M2!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!${ModID}:M2! [E]} . NL Exhaust 1 card. NL If you do, apply !M! ${ModID}:Conductive."
+    "DESCRIPTION": "Apply !M! ${ModID}:Conductive. NL You may Exhaust a card to gain {@@}{!${ModID}:M2!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!${ModID}:M2! [E]} ."
   }
 }

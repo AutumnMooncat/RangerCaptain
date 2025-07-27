@@ -18,16 +18,16 @@ public class WaterAltar extends AbstractEasyCard {
 
     public WaterAltar() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF_AND_ENEMY);
-        baseSecondMagic = secondMagic = 1;
         baseMagicNumber = magicNumber = 5;
+        baseSecondMagic = secondMagic = 1;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainEnergyAction(secondMagic));
-        addToBot(new BetterSelectCardsInHandAction(1, ExhaustAction.TEXT[0], false, false, c -> true, cards -> {
+        Wiz.applyToEnemy(m, new ConductivePower(m, p, magicNumber));
+        addToBot(new BetterSelectCardsInHandAction(1, ExhaustAction.TEXT[0], false, true, c -> true, cards -> {
             for (AbstractCard card : cards) {
-                Wiz.applyToEnemyTop(m, new ConductivePower(m, p, magicNumber));
+                addToBot(new GainEnergyAction(secondMagic));
                 addToTop(new ExhaustSpecificCardAction(card, p.hand, true));
             }
         }));
