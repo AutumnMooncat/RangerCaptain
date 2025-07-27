@@ -148,7 +148,7 @@
   },
   "${ModID}:FireAltar": {
     "NAME": "Fire Altar",
-    "DESCRIPTION": "Apply !M! ${ModID}:Burn. NL You may Exhaust 1 card to gain !${ModID}:M2! Vigor."
+    "DESCRIPTION": "Apply !M! ${ModID}:Burn. NL You may Exhaust a card to gain !${ModID}:M2! Vigor."
   },
   "${ModID}:Glaistain": {
     "NAME": "Glaistain",
