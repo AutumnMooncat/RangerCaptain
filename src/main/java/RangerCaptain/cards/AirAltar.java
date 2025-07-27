@@ -1,9 +1,13 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.actions.ModifyMagicAction;
+import RangerCaptain.actions.BetterSelectCardsInHandAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.powers.MultitargetPower;
+import RangerCaptain.powers.ResonancePower;
+import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -13,19 +17,24 @@ public class AirAltar extends AbstractEasyCard {
     public final static String ID = makeID(AirAltar.class.getSimpleName());
 
     public AirAltar() {
-        super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF_AND_ENEMY);
+        baseSecondMagic = secondMagic = 2;
         baseMagicNumber = magicNumber = 1;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ExhaustAction(1, false, false, false));
-        addToBot(new GainEnergyAction(magicNumber));
-        addToBot(new ModifyMagicAction(uuid, 1));
+        Wiz.applyToSelf(new MultitargetPower(p, secondMagic));
+        addToBot(new BetterSelectCardsInHandAction(1, ExhaustAction.TEXT[0], false, false, c -> true, cards -> {
+            for (AbstractCard card : cards) {
+                Wiz.applyToEnemyTop(m, new ResonancePower(m, p, magicNumber));
+                addToTop(new ExhaustSpecificCardAction(card, p.hand, true));
+            }
+        }));
     }
 
     @Override
     public void upp() {
-        upgradeMagicNumber(1);
+        upgradeBaseCost(0);
     }
 }
