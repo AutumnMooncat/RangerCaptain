@@ -23,37 +23,37 @@ public class Candevil extends AbstractMultiUpgradeCard implements StartupCard {
 
     static {
         new FusionComponentHelper(MonsterEnum.CANDEVIL)
-                .withCost(1)
+                .withCost(0)
                 .withBlock(4)
                 .with(new NextTurnBlockComponent(4))
                 .register();
         new FusionComponentHelper(MonsterEnum.MALCHEMY)
-                .withCost(1)
+                .withCost(0)
                 .withBlock(5)
                 .with(new NextTurnBlockComponent(5))
                 .with(new ToxinComponent(3))
                 .register();
         new FusionComponentHelper(MonsterEnum.MIASMODEUS)
-                .withCost(1)
+                .withCost(0)
                 .withBlock(7)
                 .with(new NextTurnBlockComponent(7))
                 .with(new ToxinComponent(4))
                 .register();
         new FusionComponentHelper(MonsterEnum.VENDEMON)
-                .withCost(1)
+                .withCost(0)
                 .withBlock(7)
                 .with(new NextTurnBlockComponent(7))
                 .register();
         new FusionComponentHelper(MonsterEnum.GUMBAAL)
-                .withCost(1)
+                .withCost(0)
                 .withBlock(10)
                 .with(new NextTurnBlockComponent(10))
                 .register();
     }
 
     public Candevil() {
-        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
-        baseBlock = block = 5;
+        super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+        baseBlock = block = 3;
         setMonsterData(MonsterEnum.CANDEVIL);
         baseInfo = info = 0;
     }
@@ -99,7 +99,7 @@ public class Candevil extends AbstractMultiUpgradeCard implements StartupCard {
         if (baseMagicNumber < 0) {
             baseMagicNumber = magicNumber = 0;
         }
-        upgradeMagicNumber(3);
+        upgradeMagicNumber(2);
         target = CardTarget.SELF_AND_ENEMY;
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
@@ -121,7 +121,7 @@ public class Candevil extends AbstractMultiUpgradeCard implements StartupCard {
         if (baseMagicNumber < 0) {
             baseMagicNumber = magicNumber = 0;
         }
-        upgradeMagicNumber(6);
+        upgradeMagicNumber(4);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
         setMonsterData(MonsterEnum.VENDEMON);

@@ -29,39 +29,39 @@ public class Bansheep extends AbstractMultiUpgradeCard implements StartupCard {
 
     static  {
         new FusionComponentHelper(MonsterEnum.BANSHEEP)
-                .withCost(1)
-                .withDamage(5, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
-                .with(new NextTurnDamageComponent(5, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
-                .register();
-        new FusionComponentHelper(MonsterEnum.WOOLTERGEIST)
-                .withCost(1)
+                .withCost(0)
                 .withDamage(6, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
                 .with(new NextTurnDamageComponent(6, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
+                .register();
+        new FusionComponentHelper(MonsterEnum.WOOLTERGEIST)
+                .withCost(0)
+                .withDamage(7, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new NextTurnDamageComponent(7, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
                 .with(new TempStrengthComponent(3, AbstractComponent.ComponentTarget.ENEMY, false))
                 .register();
         new FusionComponentHelper(MonsterEnum.RAMTASM)
-                .withCost(1)
+                .withCost(0)
                 .withDamage(8, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
                 .with(new NextTurnDamageComponent(8, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
                 .with(new TempStrengthComponent(4, AbstractComponent.ComponentTarget.ENEMY, false))
                 .register();
         new FusionComponentHelper(MonsterEnum.ZOMBLEAT)
-                .withCost(1)
-                .withDamage(6, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
-                .with(new NextTurnDamageComponent(6, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
+                .withCost(0)
+                .withDamage(7, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new NextTurnDamageComponent(7, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
                 .with(new VigorComponent(3))
                 .register();
         new FusionComponentHelper(MonsterEnum.CAPRICORPSE)
-                .withCost(1)
+                .withCost(0)
                 .withDamage(8, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
                 .with(new NextTurnDamageComponent(8, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
-                .with(new VigorComponent(3))
+                .with(new VigorComponent(4))
                 .register();
     }
 
     public Bansheep() {
-        super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        baseDamage = damage = 7;
+        super(ID, 0, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        baseDamage = damage = 5;
         setMonsterData(MonsterEnum.BANSHEEP);
         baseInfo = info = 0;
     }
@@ -110,7 +110,7 @@ public class Bansheep extends AbstractMultiUpgradeCard implements StartupCard {
         if (baseMagicNumber < 0) {
             baseMagicNumber = magicNumber = 0;
         }
-        upgradeMagicNumber(4);
+        upgradeMagicNumber(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.WOOLTERGEIST);
@@ -130,7 +130,7 @@ public class Bansheep extends AbstractMultiUpgradeCard implements StartupCard {
         if (baseMagicNumber < 0) {
             baseMagicNumber = magicNumber = 0;
         }
-        upgradeMagicNumber(8);
+        upgradeMagicNumber(6);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
         setMonsterData(MonsterEnum.ZOMBLEAT);
