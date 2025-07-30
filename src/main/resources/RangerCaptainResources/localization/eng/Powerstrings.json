@@ -72,8 +72,8 @@
     "DESCRIPTIONS": ["Whenever you play a card this turn, play a copy of ","."]
   },
   "${ModID}:CloseEncounterPower": {
-    "NAME": "Close Encounter",
-    "DESCRIPTIONS": ["Next turn, move "," from your discard pile into your hand."]
+    "NAME": "Closer Encounter",
+    "DESCRIPTIONS": ["#yStash the next card you play this turn.", "#yStash the next #b", " cards you play this turn."]
   },
   "${ModID}:FlammablePower": {
     "NAME": "Flammable",

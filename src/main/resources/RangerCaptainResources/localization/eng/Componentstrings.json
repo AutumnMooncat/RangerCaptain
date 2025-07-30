@@ -405,6 +405,14 @@
       "This turn, your next %s Attacks are played twice"
     ]
   },
+  "${ModID}:StashNextCardComponent": {
+    "TEXT": ["#yStash the next card you play this turn"],
+    "EXTRA_TEXT": [
+      "${ModID}:Stash the next {@@}{%1$s|1=card|@=%1$s cards} you play this turn",
+      "${ModID}:Stash the next card you play this turn",
+      "${ModID}:Stash the next %s cards you play this turn"
+    ]
+  },
   "${ModID}:MakeCardsFreeComponent": {
     "TEXT": [
       "Make cards in your %s free until played",

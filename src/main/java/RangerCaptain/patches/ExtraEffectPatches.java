@@ -1,5 +1,6 @@
 package RangerCaptain.patches;
 
+import RangerCaptain.powers.CloseEncounterPower;
 import RangerCaptain.powers.MindMeldPower;
 import RangerCaptain.ui.StashedCardManager;
 import RangerCaptain.util.Wiz;
@@ -60,7 +61,7 @@ public class ExtraEffectPatches {
     public static class FlagForDiscovery {
         @SpireInsertPatch(locator = Locator.class)
         public static void yeetCheck(UseCardAction __instance, AbstractCard ___targetCard) {
-            if (EffectFields.closeEncounter.get(___targetCard)) {
+            if (EffectFields.closeEncounter.get(___targetCard) || Wiz.adp().hasPower(CloseEncounterPower.POWER_ID)) {
                 yeetCard = true;
             }
         }
