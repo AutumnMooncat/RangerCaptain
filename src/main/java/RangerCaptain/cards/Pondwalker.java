@@ -1,13 +1,11 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.actions.StashTopCardsAction;
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.components.BurnComponent;
+import RangerCaptain.cardmods.fusion.components.StashTopCardsComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
-import RangerCaptain.patches.CustomTags;
-import RangerCaptain.powers.BurnedPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
-import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -19,41 +17,42 @@ public class Pondwalker extends AbstractEasyCard {
     public final static String ID = makeID(Pondwalker.class.getSimpleName());
 
     static {
-        // 13,6 -> 21,10
+        // 7x2 -> 7x3
         new FusionComponentHelper(MonsterEnum.PONDWALKER)
                 .withCost(2)
-                .withDamage(6, AbstractGameAction.AttackEffect.FIRE)
-                .with(new BurnComponent(3))
+                .withMultiDamage(3, 2, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new StashTopCardsComponent(1))
                 .register();
-        // 16,8 -> 24,14
+        // 10x2 -> 10x3
         new FusionComponentHelper(MonsterEnum.SHARKTANKER)
                 .withCost(2)
-                .withDamage(7, AbstractGameAction.AttackEffect.FIRE)
-                .with(new BurnComponent(4))
+                .withMultiDamage(4, 2, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .with(new StashTopCardsComponent(1))
                 .register();
     }
 
     public Pondwalker() {
         super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        baseDamage = damage = 13;
-        baseMagicNumber = magicNumber = 6;
+        baseDamage = damage = 7;
+        baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.PONDWALKER);
-        tags.add(CustomTags.MAGIC_BURN);
+        baseInfo = info = 0;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, AbstractGameAction.AttackEffect.FIRE);
-        Wiz.applyToEnemy(m, new BurnedPower(m, p, magicNumber));
+        dmg(m, info == 1 ? AbstractGameAction.AttackEffect.SLASH_HEAVY : AbstractGameAction.AttackEffect.BLUNT_HEAVY);
+        dmg(m, info == 1 ? AbstractGameAction.AttackEffect.SLASH_HEAVY : AbstractGameAction.AttackEffect.BLUNT_HEAVY);
+        addToBot(new StashTopCardsAction(magicNumber));
     }
 
     @Override
     public void upp() {
         upgradeDamage(3);
-        upgradeMagicNumber(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.SHARKTANKER);
+        baseInfo = info = 1;
     }
 
     @Override
