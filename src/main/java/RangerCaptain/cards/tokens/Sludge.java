@@ -12,7 +12,7 @@ public class Sludge extends AbstractEasyCard {
     public final static String ID = makeID(Sludge.class.getSimpleName());
 
     public Sludge() {
-        super(ID, 0, CardType.STATUS, CardRarity.SPECIAL, CardTarget.ENEMY, CardColor.COLORLESS);
+        super(ID, 0, CardType.SKILL, CardRarity.SPECIAL, CardTarget.ENEMY, CardColor.COLORLESS);
         magicNumber = baseMagicNumber = 3;
         exhaust = true;
     }
