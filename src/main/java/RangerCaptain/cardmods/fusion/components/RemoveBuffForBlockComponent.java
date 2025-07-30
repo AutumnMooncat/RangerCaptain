@@ -4,6 +4,7 @@ import RangerCaptain.MainModfile;
 import RangerCaptain.actions.CleansePowerAction;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cards.tokens.FusedCard;
+import RangerCaptain.util.FormatHelper;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -47,7 +48,7 @@ public class RemoveBuffForBlockComponent extends AbstractComponent {
 
     @Override
     public String rawCapturedText() {
-        return String.format(CARD_TEXT[0], dynKey());
+        return FormatHelper.uncapitalize(String.format(CARD_TEXT[0], dynKey()));
     }
 
     @Override
