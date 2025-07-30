@@ -150,6 +150,10 @@
     "NAME": "Fire Altar",
     "DESCRIPTION": "Apply !M! ${ModID}:Burn. NL You may Exhaust a card to gain !${ModID}:M2! Vigor."
   },
+  "${ModID}:FlashFlood": {
+    "NAME": "Flash Flood",
+    "DESCRIPTION": "${ModID}:Stash the top {@@}{!M!|1=card|@=!M! cards} of your draw pile. {!M!|1=It costs|@=They cost} 0 until played. NL Exhaust."
+  },
   "${ModID}:Glaistain": {
     "NAME": "Glaistain",
     "DESCRIPTION": "${ModID}:Perfect. NL Whenever you play a ${ModID}:Perfect card, gain !M! Block."
