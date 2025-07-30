@@ -1,21 +1,21 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.actions.BetterSelectCardsInHandAction;
+import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.BlockComponent;
-import RangerCaptain.cardmods.fusion.components.ExhaustCardsComponent;
+import RangerCaptain.cardmods.fusion.components.BurnComponent;
+import RangerCaptain.cardmods.fusion.components.BurnPointsComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
-import RangerCaptain.patches.CustomTags;
+import RangerCaptain.powers.BurnedPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import RangerCaptain.util.Wiz;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -24,38 +24,40 @@ public class Burnace extends AbstractEasyCard {
 
     static {
         new FusionComponentHelper(MonsterEnum.BURNACE)
-                .withCost(1)
-                .withFlags(new BlockComponent(3), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
-                .with(new ExhaustCardsComponent(2, ExhaustCardsComponent.TargetPile.HAND, true, false))
+                .withCost(0)
+                .with(new BurnComponent(4), new BurnPointsComponent())
                 .register();
         new FusionComponentHelper(MonsterEnum.SMOGMAGOG)
-                .withCost(1)
-                .withFlags(new BlockComponent(5), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
-                .with(new ExhaustCardsComponent(2, ExhaustCardsComponent.TargetPile.HAND, true, false))
+                .withCost(0)
+                .with(new BurnComponent(6), new BurnPointsComponent())
                 .register();
     }
 
     public Burnace() {
-        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
-        baseBlock = block = 4;
+        super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.BURNACE);
-        tags.add(CustomTags.MAGIC_EXHAUST);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new BetterSelectCardsInHandAction(magicNumber, ExhaustAction.TEXT[0], true, true, c -> true, cards -> {
-            for (AbstractCard card : cards) {
-                addToTop(new GainBlockAction(p, block));
-                addToTop(new ExhaustSpecificCardAction(card, p.hand, true));
+        Wiz.applyToEnemy(m, new BurnedPower(m, p, magicNumber));
+        addToBot(new DoAction(() -> {
+            for (int i = AbstractDungeon.getMonsters().monsters.size() - 1; i >= 0; i--) {
+                AbstractMonster mon = AbstractDungeon.getMonsters().monsters.get(i);
+                if (!mon.isDeadOrEscaped()) {
+                    AbstractPower burn = mon.getPower(BurnedPower.POWER_ID);
+                    if (burn != null) {
+                        addToTop(new LoseHPAction(mon, p, burn.amount, AbstractGameAction.AttackEffect.FIRE));
+                    }
+                }
             }
         }));
     }
 
     @Override
     public void upp() {
-        upgradeBlock(2);
+        upgradeMagicNumber(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.SMOGMAGOG);

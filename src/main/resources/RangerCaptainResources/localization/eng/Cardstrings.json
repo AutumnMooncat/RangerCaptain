@@ -67,7 +67,7 @@
   },
   "${ModID}:Burnace": {
     "NAME": "Burnace",
-    "DESCRIPTION": "Exhaust up to !M! cards in your hand. NL Gain !B! Block for each card Exhausted.",
+    "DESCRIPTION": "Apply !M! ${ModID}:Burn. NL ALL enemies lose HP equal to their ${ModID}:Burn.",
     "EXTENDED_DESCRIPTION": ["Smogmagog"]
   },
   "${ModID}:Busheye": {

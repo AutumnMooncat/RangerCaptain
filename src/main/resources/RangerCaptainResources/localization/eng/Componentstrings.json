@@ -655,6 +655,14 @@
       "%s for each unique debuff on the enemy"
     ]
   },
+  "${ModID}:BurnPointsComponent": {
+    "TEXT": [
+      "Enemies lose HP equal to their #yBurn"
+    ],
+    "EXTRA_TEXT": [
+      "ALL enemies lose HP equal to their ${ModID}:Burn"
+    ]
+  },
   "${ModID}:YeetWeakVulnComponent": {
     "TEXT": [
       "Invalid Transfer Weak Vuln",
