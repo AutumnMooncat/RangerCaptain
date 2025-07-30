@@ -21,17 +21,17 @@ public class Nevermort extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.NEVERMORT)
                 .withCost(0)
-                .with(new ToxinComponent(3, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new ToxinComponent(4, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
         new FusionComponentHelper(MonsterEnum.APOCROWLYPSE)
                 .withCost(0)
-                .with(new ToxinComponent(4, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new ToxinComponent(5, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
     }
 
     public Nevermort() {
         super(ID, 0, CardType.SKILL, CardRarity.COMMON, CardTarget.ALL_ENEMY);
-        baseMagicNumber = magicNumber = 2;
+        baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.NEVERMORT);
         tags.add(CustomTags.MAGIC_TOXIN_AOE);
     }
