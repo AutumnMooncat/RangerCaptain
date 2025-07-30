@@ -22,17 +22,17 @@ public class Terracooka extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.TERRACOOKA)
                 .withCost(1)
-                .with(new BurnComponent(4), new ExhaustCardsComponent(1))
+                .with(new BurnComponent(3), new ExhaustCardsComponent(1))
                 .register();
         new FusionComponentHelper(MonsterEnum.COALDRON)
                 .withCost(1)
-                .with(new BurnComponent(6), new ExhaustCardsComponent(1))
+                .with(new BurnComponent(5), new ExhaustCardsComponent(1))
                 .register();
     }
 
     public Terracooka() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
-        baseMagicNumber = magicNumber = 5;
+        baseMagicNumber = magicNumber = 4;
         baseSecondMagic = secondMagic = 1;
         setMonsterData(MonsterEnum.TERRACOOKA);
         tags.add(CustomTags.MAGIC_BURN);
