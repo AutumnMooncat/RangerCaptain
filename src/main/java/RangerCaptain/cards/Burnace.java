@@ -5,6 +5,7 @@ import RangerCaptain.cardmods.fusion.FusionComponentHelper;
 import RangerCaptain.cardmods.fusion.components.BurnComponent;
 import RangerCaptain.cardmods.fusion.components.BurnPointsComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.BurnedPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -37,6 +38,7 @@ public class Burnace extends AbstractEasyCard {
         super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.BURNACE);
+        tags.add(CustomTags.MAGIC_BURN);
     }
 
     @Override
