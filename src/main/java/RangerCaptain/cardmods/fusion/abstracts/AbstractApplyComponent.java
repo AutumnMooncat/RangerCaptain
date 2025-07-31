@@ -44,9 +44,9 @@ public abstract class AbstractApplyComponent extends AbstractComponent {
     @Override
     public void receiveStacks(AbstractComponent other) {
         if (target == ComponentTarget.ENEMY_AOE && other.target == ComponentTarget.ENEMY) {
-            baseAmount += (int) (other.baseAmount * 0.75f);
+            floatingAmount += other.floatingAmount * 0.75f;
         } else {
-            baseAmount += other.baseAmount;
+            floatingAmount += other.floatingAmount;
         }
     }
 

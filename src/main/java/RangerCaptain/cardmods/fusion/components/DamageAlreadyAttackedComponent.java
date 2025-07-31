@@ -77,7 +77,7 @@ public class DamageAlreadyAttackedComponent extends AbstractComponent {
         if (!(other instanceof DamageLastAttackerComponent)) {
             mult *= 1.25f;
         }
-        baseAmount += (int) (other.baseAmount * mult);
+        floatingAmount += other.floatingAmount * mult;
     }
 
     @Override

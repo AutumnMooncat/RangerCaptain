@@ -60,7 +60,7 @@ public class NextTurnDamageComponent extends AbstractComponent {
         if (target == ComponentTarget.ENEMY_AOE && other.target == ComponentTarget.ENEMY) {
             mult *= 0.75f;
         }
-        baseAmount += (int) (other.baseAmount * mult);
+        floatingAmount += other.floatingAmount * mult;
     }
 
     @Override

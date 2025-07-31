@@ -15,6 +15,7 @@ import java.util.function.Supplier;
 public class FusionComponentHelper {
     private final MonsterEnum monster;
     private final List<AbstractComponent> components;
+    private int baseCost;
 
     public FusionComponentHelper(MonsterEnum monster) {
         this.monster = monster;
@@ -61,6 +62,7 @@ public class FusionComponentHelper {
             this.components.add(new XComponent());
         } else {
             this.components.add(new CostComponent(cost));
+            baseCost = cost;
         }
         return this;
     }
@@ -123,6 +125,7 @@ public class FusionComponentHelper {
         Collections.sort(components);
         for (AbstractComponent c : components) {
             c.source = monster;
+            c.baseCost = baseCost;
             FusionCardEffectData.add(monster, c);
         }
     }

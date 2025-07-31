@@ -113,6 +113,8 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
     public DynVar dynvar;
     public MonsterEnum source;
     public int baseAmount;
+    public float floatingAmount;
+    public int baseCost;
     public int priority;
     public boolean isSimple;
     public boolean wasCaptured;
@@ -122,6 +124,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         this.type = type;
         this.target = target;
         this.baseAmount = baseAmount;
+        this.floatingAmount = baseAmount;
         setDynVar(desiredDynvar);
         updatePrio();
     }
@@ -142,6 +145,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         AbstractComponent copy = makeCopy();
         copy.setFlags(flags.toArray(new Flag[0]));
         copy.source = source;
+        copy.baseCost = baseCost;
         return copy;
     }
 
@@ -172,7 +176,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
     }
 
     public void receiveStacks(AbstractComponent other) {
-        baseAmount += other.baseAmount;
+        floatingAmount += other.floatingAmount;
     }
 
     public boolean captures(AbstractComponent other) {
@@ -203,6 +207,24 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
 
     public boolean scalesWithCost() {
         return makesActions();
+    }
+
+    public void scaleToCost(int newCost) {
+        if (Math.max(0, baseCost) == Math.max(0, newCost) || !scalesWithCost()) {
+            return;
+        }
+        // Normalize to 1 cost
+        if (Math.max(0, baseCost) == 0) {
+            floatingAmount *= 1.25f;
+        } else if (baseCost > 1) {
+            floatingAmount /= (1 + 0.75f * (baseCost - 1));
+        }
+        // Scale back to new cost
+        if (Math.max(0, newCost) == 0) {
+            floatingAmount /= 1.25f;
+        } else if (newCost > 1) {
+            floatingAmount *= (1 + 0.75f * (newCost - 1));
+        }
     }
 
     public boolean isPower() {
@@ -475,6 +497,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
             for (AbstractComponent other : components) {
                 if (component != other && component.shouldStack(other) && !stacked.contains(component) && !stacked.contains(other) && (!other.wasCaptured || component.wasCaptured)) {
                     stacked.add(component);
+                    component.scaleToCost(other.baseCost);
                     other.receiveStacks(component);
                 }
             }
@@ -582,25 +605,18 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
             if (component.dynvar == DynVar.NONE) {
                 continue;
             }
-            float tmp = component.baseAmount;
             for (AbstractComponent other : components) {
                 if (component != other && other.modifiesAmount(component)) {
-                    tmp += other.amountBonus(component);
+                    component.floatingAmount += other.amountBonus(component);
                 }
             }
             for (AbstractComponent other : components) {
                 if (component != other && other.modifiesAmount(component)) {
-                    tmp *= other.amountMultiplier(component);
+                    component.floatingAmount *= other.amountMultiplier(component);
                 }
             }
-            if (component.scalesWithCost()) {
-                if (cost == 0 || cost == -1) {
-                    tmp *= 0.75f;
-                } else  {
-                    tmp *= (0.75f * cost + 0.25f);
-                }
-            }
-            component.baseAmount = Math.max(1, (int) tmp);
+            component.scaleToCost(cost);
+            component.baseAmount = Math.max(1, (int) component.floatingAmount);
         }
     }
 

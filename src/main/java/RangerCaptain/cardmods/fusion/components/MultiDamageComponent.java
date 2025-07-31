@@ -67,7 +67,7 @@ public class MultiDamageComponent extends AbstractComponent {
         if (other instanceof MultiDamageComponent) {
             hits += ((MultiDamageComponent) other).hits - 1;
         }
-        baseAmount += (int) (other.baseAmount * mult);
+        floatingAmount += other.floatingAmount * mult;
     }
 
     @Override
