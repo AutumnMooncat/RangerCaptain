@@ -210,7 +210,7 @@
   },
   "${ModID}:Mascotoy": {
     "NAME": "Mascotoy",
-    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Mind-Meld.",
+    "DESCRIPTION": "Deal !D! damage. NL Shuffle !M! *Dazed into your draw pile. NL ${ModID}:Mind-Meld.",
     "EXTENDED_DESCRIPTION": ["Mascotorn"]
   },
   "${ModID}:Minortom": {
