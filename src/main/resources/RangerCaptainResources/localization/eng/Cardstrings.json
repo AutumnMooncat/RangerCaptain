@@ -101,7 +101,7 @@
   },
   "${ModID}:Cluckabilly": {
     "NAME": "Cluckabilly",
-    "DESCRIPTION": "Gain !M! ${ModID}:Multitarget. Apply !${ModID}:M2! Vulnerable to ALL enemies.",
+    "DESCRIPTION": "Gain !M! ${ModID}:Multitarget. NL Play the top {@@}{!${ModID}:M2!|1=card|@=!${ModID}:M2! cards} of your draw pile and Exhaust {!${ModID}:M2!|1=it|@=them}.",
     "EXTENDED_DESCRIPTION": ["Rockertrice"]
   },
   "${ModID}:Dandylion": {
