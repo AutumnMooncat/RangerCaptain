@@ -585,6 +585,21 @@
       "gain %s [E] next turn"
     ]
   },
+  "${ModID}:NextTwoTurnsEnergyComponent": {
+    "TEXT": ["Gain #yEnergy next turn and the turn after"],
+    "EXTRA_TEXT": [
+      "At the start of your next 2 turns, gain {@@}{%1$s|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=%1$s [E]} ",
+      "At the start of your next 2 turns, gain [E] ",
+      "At the start of your next 2 turns, gain [E] [E] ",
+      "At the start of your next 2 turns, gain [E] [E] [E] ",
+      "At the start of your next 2 turns, gain %s [E] ",
+      "gain {@@}{%1$s|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=%1$s [E]} at the start of your next 2 turns",
+      "gain [E] at the start of your next 2 turns",
+      "gain [E] [E] at the start of your next 2 turns",
+      "gain [E] [E] [E] at the start of your next 2 turns",
+      "gain %s [E] at the start of your next 2 turns"
+    ]
+  },
   "${ModID}:EnergyComponent": {
     "TEXT": ["Gain #yEnergy"],
     "EXTRA_TEXT": [
