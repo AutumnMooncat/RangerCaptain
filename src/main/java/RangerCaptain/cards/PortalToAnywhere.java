@@ -27,7 +27,7 @@ public class PortalToAnywhere extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         int handIndex = p.hand.group.indexOf(this);
-        addToBot(new MultiGroupSelectAction(cardStrings.EXTENDED_DESCRIPTION[0], (cards, groups) -> {
+        addToBot(new MultiGroupSelectAction(upgraded ? cardStrings.EXTENDED_DESCRIPTION[1] : cardStrings.EXTENDED_DESCRIPTION[0], (cards, groups) -> {
             for (AbstractCard c : cards) {
                 CardGroup group = groups.get(c);
                 int index = group.group.indexOf(c);
