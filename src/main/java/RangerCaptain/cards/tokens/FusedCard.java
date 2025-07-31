@@ -4,6 +4,7 @@ import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.components.BinvasionComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.cards.interfaces.OnOtherCardStashedCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.Wiz;
 import basemod.abstracts.CustomSavable;
@@ -25,7 +26,7 @@ import static RangerCaptain.MainModfile.makeID;
 
 @NoPools
 @NoCompendium
-public class FusedCard extends AbstractEasyCard implements AbstractComponent.ComponentAmountProvider, CustomSavable<List<AbstractComponent>> {
+public class FusedCard extends AbstractEasyCard implements AbstractComponent.ComponentAmountProvider, CustomSavable<List<AbstractComponent>>, OnOtherCardStashedCard {
     public final static String ID = makeID(FusedCard.class.getSimpleName());
     private final List<AbstractComponent> originals = new ArrayList<>();
     private final transient List<AbstractComponent> components = new ArrayList<>();
@@ -114,12 +115,16 @@ public class FusedCard extends AbstractEasyCard implements AbstractComponent.Com
 
     @Override
     public boolean canUpgrade() {
-        return super.canUpgrade() && getUpgradeMult() != 1f || cost > 0;
+        return super.canUpgrade() && (getUpgradeMult() != 1f || cost > 0);
     }
 
     @Override
     public AbstractCard makeCopy() {
-        return new FusedCard(originals);
+        FusedCard copy = new FusedCard(originals);
+        for (AbstractComponent component : components) {
+            component.onMakeCopy(this, copy);
+        }
+        return copy;
     }
 
     @Override
@@ -287,6 +292,27 @@ public class FusedCard extends AbstractEasyCard implements AbstractComponent.Com
     public void onLoad(List<AbstractComponent> components) {
         if (components != null) {
             processComponents(components);
+        }
+    }
+
+    @Override
+    public void triggerWhenDrawn() {
+        for (AbstractComponent component : components) {
+            component.triggerWhenDrawn(this);
+        }
+    }
+
+    @Override
+    public void onStashedOther(AbstractCard card) {
+        for (AbstractComponent component : components) {
+            component.triggerOnOtherCardStashed(this, card);
+        }
+    }
+
+    @Override
+    public void atTurnStart() {
+        for (AbstractComponent component : components) {
+            component.atTurnStart(this);
         }
     }
 }

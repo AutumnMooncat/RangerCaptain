@@ -655,6 +655,12 @@
       "Heal %s HP"
     ]
   },
+  "${ModID}:CostsLessPerStashedComponent": {
+    "TEXT": ["Costs less for each card Stashed that turn"],
+    "EXTRA_TEXT": [
+      "Costs 1 less [E] for each card ${ModID}:Stashed this turn"
+    ]
+  },
   "${ModID}:DieNextTurnComponent": {
     "TEXT": ["Increase other effects, Die next turn"],
     "EXTRA_TEXT": [

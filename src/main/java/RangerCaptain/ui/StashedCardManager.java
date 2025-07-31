@@ -1,5 +1,6 @@
 package RangerCaptain.ui;
 
+import RangerCaptain.cards.interfaces.OnOtherCardStashedCard;
 import RangerCaptain.cards.interfaces.OnStashedCard;
 import RangerCaptain.patches.CardCounterPatches;
 import RangerCaptain.powers.interfaces.OnStashPower;
@@ -84,6 +85,11 @@ public class StashedCardManager {
         cards.addToTop(card);
         if (card instanceof OnStashedCard) {
             ((OnStashedCard) card).onStash();
+        }
+        for (AbstractCard relevantCard : Wiz.getAllCardsInCardGroups(true, true)) {
+            if (relevantCard instanceof OnOtherCardStashedCard) {
+                ((OnOtherCardStashedCard) relevantCard).onStashedOther(card);
+            }
         }
         for (AbstractRelic r : Wiz.adp().relics) {
             if (r instanceof OnStashRelic) {
