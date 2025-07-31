@@ -1,13 +1,13 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.components.OnPlayAttackComponent;
+import RangerCaptain.cardmods.fusion.components.DrawComponent;
+import RangerCaptain.cardmods.fusion.components.OnDrawUnplayableComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.SpringLoadedPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -20,14 +20,17 @@ public class Clocksley extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.CLOCKSLEY)
                 .withCost(1)
-                .withDamageRandom(6, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
-                .with(new OnPlayAttackComponent())
+                .with(new OnDrawUnplayableComponent(), new DrawComponent(2))
+                .register();
+        new FusionComponentHelper(MonsterEnum.ROBINDAM)
+                .withCost(1)
+                .with(new OnDrawUnplayableComponent(), new DrawComponent(3))
                 .register();
     }
 
     public Clocksley() {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
-        baseMagicNumber = magicNumber = 2;
+        baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.CLOCKSLEY);
     }
 

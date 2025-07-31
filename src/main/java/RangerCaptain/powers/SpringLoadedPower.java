@@ -2,19 +2,19 @@ package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.OnPlayAttackComponent;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
+import RangerCaptain.cardmods.fusion.components.OnDrawUnplayableComponent;
+import RangerCaptain.patches.EnterCardGroupPatches;
+import RangerCaptain.util.Wiz;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
 import java.util.List;
 
-public class SpringLoadedPower extends AbstractComponentPower {
+public class SpringLoadedPower extends AbstractComponentPower implements EnterCardGroupPatches.OnEnterCardGroupPower {
     public static final String POWER_ID = MainModfile.makeID(SpringLoadedPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -24,21 +24,25 @@ public class SpringLoadedPower extends AbstractComponentPower {
         super(POWER_ID, NAME, PowerType.BUFF, false, owner, amount);
     }
 
-    public SpringLoadedPower(AbstractCreature owner, String name, OnPlayAttackComponent source, List<AbstractComponent> captured) {
+    public SpringLoadedPower(AbstractCreature owner, String name, OnDrawUnplayableComponent source, List<AbstractComponent> captured) {
         super(POWER_ID, name, PowerType.BUFF, false, owner, source, captured);
     }
 
     @Override
     public void updateNormalDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        if (amount == 1) {
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        } else {
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[2];
+        }
     }
 
     @Override
-    public void onUseCard(AbstractCard card, UseCardAction action) {
-        if (card.type == AbstractCard.CardType.ATTACK) {
+    public void onEnter(CardGroup g, AbstractCard c) {
+        if (g == Wiz.adp().hand && c.cost == -2) {
             flashWithoutSound();
             if (source == null) {
-                addToBot(new DamageRandomEnemyAction(new DamageInfo(owner, amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                addToBot(new DrawCardAction(amount));
             } else {
                 triggerComponents(null, false);
             }

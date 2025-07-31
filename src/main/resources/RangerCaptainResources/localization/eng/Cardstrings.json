@@ -96,7 +96,7 @@
   },
   "${ModID}:Clocksley": {
     "NAME": "Clocksley",
-    "DESCRIPTION": "Whenever you play an Attack, deal !M! damage to a random enemy.",
+    "DESCRIPTION": "Whenever an Unplayable card enters your hand, draw !M! card{@@}{!M!|1=|@=s}.",
     "EXTENDED_DESCRIPTION": ["Robindam"]
   },
   "${ModID}:Cluckabilly": {

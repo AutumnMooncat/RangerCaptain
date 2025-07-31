@@ -65,7 +65,7 @@
   },
   "${ModID}:SpringLoadedPower": {
     "NAME": "Spring-Loaded",
-    "DESCRIPTIONS": ["Whenever you play an #yAttack, deal #b"," damage to a random enemy."]
+    "DESCRIPTIONS": ["Whenever an #yUnplayable card enters your hand, draw #b"," card.","cards."]
   },
   "${ModID}:MindMeldPower": {
     "NAME": "Mind-Meld",

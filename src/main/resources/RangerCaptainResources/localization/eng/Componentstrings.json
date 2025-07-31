@@ -736,9 +736,9 @@
     "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": ["Whenever you play a ${ModID}:Perfect card, %s"]
   },
-  "${ModID}:OnPlayAttackComponent": {
+  "${ModID}:OnDrawUnplayableComponent": {
     "TEXT": ["Fusion becomes a Power"],
-    "EXTRA_TEXT": ["Whenever you play an Attack, %s"]
+    "EXTRA_TEXT": ["Whenever an Unplayable card enters your hand, %s"]
   },
   "${ModID}:OnExhaustComponent": {
     "TEXT": ["Fusion becomes a Power"],
