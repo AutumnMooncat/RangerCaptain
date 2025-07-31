@@ -26,7 +26,6 @@ public class Trapwurm extends AbstractEasyCard {
     public final static String ID = makeID(Trapwurm.class.getSimpleName());
 
     static {
-        // TODO VFX sync
         new FusionComponentHelper(MonsterEnum.TRAPWURM)
                 .withCost(1)
                 .withDamage(8, AbstractGameAction.AttackEffect.NONE)

@@ -29,7 +29,7 @@ public class Bulletino extends AbstractMultiUpgradeCard {
     static {
         new FusionComponentHelper(MonsterEnum.BULLETINO)
                 .withCost(0)
-                .withDamage(10, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .withDamage(4, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
                 .with(new DrawComponent(2))
                 .withExhaust()
                 .register();
@@ -40,13 +40,13 @@ public class Bulletino extends AbstractMultiUpgradeCard {
                 .register();
         new FusionComponentHelper(MonsterEnum.ARTILLEREX)
                 .withCost(2)
-                .withMultiDamageAOE(4, 2, AbstractGameAction.AttackEffect.NONE)
-                .with(new DrawComponent(2))
+                .withMultiDamageAOE(8, 2, AbstractGameAction.AttackEffect.NONE)
+                .with(new DrawComponent(4))
                 .register();
         new FusionComponentHelper(MonsterEnum.GEARYU)
                 .withCost(3)
-                .withFlags(new DamageComponent(2, AbstractGameAction.AttackEffect.BLUNT_HEAVY), AbstractComponent.Flag.DRAW_FOLLOWUP)
-                .with(new DrawComponent(2))
+                .withFlags(new DamageComponent(5, AbstractGameAction.AttackEffect.BLUNT_HEAVY), AbstractComponent.Flag.DRAW_FOLLOWUP)
+                .with(new DrawComponent(5))
                 .register();
     }
 

@@ -26,11 +26,11 @@ public class Burnace extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.BURNACE)
                 .withCost(0)
-                .with(new BurnComponent(4), new BurnPointsComponent())
+                .with(new BurnComponent(3), new BurnPointsComponent())
                 .register();
         new FusionComponentHelper(MonsterEnum.SMOGMAGOG)
                 .withCost(0)
-                .with(new BurnComponent(6), new BurnPointsComponent())
+                .with(new BurnComponent(5), new BurnPointsComponent())
                 .register();
     }
 

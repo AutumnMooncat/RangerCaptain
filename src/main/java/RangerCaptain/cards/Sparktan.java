@@ -24,7 +24,6 @@ public class Sparktan extends AbstractEasyCard {
     public final static String ID = makeID(Sparktan.class.getSimpleName());
 
     static {
-        // TODO VFX doesnt play before damage
         new FusionComponentHelper(MonsterEnum.SPARKTAN)
                 .withCost(1)
                 .withDamage(4, AbstractGameAction.AttackEffect.NONE)

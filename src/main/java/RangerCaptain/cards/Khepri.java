@@ -22,7 +22,7 @@ public class Khepri extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.KHEPRI)
                 .withCost(0)
-                .withDamage(8, AbstractGameAction.AttackEffect.FIRE)
+                .withDamage(6, AbstractGameAction.AttackEffect.FIRE)
                 .with(new ExhaustCardsComponent(1))
                 .withCloseEncounter()
                 .register();

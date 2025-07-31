@@ -19,13 +19,13 @@ public class Muskrateer extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.MUSKRATEER)
                 .withCost(0)
-                .withDamage(6, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
-                .with(new AddSadisticForEachDamageComponent(3))
+                .withDamage(5, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
+                .with(new AddSadisticForEachDamageComponent(2))
                 .register();
         new FusionComponentHelper(MonsterEnum.RATCOUSEL)
                 .withCost(0)
-                .withDamage(8, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
-                .with(new AddSadisticForEachDamageComponent(4))
+                .withDamage(6, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new AddSadisticForEachDamageComponent(3))
                 .register();
     }
 

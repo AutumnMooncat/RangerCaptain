@@ -19,7 +19,7 @@ public class Pawndead extends AbstractMultiUpgradeCard {
     static {
         new FusionComponentHelper(MonsterEnum.PAWNDEAD)
                 .withCost(2)
-                .with(new StashCardCopiesComponent(1))
+                .with(new StashCardCopiesComponent(2))
                 .register();
         new FusionComponentHelper(MonsterEnum.SKELEVANGELIST)
                 .withCost(1)
@@ -31,7 +31,7 @@ public class Pawndead extends AbstractMultiUpgradeCard {
                 .register();
         new FusionComponentHelper(MonsterEnum.QUEENYX)
                 .withCost(0)
-                .with(new StashCardCopiesComponent(3))
+                .with(new StashCardCopiesComponent(2))
                 .register();
     }
 

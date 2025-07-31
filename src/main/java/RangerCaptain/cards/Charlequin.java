@@ -29,7 +29,7 @@ public class Charlequin extends AbstractMultiUpgradeCard {
                 .register();
         new FusionComponentHelper(MonsterEnum.BLUNDERBUSK)
                 .withCost(0)
-                .with(new BoobyTrapComponent(4))
+                .with(new BoobyTrapComponent(3))
                 .withExhaust()
                 .register();
         new FusionComponentHelper(MonsterEnum.FRAGLIACCI)

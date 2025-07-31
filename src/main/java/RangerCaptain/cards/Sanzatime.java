@@ -19,12 +19,12 @@ public class Sanzatime extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.SANZATIME)
                 .withCost(2)
-                .withDamage(5, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .withDamage(8, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
                 .with(new IncreaseDebuffsComponent(1))
                 .register();
         new FusionComponentHelper(MonsterEnum.FORTIWINX)
                 .withCost(2)
-                .withDamage(7, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .withDamage(11, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
                 .with(new IncreaseDebuffsComponent(2))
                 .register();
     }

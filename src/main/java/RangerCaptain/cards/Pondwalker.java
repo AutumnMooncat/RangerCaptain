@@ -20,14 +20,14 @@ public class Pondwalker extends AbstractEasyCard {
         // 7x2 -> 7x3
         new FusionComponentHelper(MonsterEnum.PONDWALKER)
                 .withCost(2)
-                .withMultiDamage(3, 2, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
-                .with(new StashTopCardsComponent(1))
+                .withMultiDamage(5, 2, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new StashTopCardsComponent(2))
                 .register();
         // 10x2 -> 10x3
         new FusionComponentHelper(MonsterEnum.SHARKTANKER)
                 .withCost(2)
-                .withMultiDamage(4, 2, AbstractGameAction.AttackEffect.SLASH_HEAVY)
-                .with(new StashTopCardsComponent(1))
+                .withMultiDamage(7, 2, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .with(new StashTopCardsComponent(2))
                 .register();
     }
 

@@ -27,19 +27,17 @@ public class Brushroom extends AbstractEasyCard implements OnOtherCardStashedCar
     public final static String ID = makeID(Brushroom.class.getSimpleName());
 
     static {
-        // 14 -> 20
         new FusionComponentHelper(MonsterEnum.BRUSHROOM)
                 .withCost(3)
                 .with(new CostsLessPerStashedComponent())
-                .with(new DamageComponent(4, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
-                .with(new VulnerableComponent(1))
+                .with(new DamageComponent(10, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
+                .with(new VulnerableComponent(2))
                 .register();
-        // 18 -> 25
         new FusionComponentHelper(MonsterEnum.FUNGOGH)
                 .withCost(3)
                 .with(new CostsLessPerStashedComponent())
-                .with(new DamageComponent(5, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
-                .with(new VulnerableComponent(1))
+                .with(new DamageComponent(13, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
+                .with(new VulnerableComponent(2))
                 .register();
     }
 

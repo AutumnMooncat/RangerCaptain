@@ -24,7 +24,6 @@ public class Cluckabilly extends AbstractEasyCard {
                 .withCost(1)
                 .with(new MultitargetComponent(1), new HavocComponent(1))
                 .register();
-        // TODO doesnt scale properly becasue current cost scaling is stupid
         new FusionComponentHelper(MonsterEnum.ROCKERTRICE)
                 .withCost(0)
                 .with(new MultitargetComponent(1), new HavocComponent(1))

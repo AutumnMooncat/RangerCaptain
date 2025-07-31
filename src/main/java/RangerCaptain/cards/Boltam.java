@@ -27,21 +27,21 @@ public class Boltam extends AbstractMultiUpgradeCard {
     static {
         new FusionComponentHelper(MonsterEnum.BOLTAM)
                 .withCost(0)
-                .withDamage(4, AbstractGameAction.AttackEffect.NONE)
+                .withDamage(3, AbstractGameAction.AttackEffect.NONE)
                 .with(new LightningOrbFVXComponent())
-                .with(new ConductiveComponent(4), new MakeCopiesComponent(1, MakeCopiesComponent.Location.DISCARD))
+                .with(new ConductiveComponent(3), new MakeCopiesComponent(1, MakeCopiesComponent.Location.DISCARD))
                 .register();
         new FusionComponentHelper(MonsterEnum.PINBOLT)
                 .withCost(0)
-                .withDamage(4, AbstractGameAction.AttackEffect.NONE)
+                .withDamage(3, AbstractGameAction.AttackEffect.NONE)
                 .with(new LightningOrbFVXComponent())
-                .with(new ConductiveComponent(4), new MakeCopiesComponent(2, MakeCopiesComponent.Location.DISCARD))
+                .with(new ConductiveComponent(3), new MakeCopiesComponent(2, MakeCopiesComponent.Location.DISCARD))
                 .register();
         new FusionComponentHelper(MonsterEnum.PLASMANTLER)
                 .withCost(0)
-                .withDamage(5, AbstractGameAction.AttackEffect.NONE)
+                .withDamage(4, AbstractGameAction.AttackEffect.NONE)
                 .with(new LightningOrbFVXComponent())
-                .with(new ConductiveComponent(5), new MakeCopiesComponent(1, MakeCopiesComponent.Location.DISCARD))
+                .with(new ConductiveComponent(4), new MakeCopiesComponent(1, MakeCopiesComponent.Location.DISCARD))
                 .register();
     }
 

@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.components.AddMindMeldComponent;
 import RangerCaptain.cardmods.fusion.components.BurnComponent;
 import RangerCaptain.cardmods.fusion.components.OnExhaustComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
@@ -23,7 +24,18 @@ public class Salamagus extends AbstractMultiUpgradeCard {
         new FusionComponentHelper(MonsterEnum.SALAMAGUS)
                 .withCost(1)
                 .with(new OnExhaustComponent())
-                .with(new BurnComponent(7))
+                .with(new BurnComponent(8))
+                .register();
+        new FusionComponentHelper(MonsterEnum.ADEPTILE)
+                .withCost(2)
+                .with(new OnExhaustComponent())
+                .with(new BurnComponent(19))
+                .with(new AddMindMeldComponent())
+                .register();
+        new FusionComponentHelper(MonsterEnum.PYROMELEON)
+                .withCost(1)
+                .with(new OnExhaustComponent())
+                .with(new BurnComponent(13))
                 .register();
     }
 

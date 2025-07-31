@@ -22,7 +22,7 @@ public class Averevoir extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.AVEREVOIR)
                 .withCost(3)
                 .with(new OnGainBlockComponent())
-                .withBlock(7)
+                .withBlock(10)
                 .register();
     }
 

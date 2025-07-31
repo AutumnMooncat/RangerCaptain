@@ -20,14 +20,14 @@ public class Icepeck extends AbstractEasyCard {
         // 8,2 -> 14,10
         new FusionComponentHelper(MonsterEnum.ICEPECK)
                 .withCost(2)
-                .withDamage(4, AbstractGameAction.AttackEffect.SLASH_HEAVY)
-                .with(new AddBoostAlreadyAttackedDamageComponent(3))
+                .withDamage(7, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .with(new AddBoostAlreadyAttackedDamageComponent(5))
                 .register();
-        // 10,3 -> 17,14
+        // 10,3 -> 16,14
         new FusionComponentHelper(MonsterEnum.CRYOSHEAR)
                 .withCost(2)
-                .withDamage(5, AbstractGameAction.AttackEffect.SLASH_HEAVY)
-                .with(new AddBoostAlreadyAttackedDamageComponent(4))
+                .withDamage(8, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .with(new AddBoostAlreadyAttackedDamageComponent(7))
                 .register();
     }
 

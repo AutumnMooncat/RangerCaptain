@@ -23,26 +23,23 @@ public class Busheye extends AbstractMultiUpgradeCard implements ManuallySizeAdj
     public final static String ID = makeID(Busheye.class.getSimpleName());
 
     static {
-        // 5 -> 10
         new FusionComponentHelper(MonsterEnum.BUSHEYE)
                 .withCost(2)
-                .with(new BurnComponent(3, AbstractComponent.ComponentTarget.ENEMY_AOE))
-                .with(new EnergyComponent(1))
+                .with(new BurnComponent(5, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new EnergyComponent(2))
                 .withExhaust()
                 .with(new WhenExhaustedComponent())
                 .register();
-        // 7 -> 14
         new FusionComponentHelper(MonsterEnum.HUNTORCH)
                 .withCost(2)
-                .with(new BurnComponent(4, AbstractComponent.ComponentTarget.ENEMY_AOE))
-                .with(new EnergyComponent(1))
+                .with(new BurnComponent(7, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new EnergyComponent(2))
                 .withExhaust()
                 .register();
-        // 10 -> 21
         new FusionComponentHelper(MonsterEnum.HEDGEHERNE)
                 .withCost(2)
-                .with(new BurnComponent(6, AbstractComponent.ComponentTarget.ENEMY_AOE))
-                .with(new EnergyComponent(1))
+                .with(new BurnComponent(10, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new EnergyComponent(2))
                 .withExhaust()
                 .register();
     }

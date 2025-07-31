@@ -26,26 +26,26 @@ public class Springheel extends AbstractMultiUpgradeCard {
         new FusionComponentHelper(MonsterEnum.SPRINGHEEL)
                 .withCost(1)
                 .withDamage(5, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
-                .with(new DrawComponent(1))
+                .with(new DrawComponent(2))
                 .register();
         new FusionComponentHelper(MonsterEnum.HOPSKIN)
                 .withCost(1)
-                .withDamage(5, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
-                .with(new DrawComponent(1), new VulnerableComponent(1))
+                .withDamage(6, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
+                .with(new DrawComponent(2), new VulnerableComponent(1))
                 .register();
         new FusionComponentHelper(MonsterEnum.RIPTERRA)
                 .withCost(1)
-                .withDamage(5, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
+                .withDamage(7, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
                 .with(new DrawComponent(2), new VulnerableComponent(2))
                 .register();
         new FusionComponentHelper(MonsterEnum.SNOOPIN)
                 .withCost(1)
-                .withDamage(5, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
-                .with(new DrawComponent(1), new WeakComponent(1))
+                .withDamage(6, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
+                .with(new DrawComponent(2), new WeakComponent(1))
                 .register();
         new FusionComponentHelper(MonsterEnum.SCAMPIRE)
                 .withCost(1)
-                .withDamage(5, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
+                .withDamage(7, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
                 .with(new DrawComponent(2), new WeakComponent(2))
                 .register();
     }

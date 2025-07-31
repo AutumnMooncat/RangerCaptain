@@ -24,30 +24,30 @@ public class Candevil extends AbstractMultiUpgradeCard implements StartupCard {
     static {
         new FusionComponentHelper(MonsterEnum.CANDEVIL)
                 .withCost(0)
-                .withBlock(4)
-                .with(new NextTurnBlockComponent(4))
+                .withBlock(3)
+                .with(new NextTurnBlockComponent(3))
                 .register();
         new FusionComponentHelper(MonsterEnum.MALCHEMY)
                 .withCost(0)
-                .withBlock(5)
-                .with(new NextTurnBlockComponent(5))
-                .with(new ToxinComponent(3))
+                .withBlock(4)
+                .with(new NextTurnBlockComponent(4))
+                .with(new ToxinComponent(2))
                 .register();
         new FusionComponentHelper(MonsterEnum.MIASMODEUS)
                 .withCost(0)
-                .withBlock(7)
-                .with(new NextTurnBlockComponent(7))
-                .with(new ToxinComponent(4))
+                .withBlock(6)
+                .with(new NextTurnBlockComponent(6))
+                .with(new ToxinComponent(3))
                 .register();
         new FusionComponentHelper(MonsterEnum.VENDEMON)
                 .withCost(0)
-                .withBlock(7)
-                .with(new NextTurnBlockComponent(7))
+                .withBlock(6)
+                .with(new NextTurnBlockComponent(6))
                 .register();
         new FusionComponentHelper(MonsterEnum.GUMBAAL)
                 .withCost(0)
-                .withBlock(10)
-                .with(new NextTurnBlockComponent(10))
+                .withBlock(8)
+                .with(new NextTurnBlockComponent(8))
                 .register();
     }
 

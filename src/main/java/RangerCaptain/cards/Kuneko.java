@@ -30,14 +30,14 @@ public class Kuneko extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.KUNEKO)
                 .withCost(3)
                 .with(new DieDieDieVFXComponent())
-                .withDamageAOE(6, AbstractGameAction.AttackEffect.SLASH_HEAVY)
-                .with(new AddEnergyOnKillDamageComponent(1))
+                .withDamageAOE(15, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .with(new AddEnergyOnKillDamageComponent(2))
                 .register();
         new FusionComponentHelper(MonsterEnum.SHINING_KUNEKO)
                 .withCost(3)
                 .with(new DieDieDieVFXComponent())
-                .withDamageAOE(8, AbstractGameAction.AttackEffect.SLASH_HEAVY)
-                .with(new AddEnergyOnKillDamageComponent(1))
+                .withDamageAOE(20, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .with(new AddEnergyOnKillDamageComponent(2))
                 .register();
     }
 

@@ -18,7 +18,7 @@ public class Thwackalope extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.THWACKALOPE)
                 .withCost(2)
-                .withMultiDamage(4, 2, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .withMultiDamage(6, 2, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
                 .register();
     }
 

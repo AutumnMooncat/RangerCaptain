@@ -15,16 +15,14 @@ public class Faucetear extends AbstractEasyCard {
     public final static String ID = makeID(Faucetear.class.getSimpleName());
 
     static {
-        // 5x3 -> 7x5
         new FusionComponentHelper(MonsterEnum.FAUCETEAR)
                 .withCost(2)
-                .withMultiDamageAOE(3, 3, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .withMultiDamageAOE(5, 3, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
                 .withExhaust()
                 .register();
-        // 5x4 -> 7x7 or 7x3 -> 10x5
         new FusionComponentHelper(MonsterEnum.FOUNTESS)
                 .withCost(2)
-                .withMultiDamageAOE(4, 3, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .withMultiDamageAOE(7, 3, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
                 .withExhaust()
                 .register();
     }

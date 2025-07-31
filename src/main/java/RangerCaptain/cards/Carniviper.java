@@ -39,12 +39,12 @@ public class Carniviper extends AbstractMultiUpgradeCard {
                 .register();
         new FusionComponentHelper(MonsterEnum.MARDIUSA)
                 .withCost(2)
-                .withMultiDamage(4, 2, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinComponent(4))
+                .withMultiDamage(8, 2, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new ToxinComponent(6))
                 .register();
         new FusionComponentHelper(MonsterEnum.JORMUNGOLD)
                 .withCost(0)
-                .withDamage(8, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .withDamage(6, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
                 .with(new ToxinComponent(3))
                 .register();
     }

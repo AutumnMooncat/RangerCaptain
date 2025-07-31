@@ -4,7 +4,6 @@ import RangerCaptain.actions.EasyXCostAction;
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.components.ToxinComponent;
-import RangerCaptain.cardmods.fusion.components.XComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.AttackEffectPatches;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
@@ -27,9 +26,9 @@ public class Umbrahella extends AbstractEasyCard {
 
     static {
         new FusionComponentHelper(MonsterEnum.UMBRAHELLA)
-                .withDamageAOE(6, AbstractGameAction.AttackEffect.POISON)
-                .with(new ToxinComponent(3, AbstractComponent.ComponentTarget.ENEMY_AOE))
-                .with(new XComponent())
+                .withCost(-1)
+                .withDamageAOE(4, AbstractGameAction.AttackEffect.POISON)
+                .with(new ToxinComponent(2, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
     }
 
