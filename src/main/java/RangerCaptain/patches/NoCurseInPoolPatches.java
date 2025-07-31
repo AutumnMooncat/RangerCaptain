@@ -1,6 +1,6 @@
 package RangerCaptain.patches;
 
-import RangerCaptain.cards.WarpSickness;
+import RangerCaptain.cutStuff.cards.WarpSickness;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;

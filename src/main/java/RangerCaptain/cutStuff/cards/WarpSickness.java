@@ -1,4 +1,4 @@
-package RangerCaptain.cards;
+package RangerCaptain.cutStuff.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.Wiz;
