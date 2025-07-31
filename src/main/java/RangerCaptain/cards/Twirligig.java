@@ -20,20 +20,20 @@ public class Twirligig extends AbstractEasyCard {
 
     static {
         new FusionComponentHelper(MonsterEnum.TWIRLIGIG)
-                .withCost(1)
-                .with(new OnParryComponent())
-                .with(new VigorComponent(7))
-                .register();
-        new FusionComponentHelper(MonsterEnum.KIRIKURI)
-                .withCost(1)
+                .withCost(2)
                 .with(new OnParryComponent())
                 .with(new VigorComponent(10))
+                .register();
+        new FusionComponentHelper(MonsterEnum.KIRIKURI)
+                .withCost(2)
+                .with(new OnParryComponent())
+                .with(new VigorComponent(14))
                 .register();
     }
 
     public Twirligig() {
-        super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
-        baseMagicNumber = magicNumber = 3;
+        super(ID, 2, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
+        baseMagicNumber = magicNumber = 5;
         setMonsterData(MonsterEnum.TWIRLIGIG);
     }
 
