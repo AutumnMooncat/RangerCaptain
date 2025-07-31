@@ -115,7 +115,7 @@
   },
   "${ModID}:Diveal": {
     "NAME": "Diveal",
-    "DESCRIPTION": "Deal !D! damage{@@}{!M!|>0= and apply !M! ${ModID}:Tape_Jam} to the last enemy that attacked you.",
+    "DESCRIPTION": "Apply !${ModID}:M2! Weak.{@@}{!${ModID}:I!|1= NL Apply !${ModID}:M2! ${ModID}:Tape_Jam.} NL ${ModID}:Stash !M! cards in your discard pile.",
     "EXTENDED_DESCRIPTION": ["Diveberg","Scubalrus"]
   },
   "${ModID}:DjinnEntonic": {
