@@ -138,7 +138,7 @@
   },
   "${ModID}:Faucetear": {
     "NAME": "Faucetear",
-    "DESCRIPTION": "Discard up to !M! cards. NL Put that many cards from your discard pile into your hand.",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times. NL Exhaust.",
     "EXTENDED_DESCRIPTION": ["Fountess"]
   },
   "${ModID}:Ferriclaw": {

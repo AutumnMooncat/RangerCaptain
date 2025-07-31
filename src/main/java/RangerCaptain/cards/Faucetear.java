@@ -1,17 +1,10 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.actions.BetterSelectCardsInHandAction;
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.DiscardCardsComponent;
-import RangerCaptain.cardmods.fusion.components.DiscardToHandComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
-import com.megacrit.cardcrawl.actions.common.BetterDiscardPileToHandAction;
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
-import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -22,39 +15,44 @@ public class Faucetear extends AbstractEasyCard {
     public final static String ID = makeID(Faucetear.class.getSimpleName());
 
     static {
+        // 5x3 -> 7x5
         new FusionComponentHelper(MonsterEnum.FAUCETEAR)
-                .withCost(1)
-                .with(new DiscardCardsComponent(2, true, false))
-                .withFlags(new DiscardToHandComponent(0), AbstractComponent.Flag.THAT_MANY)
+                .withCost(2)
+                .withMultiDamageAOE(3, 3, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .withExhaust()
                 .register();
+        // 5x4 -> 7x7 or 7x3 -> 10x5
         new FusionComponentHelper(MonsterEnum.FOUNTESS)
-                .withCost(1)
-                .with(new DiscardCardsComponent(3, true, false))
-                .withFlags(new DiscardToHandComponent(0), AbstractComponent.Flag.THAT_MANY)
+                .withCost(2)
+                .withMultiDamageAOE(4, 3, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .withExhaust()
                 .register();
     }
 
     public Faucetear() {
-        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
-        baseMagicNumber = magicNumber = 2;
+        super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
+        baseDamage = damage = 5;
+        baseMagicNumber = magicNumber = 3;
+        isMultiDamage = true;
+        exhaust = true;
         setMonsterData(MonsterEnum.FAUCETEAR);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new BetterSelectCardsInHandAction(magicNumber, DiscardAction.TEXT[0], true, true, c -> true, cards -> {
-            if (!cards.isEmpty()) {
-                addToTop(new BetterDiscardPileToHandAction(cards.size()));
+        for (int i = 0; i < magicNumber; i++) {
+            if (i == magicNumber - 1) {
+                allDmg(AbstractGameAction.AttackEffect.BLUNT_HEAVY);
+            } else {
+                allDmg(AbstractGameAction.AttackEffect.BLUNT_LIGHT);
             }
-            for (AbstractCard card : cards) {
-                addToTop(new DiscardSpecificCardAction(card, p.hand));
-            }
-        }));
+        }
     }
 
     @Override
     public void upp() {
-        upgradeMagicNumber(1);
+        upgradeDamage(2);
+        //upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.FOUNTESS);
