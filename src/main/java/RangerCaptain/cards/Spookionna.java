@@ -8,10 +8,8 @@ import RangerCaptain.powers.SnowedInPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static RangerCaptain.MainModfile.makeID;
@@ -37,25 +35,6 @@ public class Spookionna extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         Wiz.applyToSelf(new SnowedInPower(p, 1));
-    }
-
-    @Override
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        boolean canUse = super.canUse(p, m);
-        if (!canUse) {
-            return false;
-        } else {
-            if (!AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty()) {
-                canUse = false;
-                cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
-            }
-            return canUse;
-        }
-    }
-
-    @Override
-    public void triggerOnGlowCheck() {
-        glowColor = AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty() ? AbstractCard.GOLD_BORDER_GLOW_COLOR : AbstractCard.BLUE_BORDER_GLOW_COLOR;
     }
 
     @Override

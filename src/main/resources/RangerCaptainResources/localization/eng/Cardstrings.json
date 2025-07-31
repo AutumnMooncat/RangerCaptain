@@ -306,7 +306,7 @@
   },
   "${ModID}:Spookionna": {
     "NAME": "Spooki-onna",
-    "DESCRIPTION": "${ModID}:Perfect. Opener. NL You cannot Attack or be Attacked this turn. NL Exhaust.",
+    "DESCRIPTION": "${ModID}:Perfect. NL You cannot Attack or be Attacked this turn. NL Exhaust.",
     "EXTENDED_DESCRIPTION": ["I have already played cards this turn."]
   },
   "${ModID}:Springheel": {
