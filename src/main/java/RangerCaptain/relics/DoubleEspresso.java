@@ -1,10 +1,10 @@
 package RangerCaptain.relics;
 
 import RangerCaptain.TheRangerCaptain;
+import RangerCaptain.powers.APBoostPower;
 import RangerCaptain.relics.interfaces.OnStashRelic;
 import RangerCaptain.util.Wiz;
 import basemod.abstracts.AbstractCardModifier;
-import basemod.helpers.CardModifierManager;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -48,7 +48,8 @@ public class DoubleEspresso extends AbstractEasyRelic implements OnStashRelic {
                 grayscale = true;
             }
             flash();
-            CardModifierManager.addModifier(card, new FreeCostTrackerMod());
+            incrementStat(1);
+            Wiz.applyToSelfTop(new APBoostPower(AbstractDungeon.player, 1));
             addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         }
     }
