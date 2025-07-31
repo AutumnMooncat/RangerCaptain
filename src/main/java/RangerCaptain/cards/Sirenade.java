@@ -2,6 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
 import RangerCaptain.cardmods.fusion.components.MultitargetComponent;
+import RangerCaptain.cardmods.fusion.components.vfx.PiercingWailVFXComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.MultitargetPower;
@@ -9,9 +10,13 @@ import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -21,11 +26,13 @@ public class Sirenade extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.SIRENADE)
                 .withCost(1)
+                .with(new PiercingWailVFXComponent())
                 .withDamageAOE(5, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
                 .with(new MultitargetComponent(1))
                 .register();
         new FusionComponentHelper(MonsterEnum.DECIBELLE)
                 .withCost(1)
+                .with(new PiercingWailVFXComponent())
                 .withDamageAOE(8, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
                 .with(new MultitargetComponent(1))
                 .register();
@@ -42,6 +49,8 @@ public class Sirenade extends AbstractEasyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new SFXAction("ATTACK_PIERCING_WAIL"));
+        addToBot(new VFXAction(p, new ShockWaveEffect(p.hb.cX, p.hb.cY, Settings.PURPLE_COLOR, ShockWaveEffect.ShockWaveType.CHAOTIC), 0.3F));
         allDmg(AbstractGameAction.AttackEffect.BLUNT_HEAVY);
         Wiz.applyToSelf(new MultitargetPower(p, magicNumber));
     }
