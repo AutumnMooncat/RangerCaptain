@@ -43,6 +43,7 @@ public class Mascotoy extends AbstractEasyCard {
         setMonsterData(MonsterEnum.MASCOTOY);
         tags.add(CustomTags.MIND_MELD);
         ExtraEffectPatches.EffectFields.mindMeld.set(this, true);
+        cardsToPreview = new Dazed();
     }
 
     @Override
