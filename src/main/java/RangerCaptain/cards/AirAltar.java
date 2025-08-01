@@ -1,40 +1,45 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.actions.BetterSelectCardsInHandAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
-import RangerCaptain.powers.MultitargetPower;
+import RangerCaptain.patches.CardInHandSuite;
 import RangerCaptain.powers.ResonancePower;
 import RangerCaptain.util.Wiz;
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerToRandomEnemyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static RangerCaptain.MainModfile.makeID;
 
-public class AirAltar extends AbstractEasyCard {
+public class AirAltar extends AbstractEasyCard implements CardInHandSuite.InHandCard {
     public final static String ID = makeID(AirAltar.class.getSimpleName());
 
     public AirAltar() {
-        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF_AND_ENEMY);
-        baseMagicNumber = magicNumber = 2;
-        baseSecondMagic = secondMagic = 1;
+        super(ID, -2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
+        baseMagicNumber = magicNumber = 1;
+        isEthereal = true;
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.applyToEnemy(m, new ResonancePower(m, p, magicNumber));
-        addToBot(new BetterSelectCardsInHandAction(1, ExhaustAction.TEXT[0], false, true, c -> true, cards -> {
-            for (AbstractCard card : cards) {
-                Wiz.applyToSelfTop(new MultitargetPower(p, secondMagic));
-                addToTop(new ExhaustSpecificCardAction(card, p.hand, true));
-            }
-        }));
+    public void use(AbstractPlayer p, AbstractMonster m) {}
+
+    @Override
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
+        return false;
+    }
+
+    @Override
+    public void onCardExhausted(AbstractCard card) {
+        if (card != this) {
+            superFlash();
+            addToBot(new ApplyPowerToRandomEnemyAction(Wiz.adp(), new ResonancePower(null, Wiz.adp(), magicNumber), magicNumber));
+        }
     }
 
     @Override
     public void upp() {
-        upgradeBaseCost(0);
+        isEthereal = false;
+        uDesc();
     }
 }

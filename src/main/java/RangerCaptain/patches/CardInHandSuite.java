@@ -124,6 +124,14 @@ public class CardInHandSuite implements
         return block;
     }
 
+    public static void onGainBlock(int block) {
+        for (AbstractCard card : Wiz.adp().hand.group) {
+            if (card instanceof InHandCard) {
+                ((InHandCard) card).onGainBlock(block);
+            }
+        }
+    }
+
     @SpirePatch(clz = AbstractCard.class, method = "calculateCardDamage")
     public static class ModifyDamageCCD {
         @SpireInsertPatch(locator = DamageLocator.class, localvars = "tmp")
@@ -183,6 +191,24 @@ public class CardInHandSuite implements
         }
     }
 
+    @SpirePatch2(clz = AbstractCreature.class, method = "addBlock")
+    public static class OnGainBlock {
+        @SpireInsertPatch(locator = CurrentBlockLocator.class, localvars = {"tmp"})
+        public static void plz(AbstractCreature __instance, float tmp) {
+            if (__instance.isPlayer) {
+                onGainBlock(MathUtils.floor(tmp));
+            }
+        }
+    }
+
+    private static class CurrentBlockLocator extends SpireInsertLocator {
+        @Override
+        public int[] Locate(CtBehavior ctBehavior) throws Exception {
+            Matcher m = new Matcher.MethodCallMatcher(MathUtils.class, "floor");
+            return LineFinder.findInOrder(ctBehavior, m);
+        }
+    }
+
     private static class MultiDamageFinalLocator extends SpireInsertLocator {
         @Override
         public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {
@@ -239,6 +265,7 @@ public class CardInHandSuite implements
         default void onCardExhausted(AbstractCard card) {}
         default void onDamaged(DamageInfo info) {}
         default void onStartTurnBlockLoss(int amountLost) {}
+        default void onGainBlock(int block) {}
         default void onPowerApplied(AbstractPower power, AbstractCreature target, AbstractCreature source) {}
         default float atDamageGive(float dmg, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
             return dmg;
