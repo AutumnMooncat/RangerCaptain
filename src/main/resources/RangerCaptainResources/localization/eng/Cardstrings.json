@@ -351,7 +351,7 @@
   },
   "${ModID}:Thwackalope": {
     "NAME": "Thwackalope",
-    "DESCRIPTION": "${ModID}:Perfect. NL Deal !D! damage twice."
+    "DESCRIPTION": "${ModID}:Perfect. NL Deal !D! damage twice. NL Shuffle a *Wound into your draw pile."
   },
   "${ModID}:TopOfTheWorld": {
     "NAME": "Top of the World",
