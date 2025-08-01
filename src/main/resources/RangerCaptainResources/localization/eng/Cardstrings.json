@@ -76,7 +76,7 @@
   },
   "${ModID}:Busheye": {
     "NAME": "Busheye",
-    "DESCRIPTION": "Exhaust. NL When Exhausted, apply !M! ${ModID}:Burn to ALL enemies and gain {@@}{!${ModID}:M2!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=${ModID}:M2 [E]} .",
+    "DESCRIPTION": "Exhaust. NL When Exhausted, apply !M! ${ModID}:Burn to ALL enemies and gain {@@}{!${ModID}:M2!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!${ModID}:M2! [E]} .",
     "EXTENDED_DESCRIPTION": ["Huntorch","Hedgeherne"]
   },
   "${ModID}:Camping": {
