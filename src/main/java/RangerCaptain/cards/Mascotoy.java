@@ -39,7 +39,6 @@ public class Mascotoy extends AbstractEasyCard {
     public Mascotoy() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 8;
-        baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.MASCOTOY);
         tags.add(CustomTags.MIND_MELD);
         ExtraEffectPatches.EffectFields.mindMeld.set(this, true);
@@ -49,7 +48,7 @@ public class Mascotoy extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
-        addToBot(new MakeTempCardInDrawPileAction(new Dazed(), magicNumber, true, true));
+        addToBot(new MakeTempCardInDrawPileAction(new Dazed(), 1, true, true));
     }
 
     @Override
