@@ -619,7 +619,12 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
                 }
             }
             component.scaleToCost(cost);
-            component.baseAmount = Math.max(1, (int) component.floatingAmount);
+            int adjust = 0;
+            // Be kind if we got pretty close, also helps if we lose precision like 1.999998
+            if (component.floatingAmount - (int) component.floatingAmount > 0.9f) {
+                adjust = 1;
+            }
+            component.baseAmount = Math.max(1, (int) component.floatingAmount + adjust);
         }
     }
 
