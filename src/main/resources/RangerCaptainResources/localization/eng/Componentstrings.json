@@ -482,7 +482,7 @@
       "Exhaust an Attack%s",
       "Exhaust %1$s Attacks%2$s",
       "Exhaust up to %1$s Attack{@@}{%1$s|>1=s}%2$s",
-      "Exhaust up to 1 Attackd%s",
+      "Exhaust up to 1 Attacks%s",
       "Exhaust up to %1$s Attacks%2$s",
       "Exhaust %1$s random Attack{@@}{%1$s|>1=s}%2$s",
       "Exhaust a random Attack%s",
