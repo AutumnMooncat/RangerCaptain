@@ -128,7 +128,7 @@
   },
   "${ModID}:Dominoth": {
     "NAME": "Dominoth",
-    "DESCRIPTION": "Apply !${ModID}:M2! ${ModID}:Conductive. NL Draw !M! card{@@}{!M!|1=|@=s}.",
+    "DESCRIPTION": "Apply !${ModID}:M2! ${ModID}:Conductive. NL Next turn, gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} .",
     "EXTENDED_DESCRIPTION": ["Wingloom","Mothmanic","Tokusect"]
   },
   "${ModID}:EarthAltar": {

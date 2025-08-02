@@ -2,14 +2,14 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
 import RangerCaptain.cardmods.fusion.components.ConductiveComponent;
-import RangerCaptain.cardmods.fusion.components.DrawComponent;
+import RangerCaptain.cardmods.fusion.components.NextTurnEnergyComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
+import RangerCaptain.powers.APBoostPower;
 import RangerCaptain.powers.ConductivePower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -22,19 +22,19 @@ public class Dominoth extends AbstractMultiUpgradeCard {
     static {
         new FusionComponentHelper(MonsterEnum.DOMINOTH)
                 .withCost(1)
-                .with(new ConductiveComponent(3), new DrawComponent(1))
+                .with(new ConductiveComponent(3), new NextTurnEnergyComponent(1))
                 .register();
         new FusionComponentHelper(MonsterEnum.WINGLOOM)
                 .withCost(1)
-                .with(new ConductiveComponent(5), new DrawComponent(1))
+                .with(new ConductiveComponent(5), new NextTurnEnergyComponent(1))
                 .register();
         new FusionComponentHelper(MonsterEnum.MOTHMANIC)
                 .withCost(1)
-                .with(new ConductiveComponent(7), new DrawComponent(1))
+                .with(new ConductiveComponent(7), new NextTurnEnergyComponent(1))
                 .register();
         new FusionComponentHelper(MonsterEnum.TOKUSECT)
                 .withCost(1)
-                .with(new ConductiveComponent(4), new DrawComponent(2))
+                .with(new ConductiveComponent(3), new NextTurnEnergyComponent(2))
                 .register();
     }
 
@@ -51,7 +51,7 @@ public class Dominoth extends AbstractMultiUpgradeCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         Wiz.applyToEnemy(m, new ConductivePower(m, p, secondMagic));
-        addToBot(new DrawCardAction(magicNumber));
+        Wiz.applyToSelf(new APBoostPower(p, magicNumber));
     }
 
     @Override
@@ -88,7 +88,7 @@ public class Dominoth extends AbstractMultiUpgradeCard {
 
     public void upgrade2() {
         upgradeMagicNumber(1);
-        upgradeSecondMagic(1);
+        //upgradeSecondMagic(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
         setMonsterData(MonsterEnum.TOKUSECT);
