@@ -141,7 +141,7 @@
   },
   "${ModID}:Elfless": {
     "NAME": "Elfless",
-    "DESCRIPTION": "Deal !D! damage. NL If the enemy has a debuff, gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} {!${ModID}:I!|2=and deal double damage}.",
+    "DESCRIPTION": "Deal !D! damage. NL Set this card's cost to 0 this combat.",
     "EXTENDED_DESCRIPTION": ["Faerious","Grampus"]
   },
   "${ModID}:Faucetear": {

@@ -103,7 +103,8 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         REQUIRES_SAME_SOURCES,
         REQUIRES_DIFFERENT_SOURCES,
         PSEUDO_DAMAGE,
-        REMOVE_IF_POWER
+        REMOVE_IF_POWER,
+        REMOVE_IF_EXHAUST
     }
 
     private final String identifier;
@@ -513,6 +514,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
             List<AbstractComponent> captured = components.stream().filter(component::canCapture).collect(Collectors.toList());
             component.applyTraits(card, captured);
         }
+        components.removeIf(c -> c.hasFlags(Flag.REMOVE_IF_EXHAUST) && card.exhaust);
     }
 
     public static void resolveRawDescription(FusedCard card, List<AbstractComponent> components) {
@@ -543,10 +545,10 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
 
     public static void resolveType(FusedCard card, List<AbstractComponent> components) {
         AbstractCard.CardType type = AbstractCard.CardType.SKILL;
-        boolean wasPower = false;
+        boolean[] wasPower = {false};
         for (AbstractComponent component : components) {
             if (component.isPower()) {
-                wasPower = true;
+                wasPower[0] = true;
                 if (type == AbstractCard.CardType.SKILL) {
                     type = AbstractCard.CardType.POWER;
                 }
@@ -555,11 +557,12 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
                 type = AbstractCard.CardType.ATTACK;
             }
         }
-        if (wasPower && type != AbstractCard.CardType.POWER) {
+        if (wasPower[0] && type != AbstractCard.CardType.POWER) {
             CardModifierManager.addModifier(card, new PurgeMod());
         }
         card.type = type;
         components.removeIf(c -> c.hasFlags(Flag.REMOVE_IF_POWER) && card.type == AbstractCard.CardType.POWER);
+        components.removeIf(c -> c.hasFlags(Flag.REMOVE_IF_EXHAUST) && wasPower[0]);
     }
 
     public static void resolveTarget(FusedCard card, List<AbstractComponent> components) {
