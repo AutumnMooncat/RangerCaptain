@@ -323,7 +323,7 @@
   },
   "${ModID}:Springheel": {
     "NAME": "Springheel",
-    "DESCRIPTION": "Deal !D! damage.{!${ModID}:I!|1= NL Apply !${ModID}:M2! Vulnerable.|2= NL Apply !${ModID}:M2! Weak.} NL Draw !M! card{@@}{!M!|1=|@=s}.",
+    "DESCRIPTION": "Gain !B! Block. NL Next turn, deal !D! damage to ALL enemies.",
     "EXTENDED_DESCRIPTION": ["Hopskin","Ripterra","Snoopin","Scampire"]
   },
   "${ModID}:Squirey": {
