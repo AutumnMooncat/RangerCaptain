@@ -34,6 +34,7 @@ public class Levitate extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeBaseCost(0);
+        //upgradeBaseCost(0);
+        upgradeMagicNumber(1);
     }
 }
