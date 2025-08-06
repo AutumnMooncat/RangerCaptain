@@ -76,7 +76,7 @@
   },
   "${ModID}:Busheye": {
     "NAME": "Busheye",
-    "DESCRIPTION": "Exhaust. NL When Exhausted, apply !M! ${ModID}:Burn to ALL enemies and gain {@@}{!${ModID}:M2!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!${ModID}:M2! [E]} .",
+    "DESCRIPTION": "Exhaust. NL When Exhausted, apply !M! ${ModID}:Burn to ALL enemies and gain {@@}{!${ModID}:M2!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!${ModID}:M2! [E]}.",
     "EXTENDED_DESCRIPTION": ["Huntorch","Hedgeherne"]
   },
   "${ModID}:Camping": {
@@ -128,7 +128,7 @@
   },
   "${ModID}:Dominoth": {
     "NAME": "Dominoth",
-    "DESCRIPTION": "Apply !${ModID}:M2! ${ModID}:Conductive. NL Next turn, gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} .",
+    "DESCRIPTION": "Apply !${ModID}:M2! ${ModID}:Conductive. NL Next turn, gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]}.",
     "EXTENDED_DESCRIPTION": ["Wingloom","Mothmanic","Tokusect"]
   },
   "${ModID}:EarthAltar": {
@@ -185,7 +185,7 @@
   },
   "${ModID}:Jumpkin": {
     "NAME": "Jumpkin",
-    "DESCRIPTION": "{@@}Apply !M! ${ModID}:Toxin. NL At the start of your next 2 turns, gain {@@}{!${ModID}:M2!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!${ModID}:M2! [E]} . NL Exhaust.",
+    "DESCRIPTION": "{@@}Apply !M! ${ModID}:Toxin. NL At the start of your next 2 turns, gain {@@}{!${ModID}:M2!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!${ModID}:M2! [E]}. NL Exhaust.",
     "EXTENDED_DESCRIPTION": ["Draculeaf","Beanstalker"]
   },
   "${ModID}:Khepri": {
@@ -199,12 +199,12 @@
   },
   "${ModID}:Kuneko": {
     "NAME": "Kuneko",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL For each enemy this kills, gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} .",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL For each enemy this kills, gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]}.",
     "EXTENDED_DESCRIPTION": ["Shining Kuneko"]
   },
   "${ModID}:Levitate": {
     "NAME": "Levitate",
-    "DESCRIPTION": "Next turn, deal !D! damage and gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} ."
+    "DESCRIPTION": "Next turn, deal !D! damage and gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]}."
   },
   "${ModID}:Littlered": {
     "NAME": "Littlered",
@@ -256,7 +256,7 @@
   },
   "${ModID}:Picksie": {
     "NAME": "Picksie",
-    "DESCRIPTION": "${ModID}:Perfect. NL Gain !B! Block. NL Next turn, gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} ."
+    "DESCRIPTION": "${ModID}:Perfect. NL Gain !B! Block. NL Next turn, gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]}."
   },
   "${ModID}:Pombomb": {
     "NAME": "Pombomb",
