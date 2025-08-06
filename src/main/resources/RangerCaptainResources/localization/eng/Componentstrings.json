@@ -555,11 +555,11 @@
   "${ModID}:EnergyIfDebuffComponent": {
     "TEXT": ["Gain #yEnergy if the enemy has a debuff"],
     "EXTRA_TEXT": [
-      "If the enemy has a debuff, gain {@@}{%1$s|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=%1$s [E]} ",
-      "If the enemy has a debuff, gain [E] ",
-      "If the enemy has a debuff, gain [E] [E] ",
-      "If the enemy has a debuff, gain [E] [E] [E] ",
-      "If the enemy has a debuff, gain %s [E] "
+      "If the enemy has a debuff, gain {@@}{%1$s|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=%1$s [E]}",
+      "If the enemy has a debuff, gain [E]",
+      "If the enemy has a debuff, gain [E] [E]",
+      "If the enemy has a debuff, gain [E] [E] [E]",
+      "If the enemy has a debuff, gain %s [E]"
     ]
   },
   "${ModID}:NextTurnDrawComponent": {
@@ -573,11 +573,11 @@
   "${ModID}:NextTurnEnergyComponent": {
     "TEXT": ["Gain #yEnergy next turn"],
     "EXTRA_TEXT": [
-      "Next turn, gain {@@}{%1$s|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=%1$s [E]} ",
-      "Next turn, gain [E] ",
-      "Next turn, gain [E] [E] ",
-      "Next turn, gain [E] [E] [E] ",
-      "Next turn, gain %s [E] ",
+      "Next turn, gain {@@}{%1$s|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=%1$s [E]}",
+      "Next turn, gain [E]",
+      "Next turn, gain [E] [E]",
+      "Next turn, gain [E] [E] [E]",
+      "Next turn, gain %s [E]",
       "gain {@@}{%1$s|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=%1$s [E]} next turn",
       "gain [E] next turn",
       "gain [E] [E] next turn",
@@ -588,11 +588,11 @@
   "${ModID}:NextTwoTurnsEnergyComponent": {
     "TEXT": ["Gain #yEnergy next turn and the turn after"],
     "EXTRA_TEXT": [
-      "At the start of your next 2 turns, gain {@@}{%1$s|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=%1$s [E]} ",
-      "At the start of your next 2 turns, gain [E] ",
-      "At the start of your next 2 turns, gain [E] [E] ",
-      "At the start of your next 2 turns, gain [E] [E] [E] ",
-      "At the start of your next 2 turns, gain %s [E] ",
+      "At the start of your next 2 turns, gain {@@}{%1$s|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=%1$s [E]}",
+      "At the start of your next 2 turns, gain [E]",
+      "At the start of your next 2 turns, gain [E] [E]",
+      "At the start of your next 2 turns, gain [E] [E] [E]",
+      "At the start of your next 2 turns, gain %s [E]",
       "gain {@@}{%1$s|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=%1$s [E]} at the start of your next 2 turns",
       "gain [E] at the start of your next 2 turns",
       "gain [E] [E] at the start of your next 2 turns",
@@ -603,11 +603,11 @@
   "${ModID}:EnergyComponent": {
     "TEXT": ["Gain #yEnergy"],
     "EXTRA_TEXT": [
-      "Gain {@@}{%1$s|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=%1$s [E]} ",
-      "Gain [E] ",
-      "Gain [E] [E] ",
-      "Gain [E] [E] [E] ",
-      "Gain %s [E] "
+      "Gain {@@}{%1$s|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=%1$s [E]}",
+      "Gain [E]",
+      "Gain [E] [E]",
+      "Gain [E] [E] [E]",
+      "Gain %s [E]"
     ]
   },
   "${ModID}:StashTopCardsComponent": {
@@ -840,10 +840,10 @@
   "${ModID}:AddEnergyOnKillDamageComponent": {
     "TEXT": ["Gains Energy on kill"],
     "EXTRA_TEXT": [
-      "For each enemy this kills, gain %s [E] ",
-      "For each enemy this kills, gain [E] ",
-      "For each enemy this kills, gain [E] [E] ",
-      "For each enemy this kills, gain [E] [E] [E] "
+      "For each enemy this kills, gain %s [E]",
+      "For each enemy this kills, gain [E]",
+      "For each enemy this kills, gain [E] [E]",
+      "For each enemy this kills, gain [E] [E] [E]"
     ]
   }
 }
