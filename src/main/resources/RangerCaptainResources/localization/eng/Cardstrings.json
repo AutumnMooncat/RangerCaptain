@@ -236,7 +236,7 @@
   },
   "${ModID}:Muskrateer": {
     "NAME": "Muskrateer",
-    "DESCRIPTION": "Deal !D! damage. NL Deals !M! additional damage for each unique debuff on the enemy.",
+    "DESCRIPTION": "Deal !D! damage 3 times. NL Draw !M! card{@@}{!M!|1=|@=s}.",
     "EXTENDED_DESCRIPTION": ["Ratcousel"]
   },
   "${ModID}:Nevermort": {
