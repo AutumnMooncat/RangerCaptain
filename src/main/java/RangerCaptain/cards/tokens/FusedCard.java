@@ -4,6 +4,7 @@ import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.components.BinvasionComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.cards.interfaces.ManuallySizeAdjustedCard;
 import RangerCaptain.cards.interfaces.OnOtherCardStashedCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.Wiz;
@@ -26,7 +27,7 @@ import static RangerCaptain.MainModfile.makeID;
 
 @NoPools
 @NoCompendium
-public class FusedCard extends AbstractEasyCard implements AbstractComponent.ComponentAmountProvider, CustomSavable<List<AbstractComponent>>, OnOtherCardStashedCard {
+public class FusedCard extends AbstractEasyCard implements AbstractComponent.ComponentAmountProvider, CustomSavable<List<AbstractComponent>>, OnOtherCardStashedCard, ManuallySizeAdjustedCard {
     public final static String ID = makeID(FusedCard.class.getSimpleName());
     private final List<AbstractComponent> originals = new ArrayList<>();
     private final transient List<AbstractComponent> components = new ArrayList<>();
@@ -314,5 +315,10 @@ public class FusedCard extends AbstractEasyCard implements AbstractComponent.Com
         for (AbstractComponent component : components) {
             component.atTurnStart(this);
         }
+    }
+
+    @Override
+    public float getAdjustedScale() {
+        return 0.95f;
     }
 }
