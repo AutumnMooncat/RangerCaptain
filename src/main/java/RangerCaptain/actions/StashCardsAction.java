@@ -82,7 +82,17 @@ public class StashCardsAction extends AbstractGameAction {
                         cards.clear();
                     }));
                 } else {
-                    addToTop(new BetterSelectCardsCenteredAction(validCards, amount, TEXT[0], anyNumber, c -> true, cards -> {
+                    String text = TEXT[1];
+                    if (amount > 1) {
+                        if (anyNumber) {
+                            text = TEXT[5] + amount + TEXT[6];
+                        } else {
+                            text = TEXT[2] + amount + TEXT[3];
+                        }
+                    } else if (anyNumber) {
+                        text = TEXT[4];
+                    }
+                    addToTop(new BetterSelectCardsCenteredAction(validCards, amount, text, anyNumber, c -> true, cards -> {
                         for (AbstractCard c : cards) {
                             group.removeCard(c);
                             if (group == Wiz.adp().exhaustPile) {

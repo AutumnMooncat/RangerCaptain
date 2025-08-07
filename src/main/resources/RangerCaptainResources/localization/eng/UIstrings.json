@@ -76,14 +76,18 @@
     "TEXT": [
       "Stash",
       "Choose a card to Stash.",
-      "Choose "," cards to Stash."
+      "Choose "," cards to Stash.",
+      "You may choose a card to Stash.",
+      "Choose up to "," cards to Stash."
     ]
   },
   "${ModID}:StashCopyOfCardsAction": {
     "TEXT": [
       "Stash a Copy of",
       "Choose a card to Stash a copy of.",
-      "Choose "," cards to Stash a copy of."
+      "Choose "," cards to Stash a copy of.",
+      "You may choose a card to Stash a copy of.",
+      "Choose up to "," cards to Stash a copy of."
     ]
   },
   "${ModID}:BetterDiscardPileToTopOfDeckAction": {
