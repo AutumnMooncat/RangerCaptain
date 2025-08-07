@@ -4,7 +4,7 @@ import RangerCaptain.cardmods.fusion.FusionComponentHelper;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.components.NextTurnDamageComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
-import RangerCaptain.powers.NextTurnDamagePower;
+import RangerCaptain.powers.NextTurnTakeDamagePower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
@@ -71,7 +71,7 @@ public class Springheel extends AbstractMultiUpgradeCard {
         for (int i = 0; i < AbstractDungeon.getMonsters().monsters.size(); i++) {
             AbstractMonster mon = AbstractDungeon.getMonsters().monsters.get(i);
             if (!mon.isDeadOrEscaped()) {
-                Wiz.applyToSelf(new NextTurnDamagePower(p, mon, new DamageInfo(p, multiDamage[i], damageTypeForTurn), fx));
+                Wiz.applyToEnemy(mon, new NextTurnTakeDamagePower(mon, new DamageInfo(p, multiDamage[i], damageTypeForTurn), fx));
             }
         }
     }

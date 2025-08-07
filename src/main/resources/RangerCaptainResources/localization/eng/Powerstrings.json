@@ -39,6 +39,10 @@
     "NAME": "Next Turn Damage",
     "DESCRIPTIONS": ["Deal #b"," damage to "," next turn."]
   },
+  "${ModID}:NextTurnTakeDamagePower": {
+    "NAME": "Next Turn Damage",
+    "DESCRIPTIONS": ["Deal #b"," damage to this creature at the start of your next turn."," damage to yourself at the start of your next turn."]
+  },
   "${ModID}:BleedingPower": {
     "NAME": "Bleeding",
     "DESCRIPTIONS": ["Whenever this creature attacks, it loses #b"," HP."]

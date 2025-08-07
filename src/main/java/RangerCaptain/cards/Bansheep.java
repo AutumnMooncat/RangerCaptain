@@ -7,7 +7,7 @@ import RangerCaptain.cardmods.fusion.components.NextTurnDamageComponent;
 import RangerCaptain.cardmods.fusion.components.TempStrengthComponent;
 import RangerCaptain.cardmods.fusion.components.VigorComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
-import RangerCaptain.powers.NextTurnDamagePower;
+import RangerCaptain.powers.NextTurnTakeDamagePower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
@@ -69,7 +69,7 @@ public class Bansheep extends AbstractMultiUpgradeCard implements StartupCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.BLUNT_HEAVY);
-        Wiz.applyToSelf(new NextTurnDamagePower(p, m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        Wiz.applyToEnemy(m, new NextTurnTakeDamagePower(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         if (info == 1) {
             addToBot(new ApplyPowerActionWithFollowup(
                     new ApplyPowerAction(m, p, new StrengthPower(m, -magicNumber)),

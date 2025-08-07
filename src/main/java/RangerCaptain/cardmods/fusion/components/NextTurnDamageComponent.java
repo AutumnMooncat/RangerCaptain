@@ -3,7 +3,7 @@ package RangerCaptain.cardmods.fusion.components;
 import RangerCaptain.MainModfile;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.powers.NextTurnDamagePower;
+import RangerCaptain.powers.NextTurnTakeDamagePower;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -85,13 +85,18 @@ public class NextTurnDamageComponent extends AbstractComponent {
         DamageInfo.DamageType dt = provider instanceof AbstractCard ? ((AbstractCard) provider).damageTypeForTurn : DamageInfo.DamageType.THORNS;
         switch (target) {
             case SELF:
-                Wiz.applyToSelf(new NextTurnDamagePower(p, p, new DamageInfo(p, amount, DamageInfo.DamageType.THORNS), effect));
+                Wiz.applyToSelf(new NextTurnTakeDamagePower(p, new DamageInfo(p, amount, DamageInfo.DamageType.THORNS), effect));
                 break;
             case ENEMY:
-                Wiz.applyToSelf(new NextTurnDamagePower(p, m, new DamageInfo(p, amount, dt), effect));
+                Wiz.applyToEnemy(m, new NextTurnTakeDamagePower(m, new DamageInfo(p, amount, dt), effect));
                 break;
             case ENEMY_RANDOM:
-                addToBot(new DoAction(() -> Wiz.applyToSelfTop(new NextTurnDamagePower(p, AbstractDungeon.getRandomMonster(), new DamageInfo(p, amount, dt), effect))));
+                addToBot(new DoAction(() -> {
+                    AbstractMonster mon = AbstractDungeon.getRandomMonster();
+                    if (mon != null) {
+                        Wiz.applyToEnemyTop(mon, new NextTurnTakeDamagePower(mon, new DamageInfo(p, amount, dt), effect));
+                    }
+                }));
                 break;
             case ENEMY_AOE:
                 if (provider instanceof AbstractCard) {
@@ -111,11 +116,14 @@ public class NextTurnDamageComponent extends AbstractComponent {
                         }
                     }
                     for (int i = 0; i < AbstractDungeon.getMonsters().monsters.size(); i++) {
-                        Wiz.applyToSelf(new NextTurnDamagePower(p, AbstractDungeon.getMonsters().monsters.get(i), new DamageInfo(p, scaled[i], dt), effect));
+                        AbstractMonster mon = AbstractDungeon.getMonsters().monsters.get(i);
+                        if (!mon.isDeadOrEscaped()) {
+                            Wiz.applyToEnemy(mon, new NextTurnTakeDamagePower(mon, new DamageInfo(p, scaled[i], dt), effect));
+                        }
                     }
                 }
                 else {
-                    Wiz.forAllMonstersLiving(mon -> Wiz.applyToSelf(new NextTurnDamagePower(p, mon, new DamageInfo(p, amount, dt), effect)));
+                    Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new NextTurnTakeDamagePower(mon, new DamageInfo(p, amount, dt), effect)));
                 }
                 break;
         }
