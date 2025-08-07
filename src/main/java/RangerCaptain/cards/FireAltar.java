@@ -16,8 +16,7 @@ public class FireAltar extends AbstractEasyCard implements CardInHandSuite.InHan
 
     public FireAltar() {
         super(ID, -2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
-        baseMagicNumber = magicNumber = 1;
-        isEthereal = true;
+        baseMagicNumber = magicNumber = 2;
     }
 
     @Override
@@ -31,13 +30,14 @@ public class FireAltar extends AbstractEasyCard implements CardInHandSuite.InHan
 
     @Override
     public void onCardUsed(AbstractCard card) {
-        superFlash();
-        addToBot(new ApplyPowerToRandomEnemyAction(Wiz.adp(), new BurnedPower(null, Wiz.adp(), magicNumber), magicNumber));
+        if (card.type == CardType.ATTACK || upgraded) {
+            superFlash();
+            addToBot(new ApplyPowerToRandomEnemyAction(Wiz.adp(), new BurnedPower(null, Wiz.adp(), magicNumber), magicNumber));
+        }
     }
 
     @Override
     public void upp() {
-        isEthereal = false;
         uDesc();
     }
 }
