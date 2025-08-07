@@ -10,6 +10,7 @@ import basemod.BaseMod;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.GameActionManager;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.red.PerfectedStrike;
@@ -125,7 +126,7 @@ public class StashedCardManager {
         public static class Locator extends SpireInsertLocator {
             @Override
             public int[] Locate(CtBehavior ctBehavior) throws Exception {
-                Matcher m = new Matcher.MethodCallMatcher(AbstractPlayer.class, "applyStartOfTurnPostDrawRelics");
+                Matcher m = new Matcher.NewExprMatcher(DrawCardAction.class);
                 return LineFinder.findInOrder(ctBehavior, m);
             }
         }
