@@ -3,7 +3,7 @@ package RangerCaptain.powers;
 import RangerCaptain.MainModfile;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.components.OnGainEnergyComponent;
-import RangerCaptain.patches.EnergyGainPatch;
+import RangerCaptain.patches.OnChangeEnergyPatches;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 
 import java.util.List;
 
-public class EnergyReservesPower extends AbstractComponentPower implements EnergyGainPatch.OnGainEnergyPower {
+public class EnergyReservesPower extends AbstractComponentPower implements OnChangeEnergyPatches.OnChangeEnergyObject {
     public static final String POWER_ID = MainModfile.makeID(EnergyReservesPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
