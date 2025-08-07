@@ -35,7 +35,7 @@ public class GatherAction extends AbstractGameAction {
 
     public void update() {
         if (this.duration == Settings.ACTION_DUR_FAST) {
-            AbstractDungeon.cardRewardScreen.customCombatOpen(this.generateCardChoices(), CardRewardScreen.TEXT[1], true);
+            AbstractDungeon.cardRewardScreen.customCombatOpen(generateCardChoices(amount, filter, upgradedCards), CardRewardScreen.TEXT[1], true);
         } else {
             if (!this.retrieveCard) {
                 if (AbstractDungeon.cardRewardScreen.discoveryCard != null) {
@@ -61,7 +61,19 @@ public class GatherAction extends AbstractGameAction {
         this.tickDuration();
     }
 
-    private ArrayList<AbstractCard> generateCardChoices() {
+    public static ArrayList<AbstractCard> generateCardChoices(int amount) {
+        return generateCardChoices(amount, c -> true, false);
+    }
+
+    public static ArrayList<AbstractCard> generateCardChoices(int amount, boolean upgradedCards) {
+        return generateCardChoices(amount, c -> true, upgradedCards);
+    }
+
+    public static ArrayList<AbstractCard> generateCardChoices(int amount, Predicate<AbstractCard> filter) {
+        return generateCardChoices(amount, filter, false);
+    }
+
+    public static ArrayList<AbstractCard> generateCardChoices(int amount, Predicate<AbstractCard> filter, boolean upgradedCards) {
         ArrayList<AbstractCard> validCards = new ArrayList<>();
         validCards.addAll(AbstractDungeon.srcCommonCardPool.group.stream().filter(filter).collect(Collectors.toList()));
         validCards.addAll(AbstractDungeon.srcUncommonCardPool.group.stream().filter(filter).collect(Collectors.toList()));
