@@ -4,6 +4,7 @@ import RangerCaptain.cardmods.fusion.FusionComponentHelper;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.components.NextTurnDamageComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
+import RangerCaptain.cards.interfaces.ManuallySizeAdjustedCard;
 import RangerCaptain.powers.NextTurnTakeDamagePower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -17,7 +18,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static RangerCaptain.MainModfile.makeID;
 
-public class Springheel extends AbstractMultiUpgradeCard {
+public class Springheel extends AbstractMultiUpgradeCard implements ManuallySizeAdjustedCard {
     public final static String ID = makeID(Springheel.class.getSimpleName());
 
     static {
@@ -126,5 +127,10 @@ public class Springheel extends AbstractMultiUpgradeCard {
         initializeTitle();
         setMonsterData(MonsterEnum.SCAMPIRE);
         baseInfo = info = 3;
+    }
+
+    @Override
+    public float getAdjustedScale() {
+        return 0.95f;
     }
 }
