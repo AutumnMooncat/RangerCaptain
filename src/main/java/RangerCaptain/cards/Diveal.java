@@ -1,12 +1,11 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.actions.StashCardsAction;
+import RangerCaptain.actions.StashRandomCardsAction;
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
 import RangerCaptain.cardmods.fusion.components.StashCardsComponent;
-import RangerCaptain.cardmods.fusion.components.TapeJamComponent;
 import RangerCaptain.cardmods.fusion.components.WeakComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
-import RangerCaptain.powers.TapeJamPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
@@ -24,17 +23,17 @@ public class Diveal extends AbstractMultiUpgradeCard {
         new FusionComponentHelper(MonsterEnum.DIVEAL)
                 .withCost(1)
                 .with(new WeakComponent(1))
-                .with(new StashCardsComponent(2, StashCardsComponent.TargetPile.DISCARD, false, false))
+                .with(new StashCardsComponent(2, StashCardsComponent.TargetPile.DISCARD, false, true))
                 .register();
         new FusionComponentHelper(MonsterEnum.DIVEBERG)
                 .withCost(1)
-                .with(new WeakComponent(1), new TapeJamComponent(1))
-                .with(new StashCardsComponent(2, StashCardsComponent.TargetPile.DISCARD, false, false))
+                .with(new WeakComponent(1))
+                .with(new StashCardsComponent(2, StashCardsComponent.TargetPile.DISCARD, true, false))
                 .register();
         new FusionComponentHelper(MonsterEnum.SCUBALRUS)
                 .withCost(1)
                 .with(new WeakComponent(1))
-                .with(new StashCardsComponent(3, StashCardsComponent.TargetPile.DISCARD, false, false))
+                .with(new StashCardsComponent(3, StashCardsComponent.TargetPile.DISCARD, false, true))
                 .register();
     }
 
@@ -48,10 +47,11 @@ public class Diveal extends AbstractMultiUpgradeCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new StashCardsAction(Wiz.adp().discardPile, magicNumber));
         Wiz.applyToEnemy(m, new WeakPower(m, secondMagic, false));
         if (info == 1) {
-            Wiz.applyToEnemy(m, new TapeJamPower(m, secondMagic));
+            addToBot(new StashCardsAction(Wiz.adp().discardPile, magicNumber, true, true));
+        } else {
+            addToBot(new StashRandomCardsAction(Wiz.adp().discardPile, magicNumber));
         }
     }
 

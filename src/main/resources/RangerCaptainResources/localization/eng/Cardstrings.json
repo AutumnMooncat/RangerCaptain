@@ -119,7 +119,7 @@
   },
   "${ModID}:Diveal": {
     "NAME": "Diveal",
-    "DESCRIPTION": "Apply !${ModID}:M2! Weak.{@@}{!${ModID}:I!|1= NL Apply !${ModID}:M2! ${ModID}:Tape_Jam.} NL ${ModID}:Stash !M! cards in your discard pile.",
+    "DESCRIPTION": "Apply !${ModID}:M2! Weak. NL {@@}{!${ModID}:I!|1=${ModID}:Stash up to !M! cards in your discard pile.|@=${ModID}:Stash !M! random cards in your discard pile.}",
     "EXTENDED_DESCRIPTION": ["Diveberg","Scubalrus"]
   },
   "${ModID}:DjinnEntonic": {
