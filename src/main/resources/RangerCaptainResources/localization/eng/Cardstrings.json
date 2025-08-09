@@ -151,7 +151,7 @@
   },
   "${ModID}:Ferriclaw": {
     "NAME": "Ferriclaw",
-    "DESCRIPTION": "Apply !M! Weak. NL Apply !${ModID}:M2! ${ModID}:Tape_Jam.",
+    "DESCRIPTION": "Deal !D! damage. NL Lock the enemy's intent in for the next {@@}{!M!|1=turn|@=!M! turns}.",
     "EXTENDED_DESCRIPTION": ["Auriclaw"]
   },
   "${ModID}:FireAltar": {
