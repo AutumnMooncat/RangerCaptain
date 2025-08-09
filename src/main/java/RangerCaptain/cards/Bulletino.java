@@ -38,7 +38,6 @@ public class Bulletino extends AbstractMultiUpgradeCard {
                 .register();
         new FusionComponentHelper(MonsterEnum.VELOCIRIFLE)
                 .withCost(1)
-                .withDamage(8, AbstractGameAction.AttackEffect.FIRE)
                 .with(new DrawComponent(3))
                 .withFlags(new BurnComponent(2), AbstractComponent.Flag.DRAW_FOLLOWUP)
                 .register();
