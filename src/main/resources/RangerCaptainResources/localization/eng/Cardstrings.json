@@ -37,7 +37,7 @@
   },
   "${ModID}:Averevoir": {
     "NAME": "Averevoir",
-    "DESCRIPTION": "${ModID}:Perfect. NL Whenever you gain Block from a card, gain half that much Block next turn."
+    "DESCRIPTION": "${ModID}:Perfect. NL Whenever you play a ${ModID}:Perfect card, gain !M! Block."
   },
   "${ModID}:Bansheep": {
     "NAME": "Bansheep",

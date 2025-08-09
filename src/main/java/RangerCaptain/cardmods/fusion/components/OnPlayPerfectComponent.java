@@ -5,7 +5,7 @@ import RangerCaptain.cardmods.FusionFormMod;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractPowerComponent;
 import RangerCaptain.cards.tokens.FusedCard;
-import RangerCaptain.powers.GlassBondsPower;
+import RangerCaptain.powers.TowerDefencePower;
 import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -52,7 +52,7 @@ public class OnPlayPerfectComponent extends AbstractPowerComponent {
 
     @Override
     public void onTrigger(ComponentAmountProvider provider, AbstractPlayer p, AbstractMonster m, List<AbstractComponent> captured) {
-        String name = GlassBondsPower.NAME+"?";
+        String name = TowerDefencePower.NAME+"?";
         if (provider instanceof FusedCard) {
             FusionFormMod mod = FusionFormMod.getFusionForm((AbstractCard) provider);
             if (mod != null) {
@@ -65,7 +65,7 @@ public class OnPlayPerfectComponent extends AbstractPowerComponent {
                 comp.dynvar = DynVar.FLAT;
             }
         }
-        Wiz.applyToSelf(new GlassBondsPower(p, name, this, captured));
+        Wiz.applyToSelf(new TowerDefencePower(p, name, this, captured));
     }
 
     @Override
