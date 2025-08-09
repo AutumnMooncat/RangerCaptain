@@ -1,35 +1,39 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.components.OnPlayPerfectComponent;
+import RangerCaptain.cardmods.fusion.components.OnPerformFusionComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.cards.interfaces.ManuallySizeAdjustedCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.powers.GlassBondsPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
+import basemod.helpers.BaseModCardTags;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static RangerCaptain.MainModfile.makeID;
 
-public class Glaistain extends AbstractEasyCard {
+public class Glaistain extends AbstractEasyCard implements ManuallySizeAdjustedCard {
     public final static String ID = makeID(Glaistain.class.getSimpleName());
 
     static {
         new FusionComponentHelper(MonsterEnum.GLAISTAIN)
-                .withCost(1)
-                .withBlock(5)
-                .with(new OnPlayPerfectComponent())
+                .withCost(3)
+                .with(new OnPerformFusionComponent())
+                .withDamageAOE(16, AbstractGameAction.AttackEffect.SLASH_HEAVY)
                 .register();
     }
 
     public Glaistain() {
-        super(ID, 1, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
-        baseMagicNumber = magicNumber = 5;
+        super(ID, 3, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
+        baseMagicNumber = magicNumber = 8;
         setMonsterData(MonsterEnum.GLAISTAIN);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
+        tags.add(BaseModCardTags.FORM);
     }
 
     @Override
@@ -48,5 +52,10 @@ public class Glaistain extends AbstractEasyCard {
     @Override
     public CardArtRoller.ReskinInfo reskinInfo(String ID) {
         return new CardArtRoller.ReskinInfo(ID, BLUE, WHITE, BLUE, WHITE, false);
+    }
+
+    @Override
+    public float getAdjustedScale() {
+        return 1f;
     }
 }

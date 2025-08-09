@@ -26,6 +26,7 @@ public class KeywordManager {
     public static String TOXIN;
     public static String EXPLORE;
     public static String STASH;
+    public static String FUSION;
 
     public static String getKeyword(String ID) {
         return keywordMap.getOrDefault(ID, "");

@@ -1,6 +1,7 @@
 package RangerCaptain.actions;
 
 import RangerCaptain.cards.tokens.FusedCard;
+import RangerCaptain.powers.interfaces.OnFusionPower;
 import RangerCaptain.screens.FusionScreen;
 import RangerCaptain.util.Wiz;
 import basemod.BaseMod;
@@ -9,6 +10,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import java.util.ArrayList;
 import java.util.function.Predicate;
@@ -62,6 +64,11 @@ public class FusionAction extends AbstractGameAction {
             hand.addAll(newCards);
             AbstractDungeon.player.hand.refreshHandLayout();
             AbstractDungeon.player.hand.applyPowers();
+            for (AbstractPower power : Wiz.adp().powers) {
+                if (power instanceof OnFusionPower) {
+                    ((OnFusionPower) power).onPerformFusion(baseCard, donorCard, fusion);
+                }
+            }
             this.isDone = true;
         } else {
             this.tickDuration();

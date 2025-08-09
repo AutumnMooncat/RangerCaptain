@@ -119,7 +119,7 @@
   },
   "${ModID}:GlassBondsPower": {
     "NAME": "Glass Bonds",
-    "DESCRIPTIONS": ["Whenever you play a #yPerfect card, gain #b"," #yBlock."]
+    "DESCRIPTIONS": ["Whenever you perform #yFusion, deal #b"," damage to ALL enemies."]
   },
   "${ModID}:BerserkerPower": {
     "NAME": "Berserker",

@@ -204,5 +204,16 @@
       "fusion_effects"
     ],
     "DESCRIPTION": "This card can be fused to donate the following effects: NL "
+  },
+  {
+    "ID": "fusion",
+    "PROPER_NAME": "Fusion",
+    "NAMES": [
+      "fusion",
+      "fusions",
+      "fused",
+      "fuse"
+    ],
+    "DESCRIPTION": "#yFusions blend the effect of two monster cards scaled to the more expensive card's cost."
   }
 ]

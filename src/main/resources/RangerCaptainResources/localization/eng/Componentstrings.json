@@ -765,9 +765,9 @@
     "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": ["At the end of combat, or when you would die, %s"]
   },
-  "${ModID}:OnGainBlockComponent": {
+  "${ModID}:OnPerformFusionComponent": {
     "TEXT": ["Fusion becomes a Power"],
-    "EXTRA_TEXT": ["Whenever you gain Block from a card, %s"]
+    "EXTRA_TEXT": ["Whenever you perform ${ModID}:Fusion, %s"]
   },
   "${ModID}:OnTurnStartComponent": {
     "TEXT": ["Fusion becomes a Power"],

@@ -5,7 +5,7 @@ import RangerCaptain.cardmods.FusionFormMod;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractPowerComponent;
 import RangerCaptain.cards.tokens.FusedCard;
-import RangerCaptain.powers.TowerDefencePower;
+import RangerCaptain.powers.GlassBondsPower;
 import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -16,18 +16,18 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import java.util.Collections;
 import java.util.List;
 
-public class OnGainBlockComponent extends AbstractPowerComponent {
-    public static final String ID = MainModfile.makeID(OnGainBlockComponent.class.getSimpleName());
+public class OnPerformFusionComponent extends AbstractPowerComponent {
+    public static final String ID = MainModfile.makeID(OnPerformFusionComponent.class.getSimpleName());
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public OnGainBlockComponent() {
+    public OnPerformFusionComponent() {
         super(ID, false);
     }
 
     @Override
     public float amountMultiplier(AbstractComponent other) {
-        return 0.25f;
+        return 0.5f;
     }
 
     @Override
@@ -52,7 +52,7 @@ public class OnGainBlockComponent extends AbstractPowerComponent {
 
     @Override
     public void onTrigger(ComponentAmountProvider provider, AbstractPlayer p, AbstractMonster m, List<AbstractComponent> captured) {
-        String name = TowerDefencePower.NAME+"?";
+        String name = GlassBondsPower.NAME+"?";
         if (provider instanceof FusedCard) {
             FusionFormMod mod = FusionFormMod.getFusionForm((AbstractCard) provider);
             if (mod != null) {
@@ -65,11 +65,11 @@ public class OnGainBlockComponent extends AbstractPowerComponent {
                 comp.dynvar = DynVar.FLAT;
             }
         }
-        Wiz.applyToSelf(new TowerDefencePower(p, name, this, captured));
+        Wiz.applyToSelf(new GlassBondsPower(p, name, this, captured));
     }
 
     @Override
     public AbstractComponent makeCopy() {
-        return new OnGainBlockComponent();
+        return new OnPerformFusionComponent();
     }
 }
