@@ -3,10 +3,13 @@ package RangerCaptain.cards;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cardmods.fusion.components.BurnComponent;
 import RangerCaptain.cardmods.fusion.components.DamageComponent;
 import RangerCaptain.cardmods.fusion.components.DrawComponent;
+import RangerCaptain.cardmods.fusion.components.vfx.ExplodeAllVFXComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
+import RangerCaptain.powers.BurnedPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
@@ -29,19 +32,21 @@ public class Bulletino extends AbstractMultiUpgradeCard {
     static {
         new FusionComponentHelper(MonsterEnum.BULLETINO)
                 .withCost(0)
-                .withDamage(4, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
                 .with(new DrawComponent(2))
+                .withFlags(new BurnComponent(2), AbstractComponent.Flag.DRAW_FOLLOWUP)
                 .withExhaust()
                 .register();
         new FusionComponentHelper(MonsterEnum.VELOCIRIFLE)
                 .withCost(1)
                 .withDamage(8, AbstractGameAction.AttackEffect.FIRE)
                 .with(new DrawComponent(3))
+                .withFlags(new BurnComponent(2), AbstractComponent.Flag.DRAW_FOLLOWUP)
                 .register();
         new FusionComponentHelper(MonsterEnum.ARTILLEREX)
                 .withCost(2)
-                .withMultiDamageAOE(8, 2, AbstractGameAction.AttackEffect.NONE)
                 .with(new DrawComponent(4))
+                .withFlags(new ExplodeAllVFXComponent(), AbstractComponent.Flag.DRAW_FOLLOWUP)
+                .withFlags(new BurnComponent(2, AbstractComponent.ComponentTarget.ENEMY_AOE), AbstractComponent.Flag.DRAW_FOLLOWUP)
                 .register();
         new FusionComponentHelper(MonsterEnum.GEARYU)
                 .withCost(3)
@@ -51,9 +56,9 @@ public class Bulletino extends AbstractMultiUpgradeCard {
     }
 
     public Bulletino() {
-        super(ID, 0, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
-        baseDamage = damage = 4;
+        super(ID, 0, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
         baseMagicNumber = magicNumber = 2;
+        baseSecondMagic = secondMagic = 2;
         setMonsterData(MonsterEnum.BULLETINO);
         baseInfo = info = 0;
         tags.add(CustomTags.MAGIC_DRAW);
@@ -62,22 +67,30 @@ public class Bulletino extends AbstractMultiUpgradeCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (info == 0) {
-            dmg(m, AbstractGameAction.AttackEffect.BLUNT_HEAVY);
-            addToBot(new DrawCardAction(magicNumber));
-        } else if (info == 1) {
-            dmg(m, AbstractGameAction.AttackEffect.FIRE);
-            addToBot(new DrawCardAction(magicNumber));
+        if (info == 0 || info == 1) {
+            addToBot(new DrawCardAction(magicNumber, new DoAction(() -> {
+                int hits = DrawCardAction.drawnCards.size();
+                for (int i = 0 ; i < hits ; i++) {
+                    Wiz.applyToEnemyTop(m, new BurnedPower(m, p, secondMagic));
+                }
+            })));
         } else if (info == 2) {
-            addToBot(new ShakeScreenAction(0f, ScreenShake.ShakeDur.SHORT, ScreenShake.ShakeIntensity.LOW));
-            for (int i = 0 ; i < thirdMagic ; i++) {
-                addToBot(new DoAction(() -> Wiz.forAllMonstersLiving(mon -> {
-                    AbstractDungeon.effectsQueue.add(new ExplosionSmallEffect(mon.hb.cX, mon.hb.cY));
-                    AbstractDungeon.effectsQueue.add(new BurnToAshEffect(mon.hb.cX, mon.hb.cY));
-                })));
-                allDmg(AbstractGameAction.AttackEffect.NONE);
-            }
-            addToBot(new DrawCardAction(magicNumber));
+            addToBot(new DrawCardAction(magicNumber, new DoAction(() -> {
+                int hits = DrawCardAction.drawnCards.size();
+                for (int i = 0 ; i < hits ; i++) {
+                    for (int j = AbstractDungeon.getMonsters().monsters.size() - 1; j >= 0; j--) {
+                        AbstractMonster mon = AbstractDungeon.getMonsters().monsters.get(j);
+                        if (!mon.isDeadOrEscaped()) {
+                            Wiz.applyToEnemyTop(mon, new BurnedPower(mon, p, secondMagic));
+                        }
+                    }
+                    addToTop(new ShakeScreenAction(0f, ScreenShake.ShakeDur.SHORT, ScreenShake.ShakeIntensity.LOW));
+                    addToTop(new DoAction(() -> Wiz.forAllMonstersLiving(mon -> {
+                        AbstractDungeon.effectsQueue.add(new ExplosionSmallEffect(mon.hb.cX, mon.hb.cY));
+                        AbstractDungeon.effectsQueue.add(new BurnToAshEffect(mon.hb.cX, mon.hb.cY));
+                    })));
+                }
+            })));
         } else if (info == 3) {
             addToBot(new DrawCardAction(magicNumber, new DoAction(() -> {
                 int hits = DrawCardAction.drawnCards.size();
@@ -108,7 +121,6 @@ public class Bulletino extends AbstractMultiUpgradeCard {
 
     public void upgrade0() {
         forceUpgradeBaseCost(1);
-        upgradeDamage(6);
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
@@ -120,11 +132,7 @@ public class Bulletino extends AbstractMultiUpgradeCard {
     public void upgrade1() {
         forceUpgradeBaseCost(2);
         upgradeMagicNumber(1);
-        baseThirdMagic = 0;
-        upgradeThirdMagic(2);
-        isMultiDamage = true;
         target = CardTarget.ALL_ENEMY;
-        tags.add(CustomTags.AOE_DAMAGE);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.ARTILLEREX);
@@ -133,11 +141,17 @@ public class Bulletino extends AbstractMultiUpgradeCard {
 
     public void upgrade2() {
         forceUpgradeBaseCost(3);
-        upgradeDamage(-2);
+        if (baseDamage == -1) {
+            baseDamage = 0;
+        }
+        upgradeDamage(8);
         upgradeMagicNumber(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
         setMonsterData(MonsterEnum.GEARYU);
         baseInfo = info = 3;
+        type = CardType.ATTACK;
+        rollerKey += "Attack";
+        CardArtRoller.computeCard(this);
     }
 }

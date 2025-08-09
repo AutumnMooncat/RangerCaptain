@@ -89,7 +89,7 @@ public class DrawComponent extends AbstractComponent {
 
     public static String drawFollowupText(List<AbstractComponent> captured) {
         if (captured.stream().anyMatch(c -> c.hasFlags(Flag.DRAW_FOLLOWUP))) {
-            return LocalizedStrings.PERIOD + " NL " + FormatHelper.capitalize(StringUtils.join(captured.stream().filter(c -> c.hasFlags(Flag.DRAW_FOLLOWUP)).map(c -> FormatHelper.uncapitalize(c.rawCardText(Collections.emptyList()))).collect(Collectors.toList()), " " + AND + " ")) + " " + FOR_EACH;
+            return LocalizedStrings.PERIOD + " NL " + FormatHelper.capitalize(StringUtils.join(captured.stream().filter(c -> c.hasFlags(Flag.DRAW_FOLLOWUP) && !StringUtils.isEmpty(c.rawCardText(Collections.emptyList()))).map(c -> FormatHelper.uncapitalize(c.rawCardText(Collections.emptyList()))).collect(Collectors.toList()), " " + AND + " ")) + " " + FOR_EACH;
         }
         return "";
     }
