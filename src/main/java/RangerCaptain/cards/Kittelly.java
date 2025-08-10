@@ -48,7 +48,7 @@ public class Kittelly extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         Wiz.atb(new SFXAction("ORB_DARK_EVOKE", 0.05F));
-        ArrayList<AbstractCard> validCards = AbstractDungeon.actionManager.cardsPlayedThisCombat.stream().filter(card -> !(card instanceof Kittelly)).collect(Collectors.toCollection(ArrayList::new));
+        ArrayList<AbstractCard> validCards = AbstractDungeon.actionManager.cardsPlayedThisCombat.stream().filter(card -> !(card instanceof Kittelly) && !card.purgeOnUse).collect(Collectors.toCollection(ArrayList::new));
         if (!validCards.isEmpty()) {
             AbstractCard card = validCards.get(validCards.size()-1).makeStatEquivalentCopy();
             card.setCostForTurn(0);
@@ -67,7 +67,7 @@ public class Kittelly extends AbstractEasyCard {
     }
 
     public void triggerOnGlowCheck() {
-        if (AbstractDungeon.actionManager.cardsPlayedThisCombat.stream().allMatch(card -> card instanceof Kittelly)) {
+        if (AbstractDungeon.actionManager.cardsPlayedThisCombat.stream().allMatch(card -> card instanceof Kittelly || card.purgeOnUse)) {
             this.glowColor = Settings.RED_TEXT_COLOR.cpy();
         } else {
             this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
@@ -76,8 +76,8 @@ public class Kittelly extends AbstractEasyCard {
 
     public void applyPowers() {
         super.applyPowers();
-        if (AbstractDungeon.actionManager.cardsPlayedThisCombat.stream().anyMatch(card -> !(card instanceof Kittelly))) {
-            ArrayList<AbstractCard> validCards = AbstractDungeon.actionManager.cardsPlayedThisCombat.stream().filter(card -> !(card instanceof Kittelly)).collect(Collectors.toCollection(ArrayList::new));
+        ArrayList<AbstractCard> validCards = AbstractDungeon.actionManager.cardsPlayedThisCombat.stream().filter(card -> !(card instanceof Kittelly) && !card.purgeOnUse).collect(Collectors.toCollection(ArrayList::new));
+        if (!validCards.isEmpty()) {
             AbstractCard preview = validCards.get(validCards.size()-1);
             if (preview != lastCard) {
                 lastCard = preview;
