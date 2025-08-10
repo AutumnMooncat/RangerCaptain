@@ -416,9 +416,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
 
     public static List<AbstractComponent> resolve(FusedCard card, List<AbstractComponent> originals) {
         List<AbstractComponent> components = originals.stream().map(AbstractComponent::makeEquivalentCopy).collect(Collectors.toList());
-        resolveStacking(components);
         resolveCaptures(components);
-        // Check stacking a second time as captures may have modified things
         resolveStacking(components);
         resolveType(card, components);
         resolveTarget(card, components);
