@@ -91,7 +91,7 @@
     "NAMES": [
       "multitarget"
     ],
-    "DESCRIPTION": "The next single target Attack you play hits ALL enemies."
+    "DESCRIPTION": "The next single target Attack you play is played on ALL enemies."
   },
   {
     "ID": "conductive",

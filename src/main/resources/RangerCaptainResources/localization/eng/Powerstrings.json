@@ -53,7 +53,7 @@
   },
   "${ModID}:MultitargetPower": {
     "NAME": "Multitarget",
-    "DESCRIPTIONS": ["The next single target #yAttack you play hits ALL enemies.","The next #b"," single target #yAttacks you play hit ALL enemies."]
+    "DESCRIPTIONS": ["The next single target #yAttack you play is played on ALL enemies.","The next #b"," single target #yAttacks you play are played on ALL enemies."]
   },
   "${ModID}:ConductivePower": {
     "NAME": "Conductive",
