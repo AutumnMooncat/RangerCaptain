@@ -119,6 +119,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
     public int priority;
     public boolean isSimple;
     public boolean wasCaptured;
+    public final ArrayList<AbstractComponent> capturedComponents = new ArrayList<>();
 
     public AbstractComponent(String ID, int baseAmount, ComponentType type, ComponentTarget target, DynVar desiredDynvar) {
         this.identifier = ID;
@@ -173,11 +174,15 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
     }
 
     public boolean shouldStack(AbstractComponent other) {
-        return dynvar != DynVar.NONE && identifier().equals(other.identifier()) && target == other.target && flags.equals(other.flags) && dynvar == other.dynvar;
+        return dynvar != DynVar.NONE && identifier().equals(other.identifier()) && target == other.target /*&& flags.equals(other.flags)*/ && dynvar == other.dynvar;
     }
 
     public void receiveStacks(AbstractComponent other) {
         floatingAmount += other.floatingAmount;
+    }
+
+    public void mergeFlags(AbstractComponent other) {
+        flags.addAll(other.flags);
     }
 
     public boolean captures(AbstractComponent other) {
@@ -411,7 +416,9 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
 
     public static List<AbstractComponent> resolve(FusedCard card, List<AbstractComponent> originals) {
         List<AbstractComponent> components = originals.stream().map(AbstractComponent::makeEquivalentCopy).collect(Collectors.toList());
+        resolveStacking(components);
         resolveCaptures(components);
+        // Check stacking a second time as captures may have modified things
         resolveStacking(components);
         resolveType(card, components);
         resolveTarget(card, components);
@@ -426,12 +433,9 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
     }
 
     public static void resolveCaptures(List<AbstractComponent> components) {
-        List<AbstractComponent> captured = new ArrayList<>();
-        Map<AbstractComponent, List<AbstractComponent>> captures = new HashMap<>();
         Map<AbstractComponent, List<AbstractComponent>> deferredCaptures = new HashMap<>();
         Map<AbstractComponent, List<AbstractComponent>> inverseCaptures = new HashMap<>();
         for (AbstractComponent component : components) {
-            captures.put(component, new ArrayList<>());
             deferredCaptures.put(component, new ArrayList<>());
             inverseCaptures.put(component, new ArrayList<>());
             for (AbstractComponent other : components) {
@@ -441,8 +445,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
                     } else if (other.hasFlags(Flag.DEFERRED)) {
                         deferredCaptures.get(component).add(other);
                     } else {
-                        captured.add(other);
-                        captures.get(component).add(other);
+                        component.capturedComponents.add(other);
                         component.onCapture(other);
                         other.wasCaptured = true;
                     }
@@ -450,40 +453,41 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
             }
         }
         for (AbstractComponent component : components) {
-            if (captures.get(component).isEmpty()) {
+            if (component.capturedComponents.isEmpty()) {
                 for (AbstractComponent other : deferredCaptures.get(component)) {
                     if (!component.wasCaptured) {
-                        captured.add(other);
-                        captures.get(component).add(other);
+                        component.capturedComponents.add(other);
                         component.onCapture(other);
                         other.wasCaptured = true;
                     }
                 }
             }
-            if (captures.get(component).isEmpty()) {
+            if (component.capturedComponents.isEmpty()) {
                 for (AbstractComponent other : inverseCaptures.get(component)) {
                     if (!component.wasCaptured) {
-                        captured.add(other);
-                        captures.get(component).add(other);
+                        component.capturedComponents.add(other);
                         component.onCapture(other);
+                        other.wasCaptured = true;
                     }
                 }
             }
         }
-        for (AbstractComponent component : captured) {
-            if (component.hasFlags(Flag.RANDOM_WHEN_CAPTURED)) {
-                component.target = ComponentTarget.ENEMY_RANDOM;
-                component.updatePrio();
-            } else if (component.hasFlags(Flag.AOE_WHEN_CAPTURED)) {
-                component.target = ComponentTarget.ENEMY_AOE;
-                component.updatePrio();
-            } else if (component.hasFlags(Flag.TARGETLESS_WHEN_CAPTURED)) {
-                component.target = ComponentTarget.NONE;
-                component.updatePrio();
+        for (AbstractComponent component : components) {
+            if (component.wasCaptured) {
+                if (component.hasFlags(Flag.RANDOM_WHEN_CAPTURED)) {
+                    component.target = ComponentTarget.ENEMY_RANDOM;
+                    component.updatePrio();
+                } else if (component.hasFlags(Flag.AOE_WHEN_CAPTURED)) {
+                    component.target = ComponentTarget.ENEMY_AOE;
+                    component.updatePrio();
+                } else if (component.hasFlags(Flag.TARGETLESS_WHEN_CAPTURED)) {
+                    component.target = ComponentTarget.NONE;
+                    component.updatePrio();
+                }
             }
         }
-        components.removeIf(c -> c.hasFlags(Flag.MUST_BE_CAPTURED) && !captured.contains(c));
-        components.removeIf(c -> c.hasFlags(Flag.MUST_CAPTURE) && captures.get(c).isEmpty());
+        components.removeIf(c -> c.hasFlags(Flag.MUST_BE_CAPTURED) && !c.wasCaptured);
+        components.removeIf(c -> c.hasFlags(Flag.MUST_CAPTURE) && c.capturedComponents.isEmpty());
         components.removeIf(c -> c.hasFlags(Flag.REQUIRES_BLOCK) && components.stream().noneMatch(check -> c != check && check.type == ComponentType.BLOCK));
         components.removeIf(c -> c.hasFlags(Flag.REQUIRES_DAMAGE) && components.stream().noneMatch(check -> c != check && check.type == ComponentType.DAMAGE));
         components.removeIf(c -> c.hasFlags(Flag.REQUIRES_APPLY) && components.stream().noneMatch(check -> c != check && check.type == ComponentType.APPLY));
@@ -496,14 +500,18 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         List<AbstractComponent> stacked = new ArrayList<>();
         for (AbstractComponent component : components) {
             for (AbstractComponent other : components) {
-                if (component != other && component.shouldStack(other) && !stacked.contains(component) && !stacked.contains(other) && (!other.wasCaptured || component.wasCaptured)) {
+                if (component != other && component.shouldStack(other) && !stacked.contains(component) && !stacked.contains(other) && (!component.wasCaptured || other.wasCaptured)) {
                     stacked.add(component);
                     component.scaleToCost(other.baseCost);
                     other.receiveStacks(component);
+                    other.mergeFlags(component);
                 }
             }
         }
         components.removeAll(stacked);
+        for (AbstractComponent component : components) {
+            component.capturedComponents.removeAll(stacked);
+        }
     }
 
     public static void resolveTraits(FusedCard card, List<AbstractComponent> components) {
@@ -511,8 +519,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
             if (component.wasCaptured) {
                 continue;
             }
-            List<AbstractComponent> captured = components.stream().filter(component::canCapture).collect(Collectors.toList());
-            component.applyTraits(card, captured);
+            component.applyTraits(card, component.capturedComponents);
         }
         components.removeIf(c -> c.hasFlags(Flag.REMOVE_IF_EXHAUST) && card.exhaust);
     }
@@ -521,8 +528,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         Map<AbstractComponent, String> parts = new HashMap<>();
         for (AbstractComponent component : components) {
             if (!component.wasCaptured) {
-                List<AbstractComponent> captured = components.stream().filter(component::canCapture).collect(Collectors.toList());
-                String found = component.rawCardText(captured);
+                String found = component.rawCardText(component.capturedComponents);
                 if (found != null && !found.isEmpty()) {
                     parts.put(component, found);
                 }

@@ -21,7 +21,6 @@ import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -52,8 +51,7 @@ public class FusedCard extends AbstractEasyCard implements AbstractComponent.Com
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (AbstractComponent component : components) {
             if (!component.wasCaptured) {
-                List<AbstractComponent> captured = components.stream().filter(component::canCapture).collect(Collectors.toList());
-                component.onTrigger(this, p, m, captured);
+                component.onTrigger(this, p, m, component.capturedComponents);
             }
         }
         if (cost == -1) {
@@ -69,8 +67,7 @@ public class FusedCard extends AbstractEasyCard implements AbstractComponent.Com
     public void triggerOnExhaust() {
         for (AbstractComponent component : components) {
             if (!component.wasCaptured) {
-                List<AbstractComponent> captured = components.stream().filter(component::canCapture).collect(Collectors.toList());
-                component.triggerOnExhaust(this, captured);
+                component.triggerOnExhaust(this, component.capturedComponents);
             }
         }
     }

@@ -52,7 +52,7 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
 
     @Override
     public boolean modifiesAmount(AbstractComponent other) {
-        return captures(other);
+        return capturedComponents.contains(other);
     }
 
     public String assembleCapturedText(List<AbstractComponent> captured) {
