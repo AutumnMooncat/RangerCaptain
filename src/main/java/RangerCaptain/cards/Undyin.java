@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.components.HealComponent;
 import RangerCaptain.cardmods.fusion.components.OnDieComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
@@ -22,7 +23,7 @@ public class Undyin extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.UNDYIN)
                 .withCost(1)
                 .with(new OnDieComponent())
-                .with(new HealComponent(2))
+                .withFlags(new HealComponent(2), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 

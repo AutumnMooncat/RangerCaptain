@@ -1,6 +1,8 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cardmods.fusion.components.DamageComponent;
 import RangerCaptain.cardmods.fusion.components.OnPerformFusionComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.cards.interfaces.ManuallySizeAdjustedCard;
@@ -24,7 +26,7 @@ public class Glaistain extends AbstractEasyCard implements ManuallySizeAdjustedC
         new FusionComponentHelper(MonsterEnum.GLAISTAIN)
                 .withCost(3)
                 .with(new OnPerformFusionComponent())
-                .withDamageAOE(16, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .withFlags(new DamageComponent(16, AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractComponent.ComponentTarget.ENEMY_AOE), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 

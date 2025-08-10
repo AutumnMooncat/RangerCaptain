@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.components.OnTurnStartForEachAttackerComponent;
 import RangerCaptain.cardmods.fusion.components.StrengthComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
@@ -21,17 +22,17 @@ public class Littlered extends AbstractMultiUpgradeCard {
         new FusionComponentHelper(MonsterEnum.LITTLERED)
                 .withCost(2)
                 .with(new OnTurnStartForEachAttackerComponent())
-                .with(new StrengthComponent(1))
+                .withFlags(new StrengthComponent(1), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
         new FusionComponentHelper(MonsterEnum.SCARLETEETH)
                 .withCost(2)
                 .with(new OnTurnStartForEachAttackerComponent())
-                .with(new StrengthComponent(2))
+                .withFlags(new StrengthComponent(2), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
         new FusionComponentHelper(MonsterEnum.ROSEHOOD)
                 .withCost(1)
                 .with(new OnTurnStartForEachAttackerComponent())
-                .with(new StrengthComponent(1))
+                .withFlags(new StrengthComponent(1), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 

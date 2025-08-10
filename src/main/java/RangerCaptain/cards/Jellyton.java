@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.components.MakeCardsComponent;
 import RangerCaptain.cardmods.fusion.components.OnTurnStartComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
@@ -23,7 +24,7 @@ public class Jellyton extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.JELLYTON)
                 .withCost(1)
                 .with(new OnTurnStartComponent())
-                .with(new MakeCardsComponent(2, new Sludge(), false, MakeCardsComponent.Location.HAND))
+                .withFlags(new MakeCardsComponent(2, new Sludge(), false, MakeCardsComponent.Location.HAND), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 

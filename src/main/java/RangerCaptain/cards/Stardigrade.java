@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.components.OnPlayNoAttacksComponent;
 import RangerCaptain.cardmods.fusion.components.StrengthComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
@@ -21,12 +22,12 @@ public class Stardigrade extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.STARDIGRADE)
                 .withCost(1)
                 .with(new OnPlayNoAttacksComponent())
-                .with(new StrengthComponent(2))
+                .withFlags(new StrengthComponent(2), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
         new FusionComponentHelper(MonsterEnum.GALAGOR)
                 .withCost(1)
                 .with(new OnPlayNoAttacksComponent())
-                .with(new StrengthComponent(4))
+                .withFlags(new StrengthComponent(4), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 

@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.components.DrawComponent;
 import RangerCaptain.cardmods.fusion.components.OnDrawUnplayableComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
@@ -20,11 +21,13 @@ public class Clocksley extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.CLOCKSLEY)
                 .withCost(1)
-                .with(new OnDrawUnplayableComponent(), new DrawComponent(2))
+                .with(new OnDrawUnplayableComponent())
+                .withFlags(new DrawComponent(2), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
         new FusionComponentHelper(MonsterEnum.ROBINDAM)
                 .withCost(1)
-                .with(new OnDrawUnplayableComponent(), new DrawComponent(3))
+                .with(new OnDrawUnplayableComponent())
+                .withFlags(new DrawComponent(3), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 

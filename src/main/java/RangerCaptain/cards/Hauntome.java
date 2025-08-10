@@ -1,6 +1,8 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cardmods.fusion.components.BlockComponent;
 import RangerCaptain.cardmods.fusion.components.OnStashComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
@@ -21,7 +23,7 @@ public class Hauntome extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.HAUNTOME)
                 .withCost(1)
                 .with(new OnStashComponent())
-                .withBlock(7)
+                .withFlags(new BlockComponent(7), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 

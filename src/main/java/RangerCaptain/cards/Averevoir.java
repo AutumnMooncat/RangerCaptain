@@ -1,6 +1,8 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cardmods.fusion.components.BlockComponent;
 import RangerCaptain.cardmods.fusion.components.OnPlayPerfectComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
@@ -21,7 +23,7 @@ public class Averevoir extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.AVEREVOIR)
                 .withCost(1)
                 .with(new OnPlayPerfectComponent())
-                .withBlock(10)
+                .withFlags(new BlockComponent(10), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 

@@ -22,12 +22,12 @@ public class Amphare extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.AMPHARE)
                 .withCost(1)
                 .with(new OnGainEnergyComponent())
-                .with(new ConductiveComponent(4, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .withFlags(new ConductiveComponent(4, AbstractComponent.ComponentTarget.ENEMY_AOE), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
         new FusionComponentHelper(MonsterEnum.LAPACITOR)
                 .withCost(1)
                 .with(new OnGainEnergyComponent())
-                .with(new ConductiveComponent(6, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .withFlags(new ConductiveComponent(6, AbstractComponent.ComponentTarget.ENEMY_AOE), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 

@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cardmods.fusion.FusionComponentHelper;
+import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
 import RangerCaptain.cardmods.fusion.components.OnParryComponent;
 import RangerCaptain.cardmods.fusion.components.VigorComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
@@ -22,12 +23,12 @@ public class Twirligig extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.TWIRLIGIG)
                 .withCost(2)
                 .with(new OnParryComponent())
-                .with(new VigorComponent(10))
+                .withFlags(new VigorComponent(10), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
         new FusionComponentHelper(MonsterEnum.KIRIKURI)
                 .withCost(2)
                 .with(new OnParryComponent())
-                .with(new VigorComponent(14))
+                .withFlags(new VigorComponent(14), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 
