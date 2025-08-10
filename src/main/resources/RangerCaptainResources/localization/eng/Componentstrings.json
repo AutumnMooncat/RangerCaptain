@@ -262,12 +262,46 @@
     "EXTRA_TEXT": ["${ModID}:Multitarget"]
   },
   "${ModID}:TapeJamComponent": {
-    "TEXT": ["#yTape #yJam"],
-    "EXTRA_TEXT": ["${ModID}:Tape_Jam"]
+    "TEXT": [
+      "Invalid #yTape #yJam",
+      "Lock an enemy's intent",
+      "Lock a random enemy's intent",
+      "Lock the intent of ALL enemies",
+      "Invalid #yTape #yJam"
+    ],
+    "EXTRA_TEXT": [
+      "Invalid ${ModID}:Tape_Jam: %s",
+      "Lock the enemy's intent in for the next {@@}{%1$s|1=turn|@=%1$s turns}",
+      "Lock a random enemy's intent in for the next {@@}{%1$s|1=turn|@=%1$s turns}",
+      "Lock the intent of ALL enemies in for the next {@@}{%1$s|1=turn|@=%1$s turns}",
+      "Invalid ${ModID}:Tape_Jam: %s",
+      "Invalid ${ModID}:Tape_Jam: %s",
+      "Lock the enemy's intent in for the next turn",
+      "Lock a random enemy's intent in for the next turn",
+      "Lock the intent of ALL enemies in for the next turn",
+      "Invalid ${ModID}:Tape_Jam: %s",
+      "Invalid ${ModID}:Tape_Jam: %s",
+      "Lock the enemy's intent in for the next %s turns",
+      "Lock a random enemy's intent in for the next %s turns",
+      "Lock the intent of ALL enemies in for the next %s turns",
+      "Invalid ${ModID}:Tape_Jam: %s"
+    ]
   },
   "${ModID}:BoobyTrapComponent": {
-    "TEXT": ["#yBooby #yTrap"],
-    "EXTRA_TEXT": ["${ModID}:Booby_Trap"]
+    "TEXT": [
+      "Invalid #yBooby #yTrap",
+      "Enemy will intend to explode",
+      "A random enemy will intend to explode",
+      "ALL enemies will intend to explode",
+      "Invalid #yBooby #yTrap"
+    ],
+    "EXTRA_TEXT": [
+      "Invalid ${ModID}:Booby_Trap: %s",
+      "Enemy will intend to attack EVERYONE for %s damage this turn",
+      "A random enemy will intend to attack EVERYONE for %s damage this turn",
+      "ALL enemies will intend to attack EVERYONE for %s damage this turn",
+      "Invalid ${ModID}:Booby_Trap: %s"
+    ]
   },
   "${ModID}:ThornsComponent": {
     "TEXT": ["#yThorns"],

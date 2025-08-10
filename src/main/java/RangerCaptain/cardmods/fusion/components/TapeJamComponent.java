@@ -1,14 +1,20 @@
 package RangerCaptain.cardmods.fusion.components;
 
 import RangerCaptain.MainModfile;
+import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractSimpleApplyComponent;
 import RangerCaptain.powers.TapeJamPower;
-import com.megacrit.cardcrawl.core.AbstractCreature;
+import RangerCaptain.util.FormatHelper;
+import RangerCaptain.util.Wiz;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class TapeJamComponent extends AbstractSimpleApplyComponent {
+import java.util.Collections;
+import java.util.List;
+
+public class TapeJamComponent extends AbstractComponent {
     public static final String ID = MainModfile.makeID(TapeJamComponent.class.getSimpleName());
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
@@ -18,27 +24,56 @@ public class TapeJamComponent extends AbstractSimpleApplyComponent {
     }
 
     public TapeJamComponent(int base, ComponentTarget target) {
-        super(ID, base, target);
+        super(ID, base, ComponentType.DO, target, DynVar.MAGIC);
+        setFlags(Flag.CANT_BE_CAPTURED);
     }
 
     @Override
-    public String getName() {
-        return DESCRIPTION_TEXT[0];
+    public void updatePrio() {
+        priority = DO_PRIO + target.ordinal();
     }
 
     @Override
-    public String getKeyword() {
-        return CARD_TEXT[0];
+    public String componentDescription() {
+        return DESCRIPTION_TEXT[target.ordinal()];
     }
 
     @Override
-    public boolean scalesWithCost() {
-        return false;
+    public String rawCardText(List<AbstractComponent> captured) {
+        int index = target.ordinal();
+        if (dynvar == DynVar.FLAT) {
+            index += ComponentTarget.values().length;
+            if (baseAmount > 1) {
+                index += ComponentTarget.values().length;
+            }
+        }
+        return String.format(CARD_TEXT[index], dynKey());
     }
 
     @Override
-    public AbstractPower getPower(AbstractCreature target, int amount) {
-        return new TapeJamPower(target, amount);
+    public String rawCapturedText() {
+        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
+    }
+
+    @Override
+    public void onTrigger(ComponentAmountProvider provider, AbstractPlayer p, AbstractMonster m, List<AbstractComponent> captured) {
+        int amount = provider.getAmount(this);
+        switch (target) {
+             case ENEMY:
+                Wiz.applyToEnemy(m, new TapeJamPower(m, amount));
+                break;
+            case ENEMY_RANDOM:
+                addToBot(new DoAction(() -> {
+                    AbstractMonster mon = AbstractDungeon.getRandomMonster();
+                    if (mon != null) {
+                        Wiz.applyToEnemy(mon, new TapeJamPower(mon, amount));
+                    }
+                }));
+                break;
+            case ENEMY_AOE:
+                Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new TapeJamPower(mon, amount)));
+                break;
+        }
     }
 
     @Override
