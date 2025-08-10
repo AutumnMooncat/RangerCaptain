@@ -31,7 +31,7 @@ public class AddMindMeldComponent extends AbstractTraitComponent {
 
     @Override
     public boolean modifiesAmount(AbstractComponent other) {
-        return other.type == ComponentType.BLOCK || other.type == ComponentType.DAMAGE || other.type == ComponentType.APPLY || other.type == ComponentType.DO || other instanceof AbstractDamageModComponent;
+        return other.makesActions() || other instanceof AbstractDamageModComponent;
     }
 
     @Override

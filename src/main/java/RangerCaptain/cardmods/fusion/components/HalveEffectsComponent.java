@@ -23,7 +23,7 @@ public class HalveEffectsComponent extends AbstractTraitComponent {
 
     @Override
     public boolean modifiesAmount(AbstractComponent other) {
-        return other.type == ComponentType.DAMAGE || other.type == ComponentType.BLOCK || other.type == ComponentType.APPLY || other.type == ComponentType.DO;
+        return other.makesActions();
     }
 
     @Override
