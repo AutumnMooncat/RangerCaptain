@@ -431,6 +431,13 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
     }
 
     public static void resolveCaptures(List<AbstractComponent> components) {
+        components.removeIf(c -> c.hasFlags(Flag.REQUIRES_SAME_SOURCES) && components.stream().anyMatch(check -> check.source != null && check.source != c.source));
+        components.removeIf(c -> c.hasFlags(Flag.REQUIRES_DIFFERENT_SOURCES) && components.stream().noneMatch(check -> check.source != null && check.source != c.source));
+
+        components.removeIf(c -> c.hasFlags(Flag.REQUIRES_BLOCK) && components.stream().noneMatch(check -> c != check && check.type == ComponentType.BLOCK));
+        components.removeIf(c -> c.hasFlags(Flag.REQUIRES_DAMAGE) && components.stream().noneMatch(check -> c != check && check.type == ComponentType.DAMAGE));
+        components.removeIf(c -> c.hasFlags(Flag.REQUIRES_APPLY) && components.stream().noneMatch(check -> c != check && check.type == ComponentType.APPLY));
+
         Map<AbstractComponent, List<AbstractComponent>> deferredCaptures = new HashMap<>();
         Map<AbstractComponent, List<AbstractComponent>> inverseCaptures = new HashMap<>();
         for (AbstractComponent component : components) {
@@ -486,11 +493,6 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         }
         components.removeIf(c -> c.hasFlags(Flag.MUST_BE_CAPTURED) && !c.wasCaptured);
         components.removeIf(c -> c.hasFlags(Flag.MUST_CAPTURE) && c.capturedComponents.isEmpty());
-        components.removeIf(c -> c.hasFlags(Flag.REQUIRES_BLOCK) && components.stream().noneMatch(check -> c != check && check.type == ComponentType.BLOCK));
-        components.removeIf(c -> c.hasFlags(Flag.REQUIRES_DAMAGE) && components.stream().noneMatch(check -> c != check && check.type == ComponentType.DAMAGE));
-        components.removeIf(c -> c.hasFlags(Flag.REQUIRES_APPLY) && components.stream().noneMatch(check -> c != check && check.type == ComponentType.APPLY));
-        components.removeIf(c -> c.hasFlags(Flag.REQUIRES_SAME_SOURCES) && components.stream().anyMatch(check -> check.source != null && check.source != c.source));
-        components.removeIf(c -> c.hasFlags(Flag.REQUIRES_DIFFERENT_SOURCES) && components.stream().noneMatch(check -> check.source != null && check.source != c.source));
         Collections.sort(components);
     }
 
