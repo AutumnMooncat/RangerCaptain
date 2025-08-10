@@ -24,12 +24,12 @@ public class Elfless extends AbstractMultiUpgradeCard {
                 .register();
         new FusionComponentHelper(MonsterEnum.FAERIOUS)
                 .withCost(2)
-                .withDamage(11, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .withDamage(10, AbstractGameAction.AttackEffect.SLASH_HEAVY)
                 .with(new FreeWhenPlayedComponent())
                 .register();
         new FusionComponentHelper(MonsterEnum.GRAMPUS)
                 .withCost(3)
-                .withDamage(8, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .withDamage(12, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
                 .with(new FreeWhenPlayedComponent())
                 .register();
     }
@@ -70,7 +70,7 @@ public class Elfless extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade0() {
-        upgradeDamage(4);
+        upgradeDamage(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.FAERIOUS);
@@ -79,7 +79,7 @@ public class Elfless extends AbstractMultiUpgradeCard {
 
     public void upgrade1() {
         upgradeBaseCost(3);
-        //upgradeDamage(2);
+        upgradeDamage(5);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.GRAMPUS);
