@@ -8,6 +8,7 @@ import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import java.util.List;
 
@@ -37,6 +38,14 @@ public class EnergyReservesPower extends AbstractComponentPower implements OnCha
             Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new ConductivePower(mon, owner, this.amount)));
         } else {
             triggerComponents(null, false);
+        }
+        return amount;
+    }
+
+    @Override
+    public int onSetEnergy(int amount) {
+        if (amount > EnergyPanel.totalCount) {
+            return onGainEnergy(amount - EnergyPanel.totalCount);
         }
         return amount;
     }
