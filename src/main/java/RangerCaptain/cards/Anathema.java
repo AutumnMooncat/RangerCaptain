@@ -22,14 +22,14 @@ public class Anathema extends AbstractEasyCard implements StartupCard {
 
     static {
         new FusionComponentHelper(MonsterEnum.ANATHEMA)
-                .withCost(0)
+                .withCost(1)
                 .withFlags(new DoubleTapComponent(1), AbstractComponent.Flag.REQUIRES_SAME_SOURCES)
                 .withFlags(new AddDoublePlayComponent(), AbstractComponent.Flag.REQUIRES_DIFFERENT_SOURCES)
                 .register();
     }
 
     public Anathema() {
-        super(ID, 0, CardType.SKILL, CardRarity.RARE, CardTarget.NONE);
+        super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.NONE);
         setMonsterData(MonsterEnum.ANATHEMA);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
