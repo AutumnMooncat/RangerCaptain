@@ -48,6 +48,9 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
             other.target = ComponentTarget.ENEMY_RANDOM;
             other.updatePrio();
         }
+        if (other.dynvar == DynVar.DAMAGE || other.dynvar == DynVar.DAMAGE2 || other.dynvar == DynVar.BLOCK || other.dynvar == DynVar.BLOCK2) {
+            other.dynvar = DynVar.MAGIC;
+        }
     }
 
     @Override
