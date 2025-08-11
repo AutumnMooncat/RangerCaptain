@@ -55,6 +55,10 @@
     "NAME": "Multitarget",
     "DESCRIPTIONS": ["The next single target #yAttack you play is played on ALL enemies.","The next #b"," single target #yAttacks you play are played on ALL enemies."]
   },
+  "${ModID}:MultistrikePower": {
+    "NAME": "Multistrike",
+    "DESCRIPTIONS": ["Your next #yAttack is played twice this turn.","Your next #b"," #yAttacks are played twice this turn."]
+  },
   "${ModID}:ConductivePower": {
     "NAME": "Conductive",
     "DESCRIPTIONS": ["When attacked, this creature takes #b"," damage and #yConductive is reduced by #b1."]

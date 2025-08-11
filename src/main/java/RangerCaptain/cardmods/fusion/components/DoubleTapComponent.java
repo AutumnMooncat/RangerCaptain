@@ -2,12 +2,12 @@ package RangerCaptain.cardmods.fusion.components;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.powers.MultistrikePower;
 import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DoubleTapPower;
 
 import java.util.Collections;
 import java.util.List;
@@ -51,7 +51,7 @@ public class DoubleTapComponent extends AbstractComponent {
 
     @Override
     public void onTrigger(ComponentAmountProvider provider, AbstractPlayer p, AbstractMonster m, List<AbstractComponent> captured) {
-        Wiz.applyToSelf(new DoubleTapPower(p, provider.getAmount(this)));
+        Wiz.applyToSelf(new MultistrikePower(p, provider.getAmount(this)));
     }
 
     @Override

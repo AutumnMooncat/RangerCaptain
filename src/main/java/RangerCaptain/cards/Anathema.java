@@ -6,6 +6,7 @@ import RangerCaptain.cardmods.fusion.components.AddDoublePlayComponent;
 import RangerCaptain.cardmods.fusion.components.DoubleTapComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
+import RangerCaptain.powers.MultistrikePower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
@@ -13,7 +14,6 @@ import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.StartupCard;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DoubleTapPower;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -54,7 +54,7 @@ public class Anathema extends AbstractEasyCard implements StartupCard {
 
     @Override
     public boolean atBattleStartPreDraw() {
-        Wiz.applyToSelf(new DoubleTapPower(Wiz.adp(), 1));
+        Wiz.applyToSelf(new MultistrikePower(Wiz.adp(), 1));
         return true;
     }
 }
