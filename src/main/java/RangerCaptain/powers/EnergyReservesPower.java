@@ -33,20 +33,24 @@ public class EnergyReservesPower extends AbstractComponentPower implements OnCha
 
     @Override
     public int onGainEnergy(int amount) {
-        flash();
-        if (source == null) {
-            Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new ConductivePower(mon, owner, this.amount)));
-        } else {
-            triggerComponents(null, false);
-        }
+        energyTrigger();
         return amount;
     }
 
     @Override
     public int onSetEnergy(int amount) {
         if (amount > EnergyPanel.totalCount) {
-            return onGainEnergy(amount - EnergyPanel.totalCount);
+            energyTrigger();
         }
         return amount;
+    }
+
+    private void energyTrigger() {
+        flash();
+        if (source == null) {
+            Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new ConductivePower(mon, owner, this.amount)));
+        } else {
+            triggerComponents(null, false);
+        }
     }
 }
