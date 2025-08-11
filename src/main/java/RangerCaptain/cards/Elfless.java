@@ -45,10 +45,8 @@ public class Elfless extends AbstractMultiUpgradeCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, info == 1 ? AbstractGameAction.AttackEffect.SLASH_HEAVY : AbstractGameAction.AttackEffect.BLUNT_HEAVY);
         addToBot(new DoAction(() -> {
-            if (m != null && m.getIntentBaseDmg() >= 0) {
-                cost = costForTurn = 0;
-                isCostModified = true;
-            }
+            cost = costForTurn = 0;
+            isCostModified = true;
         }));
     }
 

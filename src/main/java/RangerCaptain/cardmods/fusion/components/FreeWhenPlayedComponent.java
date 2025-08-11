@@ -50,10 +50,8 @@ public class FreeWhenPlayedComponent extends AbstractComponent {
     public void onTrigger(ComponentAmountProvider provider, AbstractPlayer p, AbstractMonster m, List<AbstractComponent> captured) {
         if (provider instanceof AbstractCard) {
             addToBot(new DoAction(() -> {
-                if (m != null && m.getIntentBaseDmg() >= 0) {
-                    ((AbstractCard) provider).cost = ((AbstractCard) provider).costForTurn = 0;
-                    ((AbstractCard) provider).isCostModified = true;
-                }
+                ((AbstractCard) provider).cost = ((AbstractCard) provider).costForTurn = 0;
+                ((AbstractCard) provider).isCostModified = true;
             }));
         }
     }
