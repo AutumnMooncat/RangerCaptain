@@ -56,6 +56,7 @@ public class ResonancePower extends AbstractEasyPower {
     @Override
     public void atEndOfRound() {
         hits = 0;
+        stopFlashing();
     }
 
     @Override
