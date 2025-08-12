@@ -1,9 +1,9 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.MakeCardsComponent;
-import RangerCaptain.cardmods.fusion.components.OnTurnStartComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.components.MakeCardsComponent;
+import RangerCaptain.cardfusion.components.OnTurnStartComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.cards.tokens.Sludge;
 import RangerCaptain.patches.CantUpgradeFieldPatches;

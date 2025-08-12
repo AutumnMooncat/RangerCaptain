@@ -1,8 +1,8 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.components.HavocComponent;
-import RangerCaptain.cardmods.fusion.components.MultitargetComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.components.HavocComponent;
+import RangerCaptain.cardfusion.components.MultitargetComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.MultitargetPower;
 import RangerCaptain.util.CardArtRoller;

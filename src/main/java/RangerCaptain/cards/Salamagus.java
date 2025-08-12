@@ -1,10 +1,10 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.AddMindMeldComponent;
-import RangerCaptain.cardmods.fusion.components.BurnComponent;
-import RangerCaptain.cardmods.fusion.components.OnExhaustComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.components.AddMindMeldComponent;
+import RangerCaptain.cardfusion.components.BurnComponent;
+import RangerCaptain.cardfusion.components.OnExhaustComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.patches.ExtraEffectPatches;

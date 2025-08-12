@@ -1,8 +1,8 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.components.AddMindMeldComponent;
-import RangerCaptain.cardmods.fusion.components.MakeCardsComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.components.AddMindMeldComponent;
+import RangerCaptain.cardfusion.components.MakeCardsComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.patches.ExtraEffectPatches;

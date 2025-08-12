@@ -1,8 +1,8 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.NextTurnDamageComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.components.NextTurnDamageComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.cards.interfaces.ManuallySizeAdjustedCard;
 import RangerCaptain.powers.NextTurnTakeDamagePower;

@@ -1,9 +1,9 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.OnTurnStartForEachAttackerComponent;
-import RangerCaptain.cardmods.fusion.components.StrengthComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.components.OnTurnStartForEachAttackerComponent;
+import RangerCaptain.cardfusion.components.StrengthComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.BerserkerPower;
 import RangerCaptain.util.CardArtRoller;

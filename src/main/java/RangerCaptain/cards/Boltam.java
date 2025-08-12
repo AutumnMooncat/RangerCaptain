@@ -1,9 +1,9 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.components.ConductiveComponent;
-import RangerCaptain.cardmods.fusion.components.MakeCopiesComponent;
-import RangerCaptain.cardmods.fusion.components.vfx.LightningOrbFVXComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.components.ConductiveComponent;
+import RangerCaptain.cardfusion.components.MakeCopiesComponent;
+import RangerCaptain.cardfusion.components.vfx.LightningOrbFVXComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.ConductivePower;

@@ -1,12 +1,12 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.actions.DoAction;
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.BurnComponent;
-import RangerCaptain.cardmods.fusion.components.DamageComponent;
-import RangerCaptain.cardmods.fusion.components.DrawComponent;
-import RangerCaptain.cardmods.fusion.components.vfx.ExplodeAllVFXComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.components.BurnComponent;
+import RangerCaptain.cardfusion.components.DamageComponent;
+import RangerCaptain.cardfusion.components.DrawComponent;
+import RangerCaptain.cardfusion.components.vfx.ExplodeAllVFXComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.BurnedPower;

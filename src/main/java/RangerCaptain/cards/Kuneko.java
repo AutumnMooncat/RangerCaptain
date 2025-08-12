@@ -1,9 +1,9 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.actions.DoAction;
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.components.AddEnergyOnKillDamageComponent;
-import RangerCaptain.cardmods.fusion.components.vfx.DieDieDieVFXComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.components.AddEnergyOnKillDamageComponent;
+import RangerCaptain.cardfusion.components.vfx.DieDieDieVFXComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.util.CardArtRoller;

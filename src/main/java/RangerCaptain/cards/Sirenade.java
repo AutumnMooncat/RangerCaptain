@@ -1,8 +1,8 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.components.MultitargetComponent;
-import RangerCaptain.cardmods.fusion.components.vfx.PiercingWailVFXComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.components.MultitargetComponent;
+import RangerCaptain.cardfusion.components.vfx.PiercingWailVFXComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.MultitargetPower;

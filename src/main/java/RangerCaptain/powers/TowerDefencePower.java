@@ -1,8 +1,8 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.OnPlayPerfectComponent;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.components.OnPlayPerfectComponent;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;

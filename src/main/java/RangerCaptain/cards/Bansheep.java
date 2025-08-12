@@ -1,11 +1,11 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.actions.ApplyPowerActionWithFollowup;
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.NextTurnDamageComponent;
-import RangerCaptain.cardmods.fusion.components.TempStrengthComponent;
-import RangerCaptain.cardmods.fusion.components.VigorComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.components.NextTurnDamageComponent;
+import RangerCaptain.cardfusion.components.TempStrengthComponent;
+import RangerCaptain.cardfusion.components.VigorComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.NextTurnTakeDamagePower;
 import RangerCaptain.util.CardArtRoller;

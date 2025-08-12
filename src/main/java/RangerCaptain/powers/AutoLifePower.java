@@ -1,9 +1,9 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.HealComponent;
-import RangerCaptain.cardmods.fusion.components.OnDieComponent;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.components.HealComponent;
+import RangerCaptain.cardfusion.components.OnDieComponent;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnPlayerDeathPower;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;

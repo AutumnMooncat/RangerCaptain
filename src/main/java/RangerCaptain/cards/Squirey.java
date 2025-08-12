@@ -1,8 +1,8 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.components.SharpenComponent;
-import RangerCaptain.cardmods.fusion.components.VigorComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.components.SharpenComponent;
+import RangerCaptain.cardfusion.components.VigorComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.powers.SharpenPower;
 import RangerCaptain.util.CardArtRoller;

@@ -1,9 +1,9 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.actions.EasyXCostAction;
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.ToxinComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.components.ToxinComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.AttackEffectPatches;
 import RangerCaptain.patches.CantUpgradeFieldPatches;

@@ -1,11 +1,11 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.actions.BetterSelectCardsInHandAction;
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.ExhaustAttacksComponent;
-import RangerCaptain.cardmods.fusion.components.ScaleDamageComponent;
-import RangerCaptain.cardmods.fusion.components.vfx.BiteVFXComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.components.ExhaustAttacksComponent;
+import RangerCaptain.cardfusion.components.ScaleDamageComponent;
+import RangerCaptain.cardfusion.components.vfx.BiteVFXComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;

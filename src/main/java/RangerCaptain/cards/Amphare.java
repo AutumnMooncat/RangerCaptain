@@ -1,9 +1,9 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.ConductiveComponent;
-import RangerCaptain.cardmods.fusion.components.OnGainEnergyComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.components.ConductiveComponent;
+import RangerCaptain.cardfusion.components.OnGainEnergyComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.EnergyReservesPower;
 import RangerCaptain.util.CardArtRoller;

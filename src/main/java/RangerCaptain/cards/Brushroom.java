@@ -1,9 +1,9 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.components.CostsLessPerStashedComponent;
-import RangerCaptain.cardmods.fusion.components.DamageComponent;
-import RangerCaptain.cardmods.fusion.components.VulnerableComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.components.CostsLessPerStashedComponent;
+import RangerCaptain.cardfusion.components.DamageComponent;
+import RangerCaptain.cardfusion.components.VulnerableComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.cards.interfaces.OnOtherCardStashedCard;
 import RangerCaptain.patches.CardCounterPatches;

@@ -1,9 +1,9 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.DamageComponent;
-import RangerCaptain.cardmods.fusion.components.OnPerformFusionComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.components.DamageComponent;
+import RangerCaptain.cardfusion.components.OnPerformFusionComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.cards.interfaces.ManuallySizeAdjustedCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;

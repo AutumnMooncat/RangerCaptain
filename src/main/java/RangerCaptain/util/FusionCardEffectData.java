@@ -1,7 +1,7 @@
 package RangerCaptain.util;
 
 import RangerCaptain.MainModfile;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import org.apache.commons.lang3.StringUtils;
 

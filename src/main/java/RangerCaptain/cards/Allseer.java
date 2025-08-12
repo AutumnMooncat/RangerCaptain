@@ -1,10 +1,10 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.components.AddCloseEncounterComponent;
-import RangerCaptain.cardmods.fusion.components.AddMindMeldComponent;
-import RangerCaptain.cardmods.fusion.components.ConductiveComponent;
-import RangerCaptain.cardmods.fusion.components.vfx.LaserVFXComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.components.AddCloseEncounterComponent;
+import RangerCaptain.cardfusion.components.AddMindMeldComponent;
+import RangerCaptain.cardfusion.components.ConductiveComponent;
+import RangerCaptain.cardfusion.components.vfx.LaserVFXComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.patches.ExtraEffectPatches;

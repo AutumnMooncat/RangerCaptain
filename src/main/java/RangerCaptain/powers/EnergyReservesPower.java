@@ -1,8 +1,8 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.OnGainEnergyComponent;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.components.OnGainEnergyComponent;
 import RangerCaptain.patches.OnChangeEnergyPatches;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.core.AbstractCreature;

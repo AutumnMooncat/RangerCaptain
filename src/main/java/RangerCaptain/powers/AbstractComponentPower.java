@@ -1,9 +1,9 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.actions.DoAction;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractDamageModComponent;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractPowerComponent;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.abstracts.AbstractDamageModComponent;
+import RangerCaptain.cardfusion.abstracts.AbstractPowerComponent;
 import RangerCaptain.patches.ActionCapturePatch;
 import RangerCaptain.util.CalcHelper;
 import RangerCaptain.util.Wiz;

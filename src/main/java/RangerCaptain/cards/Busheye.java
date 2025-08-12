@@ -1,10 +1,10 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.BurnComponent;
-import RangerCaptain.cardmods.fusion.components.EnergyComponent;
-import RangerCaptain.cardmods.fusion.components.WhenExhaustedComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.components.BurnComponent;
+import RangerCaptain.cardfusion.components.EnergyComponent;
+import RangerCaptain.cardfusion.components.WhenExhaustedComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.cards.interfaces.ManuallySizeAdjustedCard;
 import RangerCaptain.patches.CustomTags;

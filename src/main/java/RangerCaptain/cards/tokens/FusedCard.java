@@ -1,8 +1,8 @@
 package RangerCaptain.cards.tokens;
 
 import RangerCaptain.actions.DoAction;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.BinvasionComponent;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.components.BinvasionComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.cards.interfaces.ManuallySizeAdjustedCard;
 import RangerCaptain.cards.interfaces.OnOtherCardStashedCard;

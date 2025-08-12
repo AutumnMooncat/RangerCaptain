@@ -1,9 +1,9 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.actions.DamageFollowupAction;
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.components.AddConductiveDamageComponent;
-import RangerCaptain.cardmods.fusion.components.vfx.LightningFVXComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.components.AddConductiveDamageComponent;
+import RangerCaptain.cardfusion.components.vfx.LightningFVXComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.powers.ConductivePower;
 import RangerCaptain.util.CardArtRoller;

@@ -2,8 +2,8 @@ package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.actions.DoAction;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.OnTurnStartForEachAttackerComponent;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.components.OnTurnStartForEachAttackerComponent;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;

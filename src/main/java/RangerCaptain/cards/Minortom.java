@@ -1,9 +1,9 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.components.AddCloseEncounterComponent;
-import RangerCaptain.cardmods.fusion.components.DrawComponent;
-import RangerCaptain.cardmods.fusion.components.StashNextCardComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.components.AddCloseEncounterComponent;
+import RangerCaptain.cardfusion.components.DrawComponent;
+import RangerCaptain.cardfusion.components.StashNextCardComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.patches.ExtraEffectPatches;

@@ -2,9 +2,9 @@ package RangerCaptain.cards;
 
 import RangerCaptain.actions.StashCardsAction;
 import RangerCaptain.actions.StashRandomCardsAction;
-import RangerCaptain.cardmods.fusion.FusionComponentHelper;
-import RangerCaptain.cardmods.fusion.components.StashCardsComponent;
-import RangerCaptain.cardmods.fusion.components.WeakComponent;
+import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.components.StashCardsComponent;
+import RangerCaptain.cardfusion.components.WeakComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;

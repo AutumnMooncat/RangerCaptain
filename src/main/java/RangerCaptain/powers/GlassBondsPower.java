@@ -1,8 +1,8 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.OnPerformFusionComponent;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.components.OnPerformFusionComponent;
 import RangerCaptain.cards.tokens.FusedCard;
 import RangerCaptain.powers.interfaces.OnFusionPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;

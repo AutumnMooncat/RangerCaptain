@@ -1,8 +1,8 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.OnDrawUnplayableComponent;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.components.OnDrawUnplayableComponent;
 import RangerCaptain.patches.EnterCardGroupPatches;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;

@@ -2,10 +2,10 @@ package RangerCaptain.util;
 
 import RangerCaptain.TheRangerCaptain;
 import RangerCaptain.actions.TimedVFXAction;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.components.ReskinComponent;
 import RangerCaptain.cardmods.CarrotMod;
 import RangerCaptain.cardmods.FusionFormMod;
-import RangerCaptain.cardmods.fusion.abstracts.AbstractComponent;
-import RangerCaptain.cardmods.fusion.components.ReskinComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.cards.tokens.FusedCard;
 import RangerCaptain.patches.CardCounterPatches;

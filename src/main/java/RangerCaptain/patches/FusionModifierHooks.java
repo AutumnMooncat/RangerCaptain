@@ -1,6 +1,6 @@
 package RangerCaptain.patches;
 
-import RangerCaptain.cardmods.fusion.abstracts.AbstractFusionMod;
+import RangerCaptain.cardmods.AbstractFusionMod;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
