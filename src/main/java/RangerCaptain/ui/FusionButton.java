@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.EndTurnGlowEffect;
@@ -31,9 +32,13 @@ public class FusionButton {
     public static final String ACTIVATE_TEXT = BUTTON_TEXT[0];
     public static final String ALREADY_ACTIVE_TEXT = BUTTON_TEXT[1];
     private static final Color DISABLED_COLOR = new Color(0.7F, 0.7F, 0.7F, 1.0F);
+    private static final Color ENABLED_COLOR = new Color(1,1,1,1);
     private static final float SHOW_X = 198.0F * Settings.xScale;//1640.0F * Settings.xScale;
     private static final float SHOW_Y = 320.0F * Settings.yScale;
     private static final float HIDE_X = SHOW_X - 500.0F * Settings.xScale;
+    private AbstractMonster hoveredCollider;
+    private float fadeTimer = 0f;
+    private float fadeDur = 1.0f;
     private float current_x;
     private float current_y;
     private float target_x;
@@ -116,6 +121,32 @@ public class FusionButton {
             this.hb.clicked = false;
             if (!AbstractDungeon.isScreenUp) {
                 this.trigger();
+            }
+        }
+
+        if (Wiz.isInCombat() && !isHidden) {
+            if (hoveredCollider == null) {
+                for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
+                    if (!monster.isDeadOrEscaped() && monster.hb.intersects(hb) && monster.hb.hovered && !hb.hovered) {
+                        hoveredCollider = monster;
+                        break;
+                    }
+                }
+            } else {
+                if (!hoveredCollider.hb.hovered || hb.hovered) {
+                    hoveredCollider = null;
+                }
+            }
+            if (hoveredCollider != null) {
+                fadeTimer += Gdx.graphics.getDeltaTime();
+                target_x = SHOW_X + (MathUtils.sin(fadeTimer*MathUtils.PI*4) * 6f * Settings.xScale);
+                if (fadeTimer > fadeDur) {
+                    fadeTimer = fadeDur;
+                    target_x = HIDE_X;
+                }
+            } else {
+                fadeTimer = 0;
+                target_x = SHOW_X;
             }
         }
     }
@@ -214,6 +245,7 @@ public class FusionButton {
 
     public void render(SpriteBatch sb) {
         if (!Settings.hideEndTurn) {// 232
+            Color origColor = sb.getColor();
             float tmpY = this.current_y;// 233
             this.renderHoldEndTurn(sb);// 234
             if (!this.isDisabled && this.enabled) {// 237
@@ -244,8 +276,9 @@ public class FusionButton {
 
             if (!this.enabled) {// 273
                 ShaderHelper.setShader(sb, ShaderHelper.Shader.GRAYSCALE);// 280
-            } else if (!this.isDisabled && (!this.hb.clickStarted || !this.hb.hovered)) {// 274
-                sb.setColor(Color.WHITE);// 277
+            }
+            if (!this.isDisabled && (!this.hb.clickStarted || !this.hb.hovered)) {// 274
+                sb.setColor(ENABLED_COLOR);// 277
             } else {
                 sb.setColor(DISABLED_COLOR);// 275
             }
@@ -275,6 +308,7 @@ public class FusionButton {
             }
 
             FontHelper.renderFontCentered(sb, FontHelper.panelEndTurnFont, this.label, this.current_x - 0.0F * Settings.scale, tmpY - 3.0F * Settings.scale, this.textColor);// 381
+            sb.setColor(origColor);
             if (!this.isHidden) {// 389
                 this.hb.render(sb);// 390
             }
