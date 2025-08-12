@@ -13,11 +13,11 @@ public class ThornsComponent extends AbstractSimpleApplyComponent {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public ThornsComponent(int base) {
+    public ThornsComponent(float base) {
         this(base, ComponentTarget.SELF);
     }
 
-    public ThornsComponent(int base, ComponentTarget target) {
+    public ThornsComponent(float base, ComponentTarget target) {
         super(ID, base, target);
     }
 

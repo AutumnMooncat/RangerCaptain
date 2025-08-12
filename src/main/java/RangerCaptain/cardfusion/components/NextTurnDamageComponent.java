@@ -22,11 +22,11 @@ public class NextTurnDamageComponent extends AbstractComponent {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private final AbstractGameAction.AttackEffect effect;
 
-    public NextTurnDamageComponent(int base, AbstractGameAction.AttackEffect effect) {
+    public NextTurnDamageComponent(float base, AbstractGameAction.AttackEffect effect) {
         this(base, effect, ComponentTarget.ENEMY);
     }
 
-    public NextTurnDamageComponent(int base, AbstractGameAction.AttackEffect effect, ComponentTarget target) {
+    public NextTurnDamageComponent(float base, AbstractGameAction.AttackEffect effect, ComponentTarget target) {
         super(ID, base, target == ComponentTarget.SELF ? ComponentType.APPLY : ComponentType.DAMAGE, target, target == ComponentTarget.SELF ? DynVar.MAGIC : DynVar.DAMAGE);
         this.effect = effect;
         isSimple = true;

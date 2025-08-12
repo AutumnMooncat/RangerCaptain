@@ -15,7 +15,7 @@ public class NextTurnEnergyComponent extends AbstractComponent {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public NextTurnEnergyComponent(int base) {
+    public NextTurnEnergyComponent(float base) {
         super(ID, base, ComponentType.DO, ComponentTarget.NONE, DynVar.MAGIC);
     }
 
@@ -32,10 +32,10 @@ public class NextTurnEnergyComponent extends AbstractComponent {
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
         if (dynvar == DynVar.FLAT) {
-            if (baseAmount >= 1 && baseAmount <= 3) {
-                return CARD_TEXT[baseAmount];
+            if (workingAmount >= 1 && workingAmount <= 3) {
+                return CARD_TEXT[workingAmount];
             }
-            return String.format(CARD_TEXT[4], baseAmount);
+            return String.format(CARD_TEXT[4], workingAmount);
         }
         return String.format(CARD_TEXT[0], dynKey());
     }
@@ -44,10 +44,10 @@ public class NextTurnEnergyComponent extends AbstractComponent {
     public String rawCapturedText() {
         int offset = 5;
         if (dynvar == DynVar.FLAT) {
-            if (baseAmount >= 1 && baseAmount <= 3) {
-                return CARD_TEXT[baseAmount + offset];
+            if (workingAmount >= 1 && workingAmount <= 3) {
+                return CARD_TEXT[workingAmount + offset];
             }
-            return String.format(CARD_TEXT[4 + offset], baseAmount);
+            return String.format(CARD_TEXT[4 + offset], workingAmount);
         }
         return String.format(CARD_TEXT[offset], dynKey());
     }

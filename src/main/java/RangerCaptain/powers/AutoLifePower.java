@@ -40,7 +40,7 @@ public class AutoLifePower extends AbstractComponentPower implements OnPlayerDea
         } else {
             for (AbstractComponent component : captured) {
                 if (component instanceof HealComponent) {
-                    owner.heal(component.baseAmount * amount);
+                    owner.heal(component.workingAmount * amount);
                 }
             }
         }
@@ -53,7 +53,7 @@ public class AutoLifePower extends AbstractComponentPower implements OnPlayerDea
         } else {
             for (AbstractComponent component : captured) {
                 if (component instanceof HealComponent) {
-                    owner.heal(component.baseAmount * amount);
+                    owner.heal(component.workingAmount * amount);
                     ((HealComponent) component).alreadyPerformed = true;
                 }
             }

@@ -27,11 +27,11 @@ public class DamageComponent extends AbstractComponent {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private final AbstractGameAction.AttackEffect effect;
 
-    public DamageComponent(int base, AbstractGameAction.AttackEffect effect) {
+    public DamageComponent(float base, AbstractGameAction.AttackEffect effect) {
         this(base, effect, ComponentTarget.ENEMY);
     }
 
-    public DamageComponent(int base, AbstractGameAction.AttackEffect effect, ComponentTarget target) {
+    public DamageComponent(float base, AbstractGameAction.AttackEffect effect, ComponentTarget target) {
         super(ID, base, target == ComponentTarget.SELF ? ComponentType.APPLY : ComponentType.DAMAGE, target, target == ComponentTarget.SELF ? DynVar.MAGIC : DynVar.DAMAGE);
         this.effect = effect;
         isSimple = true;

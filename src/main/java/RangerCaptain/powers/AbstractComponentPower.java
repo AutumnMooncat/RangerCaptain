@@ -77,18 +77,18 @@ public abstract class AbstractComponentPower extends AbstractEasyPower implement
             updateNormalDescription();
         } else {
             for (AbstractComponent c : captured) {
-                c.baseAmount *= amount;
+                c.workingAmount *= amount;
             }
             this.description = source.rawPowerText(captured);
             for (AbstractComponent c : captured) {
-                c.baseAmount /= amount;
+                c.workingAmount /= amount;
             }
         }
     }
 
     @Override
     public int getAmount(AbstractComponent component) {
-        return amount * component.baseAmount;
+        return amount * component.workingAmount;
     }
 
     @Override

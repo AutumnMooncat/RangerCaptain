@@ -13,11 +13,11 @@ public class StrengthComponent extends AbstractSimpleApplyComponent {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public StrengthComponent(int base) {
+    public StrengthComponent(float base) {
         this(base, ComponentTarget.SELF);
     }
 
-    public StrengthComponent(int base, ComponentTarget target) {
+    public StrengthComponent(float base, ComponentTarget target) {
         super(ID, base, target);
     }
 

@@ -14,11 +14,11 @@ public class ConductiveComponent extends AbstractSimpleApplyComponent {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public ConductiveComponent(int base) {
+    public ConductiveComponent(float base) {
         this(base, ComponentTarget.ENEMY);
     }
 
-    public ConductiveComponent(int base, ComponentTarget target) {
+    public ConductiveComponent(float base, ComponentTarget target) {
         super(ID, base, target);
     }
 

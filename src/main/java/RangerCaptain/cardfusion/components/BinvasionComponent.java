@@ -29,11 +29,11 @@ public class BinvasionComponent extends AbstractComponent {
     private final AbstractGameAction.AttackEffect effect;
     public int binvaderCount;
 
-    public BinvasionComponent(int base, AbstractGameAction.AttackEffect effect) {
+    public BinvasionComponent(float base, AbstractGameAction.AttackEffect effect) {
         this(base, 1, effect, ComponentTarget.ENEMY);
     }
 
-    public BinvasionComponent(int base, int binvaderCount, AbstractGameAction.AttackEffect effect, ComponentTarget target) {
+    public BinvasionComponent(float base, int binvaderCount, AbstractGameAction.AttackEffect effect, ComponentTarget target) {
         super(ID, base, target == ComponentTarget.SELF ? ComponentType.APPLY : ComponentType.DAMAGE, target, target == ComponentTarget.SELF ? DynVar.MAGIC : DynVar.DAMAGE);
         this.effect = effect;
         this.binvaderCount = binvaderCount;

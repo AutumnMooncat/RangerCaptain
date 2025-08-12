@@ -15,7 +15,7 @@ public class CostComponent extends AbstractTraitComponent {
 
     public CostComponent(int base) {
         super(ID);
-        baseAmount = base;
+        workingAmount = base;
     }
 
     @Override
@@ -30,8 +30,8 @@ public class CostComponent extends AbstractTraitComponent {
 
     @Override
     public void applyTraits(FusedCard card, List<AbstractComponent> captured) {
-        card.cost = Math.max(card.cost, baseAmount);
-        card.costForTurn = Math.max(card.costForTurn, baseAmount);
+        card.cost = Math.max(card.cost, workingAmount);
+        card.costForTurn = Math.max(card.costForTurn, workingAmount);
     }
 
     @Override
@@ -46,6 +46,6 @@ public class CostComponent extends AbstractTraitComponent {
 
     @Override
     public AbstractComponent makeCopy() {
-        return new CostComponent(baseAmount);
+        return new CostComponent(workingAmount);
     }
 }

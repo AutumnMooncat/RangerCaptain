@@ -17,7 +17,7 @@ public class HealComponent extends AbstractComponent {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     public boolean alreadyPerformed;
 
-    public HealComponent(int base) {
+    public HealComponent(float base) {
         super(ID, base, ComponentType.DO, ComponentTarget.SELF, DynVar.MAGIC);
     }
 

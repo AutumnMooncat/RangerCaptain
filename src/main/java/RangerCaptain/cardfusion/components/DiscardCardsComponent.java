@@ -34,11 +34,11 @@ public class DiscardCardsComponent extends AbstractComponent implements Abstract
     public boolean optional;
     public boolean random;
 
-    public DiscardCardsComponent(int base) {
+    public DiscardCardsComponent(float base) {
         this(base, false, false);
     }
 
-    public DiscardCardsComponent(int base, boolean optional, boolean random) {
+    public DiscardCardsComponent(float base, boolean optional, boolean random) {
         super(ID, base, ComponentType.DO, ComponentTarget.NONE, DynVar.MAGIC);
         this.optional = optional;
         this.random = random;
@@ -64,7 +64,7 @@ public class DiscardCardsComponent extends AbstractComponent implements Abstract
     public void receiveStacks(AbstractComponent other) {
         if (other instanceof DiscardCardsComponent) {
             optional |= ((DiscardCardsComponent) other).optional;
-            if (other.baseAmount > baseAmount) {
+            if (other.workingAmount > workingAmount) {
                 random |= ((DiscardCardsComponent) other).random;
             }
         }
@@ -93,7 +93,7 @@ public class DiscardCardsComponent extends AbstractComponent implements Abstract
         String text;
         int index = random ? 6 : optional ? 3 : 0;
         if (dynvar == DynVar.FLAT) {
-            text = baseAmount == 1 ? CARD_TEXT[index + 1] : String.format(CARD_TEXT[index + 2], baseAmount);
+            text = workingAmount == 1 ? CARD_TEXT[index + 1] : String.format(CARD_TEXT[index + 2], workingAmount);
         } else {
             text = String.format(CARD_TEXT[index], dynKey());
         }

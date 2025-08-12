@@ -24,7 +24,7 @@ public class DamageLastAttackerComponent extends AbstractComponent {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private final AbstractGameAction.AttackEffect effect;
 
-    public DamageLastAttackerComponent(int base, AbstractGameAction.AttackEffect effect) {
+    public DamageLastAttackerComponent(float base, AbstractGameAction.AttackEffect effect) {
         super(ID, base, ComponentType.DAMAGE, ComponentTarget.ENEMY_RANDOM, DynVar.DAMAGE);
         this.effect = effect;
         setFlags(Flag.CANT_COLLAPSE_TARGET_TEXT);

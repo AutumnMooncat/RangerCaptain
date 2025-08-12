@@ -31,11 +31,11 @@ public class DamageAlreadyAttackedComponent extends AbstractComponent {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private final AbstractGameAction.AttackEffect effect;
 
-    public DamageAlreadyAttackedComponent(int base, AbstractGameAction.AttackEffect effect) {
+    public DamageAlreadyAttackedComponent(float base, AbstractGameAction.AttackEffect effect) {
         this(base, effect, ComponentTarget.ENEMY);
     }
 
-    public DamageAlreadyAttackedComponent(int base, AbstractGameAction.AttackEffect effect, ComponentTarget target) {
+    public DamageAlreadyAttackedComponent(float base, AbstractGameAction.AttackEffect effect, ComponentTarget target) {
         super(ID, base, ComponentType.DAMAGE, target, DynVar.DAMAGE);
         this.effect = effect;
         setFlags(Flag.RANDOM_WHEN_CAPTURED, Flag.CANT_COLLAPSE_TARGET_TEXT);

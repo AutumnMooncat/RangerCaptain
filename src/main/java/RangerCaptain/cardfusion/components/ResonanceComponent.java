@@ -14,11 +14,11 @@ public class ResonanceComponent extends AbstractSimpleApplyComponent {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public ResonanceComponent(int base) {
+    public ResonanceComponent(float base) {
         this(base, ComponentTarget.ENEMY);
     }
 
-    public ResonanceComponent(int base, ComponentTarget target) {
+    public ResonanceComponent(float base, ComponentTarget target) {
         super(ID, base, target);
     }
 

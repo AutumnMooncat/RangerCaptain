@@ -39,11 +39,11 @@ public class StashCardsComponent extends AbstractComponent {
     public boolean optional;
     public boolean random;
 
-    public StashCardsComponent(int base) {
+    public StashCardsComponent(float base) {
         this(base, TargetPile.HAND, false, false);
     }
 
-    public StashCardsComponent(int base, TargetPile pile, boolean optional, boolean random) {
+    public StashCardsComponent(float base, TargetPile pile, boolean optional, boolean random) {
         super(ID, base, ComponentType.DO, ComponentTarget.NONE, DynVar.MAGIC);
         this.pile = pile;
         this.optional = optional;
@@ -70,7 +70,7 @@ public class StashCardsComponent extends AbstractComponent {
     public void receiveStacks(AbstractComponent other) {
         if (other instanceof StashCardsComponent) {
             optional |= ((StashCardsComponent) other).optional;
-            if (other.baseAmount > baseAmount) {
+            if (other.workingAmount > workingAmount) {
                 pile = ((StashCardsComponent) other).pile;
                 random |= ((StashCardsComponent) other).random;
             }
@@ -105,7 +105,7 @@ public class StashCardsComponent extends AbstractComponent {
         String text;
         int index = random ? 6 : optional ? 3 : 0;
         if (dynvar == DynVar.FLAT) {
-            text = baseAmount == 1 ? String.format(CARD_TEXT[index + 1], pileInsert) : String.format(CARD_TEXT[index + 2], baseAmount, pileInsert);
+            text = workingAmount == 1 ? String.format(CARD_TEXT[index + 1], pileInsert) : String.format(CARD_TEXT[index + 2], workingAmount, pileInsert);
         } else {
             text = String.format(CARD_TEXT[index], dynKey(), pileInsert);
         }

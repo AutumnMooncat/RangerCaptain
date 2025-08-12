@@ -44,11 +44,11 @@ public class MakeCardsComponent extends AbstractComponent {
     public final boolean pluralize;
     private transient AbstractCard reference;
 
-    public MakeCardsComponent(int base, AbstractCard card, boolean pluralize) {
+    public MakeCardsComponent(float base, AbstractCard card, boolean pluralize) {
         this(base, card, pluralize, Location.HAND);
     }
 
-    public MakeCardsComponent(int base, AbstractCard card, boolean pluralize, Location... locations) {
+    public MakeCardsComponent(float base, AbstractCard card, boolean pluralize, Location... locations) {
         super(ID, base, ComponentType.DO, ComponentTarget.NONE, DynVar.MAGIC);
         this.locations.addAll(Arrays.stream(locations).distinct().collect(Collectors.toList()));
         this.cardID = card.cardID;
@@ -56,7 +56,7 @@ public class MakeCardsComponent extends AbstractComponent {
         this.pluralize = pluralize;
     }
 
-    public MakeCardsComponent(int base, String cardID, boolean pluralize, Location... locations) {
+    public MakeCardsComponent(float base, String cardID, boolean pluralize, Location... locations) {
         this(base, CardLibrary.getCard(cardID), pluralize, locations);
     }
 
@@ -149,7 +149,7 @@ public class MakeCardsComponent extends AbstractComponent {
             index = 3;
         }
         if (dynvar == DynVar.FLAT) {
-            return baseAmount == 1 ? String.format(CARD_TEXT[index + 1], name, locationText()) : String.format(CARD_TEXT[index + 2], baseAmount, pluralize ? name + S : name, locationText());
+            return workingAmount == 1 ? String.format(CARD_TEXT[index + 1], name, locationText()) : String.format(CARD_TEXT[index + 2], workingAmount, pluralize ? name + S : name, locationText());
         }
         return String.format(CARD_TEXT[index], dynKey(), name, pluralize ? S : "", locationText());
     }

@@ -23,7 +23,7 @@ public class ScaleDamageComponent extends AbstractComponent {
         this(0);
     }
 
-    public ScaleDamageComponent(int base) {
+    public ScaleDamageComponent(float base) {
         super(ID, base, ComponentType.DO, ComponentTarget.NONE, base == 0 ? DynVar.NONE : DynVar.MAGIC);
     }
 
@@ -47,7 +47,7 @@ public class ScaleDamageComponent extends AbstractComponent {
 
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
-        if (baseAmount == 0) {
+        if (workingAmount == 0) {
             return pluralize ? CARD_TEXT[2] : CARD_TEXT[1];
         }
         return String.format(CARD_TEXT[0], dynKey());
@@ -80,7 +80,7 @@ public class ScaleDamageComponent extends AbstractComponent {
             addToBot(new DoAction(() -> {
                 for (AbstractComponent component : ((AbstractComponentPower) provider).captured) {
                     if (component.type == ComponentType.DAMAGE) {
-                        component.baseAmount += finalAmount;
+                        component.workingAmount += finalAmount;
                     }
                 }
                 ((AbstractComponentPower) provider).updateDescription();

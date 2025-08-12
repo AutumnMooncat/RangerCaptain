@@ -14,11 +14,11 @@ public class BurnComponent extends AbstractSimpleApplyComponent {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public BurnComponent(int base) {
+    public BurnComponent(float base) {
         this(base, ComponentTarget.ENEMY);
     }
 
-    public BurnComponent(int base, ComponentTarget target) {
+    public BurnComponent(float base, ComponentTarget target) {
         super(ID, base, target);
     }
 

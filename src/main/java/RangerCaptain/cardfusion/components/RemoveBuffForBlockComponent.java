@@ -53,7 +53,7 @@ public class RemoveBuffForBlockComponent extends AbstractComponent {
 
     @Override
     public void postAssignment(FusedCard card, List<AbstractComponent> otherComponents) {
-        baseAmount = otherComponents.stream().filter(c -> c.dynvar == DynVar.BLOCK).map(c -> c.baseAmount).findFirst().orElse(-1);
+        workingAmount = otherComponents.stream().filter(c -> c.dynvar == DynVar.BLOCK).map(c -> c.workingAmount).findFirst().orElse(-1);
         dynvar = DynVar.BLOCK;
     }
 

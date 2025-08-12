@@ -19,7 +19,7 @@ public abstract class AbstractApplyComponent extends AbstractComponent {
     public static final String[] BASE_DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(BASE_ID).TEXT;
     public static final String[] BASE_CARD_TEXT = CardCrawlGame.languagePack.getUIString(BASE_ID).EXTRA_TEXT;
 
-    public AbstractApplyComponent(String ID, int base, ComponentTarget target) {
+    public AbstractApplyComponent(String ID, float base, ComponentTarget target) {
         super(ID, base, ComponentType.APPLY, target, DynVar.MAGIC);
     }
 

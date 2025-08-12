@@ -15,7 +15,7 @@ public class AddEnergyOnKillDamageComponent extends AbstractDamageModComponent {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public AddEnergyOnKillDamageComponent(int base) {
+    public AddEnergyOnKillDamageComponent(float base) {
         super(ID, base);
     }
 
@@ -36,10 +36,10 @@ public class AddEnergyOnKillDamageComponent extends AbstractDamageModComponent {
 
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
-        if (baseAmount >= 1 && baseAmount <= 3) {
-            return CARD_TEXT[baseAmount];
+        if (workingAmount >= 1 && workingAmount <= 3) {
+            return CARD_TEXT[workingAmount];
         }
-        return String.format(CARD_TEXT[0], baseAmount);
+        return String.format(CARD_TEXT[0], workingAmount);
     }
 
     @Override

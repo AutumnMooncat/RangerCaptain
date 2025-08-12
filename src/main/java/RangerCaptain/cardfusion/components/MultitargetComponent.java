@@ -13,7 +13,7 @@ public class MultitargetComponent extends AbstractSimpleApplyComponent {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public MultitargetComponent(int base) {
+    public MultitargetComponent(float base) {
         super(ID, base, ComponentTarget.SELF);
     }
 

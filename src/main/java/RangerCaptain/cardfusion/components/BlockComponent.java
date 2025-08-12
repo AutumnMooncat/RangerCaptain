@@ -17,11 +17,11 @@ public class BlockComponent extends AbstractComponent {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public BlockComponent(int base) {
+    public BlockComponent(float base) {
         this(base, ComponentTarget.SELF);
     }
 
-    public BlockComponent(int base, ComponentTarget target) {
+    public BlockComponent(float base, ComponentTarget target) {
         super(ID, base, ComponentType.BLOCK, target, DynVar.BLOCK);
         isSimple = true;
     }

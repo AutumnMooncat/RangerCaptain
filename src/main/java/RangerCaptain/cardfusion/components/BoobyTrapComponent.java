@@ -20,11 +20,11 @@ public class BoobyTrapComponent extends AbstractComponent {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     public static final int BASE_DAMAGE = 50;
 
-    public BoobyTrapComponent(int base) {
+    public BoobyTrapComponent(float base) {
         this(base, ComponentTarget.ENEMY);
     }
 
-    public BoobyTrapComponent(int base, ComponentTarget target) {
+    public BoobyTrapComponent(float base, ComponentTarget target) {
         super(ID, base, ComponentType.DO, target, DynVar.FLAT);
         setFlags(Flag.CANT_BE_CAPTURED);
     }
@@ -41,7 +41,7 @@ public class BoobyTrapComponent extends AbstractComponent {
 
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
-        return String.format(CARD_TEXT[target.ordinal()], BASE_DAMAGE/baseAmount);
+        return String.format(CARD_TEXT[target.ordinal()], BASE_DAMAGE/ workingAmount);
     }
 
     @Override

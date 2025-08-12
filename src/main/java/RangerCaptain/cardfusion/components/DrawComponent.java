@@ -23,7 +23,7 @@ public class DrawComponent extends AbstractComponent {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     public static final String FOR_EACH = DESCRIPTION_TEXT[1];
 
-    public DrawComponent(int base) {
+    public DrawComponent(float base) {
         super(ID, base, ComponentType.DO, ComponentTarget.NONE, DynVar.MAGIC);
     }
 
@@ -62,7 +62,7 @@ public class DrawComponent extends AbstractComponent {
     public String rawCardText(List<AbstractComponent> captured) {
         String text;
         if (dynvar == DynVar.FLAT) {
-            text = baseAmount == 1 ? CARD_TEXT[1] : String.format(CARD_TEXT[2], baseAmount);
+            text = workingAmount == 1 ? CARD_TEXT[1] : String.format(CARD_TEXT[2], workingAmount);
         } else {
             text = String.format(CARD_TEXT[0], dynKey());
         }

@@ -113,7 +113,8 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
     public ComponentTarget target;
     public DynVar dynvar;
     public MonsterEnum source;
-    public int baseAmount;
+    public int workingAmount;
+    public float baseAmount;
     public float floatingAmount;
     public int baseCost;
     public int priority;
@@ -121,10 +122,11 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
     public boolean wasCaptured;
     public final ArrayList<AbstractComponent> capturedComponents = new ArrayList<>();
 
-    public AbstractComponent(String ID, int baseAmount, ComponentType type, ComponentTarget target, DynVar desiredDynvar) {
+    public AbstractComponent(String ID, float baseAmount, ComponentType type, ComponentTarget target, DynVar desiredDynvar) {
         this.identifier = ID;
         this.type = type;
         this.target = target;
+        this.workingAmount = (int) baseAmount;
         this.baseAmount = baseAmount;
         this.floatingAmount = baseAmount;
         setDynVar(desiredDynvar);
@@ -288,7 +290,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
             case MAGIC3:
                 return M3;
             case FLAT:
-                return String.valueOf(baseAmount);
+                return String.valueOf(workingAmount);
             default:
                 return "";
         }
@@ -630,7 +632,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
             if (component.floatingAmount - (int) component.floatingAmount > 0.9f) {
                 adjust = 1;
             }
-            component.baseAmount = Math.max(1, (int) component.floatingAmount + adjust);
+            component.workingAmount = Math.max(1, (int) component.floatingAmount + adjust);
         }
     }
 
@@ -642,9 +644,9 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
             switch (desired) {
                 case DAMAGE:
                 case DAMAGE2:
-                    if (occupied.getOrDefault(DynVar.DAMAGE, c.baseAmount) == c.baseAmount) {
+                    if (occupied.getOrDefault(DynVar.DAMAGE, c.workingAmount) == c.workingAmount) {
                         c.setDynVar(DynVar.DAMAGE);
-                    } else if (occupied.getOrDefault(DynVar.DAMAGE2, c.baseAmount) == c.baseAmount) {
+                    } else if (occupied.getOrDefault(DynVar.DAMAGE2, c.workingAmount) == c.workingAmount) {
                         c.setDynVar(DynVar.DAMAGE2);
                     } else {
                         c.setDynVar(DynVar.FLAT);
@@ -652,9 +654,9 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
                     break;
                 case BLOCK:
                 case BLOCK2:
-                    if (occupied.getOrDefault(DynVar.BLOCK, c.baseAmount) == c.baseAmount) {
+                    if (occupied.getOrDefault(DynVar.BLOCK, c.workingAmount) == c.workingAmount) {
                         c.setDynVar(DynVar.BLOCK);
-                    } else if (occupied.getOrDefault(DynVar.BLOCK2, c.baseAmount) == c.baseAmount) {
+                    } else if (occupied.getOrDefault(DynVar.BLOCK2, c.workingAmount) == c.workingAmount) {
                         c.setDynVar(DynVar.BLOCK2);
                     } else {
                         c.setDynVar(DynVar.FLAT);
@@ -663,18 +665,18 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
                 case MAGIC:
                 case MAGIC2:
                 case MAGIC3:
-                    if (occupied.getOrDefault(DynVar.MAGIC, c.baseAmount) == c.baseAmount) {
+                    if (occupied.getOrDefault(DynVar.MAGIC, c.workingAmount) == c.workingAmount) {
                         c.setDynVar(DynVar.MAGIC);
-                    } else if (occupied.getOrDefault(DynVar.MAGIC2, c.baseAmount) == c.baseAmount) {
+                    } else if (occupied.getOrDefault(DynVar.MAGIC2, c.workingAmount) == c.workingAmount) {
                         c.setDynVar(DynVar.MAGIC2);
-                    } else if (occupied.getOrDefault(DynVar.MAGIC3, c.baseAmount) == c.baseAmount) {
+                    } else if (occupied.getOrDefault(DynVar.MAGIC3, c.workingAmount) == c.workingAmount) {
                         c.setDynVar(DynVar.MAGIC3);
                     } else {
                         c.setDynVar(DynVar.FLAT);
                     }
                     break;
             }
-            occupied.put(c.dynvar, c.baseAmount);
+            occupied.put(c.dynvar, c.workingAmount);
         }
     }
 

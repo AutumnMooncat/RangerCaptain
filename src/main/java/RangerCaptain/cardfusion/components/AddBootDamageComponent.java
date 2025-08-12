@@ -33,11 +33,11 @@ public class AddBootDamageComponent extends AbstractDamageModComponent {
     public void postAssignment(FusedCard card, List<AbstractComponent> otherComponents) {
         for (AbstractComponent other : otherComponents) {
             if (other.type == ComponentType.DAMAGE) {
-                baseAmount = Math.max(baseAmount, other.baseAmount);
+                workingAmount = Math.max(workingAmount, other.workingAmount);
             }
         }
-        if (baseAmount != 0) {
-            DamageModifierManager.addModifier(card, getDamageMod(baseAmount));
+        if (workingAmount != 0) {
+            DamageModifierManager.addModifier(card, getDamageMod(workingAmount));
         }
     }
 
@@ -53,7 +53,7 @@ public class AddBootDamageComponent extends AbstractDamageModComponent {
 
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
-        return String.format(CARD_TEXT[0], baseAmount-1, baseAmount);
+        return String.format(CARD_TEXT[0], workingAmount -1, workingAmount);
     }
 
     @Override

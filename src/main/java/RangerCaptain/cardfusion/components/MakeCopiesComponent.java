@@ -36,11 +36,11 @@ public class MakeCopiesComponent extends AbstractComponent {
     public final ArrayList<Location> locations = new ArrayList<>();
     private transient FusedCard reference;
 
-    public MakeCopiesComponent(int base) {
+    public MakeCopiesComponent(float base) {
         this(base, Location.HAND);
     }
 
-    public MakeCopiesComponent(int base, Location... locations) {
+    public MakeCopiesComponent(float base, Location... locations) {
         super(ID, base, ComponentType.DO, ComponentTarget.NONE, DynVar.MAGIC);
         this.locations.addAll(Arrays.stream(locations).distinct().collect(Collectors.toList()));
     }
@@ -113,7 +113,7 @@ public class MakeCopiesComponent extends AbstractComponent {
             index = 3;
         }
         if (dynvar == DynVar.FLAT) {
-            return baseAmount == 1 ? String.format(CARD_TEXT[index + 1], locationText()) : String.format(CARD_TEXT[index + 2], baseAmount, locationText());
+            return workingAmount == 1 ? String.format(CARD_TEXT[index + 1], locationText()) : String.format(CARD_TEXT[index + 2], workingAmount, locationText());
         }
         return String.format(CARD_TEXT[index], dynKey(), locationText());
     }

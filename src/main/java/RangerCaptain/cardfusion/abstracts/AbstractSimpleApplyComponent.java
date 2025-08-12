@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public abstract class AbstractSimpleApplyComponent extends AbstractApplyComponent {
 
-    public AbstractSimpleApplyComponent(String ID, int base, ComponentTarget target) {
+    public AbstractSimpleApplyComponent(String ID, float base, ComponentTarget target) {
         super(ID, base, target);
         isSimple = true;
     }

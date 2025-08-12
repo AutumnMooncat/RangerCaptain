@@ -22,37 +22,37 @@ public class FusionComponentHelper {
         this.components = new ArrayList<>();
     }
 
-    public FusionComponentHelper withDamage(int damage, AbstractGameAction.AttackEffect effect) {
+    public FusionComponentHelper withDamage(float damage, AbstractGameAction.AttackEffect effect) {
         this.components.add(new DamageComponent(damage, effect));
         return this;
     }
 
-    public FusionComponentHelper withDamageRandom(int damage, AbstractGameAction.AttackEffect effect) {
+    public FusionComponentHelper withDamageRandom(float damage, AbstractGameAction.AttackEffect effect) {
         this.components.add(new DamageComponent(damage, effect, AbstractComponent.ComponentTarget.ENEMY_RANDOM));
         return this;
     }
 
-    public FusionComponentHelper withDamageAOE(int damage, AbstractGameAction.AttackEffect effect) {
+    public FusionComponentHelper withDamageAOE(float damage, AbstractGameAction.AttackEffect effect) {
         this.components.add(new DamageComponent(damage, effect, AbstractComponent.ComponentTarget.ENEMY_AOE));
         return this;
     }
 
-    public FusionComponentHelper withMultiDamage(int damage, int hits, AbstractGameAction.AttackEffect effect) {
+    public FusionComponentHelper withMultiDamage(float damage, int hits, AbstractGameAction.AttackEffect effect) {
         this.components.add(new MultiDamageComponent(damage, hits, effect));
         return this;
     }
 
-    public FusionComponentHelper withMultiDamageRandom(int damage, int hits, AbstractGameAction.AttackEffect effect) {
+    public FusionComponentHelper withMultiDamageRandom(float damage, int hits, AbstractGameAction.AttackEffect effect) {
         this.components.add(new MultiDamageComponent(damage, hits, effect, AbstractComponent.ComponentTarget.ENEMY_RANDOM));
         return this;
     }
 
-    public FusionComponentHelper withMultiDamageAOE(int damage, int hits, AbstractGameAction.AttackEffect effect) {
+    public FusionComponentHelper withMultiDamageAOE(float damage, int hits, AbstractGameAction.AttackEffect effect) {
         this.components.add(new MultiDamageComponent(damage, hits, effect, AbstractComponent.ComponentTarget.ENEMY_AOE));
         return this;
     }
 
-    public FusionComponentHelper withBlock(int block) {
+    public FusionComponentHelper withBlock(float block) {
         this.components.add(new BlockComponent(block));
         return this;
     }

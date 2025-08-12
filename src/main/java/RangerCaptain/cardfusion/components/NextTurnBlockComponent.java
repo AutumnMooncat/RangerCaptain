@@ -17,11 +17,11 @@ public class NextTurnBlockComponent extends AbstractComponent {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public NextTurnBlockComponent(int base) {
+    public NextTurnBlockComponent(float base) {
         this(base, ComponentTarget.SELF);
     }
 
-    public NextTurnBlockComponent(int base, ComponentTarget target) {
+    public NextTurnBlockComponent(float base, ComponentTarget target) {
         super(ID, base, ComponentType.BLOCK, target, DynVar.BLOCK);
         isSimple = true;
     }

@@ -17,11 +17,11 @@ public class TempStrengthComponent extends AbstractTempApplyComponent {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public TempStrengthComponent(int base) {
+    public TempStrengthComponent(float base) {
         this(base, ComponentTarget.SELF, true);
     }
 
-    public TempStrengthComponent(int base, ComponentTarget target, boolean increase) {
+    public TempStrengthComponent(float base, ComponentTarget target, boolean increase) {
         super(ID, base, target, increase);
     }
 

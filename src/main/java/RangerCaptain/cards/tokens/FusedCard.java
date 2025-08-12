@@ -223,7 +223,7 @@ public class FusedCard extends AbstractEasyCard implements AbstractComponent.Com
             case MAGIC3:
                 return thirdMagic * effect;
             case FLAT:
-                return component.baseAmount;
+                return component.workingAmount;
             default:
                 return -1;
         }
@@ -239,25 +239,25 @@ public class FusedCard extends AbstractEasyCard implements AbstractComponent.Com
         for (AbstractComponent component : components) {
             switch (component.dynvar) {
                 case DAMAGE:
-                    baseDamage = damage = component.baseAmount;
+                    baseDamage = damage = component.workingAmount;
                     break;
                 case DAMAGE2:
-                    baseSecondDamage = secondDamage = component.baseAmount;
+                    baseSecondDamage = secondDamage = component.workingAmount;
                     break;
                 case BLOCK:
-                    baseBlock = block = component.baseAmount;
+                    baseBlock = block = component.workingAmount;
                     break;
                 case BLOCK2:
-                    baseSecondBlock = secondBlock = component.baseAmount;
+                    baseSecondBlock = secondBlock = component.workingAmount;
                     break;
                 case MAGIC:
-                    baseMagicNumber = magicNumber = component.baseAmount;
+                    baseMagicNumber = magicNumber = component.workingAmount;
                     break;
                 case MAGIC2:
-                    baseSecondMagic = secondMagic = component.baseAmount;
+                    baseSecondMagic = secondMagic = component.workingAmount;
                     break;
                 case MAGIC3:
-                    baseThirdMagic = thirdMagic = component.baseAmount;
+                    baseThirdMagic = thirdMagic = component.workingAmount;
                     break;
                 default:
                     break;

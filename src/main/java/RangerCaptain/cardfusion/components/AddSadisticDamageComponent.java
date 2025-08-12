@@ -15,7 +15,7 @@ public class AddSadisticDamageComponent extends AbstractDamageModComponent {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public AddSadisticDamageComponent(int base) {
+    public AddSadisticDamageComponent(float base) {
         super(ID, base);
     }
 
@@ -36,7 +36,7 @@ public class AddSadisticDamageComponent extends AbstractDamageModComponent {
 
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
-        return String.format(CARD_TEXT[0], baseAmount);
+        return String.format(CARD_TEXT[0], workingAmount);
     }
 
     @Override

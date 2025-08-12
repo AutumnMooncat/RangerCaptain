@@ -15,7 +15,7 @@ public class TempThornsComponent extends AbstractTempApplyComponent {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public TempThornsComponent(int base) {
+    public TempThornsComponent(float base) {
         super(ID, base, ComponentTarget.SELF, true);
     }
 

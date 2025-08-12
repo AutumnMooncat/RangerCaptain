@@ -14,16 +14,15 @@ public abstract class AbstractDamageModComponent extends AbstractComponent {
         setFlags(Flag.REQUIRES_DAMAGE);
     }
 
-    public AbstractDamageModComponent(String ID, int base) {
+    public AbstractDamageModComponent(String ID, float base) {
         super(ID, base, ComponentType.MODIFIER, ComponentTarget.NONE, base == -1 ? DynVar.NONE : DynVar.FLAT);
-        baseAmount = base;
     }
 
     public abstract AbstractDamageModifier getDamageMod(int amount);
 
     @Override
     public void applyTraits(FusedCard card, List<AbstractComponent> captured) {
-        DamageModifierManager.addModifier(card, getDamageMod(baseAmount));
+        DamageModifierManager.addModifier(card, getDamageMod(workingAmount));
     }
 
     @Override

@@ -15,7 +15,7 @@ public class SuitUpComponent extends AbstractComponent {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public SuitUpComponent(int base) {
+    public SuitUpComponent(float base) {
         super(ID, base, ComponentType.DO, ComponentTarget.SELF, DynVar.MAGIC);
     }
 
@@ -32,7 +32,7 @@ public class SuitUpComponent extends AbstractComponent {
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
         if (dynvar == DynVar.FLAT) {
-            return baseAmount == 1 ? CARD_TEXT[1] : String.format(CARD_TEXT[2], baseAmount);
+            return workingAmount == 1 ? CARD_TEXT[1] : String.format(CARD_TEXT[2], workingAmount);
         }
         return String.format(CARD_TEXT[0], dynKey());
     }
@@ -40,7 +40,7 @@ public class SuitUpComponent extends AbstractComponent {
     @Override
     public String rawCapturedText() {
         if (dynvar == DynVar.FLAT) {
-            return baseAmount == 1 ? CARD_TEXT[4] : String.format(CARD_TEXT[5], baseAmount);
+            return workingAmount == 1 ? CARD_TEXT[4] : String.format(CARD_TEXT[5], workingAmount);
         }
         return String.format(CARD_TEXT[3], dynKey());
     }

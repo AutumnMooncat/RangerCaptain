@@ -36,7 +36,7 @@ public class AddConductiveDamageComponent extends AbstractDamageModComponent {
 
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
-        return String.format(CARD_TEXT[0], baseAmount);
+        return String.format(CARD_TEXT[0], workingAmount);
     }
 
     @Override

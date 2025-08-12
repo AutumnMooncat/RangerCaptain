@@ -14,11 +14,11 @@ public class PoisonComponent extends AbstractSimpleApplyComponent {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public PoisonComponent(int base) {
+    public PoisonComponent(float base) {
         this(base, ComponentTarget.ENEMY);
     }
 
-    public PoisonComponent(int base, ComponentTarget target) {
+    public PoisonComponent(float base, ComponentTarget target) {
         super(ID, base, target);
     }
 

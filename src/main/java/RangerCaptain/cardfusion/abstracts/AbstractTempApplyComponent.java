@@ -11,7 +11,7 @@ public abstract class AbstractTempApplyComponent extends AbstractApplyComponent 
     public static final String[] TEMP_CARD_TEXT = CardCrawlGame.languagePack.getUIString(TEMP_ID).EXTRA_TEXT;
     public boolean increase;
 
-    public AbstractTempApplyComponent(String ID, int base, ComponentTarget target, boolean increase) {
+    public AbstractTempApplyComponent(String ID, float base, ComponentTarget target, boolean increase) {
         super(ID, base, target);
         this.increase = increase;
         this.isSimple = true;

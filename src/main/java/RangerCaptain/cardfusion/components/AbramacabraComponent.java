@@ -15,7 +15,7 @@ public class AbramacabraComponent extends AbstractComponent {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public AbramacabraComponent(int base) {
+    public AbramacabraComponent(float base) {
         super(ID, base, ComponentType.DO, ComponentTarget.SELF, DynVar.MAGIC);
     }
 

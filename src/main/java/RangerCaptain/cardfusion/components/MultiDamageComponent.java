@@ -25,11 +25,11 @@ public class MultiDamageComponent extends AbstractComponent {
     private final AbstractGameAction.AttackEffect effect;
     private int hits;
 
-    public MultiDamageComponent(int base, int hits, AbstractGameAction.AttackEffect effect) {
+    public MultiDamageComponent(float base, int hits, AbstractGameAction.AttackEffect effect) {
         this(base, hits, effect, ComponentTarget.ENEMY);
     }
 
-    public MultiDamageComponent(int base, int hits, AbstractGameAction.AttackEffect effect, ComponentTarget target) {
+    public MultiDamageComponent(float base, int hits, AbstractGameAction.AttackEffect effect, ComponentTarget target) {
         super(ID, base, target == ComponentTarget.SELF ? ComponentType.APPLY : ComponentType.DAMAGE, target, target == ComponentTarget.SELF ? DynVar.MAGIC : DynVar.DAMAGE);
         this.effect = effect;
         this.hits = hits;

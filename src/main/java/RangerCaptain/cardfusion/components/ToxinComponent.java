@@ -13,11 +13,11 @@ public class ToxinComponent extends AbstractSimpleApplyComponent {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public ToxinComponent(int base) {
+    public ToxinComponent(float base) {
         this(base, ComponentTarget.ENEMY);
     }
 
-    public ToxinComponent(int base, ComponentTarget target) {
+    public ToxinComponent(float base, ComponentTarget target) {
         super(ID, base, target);
     }
 

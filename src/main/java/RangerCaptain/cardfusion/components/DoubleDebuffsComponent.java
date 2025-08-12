@@ -22,11 +22,11 @@ public class DoubleDebuffsComponent extends AbstractComponent {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private boolean wasAOE;
 
-    public DoubleDebuffsComponent(int base) {
+    public DoubleDebuffsComponent(float base) {
         this(base, ComponentTarget.ENEMY);
     }
 
-    public DoubleDebuffsComponent(int base, ComponentTarget target) {
+    public DoubleDebuffsComponent(float base, ComponentTarget target) {
         super(ID, base, ComponentType.DO, target, DynVar.FLAT);
         setFlags(Flag.TARGETLESS_WHEN_CAPTURED);
     }
@@ -58,7 +58,7 @@ public class DoubleDebuffsComponent extends AbstractComponent {
         if (target == ComponentTarget.NONE) {
             index -= wasAOE ? 2 : 4;
         }
-        return baseAmount == 1 ? CARD_TEXT[index] : String.format(CARD_TEXT[index + 1], dynKey());
+        return workingAmount == 1 ? CARD_TEXT[index] : String.format(CARD_TEXT[index + 1], dynKey());
     }
 
     @Override

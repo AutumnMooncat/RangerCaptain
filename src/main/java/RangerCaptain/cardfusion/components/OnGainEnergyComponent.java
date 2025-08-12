@@ -60,7 +60,7 @@ public class OnGainEnergyComponent extends AbstractPowerComponent {
             }
         }
         for (AbstractComponent comp : captured) {
-            comp.baseAmount = provider.getAmount(comp);
+            comp.workingAmount = provider.getAmount(comp);
             if (comp.dynvar != DynVar.NONE) {
                 comp.dynvar = DynVar.FLAT;
             }

@@ -19,11 +19,11 @@ public class TapeJamComponent extends AbstractComponent {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public TapeJamComponent(int base) {
+    public TapeJamComponent(float base) {
         this(base, ComponentTarget.ENEMY);
     }
 
-    public TapeJamComponent(int base, ComponentTarget target) {
+    public TapeJamComponent(float base, ComponentTarget target) {
         super(ID, base, ComponentType.DO, target, DynVar.MAGIC);
         setFlags(Flag.CANT_BE_CAPTURED);
     }
@@ -43,7 +43,7 @@ public class TapeJamComponent extends AbstractComponent {
         int index = target.ordinal();
         if (dynvar == DynVar.FLAT) {
             index += ComponentTarget.values().length;
-            if (baseAmount > 1) {
+            if (workingAmount > 1) {
                 index += ComponentTarget.values().length;
             }
         }

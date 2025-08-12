@@ -13,11 +13,11 @@ public class VulnerableComponent extends AbstractSimpleApplyComponent {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public VulnerableComponent(int base) {
+    public VulnerableComponent(float base) {
         this(base, ComponentTarget.ENEMY);
     }
 
-    public VulnerableComponent(int base, ComponentTarget target) {
+    public VulnerableComponent(float base, ComponentTarget target) {
         super(ID, base, target);
     }
 

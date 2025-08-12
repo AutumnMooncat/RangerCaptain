@@ -22,7 +22,7 @@ public class EnergyIfDebuffComponent extends AbstractComponent {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private final Color GOLD_COLOR = Color.GOLD.cpy();
 
-    public EnergyIfDebuffComponent(int base) {
+    public EnergyIfDebuffComponent(float base) {
         super(ID, base, ComponentType.DO, ComponentTarget.ENEMY, DynVar.MAGIC);
     }
 
@@ -39,10 +39,10 @@ public class EnergyIfDebuffComponent extends AbstractComponent {
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
         if (dynvar == DynVar.FLAT) {
-            if (baseAmount >= 1 && baseAmount <= 3) {
-                return CARD_TEXT[baseAmount];
+            if (workingAmount >= 1 && workingAmount <= 3) {
+                return CARD_TEXT[workingAmount];
             }
-            return String.format(CARD_TEXT[4], baseAmount);
+            return String.format(CARD_TEXT[4], workingAmount);
         }
         return String.format(CARD_TEXT[0], dynKey());
     }

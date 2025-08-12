@@ -13,11 +13,11 @@ public class VigorComponent extends AbstractSimpleApplyComponent {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public VigorComponent(int base) {
+    public VigorComponent(float base) {
         this(base, ComponentTarget.SELF);
     }
 
-    public VigorComponent(int base, ComponentTarget target) {
+    public VigorComponent(float base, ComponentTarget target) {
         super(ID, base, target);
     }
 

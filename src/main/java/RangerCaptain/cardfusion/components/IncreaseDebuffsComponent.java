@@ -19,11 +19,11 @@ public class IncreaseDebuffsComponent extends AbstractComponent {
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public IncreaseDebuffsComponent(int base) {
+    public IncreaseDebuffsComponent(float base) {
         this(base, ComponentTarget.ENEMY);
     }
 
-    public IncreaseDebuffsComponent(int base, ComponentTarget target) {
+    public IncreaseDebuffsComponent(float base, ComponentTarget target) {
         super(ID, base, ComponentType.DO, target, DynVar.MAGIC);
     }
 
