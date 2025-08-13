@@ -10,8 +10,7 @@ import RangerCaptain.cards.interfaces.OnReceiveDebuffCard;
 import RangerCaptain.icons.IconContainer;
 import RangerCaptain.patches.CardCounterPatches;
 import RangerCaptain.patches.GlowChangePatch;
-import RangerCaptain.powers.BracedPower;
-import RangerCaptain.powers.StaggerPower;
+import RangerCaptain.powers.*;
 import RangerCaptain.relics.AbstractEasyRelic;
 import RangerCaptain.screens.FusionScreen;
 import RangerCaptain.ui.StashedCardManager;
@@ -280,8 +279,13 @@ public class MainModfile implements
         BaseMod.registerModBadge(badgeTexture, EXTRA_TEXT[0], AUTHOR, EXTRA_TEXT[1], settingsPanel);
 
         //Add Powers
-        BaseMod.addPower(BracedPower.class, BracedPower.POWER_ID);
-        BaseMod.addPower(StaggerPower.class, StaggerPower.POWER_ID);
+        BaseMod.addPower(ToxinPower.class, ToxinPower.POWER_ID);
+        BaseMod.addPower(ConductivePower.class, ConductivePower.POWER_ID);
+        BaseMod.addPower(BurnedPower.class, BurnedPower.POWER_ID);
+        BaseMod.addPower(ResonancePower.class, ResonancePower.POWER_ID);
+        BaseMod.addPower(TapeJamPower.class, TapeJamPower.POWER_ID);
+        BaseMod.addPower(MultitargetPower.class, MultitargetPower.POWER_ID);
+        BaseMod.addPower(BoobyTrappedPower.class, BoobyTrappedPower.POWER_ID);
 
         //Wide Potions
         if (Loader.isModLoaded("widepotions")) {
