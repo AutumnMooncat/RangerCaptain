@@ -6,6 +6,7 @@ import RangerCaptain.cardfusion.components.BinvasionComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.cards.interfaces.ManuallySizeAdjustedCard;
 import RangerCaptain.cards.interfaces.OnOtherCardStashedCard;
+import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.Wiz;
 import basemod.abstracts.CustomSavable;
@@ -45,6 +46,7 @@ public class FusedCard extends AbstractEasyCard implements AbstractComponent.Com
     public FusedCard(List<AbstractComponent> components) {
         super(ID, 0, CardType.SKILL, CardRarity.SPECIAL, CardTarget.NONE);
         processComponents(components);
+        CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
 
     @Override
@@ -112,17 +114,17 @@ public class FusedCard extends AbstractEasyCard implements AbstractComponent.Com
     }
 
     @Override
-    public boolean canUpgrade() {
-        return super.canUpgrade() && (getUpgradeMult() != 1f || cost > 0);
-    }
-
-    @Override
     public AbstractCard makeCopy() {
         FusedCard copy = new FusedCard(originals);
         for (AbstractComponent component : components) {
             component.onMakeCopy(this, copy);
         }
         return copy;
+    }
+
+    @Override
+    public boolean canUpgrade() {
+        return super.canUpgrade() && (getUpgradeMult() != 1f || cost > 0);
     }
 
     @Override
@@ -161,10 +163,6 @@ public class FusedCard extends AbstractEasyCard implements AbstractComponent.Com
         }
     }
 
-    public int binvasionCount() {
-        return components.stream().filter(c -> c instanceof BinvasionComponent).map(c -> ((BinvasionComponent) c).binvaderCount).reduce(0, Integer::sum);
-    }
-
     private float getUpgradeMult() {
         boolean hasDamage = baseDamage > 0 || baseSecondDamage > 0;
         boolean hasBlock = baseBlock > 0 || baseSecondBlock > 0;
@@ -180,18 +178,9 @@ public class FusedCard extends AbstractEasyCard implements AbstractComponent.Com
         return mult;
     }
 
-    /*@Override
-    public void addUpgrades() {
-        addUpgradeData(this::upgrade0);
-        addUpgradeData(this::upgrade1);
-        setExclusions(0, 1);
+    public int binvasionCount() {
+        return components.stream().filter(c -> c instanceof BinvasionComponent).map(c -> ((BinvasionComponent) c).binvaderCount).reduce(0, Integer::sum);
     }
-
-    public void upgrade0() {
-    }
-
-    public void upgrade1() {
-    }*/
 
     @Override
     public int getAmount(AbstractComponent component) {
