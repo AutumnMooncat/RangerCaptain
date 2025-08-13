@@ -53,7 +53,7 @@ public abstract class AbstractApplyComponent extends AbstractComponent {
     @Override
     public boolean captures(AbstractComponent other) {
         if (other instanceof AbstractApplyComponent && target == ComponentTarget.ENEMY_AOE && other.target == ComponentTarget.ENEMY_AOE) {
-            return true;
+            return !shouldStack(other);
         }
         return super.captures(other);
     }
