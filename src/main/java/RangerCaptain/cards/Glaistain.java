@@ -5,7 +5,6 @@ import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.components.DamageComponent;
 import RangerCaptain.cardfusion.components.OnPerformFusionComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
-import RangerCaptain.cards.interfaces.ManuallySizeAdjustedCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.powers.GlassBondsPower;
 import RangerCaptain.util.CardArtRoller;
@@ -19,7 +18,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static RangerCaptain.MainModfile.makeID;
 
-public class Glaistain extends AbstractEasyCard implements ManuallySizeAdjustedCard {
+public class Glaistain extends AbstractEasyCard {
     public final static String ID = makeID(Glaistain.class.getSimpleName());
 
     static {
@@ -54,10 +53,5 @@ public class Glaistain extends AbstractEasyCard implements ManuallySizeAdjustedC
     @Override
     public CardArtRoller.ReskinInfo reskinInfo(String ID) {
         return new CardArtRoller.ReskinInfo(ID, BLUE, WHITE, BLUE, WHITE, false);
-    }
-
-    @Override
-    public float getAdjustedScale() {
-        return 1f;
     }
 }
