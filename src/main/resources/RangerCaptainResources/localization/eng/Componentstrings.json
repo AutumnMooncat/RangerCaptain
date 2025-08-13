@@ -300,7 +300,12 @@
       "Enemy will intend to attack EVERYONE for %s damage this turn",
       "A random enemy will intend to attack EVERYONE for %s damage this turn",
       "ALL enemies will intend to attack EVERYONE for %s damage this turn",
-      "Invalid ${ModID}:Booby_Trap: %s"
+      "Invalid ${ModID}:Booby_Trap: %s",
+      "Invalid ${ModID}:Booby_Trap: %1$s %2$s",
+      "Enemy will intend to attack EVERYONE for %1$s damage for %2$s turns",
+      "A random enemy will intend to attack EVERYONE for %1$s damage for %2$s turns",
+      "ALL enemies will intend to attack EVERYONE for %1$s damage for %2$s turns",
+      "Invalid ${ModID}:Booby_Trap: %1$s %2$s"
     ]
   },
   "${ModID}:ThornsComponent": {

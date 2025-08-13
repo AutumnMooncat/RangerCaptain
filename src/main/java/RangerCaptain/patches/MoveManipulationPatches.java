@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.animations.AnimateShakeAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -43,7 +43,7 @@ public class MoveManipulationPatches {
         Wiz.atb(new DamageAction(AbstractDungeon.player, new DamageInfo(monster, ReflectionHacks.getPrivate(monster, AbstractMonster.class, "intentDmg"), DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
         Wiz.forAllMonstersLiving(mon -> Wiz.atb(new DamageAction(mon, new DamageInfo(monster, calculateDamage(monster, mon, ReflectionHacks.getPrivate(monster, AbstractMonster.class, "intentBaseDmg")), DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE)));
         if (!monster.hasPower(TapeJamPower.POWER_ID)) {
-            Wiz.atb(new RemoveSpecificPowerAction(monster, monster, BoobyTrappedPower.POWER_ID));
+            Wiz.atb(new ReducePowerAction(monster, monster, BoobyTrappedPower.POWER_ID, 1));
             Wiz.atb(new RollMoveAction(monster));
         }
     }

@@ -96,7 +96,7 @@
   },
   "${ModID}:Charlequin": {
     "NAME": "Charlequin",
-    "DESCRIPTION": "Enemy will intend to attack EVERYONE for 15 damage this turn.{@@}{!${ModID}:I!|1= NL Apply !M! Vulnerable to ALL enemies.} NL Exhaust.",
+    "DESCRIPTION": "Enemy will intend to attack EVERYONE for !${ModID}:M2! damage this turn.{@@}{!${ModID}:I!|1= NL Apply !M! Vulnerable to ALL enemies.} NL Exhaust.",
     "EXTENDED_DESCRIPTION": ["Blunderbusk","Fragliacci"]
   },
   "${ModID}:Clocksley": {

@@ -24,17 +24,17 @@ public class Charlequin extends AbstractMultiUpgradeCard {
     static {
         new FusionComponentHelper(MonsterEnum.CHARLEQUIN)
                 .withCost(1)
-                .with(new BoobyTrapComponent(3))
+                .with(new BoobyTrapComponent(1))
                 .withExhaust()
                 .register();
         new FusionComponentHelper(MonsterEnum.BLUNDERBUSK)
                 .withCost(0)
-                .with(new BoobyTrapComponent(3))
+                .with(new BoobyTrapComponent(1))
                 .withExhaust()
                 .register();
         new FusionComponentHelper(MonsterEnum.FRAGLIACCI)
                 .withCost(1)
-                .with(new BoobyTrapComponent(3))
+                .with(new BoobyTrapComponent(1))
                 .with(new VulnerableComponent(1, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .withExhaust()
                 .register();
@@ -43,13 +43,14 @@ public class Charlequin extends AbstractMultiUpgradeCard {
     public Charlequin() {
         super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
         setMonsterData(MonsterEnum.CHARLEQUIN);
+        baseSecondMagic = secondMagic = BoobyTrappedPower.BOOBY_TRAP_DAMAGE;
         baseInfo = info = 0;
         exhaust = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.applyToEnemy(m, new BoobyTrappedPower(m, 15));
+        Wiz.applyToEnemy(m, new BoobyTrappedPower(m, 1));
         if (info == 1) {
             Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new VulnerablePower(mon, magicNumber, false)));
         }

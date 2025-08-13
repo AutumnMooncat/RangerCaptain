@@ -18,7 +18,6 @@ public class BoobyTrapComponent extends AbstractComponent {
     public static final String ID = MainModfile.makeID(BoobyTrapComponent.class.getSimpleName());
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
-    public static final int BASE_DAMAGE = 50;
 
     public BoobyTrapComponent(float base) {
         this(base, ComponentTarget.ENEMY);
@@ -41,7 +40,12 @@ public class BoobyTrapComponent extends AbstractComponent {
 
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
-        return String.format(CARD_TEXT[target.ordinal()], BASE_DAMAGE/ workingAmount);
+        int index = target.ordinal();
+        if (workingAmount > 1) {
+            index += ComponentTarget.values().length;
+            return String.format(CARD_TEXT[index], BoobyTrappedPower.BOOBY_TRAP_DAMAGE, workingAmount);
+        }
+        return String.format(CARD_TEXT[index], BoobyTrappedPower.BOOBY_TRAP_DAMAGE);
     }
 
     @Override
@@ -54,18 +58,18 @@ public class BoobyTrapComponent extends AbstractComponent {
         int amount = provider.getAmount(this);
         switch (target) {
             case ENEMY:
-                Wiz.applyToEnemy(m, new BoobyTrappedPower(m, BASE_DAMAGE/amount));
+                Wiz.applyToEnemy(m, new BoobyTrappedPower(m, amount));
                 break;
             case ENEMY_RANDOM:
                 addToBot(new DoAction(() -> {
                     AbstractMonster mon = AbstractDungeon.getRandomMonster();
                     if (mon != null) {
-                        Wiz.applyToEnemy(mon, new BoobyTrappedPower(mon, BASE_DAMAGE/amount));
+                        Wiz.applyToEnemy(mon, new BoobyTrappedPower(mon, amount));
                     }
                 }));
                 break;
             case ENEMY_AOE:
-                Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new BoobyTrappedPower(mon, BASE_DAMAGE/amount)));
+                Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new BoobyTrappedPower(mon, amount)));
                 break;
         }
     }

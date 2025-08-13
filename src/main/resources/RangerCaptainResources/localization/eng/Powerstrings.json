@@ -147,7 +147,7 @@
   },
   "${ModID}:BoobyTrappedPower": {
     "NAME": "Booby Trapped",
-    "DESCRIPTIONS": ["Attacks EVERYONE for #b"," turn."," turns.","Attacks EVERYONE this turn."]
+    "DESCRIPTIONS": ["Attacks EVERYONE for #b"," turn."," turns."]
   },
   "${ModID}:EnergyReservesPower": {
     "NAME": "Energy Reserves",
