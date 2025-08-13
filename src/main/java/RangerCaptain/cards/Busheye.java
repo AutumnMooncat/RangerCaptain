@@ -35,12 +35,14 @@ public class Busheye extends AbstractMultiUpgradeCard implements ManuallySizeAdj
                 .with(new BurnComponent(7, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .with(new EnergyComponent(2))
                 .withExhaust()
+                .with(new WhenExhaustedComponent())
                 .register();
         new FusionComponentHelper(MonsterEnum.HEDGEHERNE)
                 .withCost(2)
                 .with(new BurnComponent(10, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .with(new EnergyComponent(2))
                 .withExhaust()
+                .with(new WhenExhaustedComponent())
                 .register();
     }
 
