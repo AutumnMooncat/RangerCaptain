@@ -51,7 +51,8 @@
   },
   "${ModID}:Boltam": {
     "NAME": "Boltam",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Conductive. NL Add !${ModID}:M2! {@@}{!${ModID}:M2!|1=copy|@=copies} of this card into your discard pile.",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Conductive. NL Add {@@}{!${ModID}:M2!|1=a copy|@=!${ModID}:M2! copies} of this card into your discard pile.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Conductive. NL Shuffle this card into your draw pile.",
     "EXTENDED_DESCRIPTION": ["Pinbolt","Plasmantler"]
   },
   "${ModID}:Braxsuit": {

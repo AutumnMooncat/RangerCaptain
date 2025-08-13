@@ -835,6 +835,10 @@
     "TEXT": ["Fusion has #yExhaust"],
     "EXTRA_TEXT": ["Exhaust"]
   },
+  "${ModID}:AddReshuffleComponent": {
+    "TEXT": ["Fusion shuffles into draw pile"],
+    "EXTRA_TEXT": ["Shuffle this card into your draw pile"]
+  },
   "${ModID}:AddMindMeldComponent": {
     "TEXT": ["Fusion has #yMind-Meld"],
     "EXTRA_TEXT": ["${ModID}:Mind-Meld"]

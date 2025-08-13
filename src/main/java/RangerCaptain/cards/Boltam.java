@@ -1,6 +1,7 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.components.AddReshuffleComponent;
 import RangerCaptain.cardfusion.components.ConductiveComponent;
 import RangerCaptain.cardfusion.components.MakeCopiesComponent;
 import RangerCaptain.cardfusion.components.vfx.LightningOrbFVXComponent;
@@ -27,21 +28,21 @@ public class Boltam extends AbstractMultiUpgradeCard {
     static {
         new FusionComponentHelper(MonsterEnum.BOLTAM)
                 .withCost(0)
-                .withDamage(3, AbstractGameAction.AttackEffect.NONE)
+                .withDamage(2.5f, AbstractGameAction.AttackEffect.NONE)
                 .with(new LightningOrbFVXComponent())
-                .with(new ConductiveComponent(3), new MakeCopiesComponent(1, MakeCopiesComponent.Location.DISCARD))
+                .with(new ConductiveComponent(2.5f), new MakeCopiesComponent(0.75f, MakeCopiesComponent.Location.DISCARD))
                 .register();
         new FusionComponentHelper(MonsterEnum.PINBOLT)
                 .withCost(0)
-                .withDamage(3, AbstractGameAction.AttackEffect.NONE)
+                .withDamage(4.5f, AbstractGameAction.AttackEffect.NONE)
                 .with(new LightningOrbFVXComponent())
-                .with(new ConductiveComponent(3), new MakeCopiesComponent(2, MakeCopiesComponent.Location.DISCARD))
+                .with(new ConductiveComponent(2.5f), new AddReshuffleComponent())
                 .register();
         new FusionComponentHelper(MonsterEnum.PLASMANTLER)
                 .withCost(0)
-                .withDamage(4, AbstractGameAction.AttackEffect.NONE)
+                .withDamage(3.5f, AbstractGameAction.AttackEffect.NONE)
                 .with(new LightningOrbFVXComponent())
-                .with(new ConductiveComponent(4), new MakeCopiesComponent(1, MakeCopiesComponent.Location.DISCARD))
+                .with(new ConductiveComponent(3.5f), new MakeCopiesComponent(0.75f, MakeCopiesComponent.Location.DISCARD))
                 .register();
     }
 
@@ -51,7 +52,7 @@ public class Boltam extends AbstractMultiUpgradeCard {
         baseMagicNumber = magicNumber = 3;
         baseSecondMagic = secondMagic = 1;
         setMonsterData(MonsterEnum.BOLTAM);
-        baseInfo = info = 1;
+        baseInfo = info = 0;
         tags.add(CustomTags.MAGIC_CONDUCTIVE);
     }
 
@@ -63,7 +64,9 @@ public class Boltam extends AbstractMultiUpgradeCard {
         }
         dmg(m, AbstractGameAction.AttackEffect.NONE);
         Wiz.applyToEnemy(m, new ConductivePower(m, p, magicNumber));
-        addToBot(new MakeTempCardInDiscardAction(makeStatEquivalentCopy(), secondMagic));
+        if (info == 0) {
+            addToBot(new MakeTempCardInDiscardAction(makeStatEquivalentCopy(), secondMagic));
+        }
     }
 
     @Override
@@ -84,10 +87,13 @@ public class Boltam extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade0() {
-        upgradeSecondMagic(1);
+        upgradeDamage(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.PINBOLT);
+        baseInfo = info = 1;
+        shuffleBackIntoDrawPile = true;
+        uDesc();
     }
 
     public void upgrade1() {
