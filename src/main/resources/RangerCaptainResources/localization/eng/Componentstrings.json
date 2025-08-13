@@ -347,10 +347,10 @@
       "Invalid Copies Location"
     ],
     "EXTRA_TEXT": [
-      "Add %1$s {@@}{%1$s|1=copy|@=copies} of this card into your %2$s",
+      "Add {@@}{%1$s|1=a copy|@=%1$s copies} of this card into your %2$s",
       "Add a copy of this card into your %s",
       "Add %1$s copies of this card into your %2$s",
-      "Shuffle %1$s {@@}{%1$s|1=copy|@=copies} of this card into your %2$s",
+      "Shuffle {@@}{%1$s|1=a copy|@=%1$s copies} of this card into your %2$s",
       "Shuffle a copy of this card into your %s",
       "Shuffle %1$s copies of this card into your %2$s"
     ]
@@ -368,10 +368,10 @@
       "s"
     ],
     "EXTRA_TEXT": [
-      "Add %1$s %2$s{@@}{%1$s|1=|@=%3$s} into your %4$s",
+      "Add {@@}{%1$s|1=a|@=%1$s} %2$s{%1$s|1=|@=%3$s} into your %4$s",
       "Add a %1$s into your %2$s",
       "Add %1$s %2$s into your %3$s",
-      "Shuffle %1$s %2$s{@@}{%1$s|1=|@=%3$s} into your %4$s",
+      "Shuffle {@@}{%1$s|1=a|@=%1$s} %2$s{%1$s|1=|@=%3$s} into your %4$s",
       "Shuffle a %1$s into your %2$s",
       "Shuffle %1$s %2$s into your %3$s"
     ]
