@@ -1,7 +1,7 @@
 package RangerCaptain.patches;
 
 import RangerCaptain.MainModfile;
-import RangerCaptain.cardmods.EchoMod;
+import RangerCaptain.cardmods.ShaderTestMod;
 import RangerCaptain.util.ImageHelper;
 import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.Gdx;
@@ -53,7 +53,7 @@ public class ShaderOnCardPatches {
     public static class ApplyShaderInLibrary {
         @SpirePrefixPatch
         public static void apply(AbstractCard __instance, SpriteBatch sb) {
-            if (CardModifierManager.hasModifier(__instance, EchoMod.ID)) {
+            if (CardModifierManager.hasModifier(__instance, ShaderTestMod.ID)) {
                 capture(sb);
             }
         }
@@ -68,7 +68,7 @@ public class ShaderOnCardPatches {
     public static class ApplyShader {
         @SpirePrefixPatch
         public static void apply(AbstractCard __instance, SpriteBatch sb) {
-            if (CardModifierManager.hasModifier(__instance, EchoMod.ID)) {
+            if (CardModifierManager.hasModifier(__instance, ShaderTestMod.ID)) {
                 capture(sb);
             }
         }

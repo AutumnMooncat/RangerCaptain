@@ -3,7 +3,6 @@ package RangerCaptain.potions;
 import RangerCaptain.MainModfile;
 import RangerCaptain.actions.AnimationAction;
 import RangerCaptain.actions.ThrowObjectAction;
-import RangerCaptain.powers.StaggerPower;
 import RangerCaptain.util.TextureSniper;
 import RangerCaptain.util.Wiz;
 import RangerCaptain.vfx.ColoredSmokeBombEffect;
@@ -37,7 +36,7 @@ public class TabooPotion extends CustomPotion {
             Wiz.atb(new AnimationAction(AnimationAction.Animation.ATTACK));
             Wiz.atb(new ThrowObjectAction(TextureSniper.snipePotion(this), 1f, target.hb, Color.PURPLE, false));
             Wiz.atb(new VFXAction(new ColoredSmokeBombEffect(target.hb.cX, target.hb.cY, Color.PURPLE)));
-            Wiz.applyToEnemy((AbstractMonster) target, new StaggerPower(target, potency));
+            //Wiz.applyToEnemy((AbstractMonster) target, new StaggerPower(target, potency));
         }
     }
 

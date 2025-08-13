@@ -1,10 +1,8 @@
 package RangerCaptain.util;
 
-import RangerCaptain.TheRangerCaptain;
 import RangerCaptain.actions.TimedVFXAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.components.ReskinComponent;
-import RangerCaptain.cardmods.CarrotMod;
 import RangerCaptain.cardmods.FusionFormMod;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.cards.tokens.FusedCard;
@@ -343,18 +341,6 @@ public class Wiz {
         ArrayList<AbstractMonster> ret = new ArrayList<>();
         forAdjacentMonsters(entity, ret::add);
         return ret;
-    }
-
-    public static boolean isInRabbitRun() {
-        return CardCrawlGame.isInARun() && AbstractDungeon.player instanceof TheRangerCaptain;
-    }
-
-    public static int carrotCount(AbstractCard card) {
-        int amount = 0;
-        if (CardModifierManager.hasModifier(card, CarrotMod.ID)) {
-            amount = ((CarrotMod) CardModifierManager.getModifiers(card, CarrotMod.ID).get(0)).amount;
-        }
-        return amount;
     }
 
     public static boolean canBeFused(AbstractCard card) {

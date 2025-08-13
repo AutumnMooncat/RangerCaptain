@@ -11,30 +11,6 @@
     "NAME": "Next Turn ",
     "DESCRIPTIONS": ["Next turn, gain #b"," ","."]
   },
-  "${ModID}:BracedPower": {
-    "NAME": "Braced",
-    "DESCRIPTIONS": ["Your next #yBlock gaining card gains #b"," additional #yBlock."]
-  },
-  "${ModID}:ExposedPower": {
-    "NAME": "Exposed",
-    "DESCRIPTIONS": ["Takes #b"," more damage from Attacks this turn."]
-  },
-  "${ModID}:StaggerPower": {
-    "NAME": "Staggered",
-    "DESCRIPTIONS": ["Deals #b"," less damage with Attacks this turn."]
-  },
-  "${ModID}:CardToHandPower": {
-    "NAME": " Next Turn",
-    "DESCRIPTIONS": ["Next turn, add "," into your hand."," copies of "]
-  },
-  "${ModID}:StrikeBuffPower": {
-    "NAME": "Strike Up",
-    "DESCRIPTIONS": ["Cards containing #yStrike deal #b"," additional damage."]
-  },
-  "${ModID}:FervorPower": {
-    "NAME": "Fervor",
-    "DESCRIPTIONS": ["When you obtain #b10 #yFervor, your next #yAttack deals double damage."]
-  },
   "${ModID}:NextTurnDamagePower": {
     "NAME": "Next Turn Damage",
     "DESCRIPTIONS": ["Deal #b"," damage to "," next turn."]
@@ -42,10 +18,6 @@
   "${ModID}:NextTurnTakeDamagePower": {
     "NAME": "Next Turn Damage",
     "DESCRIPTIONS": ["Deal #b"," damage to this creature at the start of your next turn."," damage to yourself at the start of your next turn."]
-  },
-  "${ModID}:BleedingPower": {
-    "NAME": "Bleeding",
-    "DESCRIPTIONS": ["Whenever this creature attacks, it loses #b"," HP."]
   },
   "${ModID}:LeechedPower": {
     "NAME": "Leeched",

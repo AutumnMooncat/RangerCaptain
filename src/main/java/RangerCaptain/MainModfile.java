@@ -7,7 +7,6 @@ import RangerCaptain.cards.cardvars.*;
 import RangerCaptain.cards.interfaces.GlowAdjacentCard;
 import RangerCaptain.cards.interfaces.OnOtherCardUpgradedCard;
 import RangerCaptain.cards.interfaces.OnReceiveDebuffCard;
-import RangerCaptain.icons.IconContainer;
 import RangerCaptain.patches.CardCounterPatches;
 import RangerCaptain.patches.GlowChangePatch;
 import RangerCaptain.powers.*;
@@ -31,7 +30,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
-import com.evacipated.cardcrawl.mod.stslib.icons.CustomIconHelper;
 import com.evacipated.cardcrawl.mod.stslib.patches.cardInterfaces.MultiUpgradePatches;
 import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
@@ -191,8 +189,6 @@ public class MainModfile implements
         BaseMod.addDynamicVariable(new SecondDamage());
         BaseMod.addDynamicVariable(new SecondBlock());
         BaseMod.addDynamicVariable(new DynvarInterfaceManager());
-
-        CustomIconHelper.addCustomIcon(IconContainer.CarrotIcon.get());
 
         new AutoAdd(modID)
                 .packageFilter(modID+".cards")

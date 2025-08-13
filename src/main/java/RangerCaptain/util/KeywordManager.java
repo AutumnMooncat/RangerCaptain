@@ -5,19 +5,9 @@ import java.util.HashMap;
 
 public class KeywordManager {
     public static HashMap<String, String> keywordMap = new HashMap<>();
-    public static String BRACED;
-    public static String EXPOSED;
-    public static String STAGGER;
-    public static String GUIDE;
-    public static String CLUTCH;
-    public static String FERVOR;
-    public static String CARROT;
-    public static String BLEED;
-    public static String LEECHED;
     public static String PERFECT;
     public static String MULTITARGET;
     public static String CONDUCTIVE;
-    public static String TAPEJAM;
     public static String MINDMELD;
     public static String CLOSEENCOUNTER;
     public static String BURNED;
