@@ -3,6 +3,7 @@ package RangerCaptain.cardfusion.components;
 import RangerCaptain.MainModfile;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cards.tokens.FusedCard;
 import RangerCaptain.powers.TapeJamPower;
 import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.Wiz;
@@ -31,6 +32,11 @@ public class TapeJamComponent extends AbstractComponent {
     @Override
     public void updatePrio() {
         priority = DO_PRIO + target.ordinal();
+    }
+
+    @Override
+    public float textSize(FusedCard card) {
+        return 0.95f;
     }
 
     @Override

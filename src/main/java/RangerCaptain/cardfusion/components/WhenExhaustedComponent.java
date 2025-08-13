@@ -31,6 +31,11 @@ public class WhenExhaustedComponent extends AbstractComponent {
     }
 
     @Override
+    public float textSize(FusedCard card) {
+        return 0.95f;
+    }
+
+    @Override
     public boolean shouldStack(AbstractComponent other) {
         return other instanceof WhenExhaustedComponent;
     }

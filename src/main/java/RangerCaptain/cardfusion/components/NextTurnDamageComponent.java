@@ -3,6 +3,7 @@ package RangerCaptain.cardfusion.components;
 import RangerCaptain.MainModfile;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cards.tokens.FusedCard;
 import RangerCaptain.powers.NextTurnTakeDamagePower;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -39,6 +40,11 @@ public class NextTurnDamageComponent extends AbstractComponent {
         } else {
             priority = DAMAGE_PRIO + target.ordinal() + 2;
         }
+    }
+
+    @Override
+    public float textSize(FusedCard card) {
+        return target == ComponentTarget.ENEMY_AOE || target == ComponentTarget.ENEMY_RANDOM ? 0.95f : 1f;
     }
 
     @Override

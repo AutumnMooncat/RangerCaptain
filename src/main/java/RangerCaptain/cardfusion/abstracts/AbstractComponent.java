@@ -243,6 +243,10 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         return true;
     }
 
+    public float textSize(FusedCard card) {
+        return 1f;
+    }
+
     public void applyTraits(FusedCard card, List<AbstractComponent> captured) {}
 
     public void postAssignment(FusedCard card, List<AbstractComponent> otherComponents) {}

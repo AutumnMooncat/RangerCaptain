@@ -316,6 +316,12 @@ public class FusedCard extends AbstractEasyCard implements AbstractComponent.Com
 
     @Override
     public float getAdjustedScale() {
-        return 0.95f;
+        float scale = 1f;
+        if (components != null) {
+            for (AbstractComponent component : components) {
+                scale = Math.min(scale, component.textSize(this));
+            }
+        }
+        return scale;
     }
 }
