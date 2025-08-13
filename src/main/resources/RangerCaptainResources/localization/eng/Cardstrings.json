@@ -67,7 +67,7 @@
   },
   "${ModID}:Bulletino": {
     "NAME": "Bulletino",
-    "DESCRIPTION": "Draw !M! card{@@}{!M!|1=|@=s}. NL {@@}{!${ModID}:I!|0=Apply !${ModID}:M2! ${ModID}:Burn for each card drawn. NL Exhaust.|1=Apply !${ModID}:M2! ${ModID}:Burn for each card drawn.|2=Apply !${ModID}:M2! ${ModID}:Burn to ALL enemies for each card drawn.|3=Deal !D! damage for each card drawn.}",
+    "DESCRIPTION": "Draw !M! card{@@}{!M!|1=|@=s}. NL {@@}{!${ModID}:I!|0=Apply !${ModID}:M2! ${ModID}:Burn for each card drawn.|1=Apply !${ModID}:M2! ${ModID}:Burn to ALL enemies for each card drawn.|2=Deal !D! damage for each card drawn.}",
     "EXTENDED_DESCRIPTION": ["Velocirifle","Artillerex","Gearyu"]
   },
   "${ModID}:Burnace": {
