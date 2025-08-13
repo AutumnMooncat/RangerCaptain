@@ -24,8 +24,8 @@ public class Braxsuit extends AbstractEasyCard {
                 .register();
         new FusionComponentHelper(MonsterEnum.FLAPWOODS)
                 .withCost(1)
-                .withBlock(4)
-                .with(new SuitUpComponent(2))
+                .withBlock(6)
+                .with(new SuitUpComponent(1))
                 .register();
     }
 
@@ -44,7 +44,8 @@ public class Braxsuit extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeMagicNumber(1);
+        upgradeBlock(3);
+        //upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.FLAPWOODS);
