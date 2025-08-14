@@ -24,7 +24,7 @@ public class Arkidd extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.ARKIDD)
                 .withCost(1)
-                .with(new ConductiveComponent(3, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new ConductiveComponent(2.5f, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .with(new ResonanceComponent(1, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
     }

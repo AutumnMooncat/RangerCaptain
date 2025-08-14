@@ -30,14 +30,14 @@ public class Brushroom extends AbstractEasyCard implements OnOtherCardStashedCar
         new FusionComponentHelper(MonsterEnum.BRUSHROOM)
                 .withCost(3)
                 .with(new CostsLessPerStashedComponent())
-                .with(new DamageComponent(10, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
-                .with(new VulnerableComponent(2))
+                .with(new DamageComponent(9.5f, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
+                .with(new VulnerableComponent(1.5f))
                 .register();
         new FusionComponentHelper(MonsterEnum.FUNGOGH)
                 .withCost(3)
                 .with(new CostsLessPerStashedComponent())
-                .with(new DamageComponent(13, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
-                .with(new VulnerableComponent(2))
+                .with(new DamageComponent(12, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
+                .with(new VulnerableComponent(1.5f))
                 .register();
     }
 

@@ -21,8 +21,8 @@ public class Picksie extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.PICKSIE)
                 .withCost(2)
-                .withBlock(9)
-                .with(new NextTurnEnergyComponent(2))
+                .withBlock(8.5f)
+                .with(new NextTurnEnergyComponent(1.5f))
                 .register();
     }
 

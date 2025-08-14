@@ -30,32 +30,32 @@ public class Bansheep extends AbstractMultiUpgradeCard implements StartupCard {
     static  {
         new FusionComponentHelper(MonsterEnum.BANSHEEP)
                 .withCost(0)
-                .withDamage(5, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
-                .with(new NextTurnDamageComponent(5, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
+                .withDamage(4, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new NextTurnDamageComponent(4, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
                 .register();
         new FusionComponentHelper(MonsterEnum.WOOLTERGEIST)
                 .withCost(0)
-                .withDamage(6, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
-                .with(new NextTurnDamageComponent(6, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
-                .with(new TempStrengthComponent(3, AbstractComponent.ComponentTarget.ENEMY, false))
+                .withDamage(5, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new NextTurnDamageComponent(5, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
+                .with(new TempStrengthComponent(2.5f, AbstractComponent.ComponentTarget.ENEMY, false))
                 .register();
         new FusionComponentHelper(MonsterEnum.RAMTASM)
                 .withCost(0)
-                .withDamage(8, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
-                .with(new NextTurnDamageComponent(8, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
-                .with(new TempStrengthComponent(4, AbstractComponent.ComponentTarget.ENEMY, false))
+                .withDamage(6.5f, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new NextTurnDamageComponent(6.5f, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
+                .with(new TempStrengthComponent(3.5f, AbstractComponent.ComponentTarget.ENEMY, false))
                 .register();
         new FusionComponentHelper(MonsterEnum.ZOMBLEAT)
                 .withCost(0)
-                .withDamage(6, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
-                .with(new NextTurnDamageComponent(6, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
-                .with(new VigorComponent(3))
+                .withDamage(5, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new NextTurnDamageComponent(5, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
+                .with(new VigorComponent(2.5f))
                 .register();
         new FusionComponentHelper(MonsterEnum.CAPRICORPSE)
                 .withCost(0)
-                .withDamage(8, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
-                .with(new NextTurnDamageComponent(8, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
-                .with(new VigorComponent(4))
+                .withDamage(6.5f, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new NextTurnDamageComponent(6.5f, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
+                .with(new VigorComponent(3.5f))
                 .register();
     }
 

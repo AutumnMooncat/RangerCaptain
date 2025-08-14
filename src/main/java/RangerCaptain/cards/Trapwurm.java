@@ -28,16 +28,16 @@ public class Trapwurm extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.TRAPWURM)
                 .withCost(1)
-                .withDamage(8, AbstractGameAction.AttackEffect.NONE)
+                .withDamage(7.5f, AbstractGameAction.AttackEffect.NONE)
                 .with(new BiteVFXComponent())
-                .with(new ExhaustAttacksComponent(1))
+                .with(new ExhaustAttacksComponent(0.5f))
                 .withFlags(new ScaleDamageComponent(), AbstractComponent.Flag.EXHAUST_COMPLEX_FOLLOWUP)
                 .register();
         new FusionComponentHelper(MonsterEnum.WYRMAW)
                 .withCost(1)
-                .withDamage(11, AbstractGameAction.AttackEffect.NONE)
+                .withDamage(10.5f, AbstractGameAction.AttackEffect.NONE)
                 .with(new BiteVFXComponent())
-                .with(new ExhaustAttacksComponent(1))
+                .with(new ExhaustAttacksComponent(0.5f))
                 .withFlags(new ScaleDamageComponent(), AbstractComponent.Flag.EXHAUST_COMPLEX_FOLLOWUP)
                 .register();
     }

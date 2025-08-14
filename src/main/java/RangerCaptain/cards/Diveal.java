@@ -23,17 +23,17 @@ public class Diveal extends AbstractMultiUpgradeCard {
         new FusionComponentHelper(MonsterEnum.DIVEAL)
                 .withCost(1)
                 .with(new WeakComponent(1))
-                .with(new StashCardsComponent(2, StashCardsComponent.TargetPile.DISCARD, false, true))
+                .with(new StashCardsComponent(1.5f, StashCardsComponent.TargetPile.DISCARD, false, true))
                 .register();
         new FusionComponentHelper(MonsterEnum.DIVEBERG)
                 .withCost(1)
                 .with(new WeakComponent(1))
-                .with(new StashCardsComponent(2, StashCardsComponent.TargetPile.DISCARD, true, false))
+                .with(new StashCardsComponent(1.5f, StashCardsComponent.TargetPile.DISCARD, true, false))
                 .register();
         new FusionComponentHelper(MonsterEnum.SCUBALRUS)
                 .withCost(1)
                 .with(new WeakComponent(1))
-                .with(new StashCardsComponent(3, StashCardsComponent.TargetPile.DISCARD, false, true))
+                .with(new StashCardsComponent(2.5f, StashCardsComponent.TargetPile.DISCARD, false, true))
                 .register();
     }
 

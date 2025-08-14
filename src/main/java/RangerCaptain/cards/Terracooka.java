@@ -26,7 +26,7 @@ public class Terracooka extends AbstractEasyCard {
                 .register();
         new FusionComponentHelper(MonsterEnum.COALDRON)
                 .withCost(1)
-                .with(new BurnComponent(5), new ExhaustCardsComponent(1))
+                .with(new BurnComponent(4.5f), new ExhaustCardsComponent(1))
                 .register();
     }
 

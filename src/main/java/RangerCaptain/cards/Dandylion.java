@@ -26,8 +26,8 @@ public class Dandylion extends AbstractEasyCard {
                 .register();
         new FusionComponentHelper(MonsterEnum.BLOSSOMAW)
                 .withCost(0)
-                .with(new DrawComponent(2))
-                .with(new StashCardsComponent(2))
+                .with(new DrawComponent(1.91f))
+                .with(new StashCardsComponent(1.91f))
                 .register();
     }
 

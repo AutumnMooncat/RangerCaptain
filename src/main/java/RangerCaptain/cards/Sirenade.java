@@ -33,7 +33,7 @@ public class Sirenade extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.DECIBELLE)
                 .withCost(1)
                 .with(new PiercingWailVFXComponent())
-                .withDamageAOE(8, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .withDamageAOE(7.5f, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
                 .with(new MultitargetComponent(1))
                 .register();
     }

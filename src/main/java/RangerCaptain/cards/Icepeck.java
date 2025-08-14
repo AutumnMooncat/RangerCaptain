@@ -17,17 +17,17 @@ public class Icepeck extends AbstractEasyCard {
     public final static String ID = makeID(Icepeck.class.getSimpleName());
 
     static {
-        // 8,2 -> 14,10
+        // 8,2 -> 11,8
         new FusionComponentHelper(MonsterEnum.ICEPECK)
+                .withCost(2)
+                .withDamage(5.5f, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .with(new AddBoostAlreadyAttackedDamageComponent(4))
+                .register();
+        // 10,3 -> 14,10
+        new FusionComponentHelper(MonsterEnum.CRYOSHEAR)
                 .withCost(2)
                 .withDamage(7, AbstractGameAction.AttackEffect.SLASH_HEAVY)
                 .with(new AddBoostAlreadyAttackedDamageComponent(5))
-                .register();
-        // 10,3 -> 16,14
-        new FusionComponentHelper(MonsterEnum.CRYOSHEAR)
-                .withCost(2)
-                .withDamage(8, AbstractGameAction.AttackEffect.SLASH_HEAVY)
-                .with(new AddBoostAlreadyAttackedDamageComponent(7))
                 .register();
     }
 

@@ -21,11 +21,11 @@ public class Nevermort extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.NEVERMORT)
                 .withCost(0)
-                .with(new ToxinComponent(3, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new ToxinComponent(2.5f, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
         new FusionComponentHelper(MonsterEnum.APOCROWLYPSE)
                 .withCost(0)
-                .with(new ToxinComponent(4, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new ToxinComponent(3.5f, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
     }
 

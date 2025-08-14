@@ -24,12 +24,12 @@ public class Padpole extends AbstractMultiUpgradeCard {
                 .register();
         new FusionComponentHelper(MonsterEnum.FRILLYPAD)
                 .withCost(1)
-                .withBlock(7)
+                .withBlock(6.5f)
                 .with(new RemoveBuffForBlockComponent())
                 .register();
         new FusionComponentHelper(MonsterEnum.LILIGATOR)
                 .withCost(1)
-                .withBlock(9)
+                .withBlock(8.5f)
                 .with(new RemoveBuffForBlockComponent())
                 .register();
     }

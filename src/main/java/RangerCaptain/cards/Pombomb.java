@@ -23,12 +23,12 @@ public class Pombomb extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.POMBOMB)
                 .withCost(1)
                 .withDamageAOE(4, AbstractGameAction.AttackEffect.FIRE)
-                .with(new BurnComponent(2, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new BurnComponent(1.5f, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
         new FusionComponentHelper(MonsterEnum.SPITZFYRE)
                 .withCost(1)
-                .withDamageAOE(6, AbstractGameAction.AttackEffect.FIRE)
-                .with(new BurnComponent(3, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .withDamageAOE(5.5f, AbstractGameAction.AttackEffect.FIRE)
+                .with(new BurnComponent(2.5f, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
     }
 

@@ -24,12 +24,12 @@ public class Ferriclaw extends AbstractEasyCard implements ManuallySizeAdjustedC
     static {
         new FusionComponentHelper(MonsterEnum.FERRICLAW)
                 .withCost(1)
-                .withDamage(9, AbstractGameAction.AttackEffect.NONE)
+                .withDamage(8.5f, AbstractGameAction.AttackEffect.NONE)
                 .with(new ScrapeVFXComponent(), new TapeJamComponent(1))
                 .register();
         new FusionComponentHelper(MonsterEnum.AURICLAW)
                 .withCost(1)
-                .withDamage(12, AbstractGameAction.AttackEffect.NONE)
+                .withDamage(11.5f, AbstractGameAction.AttackEffect.NONE)
                 .with(new ScrapeVFXComponent(), new TapeJamComponent(1))
                 .register();
     }

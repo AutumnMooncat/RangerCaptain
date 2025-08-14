@@ -19,17 +19,17 @@ public class Traffikrab extends AbstractMultiUpgradeCard {
         new FusionComponentHelper(MonsterEnum.TRAFFIKRAB)
                 .withCost(1)
                 .withBlock(5)
-                .with(new StashTopCardsComponent(1))
+                .with(new StashTopCardsComponent(0.91f))
                 .register();
         new FusionComponentHelper(MonsterEnum.WEEVILITE)
                 .withCost(0)
                 .withBlock(4)
-                .with(new StashTopCardsComponent(1))
+                .with(new StashTopCardsComponent(0.91f))
                 .register();
         new FusionComponentHelper(MonsterEnum.LOBSTACLE)
                 .withCost(1)
-                .withBlock(8)
-                .with(new StashTopCardsComponent(1))
+                .withBlock(7.5f)
+                .with(new StashTopCardsComponent(0.91f))
                 .register();
     }
 

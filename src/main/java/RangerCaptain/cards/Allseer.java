@@ -29,7 +29,7 @@ public class Allseer extends AbstractMultiUpgradeCard {
     static {
         new FusionComponentHelper(MonsterEnum.ALLSEER)
                 .withCost(1)
-                .withBlock(5)
+                .withBlock(4.5f)
                 .with(new LaserVFXComponent())
                 .with(new ConductiveComponent(2))
                 .register();

@@ -22,30 +22,35 @@ public class Springheel extends AbstractMultiUpgradeCard implements ManuallySize
     public final static String ID = makeID(Springheel.class.getSimpleName());
 
     static {
+        // 6,4 -> 9,6
         new FusionComponentHelper(MonsterEnum.SPRINGHEEL)
                 .withCost(1)
-                .withBlock(5)
+                .withBlock(4.5f)
                 .with(new NextTurnDamageComponent(3, AbstractGameAction.AttackEffect.BLUNT_LIGHT, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
+        // 6,7 -> 9,10
         new FusionComponentHelper(MonsterEnum.HOPSKIN)
                 .withCost(1)
-                .withBlock(5)
+                .withBlock(4.5f)
                 .with(new NextTurnDamageComponent(5, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
+        // 6, 10 -> 9,15
         new FusionComponentHelper(MonsterEnum.RIPTERRA)
                 .withCost(1)
-                .withBlock(5)
-                .with(new NextTurnDamageComponent(8, AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .withBlock(4.5f)
+                .with(new NextTurnDamageComponent(7.5f, AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
+        // 8,5 -> 12,7
         new FusionComponentHelper(MonsterEnum.SNOOPIN)
                 .withCost(0)
                 .withBlock(6)
-                .with(new NextTurnDamageComponent(4, AbstractGameAction.AttackEffect.BLUNT_LIGHT, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new NextTurnDamageComponent(3.5f, AbstractGameAction.AttackEffect.BLUNT_LIGHT, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
+        // 10,6 -> 15,9
         new FusionComponentHelper(MonsterEnum.SCAMPIRE)
                 .withCost(0)
-                .withBlock(8)
-                .with(new NextTurnDamageComponent(5, AbstractGameAction.AttackEffect.BLUNT_HEAVY, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .withBlock(7.5f)
+                .with(new NextTurnDamageComponent(4.5f, AbstractGameAction.AttackEffect.BLUNT_HEAVY, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
     }
 

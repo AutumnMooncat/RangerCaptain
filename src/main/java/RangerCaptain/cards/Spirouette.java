@@ -18,16 +18,16 @@ public class Spirouette extends AbstractEasyCard {
     public final static String ID = makeID(Spirouette.class.getSimpleName());
 
     static {
-        // 15 -> 22
+        // 15 -> 20
         new FusionComponentHelper(MonsterEnum.SPIROUETTE)
                 .withCost(2)
-                .withDamage(11, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .withDamage(10, AbstractGameAction.AttackEffect.SLASH_HEAVY)
                 .with(new YeetWeakVulnComponent())
                 .register();
-        // 20 -> 30
+        // 20 -> 27
         new FusionComponentHelper(MonsterEnum.REGENSEA)
                 .withCost(2)
-                .withDamage(15, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .withDamage(13.5f, AbstractGameAction.AttackEffect.SLASH_HEAVY)
                 .with(new YeetWeakVulnComponent())
                 .register();
     }

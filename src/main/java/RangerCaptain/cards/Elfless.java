@@ -19,17 +19,17 @@ public class Elfless extends AbstractMultiUpgradeCard {
     static {
         new FusionComponentHelper(MonsterEnum.ELFLESS)
                 .withCost(2)
-                .withDamage(8, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .withDamage(7.5f, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
                 .with(new FreeWhenPlayedComponent())
                 .register();
         new FusionComponentHelper(MonsterEnum.FAERIOUS)
                 .withCost(2)
-                .withDamage(10, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .withDamage(9.5f, AbstractGameAction.AttackEffect.SLASH_HEAVY)
                 .with(new FreeWhenPlayedComponent())
                 .register();
         new FusionComponentHelper(MonsterEnum.GRAMPUS)
                 .withCost(3)
-                .withDamage(12, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .withDamage(11, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
                 .with(new FreeWhenPlayedComponent())
                 .register();
     }

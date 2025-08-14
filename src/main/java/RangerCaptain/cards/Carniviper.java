@@ -24,28 +24,28 @@ public class Carniviper extends AbstractMultiUpgradeCard {
         new FusionComponentHelper(MonsterEnum.CARNIVIPER)
                 .withCost(1)
                 .withDamage(4, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinComponent(2))
+                .with(new ToxinComponent(1.5f))
                 .register();
         new FusionComponentHelper(MonsterEnum.MASQUERATTLE)
                 .withCost(1)
-                .withDamage(6, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinComponent(3))
+                .withDamage(5.5f, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new ToxinComponent(2.5f))
                 .register();
         new FusionComponentHelper(MonsterEnum.AEROBOROS)
                 .withCost(1)
-                .withDamage(4, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinComponent(2))
+                .withDamage(10, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new ToxinComponent(3.75f))
                 .with(new AddMindMeldComponent())
                 .register();
         new FusionComponentHelper(MonsterEnum.MARDIUSA)
                 .withCost(2)
-                .withMultiDamage(8, 2, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinComponent(6))
+                .withMultiDamage(6.75f, 2, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new ToxinComponent(5))
                 .register();
         new FusionComponentHelper(MonsterEnum.JORMUNGOLD)
                 .withCost(0)
-                .withDamage(6, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinComponent(3))
+                .withDamage(5.5f, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new ToxinComponent(2.5f))
                 .register();
     }
 

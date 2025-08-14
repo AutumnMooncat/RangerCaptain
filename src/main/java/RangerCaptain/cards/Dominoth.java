@@ -22,19 +22,19 @@ public class Dominoth extends AbstractMultiUpgradeCard {
     static {
         new FusionComponentHelper(MonsterEnum.DOMINOTH)
                 .withCost(1)
-                .with(new ConductiveComponent(3), new NextTurnEnergyComponent(1))
+                .with(new ConductiveComponent(3), new NextTurnEnergyComponent(0.85f))
                 .register();
         new FusionComponentHelper(MonsterEnum.WINGLOOM)
                 .withCost(1)
-                .with(new ConductiveComponent(5), new NextTurnEnergyComponent(1))
+                .with(new ConductiveComponent(4.5f), new NextTurnEnergyComponent(0.85f))
                 .register();
         new FusionComponentHelper(MonsterEnum.MOTHMANIC)
                 .withCost(1)
-                .with(new ConductiveComponent(7), new NextTurnEnergyComponent(1))
+                .with(new ConductiveComponent(6), new NextTurnEnergyComponent(0.85f))
                 .register();
         new FusionComponentHelper(MonsterEnum.TOKUSECT)
                 .withCost(1)
-                .with(new ConductiveComponent(3), new NextTurnEnergyComponent(2))
+                .with(new ConductiveComponent(3), new NextTurnEnergyComponent(1.91f))
                 .register();
     }
 

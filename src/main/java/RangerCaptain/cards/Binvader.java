@@ -26,11 +26,11 @@ public class Binvader extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.BINVADER)
                 .withCost(1)
-                .with(new BinvasionComponent(5, AbstractGameAction.AttackEffect.BLUNT_LIGHT))
+                .with(new BinvasionComponent(4.5f, AbstractGameAction.AttackEffect.BLUNT_LIGHT))
                 .register();
         new FusionComponentHelper(MonsterEnum.BINTERLOPER)
                 .withCost(1)
-                .with(new BinvasionComponent(7, AbstractGameAction.AttackEffect.BLUNT_LIGHT))
+                .with(new BinvasionComponent(6.5f, AbstractGameAction.AttackEffect.BLUNT_LIGHT))
                 .register();
     }
 

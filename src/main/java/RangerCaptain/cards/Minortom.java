@@ -24,11 +24,11 @@ public class Minortom extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.MINORTOM)
                 .withCost(1)
-                .with(new DrawComponent(2), new StashNextCardComponent(1), new AddCloseEncounterComponent())
+                .with(new DrawComponent(1.5f), new StashNextCardComponent(1), new AddCloseEncounterComponent())
                 .register();
         new FusionComponentHelper(MonsterEnum.MAJORTOM)
                 .withCost(1)
-                .with(new DrawComponent(3), new StashNextCardComponent(1), new AddCloseEncounterComponent())
+                .with(new DrawComponent(2.5f), new StashNextCardComponent(1), new AddCloseEncounterComponent())
                 .register();
     }
 
