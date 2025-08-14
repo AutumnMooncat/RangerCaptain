@@ -23,18 +23,17 @@ public class Squirey extends AbstractMultiUpgradeCard {
         new FusionComponentHelper(MonsterEnum.SQUIREY)
                 .withCost(1)
                 .withDamage(6, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
-                .with(new VigorComponent(2), new SharpenComponent(1))
+                .with(new VigorComponent(1.91f), new SharpenComponent(0.75f))
                 .register();
         new FusionComponentHelper(MonsterEnum.MANISPEAR)
-                .withCost(1)
-                .withBlock(4)
-                .withDamage(8, AbstractGameAction.AttackEffect.SLASH_HEAVY)
-                .with(new VigorComponent(3), new SharpenComponent(1))
+                .withCost(2)
+                .withDamage(8.5f, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .with(new VigorComponent(1.91f), new SharpenComponent(1.91f))
                 .register();
         new FusionComponentHelper(MonsterEnum.PALANGOLIN)
                 .withCost(1)
-                .withDamage(6, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new VigorComponent(2), new SharpenComponent(2))
+                .withDamage(7.5f, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new VigorComponent(2.91f), new SharpenComponent(0.75f))
                 .register();
     }
 
@@ -78,8 +77,9 @@ public class Squirey extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade0() {
-        upgradeDamage(2);
-        upgradeMagicNumber(1);
+        upgradeBaseCost(2);
+        upgradeDamage(4);
+        upgradeSecondMagic(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.MANISPEAR);
@@ -87,7 +87,8 @@ public class Squirey extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade1() {
-        upgradeSecondMagic(1);
+        upgradeDamage(2);
+        upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.PALANGOLIN);
