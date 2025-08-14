@@ -40,6 +40,12 @@
       "(if monsters don't match)"
     ]
   },
+  "${ModID}:AbstractEasyCard": {
+    "TEXT": [
+      "Monster",
+      "Fusion"
+    ]
+  },
   "${ModID}:ModifyAction": {
     "TEXT": [
       "Modify"

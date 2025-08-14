@@ -2,6 +2,7 @@ package RangerCaptain.cards.abstracts;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.TheRangerCaptain;
+import RangerCaptain.cards.tokens.FusedCard;
 import RangerCaptain.patches.FusionModifierHooks;
 import RangerCaptain.util.*;
 import basemod.BaseMod;
@@ -29,6 +30,7 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.Keyword;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.ArrayList;
@@ -103,6 +105,10 @@ public abstract class AbstractEasyCard extends CustomCard {
 
     protected static final Color TRANSPARENT = new Color(0, 0, 0, 0);
 
+    private static final UIStrings CARD_UI_TEXT = CardCrawlGame.languagePack.getUIString(MainModfile.makeID(AbstractEasyCard.class.getSimpleName()));
+    private static List<String> MONSTER_TEXT;
+    private static List<String> FUSION_TEXT;
+
     private TooltipInfo fusionTip;
     private List<TooltipInfo> addedTips;
     protected final CardStrings cardStrings;
@@ -143,6 +149,13 @@ public abstract class AbstractEasyCard extends CustomCard {
     protected MonsterEnum monsterEnum;
     public String rollerKey;
 
+    static {
+        MONSTER_TEXT = new ArrayList<>();
+        MONSTER_TEXT.add(CARD_UI_TEXT.TEXT[0]);
+        FUSION_TEXT = new ArrayList<>();
+        FUSION_TEXT.add(CARD_UI_TEXT.TEXT[1]);
+    }
+
     public AbstractEasyCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target) {
         this(cardID, cost, type, rarity, target, TheRangerCaptain.Enums.HEADBAND_PURPLE_COLOR);
     }
@@ -172,6 +185,15 @@ public abstract class AbstractEasyCard extends CustomCard {
         FlavorText.AbstractCardFlavorFields.textColor.set(this, new Color(1.0F, 0.9725F, 0.8745F, 1.0F));
     }
 
+    @Override
+    public List<String> getCardDescriptors() {
+        if (this instanceof FusedCard) {
+            return FUSION_TEXT;
+        } else if (monsterEnum != null) {
+            return MONSTER_TEXT;
+        }
+        return super.getCardDescriptors();
+    }
 
     @Override
     protected Texture getPortraitImage() {
