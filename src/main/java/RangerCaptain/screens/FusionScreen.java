@@ -2,6 +2,7 @@ package RangerCaptain.screens;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.patches.FusionScreenPatches;
 import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.FusionCardEffectData;
 import RangerCaptain.util.Wiz;
@@ -97,6 +98,7 @@ public class FusionScreen extends CustomScreen {
         genericScreenOverlayReset();
         AbstractDungeon.overlayMenu.showCombatPanels();
         Settings.hideRelics = false;
+        FusionScreenPatches.didHideRelics = false;
     }
 
     @Override
@@ -525,6 +527,7 @@ public class FusionScreen extends CustomScreen {
         this.hoveredCard = null;
         this.wereCardsRetrieved = false;
         Settings.hideRelics = true;
+        FusionScreenPatches.didHideRelics = true;
         AbstractDungeon.isScreenUp = true;
         AbstractDungeon.screen = Enum.FUSION_SCREEN;
         AbstractDungeon.player.hand.stopGlowing();

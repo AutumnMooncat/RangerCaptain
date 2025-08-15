@@ -3,13 +3,18 @@ package RangerCaptain.patches;
 import RangerCaptain.screens.FusionScreen;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInstrumentPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import javassist.CannotCompileException;
 import javassist.expr.ExprEditor;
 import javassist.expr.FieldAccess;
 
 public class FusionScreenPatches {
+    public static boolean didHideRelics;
+
     public static AbstractDungeon.CurrentScreen screenHack(AbstractDungeon.CurrentScreen screen) {
         if (screen == FusionScreen.Enum.FUSION_SCREEN) {
             return AbstractDungeon.CurrentScreen.HAND_SELECT;
@@ -29,6 +34,18 @@ public class FusionScreenPatches {
                     }
                 }
             };
+        }
+    }
+
+    @SpirePatch2(clz = AbstractDungeon.class, method = "resetPlayer")
+    @SpirePatch2(clz = CardCrawlGame.class, method = "startOver")
+    public static class CleanupOnRestart {
+        @SpirePostfixPatch
+        public static void plz() {
+            if (didHideRelics) {
+                didHideRelics = false;
+                Settings.hideRelics = false;
+            }
         }
     }
 }
