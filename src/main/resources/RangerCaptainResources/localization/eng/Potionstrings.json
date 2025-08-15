@@ -1,10 +1,25 @@
 {
-  "${ModID}:TabooPotion": {
-    "NAME": "Taboo Potion",
-    "DESCRIPTIONS": ["Enemy deals #b"," less damage with Attacks this turn"]
+  "${ModID}:FizzyPotion": {
+    "NAME": "Fizzy Potion",
+    "DESCRIPTIONS": ["Gain #b"," Energy. Add #b"," #rDazed to your hand."]
   },
-  "${ModID}:LimitBreaker": {
-    "NAME": "Limit Breaker",
-    "DESCRIPTIONS": ["#yMasterwork and #yUpgrade all cards in your hand.","#yMasterwork and #yUpgrade all cards in your hand #b"," times."]
+  "${ModID}:FissionPotion": {
+    "NAME": "Fissile Potion",
+    "DESCRIPTIONS": [
+      "Choose a card in your hand. Add #b"," copy of that card into your hand."," copies of that card into your hand.",
+      "Copy"
+    ]
+  },
+  "${ModID}:SunPotion": {
+    "NAME": "Bottled Sun",
+    "DESCRIPTIONS": ["Perform a random #yFusion using cards in your hand.","Perform up to #b"," random #yFusions using cards in your hand."]
+  },
+  "${ModID}:VigorPotion": {
+    "NAME": "Invigorating Potion",
+    "DESCRIPTIONS": ["Gain #b"," #yVigor."]
+  },
+  "${ModID}:ResonancePotion": {
+    "NAME": "Vibration Potion",
+    "DESCRIPTIONS": ["Apply #b"," #yResonance."]
   }
 }
