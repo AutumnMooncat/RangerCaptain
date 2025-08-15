@@ -17,6 +17,7 @@ import RangerCaptain.util.*;
 import RangerCaptain.vfx.ShaderTest;
 import basemod.AutoAdd;
 import basemod.BaseMod;
+import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
 import basemod.helpers.CardBorderGlowManager;
 import basemod.helpers.RelicType;
@@ -32,6 +33,7 @@ import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.mod.stslib.patches.cardInterfaces.MultiUpgradePatches;
 import com.evacipated.cardcrawl.modthespire.Loader;
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -40,6 +42,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.NoDrawPower;
@@ -48,9 +51,11 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Properties;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 @SpireInitializer
@@ -96,29 +101,15 @@ public class MainModfile implements
     public static String[] EXTRA_TEXT;
     private static final String AUTHOR = "Mistress Autumn";
 
-    public static final String ENABLE_CARD_BATTLE_TALK_SETTING = "enableCardBattleTalk";
-    public static boolean enableCardBattleTalkEffect = false;
+    // Mod-settings settings. This is if you want an on/off savable button
+    public static SpireConfig rangerCaptainConfig;
+    public static ModLabeledToggleButton playTutorialButton;
 
-    public static final String CARD_BATTLE_TALK_PROBABILITY_SETTING = "cardTalkProbability";
-    public static int cardTalkProbability = 10; //Out of 100
+    public static final String SHOW_DESCRIPTORS = "showDescriptors";
+    public static boolean showDescriptors = true;
 
-    public static final String ENABLE_DAMAGED_BATTLE_TALK_SETTING = "enableDamagedBattleTalk";
-    public static boolean enableDamagedBattleTalkEffect = false;
-
-    public static final String DAMAGED_BATTLE_TALK_PROBABILITY_SETTING = "damagedTalkProbability";
-    public static int damagedTalkProbability = 20; //Out of 100
-
-    public static final String ENABLE_PRE_BATTLE_TALK_SETTING = "enablePreBattleTalk";
-    public static boolean enablePreBattleTalkEffect = false;
-
-    public static final String PRE_BATTLE_TALK_PROBABILITY_SETTING = "preTalkProbability";
-    public static int preTalkProbability = 50; //Out of 100
-
-    public static final String RENDER_OFF_CHARACTER = "renderOffCharacter";
-    public static boolean renderOffCharacter = true;
-
-    public static final String ELEMENT_ICON_SIZE = "elementIconSize";
-    public static float elementIconSize = 1f;
+    public static final String PLAY_TUTORIAL = "playTutorial";
+    public static boolean playTutorial = true;
 
     public static final ArrayList<AbstractGameEffect> safeEffectQueue = new ArrayList<>();
 
@@ -132,6 +123,17 @@ public class MainModfile implements
                 ATTACK_S_ART, SKILL_S_ART, POWER_S_ART, CARD_ENERGY_S,
                 ATTACK_L_ART, SKILL_L_ART, POWER_L_ART,
                 CARD_ENERGY_L, TEXT_ENERGY);
+
+        Properties defaultSettings = new Properties();
+        defaultSettings.setProperty(SHOW_DESCRIPTORS, Boolean.toString(showDescriptors));
+        defaultSettings.setProperty(PLAY_TUTORIAL, Boolean.toString(playTutorial));
+        try {
+            rangerCaptainConfig = new SpireConfig(modID, modID+"Config", defaultSettings);
+            showDescriptors = rangerCaptainConfig.getBool(SHOW_DESCRIPTORS);
+            playTutorial = rangerCaptainConfig.getBool(PLAY_TUTORIAL);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static String makePath(String resourcePath) {
@@ -269,6 +271,8 @@ public class MainModfile implements
         TEXT = uiStrings.TEXT;
         // Create the Mod Menu
         ModPanel settingsPanel = new ModPanel();
+        float currentYposition = 740f;
+        float spacingY = 55f;
 
         // Load the Mod Badge
         Texture badgeTexture = TexLoader.getTexture(BADGE_IMAGE);
@@ -295,6 +299,26 @@ public class MainModfile implements
         }
 
         //Add Config stuff
+        playTutorialButton = new ModLabeledToggleButton(TEXT[0],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                rangerCaptainConfig.getBool(PLAY_TUTORIAL), settingsPanel, (label) -> {}, (button) -> {
+            rangerCaptainConfig.setBool(PLAY_TUTORIAL, button.enabled);
+            playTutorial = button.enabled;
+            try {
+                rangerCaptainConfig.save();} catch (IOException e) {e.printStackTrace();}
+        });
+        currentYposition -= spacingY;
+
+        ModLabeledToggleButton useDescriptorsButton = new ModLabeledToggleButton(TEXT[1],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                rangerCaptainConfig.getBool(SHOW_DESCRIPTORS), settingsPanel, (label) -> {}, (button) -> {
+            rangerCaptainConfig.setBool(SHOW_DESCRIPTORS, button.enabled);
+            showDescriptors = button.enabled;
+            try {
+                rangerCaptainConfig.save();} catch (IOException e) {e.printStackTrace();}
+        });
+        currentYposition -= spacingY;
+
+        settingsPanel.addUIElement(playTutorialButton);
+        settingsPanel.addUIElement(useDescriptorsButton);
 
         //Other Setup stuff
         BaseMod.addCustomScreen(new FusionScreen());

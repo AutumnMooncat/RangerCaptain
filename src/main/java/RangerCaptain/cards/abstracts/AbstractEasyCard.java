@@ -187,9 +187,9 @@ public abstract class AbstractEasyCard extends CustomCard {
 
     @Override
     public List<String> getCardDescriptors() {
-        if (this instanceof FusedCard) {
+        if (this instanceof FusedCard && MainModfile.showDescriptors) {
             return FUSION_TEXT;
-        } else if (monsterEnum != null) {
+        } else if (monsterEnum != null && MainModfile.showDescriptors) {
             return MONSTER_TEXT;
         }
         return super.getCardDescriptors();
