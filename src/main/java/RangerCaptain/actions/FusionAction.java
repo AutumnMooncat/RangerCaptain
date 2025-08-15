@@ -64,14 +64,20 @@ public class FusionAction extends AbstractGameAction {
             hand.addAll(newCards);
             AbstractDungeon.player.hand.refreshHandLayout();
             AbstractDungeon.player.hand.applyPowers();
-            for (AbstractPower power : Wiz.adp().powers) {
-                if (power instanceof OnFusionPower) {
-                    ((OnFusionPower) power).onPerformFusion(baseCard, donorCard, fusion);
-                }
-            }
+            fusionTriggers(baseCard, donorCard, fusion);
             this.isDone = true;
         } else {
             this.tickDuration();
+        }
+    }
+
+    public static void fusionTriggers(AbstractCard base, AbstractCard donor, FusedCard fusion) {
+        fusion.superFlash();
+        CardCrawlGame.sound.play("GHOST_ORB_IGNITE_1", 0.1f);
+        for (AbstractPower power : Wiz.adp().powers) {
+            if (power instanceof OnFusionPower) {
+                ((OnFusionPower) power).onPerformFusion(base, donor, fusion);
+            }
         }
     }
 }
