@@ -4,7 +4,6 @@ import RangerCaptain.cards.Camping;
 import RangerCaptain.cards.Defend;
 import RangerCaptain.cards.Levitate;
 import RangerCaptain.cards.Strike;
-import RangerCaptain.cards.interfaces.SkillAnimationAttack;
 import RangerCaptain.relics.EspressoExpress;
 import RangerCaptain.util.CustomSounds;
 import RangerCaptain.util.GifDecoder;
@@ -24,7 +23,6 @@ import com.brashmonkey.spriter.Player;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
@@ -36,7 +34,6 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -261,57 +258,6 @@ public class TheRangerCaptain extends CustomPlayer {
         sb.setShader(origShader);
     }
 
-    @Override
-    public void onVictory() {
-        super.onVictory();
-        playAnimation("happy");
-    }
-
-    @Override
-    public void useCard(AbstractCard c, AbstractMonster monster, int energyOnUse) {
-        super.useCard(c, monster, energyOnUse);
-        switch (c.type) {
-            case ATTACK:
-                RandomChatterHelper.showChatter(RandomChatterHelper.getAttackText(), cardTalkProbability, enableCardBattleTalkEffect);
-                if (c instanceof SkillAnimationAttack) {
-                    playAnimation("skill");
-                } else {
-                    playAnimation("slam");
-                }
-                break;
-            case POWER:
-                RandomChatterHelper.showChatter(RandomChatterHelper.getPowerText(), cardTalkProbability, enableCardBattleTalkEffect);
-                playAnimation("happy");
-                break;
-            default:
-                RandomChatterHelper.showChatter(RandomChatterHelper.getSkillText(), cardTalkProbability, enableCardBattleTalkEffect);
-                playAnimation("skill");
-                break;
-        }
-    }
-
-    public void damage(DamageInfo info) {
-        boolean hadBlockBeforeSuper = this.currentBlock > 0;
-        super.damage(info);
-        boolean hasBlockAfterSuper = this.currentBlock > 0;
-        boolean tookNoDamage = this.lastDamageTaken == 0;
-        if (hadBlockBeforeSuper && (hasBlockAfterSuper || tookNoDamage)) {
-            RandomChatterHelper.showChatter(RandomChatterHelper.getBlockedDamageText(), damagedTalkProbability, enableDamagedBattleTalkEffect);
-            playAnimation("happy");
-        } else {
-            if (info.owner != null && info.type != DamageInfo.DamageType.THORNS && info.output > 0) {
-                if (info.output >= 15) {
-                    RandomChatterHelper.showChatter(RandomChatterHelper.getHeavyDamageText(), damagedTalkProbability, enableDamagedBattleTalkEffect);
-                } else {
-                    RandomChatterHelper.showChatter(RandomChatterHelper.getLightDamageText(), damagedTalkProbability, enableDamagedBattleTalkEffect);
-                }
-            } else if (info.type == DamageInfo.DamageType.THORNS && info.output > 0) {
-                RandomChatterHelper.showChatter(RandomChatterHelper.getFieldDamageText(), damagedTalkProbability, enableDamagedBattleTalkEffect);
-            }
-            playAnimation("hurt");
-        }
-    }
-
     public CustomSpriterAnimation getAnimation() {
         return (CustomSpriterAnimation) this.animation;
     }
@@ -329,44 +275,6 @@ public class TheRangerCaptain extends CustomPlayer {
 
     public void resetToIdleAnimation() {
         playAnimation("idle");
-    }
-
-    @Override
-    public void playDeathAnimation() {
-        RandomChatterHelper.showChatter(RandomChatterHelper.getKOText(), preTalkProbability, enablePreBattleTalkEffect); // I don't think this works
-        playAnimation("ko");
-    }
-
-    @Override
-    public void heal(int healAmount) {
-        if (healAmount > 0) {
-            if (RandomChatterHelper.showChatter(RandomChatterHelper.getHealingText(), damagedTalkProbability, enableDamagedBattleTalkEffect)){ //Technically changes your hp, lol
-                playAnimation("happy");
-            }
-        }
-        super.heal(healAmount);
-    }
-
-    @Override
-    public void preBattlePrep() {
-        playAnimation("idle");
-        super.preBattlePrep();
-        boolean bossFight = false;
-        for (AbstractMonster mons : AbstractDungeon.getMonsters().monsters) {
-            if (mons.type == AbstractMonster.EnemyType.BOSS) {
-                bossFight = true;
-                break;
-            }
-        }
-        if (AbstractDungeon.getCurrRoom().eliteTrigger || bossFight) {
-            RandomChatterHelper.showChatter(RandomChatterHelper.getBossFightText(), preTalkProbability, enablePreBattleTalkEffect);
-        } else {
-            if (AbstractDungeon.player.currentHealth < AbstractDungeon.player.maxHealth*0.5f) {
-                RandomChatterHelper.showChatter(RandomChatterHelper.getLowHPBattleStartText(), preTalkProbability, enablePreBattleTalkEffect);
-            } else {
-                RandomChatterHelper.showChatter(RandomChatterHelper.getBattleStartText(), preTalkProbability, enablePreBattleTalkEffect);
-            }
-        }
     }
 
     public float[] _lightsOutGetCharSelectXYRI() {
