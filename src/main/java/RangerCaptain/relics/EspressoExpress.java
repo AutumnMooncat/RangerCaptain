@@ -4,14 +4,11 @@ import RangerCaptain.TheRangerCaptain;
 import RangerCaptain.powers.APBoostPower;
 import RangerCaptain.relics.interfaces.OnStashRelic;
 import RangerCaptain.util.Wiz;
-import basemod.abstracts.AbstractCardModifier;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
@@ -33,6 +30,7 @@ public class EspressoExpress extends AbstractEasyRelic implements OnStashRelic {
         resetStats();
     }
 
+    @Override
     public void atPreBattle() {
         grayscale = false;
     }
@@ -106,35 +104,5 @@ public class EspressoExpress extends AbstractEasyRelic implements OnStashRelic {
         EspressoExpress newRelic = new EspressoExpress();
         newRelic.stats = this.stats;
         return newRelic;
-    }
-
-    private static class FreeCostTrackerMod extends AbstractCardModifier {
-
-        @Override
-        public void onInitialApplication(AbstractCard card) {
-            card.freeToPlayOnce = true;
-        }
-
-        @Override
-        public boolean removeOnCardPlayed(AbstractCard card) {
-            return true;
-        }
-
-        @Override
-        public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-            AbstractRelic r = Wiz.adp().getRelic(EspressoExpress.ID);
-            if (r instanceof EspressoExpress) {
-                if (card.costForTurn >= 0) {
-                    ((EspressoExpress) r).incrementStat(card.costForTurn);
-                } else if (card.cost == -1) {
-                    ((EspressoExpress) r).incrementStat(card.energyOnUse);
-                }
-            }
-        }
-
-        @Override
-        public AbstractCardModifier makeCopy() {
-            return new FreeCostTrackerMod();
-        }
     }
 }
