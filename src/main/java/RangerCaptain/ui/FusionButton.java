@@ -2,6 +2,8 @@ package RangerCaptain.ui;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.actions.FusionAction;
+import RangerCaptain.relics.PearFusilli;
+import RangerCaptain.relics.interfaces.PreFusionRelic;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -16,6 +18,7 @@ import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.EndTurnGlowEffect;
@@ -74,7 +77,7 @@ public class FusionButton {
     }
 
     public void update() {
-        this.enabled = canTrigger && EnergyPanel.totalCount >= 1 && Wiz.adp().hand.group.stream().filter(Wiz::canBeFused).count() >= 2;
+        this.enabled = canTrigger && canAfford() && Wiz.adp().hand.group.stream().filter(Wiz::canBeFused).count() >= 2;
         this.glow();// 68
         this.updateHoldProgress();// 69
         if (this.current_x != this.target_x) {// 71
@@ -174,6 +177,15 @@ public class FusionButton {
         }
     }// 135 150
 
+    public boolean canAfford() {
+        for (AbstractRelic relic : Wiz.adp().relics) {
+            if (relic instanceof PearFusilli && !relic.grayscale) {
+                return true;
+            }
+        }
+        return EnergyPanel.totalCount >= 1;
+    }
+
     public void enable() {
         enabled = true;
         updateText(ACTIVATE_TEXT);
@@ -195,7 +207,24 @@ public class FusionButton {
 
         updateText(ALREADY_ACTIVE_TEXT);
 
-        AbstractDungeon.player.loseEnergy(1);
+        boolean free = false;
+        for (AbstractRelic relic : Wiz.adp().relics) {
+            if (relic instanceof PearFusilli && !relic.grayscale) {
+                relic.onTrigger();
+                free = true;
+                break;
+            }
+        }
+
+        if (!free) {
+            AbstractDungeon.player.loseEnergy(1);
+        }
+
+        for (AbstractRelic relic : Wiz.adp().relics) {
+            if (relic instanceof PreFusionRelic) {
+                ((PreFusionRelic) relic).preFusion();
+            }
+        }
         Wiz.atb(new FusionAction());
     }
 

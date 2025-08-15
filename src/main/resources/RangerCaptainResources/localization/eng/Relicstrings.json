@@ -14,5 +14,80 @@
       "The first time you #y${ModID}:Stash a card each combat, gain an additional [E] next turn.",
       "Energy gained: "," NL Per turn: "," NL Per combat: "
     ]
+  },
+  "${ModID}:PearFusilli": {
+    "NAME": "Pear Fusilli",
+    "FLAVOR": "A pre-peared meal for a pair that instantly fills your fusion meter!",
+    "DESCRIPTIONS": [
+      "The first #y${ModID}:Fusion you perform each combat costs no Energy.",
+      "Energy saved: "," NL Per turn: "," NL Per combat: "
+    ]
+  },
+  "${ModID}:RitualCandle": {
+    "NAME": "Ritual Candle",
+    "FLAVOR": "Burn this candle and then sacrifice a recorded tape to influence your future.",
+    "DESCRIPTIONS": [
+      "Whenever you #yExhaust a card, gain #yStrength equal to its cost.",
+      "Strength gained: "," NL Per turn: "," NL Per combat: "
+    ]
+  },
+  "${ModID}:Rewind": {
+    "NAME": "Rewind",
+    "FLAVOR": "Fully restores a damaged tape.",
+    "DESCRIPTIONS": [
+      "Add a copy of the first card you #yExhaust each combat to your hand.",
+      "Attacks copied: "," NL Skills copied: "," NL Powers copied: "," NL Statuses copied: "," NL Curses copied: "
+    ]
+  },
+  "${ModID}:PrizeTicket": {
+    "NAME": "Prize Ticket",
+    "FLAVOR": "The paper feels crisp and delicate, like dead leaves.",
+    "DESCRIPTIONS": [
+      "Cards on sale in shops are now free.",
+      "Sales taken: "," NL Gold saved: "
+    ]
+  },
+  "${ModID}:Upgrape": {
+    "NAME": "Upgrape",
+    "FLAVOR": "A curious bunch of upside-down grapes said to grow from seeds planted on Backwards Day.",
+    "DESCRIPTIONS": [
+      "When adding cards into your deck, you may gain #b2 charges instead. Charges are spent to #yUpgrade future cards offered.",
+      "Gain Charges",
+      "Rewards skipped: "
+    ]
+  },
+  "${ModID}:FusionRadar": {
+    "NAME": "Fusion Radar",
+    "FLAVOR": "This ground-penetrating radar is already picking up signals deep in the Deadlands.",
+    "DESCRIPTIONS": [
+      "Whenever you perform #y${ModID}:Fusion, add a random monster card into your hand first.",
+      "Cards created: "," NL Per turn: "," NL Per combat: "
+    ]
+  },
+  "${ModID}:OpticalLaserTape": {
+    "NAME": "Optical Laser Tape",
+    "FLAVOR": "Uses futuristic laser-based technology to store monster forms efficiently.",
+    "DESCRIPTIONS": [
+      "Upon pickup, choose a monster card. At the start of each combat, it costs #b0 until played.",
+      "At the start of each combat, %s costs #b0 until played.",
+      "Choose a card to make free until played.",
+      "Energy saved: "," NL Per turn: "," NL Per combat: "
+    ]
+  },
+  "${ModID}:Reodorant": {
+    "NAME": "Reodorant",
+    "FLAVOR": "A spray can of \"unisex perspirant anti-deodorant\".",
+    "DESCRIPTIONS": [
+      "Whenever you apply a debuff to an enemy, increase the amount applied by #b1.",
+      "Debuffs applied: "," NL Per turn: "," NL Per combat: "
+    ]
+  },
+  "${ModID}:SkellyJelly": {
+    "NAME": "Skelly Jelly",
+    "FLAVOR": "You'd better not eat it, but it might still be useful for something...",
+    "DESCRIPTIONS": [
+      "Gain [E] at the start of your turn. At the start of combat, shuffle #b3 #rSlimed into your draw pile.",
+      "Slimed drawn: "," NL Per turn: "," NL Per combat: "," NL Slimed played: "
+    ]
   }
 }
