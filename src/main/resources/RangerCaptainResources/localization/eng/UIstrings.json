@@ -14,6 +14,18 @@
       "Enable Ranger Captain Crossover Content"
     ]
   },
+  "${ModID}:FusionTutorial": {
+    "TEXT": [
+      "Fusion System",
+      "Card Upgrades"
+    ],
+    "EXTRA_TEXT": [
+      "Most of Ranger Captain's cards are monster cards which can be #yFused together when you have #b2 or more of them in your hand. NL NL Performing #yFusion costs energy, don't run out!",
+      "The #yFusion will inherit the effects of both cards, scaled up to the higher card's cost. NL NL Try to find your favourite combinations!",
+      "Many monster cards have evolutions for upgrades, allowing them to be upgraded more than once, but some can't be upgraded at all.",
+      "Some monsters may even have branching options when upgrading. NL NL This can be previewed when viewing card upgrades."
+    ]
+  },
   "${ModID}:FusionButton": {
     "TEXT": [
       "Fuse!",
