@@ -219,7 +219,7 @@
   },
   "${ModID}:Magikrab": {
     "NAME": "Magikrab",
-    "DESCRIPTION": "${ModID}:Perfect. NL Choose an enemy's debuff. Double it."
+    "DESCRIPTION": "${ModID}:Perfect. NL Choose an enemy's debuff. Double it. NL Exhaust."
   },
   "${ModID}:Mascotoy": {
     "NAME": "Mascotoy",

@@ -28,6 +28,7 @@ public class Magikrab extends AbstractEasyCard {
         super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
         setMonsterData(MonsterEnum.MAGIKRAB);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
+        exhaust = true;
     }
 
     @Override
