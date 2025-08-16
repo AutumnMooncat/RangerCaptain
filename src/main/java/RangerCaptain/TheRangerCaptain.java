@@ -277,6 +277,9 @@ public class TheRangerCaptain extends CustomPlayer {
         playAnimation("idle");
     }
 
+    @Override
+    public void playDeathAnimation() {}
+
     public float[] _lightsOutGetCharSelectXYRI() {
         return new float[] {
                 963*Settings.scale, 466*Settings.scale, 500f, 1.5f,
