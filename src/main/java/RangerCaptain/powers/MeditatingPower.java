@@ -1,6 +1,7 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
+import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.components.OnPlayNoAttacksComponent;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -39,7 +40,7 @@ public class MeditatingPower extends AbstractComponentPower {
             if (source == null) {
                 addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, amount)));
             } else {
-                triggerComponents(null, false);
+                addToBot(new DoAction(() -> triggerComponents(null, false)));
             }
         }
     }

@@ -1,6 +1,7 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
+import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.components.OnExhaustComponent;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerToRandomEnemyAction;
@@ -36,7 +37,7 @@ public class FlammablePower extends AbstractComponentPower {
         if (source == null) {
             addToBot(new ApplyPowerToRandomEnemyAction(owner, new BurnedPower(null, owner, amount), amount));
         } else {
-            triggerComponents(null, false);
+            addToBot(new DoAction(() -> triggerComponents(null, false)));
         }
     }
 }

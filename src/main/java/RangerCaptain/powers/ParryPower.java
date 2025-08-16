@@ -1,6 +1,7 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
+import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.components.OnParryComponent;
 import RangerCaptain.powers.interfaces.LastDamageTakenUpdatePower;
@@ -40,7 +41,7 @@ public class ParryPower extends AbstractComponentPower implements LastDamageTake
             if (source == null) {
                 addToTop(new ApplyPowerAction(owner, owner, new VigorPower(owner, amount)));
             } else {
-                triggerComponents((AbstractMonster) info.owner, true);
+                addToTop(new DoAction(() -> triggerComponents((AbstractMonster) info.owner, true)));
             }
         }
     }

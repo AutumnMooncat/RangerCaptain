@@ -1,6 +1,7 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
+import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.components.OnPerformFusionComponent;
 import RangerCaptain.cards.tokens.FusedCard;
@@ -40,7 +41,7 @@ public class GlassBondsPower extends AbstractComponentPower implements OnFusionP
         if (source == null) {
             addToBot(new DamageAllEnemiesAction(null, DamageInfo.createDamageMatrix(amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HEAVY, true));
         } else {
-            triggerComponents(null, true);
+            addToBot(new DoAction(() -> triggerComponents(null, false)));
         }
     }
 }

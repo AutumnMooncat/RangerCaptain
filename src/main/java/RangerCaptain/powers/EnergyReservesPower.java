@@ -1,6 +1,7 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
+import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.components.OnGainEnergyComponent;
 import RangerCaptain.patches.OnChangeEnergyPatches;
@@ -50,7 +51,7 @@ public class EnergyReservesPower extends AbstractComponentPower implements OnCha
         if (source == null) {
             Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new ConductivePower(mon, owner, this.amount)));
         } else {
-            triggerComponents(null, false);
+            addToBot(new DoAction(() -> triggerComponents(null, false)));
         }
     }
 }

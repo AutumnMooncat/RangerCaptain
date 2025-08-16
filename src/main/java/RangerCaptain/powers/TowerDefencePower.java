@@ -1,6 +1,7 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
+import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.components.OnPlayPerfectComponent;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
@@ -39,7 +40,7 @@ public class TowerDefencePower extends AbstractComponentPower {
             if (source == null) {
                 addToBot(new GainBlockAction(owner, amount));
             } else {
-                triggerComponents(null, false);
+                addToBot(new DoAction(() -> triggerComponents(null, false)));
             }
         }
     }

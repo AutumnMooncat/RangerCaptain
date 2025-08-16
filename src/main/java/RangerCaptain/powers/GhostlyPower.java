@@ -1,6 +1,7 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
+import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.components.OnStashComponent;
 import RangerCaptain.powers.interfaces.OnStashPower;
@@ -37,7 +38,7 @@ public class GhostlyPower extends AbstractComponentPower implements OnStashPower
         if (source == null) {
             addToBot(new GainBlockAction(owner, amount));
         } else {
-            triggerComponents(null, false);
+            addToBot(new DoAction(() -> triggerComponents(null, false)));
         }
     }
 }

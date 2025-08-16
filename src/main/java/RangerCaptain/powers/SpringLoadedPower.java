@@ -1,6 +1,7 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
+import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.components.OnDrawUnplayableComponent;
 import RangerCaptain.patches.EnterCardGroupPatches;
@@ -44,7 +45,7 @@ public class SpringLoadedPower extends AbstractComponentPower implements EnterCa
             if (source == null) {
                 addToBot(new DrawCardAction(amount));
             } else {
-                triggerComponents(null, false);
+                addToBot(new DoAction(() -> triggerComponents(null, false)));
             }
         }
     }

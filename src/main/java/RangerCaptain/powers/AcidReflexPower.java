@@ -1,6 +1,7 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
+import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.components.OnTurnStartComponent;
 import RangerCaptain.cards.tokens.Sludge;
@@ -37,7 +38,7 @@ public class AcidReflexPower extends AbstractComponentPower {
             if (source == null) {
                 addToBot(new MakeTempCardInHandAction(new Sludge(), amount, false));
             } else {
-                triggerComponents(null, false);
+                addToBot(new DoAction(() -> triggerComponents(null, false)));
             }
         }
     }
