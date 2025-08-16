@@ -706,6 +706,12 @@
       "Set this card's cost to 0 this combat"
     ]
   },
+  "${ModID}:ResolveNextTurnEffectsComponent": {
+    "TEXT": ["Resolve next turn effects"],
+    "EXTRA_TEXT": [
+      "Resolve all next turn power effects"
+    ]
+  },
   "${ModID}:DieNextTurnComponent": {
     "TEXT": ["Increase other effects, Die next turn"],
     "EXTRA_TEXT": [

@@ -1,12 +1,13 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.actions.IncreaseDebuffsAction;
+import RangerCaptain.actions.ResolveNextTurnEffectsAction;
 import RangerCaptain.cardfusion.FusionComponentHelper;
-import RangerCaptain.cardfusion.components.IncreaseDebuffsComponent;
+import RangerCaptain.cardfusion.components.ExhaustCardsComponent;
+import RangerCaptain.cardfusion.components.ResolveNextTurnEffectsComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -18,34 +19,31 @@ public class Sanzatime extends AbstractEasyCard {
 
     static {
         new FusionComponentHelper(MonsterEnum.SANZATIME)
-                .withCost(2)
-                .withDamage(8, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
-                .with(new IncreaseDebuffsComponent(1))
+                .withCost(1)
+                .with(new ExhaustCardsComponent(1.5f, ExhaustCardsComponent.TargetPile.HAND, true, false), new ResolveNextTurnEffectsComponent())
                 .register();
         new FusionComponentHelper(MonsterEnum.FORTIWINX)
-                .withCost(2)
-                .withDamage(10, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
-                .with(new IncreaseDebuffsComponent(2))
+                .withCost(0)
+                .with(new ExhaustCardsComponent(1.5f, ExhaustCardsComponent.TargetPile.HAND, true, false), new ResolveNextTurnEffectsComponent())
                 .register();
     }
 
     public Sanzatime() {
-        super(ID, 2, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
-        baseDamage = damage = 12;
-        baseMagicNumber = magicNumber = 1;
+        super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
+        baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.SANZATIME);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, AbstractGameAction.AttackEffect.BLUNT_HEAVY);
-        addToBot(new IncreaseDebuffsAction(m, magicNumber));
+        addToBot(new ExhaustAction(magicNumber, false, true));
+        addToBot(new ResolveNextTurnEffectsAction());
     }
 
     @Override
     public void upp() {
-        upgradeDamage(3);
-        upgradeMagicNumber(1);
+        upgradeBaseCost(0);
+        //upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.FORTIWINX);

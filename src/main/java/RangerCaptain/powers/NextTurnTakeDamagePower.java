@@ -1,6 +1,7 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
+import RangerCaptain.powers.interfaces.MonsterAtPlayerStartOfTurnPower;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.evacipated.cardcrawl.modthespire.lib.*;
@@ -14,7 +15,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import javassist.CtBehavior;
 
-public class NextTurnTakeDamagePower extends AbstractEasyPower implements NonStackablePower {
+public class NextTurnTakeDamagePower extends AbstractEasyPower implements NonStackablePower, MonsterAtPlayerStartOfTurnPower {
     public static final String POWER_ID = MainModfile.makeID(NextTurnTakeDamagePower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -40,7 +41,7 @@ public class NextTurnTakeDamagePower extends AbstractEasyPower implements NonSta
     }
 
     @Override
-    public void atEndOfRound() {
+    public void atPlayerStartOfTurn() {
         flash();
         addToBot(new DamageAction(owner, info, effect));
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));

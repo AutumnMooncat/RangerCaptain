@@ -295,7 +295,7 @@
   },
   "${ModID}:Sanzatime": {
     "NAME": "Sanzatime",
-    "DESCRIPTION": "Deal !D! damage. NL Increase all of the enemy's debuffs by !M!.",
+    "DESCRIPTION": "Exhaust up to !M! card{@@}{!M!|1=|@=s} in your hand. NL Resolve all next turn power effects.",
     "EXTENDED_DESCRIPTION": ["Fortiwinx"]
   },
   "${ModID}:Sirenade": {
