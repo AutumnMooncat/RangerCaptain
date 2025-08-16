@@ -1,12 +1,9 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cardfusion.FusionComponentHelper;
-import RangerCaptain.cardfusion.components.AddCloseEncounterComponent;
 import RangerCaptain.cardfusion.components.DrawComponent;
 import RangerCaptain.cardfusion.components.StashNextCardComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
-import RangerCaptain.patches.CustomTags;
-import RangerCaptain.patches.ExtraEffectPatches;
 import RangerCaptain.powers.CloseEncounterPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -24,11 +21,11 @@ public class Minortom extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.MINORTOM)
                 .withCost(1)
-                .with(new DrawComponent(1.5f), new StashNextCardComponent(1), new AddCloseEncounterComponent())
+                .with(new DrawComponent(1.5f), new StashNextCardComponent(1))
                 .register();
         new FusionComponentHelper(MonsterEnum.MAJORTOM)
                 .withCost(1)
-                .with(new DrawComponent(2.5f), new StashNextCardComponent(1), new AddCloseEncounterComponent())
+                .with(new DrawComponent(2.5f), new StashNextCardComponent(1))
                 .register();
     }
 
@@ -37,8 +34,6 @@ public class Minortom extends AbstractEasyCard {
         baseMagicNumber = magicNumber = 2;
         baseSecondMagic = secondMagic = 1;
         setMonsterData(MonsterEnum.MINORTOM);
-        tags.add(CustomTags.CLOSE_ENCOUNTER);
-        ExtraEffectPatches.EffectFields.closeEncounter.set(this, true);
     }
 
     @Override
