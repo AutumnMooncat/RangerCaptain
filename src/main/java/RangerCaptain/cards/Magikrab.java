@@ -2,6 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.actions.DoublePowerAction;
 import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.components.AddExhaustComponent;
 import RangerCaptain.cardfusion.components.DoubleDebuffsComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
@@ -20,7 +21,7 @@ public class Magikrab extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.MAGIKRAB)
                 .withCost(1)
-                .with(new DoubleDebuffsComponent(1))
+                .with(new DoubleDebuffsComponent(1), new AddExhaustComponent())
                 .register();
     }
 
