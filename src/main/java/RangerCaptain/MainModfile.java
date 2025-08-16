@@ -303,8 +303,7 @@ public class MainModfile implements
                 rangerCaptainConfig.getBool(PLAY_TUTORIAL), settingsPanel, (label) -> {}, (button) -> {
             rangerCaptainConfig.setBool(PLAY_TUTORIAL, button.enabled);
             playTutorial = button.enabled;
-            try {
-                rangerCaptainConfig.save();} catch (IOException e) {e.printStackTrace();}
+            try {rangerCaptainConfig.save();} catch (IOException e) {e.printStackTrace();}
         });
         currentYposition -= spacingY;
 
@@ -312,8 +311,7 @@ public class MainModfile implements
                 rangerCaptainConfig.getBool(SHOW_DESCRIPTORS), settingsPanel, (label) -> {}, (button) -> {
             rangerCaptainConfig.setBool(SHOW_DESCRIPTORS, button.enabled);
             showDescriptors = button.enabled;
-            try {
-                rangerCaptainConfig.save();} catch (IOException e) {e.printStackTrace();}
+            try {rangerCaptainConfig.save();} catch (IOException e) {e.printStackTrace();}
         });
         currentYposition -= spacingY;
 
