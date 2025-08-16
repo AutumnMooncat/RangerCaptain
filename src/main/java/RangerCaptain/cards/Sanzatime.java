@@ -36,7 +36,7 @@ public class Sanzatime extends AbstractEasyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ExhaustAction(magicNumber, false, true));
+        addToBot(new ExhaustAction(magicNumber, false, true, true));
         addToBot(new ResolveNextTurnEffectsAction());
     }
 
