@@ -20,7 +20,7 @@ public class BurnPointsComponent extends AbstractComponent {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
     public BurnPointsComponent() {
-        super(ID, 0, ComponentType.DO, ComponentTarget.ENEMY_AOE, DynVar.NONE);
+        super(ID, 0, ComponentType.DO, ComponentTarget.NONE, DynVar.NONE);
     }
 
     @Override
