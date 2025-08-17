@@ -1,13 +1,10 @@
 package RangerCaptain;
 
 import RangerCaptain.cards.Binvader;
-import RangerCaptain.cards.Springheel;
-import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.cards.cardvars.*;
 import RangerCaptain.cards.interfaces.GlowAdjacentCard;
 import RangerCaptain.cards.interfaces.OnOtherCardUpgradedCard;
 import RangerCaptain.cards.interfaces.OnReceiveDebuffCard;
-import RangerCaptain.patches.CardCounterPatches;
 import RangerCaptain.patches.GlowChangePatch;
 import RangerCaptain.powers.*;
 import RangerCaptain.relics.AbstractEasyRelic;
@@ -45,7 +42,6 @@ import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.NoDrawPower;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import org.apache.logging.log4j.LogManager;
@@ -321,40 +317,9 @@ public class MainModfile implements
         //Other Setup stuff
         BaseMod.addCustomScreen(new FusionScreen());
 
-        DynamicTextBlocks.registerCustomCheck(makeID("Springheel"), c -> {
-            if (c instanceof Springheel && ((Springheel) c).info == 1) {
-                return ((Springheel) c).secondMagic;
-            }
-            return 0;
-        });
-
-        DynamicTextBlocks.registerCustomCheck(makeID("Dominoth"), c -> {
-            if (c instanceof AbstractEasyCard && ((AbstractEasyCard) c).info == 0 && Wiz.isInCombat() && Wiz.adp().hand.contains(c)) {
-                return 1;
-            }
-            return 0;
-        });
-
         DynamicTextBlocks.registerCustomCheck(makeID("Binvader"), c -> {
             if (Wiz.isInCombat() && Wiz.adp().hand.contains(c)) {
                 if (Binvader.binvasionCount() == 1) {
-                    return 1;
-                }
-                return 2;
-            }
-            return 0;
-        });
-
-        DynamicTextBlocks.registerCustomCheck(makeID("Gearyu"), c -> {
-            if (c instanceof AbstractEasyCard && ((AbstractEasyCard) c).info == 3 && Wiz.isInCombat() && Wiz.adp().hand.contains(c)) {
-                int currentDrawn = CardCounterPatches.cardsDrawnThisTurn.size() - CardCounterPatches.initialHand.size();
-                int roomInHand = BaseMod.MAX_HAND_SIZE - Wiz.adp().hand.size();
-                int cardsAvailable = Wiz.adp().drawPile.size() + Wiz.adp().discardPile.size();
-                if (Wiz.adp().hasPower(NoDrawPower.POWER_ID)) {
-                    cardsAvailable = 0;
-                }
-                int effect = currentDrawn + Math.min(c.magicNumber, Math.min(roomInHand, cardsAvailable));
-                if (effect == 1) {
                     return 1;
                 }
                 return 2;
