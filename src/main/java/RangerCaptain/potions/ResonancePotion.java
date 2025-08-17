@@ -34,7 +34,7 @@ public class ResonancePotion extends CustomPotion {
     public static final int EFFECT = 3;
 
     public ResonancePotion() {
-        super(NAME, POTION_ID, PotionRarity.COMMON, PotionSize.SPHERE, PotionColor.FIRE);
+        super(NAME, POTION_ID, PotionRarity.COMMON, PotionSize.FAIRY, PotionColor.FIRE);
         isThrown = true;
         targetRequired = true;
     }
