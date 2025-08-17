@@ -27,7 +27,7 @@ public class OnPerformFusionComponent extends AbstractPowerComponent {
 
     @Override
     public float amountMultiplier(AbstractComponent other) {
-        return 0.5f;
+        return 0.75f;
     }
 
     @Override
@@ -38,6 +38,14 @@ public class OnPerformFusionComponent extends AbstractPowerComponent {
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
         return String.format(CARD_TEXT[0], assembleCapturedText(captured));
+    }
+
+    @Override
+    public void onCapture(AbstractComponent other) {
+        super.onCapture(other);
+        if (other.target == ComponentTarget.ENEMY || other.target == ComponentTarget.ENEMY_RANDOM) {
+            other.target = ComponentTarget.ENEMY_AOE;
+        }
     }
 
     @Override
