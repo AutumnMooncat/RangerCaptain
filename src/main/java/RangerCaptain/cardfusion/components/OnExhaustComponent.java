@@ -20,6 +20,7 @@ public class OnExhaustComponent extends AbstractPowerComponent {
     public static final String ID = MainModfile.makeID(OnExhaustComponent.class.getSimpleName());
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
+    public static final String NON = CARD_TEXT[1];
 
     public OnExhaustComponent() {
         super(ID, false);
@@ -37,7 +38,13 @@ public class OnExhaustComponent extends AbstractPowerComponent {
 
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
-        return String.format(CARD_TEXT[0], assembleCapturedText(captured));
+        StringBuilder exclusions = new StringBuilder();
+        for (AbstractComponent comp : captured) {
+            if (comp instanceof MakeCardsComponent && ((MakeCardsComponent) comp).reference != null) {
+                exclusions.append(FormatHelper.prefixWords(NON + ((MakeCardsComponent) comp).reference, "*")).append(" ");
+            }
+        }
+        return String.format(CARD_TEXT[0], exclusions, assembleCapturedText(captured));
     }
 
     @Override

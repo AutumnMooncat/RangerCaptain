@@ -42,7 +42,7 @@ public class MakeCardsComponent extends AbstractComponent {
     public final ArrayList<Location> locations = new ArrayList<>();
     public final String cardID;
     public final boolean pluralize;
-    private transient AbstractCard reference;
+    public transient AbstractCard reference;
 
     public MakeCardsComponent(float base, AbstractCard card, boolean pluralize) {
         this(base, card, pluralize, Location.HAND);

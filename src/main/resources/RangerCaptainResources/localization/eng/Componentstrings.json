@@ -793,7 +793,10 @@
   },
   "${ModID}:OnExhaustComponent": {
     "TEXT": ["Fusion becomes a Power"],
-    "EXTRA_TEXT": ["Whenever a card is Exhausted, %s"]
+    "EXTRA_TEXT": [
+      "Whenever a %1$scard is Exhausted, %2$s",
+      "non-"
+    ]
   },
   "${ModID}:OnParryComponent": {
     "TEXT": ["Fusion becomes a Power"],
