@@ -2,8 +2,10 @@ package RangerCaptain.cards;
 
 import RangerCaptain.actions.StashTopCardsAction;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static RangerCaptain.MainModfile.makeID;
@@ -24,6 +26,14 @@ public class FlashFlood extends AbstractEasyCard {
                 card.freeToPlayOnce = true;
             }
         }));
+    }
+
+    @Override
+    public void triggerOnGlowCheck() {
+        glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
+        if (Wiz.adp().drawPile.size() < magicNumber) {
+            glowColor = Settings.RED_TEXT_COLOR.cpy();
+        }
     }
 
     @Override
