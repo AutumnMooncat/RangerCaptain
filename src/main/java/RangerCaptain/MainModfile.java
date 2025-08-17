@@ -377,7 +377,7 @@ public class MainModfile implements
             }
         });
 
-        if (shaderTest) {
+        if (ShaderTest.shaderTest) {
             ScreenPostProcessorManager.addPostProcessor(new ShaderTest());
         }
 
@@ -395,8 +395,6 @@ public class MainModfile implements
         }
         FusionNodeData loadPlz = new FusionNodeData();
     }
-
-    public static boolean shaderTest = false;
 
     public static Color getRainbowColor() {
         return new Color(
