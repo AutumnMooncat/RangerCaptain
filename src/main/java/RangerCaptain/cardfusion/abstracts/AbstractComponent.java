@@ -427,6 +427,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         resolveType(card, components);
         resolveTarget(card, components);
         resolveTraits(card, components);
+        resolveUpcaptures(components);
         resolveAmounts(card.cost, components);
         resolveDynVars(components);
         resolvePostAssignment(card, components);
@@ -500,6 +501,21 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         components.removeIf(c -> c.hasFlags(Flag.MUST_BE_CAPTURED) && !c.wasCaptured);
         components.removeIf(c -> c.hasFlags(Flag.MUST_CAPTURE) && c.capturedComponents.isEmpty());
         Collections.sort(components);
+    }
+
+    public static void resolveUpcaptures(List<AbstractComponent> components) {
+        for (AbstractComponent component : components) {
+            if (component.wasCaptured) {
+                boolean stillCaptured = false;
+                for (AbstractComponent other : components) {
+                    if (other != component && !other.wasCaptured && other.capturedComponents.contains(component)) {
+                        stillCaptured = true;
+                        break;
+                    }
+                }
+                component.wasCaptured = stillCaptured;
+            }
+        }
     }
 
     public static void resolveStacking(List<AbstractComponent> components) {
