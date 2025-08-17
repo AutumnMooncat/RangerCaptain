@@ -549,7 +549,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
                         processed = other.onBuildText(component, processed);
                     }
                 }
-                text.add(processed + LocalizedStrings.PERIOD);
+                text.add(processed.trim() + LocalizedStrings.PERIOD);
             }
         }
         card.rawDescription = StringUtils.join(text, " NL ");
