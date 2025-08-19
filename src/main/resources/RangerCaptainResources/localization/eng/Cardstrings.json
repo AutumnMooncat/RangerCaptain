@@ -290,7 +290,7 @@
   },
   "${ModID}:Salamagus": {
     "NAME": "Salamagus",
-    "DESCRIPTION": "Whenever a card is Exhausted, apply !M! ${ModID}:Burn to a random enemy.{@@}{!${ModID}:I!|1= NL ${ModID}:Mind-Meld.}",
+    "DESCRIPTION": "Whenever a card is Exhausted, apply !M! ${ModID}:Burn to a random enemy.",
     "EXTENDED_DESCRIPTION": ["Adeptile","Pyromeleon"]
   },
   "${ModID}:Sanzatime": {

@@ -2,12 +2,9 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cardfusion.FusionComponentHelper;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
-import RangerCaptain.cardfusion.components.AddMindMeldComponent;
 import RangerCaptain.cardfusion.components.BurnComponent;
 import RangerCaptain.cardfusion.components.OnExhaustComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
-import RangerCaptain.patches.CustomTags;
-import RangerCaptain.patches.ExtraEffectPatches;
 import RangerCaptain.powers.FlammablePower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -28,15 +25,14 @@ public class Salamagus extends AbstractMultiUpgradeCard {
                 .withFlags(new BurnComponent(8), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
         new FusionComponentHelper(MonsterEnum.ADEPTILE)
-                .withCost(2)
+                .withCost(0)
                 .with(new OnExhaustComponent())
-                .withFlags(new BurnComponent(19), AbstractComponent.Flag.INVERSE_PREFERRED)
-                .with(new AddMindMeldComponent())
+                .withFlags(new BurnComponent(8), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
         new FusionComponentHelper(MonsterEnum.PYROMELEON)
                 .withCost(1)
                 .with(new OnExhaustComponent())
-                .withFlags(new BurnComponent(13), AbstractComponent.Flag.INVERSE_PREFERRED)
+                .withFlags(new BurnComponent(11), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 
@@ -44,7 +40,6 @@ public class Salamagus extends AbstractMultiUpgradeCard {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.SALAMAGUS);
-        baseInfo = info = 0;
     }
 
     @Override
@@ -70,17 +65,14 @@ public class Salamagus extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade0() {
-        upgradeBaseCost(2);
+        upgradeBaseCost(0);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.ADEPTILE);
-        baseInfo = info = 1;
-        tags.add(CustomTags.MIND_MELD);
-        ExtraEffectPatches.EffectFields.mindMeld.set(this, true);
     }
 
     public void upgrade1() {
-        upgradeMagicNumber(2);
+        upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.PYROMELEON);
