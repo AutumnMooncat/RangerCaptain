@@ -2,6 +2,7 @@ package RangerCaptain.tutorials;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.TheRangerCaptain;
+import RangerCaptain.cards.Allseer;
 import RangerCaptain.cards.Carniviper;
 import RangerCaptain.cards.Elfless;
 import RangerCaptain.cards.Nevermort;
@@ -31,11 +32,12 @@ public class FusionTutorial extends FtueTip {
     private static final AbstractCard base = new Elfless();
     private static final AbstractCard donor = new Nevermort();
     private static AbstractCard fusion;
-    private static Carniviper card1;
-    private static Carniviper card2;
-    private static Carniviper card3;
-    private static Carniviper card4;
-    private static Carniviper card5;
+    private static Carniviper carniviper;
+    private static Carniviper masquerattle;
+    private static Carniviper jormungold;
+    private static Allseer allseer;
+    private static Allseer khufo;
+    private static Allseer triphinx;
     private final GotItButton button;
     private final int maxSlots = 3;
     private int currentSlot = 0;
@@ -49,32 +51,33 @@ public class FusionTutorial extends FtueTip {
         donor.current_y = Settings.HEIGHT / 2.0f;
         fusion.current_x = Settings.WIDTH / 2.0f + AbstractCard.RAW_W * Settings.xScale * 2;
         fusion.current_y = Settings.HEIGHT / 2.0f;
-        card1 = new Carniviper();
-        card2 = new Carniviper();
-        card3 = new Carniviper();
-        card4 = new Carniviper();
-        card5 = new Carniviper();
-        card1.current_x = Settings.WIDTH / 2.0f;
-        card1.current_y = Settings.HEIGHT / 2.0f;
-        card2.current_x = Settings.WIDTH / 2.0f + AbstractCard.RAW_W * Settings.xScale;
-        card2.current_y = Settings.HEIGHT / 2.0f;
-        card3.current_x = Settings.WIDTH / 2.0f + AbstractCard.RAW_W * Settings.xScale * 2;
-        card3.current_y = Settings.HEIGHT / 2.0f;
-        card4.current_x = Settings.WIDTH / 2.0f + AbstractCard.RAW_W * Settings.xScale * 2;
-        card4.current_y = Settings.HEIGHT / 2.0f;
-        card5.current_x = Settings.WIDTH / 2.0f + AbstractCard.RAW_W * Settings.xScale;
-        card5.current_y = Settings.HEIGHT / 2.0f;
-        card2.upgrade0();
-        card2.upgraded = true;
-        card3.upgrade0();
-        card3.upgrade3();
-        card3.upgraded = true;
-        card4.upgrade0();
-        card4.upgrade2();
-        card4.upgraded = true;
-        card5.upgrade0();
-        card5.upgrade1();
-        card5.upgraded = true;
+        carniviper = new Carniviper();
+        masquerattle = new Carniviper();
+        masquerattle.upgrade0();
+        masquerattle.upgraded = true;
+        jormungold = new Carniviper();
+        jormungold.upgrade0();
+        jormungold.upgrade2();
+        jormungold.upgraded = true;
+        carniviper.current_x = Settings.WIDTH / 2.0f;
+        carniviper.current_y = Settings.HEIGHT / 2.0f;
+        masquerattle.current_x = Settings.WIDTH / 2.0f + AbstractCard.RAW_W * Settings.xScale;
+        masquerattle.current_y = Settings.HEIGHT / 2.0f;
+        jormungold.current_x = Settings.WIDTH / 2.0f + AbstractCard.RAW_W * Settings.xScale * 2;
+        jormungold.current_y = Settings.HEIGHT / 2.0f;
+        allseer = new Allseer();
+        khufo = new Allseer();
+        khufo.upgrade0();
+        khufo.upgraded = true;
+        triphinx = new Allseer();
+        triphinx.upgrade1();
+        triphinx.upgraded = true;
+        allseer.current_x = Settings.WIDTH / 2.0f;
+        allseer.current_y = Settings.HEIGHT / 2.0f;
+        khufo.current_x = Settings.WIDTH / 2.0f + AbstractCard.RAW_W * Settings.xScale * 3/2f;
+        khufo.current_y = Settings.HEIGHT / 2.0f + AbstractCard.RAW_H * Settings.yScale * 3/8f;
+        triphinx.current_x = Settings.WIDTH / 2.0f + AbstractCard.RAW_W * Settings.xScale * 3/2f;
+        triphinx.current_y = Settings.HEIGHT / 2.0f - AbstractCard.RAW_H * Settings.yScale * 3/8f;
         button = (ReflectionHacks.getPrivateInherited(this, FusionTutorial.class, "button"));
     }
 
@@ -96,10 +99,10 @@ public class FusionTutorial extends FtueTip {
                         break;
                     case 2:
                         ReflectionHacks.setPrivateInherited(this, FusionTutorial.class, "header", title2);
-                        ReflectionHacks.setPrivateInherited(this, FusionTutorial.class, "c", card1);
+                        ReflectionHacks.setPrivateInherited(this, FusionTutorial.class, "c", carniviper);
                         break;
                     case 3:
-                        card3.current_x = Settings.WIDTH / 2.0f;
+                        ReflectionHacks.setPrivateInherited(this, FusionTutorial.class, "c", allseer);
                         break;
                 }
             } else {
@@ -124,14 +127,12 @@ public class FusionTutorial extends FtueTip {
                 fusion.render(sb);
                 break;
             case 2:
-                card2.render(sb);
-                card3.render(sb);
+                masquerattle.render(sb);
+                jormungold.render(sb);
                 break;
             case 3:
-                card2.render(sb);
-                card3.render(sb);
-                card4.render(sb);
-                card5.render(sb);
+                khufo.render(sb);
+                triphinx.render(sb);
                 break;
         }
     }
