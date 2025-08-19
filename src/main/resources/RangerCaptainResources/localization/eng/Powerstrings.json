@@ -51,8 +51,8 @@
     "NAME": "Mind-Meld",
     "DESCRIPTIONS": ["Whenever you play a card this turn, play a copy of ","."]
   },
-  "${ModID}:CloseEncounterPower": {
-    "NAME": "Closer Encounter",
+  "${ModID}:InterceptingPower": {
+    "NAME": "Intercepting",
     "DESCRIPTIONS": ["#yStash the next card you play this turn.", "#yStash the next #b", " cards you play this turn."]
   },
   "${ModID}:FlammablePower": {

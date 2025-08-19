@@ -1,6 +1,6 @@
 package RangerCaptain.patches;
 
-import RangerCaptain.powers.CloseEncounterPower;
+import RangerCaptain.powers.InterceptingPower;
 import RangerCaptain.powers.MindMeldPower;
 import RangerCaptain.ui.StashedCardManager;
 import RangerCaptain.util.Wiz;
@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import javassist.CtBehavior;
 
 public class ExtraEffectPatches {
@@ -61,7 +62,8 @@ public class ExtraEffectPatches {
     public static class FlagForDiscovery {
         @SpireInsertPatch(locator = Locator.class)
         public static void yeetCheck(UseCardAction __instance, AbstractCard ___targetCard) {
-            if (EffectFields.closeEncounter.get(___targetCard) || Wiz.adp().hasPower(CloseEncounterPower.POWER_ID)) {
+            AbstractPower pow = Wiz.adp().getPower(InterceptingPower.POWER_ID);
+            if (EffectFields.closeEncounter.get(___targetCard) || (pow instanceof InterceptingPower && ((InterceptingPower) pow).primed)) {
                 yeetCard = true;
             }
         }

@@ -2,7 +2,7 @@ package RangerCaptain.cardfusion.components;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
-import RangerCaptain.powers.CloseEncounterPower;
+import RangerCaptain.powers.InterceptingPower;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -45,7 +45,7 @@ public class StashNextCardComponent extends AbstractComponent {
 
     @Override
     public void onTrigger(ComponentAmountProvider provider, AbstractPlayer p, AbstractMonster m, List<AbstractComponent> captured) {
-        Wiz.applyToSelf(new CloseEncounterPower(Wiz.adp(), provider.getAmount(this)));
+        Wiz.applyToSelf(new InterceptingPower(Wiz.adp(), provider.getAmount(this)));
     }
 
     @Override

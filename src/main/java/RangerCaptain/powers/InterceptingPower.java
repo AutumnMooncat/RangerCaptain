@@ -9,14 +9,15 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
-public class CloseEncounterPower extends AbstractEasyPower {
-    public static final String POWER_ID = MainModfile.makeID(CloseEncounterPower.class.getSimpleName());
+public class InterceptingPower extends AbstractEasyPower {
+    public static final String POWER_ID = MainModfile.makeID(InterceptingPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     private boolean justEvoked = true;
+    public boolean primed = false;
 
-    public CloseEncounterPower(AbstractCreature owner, int amount) {
+    public InterceptingPower(AbstractCreature owner, int amount) {
         super(POWER_ID, NAME, PowerType.BUFF, false, owner, amount);
     }
 
@@ -34,6 +35,7 @@ public class CloseEncounterPower extends AbstractEasyPower {
         if (justEvoked) {
             justEvoked = false;
         } else {
+            primed = true;
             if (card.type != AbstractCard.CardType.POWER) {
                 flash();
             }

@@ -223,7 +223,7 @@
   },
   "${ModID}:Mascotoy": {
     "NAME": "Mascotoy",
-    "DESCRIPTION": "Deal !D! damage. NL Shuffle a *Dazed into your draw pile. NL ${ModID}:Mind-Meld.",
+    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Stash the next {@@}{!M!|1=card|@=!M! cards} you play this turn.",
     "EXTENDED_DESCRIPTION": ["Mascotorn"]
   },
   "${ModID}:Minortom": {
