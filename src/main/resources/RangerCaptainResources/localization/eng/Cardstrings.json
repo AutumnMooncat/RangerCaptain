@@ -91,7 +91,7 @@
   },
   "${ModID}:Carniviper": {
     "NAME": "Carniviper",
-    "DESCRIPTION": "{@@}{!${ModID}:I!|@=Deal !D! damage. NL Apply !M! ${ModID}:Toxin.|1=Deal !D! damage. NL Apply !M! ${ModID}:Toxin. NL ${ModID}:Mind-Meld.|2=Deal !D! damage twice. NL Apply !M! ${ModID}:Toxin twice.}",
+    "DESCRIPTION": "{@@}{!${ModID}:I!|@=Deal !D! damage. NL Apply !M! ${ModID}:Toxin.|1=Deal !D! damage twice. NL Apply !M! ${ModID}:Toxin.}",
     "EXTENDED_DESCRIPTION": ["Masquerattle","Aeroboros","Mardiusa","Jormungold"]
   },
   "${ModID}:Charlequin": {
