@@ -95,6 +95,22 @@ public class ExhaustAttacksComponent extends AbstractComponent {
     }
 
     @Override
+    public void onCapture(AbstractComponent other) {
+        if (other.type == ComponentType.DAMAGE) {
+            setFlags(Flag.PSEUDO_DAMAGE);
+        }
+        if (other.target == ComponentTarget.ENEMY) {
+            target = ComponentTarget.ENEMY;
+        } else if (target != ComponentTarget.ENEMY) {
+            if (other.target == ComponentTarget.ENEMY_RANDOM || other.target == ComponentTarget.ENEMY_AOE) {
+                target = ComponentTarget.ENEMY_AOE;
+            } else if (target != ComponentTarget.ENEMY_AOE && other.target == ComponentTarget.SELF) {
+                target = ComponentTarget.SELF;
+            }
+        }
+    }
+
+    @Override
     public void postAssignment(FusedCard card, List<AbstractComponent> otherComponents) {
         for (AbstractComponent other : otherComponents) {
             if (other instanceof ScaleDamageComponent && other.hasFlags(Flag.EXHAUST_COMPLEX_FOLLOWUP)) {

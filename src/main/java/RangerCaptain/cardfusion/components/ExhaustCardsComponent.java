@@ -88,7 +88,23 @@ public class ExhaustCardsComponent extends AbstractComponent {
 
     @Override
     public boolean captures(AbstractComponent other) {
-        return other.hasFlags(Flag.EXHAUST_FOLLOWUP);
+        return other.hasFlags(Flag.EXHAUST_FOLLOWUP) || other.hasFlags(Flag.EXHAUST_COMPLEX_FOLLOWUP);
+    }
+
+    @Override
+    public void onCapture(AbstractComponent other) {
+        if (other.type == ComponentType.DAMAGE) {
+            setFlags(Flag.PSEUDO_DAMAGE);
+        }
+        if (other.target == ComponentTarget.ENEMY) {
+            target = ComponentTarget.ENEMY;
+        } else if (target != ComponentTarget.ENEMY) {
+            if (other.target == ComponentTarget.ENEMY_RANDOM || other.target == ComponentTarget.ENEMY_AOE) {
+                target = ComponentTarget.ENEMY_AOE;
+            } else if (target != ComponentTarget.ENEMY_AOE && other.target == ComponentTarget.SELF) {
+                target = ComponentTarget.SELF;
+            }
+        }
     }
 
     @Override
@@ -191,9 +207,15 @@ public class ExhaustCardsComponent extends AbstractComponent {
     }
 
     public static String exhaustFollowupText(List<AbstractComponent> captured) {
+        StringBuilder text = new StringBuilder();
         if (captured.stream().anyMatch(c -> c.hasFlags(Flag.EXHAUST_FOLLOWUP))) {
-            return LocalizedStrings.PERIOD + " NL " + FormatHelper.capitalize(StringUtils.join(captured.stream().filter(c -> c.hasFlags(Flag.EXHAUST_FOLLOWUP)).map(c -> FormatHelper.uncapitalize(c.rawCardText(Collections.emptyList()))).collect(Collectors.toList()), " " + AND + " ")) + " " + FOR_EACH;
+            text.append(LocalizedStrings.PERIOD).append(" NL ").append(FormatHelper.capitalize(StringUtils.join(captured.stream().filter(c -> c.hasFlags(Flag.EXHAUST_FOLLOWUP)).map(c -> FormatHelper.uncapitalize(c.rawCardText(Collections.emptyList()))).collect(Collectors.toList()), " " + AND + " "))).append(" ").append(FOR_EACH);
         }
-        return "";
+        for (AbstractComponent component : captured) {
+            if (component.hasFlags(Flag.EXHAUST_COMPLEX_FOLLOWUP)) {
+                text.append(LocalizedStrings.PERIOD).append(" NL ").append(component.rawCardText(Collections.emptyList()));
+            }
+        }
+        return text.toString();
     }
 }
