@@ -16,7 +16,7 @@ public class AddCloseEncounterComponent extends AbstractTraitComponent {
 
     public AddCloseEncounterComponent() {
         super(ID);
-        setFlags(Flag.REMOVE_IF_POWER);
+        setFlags(Flag.REMOVE_IF_POWER, Flag.REMOVE_IF_EXHAUST);
     }
 
     @Override

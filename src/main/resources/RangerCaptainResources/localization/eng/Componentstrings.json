@@ -862,8 +862,8 @@
     "EXTRA_TEXT": ["${ModID}:Double_Play"]
   },
   "${ModID}:AddCloseEncounterComponent": {
-    "TEXT": ["Fusion has #yClose #yEncounter"],
-    "EXTRA_TEXT": ["${ModID}:Close_Encounter"]
+    "TEXT": ["Fusion #yStashes when played"],
+    "EXTRA_TEXT": ["${ModID}:Stash this card"]
   },
   "${ModID}:AddPiercingDamageComponent": {
     "TEXT": ["Ignores #yBlock"],
