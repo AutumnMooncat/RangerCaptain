@@ -1,13 +1,10 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cardfusion.FusionComponentHelper;
-import RangerCaptain.cardfusion.components.AddCloseEncounterComponent;
-import RangerCaptain.cardfusion.components.AddMindMeldComponent;
 import RangerCaptain.cardfusion.components.ConductiveComponent;
 import RangerCaptain.cardfusion.components.vfx.LaserVFXComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
-import RangerCaptain.patches.ExtraEffectPatches;
 import RangerCaptain.powers.ConductivePower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -35,15 +32,15 @@ public class Allseer extends AbstractMultiUpgradeCard {
                 .register();
         new FusionComponentHelper(MonsterEnum.KHUFO)
                 .withCost(1)
-                .withBlock(8)
+                .withBlock(6.5f)
                 .with(new LaserVFXComponent())
-                .with(new ConductiveComponent(4), new AddMindMeldComponent())
+                .with(new ConductiveComponent(2))
                 .register();
         new FusionComponentHelper(MonsterEnum.TRIPHINX)
                 .withCost(1)
-                .withBlock(6)
+                .withBlock(4.5f)
                 .with(new LaserVFXComponent())
-                .with(new ConductiveComponent(3), new AddCloseEncounterComponent())
+                .with(new ConductiveComponent(4))
                 .register();
     }
 
@@ -52,7 +49,6 @@ public class Allseer extends AbstractMultiUpgradeCard {
         baseBlock = block = 6;
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.ALLSEER);
-        baseInfo = info = 0;
         tags.add(CustomTags.MAGIC_CONDUCTIVE);
     }
 
@@ -85,24 +81,16 @@ public class Allseer extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade0() {
-        upgradeBlock(-2);
-        upgradeMagicNumber(-1);
+        upgradeBlock(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.KHUFO);
-        baseInfo = info = 1;
-        tags.add(CustomTags.MIND_MELD);
-        ExtraEffectPatches.EffectFields.mindMeld.set(this, true);
     }
 
     public void upgrade1() {
-        upgradeBlock(2);
-        upgradeMagicNumber(1);
+        upgradeMagicNumber(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.TRIPHINX);
-        info = baseInfo = 2;
-        tags.add(CustomTags.CLOSE_ENCOUNTER);
-        ExtraEffectPatches.EffectFields.closeEncounter.set(this, true);
     }
 }
