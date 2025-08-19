@@ -191,7 +191,7 @@
   },
   "${ModID}:Khepri": {
     "NAME": "Khepri",
-    "DESCRIPTION": "${ModID}:Perfect. NL Deal !D! damage. NL Exhaust !M! card{@@}{!M!|>1=s}. NL ${ModID}:Stash this card."
+    "DESCRIPTION": "${ModID}:Perfect. NL Exhaust up to !M! card{@@}{!M!|>1=s} in your hand. NL Deal !D! damage for each card Exhausted."
   },
   "${ModID}:Kittelly": {
     "NAME": "Kittelly",
