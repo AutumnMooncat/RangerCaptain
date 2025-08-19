@@ -228,7 +228,7 @@
   },
   "${ModID}:Minortom": {
     "NAME": "Minortom",
-    "DESCRIPTION": "Draw !M! card{@@}{!M!|1=|@=s}. NL ${ModID}:Stash the next {!${ModID}:M2!|1=card|@=!${ModID}:M2! cards} you play this turn.",
+    "DESCRIPTION": "Draw !M! card{@@}{!M!|1=|@=s}. NL Add a *Void into your discard pile.",
     "EXTENDED_DESCRIPTION": ["Majortom"]
   },
   "${ModID}:MissMimic": {
