@@ -39,6 +39,7 @@ public class DrawComponent extends AbstractComponent {
 
     @Override
     public void onCapture(AbstractComponent other) {
+        super.onCapture(other);
         if (other.type == ComponentType.DAMAGE) {
             setFlags(Flag.PSEUDO_DAMAGE);
         }

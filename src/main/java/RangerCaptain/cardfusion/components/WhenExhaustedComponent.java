@@ -47,6 +47,7 @@ public class WhenExhaustedComponent extends AbstractComponent {
 
     @Override
     public void onCapture(AbstractComponent other) {
+        super.onCapture(other);
         if (other.target == ComponentTarget.ENEMY) {
             other.target = ComponentTarget.ENEMY_RANDOM;
             other.updatePrio();

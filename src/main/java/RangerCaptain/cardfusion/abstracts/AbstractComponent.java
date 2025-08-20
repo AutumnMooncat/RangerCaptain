@@ -110,6 +110,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
     private final String identifier;
     private final HashSet<Flag> flags = new HashSet<>();
     public ComponentType type;
+    public ComponentTarget originalTarget;
     public ComponentTarget target;
     public DynVar dynvar;
     public MonsterEnum source;
@@ -125,6 +126,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
     public AbstractComponent(String ID, float baseAmount, ComponentType type, ComponentTarget target, DynVar desiredDynvar) {
         this.identifier = ID;
         this.type = type;
+        this.originalTarget = target;
         this.target = target;
         this.workingAmount = (int) baseAmount;
         this.baseAmount = baseAmount;
@@ -150,6 +152,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         copy.setFlags(flags.toArray(new Flag[0]));
         copy.source = source;
         copy.baseCost = baseCost;
+        copy.originalTarget = originalTarget;
         return copy;
     }
 
@@ -195,7 +198,9 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         return !wasCaptured && this != other && captures(other) && !(other.hasFlags(Flag.INVERSE_FORCED) && source == other.source) && !other.hasFlags(Flag.CANT_BE_CAPTURED);
     }
 
-    public void onCapture(AbstractComponent other) {}
+    public void onCapture(AbstractComponent other) {
+        other.target = other.originalTarget;
+    }
 
     public boolean modifiesAmount(AbstractComponent other) {
         return false;

@@ -81,6 +81,7 @@ public class DamageComponent extends AbstractComponent {
 
     @Override
     public void onCapture(AbstractComponent other) {
+        super.onCapture(other);
         if (other.target == ComponentTarget.ENEMY_RANDOM) {
             other.target = ComponentTarget.ENEMY;
         }
