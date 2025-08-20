@@ -27,7 +27,7 @@ public class WhenExhaustedComponent extends AbstractComponent {
 
     @Override
     public void updatePrio() {
-        priority = SUFFIX_PRIO + 1;
+        priority = SUFFIX_PRIO + 2;
     }
 
     @Override
