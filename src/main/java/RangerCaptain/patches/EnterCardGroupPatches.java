@@ -7,6 +7,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class EnterCardGroupPatches {
@@ -30,7 +31,7 @@ public class EnterCardGroupPatches {
                     LastGroupField.lastActualGroup.set(c, LastGroupField.actualGroup.get(c));
                     LastGroupField.actualGroup.set(c, __instance);
                 }
-                if (__instance != Wiz.adp().limbo && LastGroupField.primaryGroup.get(c) != __instance) {
+                if (isPrimary(__instance) && LastGroupField.primaryGroup.get(c) != __instance) {
                     LastGroupField.lastPrimaryGroup.set(c, LastGroupField.primaryGroup.get(c));
                     LastGroupField.primaryGroup.set(c, __instance);
                     if (__instance == Wiz.adp().hand) {
@@ -47,6 +48,10 @@ public class EnterCardGroupPatches {
                 }
             }
         }
+    }
+
+    private static boolean isPrimary(CardGroup group) {
+        return group != Wiz.adp().limbo && group != AbstractDungeon.gridSelectScreen.targetGroup && group != AbstractDungeon.handCardSelectScreen.selectedCards;
     }
 
     public interface OnEnterCardGroupCard {
