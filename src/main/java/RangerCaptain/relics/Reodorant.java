@@ -37,8 +37,14 @@ public class Reodorant extends AbstractEasyRelic implements OnApplyPowerRelic {
     public int onApplyPowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
         if (target instanceof AbstractMonster && power.type == AbstractPower.PowerType.DEBUFF) {
             flash();
-            stackAmount++;
-            power.amount++;
+            if (power.amount >= 0) {
+                stackAmount++;
+                power.amount++;
+            } else {
+                stackAmount--;
+                power.amount--;
+            }
+            power.updateDescription();
             incrementStat(1);
         }
         return stackAmount;
