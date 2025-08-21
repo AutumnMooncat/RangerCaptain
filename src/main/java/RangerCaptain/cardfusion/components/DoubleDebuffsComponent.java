@@ -1,6 +1,7 @@
 package RangerCaptain.cardfusion.components;
 
 import RangerCaptain.MainModfile;
+import RangerCaptain.actions.CleansePowerAction;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.actions.DoublePowerAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
@@ -10,7 +11,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import java.util.Collections;
 import java.util.List;
@@ -71,30 +71,30 @@ public class DoubleDebuffsComponent extends AbstractComponent {
         int amount = provider.getAmount(this);
         switch (target) {
             case SELF:
-                addToBot(new DoublePowerAction(p, amount, pow -> pow.type == AbstractPower.PowerType.DEBUFF));
+                addToBot(new DoublePowerAction(p, amount, CleansePowerAction.IS_DEBUFF));
                 break;
             case ENEMY:
-                addToBot(new DoublePowerAction(m, amount, pow -> pow.type == AbstractPower.PowerType.DEBUFF));
+                addToBot(new DoublePowerAction(m, amount, CleansePowerAction.IS_DEBUFF));
                 break;
             case ENEMY_RANDOM:
                 addToBot(new DoAction(() -> {
-                    List<AbstractMonster> valid = AbstractDungeon.getMonsters().monsters.stream().filter(mon -> !mon.isDeadOrEscaped() && mon.powers.stream().anyMatch(pow -> pow.type == AbstractPower.PowerType.DEBUFF)).collect(Collectors.toList());
+                    List<AbstractMonster> valid = AbstractDungeon.getMonsters().monsters.stream().filter(mon -> !mon.isDeadOrEscaped() && mon.powers.stream().anyMatch(CleansePowerAction.IS_DEBUFF)).collect(Collectors.toList());
                     if (!valid.isEmpty()) {
-                        addToTop(new DoublePowerAction(valid.get(AbstractDungeon.cardRandomRng.random(valid.size() - 1)), amount, true, pow -> pow.type == AbstractPower.PowerType.DEBUFF, l -> {}));
+                        addToTop(new DoublePowerAction(valid.get(AbstractDungeon.cardRandomRng.random(valid.size() - 1)), amount, true, CleansePowerAction.IS_DEBUFF, l -> {}));
                     }
                 }));
                 break;
             case ENEMY_AOE:
-                Wiz.forAllMonstersLiving(mon -> addToBot(new DoublePowerAction(mon, amount, true, pow -> pow.type == AbstractPower.PowerType.DEBUFF, l -> {})));
+                Wiz.forAllMonstersLiving(mon -> addToBot(new DoublePowerAction(mon, amount, true, CleansePowerAction.IS_DEBUFF, l -> {})));
                 break;
             case NONE:
                 if (wasAOE) {
-                    Wiz.forAllMonstersLiving(mon -> addToBot(new DoublePowerAction(mon, amount, true, pow -> pow.type == AbstractPower.PowerType.DEBUFF, l -> {})));
+                    Wiz.forAllMonstersLiving(mon -> addToBot(new DoublePowerAction(mon, amount, true, CleansePowerAction.IS_DEBUFF, l -> {})));
                 } else {
                     addToBot(new DoAction(() -> {
-                        List<AbstractMonster> valid = AbstractDungeon.getMonsters().monsters.stream().filter(mon -> !mon.isDeadOrEscaped() && mon.powers.stream().anyMatch(pow -> pow.type == AbstractPower.PowerType.DEBUFF)).collect(Collectors.toList());
+                        List<AbstractMonster> valid = AbstractDungeon.getMonsters().monsters.stream().filter(mon -> !mon.isDeadOrEscaped() && mon.powers.stream().anyMatch(CleansePowerAction.IS_DEBUFF)).collect(Collectors.toList());
                         if (!valid.isEmpty()) {
-                            addToTop(new DoublePowerAction(valid.get(AbstractDungeon.cardRandomRng.random(valid.size() - 1)), amount, true, pow -> pow.type == AbstractPower.PowerType.DEBUFF, l -> {}));
+                            addToTop(new DoublePowerAction(valid.get(AbstractDungeon.cardRandomRng.random(valid.size() - 1)), amount, true, CleansePowerAction.IS_DEBUFF, l -> {}));
                         }
                     }));
                 }

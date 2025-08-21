@@ -1,5 +1,6 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.actions.CleansePowerAction;
 import RangerCaptain.actions.DoublePowerAction;
 import RangerCaptain.cardfusion.FusionComponentHelper;
 import RangerCaptain.cardfusion.components.AddExhaustComponent;
@@ -11,7 +12,6 @@ import RangerCaptain.util.MonsterEnum;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -34,7 +34,7 @@ public class Magikrab extends AbstractEasyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DoublePowerAction(m, 1, pow -> pow.type == AbstractPower.PowerType.DEBUFF));
+        addToBot(new DoublePowerAction(m, 1, CleansePowerAction.IS_DEBUFF));
     }
 
     @Override

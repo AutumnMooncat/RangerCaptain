@@ -2,6 +2,7 @@ package RangerCaptain.actions;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.cards.abstracts.AbstractPowerCard;
+import RangerCaptain.powers.GambitPower;
 import RangerCaptain.util.Wiz;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
@@ -11,17 +12,24 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.SurroundedPower;
+import com.megacrit.cardcrawl.powers.watcher.EndTurnDeathPower;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class CleansePowerAction extends AbstractGameAction {
+    private static final Class<?>[] bannedBuffs = new Class[] {GambitPower.class, EndTurnDeathPower.class, SurroundedPower.class};
     private static final String[] TEXT = CardCrawlGame.languagePack.getUIString(MainModfile.makeID("CleanseAction")).TEXT;
     private final Predicate<AbstractPower> filter;
     private final Consumer<ArrayList<AbstractPower>> callBack;
     private final boolean optional;
+
+    public static final Predicate<AbstractPower> IS_DEBUFF = p -> p.type == AbstractPower.PowerType.DEBUFF;
+    public static final Predicate<AbstractPower> IS_BUFF = p -> p.type == AbstractPower.PowerType.BUFF && Arrays.stream(bannedBuffs).noneMatch(clz -> clz == p.getClass());
 
     public CleansePowerAction(AbstractCreature target, int amount, Predicate<AbstractPower> filter) {
         this(target, amount, filter, l -> {});

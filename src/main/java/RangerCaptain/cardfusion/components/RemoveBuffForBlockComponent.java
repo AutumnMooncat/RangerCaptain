@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.PenNibPower;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
@@ -64,7 +63,7 @@ public class RemoveBuffForBlockComponent extends AbstractComponent {
     public void onTrigger(ComponentAmountProvider provider, AbstractPlayer p, AbstractMonster m, List<AbstractComponent> captured) {
         int amount = provider.getAmount(this);
         AbstractCard.CardType cardType = provider instanceof AbstractCard ? ((AbstractCard) provider).type : AbstractCard.CardType.SKILL;
-        addToBot(new CleansePowerAction(p, 1, true, power -> power.type == AbstractPower.PowerType.BUFF && !(cardType == AbstractCard.CardType.ATTACK && (power instanceof VigorPower || power instanceof PenNibPower)), removed -> {
+        addToBot(new CleansePowerAction(p, 1, true, CleansePowerAction.IS_BUFF.and(power -> !(cardType == AbstractCard.CardType.ATTACK && (power instanceof VigorPower || power instanceof PenNibPower))), removed -> {
             if (!removed.isEmpty()) {
                 addToTop(new GainBlockAction(p, p, amount));
             }
