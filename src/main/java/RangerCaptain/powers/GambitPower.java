@@ -1,6 +1,7 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
+import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
@@ -19,7 +20,7 @@ public class GambitPower extends AbstractEasyPower {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     public GambitPower(AbstractCreature owner, int amount) {
-        super(POWER_ID, NAME, PowerType.BUFF, true, owner, amount);
+        super(POWER_ID, NAME, NeutralPowertypePatch.NEUTRAL, true, owner, amount);
         priority = 7;
     }
 

@@ -2,7 +2,6 @@ package RangerCaptain.actions;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.cards.abstracts.AbstractPowerCard;
-import RangerCaptain.powers.GambitPower;
 import RangerCaptain.util.Wiz;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
@@ -22,7 +21,7 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class CleansePowerAction extends AbstractGameAction {
-    private static final Class<?>[] bannedBuffs = new Class[] {GambitPower.class, EndTurnDeathPower.class, SurroundedPower.class};
+    private static final Class<?>[] bannedBuffs = new Class[] {EndTurnDeathPower.class, SurroundedPower.class};
     private static final String[] TEXT = CardCrawlGame.languagePack.getUIString(MainModfile.makeID("CleanseAction")).TEXT;
     private final Predicate<AbstractPower> filter;
     private final Consumer<ArrayList<AbstractPower>> callBack;
