@@ -17,7 +17,7 @@ public class SupplyCache extends AbstractEasyCard {
 
     public SupplyCache() {
         super(ID, -1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
-        baseBlock = block = 5;
+        baseBlock = block = 6;
     }
 
     @Override
