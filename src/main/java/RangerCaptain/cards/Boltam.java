@@ -3,7 +3,6 @@ package RangerCaptain.cards;
 import RangerCaptain.cardfusion.FusionComponentHelper;
 import RangerCaptain.cardfusion.components.AddReshuffleComponent;
 import RangerCaptain.cardfusion.components.ConductiveComponent;
-import RangerCaptain.cardfusion.components.MakeCopiesComponent;
 import RangerCaptain.cardfusion.components.vfx.LightningOrbFVXComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
@@ -13,7 +12,6 @@ import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -30,19 +28,19 @@ public class Boltam extends AbstractMultiUpgradeCard {
                 .withCost(0)
                 .withDamage(2.5f, AbstractGameAction.AttackEffect.NONE)
                 .with(new LightningOrbFVXComponent())
-                .with(new ConductiveComponent(2.5f), new MakeCopiesComponent(0.75f, MakeCopiesComponent.Location.DISCARD))
+                .with(new ConductiveComponent(2.5f), new AddReshuffleComponent())
                 .register();
         new FusionComponentHelper(MonsterEnum.PINBOLT)
                 .withCost(0)
-                .withDamage(4.5f, AbstractGameAction.AttackEffect.NONE)
+                .withMultiDamage(0.5f, 3, AbstractGameAction.AttackEffect.NONE)
                 .with(new LightningOrbFVXComponent())
                 .with(new ConductiveComponent(2.5f), new AddReshuffleComponent())
                 .register();
         new FusionComponentHelper(MonsterEnum.PLASMANTLER)
                 .withCost(0)
-                .withDamage(3.5f, AbstractGameAction.AttackEffect.NONE)
+                .withDamage(4, AbstractGameAction.AttackEffect.NONE)
                 .with(new LightningOrbFVXComponent())
-                .with(new ConductiveComponent(3.5f), new MakeCopiesComponent(0.75f, MakeCopiesComponent.Location.DISCARD))
+                .with(new ConductiveComponent(2.5f), new AddReshuffleComponent())
                 .register();
     }
 
@@ -50,23 +48,23 @@ public class Boltam extends AbstractMultiUpgradeCard {
         super(ID, 0, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 3;
         baseMagicNumber = magicNumber = 3;
-        baseSecondMagic = secondMagic = 1;
-        setMonsterData(MonsterEnum.BOLTAM);
         baseInfo = info = 0;
+        setMonsterData(MonsterEnum.BOLTAM);
         tags.add(CustomTags.MAGIC_CONDUCTIVE);
+        shuffleBackIntoDrawPile = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (m != null) {
-            addToBot(new VFXAction(new LightningOrbActivateEffect(m.hb.cX, m.hb.cY)));
-            addToBot(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.2f));
+        int hits = info == 0 ? 1 : 3;
+        for (int i = 0; i < hits; i++) {
+            if (m != null) {
+                addToBot(new SFXAction("ORB_LIGHTNING_CHANNEL", 0.2f));
+                addToBot(new VFXAction(new LightningOrbActivateEffect(m.hb.cX, m.hb.cY)));
+            }
+            dmg(m, AbstractGameAction.AttackEffect.NONE);
         }
-        dmg(m, AbstractGameAction.AttackEffect.NONE);
         Wiz.applyToEnemy(m, new ConductivePower(m, p, magicNumber));
-        if (info == 0) {
-            addToBot(new MakeTempCardInDiscardAction(makeStatEquivalentCopy(), secondMagic));
-        }
     }
 
     @Override
@@ -87,18 +85,16 @@ public class Boltam extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade0() {
-        upgradeDamage(2);
+        upgradeDamage(-2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.PINBOLT);
         baseInfo = info = 1;
-        shuffleBackIntoDrawPile = true;
         uDesc();
     }
 
     public void upgrade1() {
-        upgradeDamage(1);
-        upgradeMagicNumber(1);
+        upgradeDamage(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.PLASMANTLER);
