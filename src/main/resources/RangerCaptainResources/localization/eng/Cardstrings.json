@@ -37,7 +37,7 @@
   },
   "${ModID}:Averevoir": {
     "NAME": "Averevoir",
-    "DESCRIPTION": "${ModID}:Perfect. NL Whenever you play a ${ModID}:Perfect card, gain !M! Block."
+    "DESCRIPTION": "${ModID}:Perfect. NL Whenever you play a ${ModID}:Perfect or ${ModID}:Fused card, gain !M! Block."
   },
   "${ModID}:Bansheep": {
     "NAME": "Bansheep",

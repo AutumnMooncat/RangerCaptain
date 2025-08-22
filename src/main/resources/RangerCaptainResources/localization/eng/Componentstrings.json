@@ -785,7 +785,7 @@
   },
   "${ModID}:OnPlayPerfectComponent": {
     "TEXT": ["Fusion becomes a Power"],
-    "EXTRA_TEXT": ["Whenever you play a ${ModID}:Perfect card, %s"]
+    "EXTRA_TEXT": ["Whenever you play a ${ModID}:Perfect or ${ModID}:Fused card, %s"]
   },
   "${ModID}:OnDrawUnplayableComponent": {
     "TEXT": ["Fusion becomes a Power"],

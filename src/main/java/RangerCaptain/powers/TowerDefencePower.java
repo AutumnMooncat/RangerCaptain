@@ -4,6 +4,7 @@ import RangerCaptain.MainModfile;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.components.OnPlayPerfectComponent;
+import RangerCaptain.cards.tokens.FusedCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -35,8 +36,9 @@ public class TowerDefencePower extends AbstractComponentPower {
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        if (CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.get(card)) {
+        if (CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.get(card) || card instanceof FusedCard) {
             flash();
+            // Using to top is kinder vs thorns, but After Image uses to bot, so use that for consistency
             if (source == null) {
                 addToBot(new GainBlockAction(owner, amount));
             } else {

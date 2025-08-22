@@ -103,7 +103,7 @@
   },
   "${ModID}:TowerDefencePower": {
     "NAME": "Tower Defence",
-    "DESCRIPTIONS": ["Whenever you play a #yPerfect card, gain #b"," #yBlock."]
+    "DESCRIPTIONS": ["Whenever you play a #yPerfect or #yFused card, gain #b"," #yBlock."]
   },
   "${ModID}:MeditatingPower": {
     "NAME": "Meditating",
