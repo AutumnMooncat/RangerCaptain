@@ -25,15 +25,15 @@ public class Sparktan extends AbstractEasyCard {
 
     static {
         new FusionComponentHelper(MonsterEnum.SPARKTAN)
-                .withCost(1)
-                .withDamage(4, AbstractGameAction.AttackEffect.NONE)
+                .withCost(2)
+                .withDamage(6.5f, AbstractGameAction.AttackEffect.NONE)
                 .with(new LightningFVXComponent())
                 .with(new AddConductiveDamageComponent())
                 .withExhaust()
                 .register();
         new FusionComponentHelper(MonsterEnum.ZEUSTRIKE)
-                .withCost(1)
-                .withDamage(6, AbstractGameAction.AttackEffect.NONE)
+                .withCost(2)
+                .withDamage(8, AbstractGameAction.AttackEffect.NONE)
                 .with(new LightningFVXComponent())
                 .with(new AddConductiveDamageComponent())
                 .withExhaust()
@@ -41,8 +41,8 @@ public class Sparktan extends AbstractEasyCard {
     }
 
     public Sparktan() {
-        super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        baseDamage = damage = 5;
+        super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        baseDamage = damage = 8;
         setMonsterData(MonsterEnum.SPARKTAN);
         exhaust = true;
     }
