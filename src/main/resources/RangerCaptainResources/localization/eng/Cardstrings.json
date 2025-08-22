@@ -314,7 +314,7 @@
   },
   "${ModID}:Spirouette": {
     "NAME": "Spirouette",
-    "DESCRIPTION": "Deal !D! damage. NL Remove your Weak and Vulnerable. Apply them to the enemy.",
+    "DESCRIPTION": "Deal !D! damage. NL Transfer your Weak and Vulnerable to the enemy.",
     "EXTENDED_DESCRIPTION": ["Regensea"]
   },
   "${ModID}:Spookionna": {

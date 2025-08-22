@@ -753,9 +753,9 @@
     ],
     "EXTRA_TEXT": [
       "Invalid Transfer Weak Vuln",
-      "Remove your Weak and Vulnerable. Apply them to the enemy",
-      "Remove your Weak and Vulnerable. Apply them to a random enemy",
-      "Remove your Weak and Vulnerable, Apply them to ALL enemies",
+      "Transfer your Weak and Vulnerable to the enemy",
+      "Transfer your Weak and Vulnerable to a random enemy",
+      "Transfer your Weak and Vulnerable to ALL enemies",
       "Remove your Weak and Vulnerable",
       "transfer your Weak and Vulnerable"
     ]
