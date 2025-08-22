@@ -432,7 +432,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         resolveType(card, components);
         resolveTarget(card, components);
         resolveTraits(card, components);
-        resolveUpcaptures(components);
+        resolveUncaptures(components);
         resolveAmounts(card.cost, components);
         resolveDynVars(components);
         resolvePostAssignment(card, components);
@@ -508,7 +508,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         Collections.sort(components);
     }
 
-    public static void resolveUpcaptures(List<AbstractComponent> components) {
+    public static void resolveUncaptures(List<AbstractComponent> components) {
         for (AbstractComponent component : components) {
             if (component.wasCaptured) {
                 boolean stillCaptured = false;
