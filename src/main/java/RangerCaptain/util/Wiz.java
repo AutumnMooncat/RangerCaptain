@@ -1,5 +1,6 @@
 package RangerCaptain.util;
 
+import RangerCaptain.actions.ApplyPowerActionWithFollowup;
 import RangerCaptain.actions.TimedVFXAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.components.ReskinComponent;
@@ -204,8 +205,24 @@ public class Wiz {
         atb(new ApplyPowerAction(m, AbstractDungeon.player, po, po.amount));
     }
 
+    public static void applyToEnemyFollowup(AbstractMonster m, AbstractPower po, AbstractPower ifApplied) {
+        atb(new ApplyPowerActionWithFollowup(new ApplyPowerAction(m, AbstractDungeon.player, po, po.amount), new ApplyPowerAction(m, AbstractDungeon.player, ifApplied, ifApplied.amount)));
+    }
+
+    public static void applyToEnemyFollowup(AbstractMonster m, AbstractPower po, AbstractPower ifApplied, AbstractPower ifNegated) {
+        atb(new ApplyPowerActionWithFollowup(new ApplyPowerAction(m, AbstractDungeon.player, po, po.amount), new ApplyPowerAction(m, AbstractDungeon.player, ifApplied, ifApplied.amount),  new ApplyPowerAction(m, AbstractDungeon.player, ifNegated, ifNegated.amount)));
+    }
+
     public static void applyToEnemyTop(AbstractMonster m, AbstractPower po) {
         att(new ApplyPowerAction(m, AbstractDungeon.player, po, po.amount));
+    }
+
+    public static void applyToEnemyFollowupTop(AbstractMonster m, AbstractPower po, AbstractPower ifApplied) {
+        att(new ApplyPowerActionWithFollowup(new ApplyPowerAction(m, AbstractDungeon.player, po, po.amount), new ApplyPowerAction(m, AbstractDungeon.player, ifApplied, ifApplied.amount)));
+    }
+
+    public static void applyToEnemyFollowupTop(AbstractMonster m, AbstractPower po, AbstractPower ifApplied, AbstractPower ifNegated) {
+        att(new ApplyPowerActionWithFollowup(new ApplyPowerAction(m, AbstractDungeon.player, po, po.amount), new ApplyPowerAction(m, AbstractDungeon.player, ifApplied, ifApplied.amount),  new ApplyPowerAction(m, AbstractDungeon.player, ifNegated, ifNegated.amount)));
     }
 
     public static void applyToSelf(AbstractPower po) {
