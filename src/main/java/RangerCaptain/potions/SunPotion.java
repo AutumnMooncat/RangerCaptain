@@ -4,7 +4,6 @@ import RangerCaptain.MainModfile;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.actions.FusionAction;
 import RangerCaptain.cards.tokens.FusedCard;
-import RangerCaptain.relics.interfaces.PreFusionRelic;
 import RangerCaptain.util.ColorUtil;
 import RangerCaptain.util.CustomLighting;
 import RangerCaptain.util.KeywordManager;
@@ -20,7 +19,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -46,28 +44,21 @@ public class SunPotion extends CustomPotion implements CustomLighting {
     @Override
     public void use(AbstractCreature target) {
         addToBot(new DoAction(() -> {
-            for (AbstractRelic relic : Wiz.adp().relics) {
-                if (relic instanceof PreFusionRelic) {
-                    ((PreFusionRelic) relic).preFusion();
+            CardGroup hand = Wiz.adp().hand;
+            ArrayList<AbstractCard> validCards = hand.group.stream().filter(Wiz::canBeFused).collect(Collectors.toCollection(ArrayList::new));
+            for (int i = 0; i < potency; i++) {
+                if (validCards.size() >= 2) {
+                    AbstractCard base = validCards.remove(AbstractDungeon.cardRandomRng.random(validCards.size() - 1));
+                    AbstractCard donor = validCards.remove(AbstractDungeon.cardRandomRng.random(validCards.size() - 1));
+                    hand.removeCard(base);
+                    hand.removeCard(donor);
+                    FusedCard fusion = Wiz.fuse(base, donor);
+                    hand.addToTop(fusion);
+                    hand.refreshHandLayout();
+                    hand.applyPowers();
+                    FusionAction.fusionTriggers(base, donor, fusion);
                 }
             }
-            addToBot(new DoAction(() -> {
-                CardGroup hand = Wiz.adp().hand;
-                ArrayList<AbstractCard> validCards = hand.group.stream().filter(Wiz::canBeFused).collect(Collectors.toCollection(ArrayList::new));
-                for (int i = 0; i < potency; i++) {
-                    if (validCards.size() >= 2) {
-                        AbstractCard base = validCards.remove(AbstractDungeon.cardRandomRng.random(validCards.size() - 1));
-                        AbstractCard donor = validCards.remove(AbstractDungeon.cardRandomRng.random(validCards.size() - 1));
-                        hand.removeCard(base);
-                        hand.removeCard(donor);
-                        FusedCard fusion = Wiz.fuse(base, donor);
-                        hand.addToTop(fusion);
-                        hand.refreshHandLayout();
-                        hand.applyPowers();
-                        FusionAction.fusionTriggers(base, donor, fusion);
-                    }
-                }
-            }));
         }));
     }
 

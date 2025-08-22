@@ -60,7 +60,7 @@
     "NAME": "Fusion Radar",
     "FLAVOR": "This ground-penetrating radar is already picking up signals deep in the Deadlands.",
     "DESCRIPTIONS": [
-      "Whenever you perform #y${ModID}:Fusion, add a random monster card into your hand first.",
+      "Whenever you perform #y${ModID}:Fusion, add a random monster card into your hand.",
       "Cards created: "," NL Per turn: "," NL Per combat: "
     ]
   },

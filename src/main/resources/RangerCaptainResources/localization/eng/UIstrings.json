@@ -29,18 +29,22 @@
   "${ModID}:FusionButton": {
     "TEXT": [
       "Fuse!",
-      "Recharging"
+      "Recharging",
+      "Preview"
     ],
     "EXTRA_TEXT": [
       "Fusion",
-      "Pressing this button will spend [E] to #yFuse two monster cards. NL #yFusions blend the effect of both cards scaled to the more expensive card's cost."
+      "Pressing this button will spend [E] to #yFuse two monster cards. NL #yFusions blend the effect of both cards scaled to the more expensive card's cost.",
+      "You have already #yFused cards this turn, but you may still press this button to preview possible #yFusions.",
+      "You have no Energy to #yFuse cards, but you may still press this button to preview possible #yFusions."
     ]
   },
   "${ModID}:FusionScreen": {
     "TEXT": [
       "Choose first monster.",
       "Choose second monster.",
-      "Fuse!"
+      "Fuse!",
+      "Cancel"
     ]
   },
   "${ModID}:FusionCardEffectData": {

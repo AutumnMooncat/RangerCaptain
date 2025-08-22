@@ -2,7 +2,8 @@ package RangerCaptain.relics;
 
 import RangerCaptain.TheRangerCaptain;
 import RangerCaptain.actions.GatherAction;
-import RangerCaptain.relics.interfaces.PreFusionRelic;
+import RangerCaptain.cards.tokens.FusedCard;
+import RangerCaptain.relics.interfaces.OnFusionRelic;
 import RangerCaptain.util.Wiz;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -19,7 +20,7 @@ import java.util.HashMap;
 
 import static RangerCaptain.MainModfile.makeID;
 
-public class FusionRadar extends AbstractEasyRelic implements PreFusionRelic {
+public class FusionRadar extends AbstractEasyRelic implements OnFusionRelic {
     public static final String ID = makeID(FusionRadar.class.getSimpleName());
     HashMap<String, Integer> stats = new HashMap<>();
     private final String STAT = DESCRIPTIONS[1];
@@ -32,7 +33,7 @@ public class FusionRadar extends AbstractEasyRelic implements PreFusionRelic {
     }
 
     @Override
-    public void preFusion() {
+    public void onPerformFusion(AbstractCard base, AbstractCard donor, FusedCard fused) {
         ArrayList<AbstractCard> cards = GatherAction.generateCardChoices(1, Wiz::canBeFused);
         if (!cards.isEmpty()) {
             flash();

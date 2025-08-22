@@ -1,10 +1,7 @@
 package RangerCaptain.screens;
 
 import RangerCaptain.MainModfile;
-import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.FusionScreenPatches;
-import RangerCaptain.util.FormatHelper;
-import RangerCaptain.util.FusionCardEffectData;
 import RangerCaptain.util.Wiz;
 import basemod.abstracts.CustomScreen;
 import com.badlogic.gdx.Gdx;
@@ -38,7 +35,7 @@ public class FusionScreen extends CustomScreen {
     private String message;
     public CardSelectConfirmButton button;
     private final PeekButton peekButton;
-    public static final float MIN_HOVER_DIST = 64.0F * Settings.scale;
+    public static final float MIN_HOVER_DIST = 64f * Settings.scale;
     private boolean waitThenClose;
     private float waitToCloseTimer;
     private CardGroup hand;
@@ -52,6 +49,9 @@ public class FusionScreen extends CustomScreen {
     private float arrowScale2;
     private float arrowScale3;
     private float arrowTimer;
+    private boolean justPreview;
+    public boolean didFuse;
+    private boolean justPeeked;
 
 
     public static class Enum {
@@ -76,25 +76,28 @@ public class FusionScreen extends CustomScreen {
         this.arrowTimer = 0.0F;
     }
 
-    public void open() {
-        this.prep();
-        this.button.isDisabled = false;
-        this.button.disable();
-        this.fusionPreviewCard = null;
-        this.button.hideInstantly();// 596
-        this.button.show();// 597
-        this.peekButton.hideInstantly();// 598
-        this.peekButton.show();// 599
-        this.updateMessage();// 601
+    public void open(boolean justPreview) {
+        this.justPreview = justPreview;
+        prep();
+        button.isDisabled = false;
+        button.disable();
+        fusionPreviewCard = null;
+        button.hideInstantly();// 596
+        button.show();// 597
+        peekButton.hideInstantly();// 598
+        peekButton.show();// 599
+        updateMessage();// 601
     }
 
     @Override
     public void reopen() {
         AbstractDungeon.overlayMenu.showBlackScreen(0.75F);
+        AbstractDungeon.overlayMenu.cancelButton.show(TEXT[3]);
     }
 
     @Override
     public void close() {
+        AbstractDungeon.overlayMenu.cancelButton.hideInstantly();
         genericScreenOverlayReset();
         AbstractDungeon.overlayMenu.showCombatPanels();
         Settings.hideRelics = false;
@@ -103,28 +106,38 @@ public class FusionScreen extends CustomScreen {
 
     @Override
     public void update() {
-        this.updateControllerInput();
-        this.peekButton.update();
+        updateControllerInput();
+        peekButton.update();
         if (!PeekButton.isPeeking) {
-            this.updateHand();
-            this.updateSelectedCards();
-            if (this.waitThenClose) {
-                this.waitToCloseTimer -= Gdx.graphics.getDeltaTime();
-                if (this.waitToCloseTimer < 0.0F) {
-                    this.waitThenClose = false;
+            if (justPeeked) {
+                justPeeked = false;
+                AbstractDungeon.overlayMenu.cancelButton.showInstantly(TEXT[3]);
+            }
+            updateHand();
+            updateSelectedCards();
+            if (waitThenClose) {
+                waitToCloseTimer -= Gdx.graphics.getDeltaTime();
+                if (waitToCloseTimer < 0.0F) {
+                    waitThenClose = false;
                     AbstractDungeon.closeCurrentScreen();
                 }
             }
 
-            this.button.update();
-            if (this.button.hb.clicked || CInputActionSet.proceed.isJustPressed() || InputActionSet.confirm.isJustPressed()) {
-                CInputActionSet.proceed.unpress();
-                this.button.hb.clicked = false;
-                if (baseCard != null && donorCard != null) {
-                    InputHelper.justClickedLeft = false;
-                    AbstractDungeon.closeCurrentScreen();
+            if (!justPreview) {
+                button.update();
+                if (button.hb.clicked || CInputActionSet.proceed.isJustPressed() || InputActionSet.confirm.isJustPressed()) {
+                    CInputActionSet.proceed.unpress();
+                    button.hb.clicked = false;
+                    if (baseCard != null && donorCard != null) {
+                        InputHelper.justClickedLeft = false;
+                        didFuse = true;
+                        AbstractDungeon.closeCurrentScreen();
+                    }
                 }
             }
+        } else if (!justPeeked) {
+            justPeeked = true;
+            AbstractDungeon.overlayMenu.cancelButton.hideInstantly();
         }
     }
 
@@ -133,8 +146,10 @@ public class FusionScreen extends CustomScreen {
         AbstractDungeon.player.hand.render(sb);
         AbstractDungeon.overlayMenu.energyPanel.render(sb);
         if (!PeekButton.isPeeking) {
-            FontHelper.renderFontCentered(sb, FontHelper.buttonLabelFont, this.message, (float)(Settings.WIDTH / 2), BANNER_HEIGHT, Settings.CREAM_COLOR);
-            this.button.render(sb);
+            FontHelper.renderFontCentered(sb, FontHelper.buttonLabelFont, message, (float)(Settings.WIDTH / 2), BANNER_HEIGHT, Settings.CREAM_COLOR);
+            if (!justPreview) {
+                button.render(sb);
+            }
             if (baseCard != null) {
                 baseCard.render(sb);
             }
@@ -153,7 +168,7 @@ public class FusionScreen extends CustomScreen {
             }
         }
 
-        this.peekButton.render(sb);
+        peekButton.render(sb);
         AbstractDungeon.overlayMenu.combatDeckPanel.render(sb);
         AbstractDungeon.overlayMenu.discardPilePanel.render(sb);
         AbstractDungeon.overlayMenu.exhaustPanel.render(sb);
@@ -164,23 +179,23 @@ public class FusionScreen extends CustomScreen {
 
         float x = Settings.WIDTH / 2.0F - 320.0F * Settings.scale - BUMP_X;
         float y = Settings.HEIGHT / 2.0F + 160.0F * Settings.scale;
-        sb.draw(ImageMaster.UPGRADE_ARROW, x, y, 32.0F, 32.0F, 64.0F, 64.0F, this.arrowScale1 * Settings.scale, this.arrowScale1 * Settings.scale, 0.0F, 0, 0, 64, 64, false, false);
-        x += 64.0F * Settings.scale;
-        sb.draw(ImageMaster.UPGRADE_ARROW, x, y, 32.0F, 32.0F, 64.0F, 64.0F, this.arrowScale2 * Settings.scale, this.arrowScale2 * Settings.scale, 0.0F, 0, 0, 64, 64, false, false);
-        x += 64.0F * Settings.scale;
-        sb.draw(ImageMaster.UPGRADE_ARROW, x, y, 32.0F, 32.0F, 64.0F, 64.0F, this.arrowScale3 * Settings.scale, this.arrowScale3 * Settings.scale, 0.0F, 0, 0, 64, 64, false, false);
+        sb.draw(ImageMaster.UPGRADE_ARROW, x, y, ARROW_W/2f, ARROW_W/2f, ARROW_W, ARROW_W, arrowScale1 * Settings.scale, arrowScale1 * Settings.scale, 0.0F, 0, 0, 64, 64, false, false);
+        x += ARROW_W * Settings.scale;
+        sb.draw(ImageMaster.UPGRADE_ARROW, x, y, ARROW_W/2f, ARROW_W/2f, ARROW_W, ARROW_W, arrowScale2 * Settings.scale, arrowScale2 * Settings.scale, 0.0F, 0, 0, 64, 64, false, false);
+        x += ARROW_W * Settings.scale;
+        sb.draw(ImageMaster.UPGRADE_ARROW, x, y, ARROW_W/2f, ARROW_W/2f, ARROW_W, ARROW_W, arrowScale3 * Settings.scale, arrowScale3 * Settings.scale, 0.0F, 0, 0, 64, 64, false, false);
 
         x = (float)Settings.WIDTH / 2.0F + 128.0F * Settings.scale + BUMP_X;
-        sb.draw(ImageMaster.UPGRADE_ARROW, x, y, 32.0F, 32.0F, 64.0F, 64.0F, this.arrowScale3 * Settings.scale, this.arrowScale3 * Settings.scale, 0.0F, 0, 0, 64, 64, true, false);
-        x += 64.0F * Settings.scale;
-        sb.draw(ImageMaster.UPGRADE_ARROW, x, y, 32.0F, 32.0F, 64.0F, 64.0F, this.arrowScale2 * Settings.scale, this.arrowScale2 * Settings.scale, 0.0F, 0, 0, 64, 64, true, false);
-        x += 64.0F * Settings.scale;
-        sb.draw(ImageMaster.UPGRADE_ARROW, x, y, 32.0F, 32.0F, 64.0F, 64.0F, this.arrowScale1 * Settings.scale, this.arrowScale1 * Settings.scale, 0.0F, 0, 0, 64, 64, true, false);
+        sb.draw(ImageMaster.UPGRADE_ARROW, x, y, ARROW_W/2f, ARROW_W/2f, ARROW_W, ARROW_W, arrowScale3 * Settings.scale, arrowScale3 * Settings.scale, 0.0F, 0, 0, 64, 64, true, false);
+        x += ARROW_W * Settings.scale;
+        sb.draw(ImageMaster.UPGRADE_ARROW, x, y, ARROW_W/2f, ARROW_W/2f, ARROW_W, ARROW_W, arrowScale2 * Settings.scale, arrowScale2 * Settings.scale, 0.0F, 0, 0, 64, 64, true, false);
+        x += ARROW_W * Settings.scale;
+        sb.draw(ImageMaster.UPGRADE_ARROW, x, y, ARROW_W/2f, ARROW_W/2f, ARROW_W, ARROW_W, arrowScale1 * Settings.scale, arrowScale1 * Settings.scale, 0.0F, 0, 0, 64, 64, true, false);
 
-        this.arrowTimer += Gdx.graphics.getDeltaTime() * 2.0F;
-        this.arrowScale1 = 0.8F + (MathUtils.cos(this.arrowTimer) + 1.0F) / 8.0F;
-        this.arrowScale2 = 0.8F + (MathUtils.cos(this.arrowTimer - 0.8F) + 1.0F) / 8.0F;
-        this.arrowScale3 = 0.8F + (MathUtils.cos(this.arrowTimer - 1.6F) + 1.0F) / 8.0F;
+        arrowTimer += Gdx.graphics.getDeltaTime() * 2.0F;
+        arrowScale1 = 0.8F + (MathUtils.cos(arrowTimer) + 1.0F) / 8.0F;
+        arrowScale2 = 0.8F + (MathUtils.cos(arrowTimer - 0.8F) + 1.0F) / 8.0F;
+        arrowScale3 = 0.8F + (MathUtils.cos(arrowTimer - 1.6F) + 1.0F) / 8.0F;
     }// 781
 
     @Override
@@ -235,14 +250,14 @@ public class FusionScreen extends CustomScreen {
                     Gdx.input.setCursorPosition((int) donorCard.hb.cX, Settings.HEIGHT - (int) donorCard.hb.cY);
                 }
             } else if (!inHand) {
-                if ((CInputActionSet.down.isJustPressed() || CInputActionSet.altDown.isJustPressed()) && !this.hand.group.isEmpty()) {
+                if ((CInputActionSet.down.isJustPressed() || CInputActionSet.altDown.isJustPressed()) && !hand.group.isEmpty()) {
                     if (hand.group.get(index).hb.cY < 0.0F) {
                         y = 1;
                     } else {
                         y = (int)(hand.group.get(index)).hb.cY;
                     }
                     Gdx.input.setCursorPosition((int)(hand.group.get(index)).hb.cX, Settings.HEIGHT - y);
-                    setHoveredCard(this.hand.group.get(index));
+                    setHoveredCard(hand.group.get(index));
                 } else if (CInputActionSet.right.isJustPressed() || CInputActionSet.altRight.isJustPressed()) {
                     if (baseCard != null && donorCard != null) {
                         if (baseCard.hb.hovered) {
@@ -284,7 +299,7 @@ public class FusionScreen extends CustomScreen {
                     } else {
                         y = (int) donorCard.hb.cY;
                     }
-                    unhoverCard(this.hoveredCard);
+                    unhoverCard(hoveredCard);
                     Gdx.input.setCursorPosition((int) donorCard.hb.cX, Settings.HEIGHT - y);
                 } else {
                     if (baseCard.hb.cY < 0.0F) {
@@ -292,25 +307,25 @@ public class FusionScreen extends CustomScreen {
                     } else {
                         y = (int) baseCard.hb.cY;
                     }
-                    unhoverCard(this.hoveredCard);
+                    unhoverCard(hoveredCard);
                     Gdx.input.setCursorPosition((int) baseCard.hb.cX, Settings.HEIGHT - y);
                 }
-            } else if (this.hand.size() > 1 && (CInputActionSet.left.isJustPressed() || CInputActionSet.altLeft.isJustPressed())) {
+            } else if (hand.size() > 1 && (CInputActionSet.left.isJustPressed() || CInputActionSet.altLeft.isJustPressed())) {
                 index--;
                 if (index < 0)
-                    index = this.hand.size() - 1;
-                unhoverCard(this.hoveredCard);
-                setHoveredCard(this.hand.group.get(index));
-                Gdx.input.setCursorPosition((int)this.hoveredCard.hb.cX, Settings.HEIGHT - (int)this.hoveredCard.hb.cY);
-            } else if (this.hand.size() > 1 && (CInputActionSet.right.isJustPressed() || CInputActionSet.altRight.isJustPressed())) {
+                    index = hand.size() - 1;
+                unhoverCard(hoveredCard);
+                setHoveredCard(hand.group.get(index));
+                Gdx.input.setCursorPosition((int)hoveredCard.hb.cX, Settings.HEIGHT - (int)hoveredCard.hb.cY);
+            } else if (hand.size() > 1 && (CInputActionSet.right.isJustPressed() || CInputActionSet.altRight.isJustPressed())) {
                 index++;
-                if (index > this.hand.size() - 1)
+                if (index > hand.size() - 1)
                     index = 0;
-                unhoverCard(this.hoveredCard);
-                setHoveredCard(this.hand.group.get(index));
-                Gdx.input.setCursorPosition((int)this.hoveredCard.hb.cX, Settings.HEIGHT - (int)this.hoveredCard.hb.cY);
-            } else if (this.hand.size() == 1 && this.hoveredCard == null) {
-                setHoveredCard(this.hand.group.get(index));
+                unhoverCard(hoveredCard);
+                setHoveredCard(hand.group.get(index));
+                Gdx.input.setCursorPosition((int)hoveredCard.hb.cX, Settings.HEIGHT - (int)hoveredCard.hb.cY);
+            } else if (hand.size() == 1 && hoveredCard == null) {
+                setHoveredCard(hand.group.get(index));
             }
         }
     }
@@ -320,29 +335,29 @@ public class FusionScreen extends CustomScreen {
             card.targetDrawScale = 0.7F;
             card.hoverTimer = 0.25F;
             card.unhover();
-            this.hand.refreshHandLayout();
+            hand.refreshHandLayout();
         }
     }
 
     private void setHoveredCard(AbstractCard card) {
-        this.hoveredCard = card;// 259
-        this.hoveredCard.current_y = HOVER_CARD_Y_POSITION;// 260
-        this.hoveredCard.target_y = HOVER_CARD_Y_POSITION;// 261
-        this.hoveredCard.drawScale = 1.0F;// 262
-        this.hoveredCard.targetDrawScale = 1.0F;// 263
-        this.hoveredCard.setAngle(0.0F, true);// 264
-        this.hand.hoverCardPush(this.hoveredCard);// 265
-    }// 266
+        hoveredCard = card;
+        hoveredCard.current_y = HOVER_CARD_Y_POSITION;
+        hoveredCard.target_y = HOVER_CARD_Y_POSITION;
+        hoveredCard.drawScale = 1.0F;
+        hoveredCard.targetDrawScale = 1.0F;
+        hoveredCard.setAngle(0.0F, true);
+        hand.hoverCardPush(hoveredCard);
+    }
 
     private void updateHand() {
-        if (!Settings.isControllerMode) {// 273
-            this.hoverCheck();// 274
-            this.unhoverCheck();// 275
+        if (!Settings.isControllerMode) {
+            hoverCheck();
+            unhoverCheck();
         }
 
-        this.startDraggingCardCheck();// 277
-        this.hotkeyCheck();// 278
-    }// 279
+        startDraggingCardCheck();
+        hotkeyCheck();
+    }
 
     private void refreshSelectedCards() {
         if (baseCard != null) {
@@ -356,40 +371,38 @@ public class FusionScreen extends CustomScreen {
         }
 
         if (baseCard != null && donorCard != null) {
-            this.button.enable();
+            button.enable();
         } else {
-            this.button.disable();
+            button.disable();
         }
     }
 
     private void hoverCheck() {
-        if (this.hoveredCard == null) {// 384
-            this.hoveredCard = this.hand.getHoveredCard();// 385
-            if (this.hoveredCard != null) {// 386
-                this.hoveredCard.current_y = HOVER_CARD_Y_POSITION;// 387
-                this.hoveredCard.target_y = HOVER_CARD_Y_POSITION;// 388
-                this.hoveredCard.drawScale = 1.0F;// 389
-                this.hoveredCard.targetDrawScale = 1.0F;// 390
-                this.hoveredCard.setAngle(0.0F, true);// 391
-                this.hand.hoverCardPush(this.hoveredCard);// 392
+        if (hoveredCard == null) {
+            hoveredCard = hand.getHoveredCard();
+            if (hoveredCard != null) {
+                hoveredCard.current_y = HOVER_CARD_Y_POSITION;
+                hoveredCard.target_y = HOVER_CARD_Y_POSITION;
+                hoveredCard.drawScale = 1.0F;
+                hoveredCard.targetDrawScale = 1.0F;
+                hoveredCard.setAngle(0.0F, true);
+                hand.hoverCardPush(hoveredCard);
             }
         }
-
-    }// 395
+    }
 
     private void unhoverCheck() {
-        if (this.hoveredCard != null && !this.hoveredCard.isHoveredInHand(1.0F)) {// 398
-            this.hoveredCard.targetDrawScale = 0.7F;// 399
-            this.hoveredCard.hoverTimer = 0.25F;// 400
-            this.hoveredCard.unhover();// 401
-            this.hoveredCard = null;// 402
-            this.hand.refreshHandLayout();// 403
+        if (hoveredCard != null && !hoveredCard.isHoveredInHand(1.0F)) {
+            hoveredCard.targetDrawScale = 0.7F;
+            hoveredCard.hoverTimer = 0.25F;
+            hoveredCard.unhover();
+            hoveredCard = null;
+            hand.refreshHandLayout();
         }
-
-    }// 405
+    }
 
     private void startDraggingCardCheck() {
-        if (this.hoveredCard != null && (InputHelper.justClickedLeft || CInputActionSet.select.isJustPressed())) {// 408
+        if (hoveredCard != null && (InputHelper.justClickedLeft || CInputActionSet.select.isJustPressed())) {
             CInputActionSet.select.unpress();
             selectHoveredCard();
         }
@@ -433,11 +446,11 @@ public class FusionScreen extends CustomScreen {
     }
 
     private void hotkeyCheck() {
-        AbstractCard hotkeyCard = InputHelper.getCardSelectedByHotkey(this.hand);
+        AbstractCard hotkeyCard = InputHelper.getCardSelectedByHotkey(hand);
         if (hotkeyCard != null) {
-            this.hoveredCard = hotkeyCard;
-            this.hoveredCard.setAngle(0.0F, false);
-            this.selectHoveredCard();
+            hoveredCard = hotkeyCard;
+            hoveredCard.setAngle(0.0F, false);
+            selectHoveredCard();
         }
     }
 
@@ -452,14 +465,14 @@ public class FusionScreen extends CustomScreen {
                 baseCard.targetDrawScale = 0.85F;
             }
 
-            if (!this.waitThenClose && Math.abs(baseCard.current_x - baseCard.target_x) < MIN_HOVER_DIST && baseCard.hb.hovered && (InputHelper.justClickedLeft || CInputActionSet.select.isJustPressed())) {
+            if (!waitThenClose && Math.abs(baseCard.current_x - baseCard.target_x) < MIN_HOVER_DIST && baseCard.hb.hovered && (InputHelper.justClickedLeft || CInputActionSet.select.isJustPressed())) {
                 InputHelper.justClickedLeft = false;
                 AbstractDungeon.player.hand.addToTop(baseCard);
                 baseCard = null;
-                this.refreshSelectedCards();
-                this.updateMessage();
+                refreshSelectedCards();
+                updateMessage();
                 if (Settings.isControllerMode) {
-                    this.hand.refreshHandLayout();
+                    hand.refreshHandLayout();
                 }
             }
         }
@@ -474,20 +487,20 @@ public class FusionScreen extends CustomScreen {
                 donorCard.targetDrawScale = 0.85F;
             }
 
-            if (!this.waitThenClose && Math.abs(donorCard.current_x - donorCard.target_x) < MIN_HOVER_DIST && donorCard.hb.hovered && (InputHelper.justClickedLeft || CInputActionSet.select.isJustPressed())) {
+            if (!waitThenClose && Math.abs(donorCard.current_x - donorCard.target_x) < MIN_HOVER_DIST && donorCard.hb.hovered && (InputHelper.justClickedLeft || CInputActionSet.select.isJustPressed())) {
                 InputHelper.justClickedLeft = false;
                 AbstractDungeon.player.hand.addToTop(donorCard);
                 donorCard = null;
-                this.refreshSelectedCards();
-                this.updateMessage();
+                refreshSelectedCards();
+                updateMessage();
                 if (Settings.isControllerMode) {
-                    this.hand.refreshHandLayout();
+                    hand.refreshHandLayout();
                 }
             }
         }
 
         if (baseCard == null || donorCard == null) {
-            this.button.disable();
+            button.disable();
         }
 
     }
@@ -503,7 +516,6 @@ public class FusionScreen extends CustomScreen {
             message = TEXT[2];
             fusionPreviewCard = Wiz.fuse(baseCard, donorCard);
             fusionPreviewCard.applyPowers();
-            message += " ("+FormatHelper.removeFormatting(FusionCardEffectData.getFusionDescription(((AbstractEasyCard) baseCard).getMonsterData(), ((AbstractEasyCard) donorCard).getMonsterData()))+")";
             fusionPreviewCard.drawScale = FUSION_CARD_SCALE;
             fusionPreviewCard.targetDrawScale = FUSION_CARD_SCALE;
         }
@@ -517,15 +529,17 @@ public class FusionScreen extends CustomScreen {
         
         AbstractDungeon.topPanel.unhoverHitboxes();
         AbstractDungeon.actionManager.cleanCardQueue();
-        this.hand = AbstractDungeon.player.hand;
+        hand = AbstractDungeon.player.hand;
         AbstractDungeon.player.releaseCard();
         AbstractDungeon.getMonsters().hoveredMonster = null;
-        this.waitThenClose = false;
-        this.waitToCloseTimer = 0.0F;
-        this.baseCard = null;
-        this.donorCard = null;
-        this.hoveredCard = null;
-        this.wereCardsRetrieved = false;
+        waitThenClose = false;
+        waitToCloseTimer = 0.0F;
+        baseCard = null;
+        donorCard = null;
+        hoveredCard = null;
+        didFuse = false;
+        justPeeked = false;
+        wereCardsRetrieved = false;
         Settings.hideRelics = true;
         FusionScreenPatches.didHideRelics = true;
         AbstractDungeon.isScreenUp = true;
@@ -534,7 +548,8 @@ public class FusionScreen extends CustomScreen {
         AbstractDungeon.player.hand.refreshHandLayout();
         AbstractDungeon.overlayMenu.showBlackScreen(0.75F);
         if (Settings.isControllerMode) {
-            Gdx.input.setCursorPosition((int) this.hand.group.get(0).hb.cX, (int) this.hand.group.get(0).hb.cY);// 810
+            Gdx.input.setCursorPosition((int)hand.group.get(0).hb.cX, (int)hand.group.get(0).hb.cY);
         }
+        AbstractDungeon.overlayMenu.cancelButton.show(TEXT[3]);
     }
 }
