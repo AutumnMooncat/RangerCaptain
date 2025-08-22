@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.SurroundedPower;
 import com.megacrit.cardcrawl.powers.watcher.EndTurnDeathPower;
 
@@ -22,12 +23,13 @@ import java.util.function.Predicate;
 
 public class CleansePowerAction extends AbstractGameAction {
     private static final Class<?>[] bannedBuffs = new Class[] {EndTurnDeathPower.class, SurroundedPower.class};
+    private static final Class<?>[] bannedDebuffs = new Class[] {GainStrengthPower.class};
     private static final String[] TEXT = CardCrawlGame.languagePack.getUIString(MainModfile.makeID("CleanseAction")).TEXT;
     private final Predicate<AbstractPower> filter;
     private final Consumer<ArrayList<AbstractPower>> callBack;
     private final boolean optional;
 
-    public static final Predicate<AbstractPower> IS_DEBUFF = p -> p.type == AbstractPower.PowerType.DEBUFF;
+    public static final Predicate<AbstractPower> IS_DEBUFF = p -> p.type == AbstractPower.PowerType.DEBUFF&& Arrays.stream(bannedDebuffs).noneMatch(clz -> clz == p.getClass());
     public static final Predicate<AbstractPower> IS_BUFF = p -> p.type == AbstractPower.PowerType.BUFF && Arrays.stream(bannedBuffs).noneMatch(clz -> clz == p.getClass());
 
     public CleansePowerAction(AbstractCreature target, int amount, Predicate<AbstractPower> filter) {
