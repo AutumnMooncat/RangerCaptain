@@ -552,6 +552,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
     }
 
     public static void resolveRawDescription(FusedCard card, List<AbstractComponent> components) {
+        Collections.sort(components);
         Map<AbstractComponent, String> parts = new HashMap<>();
         for (AbstractComponent component : components) {
             if (!component.wasCaptured) {

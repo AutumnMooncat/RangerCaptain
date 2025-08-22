@@ -1,5 +1,6 @@
 package RangerCaptain.cardfusion.abstracts;
 
+import RangerCaptain.cards.tokens.FusedCard;
 import RangerCaptain.util.FormatHelper;
 import basemod.BaseMod;
 import com.megacrit.cardcrawl.helpers.GameDictionary;
@@ -30,6 +31,11 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
     @Override
     public void updatePrio() {
         priority = MODIFIER_PRIO;
+    }
+
+    @Override
+    public void postAssignment(FusedCard card, List<AbstractComponent> otherComponents) {
+        priority = FINALIZER_PRIO;
     }
 
     @Override
