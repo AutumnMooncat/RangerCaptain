@@ -114,7 +114,9 @@ public class StashedCardManager {
         @SpireInsertPatch(locator = Locator.class)
         public static void move(GameActionManager __instance) {
             while (Wiz.adp().hand.size() < BaseMod.MAX_HAND_SIZE && !cards.isEmpty()) {
-                AbstractDungeon.player.hand.addToTop(cards.group.remove(0));
+                AbstractCard card = cards.group.remove(0);
+                AbstractDungeon.player.hand.addToTop(card);
+                card.untip();
                 AbstractDungeon.player.hand.refreshHandLayout();
                 AbstractDungeon.player.hand.applyPowers();
             }
