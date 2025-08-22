@@ -177,7 +177,7 @@
   },
   "${ModID}:Icepeck": {
     "NAME": "Icepeck",
-    "DESCRIPTION": "Deal !D! damage. NL Deals !M! additional damage for each time the enemy was attacked this combat.",
+    "DESCRIPTION": "Deal !D! damage. NL The next {@@}{!M!|1=Attack you play costs 0.|@=!M! Attacks you play cost 0.} ",
     "EXTENDED_DESCRIPTION": ["Cryoshear"]
   },
   "${ModID}:Jellyton": {
