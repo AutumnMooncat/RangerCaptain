@@ -9,7 +9,6 @@ import RangerCaptain.util.MonsterEnum;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -43,7 +42,7 @@ public class Padpole extends AbstractMultiUpgradeCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         blck();
-        addToBot(new CleansePowerAction(p, 1, true, power -> power.type == AbstractPower.PowerType.BUFF, removed -> {
+        addToBot(new CleansePowerAction(p, 1, true, CleansePowerAction.IS_BUFF, removed -> {
             if (!removed.isEmpty()) {
                 blckTop();
             }
