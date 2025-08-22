@@ -141,6 +141,10 @@
     "NAME": "Sprint",
     "DESCRIPTIONS": ["Ignore energy cost on the next #yAttack you play.","Ignore energy cost on the next #b"," #yAttacks you play."]
   },
+  "${ModID}:SureFirePower": {
+    "NAME": "Sure-Fire",
+    "DESCRIPTIONS": ["This turn, whenever you deal unblocked attack damage, apply #b"," #yBurn."]
+  },
   "${ModID}:AbramacabraPower": {
     "NAME": "Abramacabra",
     "DESCRIPTIONS": ["When attacked, deals #b"," damage back."]

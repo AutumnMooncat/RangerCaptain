@@ -428,6 +428,13 @@
       "Vigor will not consume for %s turns"
     ]
   },
+  "${ModID}:SureFireComponent": {
+    "TEXT": ["Attacks apply Burn"],
+    "EXTRA_TEXT": [
+      "This turn, Attacks apply %s ${ModID}:Burn on hit",
+      "Attacks apply %s ${ModID}:Burn on hit until next turn"
+    ]
+  },
   "${ModID}:SprintComponent": {
     "TEXT": ["Your next Attacks are free"],
     "EXTRA_TEXT": [
