@@ -40,17 +40,17 @@ public class Springheel extends AbstractMultiUpgradeCard implements ManuallySize
                 .withBlock(4.5f)
                 .with(new NextTurnDamageComponent(7.5f, AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
-        // 8,5 -> 12,7
+        // 9,4 -> 13,6
         new FusionComponentHelper(MonsterEnum.SNOOPIN)
                 .withCost(0)
-                .withBlock(6)
-                .with(new NextTurnDamageComponent(3.5f, AbstractGameAction.AttackEffect.BLUNT_LIGHT, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .withBlock(6.5f)
+                .with(new NextTurnDamageComponent(3, AbstractGameAction.AttackEffect.BLUNT_LIGHT, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
-        // 10,6 -> 15,9
+        // 12,4 -> 18,6
         new FusionComponentHelper(MonsterEnum.SCAMPIRE)
                 .withCost(0)
-                .withBlock(7.5f)
-                .with(new NextTurnDamageComponent(4.5f, AbstractGameAction.AttackEffect.BLUNT_HEAVY, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .withBlock(9)
+                .with(new NextTurnDamageComponent(3, AbstractGameAction.AttackEffect.BLUNT_HEAVY, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
     }
 
@@ -118,16 +118,14 @@ public class Springheel extends AbstractMultiUpgradeCard implements ManuallySize
     }
 
     public void upgrade2() {
-        upgradeBlock(2);
-        upgradeDamage(1);
+        upgradeBlock(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
         setMonsterData(MonsterEnum.SNOOPIN);
     }
 
     public void upgrade3() {
-        upgradeBlock(2);
-        upgradeDamage(1);
+        upgradeBlock(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[3];
         initializeTitle();
         setMonsterData(MonsterEnum.SCAMPIRE);
