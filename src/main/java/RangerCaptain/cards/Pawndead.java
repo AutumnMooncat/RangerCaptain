@@ -20,18 +20,22 @@ public class Pawndead extends AbstractMultiUpgradeCard {
         new FusionComponentHelper(MonsterEnum.PAWNDEAD)
                 .withCost(2)
                 .with(new StashCardCopiesComponent(1.5f))
+                .withExhaust()
                 .register();
         new FusionComponentHelper(MonsterEnum.SKELEVANGELIST)
                 .withCost(1)
                 .with(new StashCardCopiesComponent(1.5f))
+                .withExhaust()
                 .register();
         new FusionComponentHelper(MonsterEnum.KINGRAVE)
                 .withCost(1)
                 .with(new StashCardCopiesComponent(2.5f))
+                .withExhaust()
                 .register();
         new FusionComponentHelper(MonsterEnum.QUEENYX)
                 .withCost(0)
                 .with(new StashCardCopiesComponent(1.5f))
+                .withExhaust()
                 .register();
     }
 
@@ -39,6 +43,7 @@ public class Pawndead extends AbstractMultiUpgradeCard {
         super(ID, 2, CardType.SKILL, CardRarity.RARE, CardTarget.NONE);
         baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.PAWNDEAD);
+        exhaust = true;
     }
 
     @Override

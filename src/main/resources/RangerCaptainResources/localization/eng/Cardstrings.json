@@ -252,7 +252,7 @@
   },
   "${ModID}:Pawndead": {
     "NAME": "Pawndead",
-    "DESCRIPTION": "Choose a card. NL ${ModID}:Stash !M! copies of it.",
+    "DESCRIPTION": "Choose a card. NL ${ModID}:Stash !M! copies of it. NL Exhaust.",
     "EXTENDED_DESCRIPTION": ["Skelevangelist","Kingrave","Queenyx"]
   },
   "${ModID}:Picksie": {
