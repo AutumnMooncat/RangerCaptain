@@ -22,7 +22,7 @@ public abstract class AbstractTempApplyComponent extends AbstractApplyComponent 
         if (increase) {
             return String.format(TEMP_DESCRIPTION_TEXT[target.ordinal()], getName());
         } else {
-            return String.format(TEMP_DESCRIPTION_TEXT[target.ordinal() + ComponentTarget.values().length + 1], getName());
+            return String.format(TEMP_DESCRIPTION_TEXT[target.ordinal() + ComponentTarget.values().length], getName());
         }
     }
 
