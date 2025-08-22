@@ -202,7 +202,9 @@ public class FusionButton {
     public void trigger() {
         hb.hovered = false;
         isGlowing = false;
-        Wiz.atb(new FusionAction(fusedThisTurn || !canAfford()));
+        if (AbstractDungeon.actionManager.actions.stream().noneMatch(a -> a instanceof FusionAction)) {
+            Wiz.atb(new FusionAction(fusedThisTurn || !canAfford()));
+        }
     }
 
     public void updateText() {
