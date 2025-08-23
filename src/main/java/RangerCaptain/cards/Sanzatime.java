@@ -2,15 +2,16 @@ package RangerCaptain.cards;
 
 import RangerCaptain.actions.ResolveNextTurnEffectsAction;
 import RangerCaptain.cardfusion.FusionComponentHelper;
-import RangerCaptain.cardfusion.components.ExhaustCardsComponent;
 import RangerCaptain.cardfusion.components.ResolveNextTurnEffectsComponent;
+import RangerCaptain.cardfusion.components.WeakComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
+import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.WeakPower;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -20,23 +21,23 @@ public class Sanzatime extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.SANZATIME)
                 .withCost(1)
-                .with(new ExhaustCardsComponent(1.5f, ExhaustCardsComponent.TargetPile.HAND, true, false), new ResolveNextTurnEffectsComponent())
+                .with(new WeakComponent(1.5f), new ResolveNextTurnEffectsComponent())
                 .register();
         new FusionComponentHelper(MonsterEnum.FORTIWINX)
                 .withCost(0)
-                .with(new ExhaustCardsComponent(1.5f, ExhaustCardsComponent.TargetPile.HAND, true, false), new ResolveNextTurnEffectsComponent())
+                .with(new WeakComponent(1.5f), new ResolveNextTurnEffectsComponent())
                 .register();
     }
 
     public Sanzatime() {
-        super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
+        super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
         baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.SANZATIME);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ExhaustAction(magicNumber, false, true, true));
+        Wiz.applyToEnemy(m, new WeakPower(m, magicNumber, false));
         addToBot(new ResolveNextTurnEffectsAction());
     }
 
