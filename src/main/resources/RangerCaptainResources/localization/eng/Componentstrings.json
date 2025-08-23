@@ -401,7 +401,7 @@
   "${ModID}:ScaleDamageComponent": {
     "TEXT": ["Increase damage"],
     "EXTRA_TEXT": [
-      "Increase this card's damage %s",
+      "Increase this card's damage by %s",
       "Increase this card's damage by its damage",
       "Increase this card's damage by their damage"
     ]
