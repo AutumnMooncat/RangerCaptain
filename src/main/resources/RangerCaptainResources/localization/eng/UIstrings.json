@@ -2,7 +2,8 @@
   "${ModID}:ModConfigs": {
     "TEXT": [
       "Play Tutorial Next Run",
-      "Use Monster/Fusion Descriptors"
+      "Use Monster/Fusion Descriptors",
+      "Free Shop Items Don't Count As Spending Gold"
     ],
     "EXTRA_TEXT": [
       "The Ranger Captain",

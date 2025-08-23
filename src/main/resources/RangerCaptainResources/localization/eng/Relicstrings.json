@@ -43,8 +43,8 @@
     "NAME": "Prize Ticket",
     "FLAVOR": "The paper feels crisp and delicate, like dead leaves.",
     "DESCRIPTIONS": [
-      "Cards on sale in shops are now free.",
-      "Sales taken: "," NL Gold saved: "
+      "The Merchant offers #b2 discounted cards, #b1 of which costs no #yGold.",
+      "Discounts taken: "," NL Gold saved: "
     ]
   },
   "${ModID}:Upgrape": {

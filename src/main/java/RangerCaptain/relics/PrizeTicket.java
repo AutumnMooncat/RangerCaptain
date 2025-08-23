@@ -2,15 +2,14 @@ package RangerCaptain.relics;
 
 import RangerCaptain.TheRangerCaptain;
 import RangerCaptain.patches.ShopPatches;
-import basemod.ReflectionHacks;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.ShopRoom;
-import com.megacrit.cardcrawl.shop.OnSaleTag;
 import com.megacrit.cardcrawl.shop.ShopScreen;
 
 import java.util.ArrayList;
@@ -38,12 +37,13 @@ public class PrizeTicket extends AbstractEasyRelic {
     public void onEquip() {
         ShopScreen screen = AbstractDungeon.shopScreen;
         if (screen != null) {
-            OnSaleTag tag = ReflectionHacks.getPrivate(screen, ShopScreen.class, "saleTag");
-            if (tag != null && tag.card != null && tag.card.price > 0) {
-                ShopPatches.OriginalCostField.originalCost.set(tag, tag.card.price);
-                tag.card.price = 0;
-            }
+            ShopPatches.generateSecondSale(screen);
         }
+    }
+
+    @Override
+    public boolean canSpawn() {
+        return Settings.isEndless || AbstractDungeon.floorNum <= 48;
     }
 
     public void incrementCards(int amount) {

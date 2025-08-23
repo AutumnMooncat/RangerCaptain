@@ -107,6 +107,9 @@ public class MainModfile implements
     public static final String PLAY_TUTORIAL = "playTutorial";
     public static boolean playTutorial = true;
 
+    public static final String FREE_IS_FREE = "freeIsFree";
+    public static boolean freeIsFree = true;
+
     public static final ArrayList<AbstractGameEffect> safeEffectQueue = new ArrayList<>();
 
     public static final HashMap<String, Float> sfxCooldowns = new HashMap<>();
@@ -123,10 +126,12 @@ public class MainModfile implements
         Properties defaultSettings = new Properties();
         defaultSettings.setProperty(SHOW_DESCRIPTORS, Boolean.toString(showDescriptors));
         defaultSettings.setProperty(PLAY_TUTORIAL, Boolean.toString(playTutorial));
+        defaultSettings.setProperty(FREE_IS_FREE, Boolean.toString(freeIsFree));
         try {
             rangerCaptainConfig = new SpireConfig(modID, modID+"Config", defaultSettings);
             showDescriptors = rangerCaptainConfig.getBool(SHOW_DESCRIPTORS);
             playTutorial = rangerCaptainConfig.getBool(PLAY_TUTORIAL);
+            freeIsFree = rangerCaptainConfig.getBool(FREE_IS_FREE);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -311,8 +316,17 @@ public class MainModfile implements
         });
         currentYposition -= spacingY;
 
+        ModLabeledToggleButton freeIsFreeButton = new ModLabeledToggleButton(TEXT[2],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                rangerCaptainConfig.getBool(FREE_IS_FREE), settingsPanel, (label) -> {}, (button) -> {
+            rangerCaptainConfig.setBool(FREE_IS_FREE, button.enabled);
+            freeIsFree = button.enabled;
+            try {rangerCaptainConfig.save();} catch (IOException e) {e.printStackTrace();}
+        });
+        currentYposition -= spacingY;
+
         settingsPanel.addUIElement(playTutorialButton);
         settingsPanel.addUIElement(useDescriptorsButton);
+        settingsPanel.addUIElement(freeIsFreeButton);
 
         //Other Setup stuff
         BaseMod.addCustomScreen(new FusionScreen());
