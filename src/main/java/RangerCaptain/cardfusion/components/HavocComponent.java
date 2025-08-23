@@ -18,7 +18,7 @@ public class HavocComponent extends AbstractComponent {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
     public HavocComponent(float base) {
-        super(ID, base, ComponentType.DO, ComponentTarget.NONE, DynVar.MAGIC);
+        super(ID, base, ComponentType.DO, ComponentTarget.NONE, DynVar.MAGIC); // TODO loop casts with OnExhaust, fails to play cards when not your turn
     }
 
     @Override
