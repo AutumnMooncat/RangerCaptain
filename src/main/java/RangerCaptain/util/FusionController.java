@@ -39,7 +39,7 @@ public class FusionController {
                             region.getRegionHeight() - node.position.y + form.positionalOffset.y - offsetY,
                             region.getRegionWidth(),
                             region.getRegionHeight(),
-                            Settings.scale * scale, Settings.scale * scale, rotation
+                            scale, scale, rotation
                     );
                 }
             }
