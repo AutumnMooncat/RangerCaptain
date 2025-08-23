@@ -22,24 +22,24 @@ public class Squirey extends AbstractMultiUpgradeCard {
     static {
         new FusionComponentHelper(MonsterEnum.SQUIREY)
                 .withCost(1)
-                .withDamage(6, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
+                .withDamage(5.5f, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
                 .with(new VigorComponent(1.91f), new SharpenComponent(0.75f))
                 .register();
         new FusionComponentHelper(MonsterEnum.MANISPEAR)
                 .withCost(2)
-                .withDamage(8.5f, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .withDamage(8, AbstractGameAction.AttackEffect.SLASH_HEAVY)
                 .with(new VigorComponent(1.91f), new SharpenComponent(1.91f))
                 .register();
         new FusionComponentHelper(MonsterEnum.PALANGOLIN)
                 .withCost(1)
-                .withDamage(7.5f, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .withDamage(7, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
                 .with(new VigorComponent(2.91f), new SharpenComponent(0.75f))
                 .register();
     }
 
     public Squirey() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
-        baseDamage = damage = 8;
+        baseDamage = damage = 7;
         baseMagicNumber = magicNumber = 2;
         baseSecondMagic = secondMagic = 1;
         setMonsterData(MonsterEnum.SQUIREY);
