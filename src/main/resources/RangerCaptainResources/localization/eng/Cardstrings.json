@@ -142,7 +142,7 @@
   },
   "${ModID}:Elfless": {
     "NAME": "Elfless",
-    "DESCRIPTION": "Deal !D! damage. NL Set this card's cost to 0 this combat.",
+    "DESCRIPTION": "Deal !D! damage. NL When ${ModID}:Stashed, this costs 0 until played.",
     "EXTENDED_DESCRIPTION": ["Faerious","Grampus"]
   },
   "${ModID}:Faucetear": {

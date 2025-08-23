@@ -1,9 +1,9 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.FusionComponentHelper;
-import RangerCaptain.cardfusion.components.FreeWhenPlayedComponent;
+import RangerCaptain.cardfusion.components.FreeOnceWhenStashedComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
+import RangerCaptain.cards.interfaces.OnStashedCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -13,30 +13,30 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static RangerCaptain.MainModfile.makeID;
 
-public class Elfless extends AbstractMultiUpgradeCard {
+public class Elfless extends AbstractMultiUpgradeCard implements OnStashedCard {
     public final static String ID = makeID(Elfless.class.getSimpleName());
 
     static {
         new FusionComponentHelper(MonsterEnum.ELFLESS)
                 .withCost(2)
-                .withDamage(7.5f, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
-                .with(new FreeWhenPlayedComponent())
+                .withDamage(8.5f, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new FreeOnceWhenStashedComponent())
                 .register();
         new FusionComponentHelper(MonsterEnum.FAERIOUS)
                 .withCost(2)
-                .withDamage(9.5f, AbstractGameAction.AttackEffect.SLASH_HEAVY)
-                .with(new FreeWhenPlayedComponent())
+                .withDamage(11, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .with(new FreeOnceWhenStashedComponent())
                 .register();
         new FusionComponentHelper(MonsterEnum.GRAMPUS)
                 .withCost(3)
-                .withDamage(11, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
-                .with(new FreeWhenPlayedComponent())
+                .withDamage(13.5f, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new FreeOnceWhenStashedComponent())
                 .register();
     }
 
     public Elfless() {
         super(ID, 2, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
-        baseDamage = damage = 10;
+        baseDamage = damage = 12;
         setMonsterData(MonsterEnum.ELFLESS);
         baseInfo = info = 0;
     }
@@ -44,10 +44,12 @@ public class Elfless extends AbstractMultiUpgradeCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, info == 1 ? AbstractGameAction.AttackEffect.SLASH_HEAVY : AbstractGameAction.AttackEffect.BLUNT_HEAVY);
-        addToBot(new DoAction(() -> {
-            cost = costForTurn = 0;
-            isCostModified = true;
-        }));
+    }
+
+    @Override
+    public void onStash() {
+        superFlash();
+        freeToPlayOnce = true;
     }
 
     @Override
@@ -68,7 +70,7 @@ public class Elfless extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade0() {
-        upgradeDamage(3);
+        upgradeDamage(4);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.FAERIOUS);
@@ -77,10 +79,9 @@ public class Elfless extends AbstractMultiUpgradeCard {
 
     public void upgrade1() {
         upgradeBaseCost(3);
-        upgradeDamage(5);
+        upgradeDamage(8);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.GRAMPUS);
-        baseInfo = info = 2;
     }
 }

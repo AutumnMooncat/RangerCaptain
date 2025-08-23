@@ -260,6 +260,8 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
 
     public void triggerOnExhaust(FusedCard card, List<AbstractComponent> captured) {}
 
+    public void triggerOnStashed(FusedCard card) {}
+
     public void triggerOnOtherCardStashed(FusedCard card, AbstractCard stashed) {}
 
     public void triggerWhenDrawn(FusedCard card) {}

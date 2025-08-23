@@ -721,6 +721,12 @@
       "Set this card's cost to 0 this combat"
     ]
   },
+  "${ModID}:FreeOnceWhenStashedComponent": {
+    "TEXT": ["Becomes free until played when #yStashed"],
+    "EXTRA_TEXT": [
+      "When ${ModID}:Stashed, this costs 0 until played"
+    ]
+  },
   "${ModID}:ResolveNextTurnEffectsComponent": {
     "TEXT": ["Resolve next turn effects"],
     "EXTRA_TEXT": [
