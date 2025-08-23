@@ -17,7 +17,7 @@ public class FreeWhenPlayedComponent extends AbstractComponent {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
     public FreeWhenPlayedComponent() {
-        super(ID, 0, ComponentType.DO, ComponentTarget.ENEMY, DynVar.NONE);
+        super(ID, 0, ComponentType.DO, ComponentTarget.NONE, DynVar.NONE);
         setFlags(Flag.REMOVE_IF_POWER, Flag.CANT_BE_CAPTURED, Flag.REMOVE_IF_EXHAUST);
     }
 
