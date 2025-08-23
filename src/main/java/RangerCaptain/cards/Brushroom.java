@@ -2,23 +2,17 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cardfusion.FusionComponentHelper;
 import RangerCaptain.cardfusion.components.CostsLessPerStashedComponent;
-import RangerCaptain.cardfusion.components.DamageComponent;
-import RangerCaptain.cardfusion.components.VulnerableComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.cards.interfaces.OnOtherCardStashedCard;
 import RangerCaptain.patches.CardCounterPatches;
-import RangerCaptain.patches.CustomTags;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
-import RangerCaptain.util.Wiz;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 import static RangerCaptain.MainModfile.makeID;
@@ -30,23 +24,19 @@ public class Brushroom extends AbstractEasyCard implements OnOtherCardStashedCar
         new FusionComponentHelper(MonsterEnum.BRUSHROOM)
                 .withCost(3)
                 .with(new CostsLessPerStashedComponent())
-                .with(new DamageComponent(9.5f, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
-                .with(new VulnerableComponent(1.5f))
+                .withBlock(10)
                 .register();
         new FusionComponentHelper(MonsterEnum.FUNGOGH)
                 .withCost(3)
                 .with(new CostsLessPerStashedComponent())
-                .with(new DamageComponent(12, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
-                .with(new VulnerableComponent(1.5f))
+                .withBlock(13.5f)
                 .register();
     }
 
     public Brushroom() {
-        super(ID, 3, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        baseDamage = damage = 14;
-        baseMagicNumber = magicNumber = 2;
+        super(ID, 3, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+        baseBlock = block = 15;
         setMonsterData(MonsterEnum.BRUSHROOM);
-        tags.add(CustomTags.MAGIC_DRAW);
     }
 
     @Override
@@ -67,14 +57,12 @@ public class Brushroom extends AbstractEasyCard implements OnOtherCardStashedCar
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, AbstractGameAction.AttackEffect.BLUNT_HEAVY);
-        Wiz.applyToEnemy(m, new VulnerablePower(m, magicNumber, false));
+        blck();
     }
 
     @Override
     public void upp() {
-        upgradeDamage(4);
-        upgradeMagicNumber(1);
+        upgradeBlock(5);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.FUNGOGH);

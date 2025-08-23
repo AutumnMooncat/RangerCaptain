@@ -62,7 +62,7 @@
   },
   "${ModID}:Brushroom": {
     "NAME": "Brushroom",
-    "DESCRIPTION": "Costs 1 less [E] for each card ${ModID}:Stashed this turn. NL Deal !D! damage. NL Apply !M! Vulnerable.",
+    "DESCRIPTION": "Costs 1 less [E] for each card ${ModID}:Stashed this turn. NL Gain !B! Block.",
     "EXTENDED_DESCRIPTION": ["Fungogh","This enemy has not been attacked this turn."]
   },
   "${ModID}:Bulletino": {
