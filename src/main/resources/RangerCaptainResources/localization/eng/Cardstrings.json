@@ -301,7 +301,7 @@
   },
   "${ModID}:Sirenade": {
     "NAME": "Sirenade",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Gain !M! ${ModID}:Multitarget.",
+    "DESCRIPTION": "Deal !D! damage and apply !M! Weak to ALL enemies.",
     "EXTENDED_DESCRIPTION": ["Decibelle"]
   },
   "${ModID}:Sludge": {
