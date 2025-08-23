@@ -7,7 +7,6 @@ import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -18,35 +17,35 @@ public class Spirouette extends AbstractEasyCard {
     public final static String ID = makeID(Spirouette.class.getSimpleName());
 
     static {
-        // 15 -> 20
+        // 9 -> 13
         new FusionComponentHelper(MonsterEnum.SPIROUETTE)
-                .withCost(2)
-                .withDamage(10, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .withCost(1)
+                .withBlock(6.5f)
                 .with(new YeetWeakVulnComponent())
                 .register();
-        // 20 -> 27
+        // 12 -> 16
         new FusionComponentHelper(MonsterEnum.REGENSEA)
-                .withCost(2)
-                .withDamage(13.5f, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .withCost(1)
+                .withBlock(8)
                 .with(new YeetWeakVulnComponent())
                 .register();
     }
 
     public Spirouette() {
-        super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        baseDamage = damage = 15;
+        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF_AND_ENEMY);
+        baseBlock = block = 9;
         setMonsterData(MonsterEnum.SPIROUETTE);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, AbstractGameAction.AttackEffect.SLASH_HEAVY);
+        blck();
         addToBot(new FormalComplaintAction(m));
     }
 
     @Override
     public void upp() {
-        upgradeDamage(5);
+        upgradeBlock(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.REGENSEA);
