@@ -237,7 +237,7 @@
   },
   "${ModID}:Muskrateer": {
     "NAME": "Muskrateer",
-    "DESCRIPTION": "Deal !D! damage 3 times. NL Draw !M! card{@@}{!M!|1=|@=s}.",
+    "DESCRIPTION": "Deal !D! damage. NL You may Exhaust a card to draw !M! card{@@}{!M!|1=|@=s}.",
     "EXTENDED_DESCRIPTION": ["Ratcousel"]
   },
   "${ModID}:Nevermort": {
