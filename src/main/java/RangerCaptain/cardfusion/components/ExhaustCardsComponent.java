@@ -124,7 +124,7 @@ public class ExhaustCardsComponent extends AbstractComponent {
     public String rawCardText(List<AbstractComponent> captured) {
         // TODO Capture fails if exhaust is captured by power
         String pileInsert = " " + (pile == TargetPile.HAND ? IN_HAND : pile == TargetPile.DRAW ? IN_DRAW : IN_DISCARD);
-        if (pile == TargetPile.HAND && !random && !optional) {
+        if (pile == TargetPile.HAND && !random && !(optional && workingAmount != 1)) {
             pileInsert = "";
         }
         String text;
@@ -134,7 +134,7 @@ public class ExhaustCardsComponent extends AbstractComponent {
         } else {
             text = String.format(CARD_TEXT[index], dynKey(), pileInsert);
         }
-        return text + exhaustFollowupText(captured);
+        return text + ((optional && workingAmount == 1) ? exhaustYouMayFollowupText(captured): exhaustFollowupText(captured));
     }
 
     @Override
@@ -211,6 +211,19 @@ public class ExhaustCardsComponent extends AbstractComponent {
         StringBuilder text = new StringBuilder();
         if (captured.stream().anyMatch(c -> c.hasFlags(Flag.EXHAUST_FOLLOWUP))) {
             text.append(LocalizedStrings.PERIOD).append(" NL ").append(FormatHelper.capitalize(StringUtils.join(captured.stream().filter(c -> c.hasFlags(Flag.EXHAUST_FOLLOWUP)).map(c -> FormatHelper.uncapitalize(c.rawCardText(Collections.emptyList()))).collect(Collectors.toList()), " " + AND + " "))).append(" ").append(FOR_EACH);
+        }
+        for (AbstractComponent component : captured) {
+            if (component.hasFlags(Flag.EXHAUST_COMPLEX_FOLLOWUP)) {
+                text.append(LocalizedStrings.PERIOD).append(" NL ").append(component.rawCardText(Collections.emptyList()));
+            }
+        }
+        return text.toString();
+    }
+
+    public static String exhaustYouMayFollowupText(List<AbstractComponent> captured) {
+        StringBuilder text = new StringBuilder();
+        if (captured.stream().anyMatch(c -> c.hasFlags(Flag.EXHAUST_FOLLOWUP))) {
+            text.append(" ").append(StringUtils.join(captured.stream().filter(c -> c.hasFlags(Flag.EXHAUST_FOLLOWUP)).map(c -> FormatHelper.uncapitalize(c.rawCardText(Collections.emptyList()))).collect(Collectors.toList()), " " + AND + " "));
         }
         for (AbstractComponent component : captured) {
             if (component.hasFlags(Flag.EXHAUST_COMPLEX_FOLLOWUP)) {
