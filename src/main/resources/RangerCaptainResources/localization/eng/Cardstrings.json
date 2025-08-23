@@ -147,7 +147,7 @@
   },
   "${ModID}:Faucetear": {
     "NAME": "Faucetear",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times. NL Exhaust.",
+    "DESCRIPTION": "Gain !B! Block. NL Apply !M! Weak.",
     "EXTENDED_DESCRIPTION": ["Fountess"]
   },
   "${ModID}:Ferriclaw": {
