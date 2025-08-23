@@ -42,13 +42,13 @@ public class Springheel extends AbstractMultiUpgradeCard implements ManuallySize
                 .register();
         // 9,4 -> 13,6
         new FusionComponentHelper(MonsterEnum.SNOOPIN)
-                .withCost(0)
+                .withCost(1)
                 .withBlock(6.5f)
                 .with(new NextTurnDamageComponent(3, AbstractGameAction.AttackEffect.BLUNT_LIGHT, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
         // 12,4 -> 18,6
         new FusionComponentHelper(MonsterEnum.SCAMPIRE)
-                .withCost(0)
+                .withCost(1)
                 .withBlock(9)
                 .with(new NextTurnDamageComponent(3, AbstractGameAction.AttackEffect.BLUNT_HEAVY, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
