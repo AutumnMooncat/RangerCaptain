@@ -710,7 +710,7 @@
     ]
   },
   "${ModID}:CostsLessPerStashedComponent": {
-    "TEXT": ["Costs less for each card Stashed that turn"],
+    "TEXT": ["Costs less for each card #yStashed that turn"],
     "EXTRA_TEXT": [
       "Costs 1 less [E] for each card ${ModID}:Stashed this turn"
     ]
