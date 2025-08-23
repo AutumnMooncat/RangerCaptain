@@ -2,10 +2,9 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cardfusion.FusionComponentHelper;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
-import RangerCaptain.cardfusion.components.MakeCardsComponent;
 import RangerCaptain.cardfusion.components.OnTurnStartComponent;
+import RangerCaptain.cardfusion.components.ToxinComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
-import RangerCaptain.cards.tokens.Sludge;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.powers.AcidReflexPower;
 import RangerCaptain.util.CardArtRoller;
@@ -24,16 +23,15 @@ public class Jellyton extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.JELLYTON)
                 .withCost(1)
                 .with(new OnTurnStartComponent())
-                .withFlags(new MakeCardsComponent(2, new Sludge(), false, MakeCardsComponent.Location.HAND), AbstractComponent.Flag.INVERSE_PREFERRED)
+                .withFlags(new ToxinComponent(6, AbstractComponent.ComponentTarget.ENEMY_RANDOM), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 
     public Jellyton() {
-        super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
-        baseMagicNumber = magicNumber = 1;
+        super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF); // TODO sludge can go infinite with the right setup
+        baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.JELLYTON);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
-        cardsToPreview = new Sludge();
     }
 
     @Override

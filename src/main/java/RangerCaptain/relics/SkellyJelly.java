@@ -1,6 +1,7 @@
 package RangerCaptain.relics;
 
 import RangerCaptain.TheRangerCaptain;
+import RangerCaptain.cards.tokens.Sludge;
 import RangerCaptain.util.Wiz;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
@@ -11,7 +12,6 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.status.Slimed;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -39,9 +39,9 @@ public class SkellyJelly extends AbstractEasyRelic {
     public void atBattleStart() {
         this.flash();
         this.addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-        Slimed slime = new Slimed();
-        CardModifierManager.addModifier(slime, new TrackerMod());
-        this.addToBot(new MakeTempCardInDrawPileAction(slime, 3, true, true));
+        Sludge card = new Sludge();
+        CardModifierManager.addModifier(card, new TrackerMod());
+        this.addToBot(new MakeTempCardInDrawPileAction(card, 3, true, true));
     }
 
     @Override

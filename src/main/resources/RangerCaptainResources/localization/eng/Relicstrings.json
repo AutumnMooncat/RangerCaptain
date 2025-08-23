@@ -86,8 +86,8 @@
     "NAME": "Skelly Jelly",
     "FLAVOR": "You'd better not eat it, but it might still be useful for something...",
     "DESCRIPTIONS": [
-      "Gain [E] at the start of your turn. At the start of combat, shuffle #b3 #rSlimed into your draw pile.",
-      "Slimed drawn: "," NL Per turn: "," NL Per combat: "," NL Slimed played: "
+      "Gain [E] at the start of your turn. At the start of combat, shuffle #b3 #rSludge into your draw pile.",
+      "Sludge drawn: "," NL Per turn: "," NL Per combat: "," NL Sludge played: "
     ]
   }
 }

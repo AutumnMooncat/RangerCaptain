@@ -12,18 +12,16 @@ public class Sludge extends AbstractEasyCard {
     public final static String ID = makeID(Sludge.class.getSimpleName());
 
     public Sludge() {
-        super(ID, 0, CardType.SKILL, CardRarity.SPECIAL, CardTarget.ENEMY, CardColor.COLORLESS);
-        magicNumber = baseMagicNumber = 3;
+        super(ID, 0, CardType.STATUS, CardRarity.COMMON, CardTarget.SELF, CardColor.COLORLESS);
+        magicNumber = baseMagicNumber = 2;
         exhaust = true;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Wiz.applyToEnemy(m, new ToxinPower(m, magicNumber));
+        Wiz.applyToSelf(new ToxinPower(p, magicNumber));
     }
 
     @Override
-    public void upp() {
-        upgradeMagicNumber(1);
-    }
+    public void upp() {}
 }

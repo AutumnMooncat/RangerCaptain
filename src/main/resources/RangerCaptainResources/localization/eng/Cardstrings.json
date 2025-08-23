@@ -182,7 +182,7 @@
   },
   "${ModID}:Jellyton": {
     "NAME": "Jellyton",
-    "DESCRIPTION": "${ModID}:Perfect. NL At the start of each turn, add !M! *Sludge into your hand."
+    "DESCRIPTION": "${ModID}:Perfect. NL At the start of your turn, apply !M! ${ModID}:Toxin to a random enemy."
   },
   "${ModID}:Jumpkin": {
     "NAME": "Jumpkin",
@@ -306,7 +306,7 @@
   },
   "${ModID}:Sludge": {
     "NAME": "Sludge",
-    "DESCRIPTION": "Apply !M! ${ModID}:Toxin. NL Exhaust."
+    "DESCRIPTION": "Gain !M! ${ModID}:Toxin. NL Exhaust."
   },
   "${ModID}:Sparktan": {
     "NAME": "Sparktan",

@@ -65,8 +65,7 @@
   },
   "${ModID}:ToxinPower": {
     "NAME": "Toxin",
-    "DESCRIPTIONS": ["Receive #b","% more damage from #yAttacks. Each turn, #yToxin is reduced by #b1."
-    ]
+    "DESCRIPTIONS": ["Receive #b","% more damage from #yAttacks. Each turn, #yToxin is reduced by #b1."]
   },
   "${ModID}:AutoLifePower": {
     "NAME": "Auto-Life",
@@ -74,7 +73,7 @@
   },
   "${ModID}:AcidReflexPower": {
     "NAME": "Acid Reflex",
-    "DESCRIPTIONS": ["At the start of each turn, add #b"," #ySludge into your hand."]
+    "DESCRIPTIONS": ["At the start of your turn, apply #b"," #yToxin to a random enemy."]
   },
   "${ModID}:GambitPower": {
     "NAME": "Gambit",

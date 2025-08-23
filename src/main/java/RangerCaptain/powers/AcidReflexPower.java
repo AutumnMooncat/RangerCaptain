@@ -4,8 +4,7 @@ import RangerCaptain.MainModfile;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.components.OnTurnStartComponent;
-import RangerCaptain.cards.tokens.Sludge;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerToRandomEnemyAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -36,7 +35,7 @@ public class AcidReflexPower extends AbstractComponentPower {
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             flash();
             if (source == null) {
-                addToBot(new MakeTempCardInHandAction(new Sludge(), amount, false));
+                addToBot(new ApplyPowerToRandomEnemyAction(owner, new ToxinPower(null, amount), amount));
             } else {
                 addToBot(new DoAction(() -> triggerComponents(null, false)));
             }
