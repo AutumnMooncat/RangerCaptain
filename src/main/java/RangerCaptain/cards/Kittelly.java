@@ -8,6 +8,7 @@ import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
@@ -29,19 +30,19 @@ public class Kittelly extends AbstractEasyCard {
 
     static {
         new FusionComponentHelper(MonsterEnum.KITTELLY)
-                .withCost(1)
+                .withCost(0)
                 .with(new MadnessComponent(1))
                 .withExhaust()
                 .register();
         new FusionComponentHelper(MonsterEnum.CATFIVE)
                 .withCost(0)
-                .with(new MadnessComponent(1))
+                .with(new MadnessComponent(2))
                 .withExhaust()
                 .register();
     }
 
     public Kittelly() {
-        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
+        super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE); // TODO Proper component?
         setMonsterData(MonsterEnum.KITTELLY);
     }
 
@@ -51,7 +52,9 @@ public class Kittelly extends AbstractEasyCard {
         ArrayList<AbstractCard> validCards = AbstractDungeon.actionManager.cardsPlayedThisCombat.stream().filter(card -> !(card instanceof Kittelly) && !card.purgeOnUse).collect(Collectors.toCollection(ArrayList::new));
         if (!validCards.isEmpty()) {
             AbstractCard card = validCards.get(validCards.size()-1).makeStatEquivalentCopy();
-            card.setCostForTurn(0);
+            if (upgraded) {
+                card.setCostForTurn(0);
+            }
             Wiz.atb(new MakeTempCardInHandAction(card, false, true));
             Wiz.atb(new AbstractGameAction() {
                 @Override
@@ -61,7 +64,7 @@ public class Kittelly extends AbstractEasyCard {
                 }
             });
         }
-        this.rawDescription = cardStrings.DESCRIPTION;
+        this.rawDescription = baseDesc();
         lastCard = null;
         this.initializeDescription();
     }
@@ -82,15 +85,19 @@ public class Kittelly extends AbstractEasyCard {
             if (preview != lastCard) {
                 lastCard = preview;
                 cardsToPreview = lastCard.makeStatEquivalentCopy();
-                this.rawDescription = cardStrings.DESCRIPTION + cardStrings.EXTENDED_DESCRIPTION[1] + FormatHelper.prefixWords(lastCard.name, "[#efc851]", "[]") + cardStrings.EXTENDED_DESCRIPTION[2];
+                this.rawDescription = baseDesc() + cardStrings.EXTENDED_DESCRIPTION[1] + FormatHelper.prefixWords(CardModifierManager.onRenderTitle(lastCard, lastCard.name), "[#efc851]", "[]") + cardStrings.EXTENDED_DESCRIPTION[2];
                 this.initializeDescription();
             }
         }
     }
 
+    private String baseDesc() {
+        return upgraded ? cardStrings.UPGRADE_DESCRIPTION : cardStrings.DESCRIPTION;
+    }
+
     @Override
     public void upp() {
-        upgradeBaseCost(0);
+        uDesc();
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.CATFIVE);

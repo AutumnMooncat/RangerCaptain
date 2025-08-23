@@ -195,7 +195,8 @@
   },
   "${ModID}:Kittelly": {
     "NAME": "Kittelly",
-    "DESCRIPTION": "Replace this card with a copy of the last card played this combat. NL It costs 0 this turn.",
+    "DESCRIPTION": "Replace this card with a copy of the last card played this combat.",
+    "UPGRADE_DESCRIPTION": "Replace this card with a copy of the last card played this combat. NL It costs 0 this turn.",
     "EXTENDED_DESCRIPTION": ["Cat-5"," NL (",")"]
   },
   "${ModID}:Kuneko": {

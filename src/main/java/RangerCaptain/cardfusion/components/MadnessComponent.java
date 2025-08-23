@@ -26,6 +26,11 @@ public class MadnessComponent extends AbstractComponent {
     }
 
     @Override
+    public boolean scalesWithCost() {
+        return false;
+    }
+
+    @Override
     public String componentDescription() {
         return DESCRIPTION_TEXT[0];
     }
