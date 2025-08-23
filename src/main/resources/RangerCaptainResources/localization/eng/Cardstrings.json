@@ -295,7 +295,7 @@
   },
   "${ModID}:Sanzatime": {
     "NAME": "Sanzatime",
-    "DESCRIPTION": "Apply !M! Weak. NL Resolve all next turn power effects.",
+    "DESCRIPTION": "Gain !B! Block. NL Resolve all next turn power effects.",
     "EXTENDED_DESCRIPTION": ["Fortiwinx"]
   },
   "${ModID}:Sirenade": {
