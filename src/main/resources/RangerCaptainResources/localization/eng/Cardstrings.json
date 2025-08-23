@@ -19,7 +19,7 @@
   },
   "${ModID}:Allseer": {
     "NAME": "Allseer",
-    "DESCRIPTION": "Gain !B! Block. NL Apply !M! ${ModID}:Conductive.",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Conductive.",
     "EXTENDED_DESCRIPTION": ["Khufo","Triphinx"]
   },
   "${ModID}:Amphare": {
