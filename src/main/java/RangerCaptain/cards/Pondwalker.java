@@ -17,23 +17,23 @@ public class Pondwalker extends AbstractEasyCard {
     public final static String ID = makeID(Pondwalker.class.getSimpleName());
 
     static {
-        // 7x2 -> 7x3
+        // 15 -> 20
         new FusionComponentHelper(MonsterEnum.PONDWALKER)
                 .withCost(2)
-                .withMultiDamage(5, 2, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .withDamage(10, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
                 .with(new StashTopCardsComponent(1.5f))
                 .register();
-        // 10x2 -> 10x3
+        // 20 -> 27
         new FusionComponentHelper(MonsterEnum.SHARKTANKER)
                 .withCost(2)
-                .withMultiDamage(7, 2, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .withDamage(13.5f, AbstractGameAction.AttackEffect.SLASH_HEAVY)
                 .with(new StashTopCardsComponent(1.5f))
                 .register();
     }
 
     public Pondwalker() {
         super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        baseDamage = damage = 7;
+        baseDamage = damage = 15;
         baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.PONDWALKER);
         baseInfo = info = 0;
@@ -42,13 +42,12 @@ public class Pondwalker extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, info == 1 ? AbstractGameAction.AttackEffect.SLASH_HEAVY : AbstractGameAction.AttackEffect.BLUNT_HEAVY);
-        dmg(m, info == 1 ? AbstractGameAction.AttackEffect.SLASH_HEAVY : AbstractGameAction.AttackEffect.BLUNT_HEAVY);
         addToBot(new StashTopCardsAction(magicNumber));
     }
 
     @Override
     public void upp() {
-        upgradeDamage(3);
+        upgradeDamage(5);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.SHARKTANKER);

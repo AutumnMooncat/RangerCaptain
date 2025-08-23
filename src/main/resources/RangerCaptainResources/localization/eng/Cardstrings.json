@@ -266,7 +266,7 @@
   },
   "${ModID}:Pondwalker": {
     "NAME": "Pondwalker",
-    "DESCRIPTION": "Deal !D! damage twice. NL ${ModID}:Stash the top {@@}{!M!|1=card|@=!M! cards} of your draw pile.",
+    "DESCRIPTION": "Deal !D! damage. NL ${ModID}:Stash the top {@@}{!M!|1=card|@=!M! cards} of your draw pile.",
     "EXTENDED_DESCRIPTION": ["Sharktanker"]
   },
   "${ModID}:PortalToAnywhere": {
