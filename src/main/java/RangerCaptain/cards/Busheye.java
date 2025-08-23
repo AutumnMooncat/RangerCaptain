@@ -3,16 +3,16 @@ package RangerCaptain.cards;
 import RangerCaptain.cardfusion.FusionComponentHelper;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.components.BurnComponent;
-import RangerCaptain.cardfusion.components.EnergyComponent;
+import RangerCaptain.cardfusion.components.NextTurnEnergyComponent;
 import RangerCaptain.cardfusion.components.WhenExhaustedComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.cards.interfaces.ManuallySizeAdjustedCard;
 import RangerCaptain.patches.CustomTags;
+import RangerCaptain.powers.APBoostPower;
 import RangerCaptain.powers.BurnedPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -26,21 +26,21 @@ public class Busheye extends AbstractMultiUpgradeCard implements ManuallySizeAdj
         new FusionComponentHelper(MonsterEnum.BUSHEYE)
                 .withCost(2)
                 .with(new BurnComponent(4, AbstractComponent.ComponentTarget.ENEMY_AOE))
-                .with(new EnergyComponent(2))
+                .with(new NextTurnEnergyComponent(2))
                 .withExhaust()
                 .with(new WhenExhaustedComponent())
                 .register();
         new FusionComponentHelper(MonsterEnum.HUNTORCH)
                 .withCost(2)
                 .with(new BurnComponent(5.5f, AbstractComponent.ComponentTarget.ENEMY_AOE))
-                .with(new EnergyComponent(2))
+                .with(new NextTurnEnergyComponent(2))
                 .withExhaust()
                 .with(new WhenExhaustedComponent())
                 .register();
         new FusionComponentHelper(MonsterEnum.HEDGEHERNE)
                 .withCost(2)
                 .with(new BurnComponent(8, AbstractComponent.ComponentTarget.ENEMY_AOE))
-                .with(new EnergyComponent(2))
+                .with(new NextTurnEnergyComponent(2))
                 .withExhaust()
                 .with(new WhenExhaustedComponent())
                 .register();
@@ -60,7 +60,7 @@ public class Busheye extends AbstractMultiUpgradeCard implements ManuallySizeAdj
 
     @Override
     public void triggerOnExhaust() {
-        addToTop(new GainEnergyAction(secondMagic));
+        Wiz.applyToSelfTop(new APBoostPower(Wiz.adp(), secondMagic));
         Wiz.forAllMonstersLiving(mon -> {
             Wiz.applyToEnemyTop(mon, new BurnedPower(mon, Wiz.adp(), magicNumber));
         });
