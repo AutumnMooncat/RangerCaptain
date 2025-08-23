@@ -1,10 +1,8 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cardfusion.FusionComponentHelper;
-import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.components.NextTurnDamageComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
-import RangerCaptain.cards.interfaces.ManuallySizeAdjustedCard;
 import RangerCaptain.powers.NextTurnTakeDamagePower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
@@ -13,52 +11,50 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static RangerCaptain.MainModfile.makeID;
 
-public class Springheel extends AbstractMultiUpgradeCard implements ManuallySizeAdjustedCard {
+public class Springheel extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Springheel.class.getSimpleName());
 
     static {
-        // 6,4 -> 9,6
+        // 6,6 -> 9,9
         new FusionComponentHelper(MonsterEnum.SPRINGHEEL)
                 .withCost(1)
                 .withBlock(4.5f)
-                .with(new NextTurnDamageComponent(3, AbstractGameAction.AttackEffect.BLUNT_LIGHT, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new NextTurnDamageComponent(4.5f, AbstractGameAction.AttackEffect.BLUNT_LIGHT))
                 .register();
-        // 6,7 -> 9,10
+        // 6,9 -> 9,13
         new FusionComponentHelper(MonsterEnum.HOPSKIN)
                 .withCost(1)
                 .withBlock(4.5f)
-                .with(new NextTurnDamageComponent(5, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new NextTurnDamageComponent(6.5f, AbstractGameAction.AttackEffect.SLASH_DIAGONAL))
                 .register();
-        // 6, 10 -> 9,15
+        // 6, 12 -> 9,18
         new FusionComponentHelper(MonsterEnum.RIPTERRA)
                 .withCost(1)
                 .withBlock(4.5f)
-                .with(new NextTurnDamageComponent(7.5f, AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new NextTurnDamageComponent(9, AbstractGameAction.AttackEffect.SLASH_HEAVY))
                 .register();
-        // 9,4 -> 13,6
+        // 9,6 -> 13,9
         new FusionComponentHelper(MonsterEnum.SNOOPIN)
                 .withCost(1)
                 .withBlock(6.5f)
-                .with(new NextTurnDamageComponent(3, AbstractGameAction.AttackEffect.BLUNT_LIGHT, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new NextTurnDamageComponent(4.5f, AbstractGameAction.AttackEffect.BLUNT_LIGHT))
                 .register();
-        // 12,4 -> 18,6
+        // 12,6 -> 18,9
         new FusionComponentHelper(MonsterEnum.SCAMPIRE)
                 .withCost(1)
                 .withBlock(9)
-                .with(new NextTurnDamageComponent(3, AbstractGameAction.AttackEffect.BLUNT_HEAVY, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new NextTurnDamageComponent(4.5f, AbstractGameAction.AttackEffect.BLUNT_HEAVY))
                 .register();
     }
 
     public Springheel() {
-        super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY);
+        super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.SELF_AND_ENEMY);
         baseBlock = block = 6;
-        baseDamage = damage = 4;
-        isMultiDamage = true;
+        baseDamage = damage = 6;
         setMonsterData(MonsterEnum.SPRINGHEEL);
         baseInfo = info = 0;
     }
@@ -74,12 +70,7 @@ public class Springheel extends AbstractMultiUpgradeCard implements ManuallySize
         } else if (info == 3) {
             fx = AbstractGameAction.AttackEffect.BLUNT_HEAVY;
         }
-        for (int i = 0; i < AbstractDungeon.getMonsters().monsters.size(); i++) {
-            AbstractMonster mon = AbstractDungeon.getMonsters().monsters.get(i);
-            if (!mon.isDeadOrEscaped()) {
-                Wiz.applyToEnemy(mon, new NextTurnTakeDamagePower(mon, new DamageInfo(p, multiDamage[i], damageTypeForTurn), fx));
-            }
-        }
+        Wiz.applyToEnemy(m, new NextTurnTakeDamagePower(m, new DamageInfo(p, damage, damageTypeForTurn), fx));
     }
 
     @Override
@@ -130,10 +121,5 @@ public class Springheel extends AbstractMultiUpgradeCard implements ManuallySize
         initializeTitle();
         setMonsterData(MonsterEnum.SCAMPIRE);
         baseInfo = info = 3;
-    }
-
-    @Override
-    public float getAdjustedScale() {
-        return 0.95f;
     }
 }

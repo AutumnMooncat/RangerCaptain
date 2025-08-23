@@ -324,7 +324,7 @@
   },
   "${ModID}:Springheel": {
     "NAME": "Springheel",
-    "DESCRIPTION": "Gain !B! Block. NL Next turn, deal !D! damage to ALL enemies.",
+    "DESCRIPTION": "Gain !B! Block. NL Next turn, deal !D! damage.",
     "EXTENDED_DESCRIPTION": ["Hopskin","Ripterra","Snoopin","Scampire"]
   },
   "${ModID}:Squirey": {
