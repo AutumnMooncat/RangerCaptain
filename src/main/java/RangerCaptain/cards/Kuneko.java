@@ -1,18 +1,17 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.FusionComponentHelper;
-import RangerCaptain.cardfusion.components.AddEnergyOnKillDamageComponent;
+import RangerCaptain.cardfusion.components.MultitargetComponent;
 import RangerCaptain.cardfusion.components.vfx.DieDieDieVFXComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CustomTags;
+import RangerCaptain.powers.MultitargetPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.utility.ShakeScreenAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -30,39 +29,41 @@ public class Kuneko extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.KUNEKO)
                 .withCost(3)
                 .with(new DieDieDieVFXComponent())
-                .withDamageAOE(13.5f, AbstractGameAction.AttackEffect.SLASH_HEAVY)
-                .with(new AddEnergyOnKillDamageComponent(1.91f))
+                .withDamage(15, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .with(new MultitargetComponent(1))
                 .register();
         new FusionComponentHelper(MonsterEnum.SHINING_KUNEKO)
                 .withCost(3)
                 .with(new DieDieDieVFXComponent())
-                .withDamageAOE(18, AbstractGameAction.AttackEffect.SLASH_HEAVY)
-                .with(new AddEnergyOnKillDamageComponent(1.91f))
+                .withDamage(20, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .with(new MultitargetComponent(1))
                 .register();
     }
 
     public Kuneko() {
-        super(ID, 3, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY);
-        baseDamage = damage = 20;
-        baseMagicNumber = magicNumber = 2;
-        isMultiDamage = true;
+        super(ID, 3, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
+        baseDamage = damage = 22;
+        baseMagicNumber = magicNumber = 1;
+        //isMultiDamage = true;
         setMonsterData(MonsterEnum.KUNEKO);
         tags.add(CustomTags.AOE_DAMAGE);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int[] alive = {0};
-        addToBot(new DoAction(() -> alive[0] = Wiz.getEnemies().size()));
+        //int[] alive = {0};
+        //addToBot(new DoAction(() -> alive[0] = Wiz.getEnemies().size()));
         addToBot(new VFXAction(new BorderLongFlashEffect(Color.LIGHT_GRAY)));
         addToBot(new VFXAction(new DieDieDieEffect(), 0.7F));
         addToBot(new ShakeScreenAction(0.0F, ScreenShake.ShakeDur.MED, ScreenShake.ShakeIntensity.HIGH));
-        allDmg(AbstractGameAction.AttackEffect.SLASH_HEAVY);
-        addToBot(new DoAction(() -> {
+        dmg(m, AbstractGameAction.AttackEffect.SLASH_HEAVY);
+        //allDmg(AbstractGameAction.AttackEffect.SLASH_HEAVY);
+        /*addToBot(new DoAction(() -> {
             for (int i = 0; i < alive[0] - Wiz.getEnemies().size(); i++) {
                 addToTop(new GainEnergyAction(magicNumber));
             }
-        }));
+        }));*/
+        Wiz.applyToSelf(new MultitargetPower(p, magicNumber));
     }
 
     @Override

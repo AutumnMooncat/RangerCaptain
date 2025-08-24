@@ -201,7 +201,7 @@
   },
   "${ModID}:Kuneko": {
     "NAME": "Kuneko",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL For each enemy this kills, gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]}.",
+    "DESCRIPTION": "Deal !D! damage. NL Your next single target Attack is played on ALL enemies.",
     "EXTENDED_DESCRIPTION": ["Shining Kuneko"]
   },
   "${ModID}:Levitate": {

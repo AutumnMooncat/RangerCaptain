@@ -258,8 +258,12 @@
     "EXTRA_TEXT": ["${ModID}:Conductive"]
   },
   "${ModID}:MultitargetComponent": {
-    "TEXT": ["#yMultitarget"],
-    "EXTRA_TEXT": ["${ModID}:Multitarget"]
+    "TEXT": ["Your next single target Attacks play on ALL enemies"],
+    "EXTRA_TEXT": [
+      "Your next {@@}{%1$s|1=single target Attack is|@=%1$s single target Attacks are} played on ALL enemies",
+      "Your next single target Attack is played on ALL enemies",
+      "Your next %s single target Attacks are played on ALL enemies"
+    ]
   },
   "${ModID}:TapeJamComponent": {
     "TEXT": [
