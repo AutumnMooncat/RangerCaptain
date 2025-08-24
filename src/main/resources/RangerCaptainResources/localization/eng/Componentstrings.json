@@ -443,6 +443,14 @@
       "The next %s Attacks you play cost 0"
     ]
   },
+  "${ModID}:FocusedComponent": {
+    "TEXT": ["Your next Attacks deal double damage and #yExhausts"],
+    "EXTRA_TEXT": [
+      "Your next {@@}{%1$s|1=Attack deals double damage and Exhausts|@=%1$s Attacks deal double damage and Exhaust}",
+      "Your next Attack deals double damage and Exhausts",
+      "Your next %s Attacks deal double damage and Exhaust"
+    ]
+  },
   "${ModID}:HavocComponent": {
     "TEXT": ["Play the top cards of your draw pile and #yExhaust them"],
     "EXTRA_TEXT": [

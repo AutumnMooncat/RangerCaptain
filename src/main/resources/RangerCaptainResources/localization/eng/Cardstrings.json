@@ -191,7 +191,7 @@
   },
   "${ModID}:Khepri": {
     "NAME": "Khepri",
-    "DESCRIPTION": "${ModID}:Perfect. NL Exhaust up to !M! card{@@}{!M!|>1=s} in your hand. NL Deal !D! damage for each card Exhausted."
+    "DESCRIPTION": "${ModID}:Perfect. NL Deal !D! damage. NL Your next {@@}{!M!|1=Attack deals double damage and Exhausts|@=!M! Attacks deal double damage and Exhaust}."
   },
   "${ModID}:Kittelly": {
     "NAME": "Kittelly",
