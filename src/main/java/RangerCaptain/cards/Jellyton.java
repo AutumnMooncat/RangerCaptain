@@ -23,7 +23,7 @@ public class Jellyton extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.JELLYTON)
                 .withCost(1)
                 .with(new OnTurnStartComponent())
-                .withFlags(new ToxinComponent(6, AbstractComponent.ComponentTarget.ENEMY_RANDOM), AbstractComponent.Flag.INVERSE_PREFERRED)
+                .withFlags(new ToxinComponent(6), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 

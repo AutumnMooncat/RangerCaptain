@@ -24,7 +24,7 @@ public class Glaistain extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.GLAISTAIN)
                 .withCost(3)
                 .with(new OnPerformFusionComponent())
-                .withFlags(new ResonanceComponent(2, AbstractComponent.ComponentTarget.ENEMY_AOE), AbstractComponent.Flag.INVERSE_PREFERRED)
+                .withFlags(new ResonanceComponent(2), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 
