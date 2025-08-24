@@ -106,7 +106,7 @@
   },
   "${ModID}:Cluckabilly": {
     "NAME": "Cluckabilly",
-    "DESCRIPTION": "Gain !M! ${ModID}:Multitarget. NL Play the top {@@}{!${ModID}:M2!|1=card|@=!${ModID}:M2! cards} of your draw pile and Exhaust {!${ModID}:M2!|1=it|@=them}.",
+    "DESCRIPTION": "Deal !D! damage. NL The enemy deals !M! less damage this turn each time they are attacked.",
     "EXTENDED_DESCRIPTION": ["Rockertrice"]
   },
   "${ModID}:Dandylion": {

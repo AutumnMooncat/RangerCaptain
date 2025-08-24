@@ -704,6 +704,22 @@
       "Invalid Increase Debuffs: %s"
     ]
   },
+  "${ModID}:PetrifiedComponent": {
+    "TEXT": [
+      "Invalid Petrified",
+      "The enemy deals less damage this turn when attacked",
+      "A random enemy deals less damage this turn when attacked",
+      "ALL enemies deal less damage this turn when attacked",
+      "Invalid Petrified"
+    ],
+    "EXTRA_TEXT": [
+      "Invalid Petrified: %s",
+      "The enemy deals !M! less damage this turn each time they are attacked",
+      "A random enemy deals !M! less damage this turn each time they are attacked",
+      "ALL enemies deal !M! less damage this turn each time they are attacked",
+      "Invalid Petrified: %s"
+    ]
+  },
   "${ModID}:AbramacabraComponent": {
     "TEXT": ["When attacked this turn, deal damage back"],
     "EXTRA_TEXT": [

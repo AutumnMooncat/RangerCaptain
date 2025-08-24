@@ -55,6 +55,10 @@
     "NAME": "Intercepting",
     "DESCRIPTIONS": ["#yStash the next card you play this turn.", "#yStash the next #b", " cards you play this turn."]
   },
+  "${ModID}:PetrifiedPower": {
+    "NAME": "Petrified",
+    "DESCRIPTIONS": ["#yAttacks deal #b"," less damage this turn. When attacked, increase this amount by #b","."]
+  },
   "${ModID}:FocusedPower": {
     "NAME": "Focused",
     "DESCRIPTIONS": ["Your next Attack deals double damage and #yExhausts.", "Your next #b", " Attacks deal double damage and #yExhaust."]
