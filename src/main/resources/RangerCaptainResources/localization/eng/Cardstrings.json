@@ -41,7 +41,7 @@
   },
   "${ModID}:Bansheep": {
     "NAME": "Bansheep",
-    "DESCRIPTION": "Deal !D! damage. NL Next turn, deal !D! damage.{@@}{!${ModID}:I!|1= NL Enemy loses !M! Strength this turn.|2= NL Startup: Gain !M! Vigor.}",
+    "DESCRIPTION": "Exhaust !${ModID}:M2! card{@@}{!${ModID}:M2!|>1=s}. NL Deal !D! damage and gain !M! Vigor for each card Exhausted.",
     "EXTENDED_DESCRIPTION": ["Wooltergeist","Ramtasm","Zombleat","Capricorpse"]
   },
   "${ModID}:Binvader": {
@@ -86,7 +86,7 @@
   },
   "${ModID}:Candevil": {
     "NAME": "Candevil",
-    "DESCRIPTION": "Gain !B! Block. NL Next turn, gain !B! Block.{@@}{!${ModID}:I!|1= NL Apply !M! ${ModID}:Toxin.|2= NL Startup: Gain !M! Block.}",
+    "DESCRIPTION": "Exhaust !${ModID}:M2! card{@@}{!${ModID}:M2!|>1=s}. NL Gain !B! Block and apply !M! ${ModID}:Toxin for each card Exhausted.",
     "EXTENDED_DESCRIPTION": ["Malchemy","Miasmodeus","Vendemon","Gumbaal"]
   },
   "${ModID}:Carniviper": {

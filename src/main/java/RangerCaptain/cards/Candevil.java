@@ -1,7 +1,10 @@
 package RangerCaptain.cards;
 
+import RangerCaptain.actions.BetterSelectCardsInHandAction;
 import RangerCaptain.cardfusion.FusionComponentHelper;
-import RangerCaptain.cardfusion.components.NextTurnBlockComponent;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.components.BlockComponent;
+import RangerCaptain.cardfusion.components.ExhaustCardsComponent;
 import RangerCaptain.cardfusion.components.ToxinComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
 import RangerCaptain.patches.CustomTags;
@@ -9,70 +12,74 @@ import RangerCaptain.powers.ToxinPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.StartupCard;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
 
 import static RangerCaptain.MainModfile.makeID;
 
-public class Candevil extends AbstractMultiUpgradeCard implements StartupCard {
+public class Candevil extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Candevil.class.getSimpleName());
 
     static {
+        // 2,4,2 -> 3,5,3
         new FusionComponentHelper(MonsterEnum.CANDEVIL)
-                .withCost(0)
-                .withBlock(2.5f)
-                .with(new NextTurnBlockComponent(2.5f))
+                .withCost(1)
+                .with(new ExhaustCardsComponent(1.91f))
+                .withFlags(new BlockComponent(2.5f), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
+                .withFlags(new ToxinComponent(1.5f), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
                 .register();
+        // 2,4,3 -> 3,5,4
         new FusionComponentHelper(MonsterEnum.MALCHEMY)
-                .withCost(0)
-                .withBlock(3.5f)
-                .with(new NextTurnBlockComponent(3.5f))
-                .with(new ToxinComponent(1.5f))
+                .withCost(1)
+                .with(new ExhaustCardsComponent(1.91f))
+                .withFlags(new BlockComponent(2.5f), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
+                .withFlags(new ToxinComponent(2), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
                 .register();
+        // 2,4,4 -> 3,5,5
         new FusionComponentHelper(MonsterEnum.MIASMODEUS)
-                .withCost(0)
-                .withBlock(5.5f)
-                .with(new NextTurnBlockComponent(5.5f))
-                .with(new ToxinComponent(2.5f))
+                .withCost(1)
+                .with(new ExhaustCardsComponent(1.91f))
+                .withFlags(new BlockComponent(2.5f), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
+                .withFlags(new ToxinComponent(2.91f), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
                 .register();
+        // 2,6,2 -> 3,7,3
         new FusionComponentHelper(MonsterEnum.VENDEMON)
-                .withCost(0)
-                .withBlock(5.5f)
-                .with(new NextTurnBlockComponent(5.5f))
+                .withCost(1)
+                .with(new ExhaustCardsComponent(1.91f))
+                .withFlags(new BlockComponent(3.5f), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
+                .withFlags(new ToxinComponent(1.5f), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
                 .register();
+        // 2,8,2 -> 3,9,3
         new FusionComponentHelper(MonsterEnum.GUMBAAL)
-                .withCost(0)
-                .withBlock(7.5f)
-                .with(new NextTurnBlockComponent(7.5f))
+                .withCost(1)
+                .with(new ExhaustCardsComponent(1.91f))
+                .withFlags(new BlockComponent(4.5f), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
+                .withFlags(new ToxinComponent(1.5f), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
                 .register();
     }
 
     public Candevil() {
-        super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
-        baseBlock = block = 3;
+        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF_AND_ENEMY);
+        baseBlock = block = 4;
+        baseSecondMagic = secondMagic = 2;
+        baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.CANDEVIL);
-        baseInfo = info = 0;
+        tags.add(CustomTags.MAGIC_TOXIN);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        blck();
-        Wiz.applyToSelf(new NextTurnBlockPower(p, block));
-        if (info == 1) {
-            Wiz.applyToEnemy(m, new ToxinPower(m, magicNumber));
-        }
-    }
-
-    @Override
-    public boolean atBattleStartPreDraw() {
-        if (info == 2) {
-            addToBot(new GainBlockAction(Wiz.adp(), magicNumber));
-        }
-        return false;
+        addToBot(new BetterSelectCardsInHandAction(secondMagic, ExhaustAction.TEXT[0], false, false, c -> true, cards -> {
+            for (AbstractCard card : cards) {
+                Wiz.applyToEnemyTop(m, new ToxinPower(m, magicNumber));
+                blckTop();
+                addToTop(new ExhaustSpecificCardAction(card, p.hand, true));
+            }
+        }));
     }
 
     @Override
@@ -95,21 +102,13 @@ public class Candevil extends AbstractMultiUpgradeCard implements StartupCard {
     }
 
     public void upgrade0() {
-        upgradeBlock(1);
-        if (baseMagicNumber < 0) {
-            baseMagicNumber = magicNumber = 0;
-        }
-        upgradeMagicNumber(2);
-        target = CardTarget.SELF_AND_ENEMY;
+        upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.MALCHEMY);
-        baseInfo = info = 1;
-        tags.add(CustomTags.MAGIC_TOXIN);
     }
 
     public void upgrade1() {
-        upgradeBlock(2);
         upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
@@ -117,20 +116,14 @@ public class Candevil extends AbstractMultiUpgradeCard implements StartupCard {
     }
 
     public void upgrade2() {
-        upgradeBlock(1);
-        if (baseMagicNumber < 0) {
-            baseMagicNumber = magicNumber = 0;
-        }
-        upgradeMagicNumber(4);
+        upgradeBlock(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
         setMonsterData(MonsterEnum.VENDEMON);
-        baseInfo = info = 2;
     }
 
     public void upgrade3() {
         upgradeBlock(2);
-        upgradeMagicNumber(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[3];
         initializeTitle();
         setMonsterData(MonsterEnum.GUMBAAL);
