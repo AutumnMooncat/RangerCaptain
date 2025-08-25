@@ -30,7 +30,7 @@ public class GifOverlayData {
         add(ARKIDD, "Arkidd_idle.gif");
         add(ARTILLEREX, "Artillerex_idle.gif");
         add(AURICLAW, "Auriclaw_idle.gif");
-        add(AVEREVOIR, "Averevoir_stance_idle.gif");
+        add(AVEREVOIR, "Averevoir_idle.gif");
         add(BANSHEEP, "Bansheep_idle.gif");
         add(BEANSTALKER, "Beanstalker_idle.gif");
         add(BINTERLOPER, "Binterloper_idle.gif");
