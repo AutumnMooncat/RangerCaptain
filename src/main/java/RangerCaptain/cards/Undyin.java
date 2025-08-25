@@ -2,8 +2,8 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cardfusion.FusionComponentHelper;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
-import RangerCaptain.cardfusion.components.HealComponent;
-import RangerCaptain.cardfusion.components.OnDieComponent;
+import RangerCaptain.cardfusion.components.BlockComponent;
+import RangerCaptain.cardfusion.components.OnLoseHPComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.powers.AutoLifePower;
@@ -22,17 +22,16 @@ public class Undyin extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.UNDYIN)
                 .withCost(1)
-                .with(new OnDieComponent())
-                .withFlags(new HealComponent(2), AbstractComponent.Flag.INVERSE_PREFERRED)
+                .with(new OnLoseHPComponent())
+                .withFlags(new BlockComponent(8), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 
     public Undyin() {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
-        baseMagicNumber = magicNumber = 7;
+        baseMagicNumber = magicNumber = 4;
         setMonsterData(MonsterEnum.UNDYIN);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
-        tags.add(CardTags.HEALING);
     }
 
     @Override

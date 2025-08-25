@@ -72,7 +72,7 @@
   },
   "${ModID}:Burnace": {
     "NAME": "Burnace",
-    "DESCRIPTION": "Apply !M! ${ModID}:Burn. NL ALL enemies lose HP equal to their ${ModID}:Burn.",
+    "DESCRIPTION": "Apply !M! ${ModID}:Burn. NL Enemy loses HP equal to its ${ModID}:Burn.",
     "EXTENDED_DESCRIPTION": ["Smogmagog"]
   },
   "${ModID}:Busheye": {

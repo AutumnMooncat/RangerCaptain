@@ -77,7 +77,7 @@
   },
   "${ModID}:AutoLifePower": {
     "NAME": "Auto-Life",
-    "DESCRIPTIONS": ["At the end of combat or when you would die, heal #b"," HP."]
+    "DESCRIPTIONS": ["Whenever you lose HP, gain #b"," #yBlock."]
   },
   "${ModID}:AcidReflexPower": {
     "NAME": "Acid Reflex",

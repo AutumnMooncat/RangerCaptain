@@ -858,9 +858,9 @@
     "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": ["Whenever you ${ModID}:Stash a card, %s"]
   },
-  "${ModID}:OnDieComponent": {
+  "${ModID}:OnLoseHPComponent": {
     "TEXT": ["Fusion becomes a Power"],
-    "EXTRA_TEXT": ["At the end of combat, or when you would die, %s"]
+    "EXTRA_TEXT": ["Whenever you lose HP, %s"]
   },
   "${ModID}:OnPerformFusionComponent": {
     "TEXT": ["Fusion becomes a Power, Targeted effects hit ALL enemies"],

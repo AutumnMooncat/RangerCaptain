@@ -16,18 +16,18 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import java.util.Collections;
 import java.util.List;
 
-public class OnDieComponent extends AbstractPowerComponent {
-    public static final String ID = MainModfile.makeID(OnDieComponent.class.getSimpleName());
+public class OnLoseHPComponent extends AbstractPowerComponent {
+    public static final String ID = MainModfile.makeID(OnLoseHPComponent.class.getSimpleName());
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public OnDieComponent() {
+    public OnLoseHPComponent() {
         super(ID, false);
     }
 
     @Override
     public float amountMultiplier(AbstractComponent other) {
-        return 3f;
+        return 0.5f;
     }
 
     @Override
@@ -70,6 +70,6 @@ public class OnDieComponent extends AbstractPowerComponent {
 
     @Override
     public AbstractComponent makeCopy() {
-        return new OnDieComponent();
+        return new OnLoseHPComponent();
     }
 }
