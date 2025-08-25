@@ -786,10 +786,18 @@
   },
   "${ModID}:BurnPointsComponent": {
     "TEXT": [
-      "Enemies lose HP equal to their #yBurn"
+      "Invalid Burn Points",
+      "Enemy loses HP equal to its #yBurn",
+      "A random enemy loses HP equal to its #yBurn",
+      "ALL Enemies lose HP equal to their #yBurn",
+      "A random enemy loses HP equal to its #yBurn"
     ],
     "EXTRA_TEXT": [
-      "ALL enemies lose HP equal to their ${ModID}:Burn"
+      "Invalid burn Points",
+      "Enemy loses HP equal to its ${ModID}:Burn",
+      "A random enemy loses HP equal to its ${ModID}:Burn",
+      "ALL Enemies lose HP equal to their ${ModID}:Burn",
+      "A random enemy loses HP equal to its ${ModID}:Burn"
     ]
   },
   "${ModID}:YeetWeakVulnComponent": {

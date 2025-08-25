@@ -2,6 +2,7 @@ package RangerCaptain.cards;
 
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.FusionComponentHelper;
+import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.components.BurnComponent;
 import RangerCaptain.cardfusion.components.BurnPointsComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
@@ -14,7 +15,6 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -26,11 +26,11 @@ public class Burnace extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.BURNACE)
                 .withCost(0)
-                .with(new BurnComponent(2.5f), new BurnPointsComponent())
+                .with(new BurnComponent(2.5f), new BurnPointsComponent(AbstractComponent.ComponentTarget.ENEMY))
                 .register();
         new FusionComponentHelper(MonsterEnum.SMOGMAGOG)
                 .withCost(0)
-                .with(new BurnComponent(4), new BurnPointsComponent())
+                .with(new BurnComponent(4), new BurnPointsComponent(AbstractComponent.ComponentTarget.ENEMY))
                 .register();
     }
 
@@ -45,14 +45,9 @@ public class Burnace extends AbstractEasyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         Wiz.applyToEnemy(m, new BurnedPower(m, p, magicNumber));
         addToBot(new DoAction(() -> {
-            for (int i = AbstractDungeon.getMonsters().monsters.size() - 1; i >= 0; i--) {
-                AbstractMonster mon = AbstractDungeon.getMonsters().monsters.get(i);
-                if (!mon.isDeadOrEscaped()) {
-                    AbstractPower burn = mon.getPower(BurnedPower.POWER_ID);
-                    if (burn != null) {
-                        addToTop(new LoseHPAction(mon, p, burn.amount, AbstractGameAction.AttackEffect.FIRE));
-                    }
-                }
+            AbstractPower burn = m.getPower(BurnedPower.POWER_ID);
+            if (burn != null) {
+                addToTop(new LoseHPAction(m, p, burn.amount, AbstractGameAction.AttackEffect.FIRE));
             }
         }));
     }
