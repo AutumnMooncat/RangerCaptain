@@ -24,7 +24,7 @@
   },
   "${ModID}:Amphare": {
     "NAME": "Amphare",
-    "DESCRIPTION": "Whenever you gain Energy, apply !M! ${ModID}:Conductive to ALL enemies.",
+    "DESCRIPTION": "Whenever you gain Energy, apply !M! ${ModID}:Conductive to a random enemy.",
     "EXTENDED_DESCRIPTION": ["Lapacitor"]
   },
   "${ModID}:Anathema": {
@@ -380,7 +380,7 @@
   },
   "${ModID}:Undyin": {
     "NAME": "Undyin",
-    "DESCRIPTION": "${ModID}:Perfect. NL At the end of combat, or when you would die, heal !M! HP."
+    "DESCRIPTION": "${ModID}:Perfect. NL Whenever you lose HP, gain !M! Block."
   },
   "${ModID}:WarpSickness": {
     "NAME": "Warp Sickness",
