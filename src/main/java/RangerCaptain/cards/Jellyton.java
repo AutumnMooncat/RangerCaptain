@@ -23,13 +23,13 @@ public class Jellyton extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.JELLYTON)
                 .withCost(1)
                 .with(new OnTurnStartComponent())
-                .withFlags(new ToxinComponent(6), AbstractComponent.Flag.INVERSE_PREFERRED)
+                .withFlags(new ToxinComponent(5), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 
     public Jellyton() {
-        super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF); // TODO sludge can go infinite with the right setup
-        baseMagicNumber = magicNumber = 3;
+        super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
+        baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.JELLYTON);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
