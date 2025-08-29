@@ -2,8 +2,8 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.OnChangeEnergyPatches;
-import RangerCaptain.powers.ConductivePower;
 import RangerCaptain.util.Wiz;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
@@ -27,11 +27,15 @@ public class WaterAltar extends AbstractEasyCard implements OnChangeEnergyPatche
         return false;
     }
 
+    private void doTrigger() {
+        superFlash();
+        addToBot(new DrawCardAction(magicNumber));
+    }
+
     @Override
     public int onUseEnergy(int amount) {
         if (amount > 0 && Wiz.adp().hand.contains(this)) {
-            superFlash();
-            Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new ConductivePower(mon, Wiz.adp(), magicNumber)));
+            doTrigger();
         }
         return amount;
     }
@@ -39,8 +43,7 @@ public class WaterAltar extends AbstractEasyCard implements OnChangeEnergyPatche
     @Override
     public int onGainEnergy(int amount) {
         if (upgraded && amount > 0 && Wiz.adp().hand.contains(this)) {
-            superFlash();
-            Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new ConductivePower(mon, Wiz.adp(), magicNumber)));
+            doTrigger();
         }
         return amount;
     }
@@ -48,8 +51,7 @@ public class WaterAltar extends AbstractEasyCard implements OnChangeEnergyPatche
     @Override
     public int onSetEnergy(int amount) {
         if (upgraded && amount > EnergyPanel.totalCount && Wiz.adp().hand.contains(this)) {
-            superFlash();
-            Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new ConductivePower(mon, Wiz.adp(), magicNumber)));
+            doTrigger();
         }
         return amount;
     }

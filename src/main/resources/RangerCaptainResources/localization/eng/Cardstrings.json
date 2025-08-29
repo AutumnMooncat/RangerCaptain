@@ -11,8 +11,8 @@
   },
   "${ModID}:AirAltar": {
     "NAME": "Air Altar",
-    "DESCRIPTION": "Unplayable. NL When this card enters your hand, apply !M! ${ModID}:Resonance to ALL enemies and Exhaust.",
-    "UPGRADE_DESCRIPTION": "Unplayable. NL When this card enters your hand, apply !M! ${ModID}:Resonance to ALL enemies.",
+    "DESCRIPTION": "Unplayable. NL Ethereal. NL When this card enters your hand, gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]}.",
+    "UPGRADE_DESCRIPTION": "Unplayable. NL When this card enters your hand, gain {@@}{!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]}.",
     "EXTENDED_DESCRIPTION": [
       "I can't play this card."
     ]
@@ -134,8 +134,8 @@
   },
   "${ModID}:EarthAltar": {
     "NAME": "Earth Altar",
-    "DESCRIPTION": "Unplayable. NL While in hand, apply !M! ${ModID}:Toxin to a random enemy whenever you gain Block.",
-    "UPGRADE_DESCRIPTION": "Unplayable. NL While in hand, apply !M! ${ModID}:Toxin to a random enemy whenever you gain a buff or Block.",
+    "DESCRIPTION": "Unplayable. NL While in hand, gain !M! Block whenever you play an Attack.",
+    "UPGRADE_DESCRIPTION": "Unplayable. NL While in hand, gain !M! Block whenever you play another card.",
     "EXTENDED_DESCRIPTION": [
       "I can't play this card."
     ]
@@ -157,8 +157,8 @@
   },
   "${ModID}:FireAltar": {
     "NAME": "Fire Altar",
-    "DESCRIPTION": "Unplayable. NL While in hand, apply !M! ${ModID}:Burn to a random enemy whenever you play an Attack.",
-    "UPGRADE_DESCRIPTION": "Unplayable. NL While in hand, apply !M! ${ModID}:Burn to a random enemy whenever you play another card.",
+    "DESCRIPTION": "Unplayable. NL While in hand, gain !M! Vigor whenever a card is Exhausted.",
+    "UPGRADE_DESCRIPTION": "Unplayable. NL While in hand, gain !M! Vigor whenever a card is created or Exhausted.",
     "EXTENDED_DESCRIPTION": [
       "I can't play this card."
     ]
@@ -388,8 +388,8 @@
   },
   "${ModID}:WaterAltar": {
     "NAME": "Water Altar",
-    "DESCRIPTION": "Unplayable. NL While in hand, apply !M! ${ModID}:Conductive to ALL enemies whenever you spend Energy.",
-    "UPGRADE_DESCRIPTION": "Unplayable. NL While in hand, apply !M! ${ModID}:Conductive to ALL enemies whenever you gain or spend Energy.",
+    "DESCRIPTION": "Unplayable. NL While in hand, draw !M! card{@@}{!M!|1=|@=s} whenever you spend Energy.",
+    "UPGRADE_DESCRIPTION": "Unplayable. NL While in hand, draw !M! card{@@}{!M!|1=|@=s} whenever you gain or spend Energy.",
     "EXTENDED_DESCRIPTION": [
       "I can't play this card."
     ]

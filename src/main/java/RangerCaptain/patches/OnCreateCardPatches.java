@@ -1,5 +1,6 @@
 package RangerCaptain.patches;
 
+import RangerCaptain.cards.interfaces.OnCreateCardCard;
 import RangerCaptain.powers.interfaces.OnCreateCardPower;
 import RangerCaptain.util.Wiz;
 import com.evacipated.cardcrawl.modthespire.lib.*;
@@ -51,6 +52,11 @@ public class OnCreateCardPatches {
         public static void plz(Object[] __args) {
             if (__args[0] instanceof AbstractCard && !AlreadyModifiedField.modified.get(__args[0])) {
                 CardCounterPatches.cardsCreatedThisCombat.add((AbstractCard) __args[0]);
+                for (AbstractCard card : Wiz.adp().hand.group) {
+                    if (card instanceof OnCreateCardCard) {
+                        ((OnCreateCardCard) card).onCreateCard((AbstractCard) __args[0]);
+                    }
+                }
                 for (AbstractPower p : Wiz.adp().powers) {
                     if (p instanceof OnCreateCardPower) {
                         ((OnCreateCardPower) p).onCreateCard((AbstractCard) __args[0]);

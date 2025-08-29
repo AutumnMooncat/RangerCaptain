@@ -1,17 +1,18 @@
 package RangerCaptain.cards;
 
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.cards.interfaces.ManuallySizeAdjustedCard;
+import RangerCaptain.cards.interfaces.OnCreateCardCard;
 import RangerCaptain.patches.CardInHandSuite;
-import RangerCaptain.powers.BurnedPower;
 import RangerCaptain.util.Wiz;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerToRandomEnemyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 import static RangerCaptain.MainModfile.makeID;
 
-public class FireAltar extends AbstractEasyCard implements CardInHandSuite.InHandCard {
+public class FireAltar extends AbstractEasyCard implements CardInHandSuite.InHandCard, OnCreateCardCard, ManuallySizeAdjustedCard {
     public final static String ID = makeID(FireAltar.class.getSimpleName());
 
     public FireAltar() {
@@ -28,12 +29,26 @@ public class FireAltar extends AbstractEasyCard implements CardInHandSuite.InHan
         return false;
     }
 
+    private void onTrigger() {
+        superFlash();
+        Wiz.applyToSelf(new VigorPower(Wiz.adp(), magicNumber));
+    }
+
     @Override
-    public void onCardUsed(AbstractCard card) {
-        if (card.type == CardType.ATTACK || upgraded) {
-            superFlash();
-            addToBot(new ApplyPowerToRandomEnemyAction(Wiz.adp(), new BurnedPower(null, Wiz.adp(), magicNumber), magicNumber));
+    public void onCardExhausted(AbstractCard card) {
+        onTrigger();
+    }
+
+    @Override
+    public void onCreateCard(AbstractCard card) {
+        if (upgraded) {
+            onTrigger();
         }
+    }
+
+    @Override
+    public float getAdjustedScale() {
+        return 0.97f;
     }
 
     @Override
