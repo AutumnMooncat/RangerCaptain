@@ -28,7 +28,7 @@ public class Dandylion extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.BLOSSOMAW)
                 .withCost(0)
                 .with(new DrawComponent(2))
-                .with(new StashCardsComponent(2))
+                .with(new StashCardsComponent(1))
                 .withExhaust()
                 .register();
     }
@@ -50,7 +50,7 @@ public class Dandylion extends AbstractEasyCard {
     @Override
     public void upp() {
         upgradeMagicNumber(1);
-        upgradeSecondMagic(1);
+        //upgradeSecondMagic(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.BLOSSOMAW);
