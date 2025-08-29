@@ -5,11 +5,12 @@ import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.components.MakeCardsComponent;
 import RangerCaptain.cardfusion.components.OnExhaustComponent;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerToRandomEnemyAction;
+import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,10 +44,34 @@ public class FlammablePower extends AbstractComponentPower {
     public void onExhaust(AbstractCard card) {
         if (source == null) {
             flash();
-            addToBot(new ApplyPowerToRandomEnemyAction(owner, new BurnedPower(null, owner, amount), amount));
+            addToBot(new DoAction(() -> {
+                final AbstractMonster[] weakest = {null};
+                Wiz.forAllMonstersLiving(mon -> {
+                    if (weakest[0] == null) {
+                        weakest[0] = mon;
+                    } else if (mon.currentHealth < weakest[0].currentHealth) {
+                        weakest[0] = mon;
+                    }
+                });
+                if (weakest[0] != null) {
+                    Wiz.applyToEnemyTop(weakest[0], new BurnedPower(weakest[0], owner, amount));
+                }
+            }));
         } else if (banned.stream().noneMatch(clz -> clz == card.getClass())) {
             flash();
-            addToBot(new DoAction(() -> triggerComponents(null, false)));
+            addToBot(new DoAction(() -> {
+                final AbstractMonster[] weakest = {null};
+                Wiz.forAllMonstersLiving(mon -> {
+                    if (weakest[0] == null) {
+                        weakest[0] = mon;
+                    } else if (mon.currentHealth < weakest[0].currentHealth) {
+                        weakest[0] = mon;
+                    }
+                });
+                if (weakest[0] != null) {
+                    triggerComponents(weakest[0], false);
+                }
+            }));
         }
     }
 }

@@ -852,7 +852,8 @@
     "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": [
       "Whenever a %1$scard is Exhausted, %2$s",
-      "non-"
+      "non-",
+      "to the enemy with the least HP"
     ]
   },
   "${ModID}:OnParryComponent": {

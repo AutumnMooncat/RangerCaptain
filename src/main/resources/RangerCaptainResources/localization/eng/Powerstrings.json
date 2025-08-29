@@ -65,7 +65,7 @@
   },
   "${ModID}:FlammablePower": {
     "NAME": "Flammable",
-    "DESCRIPTIONS": ["Whenever a card is #yExhausted, apply #b"," #yBurned to a random enemy."]
+    "DESCRIPTIONS": ["Whenever a card is #yExhausted, apply #b"," #yBurn to the enemy with the least HP."]
   },
   "${ModID}:BurnedPower": {
     "NAME": "Burn",

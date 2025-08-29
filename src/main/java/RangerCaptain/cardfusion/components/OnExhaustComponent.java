@@ -23,7 +23,7 @@ public class OnExhaustComponent extends AbstractPowerComponent {
     public static final String NON = CARD_TEXT[1];
 
     public OnExhaustComponent() {
-        super(ID, false);
+        super(ID, true);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class OnExhaustComponent extends AbstractPowerComponent {
 
     @Override
     public String targetText() {
-        return "";
+        return CARD_TEXT[2];
     }
 
     @Override
