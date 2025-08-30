@@ -24,7 +24,7 @@
   },
   "${ModID}:Amphare": {
     "NAME": "Amphare",
-    "DESCRIPTION": "Whenever you gain Energy, apply !M! ${ModID}:Conductive to a random enemy.",
+    "DESCRIPTION": "Whenever you gain Energy, apply !M! ${ModID}:Conductive to ALL enemies.",
     "EXTENDED_DESCRIPTION": ["Lapacitor"]
   },
   "${ModID}:Anathema": {
