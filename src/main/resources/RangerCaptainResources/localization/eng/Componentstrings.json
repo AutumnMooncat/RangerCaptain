@@ -793,7 +793,7 @@
       "A random enemy loses HP equal to its #yBurn"
     ],
     "EXTRA_TEXT": [
-      "Invalid burn Points",
+      "Invalid Burn Points",
       "Enemy loses HP equal to its ${ModID}:Burn",
       "A random enemy loses HP equal to its ${ModID}:Burn",
       "ALL Enemies lose HP equal to their ${ModID}:Burn",
