@@ -21,14 +21,14 @@ public class Averevoir extends AbstractEasyCard {
 
     static {
         new FusionComponentHelper(MonsterEnum.AVEREVOIR)
-                .withCost(1)
+                .withCost(2)
                 .with(new OnPlayPerfectComponent())
                 .withFlags(new BlockComponent(10), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 
     public Averevoir() {
-        super(ID, 1, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
+        super(ID, 2, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = 5;
         setMonsterData(MonsterEnum.AVEREVOIR);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
