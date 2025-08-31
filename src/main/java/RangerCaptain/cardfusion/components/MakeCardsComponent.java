@@ -57,7 +57,7 @@ public class MakeCardsComponent extends AbstractComponent {
     }
 
     public MakeCardsComponent(float base, String cardID, boolean pluralize, Location... locations) {
-        this(base, CardLibrary.getCard(cardID), pluralize, locations);
+        this(base, CardLibrary.getCard(cardID).makeCopy(), pluralize, locations);
     }
 
     @Override
