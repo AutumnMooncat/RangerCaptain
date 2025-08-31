@@ -1,23 +1,17 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.actions.EasyXCostAction;
 import RangerCaptain.cardfusion.FusionComponentHelper;
-import RangerCaptain.cardfusion.abstracts.AbstractComponent;
-import RangerCaptain.cardfusion.components.ToxinComponent;
+import RangerCaptain.cardfusion.components.BadForecastComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.AttackEffectPatches;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
-import RangerCaptain.patches.CustomTags;
-import RangerCaptain.powers.ToxinPower;
+import RangerCaptain.powers.BadForecastPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import java.util.Arrays;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -26,36 +20,24 @@ public class Umbrahella extends AbstractEasyCard {
 
     static {
         new FusionComponentHelper(MonsterEnum.UMBRAHELLA)
-                .withCost(-1)
-                .withDamageAOE(4, AbstractGameAction.AttackEffect.POISON)
-                .with(new ToxinComponent(2, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .withCost(2)
+                .withDamage(11, AttackEffectPatches.RANGER_CAPTAIN_TOXIN)
+                .with(new BadForecastComponent(1.91f))
                 .register();
     }
 
     public Umbrahella() {
-        super(ID, -1, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY);
+        super(ID, 2, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
         setMonsterData(MonsterEnum.UMBRAHELLA);
-        baseDamage = damage = 5;
+        baseDamage = damage = 15;
         baseMagicNumber = magicNumber = 2;
-        isMultiDamage = true;
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
-        tags.add(CustomTags.MAGIC_TOXIN);
-        tags.add(CustomTags.AOE_DAMAGE);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new EasyXCostAction(this, (base, params) -> {
-            int effect = base + Arrays.stream(params).sum();
-            if (effect > 0) {
-                for (int i = 0 ; i < multiDamage.length ; i++) {
-                    multiDamage[i] *= effect;
-                }
-                Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemyTop(mon, new ToxinPower(mon, magicNumber * effect)));
-                allDmgTop(AttackEffectPatches.RANGER_CAPTAIN_TOXIN);
-            }
-            return true;
-        }));
+        dmg(m, AttackEffectPatches.RANGER_CAPTAIN_TOXIN);
+        Wiz.applyToEnemy(m, new BadForecastPower(m, p, magicNumber));
     }
 
     @Override

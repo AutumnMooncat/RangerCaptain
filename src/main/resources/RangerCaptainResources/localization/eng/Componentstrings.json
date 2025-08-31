@@ -800,6 +800,23 @@
       "A random enemy loses HP equal to its ${ModID}:Burn"
     ]
   },
+  "${ModID}:BadForecastComponent": {
+    "TEXT": [
+      "Invalid Bad Forecast",
+      "Apply #yToxin when a card is #yExhausted this turn",
+      "Invalid Bad Forecast",
+      "Apply #yToxin to ALL enemies when a card is #yExhausted this turn",
+      "Invalid Bad Forecast"
+    ],
+    "EXTRA_TEXT": [
+      "Invalid Bad Forecast: %s",
+      "Apply %s ${ModID}:Toxin whenever a card is Exhausted this turn",
+      "Invalid Bad Forecast: %s",
+      "Apply %s ${ModID}:Toxin to ALL enemies whenever a card is Exhausted this turn",
+      "Invalid Bad Forecast: %s",
+      "a random enemy is chosen to have %s ${ModID}:Toxin applied whenever a card is Exhausted this turn"
+    ]
+  },
   "${ModID}:YeetWeakVulnComponent": {
     "TEXT": [
       "Invalid Transfer Weak Vuln",

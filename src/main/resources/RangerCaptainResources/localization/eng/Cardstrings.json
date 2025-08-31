@@ -376,7 +376,7 @@
   },
   "${ModID}:Umbrahella": {
     "NAME": "Umbrahella",
-    "DESCRIPTION": "${ModID}:Perfect. NL Deal !D!X damage and apply !M!X ${ModID}:Toxin to ALL enemies."
+    "DESCRIPTION": "${ModID}:Perfect. NL Deal !D! damage. NL Apply !M! ${ModID}:Toxin whenever a card is Exhausted this turn."
   },
   "${ModID}:Undyin": {
     "NAME": "Undyin",

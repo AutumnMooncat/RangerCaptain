@@ -152,6 +152,10 @@
     "NAME": "Sure-Fire",
     "DESCRIPTIONS": ["This turn, whenever you deal unblocked attack damage, apply #b"," #yBurn."]
   },
+  "${ModID}:BadForecastPower": {
+    "NAME": "Bad Forecast",
+    "DESCRIPTIONS": ["Apply #b"," #yToxin to this creature whenever a card is #yExhausted this turn."]
+  },
   "${ModID}:AbramacabraPower": {
     "NAME": "Abramacabra",
     "DESCRIPTIONS": ["When attacked, deals #b"," damage back."]

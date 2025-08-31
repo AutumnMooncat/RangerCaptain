@@ -34,7 +34,7 @@ public class XComponent extends AbstractTraitComponent {
 
     @Override
     public String onBuildText(AbstractComponent other, String text) {
-        return injectXOnDynvars(text);
+        return injectXOnDynvars(text); // TODO Stash Top Card stashes X but says 1
     }
 
     @Override
