@@ -21,34 +21,34 @@ public class Carniviper extends AbstractMultiUpgradeCard {
     static {
         new FusionComponentHelper(MonsterEnum.CARNIVIPER)
                 .withCost(1)
-                .withDamage(4, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .withDamage(5.5f, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
                 .with(new ToxinComponent(1.5f))
                 .register();
         new FusionComponentHelper(MonsterEnum.MASQUERATTLE)
                 .withCost(1)
-                .withDamage(5.5f, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .withDamage(7f, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
                 .with(new ToxinComponent(2.5f))
                 .register();
         new FusionComponentHelper(MonsterEnum.AEROBOROS)
                 .withCost(0)
-                .withDamage(4.75f, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .withDamage(6.5f, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
                 .with(new ToxinComponent(2.5f))
                 .register();
         new FusionComponentHelper(MonsterEnum.JORMUNGOLD)
                 .withCost(1)
-                .withDamage(7.5f, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .withDamage(9, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
                 .with(new ToxinComponent(3.5f))
                 .register();
         new FusionComponentHelper(MonsterEnum.MARDIUSA)
                 .withCost(2)
-                .withMultiDamage(5.5f, 2, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinComponent(5))
+                .withMultiDamage(7, 2, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new ToxinComponent(4.5f))
                 .register();
     }
 
     public Carniviper() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
-        baseDamage = damage = 6;
+        baseDamage = damage = 8;
         baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.CARNIVIPER);
         baseInfo = info = 0;
