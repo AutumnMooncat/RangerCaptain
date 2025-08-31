@@ -26,21 +26,21 @@ public class Busheye extends AbstractMultiUpgradeCard implements ManuallySizeAdj
         new FusionComponentHelper(MonsterEnum.BUSHEYE)
                 .withCost(2)
                 .with(new BurnComponent(4, AbstractComponent.ComponentTarget.ENEMY_AOE))
-                .with(new NextTurnEnergyComponent(2))
+                .with(new NextTurnEnergyComponent(1))
                 .withExhaust()
                 .with(new WhenExhaustedComponent())
                 .register();
         new FusionComponentHelper(MonsterEnum.HUNTORCH)
                 .withCost(2)
                 .with(new BurnComponent(5.5f, AbstractComponent.ComponentTarget.ENEMY_AOE))
-                .with(new NextTurnEnergyComponent(2))
+                .with(new NextTurnEnergyComponent(1))
                 .withExhaust()
                 .with(new WhenExhaustedComponent())
                 .register();
         new FusionComponentHelper(MonsterEnum.HEDGEHERNE)
                 .withCost(2)
                 .with(new BurnComponent(8, AbstractComponent.ComponentTarget.ENEMY_AOE))
-                .with(new NextTurnEnergyComponent(2))
+                .with(new NextTurnEnergyComponent(1))
                 .withExhaust()
                 .with(new WhenExhaustedComponent())
                 .register();
@@ -49,7 +49,7 @@ public class Busheye extends AbstractMultiUpgradeCard implements ManuallySizeAdj
     public Busheye() {
         super(ID, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
         baseMagicNumber = magicNumber = 5;
-        baseSecondMagic = secondMagic = 2;
+        baseSecondMagic = secondMagic = 1;
         setMonsterData(MonsterEnum.BUSHEYE);
         exhaust = true;
         tags.add(CustomTags.MAGIC_BURN_AOE);
