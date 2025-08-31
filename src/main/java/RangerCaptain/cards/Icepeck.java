@@ -18,23 +18,23 @@ public class Icepeck extends AbstractEasyCard {
     public final static String ID = makeID(Icepeck.class.getSimpleName());
 
     static {
-        // 9,1 -> 12,2
+        // 9,1 -> 13,2
         new FusionComponentHelper(MonsterEnum.ICEPECK)
                 .withCost(2)
-                .withDamage(6, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .withDamage(6.5f, AbstractGameAction.AttackEffect.SLASH_HEAVY)
                 .with(new SprintComponent(1))
                 .register();
-        // 12,1 -> 16,2
+        // 13,1 -> 17,2
         new FusionComponentHelper(MonsterEnum.CRYOSHEAR)
                 .withCost(2)
-                .withDamage(8, AbstractGameAction.AttackEffect.SLASH_HEAVY)
+                .withDamage(8.5f, AbstractGameAction.AttackEffect.SLASH_HEAVY)
                 .with(new SprintComponent(1))
                 .register();
     }
 
     public Icepeck() {
         super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        baseDamage = damage = 9;
+        baseDamage = damage = 10;
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.ICEPECK);
     }
