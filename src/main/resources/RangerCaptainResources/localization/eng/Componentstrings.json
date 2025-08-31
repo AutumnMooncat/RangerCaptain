@@ -755,6 +755,9 @@
       "A random enemy deals !M! less damage this turn each time they are attacked",
       "ALL enemies deal !M! less damage this turn each time they are attacked",
       "Invalid Petrified: %s"
+      "The enemy deals %s less damage this turn each time they are attacked",
+      "A random enemy deals %s less damage this turn each time they are attacked",
+      "ALL enemies deal %s less damage this turn each time they are attacked",
     ]
   },
   "${ModID}:AbramacabraComponent": {
