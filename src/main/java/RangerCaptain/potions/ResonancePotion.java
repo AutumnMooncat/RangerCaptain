@@ -4,10 +4,8 @@ import RangerCaptain.MainModfile;
 import RangerCaptain.actions.ThrowObjectAction;
 import RangerCaptain.powers.ResonancePower;
 import RangerCaptain.util.ColorUtil;
-import RangerCaptain.util.KeywordManager;
 import RangerCaptain.util.TextureSniper;
 import RangerCaptain.util.Wiz;
-import basemod.BaseMod;
 import basemod.abstracts.CustomPotion;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.animations.AnimateFastAttackAction;
@@ -31,7 +29,7 @@ public class ResonancePotion extends CustomPotion {
 
     public static final String NAME = potionStrings.NAME;
     public static final String[] DESCRIPTIONS = potionStrings.DESCRIPTIONS;
-    public static final int EFFECT = 3;
+    public static final int EFFECT = 10;
 
     public ResonancePotion() {
         super(NAME, POTION_ID, PotionRarity.COMMON, PotionSize.FAIRY, PotionColor.FIRE);
@@ -61,7 +59,7 @@ public class ResonancePotion extends CustomPotion {
         description = potionStrings.DESCRIPTIONS[0] + potency + potionStrings.DESCRIPTIONS[1];
         tips.clear();
         tips.add(new PowerTip(name, description));
-        tips.add(new PowerTip(BaseMod.getKeywordTitle(KeywordManager.RESONANCE), BaseMod.getKeywordDescription(KeywordManager.RESONANCE)));
+        //tips.add(new PowerTip(BaseMod.getKeywordTitle(KeywordManager.RESONANCE), BaseMod.getKeywordDescription(KeywordManager.RESONANCE)));
     }
 
     @Override

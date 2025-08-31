@@ -259,8 +259,21 @@
     "EXTRA_TEXT": ["Poison"]
   },
   "${ModID}:ResonanceComponent": {
-    "TEXT": ["#yResonance"],
-    "EXTRA_TEXT": ["${ModID}:Resonance"]
+    "TEXT": [
+      "Invalid Resonance",
+      "The enemy takes damage every time it is hit 3 times in one turn",
+      "A random enemy takes damage every time it is hit 3 times in one turn",
+      "ALL enemies take damage every time they are hit 3 times in one turn",
+      "Invalid Resonance"
+    ],
+    "EXTRA_TEXT": [
+      "Invalid Resonance: %s",
+      "The enemy takes %s damage every time it is hit 3 times in one turn",
+      "A random enemy takes %s damage every time it is hit 3 times in one turn",
+      "ALL enemies take %s damage every time they are hit 3 times in one turn",
+      "Invalid Resonance: %s",
+      "a random enemy takes %s damage every time it is hit 3 times in one turn"
+    ]
   },
   "${ModID}:BurnComponent": {
     "TEXT": ["#yBurn"],

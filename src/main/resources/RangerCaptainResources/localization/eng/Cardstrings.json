@@ -278,7 +278,7 @@
   },
   "${ModID}:Puppercut": {
     "NAME": "Puppercut",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! ${ModID}:Resonance.",
+    "DESCRIPTION": "Deal !D! damage. NL The enemy takes !M! damage every time it is hit 3 times in one turn.",
     "EXTENDED_DESCRIPTION": ["Southpaw"]
   },
   "${ModID}:Respite": {

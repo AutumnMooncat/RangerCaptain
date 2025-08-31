@@ -22,19 +22,19 @@ public class Puppercut extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.PUPPERCUT)
                 .withCost(0)
                 .withDamage(3f, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
-                .with(new ResonanceComponent(1))
+                .with(new ResonanceComponent(1.5f))
                 .register();
         new FusionComponentHelper(MonsterEnum.SOUTHPAW)
                 .withCost(0)
-                .withDamage(5f, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
-                .with(new ResonanceComponent(1))
+                .withDamage(4.5f, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
+                .with(new ResonanceComponent(2))
                 .register();
     }
 
     public Puppercut() {
-        super(ID, 0, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
-        baseDamage = damage = 4;
-        baseMagicNumber = magicNumber = 1;
+        super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
+        baseDamage = damage = 6;
+        baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.PUPPERCUT);
         tags.add(CustomTags.MAGIC_RESONANCE);
     }
@@ -47,7 +47,9 @@ public class Puppercut extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeDamage(3);
+        //upgradeBaseCost(0);
+        upgradeDamage(2);
+        upgradeMagicNumber(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.SOUTHPAW);

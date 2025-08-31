@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -41,13 +40,12 @@ public class ResonancePower extends AbstractEasyPower {
             } else if (hits == 3) {
                 hits = 0;
                 stopFlashing();
-                addToTop(new ReducePowerAction(owner, owner, this, amount));
                 addToTop(new DoAction(() -> {
                     for(int i = 0; i < 15; ++i) {
                         AbstractDungeon.topLevelEffectsQueue.add(new ImpactSparkEffect(owner.hb.cX + MathUtils.random(-20.0F, 20.0F) * Settings.scale, owner.hb.cY + MathUtils.random(-20.0F, 20.0F) * Settings.scale));
                     }
                 }));
-                addToTop(new DamageAction(owner, new DamageInfo(source, 10*amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY, true));
+                addToTop(new DamageAction(owner, new DamageInfo(source, amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.BLUNT_HEAVY, true));
             }
         }
         return super.onAttacked(info, damageAmount);
@@ -61,7 +59,7 @@ public class ResonancePower extends AbstractEasyPower {
 
     @Override
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + 10*amount + DESCRIPTIONS[1];
+        this.description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     public void renderAmount(SpriteBatch sb, float x, float y, Color c) {

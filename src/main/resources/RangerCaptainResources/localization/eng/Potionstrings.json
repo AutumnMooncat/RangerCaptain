@@ -20,6 +20,6 @@
   },
   "${ModID}:ResonancePotion": {
     "NAME": "Vibration Potion",
-    "DESCRIPTIONS": ["Apply #b"," #yResonance."]
+    "DESCRIPTIONS": ["The enemy takes #b"," damage every time it is hit #b3 times in one turn."]
   }
 }
