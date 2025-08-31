@@ -310,7 +310,7 @@
   },
   "${ModID}:Sparktan": {
     "NAME": "Sparktan",
-    "DESCRIPTION": "Deal !D! damage. NL Apply ${ModID}:Conductive equal to unblocked damage dealt. NL Exhaust.",
+    "DESCRIPTION": "Deal !D! damage. NL Apply ${ModID}:Conductive equal to damage dealt. NL Exhaust.",
     "EXTENDED_DESCRIPTION": ["Zeustrike"]
   },
   "${ModID}:Spirouette": {

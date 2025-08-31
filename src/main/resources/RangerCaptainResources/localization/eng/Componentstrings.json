@@ -1008,8 +1008,8 @@
     "EXTRA_TEXT": ["Deals %s additional damage for each unique debuff on the enemy"]
   },
   "${ModID}:AddConductiveDamageComponent": {
-    "TEXT": ["Applies #yConductive equal to unblocked damage dealt"],
-    "EXTRA_TEXT": ["Apply ${ModID}:Conductive equal to unblocked damage dealt"]
+    "TEXT": ["Applies #yConductive equal to damage dealt"],
+    "EXTRA_TEXT": ["Apply ${ModID}:Conductive equal to damage dealt"]
   },
   "${ModID}:AddEnergyOnKillDamageComponent": {
     "TEXT": ["Gains Energy on kill"],

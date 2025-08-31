@@ -1,18 +1,16 @@
 package RangerCaptain.cards;
 
-import RangerCaptain.actions.DamageFollowupAction;
 import RangerCaptain.cardfusion.FusionComponentHelper;
 import RangerCaptain.cardfusion.components.AddConductiveDamageComponent;
 import RangerCaptain.cardfusion.components.vfx.LightningFVXComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
-import RangerCaptain.powers.ConductivePower;
+import RangerCaptain.damageMods.ConductiveDamage;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
-import RangerCaptain.util.Wiz;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -45,6 +43,7 @@ public class Sparktan extends AbstractEasyCard {
         baseDamage = damage = 8;
         setMonsterData(MonsterEnum.SPARKTAN);
         exhaust = true;
+        DamageModifierManager.addModifier(this, new ConductiveDamage());
     }
 
     @Override
@@ -53,11 +52,7 @@ public class Sparktan extends AbstractEasyCard {
             addToBot(new SFXAction("THUNDERCLAP", 0.05F));
             addToBot(new VFXAction(new LightningEffect(m.drawX, m.drawY), 0.05F));
         }
-        addToBot(new DamageFollowupAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, false, mon -> {
-            if (mon instanceof AbstractMonster) {
-                Wiz.applyToEnemy((AbstractMonster) mon, new ConductivePower(mon, p, mon.lastDamageTaken));
-            }
-        }));
+        dmg(m, AbstractGameAction.AttackEffect.NONE);
     }
 
     @Override
