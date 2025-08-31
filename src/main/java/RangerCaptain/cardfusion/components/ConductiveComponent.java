@@ -33,6 +33,19 @@ public class ConductiveComponent extends AbstractSimpleApplyComponent {
     }
 
     @Override
+    public boolean shouldStack(AbstractComponent other) {
+        if (other instanceof SplitTurnConductiveComponent) {
+            if (target == other.target) {
+                return true;
+            }
+            if (other.target == ComponentTarget.ENEMY_AOE || other.target == ComponentTarget.ENEMY_RANDOM) {
+                return target == ComponentTarget.ENEMY;
+            }
+        }
+        return super.shouldStack(other);
+    }
+
+    @Override
     public AbstractPower getPower(AbstractCreature target, int amount) {
         return new ConductivePower(target, Wiz.adp(), amount);
     }

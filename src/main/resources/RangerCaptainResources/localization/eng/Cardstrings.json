@@ -33,7 +33,7 @@
   },
   "${ModID}:Arkidd": {
     "NAME": "Arkidd",
-    "DESCRIPTION": "${ModID}:Perfect. NL Apply !M! ${ModID}:Conductive and !${ModID}:M2! ${ModID}:Resonance to ALL enemies."
+    "DESCRIPTION": "${ModID}:Perfect. NL Apply !M! ${ModID}:Conductive to ALL enemies now and next turn."
   },
   "${ModID}:Averevoir": {
     "NAME": "Averevoir",

@@ -2,13 +2,12 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cardfusion.FusionComponentHelper;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
-import RangerCaptain.cardfusion.components.ConductiveComponent;
-import RangerCaptain.cardfusion.components.ResonanceComponent;
+import RangerCaptain.cardfusion.components.SplitTurnConductiveComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.patches.CustomTags;
 import RangerCaptain.powers.ConductivePower;
-import RangerCaptain.powers.ResonancePower;
+import RangerCaptain.powers.NextTurnPowerPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
@@ -24,26 +23,23 @@ public class Arkidd extends AbstractEasyCard {
     static {
         new FusionComponentHelper(MonsterEnum.ARKIDD)
                 .withCost(1)
-                .with(new ConductiveComponent(2.5f, AbstractComponent.ComponentTarget.ENEMY_AOE))
-                .with(new ResonanceComponent(1, AbstractComponent.ComponentTarget.ENEMY_AOE))
+                .with(new SplitTurnConductiveComponent(2.5f, AbstractComponent.ComponentTarget.ENEMY_AOE))
                 .register();
     }
 
     public Arkidd() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
         baseMagicNumber = magicNumber = 3;
-        baseSecondMagic = secondMagic = 1;
         setMonsterData(MonsterEnum.ARKIDD);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
         tags.add(CustomTags.MAGIC_CONDUCTIVE_AOE);
-        tags.add(CustomTags.SECOND_MAGIC_RESONANCE_AOE);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         Wiz.forAllMonstersLiving(mon -> {
             Wiz.applyToEnemy(mon, new ConductivePower(mon, p, magicNumber));
-            Wiz.applyToEnemy(mon, new ResonancePower(mon, p, secondMagic));
+            Wiz.applyToEnemy(mon, new NextTurnPowerPower(mon, new ConductivePower(mon, p, magicNumber)));
         });
     }
 

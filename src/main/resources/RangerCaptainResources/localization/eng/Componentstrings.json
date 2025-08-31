@@ -274,6 +274,10 @@
     "TEXT": ["#yConductive"],
     "EXTRA_TEXT": ["${ModID}:Conductive"]
   },
+  "${ModID}:SplitTurnConductiveComponent": {
+    "TEXT": ["#yConductive"],
+    "EXTRA_TEXT": ["${ModID}:Conductive"]
+  },
   "${ModID}:MultitargetComponent": {
     "TEXT": ["Your next single target Attacks play on ALL enemies"],
     "EXTRA_TEXT": [
