@@ -67,10 +67,7 @@ public class MakeCardsComponent extends AbstractComponent {
 
     @Override
     public boolean scalesWithCost() {
-        if (reference == null) {
-            return false;
-        }
-        return reference.type != AbstractCard.CardType.STATUS && reference.type != AbstractCard.CardType.CURSE;
+        return false;
     }
 
     @Override
