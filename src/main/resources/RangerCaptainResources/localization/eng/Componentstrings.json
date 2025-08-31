@@ -385,6 +385,18 @@
       "Shuffle %1$s %2$s into your %3$s"
     ]
   },
+  "${ModID}:StashTempCardComponent": {
+    "TEXT": [
+      "#yStash %1$s",
+      "Invalid Stash Temp Card Reference",
+      "s"
+    ],
+    "EXTRA_TEXT": [
+      "${ModID}:Stash {@@}{%1$s|1=a|@=%1$s} %2$s{%1$s|1=|@=%3$s}",
+      "${ModID}:Stash a %1$s",
+      "${ModID}:Stash %1$s %2$s"
+    ]
+  },
   "${ModID}:DiscardToDrawComponent": {
     "TEXT": ["Put cards from your discard pile on top of your draw pile"],
     "EXTRA_TEXT": [
