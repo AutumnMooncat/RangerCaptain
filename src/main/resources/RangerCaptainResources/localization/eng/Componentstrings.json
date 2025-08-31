@@ -94,6 +94,23 @@
       "%1$s temporary %2$s down"
     ]
   },
+  "${ModID}:AbstractSplitTurnApplyComponent": {
+    "TEXT": [
+      "Gain %s now and next turn",
+      "Apply %s now and next turn",
+      "Apply %s to a random enemy now and next turn",
+      "Apply %s to ALL enemies now and next turn",
+      "Invalid Split Turn Apply: %s"
+    ],
+    "EXTRA_TEXT": [
+      "Gain %1$s %2$s now and next turn",
+      "Apply %1$s %2$s now and next turn",
+      "Apply %1$s %2$s to a random enemy now and next turn",
+      "Apply %1$s %2$s to ALL enemies now and next turn",
+      "Invalid Split Turn Apply: %1$s %2$s",
+      "%1$s %2$s now and next turn"
+    ]
+  },
   "${ModID}:DamageComponent": {
     "TEXT": [
       "Take damage",
