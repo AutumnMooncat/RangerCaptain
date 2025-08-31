@@ -4,14 +4,12 @@ import RangerCaptain.MainModfile;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.powers.PetrifiedPower;
-import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import java.util.Collections;
 import java.util.List;
 
 public class PetrifiedComponent extends AbstractComponent {
@@ -25,6 +23,7 @@ public class PetrifiedComponent extends AbstractComponent {
 
     public PetrifiedComponent(float base, ComponentTarget target) {
         super(ID, base, ComponentType.DO, target, DynVar.MAGIC);
+        setFlags(Flag.TARGETLESS_WHEN_CAPTURED);
     }
 
     @Override
@@ -44,7 +43,7 @@ public class PetrifiedComponent extends AbstractComponent {
 
     @Override
     public String rawCapturedText() {
-        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
+        return String.format(CARD_TEXT[ComponentTarget.values().length], dynKey());
     }
 
     @Override
@@ -54,6 +53,7 @@ public class PetrifiedComponent extends AbstractComponent {
             case ENEMY:
                 Wiz.applyToEnemy(m, new PetrifiedPower(m, amount));
                 break;
+            case NONE:
             case ENEMY_RANDOM:
                 addToBot(new DoAction(() -> {
                     AbstractMonster mon = AbstractDungeon.getRandomMonster();
