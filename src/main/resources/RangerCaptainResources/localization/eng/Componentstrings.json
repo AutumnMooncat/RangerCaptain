@@ -889,7 +889,7 @@
     "EXTRA_TEXT": ["Whenever you lose HP, %s"]
   },
   "${ModID}:OnPerformFusionComponent": {
-    "TEXT": ["Fusion becomes a Power, Targeted effects hit ALL enemies"],
+    "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": ["Whenever you perform ${ModID}:Fusion, %s"]
   },
   "${ModID}:OnTurnStartComponent": {

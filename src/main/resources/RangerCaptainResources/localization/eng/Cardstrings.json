@@ -169,7 +169,7 @@
   },
   "${ModID}:Glaistain": {
     "NAME": "Glaistain",
-    "DESCRIPTION": "${ModID}:Perfect. NL Whenever you perform ${ModID}:Fusion, apply !M! ${ModID}:Resonance to ALL enemies."
+    "DESCRIPTION": "${ModID}:Perfect. NL Whenever you perform ${ModID}:Fusion, add {@@}{!M!|1=a|@=!M!} *Glaistain into your discard pile."
   },
   "${ModID}:Hauntome": {
     "NAME": "Hauntome",

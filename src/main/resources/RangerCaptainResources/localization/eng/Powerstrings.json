@@ -102,7 +102,7 @@
   },
   "${ModID}:GlassBondsPower": {
     "NAME": "Glass Bonds",
-    "DESCRIPTIONS": ["Whenever you perform #yFusion, apply #b"," #yResonance to ALL enemies."]
+    "DESCRIPTIONS": ["Whenever you perform #yFusion, add #b"," #yGlaistain into your discard pile."]
   },
   "${ModID}:BerserkerPower": {
     "NAME": "Berserker",

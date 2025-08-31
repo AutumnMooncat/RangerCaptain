@@ -2,15 +2,14 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cardfusion.FusionComponentHelper;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
+import RangerCaptain.cardfusion.components.MakeCardsComponent;
 import RangerCaptain.cardfusion.components.OnPerformFusionComponent;
-import RangerCaptain.cardfusion.components.ResonanceComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.powers.GlassBondsPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -22,18 +21,17 @@ public class Glaistain extends AbstractEasyCard {
 
     static {
         new FusionComponentHelper(MonsterEnum.GLAISTAIN)
-                .withCost(3)
+                .withCost(0)
                 .with(new OnPerformFusionComponent())
-                .withFlags(new ResonanceComponent(2), AbstractComponent.Flag.INVERSE_PREFERRED)
+                .withFlags(new MakeCardsComponent(1.45f, new Glaistain(), false, MakeCardsComponent.Location.DISCARD), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 
     public Glaistain() {
-        super(ID, 3, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
+        super(ID, 0, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.GLAISTAIN);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
-        tags.add(BaseModCardTags.FORM);
     }
 
     @Override

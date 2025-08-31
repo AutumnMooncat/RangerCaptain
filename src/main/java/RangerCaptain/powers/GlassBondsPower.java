@@ -4,9 +4,10 @@ import RangerCaptain.MainModfile;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.components.OnPerformFusionComponent;
+import RangerCaptain.cards.Glaistain;
 import RangerCaptain.cards.tokens.FusedCard;
 import RangerCaptain.powers.interfaces.OnFusionPower;
-import RangerCaptain.util.Wiz;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -37,7 +38,7 @@ public class GlassBondsPower extends AbstractComponentPower implements OnFusionP
     public void onPerformFusion(AbstractCard base, AbstractCard donor, FusedCard fused) {
         flash();
         if (source == null) {
-            Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new ResonancePower(mon, owner, amount)));
+            addToBot(new MakeTempCardInDiscardAction(new Glaistain(), amount));
         } else {
             addToBot(new DoAction(() -> triggerComponents(null, false)));
         }
