@@ -40,7 +40,7 @@ public class MeditatingPower extends AbstractComponentPower {
             if (source == null) {
                 addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, amount)));
             } else {
-                addToBot(new DoAction(() -> triggerComponents(null, false)));
+                addToBot(new DoAction(() -> triggerComponents(null, true)));
             }
         }
     }

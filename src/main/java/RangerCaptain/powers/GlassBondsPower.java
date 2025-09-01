@@ -40,7 +40,7 @@ public class GlassBondsPower extends AbstractComponentPower implements OnFusionP
         if (source == null) {
             addToBot(new MakeTempCardInDiscardAction(new Glaistain(), amount));
         } else {
-            addToBot(new DoAction(() -> triggerComponents(null, false)));
+            addToBot(new DoAction(() -> triggerComponents(null, true)));
         }
     }
 }

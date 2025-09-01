@@ -69,7 +69,7 @@ public class FlammablePower extends AbstractComponentPower {
                     }
                 });
                 if (weakest[0] != null) {
-                    triggerComponents(weakest[0], false);
+                    triggerComponents(weakest[0], true);
                 }
             }));
         }

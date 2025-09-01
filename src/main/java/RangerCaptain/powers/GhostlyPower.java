@@ -38,7 +38,7 @@ public class GhostlyPower extends AbstractComponentPower implements OnStashPower
         if (source == null) {
             addToBot(new GainBlockAction(owner, amount));
         } else {
-            addToBot(new DoAction(() -> triggerComponents(null, false)));
+            addToBot(new DoAction(() -> triggerComponents(null, true)));
         }
     }
 }

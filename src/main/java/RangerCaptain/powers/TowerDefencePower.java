@@ -42,7 +42,7 @@ public class TowerDefencePower extends AbstractComponentPower {
             if (source == null) {
                 addToBot(new GainBlockAction(owner, amount));
             } else {
-                addToBot(new DoAction(() -> triggerComponents(null, false)));
+                addToBot(new DoAction(() -> triggerComponents(null, true)));
             }
         }
     }

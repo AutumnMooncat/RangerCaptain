@@ -37,7 +37,7 @@ public class AcidReflexPower extends AbstractComponentPower {
             if (source == null) {
                 addToBot(new ApplyPowerToRandomEnemyAction(owner, new ToxinPower(null, amount), amount));
             } else {
-                addToBot(new DoAction(() -> triggerComponents(null, false)));
+                addToBot(new DoAction(() -> triggerComponents(null, true)));
             }
         }
     }

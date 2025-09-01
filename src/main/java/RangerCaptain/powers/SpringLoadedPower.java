@@ -45,7 +45,7 @@ public class SpringLoadedPower extends AbstractComponentPower implements EnterCa
             if (source == null) {
                 addToBot(new DrawCardAction(amount));
             } else {
-                addToBot(new DoAction(() -> triggerComponents(null, false)));
+                addToBot(new DoAction(() -> triggerComponents(null, true)));
             }
         }
     }
