@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
@@ -16,31 +17,31 @@ public class PetrifiedPower extends AbstractEasyPower {
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     private final Color greenColor = new Color(0.0F, 1.0F, 0.0F, 1.0F);
-    private int reduction;
+    private int onHitChange;
 
     public PetrifiedPower(AbstractCreature owner, int amount) {
         super(POWER_ID, NAME, PowerType.DEBUFF, false, owner, amount);
-        reduction = amount;
+        onHitChange = amount;
         updateDescription();
     }
 
     @Override
     public void stackPower(int stackAmount) {
         super.stackPower(stackAmount);
-        reduction += stackAmount;
+        onHitChange += stackAmount;
         updateDescription();
     }
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + reduction + DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + onHitChange + DESCRIPTIONS[2];
     }
 
     @Override
     public void renderAmount(SpriteBatch sb, float x, float y, Color c) {
         greenColor.a = c.a;
         c = greenColor;
-        FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(reduction), x, y, fontScale, c);
+        FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(amount), x, y, fontScale, c);
     }
 
     @Override
@@ -52,8 +53,9 @@ public class PetrifiedPower extends AbstractEasyPower {
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != owner) {
             flash();
-            reduction += amount;
+            amount += onHitChange;
             updateDescription();
+            AbstractDungeon.onModifyPower();
         }
         return damageAmount;
     }
