@@ -47,7 +47,7 @@ public class Icepeck extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeDamage(3);
+        upgradeDamage(4);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.CRYOSHEAR);
