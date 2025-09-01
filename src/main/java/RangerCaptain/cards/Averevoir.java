@@ -23,7 +23,7 @@ public class Averevoir extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.AVEREVOIR)
                 .withCost(2)
                 .with(new OnPlayPerfectComponent())
-                .withFlags(new BlockComponent(10), AbstractComponent.Flag.INVERSE_PREFERRED)
+                .withFlags(new BlockComponent(12.5f), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 
