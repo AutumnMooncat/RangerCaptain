@@ -4,9 +4,9 @@
     <groupId>Info</groupId>
 
     <artifactId>TheRangerCaptain</artifactId>
-    <version>0.4.0</version>
+    <version>0.4.1</version>
     <name>The Ranger Captain</name>
-    <description>A new mod to play around with</description>
+    <description>Adds a new character from Cassette Beasts</description>
     <!-- Change the above for mod information. -->
 
     <properties>
