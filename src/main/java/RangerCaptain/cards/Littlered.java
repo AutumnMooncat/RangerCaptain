@@ -2,45 +2,48 @@ package RangerCaptain.cards;
 
 import RangerCaptain.cardfusion.FusionComponentHelper;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
-import RangerCaptain.cardfusion.components.OnTurnStartForEachAttackerComponent;
+import RangerCaptain.cardfusion.components.OnPlayAttackPower;
 import RangerCaptain.cardfusion.components.StrengthComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
+import RangerCaptain.cards.interfaces.ManuallySizeAdjustedCard;
 import RangerCaptain.powers.BerserkerPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
+import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static RangerCaptain.MainModfile.makeID;
 
-public class Littlered extends AbstractMultiUpgradeCard {
+public class Littlered extends AbstractMultiUpgradeCard implements ManuallySizeAdjustedCard {
     public final static String ID = makeID(Littlered.class.getSimpleName());
 
     static {
         new FusionComponentHelper(MonsterEnum.LITTLERED)
-                .withCost(2)
-                .with(new OnTurnStartForEachAttackerComponent())
-                .withFlags(new StrengthComponent(1), AbstractComponent.Flag.INVERSE_PREFERRED)
+                .withCost(3)
+                .with(new OnPlayAttackPower(1))
+                .withFlags(new StrengthComponent(3), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
         new FusionComponentHelper(MonsterEnum.SCARLETEETH)
-                .withCost(2)
-                .with(new OnTurnStartForEachAttackerComponent())
-                .withFlags(new StrengthComponent(2), AbstractComponent.Flag.INVERSE_PREFERRED)
+                .withCost(3)
+                .with(new OnPlayAttackPower(2))
+                .withFlags(new StrengthComponent(5.75f), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
         new FusionComponentHelper(MonsterEnum.ROSEHOOD)
-                .withCost(1)
-                .with(new OnTurnStartForEachAttackerComponent())
-                .withFlags(new StrengthComponent(1), AbstractComponent.Flag.INVERSE_PREFERRED)
+                .withCost(2)
+                .with(new OnPlayAttackPower(1))
+                .withFlags(new StrengthComponent(3), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 
     public Littlered() {
-        super(ID, 2, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
+        super(ID, 3, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.LITTLERED);
         baseInfo = info = 0;
+        tags.add(BaseModCardTags.FORM);
     }
 
     @Override
@@ -74,11 +77,15 @@ public class Littlered extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade1() {
-        upgradeBaseCost(1);
+        upgradeBaseCost(2);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.ROSEHOOD);
         info = baseInfo = 2;
-        isInnate = true;
+    }
+
+    @Override
+    public float getAdjustedScale() {
+        return 0.98f;
     }
 }

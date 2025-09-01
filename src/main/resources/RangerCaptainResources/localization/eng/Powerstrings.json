@@ -106,7 +106,7 @@
   },
   "${ModID}:BerserkerPower": {
     "NAME": "Berserker",
-    "DESCRIPTIONS": ["At the start of your turn, gain #b"," #yStrength for each enemy that intends to attack."]
+    "DESCRIPTIONS": ["Whenever you play an Attack, gain #b"," Strength. At the end of your turn, lose #b"," Strength."]
   },
   "${ModID}:TowerDefencePower": {
     "NAME": "Tower Defence",

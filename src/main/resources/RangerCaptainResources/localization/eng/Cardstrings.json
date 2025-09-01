@@ -210,7 +210,7 @@
   },
   "${ModID}:Littlered": {
     "NAME": "Littlered",
-    "DESCRIPTION": "{@@}{!${ModID}:I!|2=Innate. NL }At the start of your turn, gain !M! Strength for each enemy that intends to attack.",
+    "DESCRIPTION": "Whenever you play an Attack, gain !M! Strength. At the end of your turn, lose !M! Strength.",
     "EXTENDED_DESCRIPTION": ["Scarleteeth","Rosehood"]
   },
   "${ModID}:Macabra": {

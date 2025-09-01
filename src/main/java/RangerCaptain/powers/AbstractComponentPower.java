@@ -79,7 +79,9 @@ public abstract class AbstractComponentPower extends AbstractEasyPower implement
             for (AbstractComponent c : captured) {
                 c.workingAmount *= amount;
             }
+            source.workingAmount *= amount;
             this.description = source.rawPowerText(captured);
+            source.workingAmount /= amount;
             for (AbstractComponent c : captured) {
                 c.workingAmount /= amount;
             }

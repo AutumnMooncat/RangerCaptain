@@ -943,9 +943,9 @@
     "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": ["At the start of each turn, %s"]
   },
-  "${ModID}:OnTurnStartForEachAttackerComponent": {
-    "TEXT": ["Fusion becomes a Power"],
-    "EXTRA_TEXT": ["At the start of your turn, for each enemy that intends to attack, %s"]
+  "${ModID}:OnPlayAttackPower": {
+    "TEXT": ["Fusion becomes a Power, Lose #yStrength each turn"],
+    "EXTRA_TEXT": ["Whenever you play an Attack, %1$s. At the end of your turn, lose %2$s Strength"]
   },
   "${ModID}:OnGainEnergyComponent": {
     "TEXT": ["Fusion becomes a Power"],

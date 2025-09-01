@@ -16,18 +16,27 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import java.util.Collections;
 import java.util.List;
 
-public class OnTurnStartForEachAttackerComponent extends AbstractPowerComponent {
-    public static final String ID = MainModfile.makeID(OnTurnStartForEachAttackerComponent.class.getSimpleName());
+public class OnPlayAttackPower extends AbstractPowerComponent {
+    public static final String ID = MainModfile.makeID(OnPlayAttackPower.class.getSimpleName());
     public static final String[] DESCRIPTION_TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
-    public OnTurnStartForEachAttackerComponent() {
+    public OnPlayAttackPower(float base) {
         super(ID, false);
+        this.workingAmount = (int) base;
+        this.baseAmount = base;
+        this.floatingAmount = base;
+        setDynVar(DynVar.FLAT);
+    }
+
+    @Override
+    public float textSize(FusedCard card) {
+        return 0.98f;
     }
 
     @Override
     public float amountMultiplier(AbstractComponent other) {
-        return 0.5f;
+        return 0.35f;
     }
 
     @Override
@@ -37,7 +46,7 @@ public class OnTurnStartForEachAttackerComponent extends AbstractPowerComponent 
 
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
-        return String.format(CARD_TEXT[0], assembleCapturedText(captured));
+        return String.format(CARD_TEXT[0], assembleCapturedText(captured), dynKey());
     }
 
     @Override
@@ -70,6 +79,6 @@ public class OnTurnStartForEachAttackerComponent extends AbstractPowerComponent 
 
     @Override
     public AbstractComponent makeCopy() {
-        return new OnTurnStartForEachAttackerComponent();
+        return new OnPlayAttackPower(baseAmount);
     }
 }
