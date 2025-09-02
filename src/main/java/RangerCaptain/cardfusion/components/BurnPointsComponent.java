@@ -4,7 +4,6 @@ import RangerCaptain.MainModfile;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.powers.BurnedPower;
-import RangerCaptain.util.FormatHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -14,7 +13,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -96,6 +94,6 @@ public class BurnPointsComponent extends AbstractComponent {
 
     @Override
     public AbstractComponent makeCopy() {
-        return new BurnPointsComponent();
+        return new BurnPointsComponent(target);
     }
 }
