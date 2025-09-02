@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import java.util.Collections;
 import java.util.List;
 
 public class OnExhaustComponent extends AbstractPowerComponent {
@@ -50,11 +49,6 @@ public class OnExhaustComponent extends AbstractPowerComponent {
     @Override
     public String targetText() {
         return CARD_TEXT[2];
-    }
-
-    @Override
-    public String rawCapturedText() {
-        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
     }
 
     @Override

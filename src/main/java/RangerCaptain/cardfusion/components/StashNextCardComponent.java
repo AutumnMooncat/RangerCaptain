@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import java.util.Collections;
 import java.util.List;
 
 public class StashNextCardComponent extends AbstractComponent {
@@ -36,11 +35,6 @@ public class StashNextCardComponent extends AbstractComponent {
             return workingAmount == 1 ? CARD_TEXT[1] : String.format(CARD_TEXT[2], workingAmount);
         }
         return String.format(CARD_TEXT[0], dynKey());
-    }
-
-    @Override
-    public String rawCapturedText() {
-        return rawCardText(Collections.emptyList());
     }
 
     @Override

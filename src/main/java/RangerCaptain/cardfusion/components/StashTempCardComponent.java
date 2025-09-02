@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import java.util.Collections;
 import java.util.List;
 
 public class StashTempCardComponent extends AbstractComponent {
@@ -85,11 +84,6 @@ public class StashTempCardComponent extends AbstractComponent {
             return workingAmount == 1 ? String.format(CARD_TEXT[index + 1], name) : String.format(CARD_TEXT[index + 2], workingAmount, pluralize ? name + S : name);
         }
         return String.format(CARD_TEXT[index], dynKey(), name, pluralize ? S : "");
-    }
-
-    @Override
-    public String rawCapturedText() {
-        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
     }
 
     @Override

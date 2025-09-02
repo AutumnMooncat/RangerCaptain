@@ -9,7 +9,6 @@ import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cards.tokens.FusedCard;
 import RangerCaptain.patches.ActionCapturePatch;
 import RangerCaptain.patches.CardCounterPatches;
-import RangerCaptain.util.FormatHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -114,11 +113,6 @@ public class DamageAlreadyAttackedComponent extends AbstractComponent {
             insert = AND_APPLY + " " + StringUtils.join(parts, " " + AND + " ") + " ";
         }
         return String.format(CARD_TEXT[target.ordinal()], dynKey(), insert);
-    }
-
-    @Override
-    public String rawCapturedText() {
-        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
     }
 
     @Override

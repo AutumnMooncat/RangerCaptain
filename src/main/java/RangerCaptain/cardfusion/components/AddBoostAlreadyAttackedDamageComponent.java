@@ -7,7 +7,6 @@ import RangerCaptain.damageMods.BoostAlreadyAttackedDamage;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 
-import java.util.Collections;
 import java.util.List;
 
 public class AddBoostAlreadyAttackedDamageComponent extends AbstractDamageModComponent {
@@ -37,11 +36,6 @@ public class AddBoostAlreadyAttackedDamageComponent extends AbstractDamageModCom
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
         return String.format(CARD_TEXT[0], workingAmount);
-    }
-
-    @Override
-    public String rawCapturedText() {
-        return rawCardText(Collections.emptyList());
     }
 
     @Override

@@ -150,11 +150,6 @@ public class ExhaustAttacksComponent extends AbstractComponent {
     }
 
     @Override
-    public String rawCapturedText() {
-        return rawCardText(Collections.emptyList());
-    }
-
-    @Override
     public void onTrigger(ComponentAmountProvider provider, AbstractPlayer p, AbstractMonster m, List<AbstractComponent> captured) {
         int amount = provider.getAmount(this);
         if (random) {

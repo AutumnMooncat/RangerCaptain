@@ -4,14 +4,12 @@ import RangerCaptain.MainModfile;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.powers.BoobyTrappedPower;
-import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import java.util.Collections;
 import java.util.List;
 
 public class BoobyTrapComponent extends AbstractComponent {
@@ -46,11 +44,6 @@ public class BoobyTrapComponent extends AbstractComponent {
             return String.format(CARD_TEXT[index], BoobyTrappedPower.BOOBY_TRAP_DAMAGE, workingAmount);
         }
         return String.format(CARD_TEXT[index], BoobyTrappedPower.BOOBY_TRAP_DAMAGE);
-    }
-
-    @Override
-    public String rawCapturedText() {
-        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
     }
 
     @Override

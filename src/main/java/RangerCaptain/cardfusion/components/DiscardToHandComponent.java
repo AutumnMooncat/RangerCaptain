@@ -3,13 +3,11 @@ package RangerCaptain.cardfusion.components;
 import RangerCaptain.MainModfile;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.interfaces.ThatManyComponent;
-import RangerCaptain.util.FormatHelper;
 import com.megacrit.cardcrawl.actions.common.BetterDiscardPileToHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import java.util.Collections;
 import java.util.List;
 
 public class DiscardToHandComponent extends AbstractComponent implements ThatManyComponent {
@@ -45,11 +43,6 @@ public class DiscardToHandComponent extends AbstractComponent implements ThatMan
             return workingAmount == 1 ? CARD_TEXT[1] : String.format(CARD_TEXT[2], workingAmount);
         }
         return String.format(CARD_TEXT[0], dynKey());
-    }
-
-    @Override
-    public String rawCapturedText() {
-        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
     }
 
     @Override

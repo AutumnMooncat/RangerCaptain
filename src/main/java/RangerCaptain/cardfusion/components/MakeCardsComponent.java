@@ -16,7 +16,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -152,11 +151,6 @@ public class MakeCardsComponent extends AbstractComponent {
             return workingAmount == 1 ? String.format(CARD_TEXT[index + 1], name, locationText()) : String.format(CARD_TEXT[index + 2], workingAmount, pluralize ? name + S : name, locationText());
         }
         return String.format(CARD_TEXT[index], dynKey(), name, pluralize ? S : "", locationText());
-    }
-
-    @Override
-    public String rawCapturedText() {
-        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
     }
 
     @Override

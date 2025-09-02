@@ -7,7 +7,6 @@ import RangerCaptain.damageMods.PiercingDamage;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 
-import java.util.Collections;
 import java.util.List;
 
 public class AddPiercingDamageComponent extends AbstractDamageModComponent {
@@ -37,11 +36,6 @@ public class AddPiercingDamageComponent extends AbstractDamageModComponent {
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
         return CARD_TEXT[0];
-    }
-
-    @Override
-    public String rawCapturedText() {
-        return rawCardText(Collections.emptyList());
     }
 
     @Override

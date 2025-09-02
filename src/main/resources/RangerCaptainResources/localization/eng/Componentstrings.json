@@ -679,7 +679,10 @@
     "EXTRA_TEXT": [
       "Next turn, draw %1$s additional card{@@}{%1$s|>1=s}",
       "Next turn, draw an additional card",
-      "Next turn, draw %s additional cards"
+      "Next turn, draw %s additional cards",
+      "draw %1$s additional card{@@}{%1$s|>1=s} next turn",
+      "draw an additional card next turn",
+      "draw %s additional cards next turn"
     ]
   },
   "${ModID}:NextTurnEnergyComponent": {

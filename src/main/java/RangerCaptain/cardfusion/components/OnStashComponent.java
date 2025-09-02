@@ -6,14 +6,12 @@ import RangerCaptain.cardfusion.abstracts.AbstractPowerComponent;
 import RangerCaptain.cardmods.FusionFormMod;
 import RangerCaptain.cards.tokens.FusedCard;
 import RangerCaptain.powers.GhostlyPower;
-import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import java.util.Collections;
 import java.util.List;
 
 public class OnStashComponent extends AbstractPowerComponent {
@@ -43,11 +41,6 @@ public class OnStashComponent extends AbstractPowerComponent {
     @Override
     public String targetText() {
         return "";
-    }
-
-    @Override
-    public String rawCapturedText() {
-        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
     }
 
     @Override

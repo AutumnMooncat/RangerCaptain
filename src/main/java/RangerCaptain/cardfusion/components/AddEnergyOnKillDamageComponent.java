@@ -7,7 +7,6 @@ import RangerCaptain.damageMods.EnergyOnKillDamage;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 
-import java.util.Collections;
 import java.util.List;
 
 public class AddEnergyOnKillDamageComponent extends AbstractDamageModComponent {
@@ -40,11 +39,6 @@ public class AddEnergyOnKillDamageComponent extends AbstractDamageModComponent {
             return CARD_TEXT[workingAmount];
         }
         return String.format(CARD_TEXT[0], workingAmount);
-    }
-
-    @Override
-    public String rawCapturedText() {
-        return rawCardText(Collections.emptyList());
     }
 
     @Override

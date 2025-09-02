@@ -2,14 +2,12 @@ package RangerCaptain.cardfusion.components;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
-import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 
-import java.util.Collections;
 import java.util.List;
 
 public class NextTurnDrawComponent extends AbstractComponent {
@@ -41,7 +39,10 @@ public class NextTurnDrawComponent extends AbstractComponent {
 
     @Override
     public String rawCapturedText() {
-        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
+        if (dynvar == DynVar.FLAT) {
+            return workingAmount == 1 ? CARD_TEXT[4] : String.format(CARD_TEXT[5], workingAmount);
+        }
+        return String.format(CARD_TEXT[3], dynKey());
     }
 
     @Override

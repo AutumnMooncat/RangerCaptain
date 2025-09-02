@@ -3,13 +3,11 @@ package RangerCaptain.cardfusion.components;
 import RangerCaptain.MainModfile;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.powers.SprintPower;
-import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import java.util.Collections;
 import java.util.List;
 
 public class SprintComponent extends AbstractComponent {
@@ -37,11 +35,6 @@ public class SprintComponent extends AbstractComponent {
             return workingAmount == 1 ? CARD_TEXT[1] : String.format(CARD_TEXT[2], workingAmount);
         }
         return String.format(CARD_TEXT[0], dynKey());
-    }
-
-    @Override
-    public String rawCapturedText() {
-        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
     }
 
     @Override

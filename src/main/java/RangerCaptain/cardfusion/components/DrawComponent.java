@@ -71,11 +71,6 @@ public class DrawComponent extends AbstractComponent {
     }
 
     @Override
-    public String rawCapturedText() {
-        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
-    }
-
-    @Override
     public void onTrigger(ComponentAmountProvider provider, AbstractPlayer p, AbstractMonster m, List<AbstractComponent> captured) {
         addToBot(new DrawCardAction(provider.getAmount(this), new DoAction(() -> {
             for (AbstractCard drawnCard : DrawCardAction.drawnCards) {

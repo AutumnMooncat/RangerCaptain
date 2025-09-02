@@ -53,16 +53,6 @@ public class BurnPointsComponent extends AbstractComponent {
     }
 
     @Override
-    public String rawCapturedText() {
-        String raw = rawCardText(Collections.emptyList());
-        String[] parts = raw.split(" ");
-        if (parts.length != 0 && parts[0].length() > 1 && parts[0].equals(parts[0].toUpperCase())) {
-            return raw;
-        }
-        return FormatHelper.uncapitalize(raw);
-    }
-
-    @Override
     public void onTrigger(ComponentAmountProvider provider, AbstractPlayer p, AbstractMonster m, List<AbstractComponent> captured) {
         switch (target) {
             case SELF:

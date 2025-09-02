@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import java.util.Collections;
 import java.util.List;
 
 public class CostsLessPerStashedComponent extends AbstractComponent {
@@ -44,11 +43,6 @@ public class CostsLessPerStashedComponent extends AbstractComponent {
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
         return String.format(CARD_TEXT[0], dynKey());
-    }
-
-    @Override
-    public String rawCapturedText() {
-        return rawCardText(Collections.emptyList());
     }
 
     @Override

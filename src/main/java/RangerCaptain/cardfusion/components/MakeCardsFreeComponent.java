@@ -3,7 +3,6 @@ package RangerCaptain.cardfusion.components;
 import RangerCaptain.MainModfile;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
-import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,7 +12,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -107,11 +105,6 @@ public class MakeCardsFreeComponent extends AbstractComponent {
             return workingAmount == 1 ? String.format(CARD_TEXT[1], locationText()) : String.format(CARD_TEXT[2], workingAmount, locationText());
         }
         return String.format(CARD_TEXT[0], dynKey(), locationText());
-    }
-
-    @Override
-    public String rawCapturedText() {
-        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
     }
 
     @Override

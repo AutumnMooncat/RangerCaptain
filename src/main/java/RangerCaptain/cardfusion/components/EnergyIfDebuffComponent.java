@@ -4,7 +4,6 @@ import RangerCaptain.MainModfile;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cards.tokens.FusedCard;
-import RangerCaptain.util.FormatHelper;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,7 +12,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import java.util.Collections;
 import java.util.List;
 
 public class EnergyIfDebuffComponent extends AbstractComponent {
@@ -45,11 +43,6 @@ public class EnergyIfDebuffComponent extends AbstractComponent {
             return String.format(CARD_TEXT[4], workingAmount);
         }
         return String.format(CARD_TEXT[0], dynKey());
-    }
-
-    @Override
-    public String rawCapturedText() {
-        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
     }
 
     @Override

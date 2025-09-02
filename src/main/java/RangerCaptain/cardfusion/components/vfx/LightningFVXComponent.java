@@ -37,7 +37,7 @@ public class LightningFVXComponent extends AbstractDamageModComponent {
 
     @Override
     public String rawCapturedText() {
-        return rawCardText(null);
+        return null;
     }
 
     @Override

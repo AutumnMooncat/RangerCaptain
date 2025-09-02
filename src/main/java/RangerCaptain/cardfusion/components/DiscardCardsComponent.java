@@ -101,11 +101,6 @@ public class DiscardCardsComponent extends AbstractComponent implements Abstract
     }
 
     @Override
-    public String rawCapturedText() {
-        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
-    }
-
-    @Override
     public void onTrigger(ComponentAmountProvider provider, AbstractPlayer p, AbstractMonster m, List<AbstractComponent> captured) {
         int amount = provider.getAmount(this);
         if (random) {

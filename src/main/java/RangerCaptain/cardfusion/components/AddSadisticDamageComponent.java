@@ -7,7 +7,6 @@ import RangerCaptain.damageMods.SadisticDamage;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 
-import java.util.Collections;
 import java.util.List;
 
 public class AddSadisticDamageComponent extends AbstractDamageModComponent {
@@ -37,11 +36,6 @@ public class AddSadisticDamageComponent extends AbstractDamageModComponent {
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
         return String.format(CARD_TEXT[0], workingAmount);
-    }
-
-    @Override
-    public String rawCapturedText() {
-        return rawCardText(Collections.emptyList());
     }
 
     @Override

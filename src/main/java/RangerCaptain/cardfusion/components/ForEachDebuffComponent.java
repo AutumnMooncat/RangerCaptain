@@ -71,7 +71,7 @@ public class ForEachDebuffComponent extends AbstractComponent {
 
     @Override
     public String rawCapturedText() {
-        return "";
+        return rawCardText(Collections.emptyList());
     }
 
     @Override

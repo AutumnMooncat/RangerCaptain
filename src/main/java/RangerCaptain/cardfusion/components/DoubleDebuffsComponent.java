@@ -5,14 +5,12 @@ import RangerCaptain.actions.CleansePowerAction;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.actions.DoublePowerAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
-import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -59,11 +57,6 @@ public class DoubleDebuffsComponent extends AbstractComponent {
             index -= wasAOE ? 2 : 4;
         }
         return workingAmount == 1 ? CARD_TEXT[index] : String.format(CARD_TEXT[index + 1], dynKey());
-    }
-
-    @Override
-    public String rawCapturedText() {
-        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
     }
 
     @Override

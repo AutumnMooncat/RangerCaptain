@@ -3,7 +3,6 @@ package RangerCaptain.cardfusion.components;
 import RangerCaptain.MainModfile;
 import RangerCaptain.actions.ResolveNextTurnEffectsAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
-import RangerCaptain.util.FormatHelper;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -38,11 +37,6 @@ public class ResolveNextTurnEffectsComponent extends AbstractComponent {
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
         return CARD_TEXT[0];
-    }
-
-    @Override
-    public String rawCapturedText() {
-        return FormatHelper.uncapitalize(CARD_TEXT[0]);
     }
 
     @Override

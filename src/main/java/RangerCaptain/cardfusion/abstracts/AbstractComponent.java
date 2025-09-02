@@ -4,18 +4,24 @@ import RangerCaptain.MainModfile;
 import RangerCaptain.cardmods.PurgeMod;
 import RangerCaptain.cards.tokens.FusedCard;
 import RangerCaptain.util.CardArtRoller;
+import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.MonsterEnum;
+import basemod.ReflectionHacks;
 import basemod.helpers.CardModifierManager;
+import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.DynamicTextBlocks;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.GameDictionary;
 import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public abstract class AbstractComponent implements Comparable<AbstractComponent> {
@@ -49,6 +55,15 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
     public static final int DO_PRIO = 15;
     public static final int FINALIZER_PRIO = 20;
     public static final int SUFFIX_PRIO = 25;
+
+    protected static String DYNTEXT_KEY;
+    protected static Pattern DYNTEXT_PATTERN;
+
+    static {
+        // Why did I make these private lol
+        DYNTEXT_KEY = ReflectionHacks.getPrivateStatic(DynamicTextBlocks.class, "DYNAMIC_KEY");
+        DYNTEXT_PATTERN = ReflectionHacks.getPrivateStatic(DynamicTextBlocks.class, "PATTERN");
+    }
 
     public enum ComponentType {
         BLOCK,
@@ -141,7 +156,71 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
 
     public abstract String rawCardText(List<AbstractComponent> captured);
 
-    public abstract String rawCapturedText();
+    public String rawCapturedText() {
+        String raw = rawCardText(Collections.emptyList());
+        // Modifiers dont change on capture
+        if (raw == null || type == ComponentType.MODIFIER) {
+            return raw;
+        }
+        String[] rawParts = raw.split(" ");
+        if (rawParts.length != 0) {
+            if (!shouldUncapWord(rawParts[0])) {
+                return raw;
+            }
+            // Here we go...
+            if (raw.startsWith(DYNTEXT_KEY)) {
+                Matcher m = DYNTEXT_PATTERN.matcher(raw.replace(DYNTEXT_KEY, ""));
+                if (m.find()) {
+                    StringBuffer sb = new StringBuffer();
+                    m.appendReplacement(sb, upCapDynText(m.group()));
+                    m.appendTail(sb);
+                    return sb.toString();
+                }
+            }
+        }
+        return FormatHelper.uncapitalize(raw);
+    }
+
+    protected boolean shouldUncapWord(String word) {
+        // Dont uncap things like ALL, dont uncap *-marked card names
+        if ((word.length() > 1 && word.equals(word.toUpperCase())) || word.startsWith("*")) {
+            return false;
+        }
+        // Dont uncap keywords
+        return !GameDictionary.keywords.containsKey(word.toLowerCase());
+    }
+
+    protected String upCapDynText(String block) {
+        StringBuilder sb = new StringBuilder();
+        String[] blockParts = block.split("\\|");
+        sb.append(DYNTEXT_KEY).append(blockParts[0]);
+        blockParts = Arrays.copyOfRange(blockParts, 1, blockParts.length);
+        for (String part : blockParts) {
+            sb.append("|");
+            if (part.contains("=")) {
+                String[] checkCasePair = part.split("=");
+                sb.append(checkCasePair[0]).append("=");
+                if (checkCasePair.length > 1) {
+                    String[] caseWords = checkCasePair[1].split(" ");
+                    String firstWord = caseWords[0];
+                    if (shouldUncapWord(firstWord)) {
+                        sb.append(FormatHelper.uncapitalize(firstWord));
+                        if (caseWords.length > 1) {
+                            caseWords = Arrays.copyOfRange(caseWords, 1, caseWords.length);
+                            for (String word : caseWords) {
+                                sb.append(" ").append(word);
+                            }
+                        }
+                    } else {
+                        sb.append(checkCasePair[1]);
+                    }
+                }
+            } else {
+                sb.append(part);
+            }
+        }
+        return sb.toString();
+    }
 
     public abstract void onTrigger(ComponentAmountProvider provider, AbstractPlayer p, AbstractMonster m, List<AbstractComponent> captured);
 

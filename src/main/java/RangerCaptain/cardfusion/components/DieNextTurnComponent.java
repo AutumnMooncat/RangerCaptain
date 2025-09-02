@@ -2,14 +2,12 @@ package RangerCaptain.cardfusion.components;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
-import RangerCaptain.util.FormatHelper;
 import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.watcher.EndTurnDeathPower;
 
-import java.util.Collections;
 import java.util.List;
 
 public class DieNextTurnComponent extends AbstractComponent {
@@ -44,11 +42,6 @@ public class DieNextTurnComponent extends AbstractComponent {
     @Override
     public String rawCardText(List<AbstractComponent> captured) {
         return CARD_TEXT[0];
-    }
-
-    @Override
-    public String rawCapturedText() {
-        return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
     }
 
     @Override
