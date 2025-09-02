@@ -3,6 +3,7 @@ package RangerCaptain.cards.abstracts;
 import RangerCaptain.MainModfile;
 import RangerCaptain.TheRangerCaptain;
 import RangerCaptain.cards.tokens.FusedCard;
+import RangerCaptain.patches.CantUpgradeFieldPatches;
 import RangerCaptain.patches.FusionModifierHooks;
 import RangerCaptain.util.*;
 import basemod.BaseMod;
@@ -385,7 +386,7 @@ public abstract class AbstractEasyCard extends CustomCard {
     }
 
     public void upgrade() {
-        if (!upgraded) {
+        if (!upgraded && !CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.get(this)) {
             upgradeName();
             upp();
             FusionModifierHooks.onUpgrade(this);
