@@ -45,7 +45,7 @@
   },
   "${ModID}:SpringLoadedPower": {
     "NAME": "Spring-Loaded",
-    "DESCRIPTIONS": ["Whenever an #yUnplayable card enters your hand, draw #b"," card.","cards."]
+    "DESCRIPTIONS": ["Whenever an #yUnplayable card enters your hand, draw #b"," card."," cards."]
   },
   "${ModID}:MindMeldPower": {
     "NAME": "Mind-Meld",
