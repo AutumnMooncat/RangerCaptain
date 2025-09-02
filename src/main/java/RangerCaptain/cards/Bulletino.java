@@ -39,7 +39,7 @@ public class Bulletino extends AbstractMultiUpgradeCard {
     }
 
     public Bulletino() {
-        super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
+        super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = 3;
         baseSecondMagic = secondMagic = 2;
         setMonsterData(MonsterEnum.BULLETINO);
@@ -79,7 +79,6 @@ public class Bulletino extends AbstractMultiUpgradeCard {
 
     public void upgrade1() {
         upgradeSecondMagic(1);
-        target = CardTarget.ALL_ENEMY;
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.ARTILLEREX);
