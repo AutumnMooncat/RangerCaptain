@@ -32,6 +32,7 @@ public class ExhaustCardsComponent extends AbstractComponent {
     public static final String IN_DRAW = DESCRIPTION_TEXT[4];
     public static final String IN_DISCARD = DESCRIPTION_TEXT[5];
     public static final String FOR_EACH = DESCRIPTION_TEXT[6];
+    public static final String TO = DESCRIPTION_TEXT[7];
     public static AbstractCard lastExhausted;
 
     public enum TargetPile {
@@ -45,7 +46,7 @@ public class ExhaustCardsComponent extends AbstractComponent {
     public boolean random;
 
     public ExhaustCardsComponent(float base) {
-        this(base, TargetPile.HAND, false, false);
+        this(base, TargetPile.HAND, false, false); // Todo "you may" bugged when captured
     }
 
     public ExhaustCardsComponent(float base, TargetPile pile, boolean optional, boolean random) {
@@ -218,7 +219,7 @@ public class ExhaustCardsComponent extends AbstractComponent {
     public static String exhaustYouMayFollowupText(List<AbstractComponent> captured) {
         StringBuilder text = new StringBuilder();
         if (captured.stream().anyMatch(c -> c.hasFlags(Flag.EXHAUST_FOLLOWUP))) {
-            text.append(" ").append(StringUtils.join(captured.stream().filter(c -> c.hasFlags(Flag.EXHAUST_FOLLOWUP)).map(c -> FormatHelper.uncapitalize(c.rawCardText(Collections.emptyList()))).collect(Collectors.toList()), " " + AND + " "));
+            text.append(" ").append(TO).append(" ").append(StringUtils.join(captured.stream().filter(c -> c.hasFlags(Flag.EXHAUST_FOLLOWUP)).map(c -> FormatHelper.uncapitalize(c.rawCardText(Collections.emptyList()))).collect(Collectors.toList()), " " + AND + " "));
         }
         for (AbstractComponent component : captured) {
             if (component.hasFlags(Flag.EXHAUST_COMPLEX_FOLLOWUP)) {
