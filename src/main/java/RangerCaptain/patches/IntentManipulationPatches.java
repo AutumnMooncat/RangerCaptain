@@ -1,5 +1,7 @@
 package RangerCaptain.patches;
 
+import RangerCaptain.actions.DoAction;
+import RangerCaptain.util.IntentHelper;
 import RangerCaptain.util.Wiz;
 import RangerCaptain.vfx.BigExplosionVFX;
 import basemod.ReflectionHacks;
@@ -17,6 +19,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.EnemyMoveInfo;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import javassist.CannotCompileException;
 import javassist.expr.ExprEditor;
@@ -24,10 +27,10 @@ import javassist.expr.MethodCall;
 
 import java.util.Iterator;
 
-public class MoveManipulationPatches {
+public class IntentManipulationPatches {
 
     public static void doSnowedIn(AbstractMonster monster) {
-        Wiz.atb(new RollMoveAction(monster));
+        rollOrBackupMove(monster);
     }
 
     public static void doBoobyTrap(AbstractMonster monster) {
@@ -40,7 +43,20 @@ public class MoveManipulationPatches {
             }
         });
         Wiz.atb(new DamageAction(monster, new DamageInfo(monster, calculateDamage(monster, monster, ReflectionHacks.getPrivate(monster, AbstractMonster.class, "intentBaseDmg")), DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE, true));
+        rollOrBackupMove(monster);
+    }
+
+    private static void rollOrBackupMove(AbstractMonster monster) {
+        Wiz.atb(new DoAction(() -> LockIntentPatches.LockedIntentField.successfullyRolledMove.set(monster, false)));
         Wiz.atb(new RollMoveAction(monster));
+        Wiz.atb(new DoAction(() -> {
+            if (!LockIntentPatches.LockedIntentField.successfullyRolledMove.get(monster)) {
+                EnemyMoveInfo backup = LockIntentPatches.LockedIntentField.desiredInfo.get(monster);
+                if (backup != null) {
+                    IntentHelper.setMove(monster, backup);
+                }
+            }
+        }));
     }
 
     private static int calculateDamage(AbstractCreature source, AbstractCreature target, int dmg) {
@@ -83,7 +99,7 @@ public class MoveManipulationPatches {
             return new ExprEditor() {
                 public void edit(MethodCall m) throws CannotCompileException {
                     if (m.getClassName().equals(AbstractMonster.class.getName()) && m.getMethodName().equals("takeTurn")) {
-                        m.replace("if (m.intent == "+CustomIntentPatches.class.getName()+".RANGER_SNOWED_IN) {"+MoveManipulationPatches.class.getName()+".doSnowedIn(m);} else if (m.intent == "+CustomIntentPatches.class.getName()+".RANGER_BOMB) {"+ MoveManipulationPatches.class.getName()+".doBoobyTrap(m);} else {$_ = $proceed($$);}");
+                        m.replace("if (m.intent == "+CustomIntentPatches.class.getName()+".RANGER_SNOWED_IN) {"+ IntentManipulationPatches.class.getName()+".doSnowedIn(m);} else if (m.intent == "+CustomIntentPatches.class.getName()+".RANGER_BOMB) {"+ IntentManipulationPatches.class.getName()+".doBoobyTrap(m);} else {$_ = $proceed($$);}");
                     }
                 }
             };

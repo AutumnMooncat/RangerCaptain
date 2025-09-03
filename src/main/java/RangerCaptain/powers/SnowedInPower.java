@@ -54,9 +54,7 @@ public class SnowedInPower extends AbstractEasyPower {
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
-        Wiz.forAllMonstersLiving(mon -> {
-            LockIntentPatches.LockedIntentField.desiredInfo.set(mon, null);
-        });
+        shouldRevert = false;
         addToBot(new ReducePowerAction(owner, owner, this, 1));
     }
 
@@ -69,7 +67,8 @@ public class SnowedInPower extends AbstractEasyPower {
                     if (IntentHelper.isNormalMove(current)) {
                         LockIntentPatches.LockedIntentField.desiredInfo.set(mon, current);
                     }
-                    IntentHelper.setMove(mon, new EnemyMoveInfo(mon.nextMove, CustomIntentPatches.RANGER_SNOWED_IN, -1, 0, false));
+                    // Attempt force move, Tape Jam will prevent if it exists
+                    IntentHelper.forceMove(mon, new EnemyMoveInfo(mon.nextMove, CustomIntentPatches.RANGER_SNOWED_IN, -1, 0, false));
                 }
             });
         }));

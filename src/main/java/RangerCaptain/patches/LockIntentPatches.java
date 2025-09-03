@@ -29,6 +29,7 @@ public class LockIntentPatches {
     public static class LockedIntentField {
         public static SpireField<EnemyMoveInfo> lockedInfo = new SpireField<>(() -> null);
         public static SpireField<EnemyMoveInfo> desiredInfo = new SpireField<>(() -> null);
+        public static SpireField<Boolean> successfullyRolledMove = new SpireField<>(() -> false);
     }
 
     @SpirePatch2(clz = AbstractMonster.class, method = "createIntent")
@@ -54,6 +55,7 @@ public class LockIntentPatches {
         @SpirePrefixPatch
         public static SpireReturn<Void> plz(AbstractMonster __instance, String moveName, byte nextMove, AbstractMonster.Intent intent, int baseDamage, int multiplier, boolean isMultiDamage) {
             EnemyMoveInfo desiredMove = new EnemyMoveInfo(nextMove, intent, baseDamage, multiplier, isMultiDamage);
+            LockedIntentField.successfullyRolledMove.set(__instance, true);
             if (IntentHelper.isNormalMove(desiredMove)) {
                 LockedIntentField.desiredInfo.set(__instance, desiredMove);
             }
