@@ -1,8 +1,11 @@
 package RangerCaptain.cardfusion.abstracts;
 
+import RangerCaptain.cardmods.FusionFormMod;
 import RangerCaptain.cards.tokens.FusedCard;
+import RangerCaptain.powers.AbstractComponentPower;
 import RangerCaptain.util.FormatHelper;
 import basemod.BaseMod;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.GameDictionary;
 import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import org.apache.commons.lang3.StringUtils;
@@ -119,6 +122,27 @@ public abstract class AbstractPowerComponent extends AbstractComponent {
     @Override
     public String rawCapturedText() {
         return FormatHelper.uncapitalize(rawCardText(Collections.emptyList()));
+    }
+
+    public String getPowerName(ComponentAmountProvider provider, String fallback) {
+        if (provider instanceof FusedCard) {
+            FusionFormMod mod = FusionFormMod.getFusionForm((AbstractCard) provider);
+            if (mod != null) {
+                return mod.form.fusionName;
+            }
+        } else if (provider instanceof AbstractComponentPower) {
+            return ((AbstractComponentPower) provider).name+"?";
+        }
+        return fallback;
+    }
+
+    public void flattenComponents(ComponentAmountProvider provider, List<AbstractComponent> components) {
+        for (AbstractComponent comp : components) {
+            if (comp.dynvar != DynVar.NONE) {
+                comp.workingAmount = provider.getAmount(comp);
+                comp.dynvar = DynVar.FLAT;
+            }
+        }
     }
 
     public String rawPowerText(List<AbstractComponent> captured) {

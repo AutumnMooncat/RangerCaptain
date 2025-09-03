@@ -3,11 +3,9 @@ package RangerCaptain.cardfusion.components;
 import RangerCaptain.MainModfile;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.abstracts.AbstractPowerComponent;
-import RangerCaptain.cardmods.FusionFormMod;
 import RangerCaptain.cards.tokens.FusedCard;
 import RangerCaptain.powers.BerserkerPower;
 import RangerCaptain.util.Wiz;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -54,19 +52,8 @@ public class OnPlayAttackPower extends AbstractPowerComponent {
 
     @Override
     public void onTrigger(ComponentAmountProvider provider, AbstractPlayer p, AbstractMonster m, List<AbstractComponent> captured) {
-        String name = BerserkerPower.NAME+"?";
-        if (provider instanceof FusedCard) {
-            FusionFormMod mod = FusionFormMod.getFusionForm((AbstractCard) provider);
-            if (mod != null) {
-                name = mod.form.fusionName;
-            }
-        }
-        for (AbstractComponent comp : captured) {
-            comp.workingAmount = provider.getAmount(comp);
-            if (comp.dynvar != DynVar.NONE) {
-                comp.dynvar = DynVar.FLAT;
-            }
-        }
+        String name = getPowerName(provider, BerserkerPower.NAME+"?");
+        flattenComponents(provider, captured);
         Wiz.applyToSelf(new BerserkerPower(p, name, this, captured));
     }
 
