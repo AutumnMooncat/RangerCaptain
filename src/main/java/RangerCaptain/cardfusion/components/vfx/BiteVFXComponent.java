@@ -12,7 +12,7 @@ public class BiteVFXComponent extends AbstractDamageModComponent {
     public static final String ID = MainModfile.makeID(BiteVFXComponent.class.getSimpleName());
 
     public BiteVFXComponent() {
-        super(ID, 0);
+        super(ID);
     }
 
     @Override

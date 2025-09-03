@@ -12,7 +12,7 @@ public class LightningOrbFVXComponent extends AbstractDamageModComponent {
     public static final String ID = MainModfile.makeID(LightningOrbFVXComponent.class.getSimpleName());
 
     public LightningOrbFVXComponent() {
-        super(ID, 0);
+        super(ID);
     }
 
     @Override

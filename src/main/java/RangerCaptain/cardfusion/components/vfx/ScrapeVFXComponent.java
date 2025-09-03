@@ -12,7 +12,7 @@ public class ScrapeVFXComponent extends AbstractDamageModComponent {
     public static final String ID = MainModfile.makeID(ScrapeVFXComponent.class.getSimpleName());
 
     public ScrapeVFXComponent() {
-        super(ID, 0);
+        super(ID);
     }
 
     @Override
