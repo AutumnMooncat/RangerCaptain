@@ -620,6 +620,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         for (AbstractComponent component : components) {
             component.capturedComponents.removeAll(stacked);
         }
+        components.removeIf(c -> c.hasFlags(Flag.MUST_CAPTURE) && c.capturedComponents.isEmpty());
     }
 
     public static void resolveTraits(FusedCard card, List<AbstractComponent> components) {
