@@ -33,7 +33,7 @@ public class ExhaustCardsComponent extends AbstractComponent {
     public static final String IN_DISCARD = DESCRIPTION_TEXT[5];
     public static final String FOR_EACH = DESCRIPTION_TEXT[6];
     public static final String TO = DESCRIPTION_TEXT[7];
-    public static AbstractCard lastExhausted;
+    public static final ArrayList<AbstractCard> lastExhausted = new ArrayList<>();
 
     public enum TargetPile {
         HAND,
@@ -141,19 +141,25 @@ public class ExhaustCardsComponent extends AbstractComponent {
     @Override
     public void onTrigger(ComponentAmountProvider provider, AbstractPlayer p, AbstractMonster m, List<AbstractComponent> captured) {
         int amount = provider.getAmount(this);
+        lastExhausted.clear();
         if (random) {
             addToBot(new DoAction(() -> {
                 CardGroup source = pile == TargetPile.HAND ? Wiz.adp().hand : pile == TargetPile.DRAW ? Wiz.adp().drawPile : Wiz.adp().discardPile;
                 if (amount >= source.size()) {
+                    lastExhausted.addAll(source.group);
+                    doComplexActions(provider, p, m, captured);
                     for (AbstractCard card : source.group) {
-                        doCapturedActions(provider, p, m, captured, card);
+                        doSimpleActions(provider, p, m, captured);
                         addToTop(new ExhaustSpecificCardAction(card, source, true));
                     }
                 } else {
                     List<AbstractCard> cards = new ArrayList<>(source.group);
                     for (int i = 0; i < amount; i++) {
-                        AbstractCard card = cards.remove(AbstractDungeon.cardRandomRng.random(cards.size() - 1));
-                        doCapturedActions(provider, p, m, captured, card);
+                        lastExhausted.add(cards.remove(AbstractDungeon.cardRandomRng.random(cards.size() - 1)));
+                    }
+                    doComplexActions(provider, p, m, captured);
+                    for (AbstractCard card : lastExhausted) {
+                        doSimpleActions(provider, p, m, captured);
                         addToTop(new ExhaustSpecificCardAction(card, source, true));
                     }
                 }
@@ -162,24 +168,30 @@ public class ExhaustCardsComponent extends AbstractComponent {
             switch (pile) {
                 case HAND:
                     addToBot(new BetterSelectCardsInHandAction(amount, ExhaustAction.TEXT[0], optional, optional, c -> true, cards -> {
+                        lastExhausted.addAll(cards);
+                        doComplexActions(provider, p, m, captured);
                         for (AbstractCard card : cards) {
-                            doCapturedActions(provider, p, m, captured, card);
+                            doSimpleActions(provider, p, m, captured);
                             addToTop(new ExhaustSpecificCardAction(card, p.hand, true));
                         }
                     }));
                     break;
                 case DRAW:
                     addToBot(new BetterSelectCardsCenteredAction(Wiz.adp().drawPile.group, amount, ExhaustAction.TEXT[0], optional, c -> true, cards -> {
+                        lastExhausted.addAll(cards);
+                        doComplexActions(provider, p, m, captured);
                         for (AbstractCard card : cards) {
-                            doCapturedActions(provider, p, m, captured, card);
+                            doSimpleActions(provider, p, m, captured);
                             addToTop(new ExhaustSpecificCardAction(card, p.drawPile, true));
                         }
                     }));
                     break;
                 case DISCARD:
                     addToBot(new BetterSelectCardsCenteredAction(Wiz.adp().discardPile.group, amount, ExhaustAction.TEXT[0], optional, c -> true, cards -> {
+                        lastExhausted.addAll(cards);
+                        doComplexActions(provider, p, m, captured);
                         for (AbstractCard card : cards) {
-                            doCapturedActions(provider, p, m, captured, card);
+                            doSimpleActions(provider, p, m, captured);
                             addToTop(new ExhaustSpecificCardAction(card, p.discardPile, true));
                         }
                     }));
@@ -188,13 +200,25 @@ public class ExhaustCardsComponent extends AbstractComponent {
         }
     }
 
-    private void doCapturedActions(ComponentAmountProvider provider, AbstractPlayer p, AbstractMonster m, List<AbstractComponent> captured, AbstractCard exhausted) {
-        lastExhausted = exhausted;
+    private void doComplexActions(ComponentAmountProvider provider, AbstractPlayer p, AbstractMonster m, List<AbstractComponent> captured) {
         ActionCapturePatch.doCapture = true;
         for (int i = captured.size() - 1; i >= 0; i--) {
-            captured.get(i).onTrigger(provider, p, m, Collections.emptyList());
+            AbstractComponent comp = captured.get(i);
+            if (comp.hasFlags(Flag.EXHAUST_COMPLEX_FOLLOWUP)) {
+                captured.get(i).onTrigger(provider, p, m, Collections.emptyList());
+            }
         }
-        lastExhausted = null;
+        ActionCapturePatch.releaseToTop();
+    }
+
+    private void doSimpleActions(ComponentAmountProvider provider, AbstractPlayer p, AbstractMonster m, List<AbstractComponent> captured) {
+        ActionCapturePatch.doCapture = true;
+        for (int i = captured.size() - 1; i >= 0; i--) {
+            AbstractComponent comp = captured.get(i);
+            if (!comp.hasFlags(Flag.EXHAUST_COMPLEX_FOLLOWUP)) {
+                captured.get(i).onTrigger(provider, p, m, Collections.emptyList());
+            }
+        }
         ActionCapturePatch.releaseToTop();
     }
 

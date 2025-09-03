@@ -4,6 +4,8 @@ import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.abstracts.AbstractDamageModComponent;
 import RangerCaptain.cardfusion.abstracts.AbstractPowerComponent;
+import RangerCaptain.cardfusion.components.ExhaustAttacksComponent;
+import RangerCaptain.cardfusion.components.ExhaustCardsComponent;
 import RangerCaptain.patches.ActionCapturePatch;
 import RangerCaptain.util.CalcHelper;
 import RangerCaptain.util.Wiz;
@@ -17,8 +19,10 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public abstract class AbstractComponentPower extends AbstractEasyPower implements AbstractComponent.ComponentAmountProvider, NonStackablePower {
     protected static final CalcHelper.DummyCard dummyCard = new CalcHelper.DummyCard();
@@ -52,8 +56,16 @@ public abstract class AbstractComponentPower extends AbstractEasyPower implement
             }
             ActionCapturePatch.doCapture = true;
             ActionCapturePatch.onCapture = this::captureCheck;
+            ArrayList<AbstractComponent> complex = captured.stream().filter(c -> c.hasFlags(AbstractComponent.Flag.EXHAUST_COMPLEX_FOLLOWUP)).collect(Collectors.toCollection(ArrayList::new));
             for (AbstractComponent component : captured) {
-                component.onTrigger(this, Wiz.adp(), target, Collections.emptyList());
+                if (component instanceof AbstractDamageModComponent || component.hasFlags(AbstractComponent.Flag.EXHAUST_COMPLEX_FOLLOWUP)) {
+                    continue;
+                }
+                if (component instanceof ExhaustAttacksComponent || component instanceof ExhaustCardsComponent) {
+                    component.onTrigger(this, Wiz.adp(), target, complex);
+                } else {
+                    component.onTrigger(this, Wiz.adp(), target, Collections.emptyList());
+                }
             }
             addToBot(new DoAction(() -> locked = false));
             if (toTop) {

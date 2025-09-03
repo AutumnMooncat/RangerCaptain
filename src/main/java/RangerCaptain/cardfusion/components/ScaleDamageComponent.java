@@ -5,6 +5,7 @@ import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cards.tokens.FusedCard;
 import RangerCaptain.powers.AbstractComponentPower;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -55,10 +56,9 @@ public class ScaleDamageComponent extends AbstractComponent {
     public void onTrigger(ComponentAmountProvider provider, AbstractPlayer p, AbstractMonster m, List<AbstractComponent> captured) {
         int amount = provider.getAmount(this);
         if (dynvar == DynVar.NONE) {
-            if (ExhaustAttacksComponent.lastExhausted != null) {
-                amount = ExhaustAttacksComponent.lastExhausted.damage;
-            } else {
-                return;
+            amount = 0;
+            for (AbstractCard card : ExhaustAttacksComponent.lastExhausted) {
+                amount += card.damage;
             }
         }
         int finalAmount = amount;
