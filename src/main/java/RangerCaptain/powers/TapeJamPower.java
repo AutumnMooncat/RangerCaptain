@@ -1,10 +1,13 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
+import RangerCaptain.patches.LockIntentPatches;
+import RangerCaptain.util.IntentHelper;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class TapeJamPower extends AbstractEasyPower {
     public static final String POWER_ID = MainModfile.makeID(TapeJamPower.class.getSimpleName());
@@ -23,6 +26,18 @@ public class TapeJamPower extends AbstractEasyPower {
         } else {
             this.description = DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
         }
+    }
+
+    @Override
+    public void onInitialApplication() {
+        if (owner instanceof AbstractMonster) {
+            LockIntentPatches.LockedIntentField.lockedInfo.set(owner, IntentHelper.getMove((AbstractMonster) owner));
+        }
+    }
+
+    @Override
+    public void onRemove() {
+        LockIntentPatches.LockedIntentField.lockedInfo.set(owner, null);
     }
 
     @Override

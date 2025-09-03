@@ -1,14 +1,16 @@
 package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
+import RangerCaptain.actions.DoAction;
 import RangerCaptain.patches.CustomIntentPatches;
+import RangerCaptain.patches.LockIntentPatches;
+import RangerCaptain.util.IntentHelper;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.EnemyMoveInfo;
-
-import java.lang.reflect.Field;
 
 public class BoobyTrappedPower extends AbstractEasyPower {
     public static final String POWER_ID = MainModfile.makeID(BoobyTrappedPower.class.getSimpleName());
@@ -16,17 +18,7 @@ public class BoobyTrappedPower extends AbstractEasyPower {
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     public static final int BOOBY_TRAP_DAMAGE = 15;
-    private static final EnemyMoveInfo boobyTrapMove = new EnemyMoveInfo((byte) -1, CustomIntentPatches.RANGER_BOMB, BOOBY_TRAP_DAMAGE, 0, false);
-    private static final Field moveField;
-
-    static {
-        try {
-            moveField = AbstractMonster.class.getDeclaredField("move");
-            moveField.setAccessible(true);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
+    private boolean shouldRevert = true;
 
     public BoobyTrappedPower(AbstractCreature owner, int amount) {
         super(POWER_ID, NAME, PowerType.DEBUFF, false, owner, amount);
@@ -42,31 +34,35 @@ public class BoobyTrappedPower extends AbstractEasyPower {
     }
 
     @Override
+    public void atStartOfTurn() {
+        shouldRevert = false;
+        addToBot(new ReducePowerAction(owner, owner, this, 1));
+    }
+
+    @Override
+    public void onRemove() {
+        addToTop(new DoAction(() -> {
+            if (owner instanceof AbstractMonster) {
+                if (shouldRevert) {
+                    EnemyMoveInfo replaced = LockIntentPatches.LockedIntentField.desiredInfo.get(owner);
+                    if (replaced != null) {
+                        IntentHelper.setMove((AbstractMonster) owner, replaced);
+                    }
+                }
+            }
+        }));
+    }
+
+    @Override
     public void onInitialApplication() {
-        setMove();
-    }
-
-    private EnemyMoveInfo getMove() {
         if (owner instanceof AbstractMonster) {
-            try {
-                return (EnemyMoveInfo) moveField.get(owner);
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return null;
-    }
-
-    private void setMove() {
-        if (owner instanceof AbstractMonster) {
-            byte moveByte = ((AbstractMonster)owner).nextMove;
-            try {
-                boobyTrapMove.nextMove = moveByte;
-                moveField.set(owner, boobyTrapMove);
-                ((AbstractMonster)owner).createIntent();
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            }
+            addToBot(new DoAction(() -> {
+                EnemyMoveInfo current = IntentHelper.getMove((AbstractMonster) owner);
+                if (IntentHelper.isNormalMove(current)) {
+                    LockIntentPatches.LockedIntentField.desiredInfo.set(owner, current);
+                }
+                IntentHelper.setMove((AbstractMonster) owner, new EnemyMoveInfo((byte) -1, CustomIntentPatches.RANGER_BOMB, BOOBY_TRAP_DAMAGE, 0, false));
+            }));
         }
     }
 }

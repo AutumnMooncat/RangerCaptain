@@ -1,7 +1,9 @@
 package RangerCaptain.patches;
 
+import RangerCaptain.powers.BoobyTrappedPower;
 import RangerCaptain.powers.SnowedInPower;
 import RangerCaptain.powers.TapeJamPower;
+import RangerCaptain.util.IntentHelper;
 import basemod.ReflectionHacks;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -20,30 +22,55 @@ import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
 import javassist.expr.NewExpr;
 
-import java.lang.reflect.Field;
 import java.util.Arrays;
 
 public class LockIntentPatches {
+    @SpirePatch2(clz = AbstractMonster.class, method = SpirePatch.CLASS)
+    public static class LockedIntentField {
+        public static SpireField<EnemyMoveInfo> lockedInfo = new SpireField<>(() -> null);
+        public static SpireField<EnemyMoveInfo> desiredInfo = new SpireField<>(() -> null);
+    }
+
+    @SpirePatch2(clz = AbstractMonster.class, method = "createIntent")
+    public static class ThisIsJank {
+        @SpirePrefixPatch
+        public static void plz(AbstractMonster __instance) {
+            EnemyMoveInfo lockedInfo = LockedIntentField.lockedInfo.get(__instance);
+            if (lockedInfo != null) {
+                EnemyMoveInfo currentInfo = IntentHelper.getMove(__instance);
+                if (currentInfo != lockedInfo) {
+                    IntentHelper.forceMove(__instance, lockedInfo);
+                    AbstractPower tapeJam = __instance.getPower(TapeJamPower.POWER_ID);
+                    if (tapeJam != null) {
+                        tapeJam.flash();
+                    }
+                }
+            }
+        }
+    }
+
     @SpirePatch2(clz = AbstractMonster.class, method = "setMove", paramtypez = {String.class, byte.class, AbstractMonster.Intent.class, int.class, int.class, boolean.class})
     public static class ThisIsVeryJank {
         @SpirePrefixPatch
         public static SpireReturn<Void> plz(AbstractMonster __instance, String moveName, byte nextMove, AbstractMonster.Intent intent, int baseDamage, int multiplier, boolean isMultiDamage) {
+            EnemyMoveInfo desiredMove = new EnemyMoveInfo(nextMove, intent, baseDamage, multiplier, isMultiDamage);
+            if (IntentHelper.isNormalMove(desiredMove)) {
+                LockedIntentField.desiredInfo.set(__instance, desiredMove);
+            }
+            AbstractPower tapeJam = __instance.getPower(TapeJamPower.POWER_ID);
+            if (tapeJam != null) {
+                tapeJam.flash();
+                return SpireReturn.Return();
+            }
             AbstractPower snowedIn = AbstractDungeon.player.getPower(SnowedInPower.POWER_ID);
             if (snowedIn != null && baseDamage > -1) {
                 snowedIn.flash();
-                try {
-                    Field f = AbstractMonster.class.getDeclaredField("move");
-                    f.setAccessible(true);
-                    EnemyMoveInfo stunMove = new EnemyMoveInfo(nextMove, CustomIntentPatches.RANGER_SNOWED_IN, -1, 0, false);
-                    f.set(__instance, stunMove);
-                } catch (NoSuchFieldException | IllegalAccessException e) {
-                    e.printStackTrace();
-                }
+                IntentHelper.forceMove(__instance, new EnemyMoveInfo(nextMove, CustomIntentPatches.RANGER_SNOWED_IN, -1, 0, false));
                 return SpireReturn.Return();
             }
-            AbstractPower tapejam = __instance.getPower(TapeJamPower.POWER_ID);
-            if (tapejam != null) {
-                tapejam.flash();
+            AbstractPower boobyTrap = __instance.getPower(BoobyTrappedPower.POWER_ID);
+            if (boobyTrap != null) {
+                IntentHelper.forceMove(__instance, new EnemyMoveInfo(nextMove, CustomIntentPatches.RANGER_BOMB, BoobyTrappedPower.BOOBY_TRAP_DAMAGE, 0, false));
                 return SpireReturn.Return();
             }
             return SpireReturn.Continue();
