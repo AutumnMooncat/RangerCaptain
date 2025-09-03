@@ -13,9 +13,8 @@ import basemod.ReflectionHacks;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.patches.BindingPatches;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -54,8 +53,10 @@ public abstract class AbstractComponentPower extends AbstractEasyPower implement
                     DamageModifierManager.addModifier(dummyCard, ((AbstractDamageModComponent) c).getDamageMod(getAmount(c)));
                 }
             }
+            if (AbstractDungeon.actionManager.currentAction != null) {
+                BindingPatches.BoundGameActionFields.actionDelayedCardInUse.set(AbstractDungeon.actionManager.currentAction, dummyCard);
+            }
             ActionCapturePatch.doCapture = true;
-            ActionCapturePatch.onCapture = this::captureCheck;
             ArrayList<AbstractComponent> complex = captured.stream().filter(c -> c.hasFlags(AbstractComponent.Flag.EXHAUST_COMPLEX_FOLLOWUP)).collect(Collectors.toCollection(ArrayList::new));
             for (AbstractComponent component : captured) {
                 if (component instanceof AbstractDamageModComponent || component.hasFlags(AbstractComponent.Flag.EXHAUST_COMPLEX_FOLLOWUP)) {
@@ -74,12 +75,6 @@ public abstract class AbstractComponentPower extends AbstractEasyPower implement
                 ActionCapturePatch.releaseToBot();
             }
             ReflectionHacks.setPrivateStatic(BindingPatches.class, "canPassInstigator", couldPass);
-        }
-    }
-
-    public void captureCheck(AbstractGameAction action) {
-        if (!(action instanceof ApplyPowerAction)) {
-            BindingPatches.BoundGameActionFields.actionDelayedCardInUse.set(action, dummyCard);
         }
     }
 
