@@ -58,14 +58,25 @@ public abstract class AbstractComponentPower extends AbstractEasyPower implement
             }
             ActionCapturePatch.doCapture = true;
             ArrayList<AbstractComponent> complex = captured.stream().filter(c -> c.hasFlags(AbstractComponent.Flag.EXHAUST_COMPLEX_FOLLOWUP)).collect(Collectors.toCollection(ArrayList::new));
+            AbstractMonster randomTarg = AbstractDungeon.getRandomMonster();
             for (AbstractComponent component : captured) {
                 if (component instanceof AbstractDamageModComponent || component.hasFlags(AbstractComponent.Flag.EXHAUST_COMPLEX_FOLLOWUP)) {
                     continue;
                 }
+                List<AbstractComponent> captured = Collections.emptyList();
+                AbstractMonster toHit = target;
+                boolean wasRandom = false;
                 if (component instanceof ExhaustAttacksComponent || component instanceof ExhaustCardsComponent) {
-                    component.onTrigger(this, Wiz.adp(), target, complex);
-                } else {
-                    component.onTrigger(this, Wiz.adp(), target, Collections.emptyList());
+                    captured = complex;
+                }
+                if (component.target == AbstractComponent.ComponentTarget.ENEMY_RANDOM) {
+                    toHit = randomTarg;
+                    component.target = AbstractComponent.ComponentTarget.ENEMY;
+                    wasRandom = true;
+                }
+                component.onTrigger(this, Wiz.adp(), toHit, captured);
+                if (wasRandom) {
+                    component.target = AbstractComponent.ComponentTarget.ENEMY_RANDOM;
                 }
             }
             addToBot(new DoAction(() -> locked = false));
