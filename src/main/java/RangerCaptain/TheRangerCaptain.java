@@ -2,7 +2,7 @@ package RangerCaptain;
 
 import RangerCaptain.cards.Camping;
 import RangerCaptain.cards.Defend;
-import RangerCaptain.cards.Levitate;
+import RangerCaptain.cards.LiftOff;
 import RangerCaptain.cards.Strike;
 import RangerCaptain.relics.EspressoExpress;
 import RangerCaptain.util.CustomSounds;
@@ -112,7 +112,7 @@ public class TheRangerCaptain extends CustomPlayer {
         retVal.add(Strike.ID);
         retVal.add(Strike.ID);
         retVal.add(Strike.ID);
-        retVal.add(Levitate.ID);
+        retVal.add(LiftOff.ID);
         retVal.add(Defend.ID);
         retVal.add(Defend.ID);
         retVal.add(Defend.ID);
@@ -166,7 +166,7 @@ public class TheRangerCaptain extends CustomPlayer {
 
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new Levitate();
+        return new LiftOff();
     }
 
     @Override
