@@ -23,7 +23,7 @@ public class Hauntome extends AbstractEasyCard {
         new FusionComponentHelper(MonsterEnum.HAUNTOME)
                 .withCost(1)
                 .with(new OnStashComponent())
-                .withFlags(new BlockComponent(7), AbstractComponent.Flag.INVERSE_PREFERRED)
+                .withFlags(new BlockComponent(7.5f), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 
