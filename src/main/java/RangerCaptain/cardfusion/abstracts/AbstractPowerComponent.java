@@ -19,9 +19,8 @@ import java.util.stream.Collectors;
 public abstract class AbstractPowerComponent extends AbstractComponent {
     public boolean providesTarget;
 
-    public AbstractPowerComponent(String ID, boolean providesTarget) { // TODO "a random enemy" -> "random enemies"? Or rework so effect matches text
-        super(ID, 0, ComponentType.MODIFIER, ComponentTarget.SELF, DynVar.NONE); // TODO fuse 2 powers with same effect makes one invalid
     public AbstractPowerComponent(String ID, boolean providesTarget) {
+        super(ID, 0, ComponentType.MODIFIER, ComponentTarget.SELF, DynVar.NONE); // TODO fuse 2 powers with same effect makes one invalid, check stacking effects dont both defer?
         this.providesTarget = providesTarget;
         setFlags(Flag.MUST_CAPTURE);
     }
