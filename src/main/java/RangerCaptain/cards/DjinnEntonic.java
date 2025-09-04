@@ -29,7 +29,7 @@ public class DjinnEntonic extends AbstractEasyCard {
     }
 
     public DjinnEntonic() {
-        super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.DJINN_ENTONIC);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
