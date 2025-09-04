@@ -608,7 +608,7 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
         List<AbstractComponent> stacked = new ArrayList<>();
         for (AbstractComponent component : components) {
             for (AbstractComponent other : components) {
-                if (component != other && component.shouldStack(other) && !stacked.contains(component) && !stacked.contains(other) && (!component.wasCaptured || other.wasCaptured) && !component.capturedComponents.contains(other)) {
+                if (component.shouldStack(other) && extraStackCheck(component, other) && !stacked.contains(component) && !stacked.contains(other)) {
                     stacked.add(component);
                     component.scaleToCost(other.baseCost);
                     other.receiveStacks(component);
@@ -621,6 +621,21 @@ public abstract class AbstractComponent implements Comparable<AbstractComponent>
             component.capturedComponents.removeAll(stacked);
         }
         components.removeIf(c -> c.hasFlags(Flag.MUST_CAPTURE) && c.capturedComponents.isEmpty());
+    }
+
+    private static boolean extraStackCheck(AbstractComponent component, AbstractComponent other) {
+        if (component == other) {
+            return false;
+        } else if (component.wasCaptured && !other.wasCaptured) {
+            return false;
+        } else if (component.capturedComponents.contains(other)) {
+            return false;
+        } else if (component.hasFlags(Flag.INVERSE_PREFERRED) && other.hasFlags(Flag.INVERSE_PREFERRED) && component.source != other.source) {
+            return false;
+        } else if (component.hasFlags(Flag.INVERSE_FORCED) && other.hasFlags(Flag.INVERSE_FORCED) && component.source != other.source) {
+            return false;
+        }
+        return true;
     }
 
     public static void resolveTraits(FusedCard card, List<AbstractComponent> components) {
