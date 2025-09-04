@@ -12,8 +12,8 @@ public class Camping extends AbstractEasyCard {
     public final static String ID = makeID(Camping.class.getSimpleName());
 
     public Camping() {
-        super(ID, 2, CardType.SKILL, CardRarity.BASIC, CardTarget.SELF);
-        baseBlock = block = 8;
+        super(ID, 0, CardType.SKILL, CardRarity.BASIC, CardTarget.SELF);
+        baseBlock = block = 3;
         baseMagicNumber = magicNumber = 1;
     }
 
@@ -25,6 +25,6 @@ public class Camping extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeBlock(4);
+        upgradeBlock(2);
     }
 }
