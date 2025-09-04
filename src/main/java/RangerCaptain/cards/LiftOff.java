@@ -13,12 +13,12 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static RangerCaptain.MainModfile.makeID;
 
-public class Levitate extends AbstractEasyCard {
-    public final static String ID = makeID(Levitate.class.getSimpleName());
+public class LiftOff extends AbstractEasyCard {
+    public final static String ID = makeID(LiftOff.class.getSimpleName());
 
-    public Levitate() {
-        super(ID, 1, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
-        baseDamage = damage = 5;
+    public LiftOff() {
+        super(ID, 2, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
+        baseDamage = damage = 10;
         baseMagicNumber = magicNumber = 1;
         DamageModifierManager.addModifier(this, new LightningOrbVFX());
     }
@@ -32,7 +32,7 @@ public class Levitate extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        //upgradeBaseCost(0);
+        //upgradeBaseCost(1);
         upgradeMagicNumber(1);
     }
 }
