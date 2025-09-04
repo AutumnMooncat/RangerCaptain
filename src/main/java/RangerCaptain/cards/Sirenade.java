@@ -41,7 +41,7 @@ public class Sirenade extends AbstractEasyCard {
 
     public Sirenade() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
-        baseDamage = damage = 5;
+        baseDamage = damage = 6;
         baseMagicNumber = magicNumber = 1;
         isMultiDamage = true;
         setMonsterData(MonsterEnum.SIRENADE);
