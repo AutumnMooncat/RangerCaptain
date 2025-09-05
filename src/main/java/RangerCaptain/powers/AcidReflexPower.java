@@ -19,7 +19,7 @@ public class AcidReflexPower extends AbstractComponentPower {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     public AcidReflexPower(AbstractCreature owner, int amount) {
-        super(POWER_ID, NAME, PowerType.BUFF, false, owner, amount);
+        super(POWER_ID, NAME, PowerType.BUFF, false, owner, amount); // TODO fires before cards drawn so Exhaust fails
     }
 
     public AcidReflexPower(AbstractCreature owner, String name, OnTurnStartComponent source, List<AbstractComponent> components) {
@@ -31,7 +31,8 @@ public class AcidReflexPower extends AbstractComponentPower {
         this.description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
-    public void atStartOfTurn() {
+    @Override
+    public void atStartOfTurnPostDraw() {
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             flash();
             if (source == null) {
