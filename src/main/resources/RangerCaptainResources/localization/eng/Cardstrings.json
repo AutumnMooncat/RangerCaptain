@@ -215,7 +215,7 @@
   },
   "${ModID}:Macabra": {
     "NAME": "Macabra",
-    "DESCRIPTION": "Gain !B! Block. NL Whenever you are attacked this turn, deal !M! damage back.",
+    "DESCRIPTION": "Deal !D! damage. NL Whenever you are attacked this turn, deal !M! damage back.",
     "EXTENDED_DESCRIPTION": ["Folklord"]
   },
   "${ModID}:Magikrab": {
@@ -330,7 +330,7 @@
   },
   "${ModID}:Squirey": {
     "NAME": "Squirey",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !M! Vigor. NL {@@}{!${ModID}:M2!|1=This turn|@=For !${ModID}:M2! turns}, Vigor will not be consumed.",
+    "DESCRIPTION": "Gain !M! Vigor. NL {@@}{!${ModID}:M2!|1=This turn|@=For !${ModID}:M2! turns}, Vigor will not be consumed.",
     "EXTENDED_DESCRIPTION": ["Manispear","Palangolin"]
   },
   "${ModID}:Stardigrade": {

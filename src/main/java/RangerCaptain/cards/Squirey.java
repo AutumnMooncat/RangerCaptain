@@ -8,7 +8,6 @@ import RangerCaptain.powers.SharpenPower;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -22,25 +21,21 @@ public class Squirey extends AbstractMultiUpgradeCard {
     static {
         new FusionComponentHelper(MonsterEnum.SQUIREY)
                 .withCost(1)
-                .withDamage(5.5f, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
-                .with(new VigorComponent(1.91f), new SharpenComponent(0.75f))
+                .with(new VigorComponent(4), new SharpenComponent(0.75f))
                 .register();
         new FusionComponentHelper(MonsterEnum.MANISPEAR)
                 .withCost(2)
-                .withDamage(8, AbstractGameAction.AttackEffect.SLASH_HEAVY)
-                .with(new VigorComponent(1.91f), new SharpenComponent(1.91f))
+                .with(new VigorComponent(4), new SharpenComponent(1.91f))
                 .register();
         new FusionComponentHelper(MonsterEnum.PALANGOLIN)
                 .withCost(1)
-                .withDamage(7, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new VigorComponent(2.91f), new SharpenComponent(0.75f))
+                .with(new VigorComponent(6), new SharpenComponent(0.75f))
                 .register();
     }
 
     public Squirey() {
-        super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
-        baseDamage = damage = 7;
-        baseMagicNumber = magicNumber = 2;
+        super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
+        baseMagicNumber = magicNumber = 5;
         baseSecondMagic = secondMagic = 1;
         setMonsterData(MonsterEnum.SQUIREY);
         baseInfo = info = 0;
@@ -48,13 +43,6 @@ public class Squirey extends AbstractMultiUpgradeCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (info == 0) {
-            dmg(m, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
-        } else if (info == 1) {
-            dmg(m, AbstractGameAction.AttackEffect.SLASH_HEAVY);
-        } else if (info == 2) {
-            dmg(m, AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
-        }
         Wiz.applyToSelf(new VigorPower(p, magicNumber));
         Wiz.applyToSelf(new SharpenPower(p, secondMagic));
     }
@@ -78,7 +66,6 @@ public class Squirey extends AbstractMultiUpgradeCard {
 
     public void upgrade0() {
         upgradeBaseCost(2);
-        upgradeDamage(4);
         upgradeSecondMagic(1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
@@ -87,8 +74,7 @@ public class Squirey extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade1() {
-        upgradeDamage(2);
-        upgradeMagicNumber(1);
+        upgradeMagicNumber(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.PALANGOLIN);
