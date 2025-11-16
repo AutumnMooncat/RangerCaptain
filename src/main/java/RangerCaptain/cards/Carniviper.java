@@ -21,35 +21,35 @@ public class Carniviper extends AbstractMultiUpgradeCard {
     static {
         new FusionComponentHelper(MonsterEnum.CARNIVIPER)
                 .withCost(1)
-                .withDamage(5.5f, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinComponent(1.5f))
+                .withDamage(4f, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new ToxinComponent(3f))
                 .register();
         new FusionComponentHelper(MonsterEnum.MASQUERATTLE)
                 .withCost(1)
-                .withDamage(7f, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinComponent(2.5f))
+                .withDamage(5.5f, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new ToxinComponent(4f))
                 .register();
         new FusionComponentHelper(MonsterEnum.AEROBOROS)
                 .withCost(0)
-                .withDamage(6.5f, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinComponent(2.5f))
+                .withDamage(5.5f, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new ToxinComponent(4f))
                 .register();
         new FusionComponentHelper(MonsterEnum.JORMUNGOLD)
                 .withCost(1)
-                .withDamage(9, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinComponent(3.5f))
+                .withDamage(7f, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new ToxinComponent(7f))
                 .register();
         new FusionComponentHelper(MonsterEnum.MARDIUSA)
                 .withCost(2)
-                .withMultiDamage(7, 2, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
-                .with(new ToxinComponent(4.5f))
+                .withMultiDamage(7f, 2, AbstractGameAction.AttackEffect.SLASH_DIAGONAL)
+                .with(new ToxinComponent(6f))
                 .register();
     }
 
     public Carniviper() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
-        baseDamage = damage = 8;
-        baseMagicNumber = magicNumber = 2;
+        baseDamage = damage = 6;
+        baseMagicNumber = magicNumber = 4;
         setMonsterData(MonsterEnum.CARNIVIPER);
         baseInfo = info = 0;
         tags.add(CustomTags.MAGIC_TOXIN);
@@ -87,8 +87,8 @@ public class Carniviper extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade0() {
-        upgradeDamage(2);
-        upgradeMagicNumber(1);
+        upgradeDamage(2); // 8
+        upgradeMagicNumber(1); // 5
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.MASQUERATTLE);
@@ -96,15 +96,14 @@ public class Carniviper extends AbstractMultiUpgradeCard {
 
     public void upgrade1() {
         upgradeBaseCost(0);
-        upgradeDamage(-1);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.AEROBOROS);
     }
 
     public void upgrade2() {
-        upgradeDamage(3);
-        upgradeMagicNumber(1);
+        upgradeDamage(1); // 9
+        upgradeMagicNumber(4); // 9
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[3];
         initializeTitle();
         setMonsterData(MonsterEnum.JORMUNGOLD);
@@ -112,7 +111,8 @@ public class Carniviper extends AbstractMultiUpgradeCard {
 
     public void upgrade3() {
         upgradeBaseCost(2);
-        upgradeMagicNumber(3);
+        upgradeDamage(2); // 10 x2
+        upgradeMagicNumber(3); // 8
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
         setMonsterData(MonsterEnum.MARDIUSA);

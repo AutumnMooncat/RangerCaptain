@@ -73,6 +73,14 @@
             <systemPath>${Steam.path}/workshop/content/646570/2970981743/CardAugments.jar</systemPath>
             <!--<systemPath>${Steam.path}/common/SlayTheSpire/mods/CardAugments.jar</systemPath>-->
         </dependency>
+        <dependency>
+            <groupId>draco</groupId>
+            <artifactId>TogetherInSpire</artifactId>
+            <version>6.4.20</version>
+            <scope>system</scope>
+            <systemPath>${Steam.path}/workshop/content/646570/2384072973/TogetherInSpire.jar</systemPath>
+            <!--<systemPath>${Steam.path}/common/SlayTheSpire/mods/CardAugments.jar</systemPath>-->
+        </dependency>
     </dependencies>
 
 

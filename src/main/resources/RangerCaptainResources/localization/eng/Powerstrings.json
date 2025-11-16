@@ -73,7 +73,7 @@
   },
   "${ModID}:ToxinPower": {
     "NAME": "Toxin",
-    "DESCRIPTIONS": ["Receive #b","% more damage from #yAttacks. Each turn, #yToxin is reduced by #b1."]
+    "DESCRIPTIONS": ["When this creature has #b"," or less HP, it dies. On death, deals #b"," damage to ALL its allies."]
   },
   "${ModID}:AutoLifePower": {
     "NAME": "Auto-Life",

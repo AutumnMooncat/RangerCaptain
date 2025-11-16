@@ -29,7 +29,7 @@
     "NAMES": [
       "toxin"
     ],
-    "DESCRIPTION": "Creatures take #b10% more damage from Attacks per #yToxin. Each turn, #yToxin is reduced by #b1."
+    "DESCRIPTION": "When a creature's #yToxin is not less than its HP, it dies and ALL of its allies take damage."
   },
   {
     "ID": "resonance",

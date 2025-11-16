@@ -23,19 +23,19 @@ public class Jumpkin extends AbstractMultiUpgradeCard {
     static {
         new FusionComponentHelper(MonsterEnum.JUMPKIN)
                 .withCost(2)
-                .with(new ToxinComponent(4.5f))
+                .with(new ToxinComponent(7f))
                 .with(new NextTwoTurnsEnergyComponent(1))
                 .withExhaust()
                 .register();
         new FusionComponentHelper(MonsterEnum.DRACULEAF)
                 .withCost(1)
-                .with(new ToxinComponent(5))
+                .with(new ToxinComponent(7f))
                 .with(new NextTwoTurnsEnergyComponent(1))
                 .withExhaust()
                 .register();
         new FusionComponentHelper(MonsterEnum.BEANSTALKER)
                 .withCost(2)
-                .with(new ToxinComponent(6.5f))
+                .with(new ToxinComponent(10f))
                 .with(new NextTwoTurnsEnergyComponent(1))
                 .withExhaust()
                 .register();
@@ -43,7 +43,7 @@ public class Jumpkin extends AbstractMultiUpgradeCard {
 
     public Jumpkin() {
         super(ID, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        baseMagicNumber = magicNumber = 5;
+        baseMagicNumber = magicNumber = 8;
         baseSecondMagic = secondMagic = 1;
         setMonsterData(MonsterEnum.JUMPKIN);
         tags.add(CustomTags.MAGIC_TOXIN);
@@ -82,7 +82,7 @@ public class Jumpkin extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade1() {
-        upgradeMagicNumber(2);
+        upgradeMagicNumber(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.BEANSTALKER);

@@ -13,7 +13,7 @@ public class Sludge extends AbstractEasyCard {
 
     public Sludge() {
         super(ID, 0, CardType.STATUS, CardRarity.COMMON, CardTarget.SELF, CardColor.COLORLESS);
-        magicNumber = baseMagicNumber = 2;
+        magicNumber = baseMagicNumber = 6;
         exhaust = true;
     }
 
