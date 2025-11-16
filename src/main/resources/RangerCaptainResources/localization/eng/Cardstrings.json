@@ -41,7 +41,7 @@
   },
   "${ModID}:Bansheep": {
     "NAME": "Bansheep",
-    "DESCRIPTION": "Exhaust !${ModID}:M2! card{@@}{!${ModID}:M2!|>1=s}. NL Deal !D! damage and gain !M! Vigor for each card Exhausted.",
+    "DESCRIPTION": "Deal !D! damage. NL You may Exhaust a card to gain !M! Vigor.",
     "EXTENDED_DESCRIPTION": ["Wooltergeist","Ramtasm","Zombleat","Capricorpse"]
   },
   "${ModID}:Binvader": {

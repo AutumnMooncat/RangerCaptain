@@ -3,7 +3,6 @@ package RangerCaptain.cards;
 import RangerCaptain.actions.BetterSelectCardsInHandAction;
 import RangerCaptain.cardfusion.FusionComponentHelper;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
-import RangerCaptain.cardfusion.components.DamageComponent;
 import RangerCaptain.cardfusion.components.ExhaustCardsComponent;
 import RangerCaptain.cardfusion.components.VigorComponent;
 import RangerCaptain.cards.abstracts.AbstractMultiUpgradeCard;
@@ -25,57 +24,56 @@ public class Bansheep extends AbstractMultiUpgradeCard {
     public final static String ID = makeID(Bansheep.class.getSimpleName());
 
     static  {
-        // 2,5,3 -> 3,6,4
+        // 6,6 -> 8,8
         new FusionComponentHelper(MonsterEnum.BANSHEEP)
                 .withCost(1)
-                .with(new ExhaustCardsComponent(1.91f))
-                .withFlags(new DamageComponent(3, AbstractGameAction.AttackEffect.BLUNT_HEAVY), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
-                .withFlags(new VigorComponent(2), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
+                .withDamage(4, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new ExhaustCardsComponent(0.5f, ExhaustCardsComponent.TargetPile.HAND, true, false))
+                .withFlags(new VigorComponent(4), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
                 .register();
-        // 2,5,4 -> 3,6,5
+        // 6,9 -> 8,13
         new FusionComponentHelper(MonsterEnum.WOOLTERGEIST)
                 .withCost(1)
-                .with(new ExhaustCardsComponent(1.91f))
-                .withFlags(new DamageComponent(3, AbstractGameAction.AttackEffect.BLUNT_HEAVY), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
-                .withFlags(new VigorComponent(2.5f), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
+                .withDamage(4, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new ExhaustCardsComponent(0.5f, ExhaustCardsComponent.TargetPile.HAND, true, false))
+                .withFlags(new VigorComponent(6.5f), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
                 .register();
-        // 2,5,5 -> 3,6,6
+        // 6,12 -> 8,18
         new FusionComponentHelper(MonsterEnum.RAMTASM)
                 .withCost(1)
-                .with(new ExhaustCardsComponent(1.91f))
-                .withFlags(new DamageComponent(3, AbstractGameAction.AttackEffect.BLUNT_HEAVY), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
-                .withFlags(new VigorComponent(3), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
+                .withDamage(4, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new ExhaustCardsComponent(0.5f, ExhaustCardsComponent.TargetPile.HAND, true, false))
+                .withFlags(new VigorComponent(9), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
                 .register();
-        // 2,7,3 -> 3,8,4
+        // 9,6 -> 13,8
         new FusionComponentHelper(MonsterEnum.ZOMBLEAT)
                 .withCost(1)
-                .with(new ExhaustCardsComponent(1.91f))
-                .withFlags(new DamageComponent(4, AbstractGameAction.AttackEffect.BLUNT_HEAVY), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
-                .withFlags(new VigorComponent(2), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
+                .withDamage(6.5f, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new ExhaustCardsComponent(0.5f, ExhaustCardsComponent.TargetPile.HAND, true, false))
+                .withFlags(new VigorComponent(4), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
                 .register();
-        // 2,9,3 -> 3,10,4
+        // 12,6 -> 18,8
         new FusionComponentHelper(MonsterEnum.CAPRICORPSE)
                 .withCost(1)
-                .with(new ExhaustCardsComponent(1.91f))
-                .withFlags(new DamageComponent(5, AbstractGameAction.AttackEffect.BLUNT_HEAVY), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
-                .withFlags(new VigorComponent(2), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
+                .withDamage(9, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
+                .with(new ExhaustCardsComponent(0.5f, ExhaustCardsComponent.TargetPile.HAND, true, false))
+                .withFlags(new VigorComponent(4), AbstractComponent.Flag.EXHAUST_FOLLOWUP)
                 .register();
     }
 
     public Bansheep() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        baseDamage = damage = 5;
-        baseMagicNumber = magicNumber = 3;
-        baseSecondMagic = secondMagic = 2;
+        baseDamage = damage = 6;
+        baseMagicNumber = magicNumber = 6;
         setMonsterData(MonsterEnum.BANSHEEP);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new BetterSelectCardsInHandAction(secondMagic, ExhaustAction.TEXT[0], false, false, c -> true, cards -> {
+        dmg(m, AbstractGameAction.AttackEffect.BLUNT_HEAVY);
+        addToBot(new BetterSelectCardsInHandAction(1, ExhaustAction.TEXT[0], true, true, c -> true, cards -> {
             for (AbstractCard card : cards) {
                 Wiz.applyToSelfTop(new VigorPower(p, magicNumber));
-                dmgTop(m, AbstractGameAction.AttackEffect.BLUNT_HEAVY);
                 addToTop(new ExhaustSpecificCardAction(card, p.hand, true));
             }
         }));
@@ -88,6 +86,9 @@ public class Bansheep extends AbstractMultiUpgradeCard {
 
     @Override
     public CardArtRoller.ReskinInfo reskinInfo(String ID) {
+        if (rollerKey().equals("testhingy")) {
+            return new CardArtRoller.ReskinInfo(ID, BRONZE, WHITE, BRONZE, WHITE, false);
+        }
         return new CardArtRoller.ReskinInfo(ID, darken(IRIS), WHITE, darken(IRIS), WHITE, false);
     }
 
@@ -101,22 +102,24 @@ public class Bansheep extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade0() {
-        upgradeMagicNumber(1);
+        upgradeMagicNumber(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.WOOLTERGEIST);
         baseInfo = info = 1;
+        rollerKey = "testhingy";
+        needsArtRefresh = true;
     }
 
     public void upgrade1() {
-        upgradeMagicNumber(1);
+        upgradeMagicNumber(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.RAMTASM);
     }
 
     public void upgrade2() {
-        upgradeDamage(2);
+        upgradeDamage(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
         setMonsterData(MonsterEnum.ZOMBLEAT);
@@ -124,7 +127,7 @@ public class Bansheep extends AbstractMultiUpgradeCard {
     }
 
     public void upgrade3() {
-        upgradeDamage(2);
+        upgradeDamage(3);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[3];
         initializeTitle();
         setMonsterData(MonsterEnum.CAPRICORPSE);
