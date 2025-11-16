@@ -4,11 +4,12 @@ import RangerCaptain.MainModfile;
 import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.components.OnTurnStartComponent;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerToRandomEnemyAction;
+import RangerCaptain.util.Wiz;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.List;
 
@@ -36,10 +37,32 @@ public class AcidReflexPower extends AbstractComponentPower {
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             flash();
             if (source == null) {
-                addToBot(new ApplyPowerToRandomEnemyAction(owner, new ToxinPower(null, amount), amount));
+                addToBot(new DoAction(() -> {
+                    AbstractMonster weakest = getWeakest();
+                    if (weakest != null) {
+                        Wiz.applyToEnemyTop(weakest, new ToxinPower(weakest, amount));
+                    }
+                }));
             } else {
-                addToBot(new DoAction(() -> triggerComponents(null, true)));
+                addToBot(new DoAction(() -> {
+                    AbstractMonster weakest = getWeakest();
+                    if (weakest != null) {
+                        triggerComponents(weakest, true);
+                    }
+                }));
             }
         }
+    }
+
+    private AbstractMonster getWeakest() {
+        final AbstractMonster[] weakest = {null};
+        Wiz.forAllMonstersLiving(mon -> {
+            if (weakest[0] == null) {
+                weakest[0] = mon;
+            } else if (mon.currentHealth < weakest[0].currentHealth) {
+                weakest[0] = mon;
+            }
+        });
+        return weakest[0];
     }
 }

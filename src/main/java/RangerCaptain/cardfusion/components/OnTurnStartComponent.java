@@ -17,7 +17,7 @@ public class OnTurnStartComponent extends AbstractPowerComponent {
     public static final String[] CARD_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
     public OnTurnStartComponent() {
-        super(ID, false);
+        super(ID, true);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class OnTurnStartComponent extends AbstractPowerComponent {
 
     @Override
     public String targetText() {
-        return "";
+        return CARD_TEXT[1];
     }
 
     @Override

@@ -182,7 +182,7 @@
   },
   "${ModID}:Jellyton": {
     "NAME": "Jellyton",
-    "DESCRIPTION": "${ModID}:Perfect. NL At the start of your turn, apply !M! ${ModID}:Toxin to a random enemy."
+    "DESCRIPTION": "${ModID}:Perfect. NL At the start of your turn, apply !M! ${ModID}:Toxin to the enemy with the least HP."
   },
   "${ModID}:Jumpkin": {
     "NAME": "Jumpkin",
@@ -291,7 +291,7 @@
   },
   "${ModID}:Salamagus": {
     "NAME": "Salamagus",
-    "DESCRIPTION": "Whenever a card is Exhausted, apply !M! ${ModID}:Burn to the enemy with the least HP.",
+    "DESCRIPTION": "Whenever a card is Exhausted, apply !M! ${ModID}:Burn to a random enemy.",
     "EXTENDED_DESCRIPTION": ["Adeptile","Pyromeleon"]
   },
   "${ModID}:Sanzatime": {

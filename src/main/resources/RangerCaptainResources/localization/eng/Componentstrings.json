@@ -921,8 +921,7 @@
     "TEXT": ["Fusion becomes a Power"],
     "EXTRA_TEXT": [
       "Whenever a %1$scard is Exhausted, %2$s",
-      "non-",
-      "to the enemy with the least HP"
+      "non-"
     ]
   },
   "${ModID}:OnParryComponent": {
@@ -946,7 +945,10 @@
   },
   "${ModID}:OnTurnStartComponent": {
     "TEXT": ["Fusion becomes a Power"],
-    "EXTRA_TEXT": ["At the start of each turn, %s"]
+    "EXTRA_TEXT": [
+      "At the start of your turn, %s",
+      "to the enemy with the least HP"
+    ]
   },
   "${ModID}:OnPlayAttackPower": {
     "TEXT": ["Fusion becomes a Power, Lose #yStrength each turn"],

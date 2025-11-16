@@ -65,7 +65,7 @@
   },
   "${ModID}:FlammablePower": {
     "NAME": "Flammable",
-    "DESCRIPTIONS": ["Whenever a card is #yExhausted, apply #b"," #yBurn to the enemy with the least HP."]
+    "DESCRIPTIONS": ["Whenever a card is #yExhausted, apply #b"," #yBurn to a random enemy."]
   },
   "${ModID}:BurnedPower": {
     "NAME": "Burn",
@@ -81,7 +81,7 @@
   },
   "${ModID}:AcidReflexPower": {
     "NAME": "Acid Reflex",
-    "DESCRIPTIONS": ["At the start of your turn, apply #b"," #yToxin to a random enemy."]
+    "DESCRIPTIONS": ["At the start of your turn, apply #b"," #yToxin to the enemy with the least HP."]
   },
   "${ModID}:GambitPower": {
     "NAME": "Gambit",
