@@ -263,8 +263,8 @@ public class CardArtRoller {
                         }
                     }
                 }
-                if (c.reskinInfo(q) != null) {
-                    return c.reskinInfo(q);
+                if (c.getReskinInfo(q) != null) {
+                    return c.getReskinInfo(q);
                 } else {
                     return new ReskinInfo(q, rng.random(0.35f, 0.65f), rng.random(0.35f, 0.65f), rng.random(0.35f, 0.65f), rng.random(0.35f, 0.65f), rng.randomBoolean());
                 }

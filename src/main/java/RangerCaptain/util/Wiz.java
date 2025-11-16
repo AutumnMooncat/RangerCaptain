@@ -373,7 +373,7 @@ public class Wiz {
             } else if (base.rarity == AbstractCard.CardRarity.UNCOMMON || donor.rarity == AbstractCard.CardRarity.UNCOMMON) {
                 rarity = AbstractCard.CardRarity.UNCOMMON;
             }
-            CardArtRoller.ReskinInfo ref = ((AbstractEasyCard) base).reskinInfo("");
+            CardArtRoller.ReskinInfo ref = ((AbstractEasyCard) base).getReskinInfo("");
             components.add(new ReskinComponent(rarity, ref.anchor1, ref.anchor2, ref.target1, ref.target2, ref.flipX));
             FusedCard fusion = new FusedCard(components);
             CardModifierManager.addModifier(fusion, new FusionFormMod(((AbstractEasyCard) base).getMonsterData(), ((AbstractEasyCard) donor).getMonsterData()));

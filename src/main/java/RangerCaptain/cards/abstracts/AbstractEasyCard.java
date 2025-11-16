@@ -43,6 +43,41 @@ import static RangerCaptain.util.Wiz.atb;
 import static RangerCaptain.util.Wiz.att;
 
 public abstract class AbstractEasyCard extends CustomCard {
+    protected enum ElementalType {
+        BEAST(mix(BLACK, pastel(AMBER)), WHITE, mix(BLACK, pastel(AMBER)), WHITE),
+        AIR(mix(MINT, BLACK), WHITE, MINT, WHITE),
+        ASTRAL(darken(mix(IRIS, BLACK)), WHITE, darken(mix(IRIS, BLACK)), WHITE),
+        EARTH(darken(BRONZE), WHITE, darken(BRONZE), WHITE),
+        FIRE(ORANGE, WHITE, ORANGE, WHITE),
+        ICE(AZURE, WHITE, AZURE, WHITE),
+        LIGHTNING(lighten(mix(AMBER, BLACK)), WHITE, AMBER, WHITE),
+        METAL(BLACK, WHITE, BLACK, WHITE),
+        PLANT(mix(GREEN, BLACK), WHITE, mix(GREEN, BLACK), WHITE), // darken?
+        PLASTIC(RED, WHITE, RED, WHITE),
+        POISON(darken(PURPLE), WHITE, darken(PURPLE), WHITE),
+        WATER(darken(BLUE), WHITE, darken(BLUE), WHITE),
+        GLASS(darken(SILVER), WHITE, darken(SILVER), WHITE),
+        GLITTER(Color.PINK, WHITE, Color.PINK, WHITE);
+
+        private final Color anchor1;
+        private final Color anchor2;
+        private final Color target1;
+        private final Color target2;
+
+        ElementalType(Color anchor1, Color anchor2, Color target1, Color target2) {
+            this.anchor1 = anchor1;
+            this.anchor2 = anchor2;
+            this.target1 = target1;
+            this.target2 = target2;
+        }
+
+        public CardArtRoller.ReskinInfo getReskin(String ID) {
+            return new CardArtRoller.ReskinInfo(ID, anchor1, anchor2, target1, target2, false);
+        }
+    }
+
+    private static final boolean USE_ELEMENTAL_COLOR = true;
+
     // https://en.wikipedia.org/wiki/Tertiary_color#Tertiary-,_quaternary-,_and_quinary-_terms
     protected static final Color RED = new Color(0xFF0000FF);
     protected static final Color SCARLET = new Color(0xFF2000FF);
@@ -148,6 +183,7 @@ public abstract class AbstractEasyCard extends CustomCard {
 
     protected AbstractGameAction clickAction;
     protected MonsterEnum monsterEnum;
+    protected ElementalType elementalType;
     public String rollerKey;
 
     static {
@@ -172,14 +208,15 @@ public abstract class AbstractEasyCard extends CustomCard {
         initializeDescription();
 
         if (textureImg.contains("ui/missing.png")) {
-            if (CardLibrary.getAllCards() != null && !CardLibrary.getAllCards().isEmpty()) {
+            needsArtRefresh = true;
+            /*if (CardLibrary.getAllCards() != null && !CardLibrary.getAllCards().isEmpty()) {
                 CardArtRoller.computeCard(this);
                 if (cardsToPreview instanceof AbstractEasyCard && ((AbstractEasyCard) cardsToPreview).textureImg.contains("ui/missing.png")) {
                     CardArtRoller.computeCard((AbstractEasyCard) cardsToPreview);
                 }
             } else {
                 needsArtRefresh = true;
-            }
+            }*/
         }
 
         FlavorText.AbstractCardFlavorFields.boxColor.set(this, mix(BLACK.cpy(), MainModfile.HEADBAND_PURPLE_COLOR.cpy()));
@@ -501,13 +538,31 @@ public abstract class AbstractEasyCard extends CustomCard {
         return null;
     }
 
-    public CardArtRoller.ReskinInfo reskinInfo(String ID) {
+    public CardArtRoller.ReskinInfo getReskinInfo(String ID) {
+        if (USE_ELEMENTAL_COLOR && elementalType != null) {
+            return elementalType.getReskin(ID);
+        }
+        return reskinInfo(ID);
+    }
+
+    protected CardArtRoller.ReskinInfo reskinInfo(String ID) {
         return new CardArtRoller.ReskinInfo(ID, 0.5f, 0.5f, 0.5f, 0.5f, false);
     }
 
     public void removeFusionTip() {
         if (fusionTip != null && addedTips != null) {
             addedTips.remove(fusionTip);
+        }
+    }
+
+    protected void setElementalType(ElementalType type) {
+        rollerKey = cardID + type;
+        elementalType = type;
+        if (CardLibrary.getAllCards() != null && !CardLibrary.getAllCards().isEmpty()) {
+            CardArtRoller.computeCard(this);
+            needsArtRefresh = false;
+        } else {
+            needsArtRefresh = true;
         }
     }
 
