@@ -31,6 +31,7 @@ public class Hauntome extends AbstractEasyCard {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.HAUNTOME);
+        setElementalType(ElementalType.AIR);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
 

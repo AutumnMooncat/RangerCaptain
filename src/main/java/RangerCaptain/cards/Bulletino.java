@@ -43,6 +43,7 @@ public class Bulletino extends AbstractMultiUpgradeCard {
         baseMagicNumber = magicNumber = 3;
         baseSecondMagic = secondMagic = 2;
         setMonsterData(MonsterEnum.BULLETINO);
+        setElementalType(ElementalType.FIRE);
         tags.add(CustomTags.MAGIC_DRAW);
     }
 
@@ -89,5 +90,6 @@ public class Bulletino extends AbstractMultiUpgradeCard {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
         setMonsterData(MonsterEnum.GEARYU);
+        setElementalType(ElementalType.METAL);
     }
 }

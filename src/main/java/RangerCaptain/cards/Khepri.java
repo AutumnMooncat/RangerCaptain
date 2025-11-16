@@ -35,6 +35,7 @@ public class Khepri extends AbstractEasyCard {
         baseDamage = damage = 6;
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.KHEPRI);
+        setElementalType(ElementalType.FIRE);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
 

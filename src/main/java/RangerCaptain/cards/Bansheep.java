@@ -66,6 +66,7 @@ public class Bansheep extends AbstractMultiUpgradeCard {
         baseDamage = damage = 6;
         baseMagicNumber = magicNumber = 6;
         setMonsterData(MonsterEnum.BANSHEEP);
+        setElementalType(ElementalType.BEAST);
     }
 
     @Override
@@ -86,9 +87,6 @@ public class Bansheep extends AbstractMultiUpgradeCard {
 
     @Override
     public CardArtRoller.ReskinInfo reskinInfo(String ID) {
-        if (rollerKey().equals("testhingy")) {
-            return new CardArtRoller.ReskinInfo(ID, BRONZE, WHITE, BRONZE, WHITE, false);
-        }
         return new CardArtRoller.ReskinInfo(ID, darken(IRIS), WHITE, darken(IRIS), WHITE, false);
     }
 
@@ -106,9 +104,8 @@ public class Bansheep extends AbstractMultiUpgradeCard {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.WOOLTERGEIST);
+        setElementalType(ElementalType.ASTRAL);
         baseInfo = info = 1;
-        rollerKey = "testhingy";
-        needsArtRefresh = true;
     }
 
     public void upgrade1() {
@@ -123,6 +120,7 @@ public class Bansheep extends AbstractMultiUpgradeCard {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
         setMonsterData(MonsterEnum.ZOMBLEAT);
+        setElementalType(ElementalType.EARTH);
         baseInfo = info = 2;
     }
 

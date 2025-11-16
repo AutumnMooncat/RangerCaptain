@@ -33,6 +33,7 @@ public class Nevermort extends AbstractEasyCard {
         super(ID, 0, CardType.SKILL, CardRarity.COMMON, CardTarget.ALL_ENEMY);
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.NEVERMORT);
+        setElementalType(ElementalType.POISON);
         tags.add(CustomTags.MAGIC_TOXIN_AOE);
     }
 

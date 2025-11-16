@@ -35,6 +35,7 @@ public class Stardigrade extends AbstractEasyCard {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.STARDIGRADE);
+        setElementalType(ElementalType.ASTRAL);
     }
 
     @Override

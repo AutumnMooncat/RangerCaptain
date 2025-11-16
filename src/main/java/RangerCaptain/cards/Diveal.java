@@ -42,6 +42,7 @@ public class Diveal extends AbstractMultiUpgradeCard {
         baseMagicNumber = magicNumber = 2;
         baseSecondMagic = secondMagic = 1;
         setMonsterData(MonsterEnum.DIVEAL);
+        setElementalType(ElementalType.WATER);
         baseInfo = info = 0;
     }
 
@@ -77,6 +78,7 @@ public class Diveal extends AbstractMultiUpgradeCard {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.DIVEBERG);
+        setElementalType(ElementalType.ICE);
         baseInfo = info = 1;
     }
 

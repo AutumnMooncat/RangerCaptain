@@ -31,6 +31,7 @@ public class Averevoir extends AbstractEasyCard {
         super(ID, 2, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = 5;
         setMonsterData(MonsterEnum.AVEREVOIR);
+        setElementalType(ElementalType.AIR);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
 

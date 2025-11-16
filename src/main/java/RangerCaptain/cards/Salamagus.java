@@ -40,6 +40,7 @@ public class Salamagus extends AbstractMultiUpgradeCard {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.SALAMAGUS);
+        setElementalType(ElementalType.FIRE);
     }
 
     @Override
@@ -69,6 +70,7 @@ public class Salamagus extends AbstractMultiUpgradeCard {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.ADEPTILE);
+        setElementalType(ElementalType.ASTRAL);
     }
 
     public void upgrade1() {

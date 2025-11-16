@@ -38,6 +38,7 @@ public class Traffikrab extends AbstractMultiUpgradeCard {
         baseBlock = block = 7;
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.TRAFFIKRAB);
+        setElementalType(ElementalType.PLASTIC);
     }
 
     @Override

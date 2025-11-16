@@ -34,6 +34,7 @@ public class Faucetear extends AbstractEasyCard {
         baseBlock = block = 6;
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.FAUCETEAR);
+        setElementalType(ElementalType.WATER);
     }
 
     @Override

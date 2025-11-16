@@ -36,6 +36,7 @@ public class Puppercut extends AbstractEasyCard {
         baseDamage = damage = 6;
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.PUPPERCUT);
+        setElementalType(ElementalType.METAL);
         tags.add(CustomTags.MAGIC_RESONANCE);
     }
 

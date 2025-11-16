@@ -38,6 +38,7 @@ public class Elfless extends AbstractMultiUpgradeCard implements OnStashedCard {
         super(ID, 2, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = damage = 12;
         setMonsterData(MonsterEnum.ELFLESS);
+        setElementalType(ElementalType.ICE);
         baseInfo = info = 0;
     }
 

@@ -31,6 +31,7 @@ public class Picksie extends AbstractEasyCard {
         baseBlock = block = 12;
         baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.PICKSIE);
+        setElementalType(ElementalType.EARTH);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
         tags.add(CustomTags.MAGIC_ENERGY_NEXT_TURN);
     }

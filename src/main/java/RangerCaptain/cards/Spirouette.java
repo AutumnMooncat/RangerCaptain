@@ -35,6 +35,7 @@ public class Spirouette extends AbstractEasyCard {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF_AND_ENEMY);
         baseBlock = block = 9;
         setMonsterData(MonsterEnum.SPIROUETTE);
+        setElementalType(ElementalType.WATER);
     }
 
     @Override

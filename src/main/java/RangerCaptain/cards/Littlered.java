@@ -42,6 +42,7 @@ public class Littlered extends AbstractMultiUpgradeCard implements ManuallySizeA
         super(ID, 3, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.LITTLERED);
+        setElementalType(ElementalType.BEAST);
         baseInfo = info = 0;
         tags.add(BaseModCardTags.FORM);
     }
@@ -81,6 +82,7 @@ public class Littlered extends AbstractMultiUpgradeCard implements ManuallySizeA
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.ROSEHOOD);
+        setElementalType(ElementalType.PLANT);
         info = baseInfo = 2;
     }
 

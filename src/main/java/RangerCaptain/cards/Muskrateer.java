@@ -42,6 +42,7 @@ public class Muskrateer extends AbstractEasyCard {
         baseDamage = damage = 8;
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.MUSKRATEER);
+        setElementalType(ElementalType.BEAST);
     }
 
     @Override
@@ -62,6 +63,7 @@ public class Muskrateer extends AbstractEasyCard {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.RATCOUSEL);
+        setElementalType(ElementalType.PLASTIC);
     }
 
     @Override

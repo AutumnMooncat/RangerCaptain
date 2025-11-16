@@ -56,6 +56,7 @@ public class Springheel extends AbstractMultiUpgradeCard {
         baseBlock = block = 6;
         baseDamage = damage = 6;
         setMonsterData(MonsterEnum.SPRINGHEEL);
+        setElementalType(ElementalType.BEAST);
         baseInfo = info = 0;
     }
 

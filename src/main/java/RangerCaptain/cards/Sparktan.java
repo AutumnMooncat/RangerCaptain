@@ -42,6 +42,7 @@ public class Sparktan extends AbstractEasyCard {
         super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 8;
         setMonsterData(MonsterEnum.SPARKTAN);
+        setElementalType(ElementalType.LIGHTNING);
         exhaust = true;
         DamageModifierManager.addModifier(this, new ConductiveDamage());
     }

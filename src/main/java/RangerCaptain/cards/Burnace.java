@@ -38,6 +38,7 @@ public class Burnace extends AbstractEasyCard {
         super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.BURNACE);
+        setElementalType(ElementalType.FIRE);
         tags.add(CustomTags.MAGIC_BURN);
     }
 

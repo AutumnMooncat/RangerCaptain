@@ -39,6 +39,7 @@ public class Ferriclaw extends AbstractEasyCard implements ManuallySizeAdjustedC
         baseDamage = damage = 12;
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.FERRICLAW);
+        setElementalType(ElementalType.METAL);
     }
 
     @Override

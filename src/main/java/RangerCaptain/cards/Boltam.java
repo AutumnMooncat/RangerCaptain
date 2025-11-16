@@ -50,6 +50,7 @@ public class Boltam extends AbstractMultiUpgradeCard {
         baseMagicNumber = magicNumber = 3;
         baseInfo = info = 0;
         setMonsterData(MonsterEnum.BOLTAM);
+        setElementalType(ElementalType.LIGHTNING);
         tags.add(CustomTags.MAGIC_CONDUCTIVE);
         shuffleBackIntoDrawPile = true;
     }

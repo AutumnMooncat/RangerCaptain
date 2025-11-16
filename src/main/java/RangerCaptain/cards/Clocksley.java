@@ -35,6 +35,7 @@ public class Clocksley extends AbstractEasyCard {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.CLOCKSLEY);
+        setElementalType(ElementalType.PLASTIC);
     }
 
     @Override

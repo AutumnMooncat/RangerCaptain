@@ -35,6 +35,7 @@ public class Terracooka extends AbstractEasyCard {
         baseMagicNumber = magicNumber = 4;
         baseSecondMagic = secondMagic = 1;
         setMonsterData(MonsterEnum.TERRACOOKA);
+        setElementalType(ElementalType.EARTH);
         tags.add(CustomTags.MAGIC_BURN);
         tags.add(CustomTags.SECOND_MAGIC_EXHAUST);
     }

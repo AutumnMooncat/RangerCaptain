@@ -39,6 +39,7 @@ public class Dandylion extends AbstractEasyCard {
         baseSecondMagic = secondMagic = 1;
         exhaust = true;
         setMonsterData(MonsterEnum.DANDYLION);
+        setElementalType(ElementalType.PLANT);
     }
 
     @Override

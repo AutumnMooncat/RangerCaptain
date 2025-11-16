@@ -38,6 +38,7 @@ public class Charlequin extends AbstractMultiUpgradeCard {
     public Charlequin() {
         super(ID, 2, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
         setMonsterData(MonsterEnum.CHARLEQUIN);
+        setElementalType(ElementalType.FIRE);
         baseSecondMagic = secondMagic = BoobyTrappedPower.BOOBY_TRAP_DAMAGE;
         baseMagicNumber = magicNumber = 1;
         exhaust = true;

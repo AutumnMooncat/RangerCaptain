@@ -37,6 +37,7 @@ public class Pombomb extends AbstractEasyCard {
         baseDamage = damage = 5;
         baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.POMBOMB);
+        setElementalType(ElementalType.FIRE);
         isMultiDamage = true;
         tags.add(CustomTags.AOE_DAMAGE);
         tags.add(CustomTags.MAGIC_BURN_AOE);

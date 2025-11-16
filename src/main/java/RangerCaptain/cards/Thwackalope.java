@@ -30,6 +30,7 @@ public class Thwackalope extends AbstractEasyCard {
         super(ID, 2, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = damage = 9;
         setMonsterData(MonsterEnum.THWACKALOPE);
+        setElementalType(ElementalType.AIR);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
         cardsToPreview = new Wound();
     }

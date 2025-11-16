@@ -31,6 +31,7 @@ public class Jellyton extends AbstractEasyCard {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.JELLYTON);
+        setElementalType(ElementalType.POISON);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
 

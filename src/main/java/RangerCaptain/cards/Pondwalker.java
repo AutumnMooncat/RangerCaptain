@@ -36,6 +36,7 @@ public class Pondwalker extends AbstractEasyCard {
         baseDamage = damage = 15;
         baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.PONDWALKER);
+        setElementalType(ElementalType.WATER);
         baseInfo = info = 0;
     }
 

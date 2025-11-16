@@ -43,6 +43,7 @@ public class Cluckabilly extends AbstractEasyCard {
         baseMagicNumber = magicNumber = 1;
         baseInfo = info = 0;
         setMonsterData(MonsterEnum.CLUCKABILLY);
+        setElementalType(ElementalType.AIR);
     }
 
     @Override

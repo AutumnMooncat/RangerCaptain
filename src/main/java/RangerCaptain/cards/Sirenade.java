@@ -45,6 +45,7 @@ public class Sirenade extends AbstractEasyCard {
         baseMagicNumber = magicNumber = 1;
         isMultiDamage = true;
         setMonsterData(MonsterEnum.SIRENADE);
+        setElementalType(ElementalType.AIR);
         tags.add(CustomTags.AOE_DAMAGE);
     }
 

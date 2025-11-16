@@ -43,6 +43,7 @@ public class Dominoth extends AbstractMultiUpgradeCard {
         baseMagicNumber = magicNumber = 1;
         baseSecondMagic = secondMagic = 4;
         setMonsterData(MonsterEnum.DOMINOTH);
+        setElementalType(ElementalType.AIR);
         baseInfo = info = 0;
         tags.add(CustomTags.MAGIC_DRAW);
         tags.add(CustomTags.SECOND_MAGIC_CONDUCTIVE);
@@ -77,6 +78,7 @@ public class Dominoth extends AbstractMultiUpgradeCard {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.WINGLOOM);
+        setElementalType(ElementalType.LIGHTNING);
     }
 
     public void upgrade1() {

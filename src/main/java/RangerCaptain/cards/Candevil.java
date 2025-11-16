@@ -68,6 +68,7 @@ public class Candevil extends AbstractMultiUpgradeCard {
         baseSecondMagic = secondMagic = 2;
         baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.CANDEVIL);
+        setElementalType(ElementalType.BEAST);
         tags.add(CustomTags.MAGIC_TOXIN);
     }
 
@@ -106,6 +107,7 @@ public class Candevil extends AbstractMultiUpgradeCard {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.MALCHEMY);
+        setElementalType(ElementalType.POISON);
     }
 
     public void upgrade1() {
@@ -120,6 +122,7 @@ public class Candevil extends AbstractMultiUpgradeCard {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[2];
         initializeTitle();
         setMonsterData(MonsterEnum.VENDEMON);
+        setElementalType(ElementalType.METAL);
     }
 
     public void upgrade3() {

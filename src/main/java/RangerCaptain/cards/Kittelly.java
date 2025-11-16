@@ -44,6 +44,7 @@ public class Kittelly extends AbstractEasyCard {
     public Kittelly() {
         super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE); // TODO Proper component?
         setMonsterData(MonsterEnum.KITTELLY);
+        setElementalType(ElementalType.LIGHTNING);
     }
 
     @Override

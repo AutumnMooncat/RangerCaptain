@@ -36,6 +36,7 @@ public class Twirligig extends AbstractEasyCard {
         super(ID, 2, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = 5;
         setMonsterData(MonsterEnum.TWIRLIGIG);
+        setElementalType(ElementalType.PLANT);
     }
 
     @Override

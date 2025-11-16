@@ -32,6 +32,7 @@ public class MissMimic extends AbstractEasyCard {
         super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.MISS_MIMIC);
+        setElementalType(ElementalType.METAL);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
         exhaust = true;
     }

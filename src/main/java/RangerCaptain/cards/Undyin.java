@@ -31,6 +31,7 @@ public class Undyin extends AbstractEasyCard {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = 4;
         setMonsterData(MonsterEnum.UNDYIN);
+        setElementalType(ElementalType.WATER);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
 

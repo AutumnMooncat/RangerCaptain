@@ -34,6 +34,7 @@ public class Braxsuit extends AbstractEasyCard {
         baseBlock = block = 5;
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.BRAXSUIT);
+        setElementalType(ElementalType.AIR);
     }
 
     @Override

@@ -32,6 +32,7 @@ public class Sanzatime extends AbstractEasyCard {
         super(ID, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         baseBlock = block = 12;
         setMonsterData(MonsterEnum.SANZATIME);
+        setElementalType(ElementalType.EARTH);
     }
 
     @Override

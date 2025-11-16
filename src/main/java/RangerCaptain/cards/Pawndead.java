@@ -43,6 +43,7 @@ public class Pawndead extends AbstractMultiUpgradeCard {
         super(ID, 2, CardType.SKILL, CardRarity.RARE, CardTarget.NONE);
         baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.PAWNDEAD);
+        setElementalType(ElementalType.EARTH);
         exhaust = true;
     }
 

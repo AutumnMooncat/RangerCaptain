@@ -36,6 +36,7 @@ public class Mascotoy extends AbstractEasyCard {
         baseDamage = damage = 9;
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.MASCOTOY);
+        setElementalType(ElementalType.PLASTIC);
     }
 
     @Override

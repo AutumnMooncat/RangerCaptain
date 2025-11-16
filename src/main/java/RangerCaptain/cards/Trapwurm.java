@@ -46,6 +46,7 @@ public class Trapwurm extends AbstractEasyCard {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 11;
         setMonsterData(MonsterEnum.TRAPWURM);
+        setElementalType(ElementalType.EARTH);
     }
 
     @Override

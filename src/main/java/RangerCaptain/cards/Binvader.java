@@ -38,6 +38,7 @@ public class Binvader extends AbstractEasyCard {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = damage = 6;
         setMonsterData(MonsterEnum.BINVADER);
+        setElementalType(ElementalType.METAL);
         baseInfo = info = 0;
     }
 
@@ -71,6 +72,7 @@ public class Binvader extends AbstractEasyCard {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.BINTERLOPER);
+        setElementalType(ElementalType.PLASTIC);
     }
 
     @Override

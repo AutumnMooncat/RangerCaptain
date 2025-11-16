@@ -37,6 +37,7 @@ public class Brushroom extends AbstractEasyCard implements OnOtherCardStashedCar
         super(ID, 3, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         baseBlock = block = 15;
         setMonsterData(MonsterEnum.BRUSHROOM);
+        setElementalType(ElementalType.PLANT);
     }
 
     @Override

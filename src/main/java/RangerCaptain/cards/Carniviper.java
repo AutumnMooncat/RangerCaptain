@@ -51,6 +51,7 @@ public class Carniviper extends AbstractMultiUpgradeCard {
         baseDamage = damage = 6;
         baseMagicNumber = magicNumber = 4;
         setMonsterData(MonsterEnum.CARNIVIPER);
+        setElementalType(ElementalType.POISON);
         baseInfo = info = 0;
         tags.add(CustomTags.MAGIC_TOXIN);
     }
@@ -99,6 +100,7 @@ public class Carniviper extends AbstractMultiUpgradeCard {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.AEROBOROS);
+        setElementalType(ElementalType.AIR);
     }
 
     public void upgrade2() {

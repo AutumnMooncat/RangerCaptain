@@ -49,6 +49,7 @@ public class Allseer extends AbstractMultiUpgradeCard {
         baseDamage = damage = 7;
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.ALLSEER);
+        setElementalType(ElementalType.METAL);
         tags.add(CustomTags.MAGIC_CONDUCTIVE);
         baseInfo = info = 0;
     }
@@ -90,6 +91,7 @@ public class Allseer extends AbstractMultiUpgradeCard {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.KHUFO);
+        setElementalType(ElementalType.ASTRAL);
         baseInfo = info = 1;
     }
 

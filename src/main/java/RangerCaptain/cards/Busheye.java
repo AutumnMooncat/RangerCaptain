@@ -51,6 +51,7 @@ public class Busheye extends AbstractMultiUpgradeCard implements ManuallySizeAdj
         baseMagicNumber = magicNumber = 5;
         baseSecondMagic = secondMagic = 1;
         setMonsterData(MonsterEnum.BUSHEYE);
+        setElementalType(ElementalType.PLANT);
         exhaust = true;
         tags.add(CustomTags.MAGIC_BURN_AOE);
     }

@@ -35,6 +35,7 @@ public class Amphare extends AbstractEasyCard {
         super(ID, 1, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.AMPHARE);
+        setElementalType(ElementalType.LIGHTNING);
     }
 
     @Override

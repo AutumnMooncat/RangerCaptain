@@ -38,6 +38,7 @@ public class Squirey extends AbstractMultiUpgradeCard {
         baseMagicNumber = magicNumber = 5;
         baseSecondMagic = secondMagic = 1;
         setMonsterData(MonsterEnum.SQUIREY);
+        setElementalType(ElementalType.BEAST);
         baseInfo = info = 0;
     }
 
@@ -70,6 +71,7 @@ public class Squirey extends AbstractMultiUpgradeCard {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.MANISPEAR);
+        setElementalType(ElementalType.METAL);
         baseInfo = info = 1;
     }
 
@@ -78,6 +80,7 @@ public class Squirey extends AbstractMultiUpgradeCard {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[1];
         initializeTitle();
         setMonsterData(MonsterEnum.PALANGOLIN);
+        setElementalType(ElementalType.METAL);
         baseInfo = info = 2;
     }
 }

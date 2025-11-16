@@ -31,6 +31,7 @@ public class Glaistain extends AbstractEasyCard {
         super(ID, 0, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.GLAISTAIN);
+        setElementalType(ElementalType.GLASS);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
 

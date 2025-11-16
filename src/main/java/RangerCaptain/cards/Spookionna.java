@@ -28,6 +28,7 @@ public class Spookionna extends AbstractEasyCard {
     public Spookionna() {
         super(ID, 3, CardType.SKILL, CardRarity.RARE, CardTarget.ALL);
         setMonsterData(MonsterEnum.SPOOKIONNA);
+        setElementalType(ElementalType.ICE);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
         exhaust = true;
     }

@@ -42,6 +42,7 @@ public class Macabra extends AbstractEasyCard {
         baseDamage = damage = 7;
         baseMagicNumber = magicNumber = 2;
         setMonsterData(MonsterEnum.MACABRA);
+        setElementalType(ElementalType.BEAST);
         baseInfo = info = 0;
     }
 

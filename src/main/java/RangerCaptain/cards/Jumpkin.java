@@ -46,6 +46,7 @@ public class Jumpkin extends AbstractMultiUpgradeCard {
         baseMagicNumber = magicNumber = 8;
         baseSecondMagic = secondMagic = 1;
         setMonsterData(MonsterEnum.JUMPKIN);
+        setElementalType(ElementalType.PLANT);
         tags.add(CustomTags.MAGIC_TOXIN);
         exhaust = true;
     }

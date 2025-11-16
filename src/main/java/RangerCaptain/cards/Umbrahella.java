@@ -29,6 +29,7 @@ public class Umbrahella extends AbstractEasyCard {
     public Umbrahella() {
         super(ID, 2, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
         setMonsterData(MonsterEnum.UMBRAHELLA);
+        setElementalType(ElementalType.POISON);
         baseDamage = damage = 15;
         baseMagicNumber = magicNumber = 2;
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);

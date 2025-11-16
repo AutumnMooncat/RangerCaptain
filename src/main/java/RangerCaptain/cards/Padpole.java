@@ -37,6 +37,7 @@ public class Padpole extends AbstractMultiUpgradeCard {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         baseBlock = block = 7;
         setMonsterData(MonsterEnum.PADPOLE);
+        setElementalType(ElementalType.WATER);
     }
 
     @Override

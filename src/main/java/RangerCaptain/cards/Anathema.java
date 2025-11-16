@@ -31,6 +31,7 @@ public class Anathema extends AbstractEasyCard implements StartupCard {
     public Anathema() {
         super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.NONE);
         setMonsterData(MonsterEnum.ANATHEMA);
+        setElementalType(ElementalType.BEAST);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
     }
 

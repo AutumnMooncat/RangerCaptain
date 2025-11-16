@@ -37,6 +37,7 @@ public class Icepeck extends AbstractEasyCard {
         baseDamage = damage = 10;
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.ICEPECK);
+        setElementalType(ElementalType.ICE);
     }
 
     @Override

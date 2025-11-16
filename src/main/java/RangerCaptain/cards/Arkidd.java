@@ -31,6 +31,7 @@ public class Arkidd extends AbstractEasyCard {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
         baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.ARKIDD);
+        setElementalType(ElementalType.LIGHTNING);
         CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.set(this, true);
         tags.add(CustomTags.MAGIC_CONDUCTIVE_AOE);
     }

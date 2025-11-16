@@ -46,6 +46,7 @@ public class Kuneko extends AbstractEasyCard {
         baseMagicNumber = magicNumber = 1;
         //isMultiDamage = true;
         setMonsterData(MonsterEnum.KUNEKO);
+        setElementalType(ElementalType.AIR);
         tags.add(CustomTags.AOE_DAMAGE);
     }
 
@@ -72,6 +73,7 @@ public class Kuneko extends AbstractEasyCard {
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.SHINING_KUNEKO);
+        setElementalType(ElementalType.ASTRAL);
     }
 
     @Override
