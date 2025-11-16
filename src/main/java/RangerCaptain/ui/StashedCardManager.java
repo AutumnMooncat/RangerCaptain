@@ -128,7 +128,8 @@ public class StashedCardManager {
         public static class Locator extends SpireInsertLocator {
             @Override
             public int[] Locate(CtBehavior ctBehavior) throws Exception {
-                Matcher m = new Matcher.NewExprMatcher(DrawCardAction.class);
+                //Matcher m = new Matcher.NewExprMatcher(DrawCardAction.class);
+                Matcher m = new Matcher.MethodCallMatcher(AbstractPlayer.class, "applyStartOfTurnRelics");
                 return LineFinder.findInOrder(ctBehavior, m);
             }
         }
