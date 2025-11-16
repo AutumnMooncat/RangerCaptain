@@ -55,7 +55,7 @@ public class Cluckabilly extends AbstractEasyCard {
         } else {
             dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
         }
-        Wiz.applyToEnemy(m, new PetrifiedPower(m, 1));
+        Wiz.applyToEnemy(m, new PetrifiedPower(m, magicNumber));
     }
 
     @Override

@@ -17,43 +17,43 @@ public class PetrifiedPower extends AbstractEasyPower {
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     private final Color greenColor = new Color(0.0F, 1.0F, 0.0F, 1.0F);
-    private int onHitChange;
+    private int currentReduction;
 
     public PetrifiedPower(AbstractCreature owner, int amount) {
         super(POWER_ID, NAME, PowerType.DEBUFF, false, owner, amount);
-        onHitChange = amount;
+        //currentReduction = amount;
         updateDescription();
     }
 
-    @Override
+    /*@Override
     public void stackPower(int stackAmount) {
         super.stackPower(stackAmount);
-        onHitChange += stackAmount;
+        currentReduction += stackAmount;
         updateDescription();
-    }
+    }*/
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + onHitChange + DESCRIPTIONS[2];
+        description = DESCRIPTIONS[0] + currentReduction + DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
     }
 
     @Override
     public void renderAmount(SpriteBatch sb, float x, float y, Color c) {
         greenColor.a = c.a;
         c = greenColor;
-        FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(amount), x, y, fontScale, c);
+        FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(currentReduction), x, y, fontScale, c);
     }
 
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
-        return type == DamageInfo.DamageType.NORMAL ? damage - amount : damage;
+        return type == DamageInfo.DamageType.NORMAL ? damage - currentReduction : damage;
     }
 
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != owner) {
             flash();
-            amount += onHitChange;
+            currentReduction += amount;
             updateDescription();
             AbstractDungeon.onModifyPower();
         }
