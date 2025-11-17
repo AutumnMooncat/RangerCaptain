@@ -44,20 +44,20 @@ import static RangerCaptain.util.Wiz.att;
 
 public abstract class AbstractEasyCard extends CustomCard {
     protected enum ElementalType {
-        BEAST(mix(BLACK, pastel(AMBER)), WHITE, mix(BLACK, pastel(AMBER)), WHITE),
-        AIR(mix(MINT, BLACK), WHITE, MINT, WHITE),
-        ASTRAL(darken(mix(IRIS, BLACK)), WHITE, darken(mix(IRIS, BLACK)), WHITE),
-        EARTH(darken(BRONZE), WHITE, darken(BRONZE), WHITE),
-        FIRE(ORANGE, WHITE, ORANGE, WHITE),
-        ICE(AZURE, WHITE, AZURE, WHITE),
-        LIGHTNING(lighten(mix(AMBER, BLACK)), WHITE, AMBER, WHITE),
-        METAL(BLACK, WHITE, BLACK, WHITE),
-        PLANT(mix(GREEN, BLACK), WHITE, mix(GREEN, BLACK), WHITE), // darken?
-        PLASTIC(RED, WHITE, RED, WHITE),
-        POISON(darken(PURPLE), WHITE, darken(PURPLE), WHITE),
-        WATER(darken(BLUE), WHITE, darken(BLUE), WHITE),
-        GLASS(darken(SILVER), WHITE, darken(SILVER), WHITE),
-        GLITTER(Color.PINK, WHITE, Color.PINK, WHITE);
+        BEAST(GRAY, WHITE, resaturate(AMBER, 0.25f), pastel(resaturate(PERSIMMON, 0.25f))),
+        AIR(GRAY, WHITE, darken(MINT), lighten(pastel(AQUAMARINE))),
+        ASTRAL(GRAY, WHITE, IRIS, lighten(pastel(VIOLET))),
+        EARTH(GRAY, WHITE, darken(mix(BRONZE, BLACK)), pastel(BRONZE)),
+        FIRE(GRAY, WHITE, ORANGE, pastel(ORANGE_PEEL)),
+        ICE(GRAY, WHITE, AZURE, pastel(SKY_BLUE)),
+        LIGHTNING(GRAY, WHITE, resaturate(lighten(mix(AMBER, BLACK)), 1), lighten(pastel(YELLOW))),
+        METAL(GRAY, WHITE, DARK_GRAY, SILVER),
+        PLANT(GRAY, WHITE, darken(darken(darken(GREEN))), lighten(pastel(CHARTREUSE))),
+        PLASTIC(GRAY, WHITE, resaturate(RED, 0.75f), pastel(resaturate(CRIMSON, 0.75f))),
+        POISON(GRAY, WHITE, darken(darken(PURPLE)), pastel(DEEP_PINK)),
+        WATER(GRAY, WHITE, resaturate(BLUE, 0.8f), lighten(pastel(CERULEAN))),
+        GLASS(GRAY, WHITE, darken(SILVER), pastel(SAPPHIRE)),
+        GLITTER(GRAY, WHITE, DEEP_PINK, WHITE);
 
         private final Color anchor1;
         private final Color anchor2;
