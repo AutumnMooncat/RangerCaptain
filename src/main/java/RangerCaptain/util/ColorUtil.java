@@ -81,6 +81,10 @@ public class ColorUtil {
         return colorFromHSL(getHue(c), getSat(c), 0.8f, c.a);
     }
 
+    public static Color resaturate(Color c, float sat) {
+        return colorFromHSL(getHue(c), Math.min(Math.max(sat, 0), 1), getLight(c), c.a);
+    }
+
     private static float getHue(Color c) {
         float max = c.r;
         float min = c.r;
@@ -128,6 +132,28 @@ public class ColorUtil {
         }
         float lightness = (max + min)/2f;
         return delta / (1 - Math.abs(2*lightness - 1));
+    }
+
+    private static float getLight(Color c) {
+        float max = c.r;
+        float min = c.r;
+        if (c.g > max) {
+            max = c.g;
+        }
+        if (c.b > max) {
+            max = c.b;
+        }
+        if (c.g < min) {
+            min = c.g;
+        }
+        if (c.b < min) {
+            min = c.b;
+        }
+        return (max + min)/2f;
+    }
+
+    private static float getLum(Color c) {
+        return 0.2126f * c.r + 0.7152f * c.g + 0.0722f * c.b;
     }
 
     public static Color colorFromHSL(float hue, float sat, float light, float alpha) {
