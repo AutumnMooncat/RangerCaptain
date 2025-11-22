@@ -20,12 +20,12 @@ public class Puppercut extends AbstractEasyCard {
 
     static {
         new FusionComponentHelper(MonsterEnum.PUPPERCUT)
-                .withCost(0)
+                .withCost(1)
                 .withDamage(3f, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
                 .with(new ResonanceComponent(1.5f))
                 .register();
         new FusionComponentHelper(MonsterEnum.SOUTHPAW)
-                .withCost(0)
+                .withCost(1)
                 .withDamage(4.5f, AbstractGameAction.AttackEffect.BLUNT_LIGHT)
                 .with(new ResonanceComponent(2))
                 .register();
