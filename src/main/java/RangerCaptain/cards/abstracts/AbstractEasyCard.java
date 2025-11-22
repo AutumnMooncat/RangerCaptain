@@ -208,15 +208,15 @@ public abstract class AbstractEasyCard extends CustomCard {
         initializeDescription();
 
         if (textureImg.contains("ui/missing.png")) {
-            needsArtRefresh = true;
-            /*if (CardLibrary.getAllCards() != null && !CardLibrary.getAllCards().isEmpty()) {
+            // TODO Breaks powercards to remove this, but does extraneous work for monster cards
+            if (CardLibrary.getAllCards() != null && !CardLibrary.getAllCards().isEmpty()) {
                 CardArtRoller.computeCard(this);
                 if (cardsToPreview instanceof AbstractEasyCard && ((AbstractEasyCard) cardsToPreview).textureImg.contains("ui/missing.png")) {
                     CardArtRoller.computeCard((AbstractEasyCard) cardsToPreview);
                 }
             } else {
                 needsArtRefresh = true;
-            }*/
+            }
         }
 
         FlavorText.AbstractCardFlavorFields.boxColor.set(this, mix(BLACK.cpy(), MainModfile.HEADBAND_PURPLE_COLOR.cpy()));
