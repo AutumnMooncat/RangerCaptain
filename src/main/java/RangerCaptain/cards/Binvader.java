@@ -5,6 +5,7 @@ import RangerCaptain.cardfusion.components.BinvasionComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
 import RangerCaptain.cards.tokens.FusedCard;
 import RangerCaptain.powers.AbstractComponentPower;
+import RangerCaptain.ui.StashedCardManager;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
@@ -54,9 +55,12 @@ public class Binvader extends AbstractEasyCard {
         }
     }
 
+    // TODO stashed cards
     public static int binvasionCount() {
         return (int) Wiz.getAllCardsInCardGroups(true, true).stream().filter(card -> card instanceof Binvader).count()
                 + Wiz.getAllCardsInCardGroups(true, true).stream().filter(card -> card instanceof FusedCard).map(c -> ((FusedCard) c).binvasionCount()).reduce(0, Integer::sum)
+                + (int) StashedCardManager.cards.group.stream().filter(card -> card instanceof Binvader).count()
+                + StashedCardManager.cards.group.stream().filter(card -> card instanceof FusedCard).map(c -> ((FusedCard) c).binvasionCount()).reduce(0, Integer::sum)
                 + Wiz.adp().powers.stream().filter(p -> p instanceof AbstractComponentPower && ((AbstractComponentPower) p).captured != null).flatMap(p -> ((AbstractComponentPower) p).captured.stream()).filter(c -> c instanceof BinvasionComponent).map(bd -> ((BinvasionComponent) bd).binvaderCount).reduce(0, Integer::sum);
     }
 
