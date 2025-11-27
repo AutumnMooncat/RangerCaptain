@@ -34,6 +34,11 @@ public class BetterSelectCardsInHandAction extends AbstractGameAction {
 
     public void update() {
         if (this.duration == this.startDuration) {
+            if (AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
+                isDone = true;
+                return;
+            }
+
             hand = AbstractDungeon.player.hand.group;
             tempHand.addAll(this.hand);
             cardOrder.addAll(hand);

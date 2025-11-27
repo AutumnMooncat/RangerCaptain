@@ -83,6 +83,11 @@ public class BetterSelectCardsCenteredAction
     @Override
     public void update() {
         if (this.duration == this.startDuration) {
+            if (AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
+                isDone = true;
+                return;
+            }
+
             if ((selectGroup.size() == 0) || callback == null) {
                 isDone = true;
                 return;
