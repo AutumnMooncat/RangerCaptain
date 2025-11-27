@@ -27,20 +27,20 @@ public class Macabra extends AbstractEasyCard {
                 .withCost(1)
                 .withDamage(5.5f, AbstractGameAction.AttackEffect.NONE)
                 .with(new BiteVFXComponent())
-                .with(new AbramacabraComponent(1.91f))
+                .with(new AbramacabraComponent(2.5f))
                 .register();
         // 9,3 -> 14,5
         new FusionComponentHelper(MonsterEnum.FOLKLORD)
                 .withCost(1)
                 .withDamage(7, AbstractGameAction.AttackEffect.BLUNT_HEAVY)
-                .with(new AbramacabraComponent(2.91f))
+                .with(new AbramacabraComponent(3f))
                 .register();
     }
 
     public Macabra() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = damage = 7;
-        baseMagicNumber = magicNumber = 2;
+        baseMagicNumber = magicNumber = 3;
         setMonsterData(MonsterEnum.MACABRA);
         setElementalType(ElementalType.BEAST);
         baseInfo = info = 0;
