@@ -2,6 +2,7 @@ package RangerCaptain.powers;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.patches.AttackEffectPatches;
+import RangerCaptain.patches.ShortCircuitDeathPatches;
 import RangerCaptain.powers.interfaces.OnModifyMaxHPPower;
 import RangerCaptain.util.TISHelper;
 import RangerCaptain.vfx.ColoredSmokeBombEffect;
@@ -87,7 +88,8 @@ public class ToxinPower extends AbstractEasyPower implements HealthBarRenderPowe
     }
 
     public void doKill() {
-        addToTop(new InstantKillAction(owner));
+        ShortCircuitDeathPatches.ShortCircuitField.shortCircuit.set(owner, true);
+        addToTop(new InstantKillAction(owner)); // TODO softlocks player, does not kill
         addToTop(new VFXAction(new FlashAtkImgEffect(owner.hb.cX, owner.hb.cY, AttackEffectPatches.RANGER_CAPTAIN_TOXIN)));
         //addToTop(new RemoveSpecificPowerAction(owner, owner, this));
         addToTop(new FastShakeAction(owner, 1.0F, 0.25F));
