@@ -3,6 +3,7 @@ package RangerCaptain.ui;
 import RangerCaptain.MainModfile;
 import RangerCaptain.actions.FusionAction;
 import RangerCaptain.patches.FusionButtonPatches;
+import RangerCaptain.patches.HotkeyPatches;
 import RangerCaptain.relics.PearFusilli;
 import RangerCaptain.util.Wiz;
 import com.badlogic.gdx.Gdx;
@@ -21,7 +22,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import com.megacrit.cardcrawl.vfx.EndTurnGlowEffect;
-import com.megacrit.cardcrawl.vfx.EndTurnLongPressBarFlashEffect;
 
 import java.util.ArrayList;
 
@@ -58,6 +58,7 @@ public class FusionButton {
     private static final float HOLD_DUR = 0.4F;
     private final Color holdBarColor;
     private boolean justClicked;
+    public boolean justClosed;
 
     public FusionButton() {
         label = BUTTON_TEXT[0];
@@ -117,15 +118,21 @@ public class FusionButton {
         if (holdProgress == HOLD_DUR && !isDisabled && !AbstractDungeon.isScreenUp) {
             trigger();
             holdProgress = 0.0F;
-            AbstractDungeon.effectsQueue.add(new EndTurnLongPressBarFlashEffect());
+            //AbstractDungeon.effectsQueue.add(new EndTurnLongPressBarFlashEffect()); // TODO
         }
 
         justClicked = false;
-        if ((!Settings.USE_LONG_PRESS) && (hb.clicked && !isDisabled && enabled)) {
-            hb.clicked = false;
-            if (!AbstractDungeon.isScreenUp) {
-                justClicked = true;
-                trigger();
+        if (justClosed) {
+            if (!HotkeyPatches.fusionIA.isPressed()) {
+                justClosed = false;
+            }
+        } else {
+            if ((!Settings.USE_LONG_PRESS || !Settings.isControllerMode && !HotkeyPatches.fusionIA.isPressed()) && (hb.clicked || HotkeyPatches.fusionIA.isJustPressed()) && !isDisabled && enabled) {
+                hb.clicked = false;
+                if (!AbstractDungeon.isScreenUp) {
+                    justClicked = true;
+                    trigger();
+                }
             }
         }
 
@@ -157,14 +164,13 @@ public class FusionButton {
     }
 
     private void updateHoldProgress() {
-        if (!Settings.USE_LONG_PRESS && !InputHelper.isMouseDown) {
+        if (!Settings.USE_LONG_PRESS) {
             holdProgress -= Gdx.graphics.getDeltaTime();
             if (holdProgress < 0.0F) {
                 holdProgress = 0.0F;
             }
-
         } else {
-            if ((hb.hovered && InputHelper.isMouseDown) && !isDisabled && enabled) {
+            if ((hb.hovered && InputHelper.isMouseDown || HotkeyPatches.fusionIA.isPressed()) && !isDisabled && enabled) {
                 holdProgress += Gdx.graphics.getDeltaTime();
                 if (holdProgress > HOLD_DUR) {
                     holdProgress = HOLD_DUR;
@@ -266,9 +272,13 @@ public class FusionButton {
                 }
 
                 if (hb.hovered && !AbstractDungeon.isScreenUp && !Settings.isTouchScreen) {
+                    String title = TIP_TEXT[0];
+                    if (HotkeyPatches.fusionIA != null && !HotkeyPatches.fusionIA.getKeyString().isEmpty()) {
+                        title = title +" ("+HotkeyPatches.fusionIA.getKeyString()+")";
+                    }
                     String body = fusedThisTurn ? TIP_TEXT[2] : !canAfford() ? TIP_TEXT[3] : TIP_TEXT[1];
                     float dy = 275f;
-                    TipHelper.renderGenericTip(50.0F * Settings.scale, current_y + dy * Settings.scale, TIP_TEXT[0], body);
+                    TipHelper.renderGenericTip(50.0F * Settings.scale, current_y + dy * Settings.scale, title, body);
                 }
             } else if (label.equals(ALREADY_FUSED_TEXT)) {
                 textColor = Settings.CREAM_COLOR;

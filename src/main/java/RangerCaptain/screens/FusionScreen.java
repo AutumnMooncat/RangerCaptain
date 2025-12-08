@@ -2,6 +2,8 @@ package RangerCaptain.screens;
 
 import RangerCaptain.MainModfile;
 import RangerCaptain.patches.FusionScreenPatches;
+import RangerCaptain.patches.HotkeyPatches;
+import RangerCaptain.ui.FusionButton;
 import RangerCaptain.util.Wiz;
 import basemod.abstracts.CustomScreen;
 import com.badlogic.gdx.Gdx;
@@ -115,6 +117,13 @@ public class FusionScreen extends CustomScreen {
             }
             updateHand();
             updateSelectedCards();
+            if (HotkeyPatches.fusionIA.isJustPressed()) {
+                FusionButton button = FusionButton.get();
+                if (button != null) {
+                    button.justClosed = true;
+                }
+                AbstractDungeon.closeCurrentScreen();
+            }
             if (waitThenClose) {
                 waitToCloseTimer -= Gdx.graphics.getDeltaTime();
                 if (waitToCloseTimer < 0.0F) {
@@ -465,15 +474,17 @@ public class FusionScreen extends CustomScreen {
                 baseCard.targetDrawScale = 0.85F;
             }
 
-            if (!waitThenClose && Math.abs(baseCard.current_x - baseCard.target_x) < MIN_HOVER_DIST && baseCard.hb.hovered && (InputHelper.justClickedLeft || CInputActionSet.select.isJustPressed())) {
+            boolean shouldDrop = baseCard.hb.hovered && (InputHelper.justClickedLeft || CInputActionSet.select.isJustPressed());
+            if (donorCard == null && InputActionSet.down.isJustPressed()) {
+                shouldDrop = true;
+            }
+            if (!waitThenClose && Math.abs(baseCard.current_x - baseCard.target_x) < MIN_HOVER_DIST && shouldDrop) {
                 InputHelper.justClickedLeft = false;
                 AbstractDungeon.player.hand.addToTop(baseCard);
                 baseCard = null;
                 refreshSelectedCards();
                 updateMessage();
-                if (Settings.isControllerMode) {
-                    hand.refreshHandLayout();
-                }
+                hand.refreshHandLayout(); // TODO Dropped Settings.isControllerMode check, might need to be !Settings.isControllerMode check
             }
         }
 
@@ -487,15 +498,17 @@ public class FusionScreen extends CustomScreen {
                 donorCard.targetDrawScale = 0.85F;
             }
 
-            if (!waitThenClose && Math.abs(donorCard.current_x - donorCard.target_x) < MIN_HOVER_DIST && donorCard.hb.hovered && (InputHelper.justClickedLeft || CInputActionSet.select.isJustPressed())) {
+            boolean shouldDrop = donorCard.hb.hovered && (InputHelper.justClickedLeft || CInputActionSet.select.isJustPressed());
+            if (InputActionSet.down.isJustPressed()) {
+                shouldDrop = true;
+            }
+            if (!waitThenClose && Math.abs(donorCard.current_x - donorCard.target_x) < MIN_HOVER_DIST && shouldDrop) {
                 InputHelper.justClickedLeft = false;
                 AbstractDungeon.player.hand.addToTop(donorCard);
                 donorCard = null;
                 refreshSelectedCards();
                 updateMessage();
-                if (Settings.isControllerMode) {
-                    hand.refreshHandLayout();
-                }
+                hand.refreshHandLayout();
             }
         }
 

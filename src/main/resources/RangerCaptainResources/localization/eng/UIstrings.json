@@ -15,6 +15,11 @@
       "Enable Ranger Captain Crossover Content"
     ]
   },
+  "${ModID}:InputSettings": {
+    "TEXT": [
+      "Ranger Captain: Fusion"
+    ]
+  },
   "${ModID}:FusionTutorial": {
     "TEXT": [
       "Fusion System",
