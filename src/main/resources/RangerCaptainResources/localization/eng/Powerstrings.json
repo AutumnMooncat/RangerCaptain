@@ -37,7 +37,7 @@
   },
   "${ModID}:ResonancePower": {
     "NAME": "Resonance",
-    "DESCRIPTIONS": ["Every time this enemy is attacked #b3 times in one turn, it takes #b"," damage."]
+    "DESCRIPTIONS": ["Every #b3 times this enemy is attacked, it takes #b"," damage."]
   },
   "${ModID}:TapeJamPower": {
     "NAME": "Tape Jam",

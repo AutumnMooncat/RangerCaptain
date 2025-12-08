@@ -51,11 +51,11 @@ public class ResonancePower extends AbstractEasyPower {
         return super.onAttacked(info, damageAmount);
     }
 
-    @Override
+    /*@Override
     public void atEndOfRound() {
         hits = 0;
         stopFlashing();
-    }
+    }*/
 
     @Override
     public void updateDescription() {
