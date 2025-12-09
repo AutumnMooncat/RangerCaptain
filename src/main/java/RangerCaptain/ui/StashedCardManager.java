@@ -82,6 +82,7 @@ public class StashedCardManager {
 
     public static void addCard(AbstractCard card, boolean playSFX, boolean isEndTurn) {
         card.targetAngle = 0f;
+        card.lighten(true);
         card.beginGlowing();
         cards.addToTop(card);
         if (card instanceof OnStashedCard) {
