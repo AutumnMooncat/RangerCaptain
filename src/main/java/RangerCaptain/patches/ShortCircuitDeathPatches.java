@@ -94,7 +94,8 @@ public class ShortCircuitDeathPatches {
                     MainModfile.logger.info("Constructed sequence: "+Arrays.toString(code.get()));
                     ci.insertAt(insertIndex, code.get());
                     mi.rebuildStackMap(classPool);
-
+                } else {
+                    throw new RuntimeException("Got currentBlock insert index " + insertIndex + " and hasRelic() jump index " + jumpIndex + ", cannot patch");
                 }
             } catch (BadBytecode | NotFoundException e) {
                 throw new RuntimeException(e);
