@@ -5,6 +5,7 @@ import RangerCaptain.cards.cardvars.*;
 import RangerCaptain.cards.interfaces.GlowAdjacentCard;
 import RangerCaptain.cards.interfaces.OnOtherCardUpgradedCard;
 import RangerCaptain.cards.interfaces.OnReceiveDebuffCard;
+import RangerCaptain.commands.Fusion;
 import RangerCaptain.patches.GlowChangePatch;
 import RangerCaptain.powers.*;
 import RangerCaptain.relics.AbstractEasyRelic;
@@ -16,6 +17,7 @@ import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
+import basemod.devcommands.ConsoleCommand;
 import basemod.helpers.CardBorderGlowManager;
 import basemod.helpers.RelicType;
 import basemod.helpers.ScreenPostProcessorManager;
@@ -330,6 +332,7 @@ public class MainModfile implements
 
         //Other Setup stuff
         BaseMod.addCustomScreen(new FusionScreen());
+        ConsoleCommand.addCommand("fusion", Fusion.class);
 
         DynamicTextBlocks.registerCustomCheck(makeID("Binvader"), c -> {
             if (Wiz.isInCombat() && Wiz.adp().hand.contains(c)) {
