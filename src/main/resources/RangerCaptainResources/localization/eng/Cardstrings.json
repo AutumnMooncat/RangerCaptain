@@ -335,7 +335,7 @@
   },
   "${ModID}:Stardigrade": {
     "NAME": "Stardigrade",
-    "DESCRIPTION": "If you do not play any Attacks during your turn, gain !M! Strength at the end of your turn.",
+    "DESCRIPTION": "Innate. NL If you do not play any Attacks during your turn, gain !M! Strength at the end of your turn.",
     "EXTENDED_DESCRIPTION": ["Galagor"]
   },
   "${ModID}:Strike": {
