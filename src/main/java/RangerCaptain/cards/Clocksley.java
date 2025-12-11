@@ -25,9 +25,9 @@ public class Clocksley extends AbstractEasyCard {
                 .withFlags(new DrawComponent(2), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
         new FusionComponentHelper(MonsterEnum.ROBINDAM)
-                .withCost(1)
+                .withCost(0)
                 .with(new OnDrawUnplayableComponent())
-                .withFlags(new DrawComponent(3), AbstractComponent.Flag.INVERSE_PREFERRED)
+                .withFlags(new DrawComponent(2), AbstractComponent.Flag.INVERSE_PREFERRED)
                 .register();
     }
 
@@ -45,7 +45,8 @@ public class Clocksley extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeMagicNumber(1);
+        //upgradeMagicNumber(1);
+        upgradeBaseCost(0);
         name = originalName = cardStrings.EXTENDED_DESCRIPTION[0];
         initializeTitle();
         setMonsterData(MonsterEnum.ROBINDAM);
