@@ -36,10 +36,11 @@ public class BerserkerPower extends AbstractComponentPower {
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (card.type == AbstractCard.CardType.ATTACK) {
-            flash();
             if (source == null) {
+                flash();
                 addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, amount)));
-            } else {
+            } else if (!isLocked()) {
+                flash();
                 addToBot(new DoAction(() -> triggerComponents(null, true)));
             }
         }

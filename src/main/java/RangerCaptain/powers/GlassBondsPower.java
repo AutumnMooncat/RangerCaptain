@@ -36,10 +36,11 @@ public class GlassBondsPower extends AbstractComponentPower implements OnFusionP
 
     @Override
     public void onPerformFusion(AbstractCard base, AbstractCard donor, FusedCard fused) {
-        flash();
         if (source == null) {
+            flash();
             addToBot(new MakeTempCardInDiscardAction(new Glaistain(), amount));
-        } else {
+        } else if (!isLocked())  {
+            flash();
             addToBot(new DoAction(() -> triggerComponents(null, true)));
         }
     }

@@ -47,10 +47,11 @@ public class EnergyReservesPower extends AbstractComponentPower implements OnCha
     }
 
     private void energyTrigger() {
-        flash();
         if (source == null) {
+            flash();
             Wiz.forAllMonstersLiving(mon -> Wiz.applyToEnemy(mon, new ConductivePower(mon, owner, this.amount)));
-        } else {
+        } else if (!isLocked()) {
+            flash();
             addToBot(new DoAction(() -> triggerComponents(null, true)));
         }
     }

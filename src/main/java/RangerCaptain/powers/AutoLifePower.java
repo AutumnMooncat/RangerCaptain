@@ -34,10 +34,11 @@ public class AutoLifePower extends AbstractComponentPower {
     @Override
     public void wasHPLost(DamageInfo info, int damageAmount) {
         if (damageAmount > 0) {
-            flash();
             if (source == null) {
+                flash();
                 addToTop(new GainBlockAction(owner, amount));
-            } else {
+            } else if (!isLocked()) {
+                flash();
                 addToTop(new DoAction(() -> triggerComponents(null, true)));
             }
         }

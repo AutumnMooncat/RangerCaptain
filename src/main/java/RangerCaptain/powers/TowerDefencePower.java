@@ -37,11 +37,12 @@ public class TowerDefencePower extends AbstractComponentPower {
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (CantUpgradeFieldPatches.CantUpgradeField.preventUpgrades.get(card) || card instanceof FusedCard) {
-            flash();
             // Using to top is kinder vs thorns, but After Image uses to bot, so use that for consistency
             if (source == null) {
+                flash();
                 addToBot(new GainBlockAction(owner, amount));
-            } else {
+            } else if (!isLocked()) {
+                flash();
                 addToBot(new DoAction(() -> triggerComponents(null, true)));
             }
         }

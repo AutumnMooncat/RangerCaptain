@@ -43,8 +43,10 @@ public class SpringLoadedPower extends AbstractComponentPower implements EnterCa
         if (g == Wiz.adp().hand && c.cost == -2) {
             flashWithoutSound();
             if (source == null) {
+                flash();
                 addToBot(new DrawCardAction(amount));
-            } else {
+            } else if (!isLocked()) {
+                flash();
                 addToBot(new DoAction(() -> triggerComponents(null, true)));
             }
         }

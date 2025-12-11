@@ -44,7 +44,7 @@ public class FlammablePower extends AbstractComponentPower {
         if (source == null) {
             flash();
             addToBot(new ApplyPowerToRandomEnemyAction(owner, new BurnedPower(null, owner, amount), amount));
-        } else if (banned.stream().noneMatch(clz -> clz == card.getClass())) {
+        } else if (!isLocked() && banned.stream().noneMatch(clz -> clz == card.getClass())) {
             flash();
             addToBot(new DoAction(() -> triggerComponents(null, true)));
         }

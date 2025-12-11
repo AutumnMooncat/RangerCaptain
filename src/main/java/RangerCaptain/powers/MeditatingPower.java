@@ -36,10 +36,11 @@ public class MeditatingPower extends AbstractComponentPower {
     @Override
     public void atEndOfTurn(boolean isPlayer) {
         if (AbstractDungeon.actionManager.cardsPlayedThisTurn.stream().noneMatch(card -> card.type == AbstractCard.CardType.ATTACK)) {
-            flash();
             if (source == null) {
+                flash();
                 addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, amount)));
-            } else {
+            } else if (!isLocked()) {
+                flash();
                 addToBot(new DoAction(() -> triggerComponents(null, true)));
             }
         }

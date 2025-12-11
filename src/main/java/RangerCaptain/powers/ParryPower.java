@@ -37,10 +37,11 @@ public class ParryPower extends AbstractComponentPower implements LastDamageTake
     @Override
     public void onLastDamageTakenUpdate(DamageInfo info, int lastTaken) {
         if (info.type == DamageInfo.DamageType.NORMAL && lastTaken == 0 && info.owner instanceof AbstractMonster) {
-            flash();
             if (source == null) {
+                flash();
                 addToTop(new ApplyPowerAction(owner, owner, new VigorPower(owner, amount)));
-            } else {
+            } else if (!isLocked()) {
+                flash();
                 addToTop(new DoAction(() -> triggerComponents((AbstractMonster) info.owner, true)));
             }
         }

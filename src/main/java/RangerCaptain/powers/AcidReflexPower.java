@@ -35,15 +35,16 @@ public class AcidReflexPower extends AbstractComponentPower {
     @Override
     public void atStartOfTurnPostDraw() {
         if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
-            flash();
             if (source == null) {
+                flash();
                 addToBot(new DoAction(() -> {
                     AbstractMonster weakest = getWeakest();
                     if (weakest != null) {
                         Wiz.applyToEnemyTop(weakest, new ToxinPower(weakest, amount));
                     }
                 }));
-            } else {
+            } else if (!isLocked()) {
+                flash();
                 addToBot(new DoAction(() -> {
                     AbstractMonster weakest = getWeakest();
                     if (weakest != null) {

@@ -1,12 +1,12 @@
 package RangerCaptain.powers;
 
-import RangerCaptain.actions.DoAction;
 import RangerCaptain.cardfusion.abstracts.AbstractComponent;
 import RangerCaptain.cardfusion.abstracts.AbstractDamageModComponent;
 import RangerCaptain.cardfusion.abstracts.AbstractPowerComponent;
 import RangerCaptain.cardfusion.components.ExhaustAttacksComponent;
 import RangerCaptain.cardfusion.components.ExhaustCardsComponent;
 import RangerCaptain.patches.ActionCapturePatch;
+import RangerCaptain.patches.ActionMarkerPatch;
 import RangerCaptain.util.CalcHelper;
 import RangerCaptain.util.Wiz;
 import basemod.ReflectionHacks;
@@ -27,7 +27,6 @@ public abstract class AbstractComponentPower extends AbstractEasyPower implement
     protected static final CalcHelper.DummyCard dummyCard = new CalcHelper.DummyCard();
     public AbstractPowerComponent source;
     public List<AbstractComponent> captured;
-    private boolean locked;
 
     public AbstractComponentPower(String ID, String NAME, PowerType powerType, boolean isTurnBased, AbstractCreature owner, int amount) {
         super(ID, NAME, powerType, isTurnBased, owner, amount);
@@ -42,51 +41,53 @@ public abstract class AbstractComponentPower extends AbstractEasyPower implement
 
     public abstract void updateNormalDescription();
 
+    public boolean isLocked() {
+        return AbstractDungeon.actionManager.currentAction != null && ActionMarkerPatch.ActionFields.markers.get(AbstractDungeon.actionManager.currentAction).contains(this);
+    }
+
     public void triggerComponents(AbstractMonster target, boolean toTop) {
-        if (!locked) {
-            locked = true;
-            boolean couldPass = ReflectionHacks.getPrivateStatic(BindingPatches.class, "canPassInstigator");
-            ReflectionHacks.setPrivateStatic(BindingPatches.class, "canPassInstigator", true);
-            DamageModifierManager.clearModifiers(dummyCard);
-            for (AbstractComponent c : captured) {
-                if (c instanceof AbstractDamageModComponent) {
-                    DamageModifierManager.addModifier(dummyCard, ((AbstractDamageModComponent) c).getDamageMod(getAmount(c)));
-                }
+        boolean couldPass = ReflectionHacks.getPrivateStatic(BindingPatches.class, "canPassInstigator");
+        ReflectionHacks.setPrivateStatic(BindingPatches.class, "canPassInstigator", true);
+        DamageModifierManager.clearModifiers(dummyCard);
+        for (AbstractComponent c : captured) {
+            if (c instanceof AbstractDamageModComponent) {
+                DamageModifierManager.addModifier(dummyCard, ((AbstractDamageModComponent) c).getDamageMod(getAmount(c)));
             }
-            if (AbstractDungeon.actionManager.currentAction != null) {
-                BindingPatches.BoundGameActionFields.actionDelayedCardInUse.set(AbstractDungeon.actionManager.currentAction, dummyCard);
-            }
-            ActionCapturePatch.doCapture = true;
-            ArrayList<AbstractComponent> complex = captured.stream().filter(c -> c.hasFlags(AbstractComponent.Flag.EXHAUST_COMPLEX_FOLLOWUP)).collect(Collectors.toCollection(ArrayList::new));
-            AbstractMonster randomTarg = AbstractDungeon.getRandomMonster();
-            for (AbstractComponent component : captured) {
-                if (component instanceof AbstractDamageModComponent || component.hasFlags(AbstractComponent.Flag.EXHAUST_COMPLEX_FOLLOWUP)) {
-                    continue;
-                }
-                List<AbstractComponent> captured = Collections.emptyList();
-                AbstractMonster toHit = target;
-                boolean wasRandom = false;
-                if (component instanceof ExhaustAttacksComponent || component instanceof ExhaustCardsComponent) {
-                    captured = complex;
-                }
-                if (component.target == AbstractComponent.ComponentTarget.ENEMY_RANDOM) {
-                    toHit = randomTarg;
-                    component.target = AbstractComponent.ComponentTarget.ENEMY;
-                    wasRandom = true;
-                }
-                component.onTrigger(this, Wiz.adp(), toHit, captured);
-                if (wasRandom) {
-                    component.target = AbstractComponent.ComponentTarget.ENEMY_RANDOM;
-                }
-            }
-            addToBot(new DoAction(() -> locked = false));
-            if (toTop) {
-                ActionCapturePatch.releaseToTop();
-            } else {
-                ActionCapturePatch.releaseToBot();
-            }
-            ReflectionHacks.setPrivateStatic(BindingPatches.class, "canPassInstigator", couldPass);
         }
+        if (AbstractDungeon.actionManager.currentAction != null) {
+            BindingPatches.BoundGameActionFields.actionDelayedCardInUse.set(AbstractDungeon.actionManager.currentAction, dummyCard);
+        }
+        ActionCapturePatch.doCapture = true;
+        ActionCapturePatch.onCapture = a -> ActionMarkerPatch.ActionFields.markers.get(a).add(this);
+        ArrayList<AbstractComponent> complex = captured.stream().filter(c -> c.hasFlags(AbstractComponent.Flag.EXHAUST_COMPLEX_FOLLOWUP)).collect(Collectors.toCollection(ArrayList::new));
+        AbstractMonster randomTarg = AbstractDungeon.getRandomMonster();
+        for (AbstractComponent component : captured) {
+            if (component instanceof AbstractDamageModComponent || component.hasFlags(AbstractComponent.Flag.EXHAUST_COMPLEX_FOLLOWUP)) {
+                continue;
+            }
+            List<AbstractComponent> captured = Collections.emptyList();
+            AbstractMonster toHit = target;
+            boolean wasRandom = false;
+            if (component instanceof ExhaustAttacksComponent || component instanceof ExhaustCardsComponent) {
+                captured = complex;
+            }
+            if (component.target == AbstractComponent.ComponentTarget.ENEMY_RANDOM) {
+                toHit = randomTarg;
+                component.target = AbstractComponent.ComponentTarget.ENEMY;
+                wasRandom = true;
+            }
+            component.onTrigger(this, Wiz.adp(), toHit, captured);
+            if (wasRandom) {
+                component.target = AbstractComponent.ComponentTarget.ENEMY_RANDOM;
+            }
+        }
+        ActionCapturePatch.onCapture = ActionCapturePatch.DO_NOTHING;
+        if (toTop) {
+            ActionCapturePatch.releaseToTop();
+        } else {
+            ActionCapturePatch.releaseToBot();
+        }
+        ReflectionHacks.setPrivateStatic(BindingPatches.class, "canPassInstigator", couldPass);
     }
 
     @Override

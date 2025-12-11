@@ -34,10 +34,11 @@ public class GhostlyPower extends AbstractComponentPower implements OnStashPower
 
     @Override
     public void onStash(AbstractCard card, boolean isEndTurn) {
-        flash();
         if (source == null) {
+            flash();
             addToBot(new GainBlockAction(owner, amount));
-        } else {
+        } else if (!isLocked()) {
+            flash();
             addToBot(new DoAction(() -> triggerComponents(null, true)));
         }
     }
