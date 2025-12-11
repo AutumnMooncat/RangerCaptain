@@ -34,6 +34,7 @@ public class Minortom extends AbstractEasyCard {
     public Minortom() {
         super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
         baseMagicNumber = magicNumber = 2;
+        isInnate = true;
         setMonsterData(MonsterEnum.MINORTOM);
         setElementalType(ElementalType.METAL);
         cardsToPreview = new VoidCard();
