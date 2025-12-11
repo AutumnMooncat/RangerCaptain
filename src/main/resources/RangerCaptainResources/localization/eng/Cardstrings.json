@@ -334,7 +334,7 @@
     "EXTENDED_DESCRIPTION": ["Manispear","Palangolin"]
   },
   "${ModID}:Stardigrade": {
-    "NAME": "Starigrade",
+    "NAME": "Stardigrade",
     "DESCRIPTION": "If you do not play any Attacks during your turn, gain !M! Strength at the end of your turn.",
     "EXTENDED_DESCRIPTION": ["Galagor"]
   },
