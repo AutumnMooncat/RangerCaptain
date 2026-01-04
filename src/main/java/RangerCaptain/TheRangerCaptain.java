@@ -236,15 +236,16 @@ public class TheRangerCaptain extends CustomPlayer {
         ImageHelper.beginBuffer(fbo);
         sb.begin();
         TextureRegion region = gifAnim.getKeyFrame(isDead ? 0 : time);
+        float w2 = region.getRegionWidth()/2f;
+        float h2 = region.getRegionHeight()/2f;
+        float drawScale = 0.5f;
         //flipHorizontal = InputHelper.mX < drawX + animX;
         //flipVertical = InputHelper.mY < drawY + animY + AbstractDungeon.sceneOffsetY;
         sb.draw(region,
-                this.drawX + this.animX,
-                this.drawY + this.animY + AbstractDungeon.sceneOffsetY,
-                (flipHorizontal ? 1/4f : -1 ) * region.getRegionWidth()/2f,
-                (flipVertical ? 5/2f : -1) * region.getRegionHeight()/8f,
-                region.getRegionWidth(), region.getRegionHeight(),
-                (flipHorizontal ? -1 : 1) * Settings.scale/2, (flipVertical ? -1 : 1) * Settings.scale/2, 0);
+                this.drawX + this.animX - w2,
+                this.drawY + this.animY + AbstractDungeon.sceneOffsetY - h2 + 100f * Settings.scale,
+                w2, h2, region.getRegionWidth(), region.getRegionHeight(),
+                (flipHorizontal ? -1 : 1) * drawScale * Settings.scale, (flipVertical ? -1 : 1) * drawScale * Settings.scale, 0);
         sb.end();
         fbo.end();
         sb.begin();
