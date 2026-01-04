@@ -5,6 +5,7 @@ import RangerCaptain.cards.tokens.Sludge;
 import RangerCaptain.util.Wiz;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
+import basemod.helpers.CardPowerTip;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -33,6 +34,12 @@ public class SkellyJelly extends AbstractEasyRelic {
     public SkellyJelly() {
         super(ID, RelicTier.BOSS, LandingSound.FLAT, TheRangerCaptain.Enums.HEADBAND_PURPLE_COLOR);
         resetStats();
+    }
+
+    @Override
+    protected void initializeTips() {
+        tips.add(new CardPowerTip(new Sludge()));
+        super.initializeTips();
     }
 
     @Override
