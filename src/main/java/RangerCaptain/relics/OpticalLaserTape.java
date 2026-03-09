@@ -49,7 +49,7 @@ public class OpticalLaserTape extends AbstractEasyRelic implements CustomBottleR
 
     @Override
     public boolean canSpawn() {
-        return AbstractDungeon.player.masterDeck.group.stream().anyMatch(Wiz::canBeFused);
+        return CardGroup.getGroupWithoutBottledCards(AbstractDungeon.player.masterDeck).group.stream().anyMatch(Wiz::canBeFused);
     }
 
     @Override
@@ -73,7 +73,7 @@ public class OpticalLaserTape extends AbstractEasyRelic implements CustomBottleR
         }
         (AbstractDungeon.getCurrRoom()).phase = AbstractRoom.RoomPhase.INCOMPLETE;
         CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-        for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
+        for (AbstractCard c : CardGroup.getGroupWithoutBottledCards(AbstractDungeon.player.masterDeck).group) {
             if (Wiz.canBeFused(c)) {
                 tmp.addToTop(c);
             }
