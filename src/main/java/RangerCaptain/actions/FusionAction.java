@@ -27,7 +27,7 @@ public class FusionAction extends AbstractGameAction {
     private ArrayList<AbstractCard> tempHand;
     private final boolean justPreview;
 
-    public FusionAction(boolean justPreview) {
+    public FusionAction(boolean justPreview) { // TODO SCV button to preview all fusions
         this.duration = this.startDuration = Settings.ACTION_DUR_XFAST;
         this.predicate = Wiz::canBeFused;
         this.justPreview = justPreview;
@@ -55,6 +55,7 @@ public class FusionAction extends AbstractGameAction {
             AbstractCard baseCard = screen.baseCard;
             AbstractCard donorCard = screen.donorCard;
             FusedCard fusion = null;
+            boolean free = false;
             if (baseCard != null && donorCard != null && !justPreview && screen.didFuse) {
                 fusion = Wiz.fuse(baseCard, donorCard);
                 screen.wereCardsRetrieved = true;
@@ -62,7 +63,6 @@ public class FusionAction extends AbstractGameAction {
                 screen.donorCard = null;
                 screen.didFuse = false;
 
-                boolean free = false;
                 for (AbstractRelic relic : Wiz.adp().relics) {
                     if (relic instanceof PearFusilli && !relic.grayscale) {
                         relic.onTrigger();
@@ -71,9 +71,6 @@ public class FusionAction extends AbstractGameAction {
                     }
                 }
 
-                if (!free) {
-                    AbstractDungeon.player.loseEnergy(1);
-                }
 
                 FusionButton button = FusionButton.get();
                 if (button != null) {
@@ -97,6 +94,9 @@ public class FusionAction extends AbstractGameAction {
             if (fusion != null) {
                 //Only add fusion back, baseCard and donorCard have been fused
                 hand.add(fusion);
+                if (!free) {
+                    AbstractDungeon.player.loseEnergy(1);
+                }
             }
             AbstractDungeon.player.hand.refreshHandLayout();
             AbstractDungeon.player.hand.applyPowers();
