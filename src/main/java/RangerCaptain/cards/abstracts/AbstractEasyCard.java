@@ -4,6 +4,7 @@ import RangerCaptain.MainModfile;
 import RangerCaptain.TheRangerCaptain;
 import RangerCaptain.cards.tokens.FusedCard;
 import RangerCaptain.patches.CantUpgradeFieldPatches;
+import RangerCaptain.patches.ClickableTipsPatch;
 import RangerCaptain.patches.FusionModifierHooks;
 import RangerCaptain.util.*;
 import basemod.BaseMod;
@@ -571,6 +572,7 @@ public abstract class AbstractEasyCard extends CustomCard {
         if (Wiz.canBeFused(this)) {
             removeFusionTip();
             fusionTip = new TooltipInfo(BaseMod.getKeywordTitle(KeywordManager.FUSIONEFFECTS), BaseMod.getKeywordDescription(KeywordManager.FUSIONEFFECTS));
+            //fusionTip.description = ClickableTipsPatch.TEST;
             fusionTip.description += FusionCardEffectData.getFusionTip(monsterEnum);
             if (addedTips == null) {
                 addedTips = new ArrayList<>();

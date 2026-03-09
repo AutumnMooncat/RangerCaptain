@@ -3,13 +3,18 @@ package RangerCaptain.cards;
 import RangerCaptain.cardfusion.FusionComponentHelper;
 import RangerCaptain.cardfusion.components.WeakComponent;
 import RangerCaptain.cards.abstracts.AbstractEasyCard;
+import RangerCaptain.patches.ClickableTipsPatch;
 import RangerCaptain.util.CardArtRoller;
 import RangerCaptain.util.MonsterEnum;
 import RangerCaptain.util.Wiz;
+import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.cards.tempCards.Miracle;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static RangerCaptain.MainModfile.makeID;
 
@@ -35,6 +40,21 @@ public class Faucetear extends AbstractEasyCard {
         baseMagicNumber = magicNumber = 1;
         setMonsterData(MonsterEnum.FAUCETEAR);
         setElementalType(ElementalType.WATER);
+    }
+
+    private static List<TooltipInfo> tips;
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        if (tips == null) {
+            tips = new ArrayList<>();
+            tips.add(new TooltipInfo("SFX Example", ClickableTipsPatch.TEST2));
+            tips.add(new TooltipInfo("Cycle Example", ClickableTipsPatch.TEST3));
+            List<TooltipInfo> sup = super.getCustomTooltips();
+            if (sup != null) {
+                tips.addAll(sup);
+            }
+        }
+        return tips;
     }
 
     @Override
